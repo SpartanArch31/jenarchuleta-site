@@ -94,7 +94,7 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .threshold-rule { max-width: 220px; margin: 0 auto; }
 
 /* photo row (beauty / personality) */
-.photo-row { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:30px; }
+.photo-row { display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-top:30px; }
 .photo-row img { width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); transition: transform var(--dur) var(--ease); }
 .photo-row img:hover { transform: translateY(-4px); }
 @media (max-width:760px){ .photo-row{ grid-template-columns:1fr 1fr; } }

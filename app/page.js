@@ -100,15 +100,12 @@ export default function Home() {
           <h2>Beautiful, a little bit of trouble, and not done yet.</h2>
           <p className="lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, and still sweating it out in the gym at 50. I love getting dressed up, I love a good laugh, and I love my rescue dogs almost as much as my kids. Faith, family, and fun — all at once. The smile is real, and so is the rest of me.</p>
         </div>
-        {/* TODO photo-row hidden until hi-res jen-glam.jpg + jen-fun.jpg are added to /assets.
-            To restore: uncomment the photo-row below. */}
-        {/*
         <div className="photo-row">
-          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta" />
-          <img src="/assets/jen-fun.jpg" alt="Jen Archuleta" />
+          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta — glamour portrait" />
+          <img src="/assets/jen-sultry.jpg" alt="Jen Archuleta" />
+          <img src="/assets/jen-fun.jpg" alt="Jen Archuleta with a rescue puppy" />
           <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta — fit at 50" />
         </div>
-        */}
         <div className="center" style={{ marginTop: '26px' }}>
           <a href={SOCIALS.instagram} className="btn btn-ghost">Follow along on Instagram</a>
         </div>
