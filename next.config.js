@@ -5,10 +5,11 @@ const blogRedirects = require('./blog-redirects.json');
 // Old Squarespace top-level pages still in search engines → closest new home.
 const pageRedirects = [
   { source: '/the-book', destination: '/book', permanent: true },
-  { source: '/about', destination: '/#story', permanent: true },
-  { source: '/about-me', destination: '/#story', permanent: true },
-  { source: '/about-1', destination: '/#story', permanent: true },
-  { source: '/bio', destination: '/#story', permanent: true },
+  { source: '/velvetropes', destination: '/book', permanent: true },
+  // NOTE: /about is a real page (app/about) — do not redirect it.
+  { source: '/about-me', destination: '/about', permanent: true },
+  { source: '/about-1', destination: '/about', permanent: true },
+  { source: '/bio', destination: '/about', permanent: true },
   { source: '/story', destination: '/#story', permanent: true },
   { source: '/my-story', destination: '/#story', permanent: true },
   { source: '/speaking', destination: '/#speaking', permanent: true },

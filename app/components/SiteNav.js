@@ -8,7 +8,7 @@ export default function SiteNav() {
       <div className="nav-inner">
         <a href="/" className="brand">Jen Archuleta</a>
         <div className="nav-links">
-          <a href="/#story" className="hide-sm">Story</a>
+          <a href="/about" className="hide-sm">About</a>
           <a href="/book">Book</a>
           <a href="/podcast">Podcast</a>
           <a href="/journal">Journal</a>
