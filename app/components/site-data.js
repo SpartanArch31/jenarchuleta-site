@@ -14,12 +14,11 @@ export const SOCIALS = {
 export const PODCAST = {
   name: 'Unfiltered with Jen Archuleta',
   buzzsproutSite: 'https://unfilteredwithjenarchuleta.buzzsprout.com',
-  // TODO(Phase 2): set BUZZSPROUT_ID to the numeric show id for the
-  // native large player. Subscribe links: confirm/replace.
-  buzzsproutId: '',
+  // Numeric show id (powers the native large player) — sourced from the show.
+  buzzsproutId: '2467154',
   subscribe: {
-    spotify: '',
-    apple: '',
-    youtube: '',
+    spotify: 'https://open.spotify.com/show/2HmclW6k1CEjTJmp0wpy7Z',
+    apple: 'https://podcasts.apple.com/podcast/id1806868424',
+    youtube: 'https://www.youtube.com/channel/UCAcb9IhD-4BgqoZ5ycBNdBw',
   },
 };

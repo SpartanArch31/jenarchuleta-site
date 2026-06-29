@@ -2,6 +2,7 @@ import './podcast.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import KitForm from '../components/KitForm';
+import BuzzsproutPlayer from '../components/BuzzsproutPlayer';
 import { PODCAST } from '../components/site-data';
 
 export const metadata = {
@@ -40,26 +41,17 @@ export default function PodcastPage() {
         </div>
       </section>
 
-      {/* EPISODES — Buzzsprout */}
+      {/* EPISODES — Buzzsprout native large player (auto-lists every episode) */}
       <section className="wrap" style={{ paddingTop: 0 }}>
-        {/*
-          Phase 1: embeds the hosted Buzzsprout show (all episodes, auto-updating).
-          Phase 2 (needs the numeric show id in site-data PODCAST.buzzsproutId):
-          swap to Buzzsprout's native large player for an on-brand inline list:
-            <div id="buzzsprout-large-player"></div>
-            <script src="https://www.buzzsprout.com/<ID>.js?container_id=buzzsprout-large-player&player=large"></script>
-        */}
-        <div className="pod-embed">
-          <iframe
-            src={buzzsproutSite}
-            title={`${name} — episodes`}
-            loading="lazy"
-            allow="autoplay"
-          />
-        </div>
+        {buzzsproutId ? (
+          <BuzzsproutPlayer showId={buzzsproutId} />
+        ) : (
+          <div className="pod-embed">
+            <iframe src={buzzsproutSite} title={`${name} — episodes`} loading="lazy" allow="autoplay" />
+          </div>
+        )}
         <p className="foot-meta center" style={{ marginTop: '14px' }}>
-          Trouble loading the player? <a href={buzzsproutSite}>Open the show on Buzzsprout →</a>
-          {!buzzsproutId && '  ·  (native inline player pending show ID)'}
+          Prefer your own app? <a href={buzzsproutSite}>Open the show on Buzzsprout →</a>
         </p>
       </section>
 
