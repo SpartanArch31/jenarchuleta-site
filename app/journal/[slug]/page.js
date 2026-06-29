@@ -1,44 +1,65 @@
 import { notFound } from 'next/navigation';
+import { PortableText } from '@portabletext/react';
 import '../journal.css';
 import SiteNav from '../../components/SiteNav';
 import SiteFooter from '../../components/SiteFooter';
 import KitForm from '../../components/KitForm';
 import { KIT_FREE_CHAPTER_URL } from '../../components/site-data';
-import { POSTS, getPost } from '../_posts';
+import { urlFor } from '../../sanity/image';
+import { getPostBySlug, getAllSlugs } from '../../sanity/queries';
+import { POSTS as FALLBACK_POSTS, getPost as getFallbackPost } from '../_posts';
 
-export function generateStaticParams() {
-  return POSTS.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs().catch(() => []);
+  const all = slugs && slugs.length > 0 ? slugs : FALLBACK_POSTS.map((p) => p.slug);
+  return all.map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }) {
-  const post = getPost(params.slug);
+async function resolvePost(slug) {
+  const live = await getPostBySlug(slug).catch(() => null);
+  return live || getFallbackPost(slug);
+}
+
+export async function generateMetadata({ params }) {
+  const post = await resolvePost(params.slug);
   if (!post) return {};
   return {
     title: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
-    openGraph: {
-      title: post.seoTitle || post.title,
-      description: post.seoDescription || post.excerpt,
-      images: post.heroImage ? [post.heroImage] : [],
-      type: 'article',
-    },
+    openGraph: { title: post.seoTitle || post.title, description: post.seoDescription || post.excerpt, type: 'article' },
   };
 }
 
 function formatDate(iso) {
-  return new Date(iso + 'T00:00:00').toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-export default function JournalPost({ params }) {
-  const post = getPost(params.slug);
+function heroUrl(img) {
+  if (!img) return null;
+  if (typeof img === 'string') return img;
+  return urlFor(img).width(1200).url();
+}
+
+// Portable Text renderers for links + inline images.
+const ptComponents = {
+  types: {
+    image: ({ value }) => (
+      <img src={urlFor(value).width(1100).url()} alt={value?.alt || ''} style={{ width: '100%', borderRadius: 'var(--radius-lg)', margin: '20px 0' }} />
+    ),
+  },
+  marks: {
+    link: ({ value, children }) => <a href={value?.href}>{children}</a>,
+  },
+};
+
+export default async function JournalPost({ params }) {
+  const post = await resolvePost(params.slug);
   if (!post) notFound();
 
   const url = `https://jenarchuleta.com/journal/${post.slug}`;
   const shareText = encodeURIComponent(post.title);
+  const hero = heroUrl(post.heroImage);
+  const bodyIsStrings = Array.isArray(post.body) && typeof post.body[0] === 'string';
 
   return (
     <>
@@ -51,21 +72,21 @@ export default function JournalPost({ params }) {
           <div className="meta">{formatDate(post.publishedAt)}</div>
         </div>
 
-        {post.heroImage && <img className="article-hero" src={post.heroImage} alt="" />}
+        {hero && <img className="article-hero" src={hero} alt="" />}
 
         <div className="article-body">
-          {post.body.map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
+          {bodyIsStrings
+            ? post.body.map((para, i) => <p key={i}>{para}</p>)
+            : post.body && <PortableText value={post.body} components={ptComponents} />}
         </div>
 
         {/* Sponsor block — renders only when a sponsor is set */}
-        {post.sponsor && (
+        {post.sponsor && post.sponsor.name && (
           <div className="sponsor-block">
             <div className="k">Sponsored by {post.sponsor.name}</div>
-            <p style={{ margin: '6px 0 0' }}>
-              <a href={post.sponsor.url}>{post.sponsor.url}</a>
-            </p>
+            {post.sponsor.url && (
+              <p style={{ margin: '6px 0 0' }}><a href={post.sponsor.url}>{post.sponsor.url}</a></p>
+            )}
             {post.sponsor.disclosure && (
               <p className="foot-meta" style={{ margin: '8px 0 0' }}>{post.sponsor.disclosure}</p>
             )}

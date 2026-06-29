@@ -2,7 +2,9 @@ import './journal.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import KitForm from '../components/KitForm';
-import { POSTS, CATEGORIES } from './_posts';
+import { urlFor } from '../sanity/image';
+import { getAllPosts } from '../sanity/queries';
+import { POSTS as FALLBACK_POSTS, CATEGORIES } from './_posts';
 
 export const metadata = {
   title: 'Journal',
@@ -11,17 +13,26 @@ export const metadata = {
 };
 
 function formatDate(iso) {
-  return new Date(iso + 'T00:00:00').toLocaleDateString('en-US', {
+  return new Date(iso).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 }
 
-export default function JournalPage({ searchParams }) {
+// Hero image is a string (fallback) or a Sanity image (live).
+function heroUrl(img, w = 800, h = 533) {
+  if (!img) return null;
+  if (typeof img === 'string') return img;
+  return urlFor(img).width(w).height(h).fit('crop').url();
+}
+
+export default async function JournalPage({ searchParams }) {
+  const live = await getAllPosts().catch(() => []);
+  const posts = live && live.length > 0 ? live : FALLBACK_POSTS;
+
   const active = searchParams?.category || 'All';
-  const sorted = [...POSTS].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
-  const visible = active === 'All' ? sorted : sorted.filter((p) => p.category === active);
+  const visible = active === 'All' ? posts : posts.filter((p) => p.category === active);
 
   return (
     <>
@@ -53,16 +64,19 @@ export default function JournalPage({ searchParams }) {
           <p className="center lead">No posts in “{active}” yet — check back soon.</p>
         ) : (
           <div className="feed">
-            {visible.map((p) => (
-              <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
-                {p.heroImage && <img src={p.heroImage} alt="" />}
-                <div className="body">
-                  <div className="k">{p.category} · {formatDate(p.publishedAt)}</div>
-                  <h3>{p.title}</h3>
-                  <p>{p.excerpt}</p>
-                </div>
-              </a>
-            ))}
+            {visible.map((p) => {
+              const img = heroUrl(p.heroImage);
+              return (
+                <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
+                  {img && <img src={img} alt="" />}
+                  <div className="body">
+                    <div className="k">{p.category} · {formatDate(p.publishedAt)}</div>
+                    <h3>{p.title}</h3>
+                    <p>{p.excerpt}</p>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         )}
       </section>
