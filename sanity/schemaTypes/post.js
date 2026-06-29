@@ -1,13 +1,13 @@
 import { defineType, defineField } from 'sanity';
 
 export const CATEGORIES = [
-  'Journal',
+  'Podcast',
   'Faith',
   'Family',
   'Advocacy',
-  'Behind the Book',
   'Health & Wellness',
-  'Turbo',
+  'Behind the Book',
+  'Journal',
 ];
 
 export default defineType({

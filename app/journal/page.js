@@ -4,7 +4,10 @@ import SiteFooter from '../components/SiteFooter';
 import KitForm from '../components/KitForm';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
-import { POSTS as FALLBACK_POSTS, CATEGORIES } from './_posts';
+import { POSTS as FALLBACK_POSTS } from './_posts';
+
+// Preferred chip order; only categories that actually have posts are shown.
+const CATEGORY_ORDER = ['Podcast', 'Faith', 'Family', 'Advocacy', 'Health & Wellness', 'Behind the Book', 'Journal'];
 
 export const metadata = {
   title: 'Journal',
@@ -34,6 +37,16 @@ export default async function JournalPage({ searchParams }) {
   const active = searchParams?.category || 'All';
   const visible = active === 'All' ? posts : posts.filter((p) => p.category === active);
 
+  // Only show category chips that actually have posts.
+  const counts = posts.reduce((m, p) => {
+    if (p.category) m[p.category] = (m[p.category] || 0) + 1;
+    return m;
+  }, {});
+  const presentCategories = [
+    ...CATEGORY_ORDER.filter((c) => counts[c]),
+    ...Object.keys(counts).filter((c) => !CATEGORY_ORDER.includes(c)).sort(),
+  ];
+
   return (
     <>
       <SiteNav />
@@ -47,7 +60,7 @@ export default async function JournalPage({ searchParams }) {
 
         <div className="filter-row">
           <a className={`chip ${active === 'All' ? 'is-active' : ''}`} href="/journal">All</a>
-          {CATEGORIES.map((c) => (
+          {presentCategories.map((c) => (
             <a
               key={c}
               className={`chip ${active === c ? 'is-active' : ''}`}
