@@ -3,6 +3,9 @@
 // URL is the existing hosted free-chapter landing page and stays valid.
 export const KIT_FREE_CHAPTER_URL = 'https://jennifer-archuleta.kit.com/ea44cdb33a';
 
+// Kit (ConvertKit) INLINE form uid — the embeddable email-capture form.
+export const KIT_FORM_UID = 'ab5cfa4752';
+
 export const SOCIALS = {
   instagram: 'https://www.instagram.com/jenniferwalcott/',
   x: 'https://x.com/Jenniferwalcott',

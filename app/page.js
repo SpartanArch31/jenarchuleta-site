@@ -1,6 +1,7 @@
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
-import { KIT_FREE_CHAPTER_URL, SOCIALS } from './components/site-data';
+import KitInlineForm from './components/KitInlineForm';
+import { KIT_FREE_CHAPTER_URL, KIT_FORM_UID, SOCIALS } from './components/site-data';
 
 export default function Home() {
   return (
@@ -156,8 +157,7 @@ export default function Home() {
           <div className="eyebrow">Stay close</div>
           <h2>Read the first chapter — free.</h2>
           <p className="lead">Before the velvet ropes. Before the headlines. The real story. I’ll send the opening pages straight to your inbox — and if it sounds like something you’ve lived too, you’re exactly who I wrote it for.</p>
-          <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">Send me the first chapter</a>
-          <p className="foot-meta" style={{ marginTop: '14px' }}>You’ll also get my newsletter. Unsubscribe anytime.</p>
+          <KitInlineForm uid={KIT_FORM_UID} />
         </div>
       </section>
 

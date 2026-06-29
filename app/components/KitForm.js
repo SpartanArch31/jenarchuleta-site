@@ -1,19 +1,12 @@
-import { KIT_FREE_CHAPTER_URL } from './site-data';
+import { KIT_FREE_CHAPTER_URL, KIT_FORM_UID } from './site-data';
+import KitInlineForm from './KitInlineForm';
 
 /*
  * Email capture (Kit / ConvertKit).
- *
- * Phase 1: renders an on-brand capture block that links to Jen's live
- * hosted free-chapter form, so it works everywhere today.
- *
- * Phase 2 (needs Jen's Kit FORM ID): replace the CTA below with Kit's
- * embeddable inline form. Kit gives a script like:
- *   <script async data-uid="XXImXXXXXX"
- *           src="https://jennifer-archuleta.kit.com/XXImXXXXXX/index.js"></script>
- * Drop that uid into KIT_FORM_UID and render the <script> (or use the
- * HTML-snippet embed) here.
+ * Renders Kit's embeddable INLINE form (uid from site-data). If the uid is
+ * ever cleared, it falls back to the on-brand button → hosted landing page,
+ * so capture never breaks.
  */
-const KIT_FORM_UID = ''; // <-- TODO: paste Kit inline-form uid
 
 export default function KitForm({
   heading = 'Read the first chapter — free.',
@@ -26,13 +19,17 @@ export default function KitForm({
         <div className="eyebrow">Stay close</div>
         <h2>{heading}</h2>
         <p className="lead">{blurb}</p>
-        <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">{cta}</a>
-        <p className="foot-meta" style={{ marginTop: '14px' }}>
-          You’ll also get my newsletter. Unsubscribe anytime.
-        </p>
+        {KIT_FORM_UID ? (
+          <KitInlineForm uid={KIT_FORM_UID} />
+        ) : (
+          <>
+            <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">{cta}</a>
+            <p className="foot-meta" style={{ marginTop: '14px' }}>
+              You’ll also get my newsletter. Unsubscribe anytime.
+            </p>
+          </>
+        )}
       </div>
     </section>
   );
 }
-
-export { KIT_FORM_UID };
