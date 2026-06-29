@@ -1,0 +1,88 @@
+/* ============================================================
+   Jen Archuleta — Effects: radii, borders, shadows, motion, motif
+   Editorial restraint: small radii, soft warm-tinted shadows,
+   hairline gold rules. The "threshold" motif lives here.
+   ============================================================ */
+
+:root {
+  /* -- corner radii (kept small; this is editorial, not app-y) -- */
+  --radius-sm:   3px;
+  --radius:      6px;
+  --radius-lg:   12px;
+  --radius-pill: 999px;
+
+  /* -- borders -- */
+  --hairline:        1px solid var(--border);
+  --hairline-strong: 1px solid var(--border-strong);
+  --rule-gold:       1px solid var(--accent);
+
+  /* -- shadows (warm-tinted, low & soft — light mode) -- */
+  --shadow-sm: 0 1px 2px rgba(34, 28, 24, .05);
+  --shadow:    0 2px 6px rgba(34, 28, 24, .05), 0 14px 36px rgba(34, 28, 24, .08);
+  --shadow-lg: 0 4px 10px rgba(34, 28, 24, .06), 0 36px 80px rgba(34, 28, 24, .14);
+
+  /* -- glow for gold accents on dark -- */
+  --glow-gold: 0 0 28px rgba(210, 169, 79, .28);
+
+  /* -- motion: slow, calm, never bouncy -- */
+  --ease:        cubic-bezier(.4, 0, .2, 1);     /* @kind other */
+  --ease-out:    cubic-bezier(.16, 1, .3, 1);    /* @kind other */
+  --dur-fast:    160ms;  /* @kind other */
+  --dur:         280ms;  /* @kind other */
+  --dur-slow:    520ms;  /* @kind other */
+
+  /* -- threshold motif (the velvet-rope line) -- */
+  --threshold-w: 1px;  /* @kind spacing */
+  --threshold-gradient: linear-gradient(180deg, transparent, var(--accent) 22%, var(--accent) 78%, transparent); /* @kind other */
+}
+
+.dark,
+[data-mode="dark"] {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow:    0 2px 8px rgba(0, 0, 0, .45), 0 18px 48px rgba(0, 0, 0, .5);
+  --shadow-lg: 0 30px 80px rgba(0, 0, 0, .6);
+}
+
+/* ============================================================
+   THE THRESHOLD MOTIF — utilities
+   A restrained "velvet-rope / doorway" line used sparingly to
+   mark a passage from surface to truth. Use one, never a cluster.
+   ============================================================ */
+
+/* vertical gold post (fades at both ends) */
+.threshold-post {
+  width: var(--threshold-w);
+  align-self: stretch;
+  min-height: 48px;
+  background: var(--threshold-gradient);
+}
+
+/* horizontal hairline rule with a small center diamond */
+.threshold-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--accent);
+}
+.threshold-rule::before,
+.threshold-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, currentColor 60%);
+}
+.threshold-rule::after { background: linear-gradient(270deg, transparent, currentColor 60%); }
+.threshold-rule .diamond {
+  width: 5px; height: 5px;
+  transform: rotate(45deg);
+  background: currentColor;
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms; /* @kind other */
+    --dur: 0ms;      /* @kind other */
+    --dur-slow: 0ms; /* @kind other */
+  }
+}

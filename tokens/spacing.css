@@ -1,0 +1,28 @@
+/* ============================================================
+   Jen Archuleta — Spacing & layout tokens
+   8px base rhythm; generous editorial white space.
+   ============================================================ */
+
+:root {
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+  --space-11: 160px;
+
+  /* layout */
+  --measure:        66ch;     /* ideal reading column */
+  --container:      1200px;   /* site max width */
+  --container-text: 720px;    /* article width */
+  --gutter:         clamp(20px, 5vw, 64px); /* @kind spacing */
+
+  /* section rhythm */
+  --section-y:      clamp(64px, 10vw, 144px); /* @kind spacing */
+}

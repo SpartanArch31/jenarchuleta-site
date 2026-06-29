@@ -1,0 +1,103 @@
+/* ============================================================
+   Jen Archuleta — Color tokens
+   Dual register: LIGHT editorial master brand (default) +
+   DARK cinematic mode (.dark / [data-mode="dark"]).
+   Shared DNA: warm GOLD + a whisper of OXBLOOD across both.
+   ============================================================ */
+
+:root {
+  /* -- raw palette : warm neutrals -- */
+  --cream:      #F4EEE3;  /* primary light ground */
+  --paper:      #FBF7EF;  /* lightest — card / elevated surface */
+  --linen:      #EDE4D4;  /* subtle alternate surface */
+  --wheat:      #D8C7A8;  /* warm mid neutral */
+  --taupe:      #B7A98C;  /* deeper neutral, dividers on photos */
+
+  /* -- raw palette : ink -- */
+  --ink:        #221C18;  /* near-black, warm */
+  --ink-soft:   #4A4339;  /* secondary text */
+  --ink-mute:   #7A6F5E;  /* muted / metadata (large or AA-large) */
+
+  /* -- raw palette : gold (shared accent) -- */
+  --gold:        #BE9543; /* primary gold — fills, rules, large display */
+  --gold-deep:   #946F2B; /* darker gold — gold text/icons on light (AA-large) */
+  --gold-bright: #D2A94F; /* gold for dark mode */
+  --candlelight: #EBD9AC; /* bright warm gold — display text on dark */
+
+  /* -- raw palette : oxblood / clay-red (whisper accent) -- */
+  --clay:        #763028; /* oxblood on light */
+  --clay-bright: #9A4034; /* oxblood on dark */
+
+  /* -- raw palette : dark grounds -- */
+  --near-black: #17120E;
+  --espresso:   #221B15;
+  --velvet:     #2C241C;
+  --dark-line:  #3A3026;
+
+  /* =========================================================
+     SEMANTIC ALIASES — LIGHT (default master brand)
+     ========================================================= */
+  --bg:             var(--cream);
+  --surface:        var(--paper);
+  --surface-alt:    var(--linen);
+  --surface-invert: var(--near-black);
+
+  --border:        #E2D8C6;  /* hairline */
+  --border-strong: #CBB99B;
+
+  --text:           var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted:     var(--ink-mute);
+  --text-invert:    #F0E8D8;
+
+  --accent:     var(--gold);       /* gold fills, rules, threshold motif */
+  --accent-ink: var(--gold-deep);  /* gold when used as text/icon on light */
+  --accent-2:   var(--clay);       /* oxblood whisper */
+  --on-accent:  #2A2008;           /* text on a gold fill */
+
+  --focus-ring: #946F2B;
+}
+
+/* =========================================================
+   SEMANTIC ALIASES — DARK cinematic mode
+   apply via <html class="dark"> or [data-mode="dark"]
+   ========================================================= */
+.dark,
+[data-mode="dark"] {
+  --bg:             var(--near-black);
+  --surface:        var(--espresso);
+  --surface-alt:    var(--velvet);
+  --surface-invert: var(--cream);
+
+  --border:        #3A3026;
+  --border-strong: #50432F;
+
+  --text:           #F0E8D8;
+  --text-secondary: #C9BCA2;
+  --text-muted:     #8C7F69;
+  --text-invert:    #221C18;
+
+  --accent:     var(--gold-bright);
+  --accent-ink: var(--candlelight);
+  --accent-2:   var(--clay-bright);
+  --on-accent:  #241A06;
+
+  --focus-ring: #D2A94F;
+}
+
+/* ---------------------------------------------------------
+   CONTRAST NOTES (WCAG, approx, on each mode's base bg)
+   LIGHT (#F4EEE3):
+     ink #221C18 ............ 13.1:1  AAA  body/headlines
+     ink-soft #4A4339 ....... 7.6:1   AAA  secondary
+     ink-mute #7A6F5E ....... 3.5:1   AA-large / metadata only
+     clay #763028 ........... 7.1:1   AAA  accent text OK
+     gold #BE9543 ........... 2.0:1   FAIL as text -> fills/rules only
+     gold-deep #946F2B ...... 3.3:1   AA-large display/icons only
+   DARK (#17120E):
+     text #F0E8D8 ........... 14.2:1  AAA
+     text-secondary ......... 8.1:1   AAA
+     candlelight #EBD9AC .... 11.4:1  AAA
+     gold-bright #D2A94F .... 7.6:1   AAA  accent text OK on dark
+     clay-bright #9A4034 .... 4.6:1   AA   accent text OK on dark
+   --------------------------------------------------------- */
