@@ -28,14 +28,14 @@ export default function BookPage() {
             <div className="eyebrow">The Memoir — Out Now</div>
             <h1>Beyond the Velvet Ropes</h1>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
-            <p>This isn’t the story you think it is. From the outside it looked like everything most people dream of — fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
+            <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of — fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
             <div className="buy-row">
               <a href="https://www.amazon.com/dp/B0H6YK1KTL" target="_blank" rel="noopener" className="btn btn-primary">Kindle (Amazon)</a>
               <a href="https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885" target="_blank" rel="noopener" className="btn btn-ghost">Barnes &amp; Noble</a>
               <span className="btn btn-disabled" aria-disabled="true">Amazon paperback — coming soon</span>
               <span className="btn btn-disabled" aria-disabled="true">Audiobook — coming soon</span>
             </div>
-            <p><a href={KIT_FREE_CHAPTER_URL}>Or read the first chapter free →</a></p>
+            <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
       </section>
