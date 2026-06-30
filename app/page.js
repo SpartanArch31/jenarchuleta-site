@@ -16,6 +16,7 @@ export default function Home() {
           <div className="eyebrow">Author · Speaker · Advocate</div>
           <div className="hero-script">this isn’t the story<br />you think it is</div>
           <h1>Faith, family, and a bunch of dogs.</h1>
+          <div className="eyebrow" style={{ marginTop: '16px' }}>Author of <em>Beyond the Velvet Ropes</em></div>
           <p className="lead">These days I’m happiest in the small stuff — my kids, my husband, a houseful of rescue animals, my faith, and finding ways to give back. I had a wild, wonderful run in my twenties, and I’m grateful for all of it — but it’s not the headline. The headline is the life I get to wake up to now — and the book I wrote about getting here.</p>
           <div className="hero-ctas">
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">Read the first chapter free</a>
@@ -64,15 +65,14 @@ export default function Home() {
             <div className="eyebrow">The Memoir — Out Now</div>
             <h2>Beyond the Velvet Ropes</h2>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
-            <p>From the outside, it looked like everything most people dream of — fame, beauty, opportunity, a life behind the velvet ropes. But that’s not where this story lives. It lives in the moments no one saw. The ones you don’t talk about. The ones you carry.</p>
-            <p>Raw. Honest. Real. A story of survival, resilience, and the quiet strength it takes to become who you were always meant to be.</p>
+            <p style={{ color: 'var(--text)' }}>From the outside, my twenties looked like the dream — covers, cameras, a life behind the velvet ropes. But the real story was never the part people saw. It’s in the moments I never talked about, and the long road back to the ordinary, happy life I have now. I wrote all of it down — the hard, the funny, and the faith that carried me through. If you’ve ever come through something and made it to the other side, I wrote this for you.</p>
             <div className="buy-row">
               {/* TODO: replace # with live retailer links on launch day */}
               <a href="#" className="btn btn-primary">Amazon</a>
               <a href="#" className="btn btn-ghost">Barnes &amp; Noble</a>
               <a href="#" className="btn btn-ghost">Audiobook</a>
             </div>
-            <p style={{ marginTop: '6px' }}><a href={KIT_FREE_CHAPTER_URL}>Or read the first chapter free →</a></p>
+            <p style={{ marginTop: '6px' }}><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
       </section>
