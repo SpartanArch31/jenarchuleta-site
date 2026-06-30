@@ -40,6 +40,8 @@ section { padding-block: var(--section-y); }
 .btn-ghost { color: var(--accent-ink); border-color: var(--border-strong); background: transparent; }
 .btn-ghost:hover { border-color: var(--accent); text-decoration: none; }
 .btn-sm { padding: 10px 18px; font-size: .8rem; }
+.btn-disabled { color: var(--text-muted); border-color: var(--border); background: transparent;
+                cursor: default; pointer-events: none; }
 
 /* hero */
 .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 6vw, 80px); align-items: center;

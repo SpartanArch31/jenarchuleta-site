@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jen Archuleta — Brand HQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EEE3; --paper:#FBF7EF; --linen:#EDE4D4; --ink:#221C18; --ink-soft:#4A4339;
+    --ink-mute:#7A6F5E; --gold:#BE9543; --gold-deep:#946F2B; --clay:#763028; --near-black:#17120E;
+    --border:#E2D8C6; --border-strong:#CBB99B; --good:#5b7d52; --r:14px;
+    --serif:'Cormorant Garamond',Georgia,serif; --caps:'Cinzel',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--clay)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+
+  /* header */
+  header{background:var(--near-black);color:#F0E8D8;padding:26px 0 20px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--gold)}
+  .eyebrow{font-family:var(--caps);text-transform:uppercase;letter-spacing:.32em;font-size:11px;color:var(--gold)}
+  h1{font-family:var(--serif);font-weight:600;font-size:38px;line-height:1.05;margin:4px 0 2px}
+  .sub{color:#C9BCA2;font-size:14px}
+  .prog-wrap{margin-top:18px;display:flex;align-items:center;gap:14px}
+  .bar{flex:1;height:9px;background:#2c241c;border-radius:99px;overflow:hidden}
+  .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold));border-radius:99px;transition:width .5s ease}
+  .prog-num{font-family:var(--caps);font-size:13px;color:var(--gold);letter-spacing:.1em;min-width:128px;text-align:right}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(244,238,227,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .tabs{display:flex;gap:4px;overflow-x:auto;padding:8px 0}
+  .tab{font-family:var(--caps);text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--ink-mute);
+    background:none;border:none;padding:10px 16px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:all .2s}
+  .tab:hover{color:var(--ink)}
+  .tab.active{background:var(--ink);color:var(--paper)}
+  .tab:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px}
+
+  section.panel{display:none;padding:30px 0 60px;animation:fade .3s ease}
+  section.panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  h2{font-family:var(--serif);font-weight:600;font-size:27px;margin:6px 0 4px}
+  .lead{color:var(--ink-soft);font-size:15px;max-width:62ch;margin-bottom:20px}
+  h3{font-family:var(--caps);text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--gold-deep);margin:30px 0 12px;display:flex;align-items:center;gap:8px}
+  h3::before{content:"";width:18px;height:1px;background:var(--gold)}
+
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px}
+  .card.dark{background:var(--near-black);color:#F0E8D8;border-color:#3a3026}
+  .card .k{font-family:var(--caps);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-mute)}
+  .card.dark .k{color:var(--gold)}
+  .stat{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1}
+  .stat small{font-size:15px;color:var(--ink-mute);font-family:var(--sans)}
+  .card p{font-size:14px;color:var(--ink-soft);margin-top:6px}
+
+  .pill{display:inline-block;font-family:var(--caps);text-transform:uppercase;letter-spacing:.1em;font-size:10px;padding:3px 10px;border-radius:99px;border:1px solid var(--border-strong);color:var(--gold-deep)}
+  .pill.done{background:var(--good);color:#fff;border-color:var(--good)}
+  .pill.now{background:var(--gold);color:#2a2008;border-color:var(--gold)}
+
+  /* funnel */
+  .funnel{display:flex;flex-wrap:wrap;align-items:stretch;gap:0}
+  .fstep{flex:1;min-width:120px;background:var(--paper);border:1px solid var(--border);padding:14px;text-align:center;position:relative}
+  .fstep:first-child{border-radius:var(--r) 0 0 var(--r)} .fstep:last-child{border-radius:0 var(--r) var(--r) 0}
+  .fstep .fn{font-family:var(--caps);font-size:11px;letter-spacing:.1em;color:var(--gold-deep);text-transform:uppercase}
+  .fstep .fl{font-family:var(--serif);font-size:19px;font-weight:600;margin-top:3px}
+  .fstep .fd{font-size:12px;color:var(--ink-mute);margin-top:2px}
+  .fstep:not(:last-child)::after{content:"›";position:absolute;right:-9px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:22px;z-index:2}
+  @media(max-width:760px){.fstep{min-width:46%}}
+
+  /* checklist */
+  .check{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;background:var(--paper);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:all .18s}
+  .check:hover{border-color:var(--border-strong)}
+  .check input{appearance:none;width:20px;height:20px;border:1.5px solid var(--border-strong);border-radius:6px;flex:none;margin-top:1px;cursor:pointer;position:relative;transition:all .18s}
+  .check input:checked{background:var(--good);border-color:var(--good)}
+  .check input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .check .ct{font-size:14.5px}
+  .check .cd{font-size:12.5px;color:var(--ink-mute);margin-top:1px}
+  .check.locked{opacity:.62;cursor:default;background:#f0eadf}
+  .check.locked input{background:var(--good);border-color:var(--good)}
+  .check.done-row .ct{text-decoration:line-through;text-decoration-color:var(--border-strong)}
+
+  table.rhythm{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;font-size:14px}
+  table.rhythm th,table.rhythm td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border)}
+  table.rhythm th{font-family:var(--caps);text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--gold-deep);width:90px}
+  table.rhythm tr:last-child td{border-bottom:none}
+  .spoke{border-left:3px solid var(--gold)}
+
+  ul.clean{list-style:none} ul.clean li{padding:7px 0;border-bottom:1px dashed var(--border);font-size:14px;display:flex;gap:10px}
+  ul.clean li:last-child{border:none}
+  .fname{font-family:var(--caps);font-size:10px;letter-spacing:.06em;color:var(--clay);background:#f3ece0;padding:2px 7px;border-radius:5px;white-space:nowrap}
+
+  .note{background:#f6efe2;border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:12px 16px;font-size:13.5px;color:var(--ink-soft);margin-top:14px}
+
+  /* content board */
+  .tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+  .toolbtn{display:inline-flex;align-items:center;gap:7px;font-family:var(--caps);text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--ink);background:var(--paper);border:1px solid var(--border-strong);border-radius:99px;padding:8px 14px;text-decoration:none;transition:all .18s}
+  .toolbtn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-family:var(--sans);font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;border:1px solid var(--border-strong);background:var(--paper);color:var(--ink-soft);cursor:pointer;transition:all .15s}
+  .chip:hover{border-color:var(--ink)} .chip.on{background:var(--gold);color:#2a2008;border-color:var(--gold)}
+  .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:start;margin-top:4px}
+  @media(max-width:900px){.cols{grid-template-columns:1fr 1fr}} @media(max-width:560px){.cols{grid-template-columns:1fr}}
+  .col{background:#efe7d9;border:1px solid var(--border);border-radius:12px;padding:10px;min-height:90px}
+  .col h4{font-family:var(--caps);text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--ink-mute);margin-bottom:10px;display:flex;justify-content:space-between}
+  .col h4 span{color:var(--gold-deep)}
+  .pc{background:var(--paper);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:9px;padding:9px 10px;margin-bottom:8px;font-size:13px}
+  .pc .pcmeta{display:flex;gap:6px;margin-top:7px;align-items:center}
+  .tag{font-family:var(--caps);text-transform:uppercase;letter-spacing:.06em;font-size:9px;padding:2px 7px;border-radius:5px;background:#f1e9da;color:var(--gold-deep)}
+  .tag.fmt{background:#efe7d9;color:var(--ink-mute)}
+  .mv{margin-left:auto;display:flex;gap:4px}
+  .mv button{border:1px solid var(--border-strong);background:var(--paper);border-radius:6px;width:24px;height:22px;cursor:pointer;color:var(--ink-soft);font-size:13px;line-height:1;transition:all .15s}
+  .mv button:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  footer{padding:24px 0;text-align:center;color:var(--ink-mute);font-size:12px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Brand HQ · Command Center</div>
+    <h1>Jen Archuleta</h1>
+    <div class="sub">Mom · wife · author — the whole plan in one place.</div>
+    <div class="prog-wrap">
+      <div class="bar"><span id="progFill"></span></div>
+      <div class="prog-num" id="progNum">0% built</div>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap"><div class="tabs" id="tabs">
+  <button class="tab active" data-t="start">Start Here</button>
+  <button class="tab" data-t="overview">Overview</button>
+  <button class="tab" data-t="roadmap">Roadmap</button>
+  <button class="tab" data-t="strategy">Strategy</button>
+  <button class="tab" data-t="content">Content Engine</button>
+  <button class="tab" data-t="board">Content Board</button>
+  <button class="tab" data-t="launch">Launch Plan</button>
+  <button class="tab" data-t="library">Library</button>
+</div></div></nav>
+
+<div class="wrap">
+
+<!-- START HERE -->
+<section class="panel active" id="start">
+  <h2>Start here</h2>
+  <p class="lead">The whole plan in plain English. Whenever it feels like a lot — come back to this page first.</p>
+
+  <div class="card dark">
+    <div class="k">The whole thing in one sentence</div>
+    <p style="color:#e7ddc9;font-family:var(--serif);font-size:20px;line-height:1.4;margin-top:6px">Use Jen's story and her face to get her followers paying attention again, turn them into an email list she owns, and sell her book — then keep growing.</p>
+  </div>
+
+  <h3>What we're really doing</h3>
+  <div class="grid g4">
+    <div class="card"><div class="k">1 · Get attention</div><p>Post videos + photos that make people stop scrolling.</p></div>
+    <div class="card"><div class="k">2 · Capture it</div><p>Send them to a free chapter where they give their email.</p></div>
+    <div class="card"><div class="k">3 · Sell the book</div><p>Emails + posts point people to buy it.</p></div>
+    <div class="card"><div class="k">4 · Keep going</div><p>A little every week. It snowballs.</p></div>
+  </div>
+
+  <h3>Who does what</h3>
+  <div class="grid g2">
+    <div class="card"><div class="k">Jen — just 4 things</div>
+      <ul class="clean" style="margin-top:6px">
+        <li>Talk into her phone (voice memos), once a week</li>
+        <li>Record a couple short videos (teleprompter — no memorizing)</li>
+        <li>Pick a few photos</li>
+        <li>Reply to comments + DMs (only she can)</li>
+      </ul>
+      <p style="margin-top:8px">She does <b>not</b> write, design, or schedule anything.</p>
+    </div>
+    <div class="card"><div class="k">Adam — the operator</div>
+      <ul class="clean" style="margin-top:6px">
+        <li>Forward Jen the Monday questions (they arrive automatically)</li>
+        <li>Drop her voice memos in the Content Studio → it writes the posts</li>
+        <li>Post them from the phone</li>
+        <li>Glance at what's working once a week</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The weekly routine</h3>
+  <table class="rhythm">
+    <tr><th>Mon</th><td>5 questions arrive automatically → Adam sends them to Jen</td></tr>
+    <tr><th>Jen</th><td>Records voice memos + a couple short videos, picks photos</td></tr>
+    <tr><th>Adam</th><td>Drops them in the Content Studio → finished posts come out</td></tr>
+    <tr><th>Week</th><td>Post them through the week. Jen replies to comments.</td></tr>
+    <tr><th>Then</th><td>Repeat — each week builds on the last</td></tr>
+  </table>
+
+  <div class="note"><b>The one rule:</b> lead with the most gripping or most fun thing — never a boring intro. Grab them first, then tell the story.</div>
+
+  <h3>Where we are right now</h3>
+  <div class="grid g3">
+    <div class="card"><div class="k" style="color:var(--good)">✓ Done</div><p>Website, email system, and all 3 social profiles — built and working.</p></div>
+    <div class="card"><div class="k" style="color:var(--good)">✓ Done</div><p>Free first chapter — live, and it hooks hard.</p></div>
+    <div class="card"><div class="k" style="color:var(--gold-deep)">◷ Now</div><p>Post weekly, grow the list, and launch the book when all formats are ready.</p></div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="panel" id="overview">
+  <h2>Where things stand</h2>
+  <p class="lead">The whole project on one screen. Two numbers matter: <b>email subscribers</b> and <b>books sold</b>. Everything else serves those.</p>
+
+  <h3>The audience she already has</h3>
+  <div class="grid g4">
+    <div class="card"><div class="k">Instagram</div><div class="stat">43.6K</div><p>@jenniferwalcott · bridged</p></div>
+    <div class="card"><div class="k">X (Twitter)</div><div class="stat">133K</div><p>her biggest channel</p></div>
+    <div class="card"><div class="k">Facebook</div><div class="stat">25K</div><p>her exact demo</p></div>
+    <div class="card dark"><div class="k">Total reach</div><div class="stat">~200K</div><p>the engine to build the list</p></div>
+  </div>
+
+  <h3>The two numbers we grow</h3>
+  <div class="grid g2">
+    <div class="card"><div class="k">Email subscribers</div><div class="stat">building <small>· list is the owned audience</small></div><p>Free chapter → list → book. The only audience she truly owns.</p></div>
+    <div class="card"><div class="k">Book sales</div><div class="stat">Kindle live <small>· paperback + audio soon</small></div><p>Quiet phase now (bank reviews). Loud launch when all formats land.</p></div>
+  </div>
+
+  <h3>Done vs. left — at a glance</h3>
+  <div class="grid g2">
+    <div class="card">
+      <div class="k" style="color:var(--good)">✓ Built &amp; working</div>
+      <ul class="clean" style="margin-top:8px">
+        <li>Website live (jenarchuleta.com)</li>
+        <li>Email funnel — signup → chapter → welcome sequence</li>
+        <li>All 3 social profiles bridged + pinned</li>
+        <li>Cold-open chapter (v2) live everywhere</li>
+        <li>Hook Bank (~50 pieces) + launch copy</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="k" style="color:var(--gold-deep)">◷ Left to do</div>
+      <ul class="clean" style="margin-top:8px">
+        <li>Bank Kindle reviews (quiet phase)</li>
+        <li>Edit pins to lead with the hook</li>
+        <li>Canva kit + Meta Business Suite setup</li>
+        <li>Podcast transcripts → content backlog</li>
+        <li>Launch when ready (all formats)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">See the <b>Roadmap</b> tab to check items off — your progress bar at the top fills as you go.</div>
+</section>
+
+<!-- ROADMAP -->
+<section class="panel" id="roadmap">
+  <h2>The roadmap</h2>
+  <p class="lead">Three phases. No deadline — you launch when it's built. Check things off; the bar up top tracks you.</p>
+
+  <h3><span class="pill done">Done</span> &nbsp;The foundation (locked)</h3>
+  <div data-locked>
+    <label class="check locked"><input type="checkbox" checked disabled><span><span class="ct">Website live — home, book, blog, podcast</span></span></label>
+    <label class="check locked"><input type="checkbox" checked disabled><span><span class="ct">Email engine — signup → confirm → chapter → 4-email welcome sequence</span></span></label>
+    <label class="check locked"><input type="checkbox" checked disabled><span><span class="ct">Social bridge — IG, FB, X (name, photo, banner, bio, pinned reintro)</span></span></label>
+    <label class="check locked"><input type="checkbox" checked disabled><span><span class="ct">Chapter rebuilt with desert/grave cold open (v2 live)</span></span></label>
+    <label class="check locked"><input type="checkbox" checked disabled><span><span class="ct">Hook Bank + hook-led launch copy + banners</span></span></label>
+  </div>
+
+  <h3><span class="pill now">Now</span> &nbsp;Phase A — quiet phase (build the runway)</h3>
+  <div data-track="A">
+    <label class="check"><input type="checkbox" data-id="a1"><span><span class="ct">Bank Kindle reviews</span><span class="cd">Personal ask to inner circle + the 21 early subscribers — aim 15–30</span></span></label>
+    <label class="check"><input type="checkbox" data-id="a2"><span><span class="ct">Add Kindle link to site + bios (soft "available now")</span></span></label>
+    <label class="check"><input type="checkbox" data-id="a3"><span><span class="ct">Edit the 3 pinned posts to open with the hook</span><span class="cd">Captions are editable — no re-post</span></span></label>
+    <label class="check"><input type="checkbox" data-id="a4"><span><span class="ct">Kit button cleanup — gold + "Send me the first chapter"</span></span></label>
+    <label class="check"><input type="checkbox" data-id="a5"><span><span class="ct">Canva Brand Kit + 5 templates</span></span></label>
+    <label class="check"><input type="checkbox" data-id="a6"><span><span class="ct">Set up Meta Business Suite (schedule IG + FB together)</span></span></label>
+    <label class="check"><input type="checkbox" data-id="a7"><span><span class="ct">Upload podcast transcripts → build content backlog</span></span></label>
+    <label class="check"><input type="checkbox" data-id="a8"><span><span class="ct">Run first batch session (start at 3 posts/week)</span></span></label>
+  </div>
+
+  <h3>Phase B — launch week (the money)</h3>
+  <div data-track="B">
+    <label class="check"><input type="checkbox" data-id="b1"><span><span class="ct">Buy links live → drop into site + launch email</span></span></label>
+    <label class="check"><input type="checkbox" data-id="b2"><span><span class="ct">Send the launch broadcast (hook-led version ready)</span></span></label>
+    <label class="check"><input type="checkbox" data-id="b3"><span><span class="ct">Schedule launch social — grave hook on day one</span></span></label>
+    <label class="check"><input type="checkbox" data-id="b4"><span><span class="ct">Reviews push (early readers + close circle, day one)</span></span></label>
+    <label class="check"><input type="checkbox" data-id="b5"><span><span class="ct">Upgrade Kit before the big send (free caps at 10K)</span></span></label>
+  </div>
+
+  <h3>Phase C — after launch (the engine + money)</h3>
+  <div data-track="C">
+    <label class="check"><input type="checkbox" data-id="c1"><span><span class="ct">Full content rhythm (5 posts/week on the backlog)</span></span></label>
+    <label class="check"><input type="checkbox" data-id="c2"><span><span class="ct">Turn on RSS-to-newsletter automation</span></span></label>
+    <label class="check"><input type="checkbox" data-id="c3"><span><span class="ct">Affiliate setup (LTK + Amazon storefront)</span></span></label>
+    <label class="check"><input type="checkbox" data-id="c4"><span><span class="ct">Speaking: press kit + 2-min speaker reel</span></span></label>
+    <label class="check"><input type="checkbox" data-id="c5"><span><span class="ct">Validate a course (free workshop → paid waitlist)</span></span></label>
+    <label class="check"><input type="checkbox" data-id="c6"><span><span class="ct">Add hi-res photos → un-hide homepage photo row</span></span></label>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section class="panel" id="strategy">
+  <h2>The strategy</h2>
+  <p class="lead">Why everything is built the way it is.</p>
+
+  <h3>The north star</h3>
+  <div class="card dark">
+    <div class="k">The brand in one line</div>
+    <p style="color:#e7ddc9;font-family:var(--serif);font-size:21px;line-height:1.35;margin-top:6px">A grounded, multifaceted woman — mom of three, wife, faith, a houseful of dogs, always giving back — happiest in the small ordinary things. She wrote a remarkable book about the long road here. <i>Beautiful and true.</i></p>
+    <p style="color:#a99">Tagline: "Your story isn't what happened to you. It's what you do with it."</p>
+  </div>
+
+  <h3>The funnel (how attention becomes money)</h3>
+  <div class="funnel">
+    <div class="fstep"><div class="fn">Reach</div><div class="fl">Social</div><div class="fd">~200K</div></div>
+    <div class="fstep"><div class="fn">Capture</div><div class="fl">Free Chapter</div><div class="fd">lead magnet</div></div>
+    <div class="fstep"><div class="fn">Own</div><div class="fl">Email List</div><div class="fd">the asset</div></div>
+    <div class="fstep"><div class="fn">Sell</div><div class="fl">The Book</div><div class="fd">on-ramp</div></div>
+    <div class="fstep"><div class="fn">Scale</div><div class="fl">Course / Speaking</div><div class="fd">later</div></div>
+  </div>
+  <div class="note">You can't email a social following — so social drives people to the free chapter, which builds the list you <i>own</i>, which sells the book repeatedly.</div>
+
+  <h3>The balance</h3>
+  <div class="grid g2">
+    <div class="card"><div class="k">Lead with the now (~65%)</div><p>Most content opens on her warmth, humor, or real life today — mom, dogs, faith, the small joys. That's the magnet that builds a loved, engaged audience.</p></div>
+    <div class="card"><div class="k">The book + movie ride on top (~35%)</div><p>People follow her for who she is; they buy because of what she made. The story sells hard during launches — proud, never "trauma," never the daily identity.</p></div>
+  </div>
+</section>
+
+<!-- CONTENT ENGINE -->
+<section class="panel" id="content">
+  <h2>The content engine</h2>
+  <p class="lead">Jen creates raw — face, photos, voice notes. The system turns it into finished, on-brand content. Adam schedules it. It mostly runs itself.</p>
+
+  <h3>The spokes — the now leads, the book rides on top</h3>
+  <div class="grid g3">
+    <div class="card spoke"><div class="k">1 · The Everyday</div><p>Family, small joys, ordinary mornings. The magnet.</p></div>
+    <div class="card spoke"><div class="k">2 · The Pack</div><p>The dogs. Shareable, funny, lovable.</p></div>
+    <div class="card spoke"><div class="k">3 · Faith</div><p>Grounded, quiet, never preachy.</p></div>
+    <div class="card spoke"><div class="k">4 · Giving Back</div><p>Advocacy + heart. The halo.</p></div>
+    <div class="card spoke"><div class="k">5 · Just Me</div><p>Funny, real, self-deprecating. Connection.</p></div>
+    <div class="card spoke"><div class="k">6 · From My Twenties <span style="color:var(--gold-deep)">(book + movie)</span></div><p>The story she made. Proud, ~35%, Layer 2.</p></div>
+  </div>
+
+  <h3>The weekly rhythm</h3>
+  <table class="rhythm">
+    <tr><th>Mon</th><td><b>The Everyday</b> — a warm now-moment → free chapter as a proud aside</td></tr>
+    <tr><th>Tue</th><td><b>The Pack / video</b> — the dogs, or a "Hi, I'm Jen" talking-head Reel</td></tr>
+    <tr><th>Wed</th><td><b>Just Me / Beautiful &amp; True</b> — real-talk, or beauty with a warm turn</td></tr>
+    <tr><th>Thu</th><td><b>Faith / Giving Back</b> — grounded, light</td></tr>
+    <tr><th>Fri</th><td><b>Reply-to-me</b> — connection, invites DMs</td></tr>
+    <tr><th>Sat</th><td><b>From My Twenties</b> — the proud book/story slot (Layer 2, ~1×/wk)</td></tr>
+    <tr><th>Daily</th><td>Stories — reposts, polls, behind-the-scenes, replies</td></tr>
+  </table>
+
+  <h3>The four wells (~200 pieces queued)</h3>
+  <div class="grid g4">
+    <div class="card"><div class="k">The book</div><div class="stat">~50</div><p>quotes, scenes, beats</p></div>
+    <div class="card"><div class="k">Podcast ×12</div><div class="stat">~150</div><p>clips, blogs, quotes</p></div>
+    <div class="card"><div class="k">Voice notes</div><div class="stat">∞</div><p>→ Content Studio drafts</p></div>
+    <div class="card"><div class="k">Photos / life</div><div class="stat">∞</div><p>beauty + family + Turbo</p></div>
+  </div>
+
+  <h3>Who does what</h3>
+  <div class="grid g3">
+    <div class="card"><div class="k">Jen · talent (~2h/wk)</div><p>Records Reels, picks photos, sends voice notes, <b>replies to comments &amp; DMs</b> (only she can).</p></div>
+    <div class="card"><div class="k">Adam · operator (~1–2h/wk)</div><p>Runs the backlog, schedules, watches the 2 numbers, keeps tools running.</p></div>
+    <div class="card"><div class="k">Content Studio · crew</div><p>Voice note → finished post in her voice. Builds the backlog. Writes campaigns.</p></div>
+  </div>
+
+  <h3>What runs itself</h3>
+  <ul class="clean">
+    <li>Voice note → finished caption/script (Content Studio)</li>
+    <li>New blog post → auto-newsletter to the list (Kit RSS)</li>
+    <li>New podcast episode → auto-appears on the site (Buzzsprout)</li>
+    <li>New signup → chapter + welcome sequence (live)</li>
+    <li>Schedule a whole week in one sitting (Meta Business Suite)</li>
+  </ul>
+</section>
+
+<!-- CONTENT BOARD -->
+<section class="panel" id="board">
+  <h2>Content board</h2>
+  <p class="lead">Your whole content operation in one view. The queue of ready pieces moves left → right, idea to posted. Filter by spoke. Move a card with the ‹ › arrows. It saves on this device.</p>
+
+  <h3>Launch the tools</h3>
+  <div class="tools">
+    <a class="toolbtn" href="https://app.kit.com" target="_blank" rel="noopener">Kit · Email</a>
+    <a class="toolbtn" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram · Post</a>
+    <a class="toolbtn" href="https://www.canva.com" target="_blank" rel="noopener">Canva · Graphics</a>
+    <a class="toolbtn" href="https://www.buzzsprout.com" target="_blank" rel="noopener">Buzzsprout · Podcast</a>
+    <a class="toolbtn" href="https://jenarchuleta.com/studio" target="_blank" rel="noopener">Studio · Blog</a>
+  </div>
+
+  <h3>Filter by spoke</h3>
+  <div class="chips" id="chips"></div>
+
+  <h3>The pipeline</h3>
+  <div class="cols">
+    <div class="col"><h4>Backlog <span data-count="backlog">0</span></h4><div data-drop="backlog"></div></div>
+    <div class="col"><h4>Drafting <span data-count="draft">0</span></h4><div data-drop="draft"></div></div>
+    <div class="col"><h4>Ready to post <span data-count="sched">0</span></h4><div data-drop="sched"></div></div>
+    <div class="col"><h4>Posted <span data-count="posted">0</span></h4><div data-drop="posted"></div></div>
+  </div>
+  <div class="note"><b>~30 pieces pre-loaded from your Hook Bank</b> — and that's a fraction of the ~200 available. Say the word and I'll load the rest (the 17 quote cards + the podcast clips once transcripts are in).</div>
+</section>
+
+<!-- LAUNCH -->
+<section class="panel" id="launch">
+  <h2>The launch plan</h2>
+  <p class="lead">Two launches, not one. Use the quiet window to load the gun; fire when it's all ready.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <span class="pill now">Now</span>
+      <h3 style="margin-top:10px">Quiet phase (Kindle live)</h3>
+      <p style="color:var(--ink-soft);font-size:14px">Goal = <b>reviews</b>, not noise. Reviews are launch-day rocket fuel and take time to stack.</p>
+      <ul class="clean" style="margin-top:8px">
+        <li>Personal ask: inner circle buys Kindle + leaves an honest review</li>
+        <li>Soft "available now on Kindle" on site + bios</li>
+        <li>Turn social back on with the hook → grow the list</li>
+        <li>Build the backlog + production kit in the background</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <span class="pill" style="border-color:var(--gold);color:var(--gold)">When ready</span>
+      <h3 style="margin-top:10px;color:var(--gold)">Loud phase (all formats live)</h3>
+      <p style="color:#cabfa6;font-size:14px">Fire the grave hook to 200K with paperback + audio available and reviews already stacked.</p>
+      <ul class="clean" style="margin-top:8px;--border:#3a3026">
+        <li style="color:#e7ddc9">Buy links → site + launch email</li>
+        <li style="color:#e7ddc9">Launch broadcast + the desert Reel</li>
+        <li style="color:#e7ddc9">Coordinated social campaign (grave day one)</li>
+        <li style="color:#e7ddc9">Reviews push + ranking spike</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note"><b>Trigger to go loud:</b> paperback + audiobook live <b>AND</b> the backlog/reviews are stacked. No calendar pressure — launch when it's built.</div>
+</section>
+
+<!-- LIBRARY -->
+<section class="panel" id="library">
+  <h2>The library</h2>
+  <p class="lead">Every document we've built, grouped. All live in your <b>Jennifer</b> folder.</p>
+
+  <h3>Strategy &amp; brand</h3>
+  <ul class="clean">
+    <li><span class="fname">_COMMAND_CENTER.md</span> The one-page status + next action</li>
+    <li><span class="fname">Jen_Forward_Roadmap.md</span> The phased forward plan</li>
+    <li><span class="fname">Jen_Archuleta_Brand_Definition.md</span> North star (incl. beauty-equity rule)</li>
+    <li><span class="fname">Jen_Archuleta_Brand_Platform_Blueprint.md</span> Full brand + platform blueprint</li>
+    <li><span class="fname">Jen_Archuleta_Monetization_Stack.md</span> How she makes money, sequenced</li>
+  </ul>
+
+  <h3>Content system &amp; creative</h3>
+  <ul class="clean">
+    <li><span class="fname">Jen_Content_System_Master.md</span> The full engine (this dashboard in words)</li>
+    <li><span class="fname">Jen_Hook_Bank.md</span> ~50 hooks from the book + screenplay</li>
+    <li><span class="fname">Jen_2Week_Content_Calendar_and_Howto.md</span> Day-by-day + video scripts</li>
+    <li><span class="fname">Jen_Social_Creative_and_Posting_Playbook.md</span> Templates + how to post</li>
+    <li><span class="fname">Jen_Beautiful_and_True_Bridge_Posts.md</span> 4 ready bridge posts</li>
+  </ul>
+
+  <h3>Launch copy</h3>
+  <ul class="clean">
+    <li><span class="fname">Jen_Hook_Led_Launch_Copy.md</span> Pinned post + launch email + Reel script</li>
+    <li><span class="fname">Jen_Launch_Announcement_Email.md</span> The launch broadcast</li>
+    <li><span class="fname">Jen_Bridge_PinnedPost_and_ProfileCopy.md</span> Profile copy + reintroduction</li>
+  </ul>
+
+  <h3>Email &amp; site operations</h3>
+  <ul class="clean">
+    <li><span class="fname">Jen_Welcome_Sequence_4_emails.md</span> The welcome sequence</li>
+    <li><span class="fname">Jen_Webmaster_Operations_Playbook.md</span> How the backend runs</li>
+    <li><span class="fname">JEN-SITE-HANDOFF.md</span> The website technical guide</li>
+  </ul>
+
+  <h3>Assets</h3>
+  <ul class="clean">
+    <li><span class="fname">Beyond_the_Velvet_Ropes_FREE_First_Chapter_v2.pdf</span> The cold-open sample (live on site)</li>
+    <li><span class="fname">Jen_Facebook_Banner_Dark.png · Jen_X_Header.png · Jen_ThenNow_Bridge.png</span> Brand visuals</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>Jen Archuleta — Brand HQ · your progress saves automatically on this device · built by your Content Studio</footer>
+
+<script>
+(function(){
+  var KEY='jenHQ_v1';
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+  function save(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
+  var state=load();
+
+  // tabs
+  var tabs=document.querySelectorAll('.tab'), panels=document.querySelectorAll('.panel');
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){x.classList.remove('active')}); t.classList.add('active');
+    panels.forEach(function(p){p.classList.remove('active')});
+    document.getElementById(t.dataset.t).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  })});
+
+  // checklist restore + bind
+  var boxes=document.querySelectorAll('input[type=checkbox][data-id]');
+  boxes.forEach(function(b){
+    if(state[b.dataset.id]){b.checked=true; b.closest('.check').classList.add('done-row');}
+    b.addEventListener('change',function(){
+      state[b.dataset.id]=b.checked; save(state);
+      b.closest('.check').classList.toggle('done-row',b.checked);
+      updateProgress();
+    });
+  });
+
+  function updateProgress(){
+    var locked=document.querySelectorAll('.check.locked').length;
+    var done=locked + document.querySelectorAll('input[type=checkbox][data-id]:checked').length;
+    var total=locked + boxes.length;
+    var pct=Math.round(done/total*100);
+    document.getElementById('progFill').style.width=pct+'%';
+    document.getElementById('progNum').textContent=pct+'% complete';
+  }
+  updateProgress();
+
+  /* ===== CONTENT BOARD ===== */
+  var PILLARS={Everyday:'#946F2B',Pack:'#9A6A3A',Faith:'#5b7d52',Giving:'#7a6f5e','Just Me':'#2C7A7B',Book:'#763028'};
+  var ITEMS=[
+    {id:'n1',t:'An ordinary morning that quietly got me this week',p:'Everyday',f:'Photo'},
+    {id:'n2',t:'"The good stuff is the small stuff."',p:'Everyday',f:'Reel'},
+    {id:'n3',t:'A full, noisy house — my favorite kind of chaos',p:'Everyday',f:'Photo'},
+    {id:'n4',t:'What a perfect ordinary day looks like now',p:'Everyday',f:'Story'},
+    {id:'n5',t:'"Hi — I’m Jen." (the warm re-hello)',p:'Everyday',f:'Reel'},
+    {id:'n6',t:'Meet the dogs (all of them)',p:'Pack',f:'Reel'},
+    {id:'n7',t:'The chaos of a houseful of dogs',p:'Pack',f:'Story'},
+    {id:'n8',t:'The one that rescued me',p:'Pack',f:'Photo'},
+    {id:'n9',t:'Dogs piled on the couch — this is the life',p:'Pack',f:'Photo'},
+    {id:'n10',t:'What I pray for now',p:'Faith',f:'Quote'},
+    {id:'n11',t:'A moment my faith quietly carried me',p:'Faith',f:'Photo'},
+    {id:'n12',t:'Gratitude, plainly',p:'Faith',f:'Quote'},
+    {id:'n13',t:'Why I give back',p:'Giving',f:'Reel'},
+    {id:'n14',t:'Who I needed when I was young',p:'Giving',f:'Photo'},
+    {id:'n15',t:'A small, real way to help this week',p:'Giving',f:'Story'},
+    {id:'n16',t:'"I don’t really do labels. I’m just me."',p:'Just Me',f:'Reel'},
+    {id:'n17',t:'A hot take I’m not afraid to say out loud anymore',p:'Just Me',f:'Reel'},
+    {id:'n18',t:'"What’s the small thing getting you through this week?"',p:'Just Me',f:'Story'},
+    {id:'n19',t:'This is 50 — and yes, I worked for it (warm turn)',p:'Just Me',f:'Photo'},
+    {id:'b1',t:'"The story I finally wrote down" — the book',p:'Book',f:'Reel'},
+    {id:'b2',t:'People would never guess… (grateful, from my twenties)',p:'Book',f:'Carousel'},
+    {id:'b3',t:'Beyond the Velvet Ropes — out now',p:'Book',f:'Photo'},
+    {id:'b4',t:'The free chapter — read the opening',p:'Book',f:'Photo'},
+    {id:'b5',t:'The movie’s in development (pinch me)',p:'Book',f:'Story'},
+    {id:'b6',t:'Behind the book: the hardest page to write',p:'Book',f:'Story'},
+    {id:'b7',t:'What I’d tell the girl who left Ohio with $500',p:'Book',f:'Reel'},
+    {id:'b8',t:'A wild, grateful story from back then',p:'Book',f:'Reel'},
+    {id:'b9',t:'Why I wrote it — for the woman in her own hard chapter',p:'Book',f:'Photo'}
+  ];
+  var BKEY='jenHQ_board_v1', ORDER=['backlog','draft','sched','posted'], activeFilter='All';
+  var bstate=(function(){try{return JSON.parse(localStorage.getItem(BKEY))||{}}catch(e){return {}}})();
+  function bsave(){try{localStorage.setItem(BKEY,JSON.stringify(bstate))}catch(e){}}
+  var chipsEl=document.getElementById('chips');
+  ['All','Everyday','Pack','Faith','Giving','Just Me','Book'].forEach(function(p){
+    var c=document.createElement('button'); c.className='chip'+(p==='All'?' on':''); c.textContent=p;
+    c.onclick=function(){activeFilter=p; document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on')}); c.classList.add('on'); renderBoard();};
+    chipsEl.appendChild(c);
+  });
+  function renderBoard(){
+    ORDER.forEach(function(col){document.querySelector('[data-drop="'+col+'"]').innerHTML='';});
+    var counts={backlog:0,draft:0,sched:0,posted:0};
+    ITEMS.forEach(function(it){
+      var col=bstate[it.id]||'backlog'; counts[col]++;
+      if(activeFilter!=='All' && it.p!==activeFilter) return;
+      var idx=ORDER.indexOf(col);
+      var card=document.createElement('div'); card.className='pc'; card.style.borderLeftColor=PILLARS[it.p]||'#BE9543';
+      card.innerHTML='<div>'+it.t+'</div><div class="pcmeta"><span class="tag">'+it.p+'</span><span class="tag fmt">'+it.f+'</span><span class="mv">'+(idx>0?'<button data-l aria-label="move left">‹</button>':'')+(idx<3?'<button data-r aria-label="move right">›</button>':'')+'</span></div>';
+      var L=card.querySelector('[data-l]'), R=card.querySelector('[data-r]');
+      if(L)L.onclick=function(){bstate[it.id]=ORDER[idx-1]; bsave(); renderBoard();};
+      if(R)R.onclick=function(){bstate[it.id]=ORDER[idx+1]; bsave(); renderBoard();};
+      document.querySelector('[data-drop="'+col+'"]').appendChild(card);
+    });
+    ORDER.forEach(function(col){document.querySelector('[data-count="'+col+'"]').textContent=counts[col];});
+  }
+  renderBoard();
+})();
+</script>
+</body>
+</html>
