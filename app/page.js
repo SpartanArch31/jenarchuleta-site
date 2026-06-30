@@ -14,8 +14,8 @@ export default function Home() {
       <section className="wrap hero">
         <div className="hero-copy">
           <div className="eyebrow">Author · Speaker · Advocate</div>
-          <div className="hero-script">come as you are</div>
-          <h1>Faith, family, and a whole lot of dogs.</h1>
+          <div className="hero-script">this isn’t the story<br />you think it is</div>
+          <h1>Faith, family, and a bunch of dogs.</h1>
           <p className="lead">These days I’m happiest in the small stuff — my kids, my husband, a houseful of rescue animals, my faith, and finding ways to give back. I had a wild, wonderful run in my twenties, and I’m grateful for all of it — but it’s not the headline. The headline is the life I get to wake up to now — and the book I wrote about getting here.</p>
           <div className="hero-ctas">
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">Read the first chapter free</a>
