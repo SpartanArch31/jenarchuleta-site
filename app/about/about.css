@@ -1,0 +1,91 @@
+/* /about — "This Is Me". Page-scoped layout ONLY. Uses existing design
+   tokens; defines no new colors/type — just composition + a few patterns
+   (chip, joy list, image slot, quote card) the design system didn't ship. */
+
+.tim-wrap { max-width: 1200px; margin: 0 auto; padding-inline: var(--gutter); }
+
+/* ---- hero ---- */
+.tim-hero { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(32px, 5vw, 64px);
+            align-items: center; padding-block: clamp(56px, 7vw, 84px) clamp(48px, 6vw, 72px); }
+.tim-display { font-family: var(--font-display); font-weight: var(--w-semibold);
+               font-size: clamp(54px, 6.4vw, 88px); line-height: 1.12; margin: 16px 0 0; white-space: nowrap; }
+.tim-script { font-family: var(--font-script); font-size: clamp(40px, 5vw, 60px); line-height: 1;
+              color: var(--accent-ink); margin: 6px 0 0; }
+.tim-lead { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 24px); line-height: 1.55;
+            color: var(--text-secondary); margin: 30px 0 0; max-width: 560px; }
+.tim-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.tim-chip { display: inline-flex; align-items: center; white-space: nowrap; padding: 8px 16px;
+            border-radius: var(--radius-pill); border: 1px solid var(--border-strong);
+            font-family: var(--font-sans); font-size: 13px; letter-spacing: .03em;
+            color: var(--text-secondary); background: var(--surface); }
+.tim-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 34px; }
+.tim-portrait { width: 100%; height: 600px; object-fit: cover; object-position: center 26%;
+                border-radius: var(--radius-lg); display: block; box-shadow: var(--shadow); }
+.tim-cap { font-family: var(--font-sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+           color: var(--text-muted); text-align: right; margin: 12px 4px 0; }
+
+/* ---- the everyday ---- */
+.tim-everyday { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(32px, 5vw, 64px);
+                align-items: start; padding-block: clamp(64px, 8vw, 88px); }
+.tim-sticky { position: sticky; top: 110px; }
+.tim-h2 { font-family: var(--font-display); font-weight: var(--w-semibold); line-height: 1.14; margin: 14px 0 0; }
+.tim-joys { margin-top: 28px; }
+.tim-joy { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border);
+           font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 26px); color: var(--text); }
+.tim-joy:last-child { border-bottom: none; }
+.tim-joy .dot { width: 6px; height: 6px; transform: rotate(45deg); background: var(--accent); flex: none; }
+.tim-hint { font-family: var(--font-caps); font-size: 11px; letter-spacing: var(--track-eyebrow);
+            text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px; }
+.tim-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tim-slot-wrap { display: flex; flex-direction: column; gap: 8px; }
+/* placeholder tile — swap each for <img className="tim-img …"> when real photos arrive */
+.tim-slot { width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--border);
+            background: linear-gradient(135deg, var(--surface), var(--surface-alt));
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            color: var(--text-muted); font-family: var(--font-sans); font-size: 12px;
+            letter-spacing: .14em; text-transform: uppercase; padding: 12px; }
+.tim-slot.tall { height: 280px; }
+.tim-slot.short { height: 220px; }
+.tim-img { width: 100%; object-fit: cover; border-radius: var(--radius-lg); display: block; box-shadow: var(--shadow); }
+.tim-img.tall { height: 280px; }
+.tim-img.short { height: 220px; }
+.tim-slot-cap { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); }
+
+/* ---- my people band ---- */
+.tim-band { background: var(--surface-alt); border-block: 1px solid var(--border); }
+.tim-band-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 56px);
+                  align-items: center; padding-block: 80px; }
+.tim-quote { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+             box-shadow: var(--shadow); padding: 40px 36px; }
+.tim-quote p { font-family: var(--font-display); font-style: italic; font-size: clamp(24px, 3vw, 30px);
+               line-height: 1.3; color: var(--text); margin: 0; }
+.tim-quote .by { font-family: var(--font-sans); font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+                 color: var(--text-muted); margin-top: 20px; }
+
+/* ---- then & now ---- */
+.tim-then { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: clamp(32px, 5vw, 60px);
+            align-items: center; padding-block: clamp(64px, 8vw, 92px); }
+.tim-gray { width: 100%; height: 520px; object-fit: cover; object-position: center top;
+            border-radius: var(--radius-lg); display: block; filter: grayscale(1); box-shadow: var(--shadow); }
+
+/* ---- faith & giving (the one dark band) ---- */
+.tim-faith { background: var(--bg); } /* under .dark this token resolves to near-black */
+.tim-faith-inner { max-width: 1100px; margin: 0 auto; padding: clamp(72px, 9vw, 100px) var(--gutter);
+                   text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+
+/* ---- say hi ---- */
+.tim-hi { padding-block: clamp(64px, 8vw, 96px); }
+.tim-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow); padding: clamp(36px, 5vw, 64px) clamp(28px, 4vw, 56px);
+            display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 56px); align-items: center; }
+.tim-label { display: block; font-family: var(--font-sans); font-size: 12px; letter-spacing: .16em;
+             text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
+.tim-note { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted); margin: 12px 0 0; }
+
+/* ---- responsive ---- */
+@media (max-width: 860px) {
+  .tim-hero, .tim-everyday, .tim-band-inner, .tim-then, .tim-card { grid-template-columns: 1fr; }
+  .tim-portrait { height: auto; max-height: 520px; }
+  .tim-sticky { position: static; }
+  .tim-display { white-space: normal; }
+}

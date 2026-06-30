@@ -14,9 +14,9 @@ export default function Home() {
       <section className="wrap hero">
         <div className="hero-copy">
           <div className="eyebrow">Author · Speaker · Advocate</div>
-          <div className="hero-script">this isn’t the story<br />you think it is</div>
-          <h1>From the velvet ropes to the unfiltered truth.</h1>
-          <p className="lead">I’ve lived a big, beautiful, complicated life — magazine covers and velvet ropes, heartbreak and healing, deep faith and a whole lot of laughter. I’m done hiding the hard parts, and I’m sure not hiding the fun ones either. Come as you are. So will I.</p>
+          <div className="hero-script">come as you are</div>
+          <h1>Faith, family, and a whole lot of dogs.</h1>
+          <p className="lead">These days I’m happiest in the small stuff — my kids, my husband, a houseful of rescue animals, my faith, and finding ways to give back. I had a wild, wonderful run in my twenties, and I’m grateful for all of it — but it’s not the headline. The headline is the life I get to wake up to now — and the book I wrote about getting here.</p>
           <div className="hero-ctas">
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">Read the first chapter free</a>
             <a href="/book" className="btn btn-ghost">Get the book</a>
@@ -82,9 +82,9 @@ export default function Home() {
         <div className="story-grid">
           <div>
             <div className="eyebrow">The Story</div>
-            <h2>The girl they underestimated.</h2>
-            <p>I grew up in a small Ohio town being told what I couldn’t do. I’ve been the quiet one, the fighter, the survivor — and the woman on the magazine cover, smiling while she was breaking inside.</p>
-            <p>I’ve lived through things I was never supposed to survive. For a long time I stayed silent about all of it. Then I stopped surviving long enough to actually heal — and I learned that your worst chapters can become your purpose.</p>
+            <h2>The long way to an ordinary, beautiful life.</h2>
+            <p>I grew up in a small Ohio town being told what I couldn’t do — and I spent my twenties proving otherwise, in rooms most people never get to see. I’m grateful for every bit of it.</p>
+            <p>I also walked through some genuinely hard things to get here. I stopped hiding them, and I learned that the hard chapters can become something you give back — but they’re not the headline. The headline is the life I get to wake up to now.</p>
             <p className="pull">“You didn’t need rescuing. You needed time. Time to find your voice. Time to believe it mattered.”</p>
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-ghost">Start with the first chapter</a>
           </div>
