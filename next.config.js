@@ -39,10 +39,13 @@ const nextConfig = {
       { source: '/blog/:path*', destination: '/journal', permanent: true },
     ];
   },
-  // Serve the static Brand HQ dashboard at bare /hq (next start doesn't
-  // auto-resolve the directory index). Auth is enforced by middleware.js.
+  // Serve the static private dashboards at their bare paths (next start
+  // doesn't auto-resolve a directory index). Auth is enforced by middleware.js.
   async rewrites() {
-    return [{ source: '/hq', destination: '/hq/index.html' }];
+    return [
+      { source: '/hq', destination: '/hq/index.html' },
+      { source: '/hub', destination: '/hub/index.html' },
+    ];
   },
 };
 
