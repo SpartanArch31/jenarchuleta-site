@@ -115,8 +115,22 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .mini a:hover { text-decoration: none; }
 @media (max-width:760px){ .cards-3{ grid-template-columns:1fr; } }
 
-/* book trailer (9:16 vertical, sits in the dark #book section) */
-.book-trailer { max-width: 286px; margin: 30px auto 0; }
+/* trailer feature — video + logline, alternated against the book row (video right) */
+.trailer-feature {
+  display: grid; grid-template-columns: 1.2fr .8fr;
+  gap: clamp(32px,6vw,72px); align-items: center;
+  margin-top: clamp(40px,6vw,72px);
+  border-top: 1px solid rgba(210,169,79,.18);
+  padding-top: clamp(44px,6vw,78px);
+}
+.trailer-feature .eyebrow { display: block; }
+.tf-logline {
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(1.7rem,3.2vw,2.4rem); line-height: 1.15;
+  margin: 12px 0 16px; max-width: 20ch; color: var(--text);
+}
+.tf-cap { color: var(--text-secondary); font-size: var(--text-body-l); max-width: 34ch; }
+.tf-video { justify-self: end; width: 100%; max-width: 300px; margin: 0; }
 .book-trailer-video {
   width: 100%;
   aspect-ratio: 9 / 16;
@@ -126,4 +140,8 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   background: #000;
   display: block;
 }
-.book-trailer figcaption { color: var(--accent); letter-spacing: .14em; }
+@media (max-width: 760px){
+  .trailer-feature { grid-template-columns: 1fr; }
+  .tf-video { justify-self: center; margin-inline: auto; }
+  .tf-logline { max-width: none; }
+}

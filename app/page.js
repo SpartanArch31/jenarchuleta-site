@@ -73,20 +73,24 @@ export default function Home() {
               <span className="btn btn-disabled" aria-disabled="true">Audiobook — coming soon</span>
             </div>
             <p style={{ marginTop: '6px' }}><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
-            <figure className="book-trailer">
-              <video
-                src="/trailer.mp4"
-                poster="/trailer-poster.jpg"
-                controls
-                playsInline
-                preload="none"
-                className="book-trailer-video"
-              />
-              <figcaption className="eyebrow" style={{ textAlign: 'center', marginTop: '10px' }}>
-                Watch the trailer
-              </figcaption>
-            </figure>
           </div>
+        </div>
+        <div className="wrap trailer-feature">
+          <div className="tf-copy">
+            <div className="eyebrow">Watch the Trailer</div>
+            <p className="tf-logline">“Everyone knew the headlines. No one knew the story.”</p>
+            <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em> — about ninety seconds.</p>
+          </div>
+          <figure className="tf-video">
+            <video
+              src="/trailer.mp4"
+              poster="/trailer-poster.jpg"
+              controls
+              playsInline
+              preload="none"
+              className="book-trailer-video"
+            />
+          </figure>
         </div>
       </section>
 
