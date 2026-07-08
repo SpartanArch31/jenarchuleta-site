@@ -73,6 +73,19 @@ export default function Home() {
               <span className="btn btn-disabled" aria-disabled="true">Audiobook — coming soon</span>
             </div>
             <p style={{ marginTop: '6px' }}><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
+            <figure className="book-trailer">
+              <video
+                src="/trailer.mp4"
+                poster="/trailer-poster.jpg"
+                controls
+                playsInline
+                preload="none"
+                className="book-trailer-video"
+              />
+              <figcaption className="eyebrow" style={{ textAlign: 'center', marginTop: '10px' }}>
+                Watch the trailer
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>

@@ -114,3 +114,14 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .mini h4 { font-size: var(--text-h4); margin:.3em 0 .2em; }
 .mini a:hover { text-decoration: none; }
 @media (max-width:760px){ .cards-3{ grid-template-columns:1fr; } }
+
+/* book trailer (9:16 vertical, sits in the dark #book section) */
+.book-trailer { max-width: 300px; margin-top: 28px; }
+.book-trailer-video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  background: #000;
+  display: block;
+}
