@@ -87,44 +87,45 @@ h1{font-family:Georgia,serif;font-style:italic;font-weight:600;font-size:30px;ma
       </div>
     </details>
     <div class="banner" onclick="go('create')">✨ <b>Out and about?</b> Tap here → ask the Studio for a post + which photo to use.</div>
-    <div class="daterow"><div class="d1">Monday, July 6</div><div class="d2">🎉 LAUNCH WEEK — the paperback is here</div></div>
-    <div class="daily">Welcome back. Last week slid forward — that's by design, you're not behind. The big news: <b>the paperback went LIVE July 4.</b> This week we tell everyone, starting today.</div>
-    <div class="prog"><div class="pt"><span>Today's posts</span><span id="progtxt">0 of 2 posted</span></div><div class="pbar"><div id="pfill"></div></div></div>
+    <div class="daterow"><div class="d1">Wednesday, July 8</div><div class="d2">📧 LAUNCH WEEK — send the email today</div></div>
+    <div class="daily"><b>Today's big one is the launch email.</b> It hasn't gone out yet — and that's completely fine, it just slid forward. Everything's written. Open Kit, paste it in, send to your whole list. That's the biggest single lever of the week. 🤍</div>
+    <div class="prog"><div class="pt"><span>Today's tasks</span><span id="progtxt">0 of 2 done</span></div><div class="pbar"><div id="pfill"></div></div></div>
     
-    <div class="card" id="card_feed"><div class="ribbon">✓ POSTED</div><div class="tag">Instagram — Feed · 🖼 the book cover (ready below)</div>
-      <img class="shot" src="/hub/launch-cover.jpg" alt="Beyond the Velvet Ropes — book cover">
-      <div class="shotdir" style="margin-top:10px">🖼 <b>Use the cover — no need to be on camera today.</b> Tap <b>Save image</b> (or press &amp; hold the picture → Add to Photos), then post it. On Instagram feed choose <b>“fit”</b> so the title isn't cropped, or post it to a Story.</div>
+    <div class="card" id="card_email"><div class="ribbon">✓ SENT</div><div class="tag">📧 Email — your whole list (Kit)</div>
+      <div class="shotdir">The one that moves the most books. Everything&#x27;s written — open Kit, start a <b>Broadcast</b>, paste the subject and the email, send to everyone. Adam or the Studio can sit with you; it&#x27;s a single send.</div>
+      <div class="lab">Subject line</div>
+      <div class="cap" id="c1">It&#x27;s here — you can hold it now</div>
+      <button class="btn copy" style="width:100%;margin:8px 0 0" onclick="copyCap('c1',this)">📝 Copy subject</button>
+      <div class="lab">The email</div>
+      <button class="btn copy" style="width:100%;margin:8px 0 0" onclick="copyCap('c2',this)">📝 Copy email</button>
+      <div class="cap" id="c2">Hi friend,
+
+A little news I&#x27;ve been waiting twenty years to send: Beyond the Velvet Ropes is officially out in paperback. Real pages. A real spine. A book you can hold.
+
+You already know some of my story. This is all of it — the hard parts, the funny parts, and the faith that carried me to this ordinary, happy, dog-filled life I wouldn&#x27;t trade for anything.
+
+If you&#x27;ve been waiting for the paper version, it&#x27;s ready for you now — and if you&#x27;ve already read it, I&#x27;d be honored if you&#x27;d leave a short review. It genuinely helps the story reach the next woman who needs it.
+
+Get the paperback: jenarchuleta.com/book
+
+Thank you for being here for this. It means more than you know.
+
+— Jen</div>
+      <div class="qsteps"><span>1 · Kit → Broadcast</span><span>2 · Paste subject + email</span><span>3 · Send to all</span><span>4 · Mark sent ✓</span></div>
+      <button class="btn posted" data-pid="email" data-verb="sent" onclick="togglePosted(this)">Mark sent ✓</button></div>
+    <div class="card" id="card_story"><div class="ribbon">✓ POSTED</div><div class="tag">Instagram — Story · your trailer is live</div>
+      <div class="shotdir">Your book trailer just went live on your site — perfect for a Story. Post a quick one: &quot;the trailer for my book is up — watch it here,&quot; and add a <b>link sticker</b> to your site. (Or reshare Monday&#x27;s book post if you&#x27;d rather keep it simple.)</div>
       <div class="btns">
-        <a class="btn save" href="/hub/launch-cover.jpg" download="Beyond-the-Velvet-Ropes-cover.jpg">⬇️ Save image</a>
-        <button class="btn copy" onclick="copyCap('c1',this)">📝 Copy caption</button></div>
-      <div class="qsteps"><span>1 · Save the cover</span><span>2 · IG → ➕ → Post</span><span>3 · Copy caption → paste</span><span>4 · Share ✓</span></div>
-      <button class="btn posted" data-pid="feed" onclick="togglePosted(this)">Mark posted ✓</button>
-      <div class="cap" id="c1">It&#x27;s real. You can hold it now.
-
-For years I said I was &quot;writing a book.&quot; I think a few people assumed I&#x27;d never actually finish it. (Some days, same.) But here it is — Beyond the Velvet Ropes, officially out in paperback.
-
-It&#x27;s the whole story. Not the version people think they know from one old photo — the real one. The hard parts, the funny parts, and the faith that somehow carried me all the way to this ordinary, happy, dog-filled life I wouldn&#x27;t trade for anything.
-
-I carried this story for twenty years. Now it&#x27;s yours to hold.
-
-If it happens to find you in a hard chapter of your own… that&#x27;s exactly who I wrote it for.
-
-Paperback, Kindle, and the free first chapter — it&#x27;s all at the link in my bio.
-
-— Jen 🤍</div></div>
-    <div class="card" id="card_story"><div class="ribbon">✓ POSTED</div><div class="tag">Instagram — Story</div>
-      <div class="shotdir">Reshare today&#x27;s feed post to your Story, then add a link sticker.</div>
-      <div class="btns">
-        <button class="btn copy" onclick="copyCap('c2',this)">🔗 Copy link</button></div>
-      <div class="qsteps"><span>1 · Share post → Story</span><span>2 · Sticker → Link</span><span>3 · Paste link</span><span>4 · Share ✓</span></div>
+        <button class="btn copy" onclick="copyCap('c3',this)">🔗 Copy link</button></div>
+      <div class="qsteps"><span>1 · Story (trailer or reshare)</span><span>2 · Sticker → Link</span><span>3 · Paste your site link</span><span>4 · Share ✓</span></div>
       <button class="btn posted" data-pid="story" onclick="togglePosted(this)">Mark posted ✓</button>
-      <div class="cap" id="c2">jenarchuleta.com/book</div></div>
-    <div class="daily">☀️ <b>Every day:</b> 1–2 Stories (a repost, a poll, a behind-the-scenes) and reply to comments. Missing a feed day is totally fine — Stories are the daily heartbeat.</div>
+      <div class="cap" id="c3">jenarchuleta.com</div></div>
+    <div class="daily">☀️ <b>Every day:</b> 1–2 Stories and reply to comments — the daily heartbeat. The email is today&#x27;s one big thing; do that first. 🤍</div>
   </div>
 
   <div class="view" id="week">
     <div class="daterow"><div class="d1">This Week</div><div class="d2">Jul 6 – 12 · launch week</div></div>
-    <div class="row today"><div class="rday"><div class="dn">Mon</div><div class="dt">Jul 6</div></div><div class="rbody"><div class="rtop"><span class="b today">TODAY</span> <span class="lay l2">BOOK</span></div><div class="pil">📣 THE PAPERBACK IS HERE</div><div class="idea">You + the physical book. Feed + Story (ready in Today).</div></div></div><div class="row"><div class="rday"><div class="dn">Tue</div><div class="dt">Jul 7</div></div><div class="rbody"><div class="rtop"><span class="b ready">READY</span> <span class="lay l2">BOOK</span></div><div class="pil">📧 THE LAUNCH EMAIL</div><div class="idea">Tell your list the paperback is live — copy is ready in Create. One send, biggest lever of the week.</div></div></div><div class="row"><div class="rday"><div class="dn">Wed</div><div class="dt">Jul 8</div></div><div class="rbody"><div class="rtop"><span class="b ready">READY</span> <span class="lay lb">BOTH</span></div><div class="pil">JUST ME — talking-head Reel</div><div class="idea">"The good stuff is the small stuff." Script + shot direction in Create.</div></div></div><div class="row"><div class="rday"><div class="dn">Thu</div><div class="dt">Jul 9</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l1">NOW</span></div><div class="pil">THE PACK</div><div class="idea">The dog that rescued <i>her</i> — a 20-sec clip + one warm line.</div></div></div><div class="row"><div class="rday"><div class="dn">Fri</div><div class="dt">Jul 10</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l1">NOW</span></div><div class="pil">FAITH / GIVING BACK</div><div class="idea">Why she shows up for CASA kids — one true sentence.</div></div></div><div class="row"><div class="rday"><div class="dn">Sat</div><div class="dt">Jul 11</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l1">NOW</span></div><div class="pil">THE EVERYDAY</div><div class="idea">An ordinary summer morning at home — light, real.</div></div></div><div class="row"><div class="rday"><div class="dn">Sun</div><div class="dt">Jul 12</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l2">BOOK</span></div><div class="pil">Rest / Quote card</div><div class="idea">Optional: a saveable quote card from the book.</div></div></div>
+    <div class="row"><div class="rday"><div class="dn">Mon</div><div class="dt">Jul 6</div></div><div class="rbody"><div class="rtop"><span class="b done">DONE</span> <span class="lay l2">BOOK</span></div><div class="pil">📣 THE PAPERBACK IS HERE</div><div class="idea">You + the physical book. Feed + Story — posted. 🎉</div></div></div><div class="row"><div class="rday"><div class="dn">Tue</div><div class="dt">Jul 7</div></div><div class="rbody"><div class="rtop"><span class="b ready">READY</span> <span class="lay l2">BOOK</span></div><div class="pil">📧 THE LAUNCH EMAIL</div><div class="idea">Slid forward to today — you&#x27;re never behind, it just moves. It&#x27;s written and ready.</div></div></div><div class="row today"><div class="rday"><div class="dn">Wed</div><div class="dt">Jul 8</div></div><div class="rbody"><div class="rtop"><span class="b today">TODAY</span> <span class="lay l2">BOOK</span></div><div class="pil">📧 SEND THE LAUNCH EMAIL</div><div class="idea">The biggest lever of the week — it&#x27;s written, just send it. Your book trailer is now live on the site, too.</div></div></div><div class="row"><div class="rday"><div class="dn">Thu</div><div class="dt">Jul 9</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l1">NOW</span></div><div class="pil">THE PACK</div><div class="idea">The dog that rescued <i>her</i> — a 20-sec clip + one warm line.</div></div></div><div class="row"><div class="rday"><div class="dn">Fri</div><div class="dt">Jul 10</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l1">NOW</span></div><div class="pil">FAITH / GIVING BACK</div><div class="idea">Why she shows up for CASA kids — one true sentence.</div></div></div><div class="row"><div class="rday"><div class="dn">Sat</div><div class="dt">Jul 11</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l1">NOW</span></div><div class="pil">THE EVERYDAY</div><div class="idea">An ordinary summer morning at home — light, real.</div></div></div><div class="row"><div class="rday"><div class="dn">Sun</div><div class="dt">Jul 12</div></div><div class="rbody"><div class="rtop"><span class="b plan">PLANNED</span> <span class="lay l2">BOOK</span></div><div class="pil">Rest / Quote card</div><div class="idea">Optional: a saveable quote card from the book.</div></div></div>
 
     <div class="daily">☀️ <b>Every day:</b> Stories + reply to every comment fast (the one job only Jen can do).</div>
     <p class="foot">Anything not posted just carries into next week's calendar — you're never "behind," it slides forward. The book stays the proud offer ~1–2 days a week.</p>
@@ -207,17 +208,17 @@ Thank you for being here for this. It means more than you know.
   </div>
 </div>
 <script>
-var WEEK_ID='2026-07-06';
+var WEEK_ID='2026-07-08';
 function pkey(pid){return 'jenpost_'+WEEK_ID+'_'+pid;}
 function go(v){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
   document.querySelector('.tab[data-v="'+v+'"]').classList.add('on');document.getElementById(v).classList.add('on');window.scrollTo(0,0);}
 document.querySelectorAll('.tab').forEach(function(t){t.onclick=function(){go(t.dataset.v);};});
 function copyCap(id,btn){var t=document.getElementById(id).innerText;navigator.clipboard.writeText(t).then(function(){var o=btn.innerHTML;btn.classList.add('done');btn.innerHTML='✓ Copied!';setTimeout(function(){btn.classList.remove('done');btn.innerHTML=o;},1600);});}
-function applyPosted(b,on){var pid=b.dataset.pid;var card=document.getElementById('card_'+pid);
-  if(on){b.classList.add('on');b.innerHTML='✓ Posted — tap to undo';card.classList.add('posted-card');}
-  else{b.classList.remove('on');b.innerHTML='Mark posted ✓';card.classList.remove('posted-card');}}
+function applyPosted(b,on){var pid=b.dataset.pid;var card=document.getElementById('card_'+pid);var v=b.dataset.verb||'posted';var V=v.charAt(0).toUpperCase()+v.slice(1);
+  if(on){b.classList.add('on');b.innerHTML='✓ '+V+' — tap to undo';card.classList.add('posted-card');}
+  else{b.classList.remove('on');b.innerHTML='Mark '+v+' ✓';card.classList.remove('posted-card');}}
 function refreshProg(){var bs=document.querySelectorAll('.posted');var n=0;bs.forEach(function(b){if(b.classList.contains('on'))n++;});
-  var el=document.getElementById('progtxt');if(el)el.textContent=n+' of '+bs.length+' posted';
+  var el=document.getElementById('progtxt');if(el)el.textContent=n+' of '+bs.length+' done';
   var f=document.getElementById('pfill');if(f)f.style.width=(bs.length? (n/bs.length*100):0)+'%';}
 function togglePosted(b){var on=!(localStorage.getItem(pkey(b.dataset.pid))==='1');
   try{if(on)localStorage.setItem(pkey(b.dataset.pid),'1');else localStorage.removeItem(pkey(b.dataset.pid));}catch(e){}
