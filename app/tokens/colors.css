@@ -69,12 +69,12 @@
   --surface-alt:    var(--velvet);
   --surface-invert: var(--cream);
 
-  --border:        #3A3026;
-  --border-strong: #50432F;
+  --border:        #443A2C;
+  --border-strong: #6B5A40;
 
-  --text:           #F0E8D8;
-  --text-secondary: #C9BCA2;
-  --text-muted:     #8C7F69;
+  --text:           #F3ECDE;
+  --text-secondary: #DCCFB5;
+  --text-muted:     #AD9E82;
   --text-invert:    #221C18;
 
   --accent:     var(--gold-bright);
