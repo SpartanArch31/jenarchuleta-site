@@ -7,7 +7,7 @@ import { KIT_FORM_UID, SOCIALS } from '../components/site-data';
 export const metadata = {
   title: 'About',
   description:
-    'Hi, I’m Jen — a mom, a wife, the lady with too many dogs. Faith, family, and giving back. This is me.',
+    'Hi, I’m Jen — a mom, a wife, and a houseful of rescue dogs. Faith, family, and giving back. This is me.',
 };
 
 export default function AboutPage() {
@@ -24,8 +24,8 @@ export default function AboutPage() {
           <h1 className="tim-display">Hi — I’m&nbsp;Jen.</h1>
           <p className="tim-script">and this is me</p>
           <p className="tim-lead">
-            I don’t really do labels. I’m just me — a mom, a wife, the lady with too many dogs. I had
-            a whole lot of incredible experiences in my twenties… but honestly? These days it’s the
+            I don’t really do labels. I’m just me — a mom, a wife, and yes, a houseful of rescue dogs.
+            I had a whole lot of incredible experiences in my twenties… but honestly? These days it’s the
             small stuff that gets me. Kids everywhere, dogs on the couch they’re not allowed on. My
             faith, my family, and giving back. That’s pretty much it.
           </p>
@@ -75,21 +75,21 @@ export default function AboutPage() {
               Swap each placeholder for <img className="tim-img tall|short" src="/assets/<name>.jpg" .../> */}
           <p className="tim-hint">A few true things · dogs, animals, the everyday</p>
           <div className="tim-grid2">
-            <div className="tim-slot-wrap">
-              <div className="tim-slot tall">The pack</div>
-              <span className="tim-slot-cap">All five dogs (yes, five)</span>
+            <div className="tim-slot-wrap" style={{ gridColumn: '1 / -1' }}>
+              <img className="tim-img" src="/assets/dogs.jpg" alt="Jen’s five rescue dogs together in the garden" />
+              <span className="tim-slot-cap">All five of them</span>
             </div>
             <div className="tim-slot-wrap">
-              <div className="tim-slot tall">Whoever wandered in</div>
-              <span className="tim-slot-cap">The rest of the crew</span>
+              <img className="tim-img tall" src="/assets/wandered-in.jpg" alt="The family tortoise wandering through the house" />
+              <span className="tim-slot-cap">Whoever else wandered in</span>
             </div>
             <div className="tim-slot-wrap">
-              <div className="tim-slot short">Coffee &amp; chaos</div>
-              <span className="tim-slot-cap">Mornings, before the noise</span>
+              <img className="tim-img tall" src="/assets/coffee.jpg" alt="A quiet morning coffee before the house wakes up" />
+              <span className="tim-slot-cap">Before the house wakes up</span>
             </div>
-            <div className="tim-slot-wrap">
-              <div className="tim-slot short">An ordinary day</div>
-              <span className="tim-slot-cap">A loud, happy, regular morning</span>
+            <div className="tim-slot-wrap" style={{ gridColumn: '1 / -1' }}>
+              <img className="tim-img" src="/assets/kids.jpg" alt="Jen’s kids asleep with one of the dogs" />
+              <span className="tim-slot-cap">A full, happy house</span>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </h2>
             <p className="tim-lead" style={{ margin: 0 }}>
               My husband, my kids, a handful of people I’d do anything for, and a houseful of animals
-              who don’t know they’re animals. I love hard and I show up — that part of me has never changed.
+              I love like family. I love hard and I show up — that part of me has never changed.
             </p>
           </div>
           <div className="tim-quote">
@@ -118,7 +118,7 @@ export default function AboutPage() {
       {/* THEN & NOW */}
       <section id="then" className="tim-wrap tim-then">
         <div>
-          <img className="tim-gray" src="/assets/jen-bw-coat.jpg" alt="Jen Archuleta, earlier years" />
+          <img className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta, earlier years" />
         </div>
         <div>
           <p className="eyebrow">Then &amp; now</p>
@@ -161,8 +161,8 @@ export default function AboutPage() {
             <p className="eyebrow">Say hi</p>
             <h2 className="tim-h2" style={{ fontSize: '44px' }}>Come hang out. No agenda.</h2>
             <p className="tim-lead" style={{ marginTop: '24px' }}>
-              A little note from me every now and then — the real stuff, the funny stuff, whatever
-              I’m thinking about. No pitch, I promise.
+              A little note from me every now and then — whatever I’m actually thinking about that
+              week, the good and the hard. No pitch, I promise.
             </p>
           </div>
           <div>

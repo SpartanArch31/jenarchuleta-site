@@ -1,7 +1,7 @@
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import KitInlineForm from './components/KitInlineForm';
-import { KIT_FREE_CHAPTER_URL, KIT_FORM_UID, SOCIALS } from './components/site-data';
+import { KIT_FREE_CHAPTER_URL, KIT_FORM_UID, SOCIALS, SHOP } from './components/site-data';
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
           <div className="hero-script">this isn’t the story<br />you think it is</div>
           <h1>Faith, family, and a bunch of dogs.</h1>
           <div className="eyebrow" style={{ marginTop: '16px' }}>Author of <em>Beyond the Velvet Ropes</em></div>
-          <p className="lead">These days I’m happiest in the small stuff — my kids, my husband, a houseful of rescue animals, my faith, and finding ways to give back. I had a wild, wonderful run in my twenties, and I’m grateful for all of it — but it’s not the headline. The headline is the life I get to wake up to now — and the book I wrote about getting here.</p>
+          <p className="lead">These days I’m happiest in the small stuff — my kids, my husband, a houseful of rescue animals, my faith, and finding ways to give back. I had a wild, wonderful run in my twenties, and I’m grateful for all of it. But the part I care about most isn’t the glamorous version — it’s the ordinary, happy life I have now, and the book I wrote about finding my way here.</p>
           <div className="hero-ctas">
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">Read the first chapter free</a>
             <a href="/book" className="btn btn-ghost">Get the book</a>
@@ -101,11 +101,11 @@ export default function Home() {
             <div className="eyebrow">The Story</div>
             <h2>The long way to an ordinary, beautiful life.</h2>
             <p>I grew up in a small Ohio town being told what I couldn’t do — and I spent my twenties proving otherwise, in rooms most people never get to see. I’m grateful for every bit of it.</p>
-            <p>I also walked through some genuinely hard things to get here. I stopped hiding them, and I learned that the hard chapters can become something you give back — but they’re not the headline. The headline is the life I get to wake up to now.</p>
+            <p>I also walked through some genuinely hard things to get here. I stopped hiding them, and I learned that the hard chapters can become something you give back. What I’m proudest of now isn’t any of the rooms I used to stand in — it’s the plain, happy life right in front of me.</p>
             <p className="pull">“You didn’t need rescuing. You needed time. Time to find your voice. Time to believe it mattered.”</p>
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-ghost">Start with the first chapter</a>
           </div>
-          <div className="ph"><img src="/assets/jen-bw-coat.jpg" alt="Jen Archuleta portrait" /></div>
+          <div className="ph"><img src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta portrait" /></div>
         </div>
       </section>
 
@@ -115,12 +115,12 @@ export default function Home() {
           <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>the fun part…</div>
           <div className="eyebrow">Meet Jen</div>
           <h2>Beautiful, a little bit of trouble, and not done yet.</h2>
-          <p className="lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, and still sweating it out in the gym at 50. I love getting dressed up, I love a good laugh, and I love my rescue dogs almost as much as my kids. Faith, family, and fun — all at once. The smile is real, and so is the rest of me.</p>
+          <p className="lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, getting dressed up, a good laugh. I’ve always had a soft spot for animals, and plenty of rescues at home to prove it. Faith, family, and fun, all at once — and I wouldn’t have it any other way.</p>
         </div>
         <div className="photo-row">
           <img src="/assets/jen-glam.jpg" alt="Jen Archuleta — glamour portrait" />
           <img src="/assets/jen-sultry.jpg" alt="Jen Archuleta" />
-          <img src="/assets/jen-fun.jpg" alt="Jen Archuleta with a rescue puppy" />
+          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" />
           <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta — fit at 50" />
         </div>
         <div className="center" style={{ marginTop: '26px' }}>
@@ -156,13 +156,14 @@ export default function Home() {
 
       {/* SHOP */}
       <section id="shop" className="wrap" style={{ background: 'var(--surface)' }}>
-        <div className="center"><div className="eyebrow">The Shop</div><h2>Wear the story.</h2>
-          <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>Signed copies and the Unfiltered collection — message-driven pieces that remind you of your worth. A portion gives back through The Forever Angels.</p></div>
+        <div className="center"><div className="eyebrow">The Shop</div><h2>A few things worth sharing.</h2>
+          <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>A signed copy of the book, a tee I love, and a rescue close to my heart. Story, a good reminder, and a way to give back.</p></div>
         <div className="cards-3">
-          <div className="mini"><div className="body"><div className="k">Book</div><h4>Signed copy — <em>Beyond the Velvet Ropes</em></h4><p className="foot-meta">Coming soon</p></div></div>
-          <div className="mini"><div className="body"><div className="k">Apparel</div><h4>The Unfiltered Collection</h4><p className="foot-meta">Coming soon</p></div></div>
-          <div className="mini"><div className="body"><div className="k">Give back</div><h4>The Forever Angels</h4><p className="foot-meta">Learn more →</p></div></div>
+          <a className="mini" href="/shop"><div className="body"><div className="k">Book</div><h4>Signed copy — <em>Beyond the Velvet Ropes</em></h4><p className="foot-meta">In the shop →</p></div></a>
+          <a className="mini" href={SHOP.etsyTee} target="_blank" rel="noopener"><div className="body"><div className="k">Apparel</div><h4>Be the Bumblebee tee</h4><p className="foot-meta">Shop on Etsy →</p></div></a>
+          <a className="mini" href={SHOP.foreverAngels} target="_blank" rel="noopener"><div className="body"><div className="k">Give back</div><h4>The Forever Angels</h4><p className="foot-meta">Support the rescue →</p></div></a>
         </div>
+        <div className="center" style={{ marginTop: '28px' }}><a href="/shop" className="btn btn-ghost">Visit the shop</a></div>
       </section>
 
       {/* CAPTURE */}

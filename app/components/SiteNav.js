@@ -33,7 +33,7 @@ export default function SiteNav() {
           <a href="/podcast" onClick={close}>Podcast</a>
           <a href="/journal" onClick={close}>Journal</a>
           <a href="/#speaking" onClick={close}>Speaking</a>
-          <a href="/#shop" onClick={close}>Shop</a>
+          <a href="/shop" onClick={close}>Shop</a>
           <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary btn-sm" onClick={close}>Free Chapter</a>
         </div>
       </div>

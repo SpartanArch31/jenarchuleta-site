@@ -12,6 +12,20 @@ export const SOCIALS = {
   foreverAngels: 'https://www.theforeverangels.com',
 };
 
+// The Shop. Apparel lives on Jen's Etsy; the charity is The Forever Angels.
+// SIGNED BOOKS: recommended path is a Stripe Payment Link (lowest fees, stays
+// on-brand, and can collect the shipping address + a "Personalize to" field).
+// To turn it on: Stripe → Products → add "Signed copy — Beyond the Velvet
+// Ropes" → create a Payment Link (enable "Collect shipping address" + a custom
+// field "Who should Jen sign it to?") → paste the buy.stripe.com URL below.
+// While signedBook is empty, the shop shows a "coming soon" card instead of a
+// broken button.
+export const SHOP = {
+  etsyTee: 'https://www.etsy.com/listing/4320791333/be-the-bumblebee-fly-away-t-shirt',
+  foreverAngels: 'https://theforeverangels.com',
+  signedBook: 'https://buy.stripe.com/14A8wO3I70et2YHco2ds400',
+};
+
 // Podcast (Buzzsprout). The numeric podcast ID powers the official
 // all-episodes player; until confirmed we embed the hosted site.
 export const PODCAST = {

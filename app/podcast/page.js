@@ -32,7 +32,7 @@ export default function PodcastPage() {
         <h1>{name}</h1>
         <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>
           Honest conversations on faith, family, resilience, and starting over —
-          the same voice as the book, now in your ears. New episodes drop here automatically.
+          the same honest voice as the book. New episodes land here automatically.
         </p>
         <div className="subscribe-row">
           <a href={sub.spotify} className="btn btn-ghost btn-sm">Spotify</a>
