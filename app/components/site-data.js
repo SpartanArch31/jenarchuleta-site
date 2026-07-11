@@ -23,7 +23,7 @@ export const SOCIALS = {
 export const SHOP = {
   etsyTee: 'https://www.etsy.com/listing/4320791333/be-the-bumblebee-fly-away-t-shirt',
   foreverAngels: 'https://theforeverangels.com',
-  signedBook: 'https://buy.stripe.com/14A8wO3I70et2YHco2ds400',
+  signedBook: 'https://buy.stripe.com/bJebJ04MbbXbfLtbjYds401',
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official
