@@ -11,6 +11,7 @@
 @import './tokens/spacing.css';
 @import './tokens/effects.css';
 @import './tokens/base.css';
+@import './tokens/motion.css';
 
 /* ---- page layout (built on the design-system tokens) ---- */
 .wrap { max-width: var(--container); margin: 0 auto; padding-inline: var(--gutter); }
