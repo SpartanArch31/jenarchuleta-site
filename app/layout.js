@@ -1,4 +1,5 @@
 import './globals.css';
+import ScrollReveal from './components/ScrollReveal';
 
 export const metadata = {
   metadataBase: new URL('https://jenarchuleta.com'),
@@ -22,7 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ScrollReveal />
+      </body>
     </html>
   );
 }

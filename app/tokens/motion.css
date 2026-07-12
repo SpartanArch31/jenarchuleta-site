@@ -1,42 +1,33 @@
 /* ============================================================
    Jen Archuleta — Motion layer
-   Scroll-driven reveals + hero load-in + the "threshold" draw.
-   Pure CSS, no JavaScript, no library.
+   Hero load-in + scroll-in reveals + the "threshold" draw.
 
-   Every reveal is DOUBLE-GATED so the site degrades to its
-   original static, fully-visible form when motion isn't wanted
-   or supported. Nothing is ever hidden outside BOTH gates:
-     @media (prefers-reduced-motion: no-preference)  → off for reduced motion
-     @supports (animation-timeline: view())          → off for older engines
-                                                        (they can't hide-then-animate reliably)
-   The only effect outside the envelope is the nav underline (a hover
-   transition with no hidden state — safe everywhere).
+   Two mechanisms, both gated by @media (prefers-reduced-motion:
+   no-preference) so reduced-motion users get the original static page:
 
-   Tone: calm, editorial, never bouncy — slow durations, and only
-   opacity / soft translate / scale / scaleX. No springs, no bounce.
-   This file targets existing class names; it adds no markup and can
-   be removed by deleting this import with zero other changes.
+   1. HERO LOAD-IN — pure-CSS time-based keyframes, hidden from first
+      paint (no flash), plays once on load. Universally supported.
+
+   2. SCROLL REVEALS + THRESHOLD DRAW — driven by the ScrollReveal
+      client component (IntersectionObserver). Nothing is hidden until
+      that JS adds `.reveal-ready` to <html> and tags targets with `.jr`
+      / `.jr-img` / `.jr-threshold`; when a target scrolls into view it
+      gets `.is-in` and transitions in. If the JS never runs, no hidden
+      state applies → the page stays fully visible (failsafe).
+
+   Tone: calm, editorial, never bouncy — slow durations, opacity /
+   soft translate / scale / scaleX only. This file adds no markup of its
+   own; remove the import + <ScrollReveal/> to undo completely.
    ============================================================ */
 
-/* ---- keyframes (safe to define unconditionally) ---- */
-@keyframes jen-reveal-up   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes jen-reveal-img  { from { opacity: 0; transform: scale(1.04);      } to { opacity: 1; transform: scale(1);      } }
-@keyframes jen-hero-rise   { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes jen-draw-x      { from { transform: scaleX(0); }                    to { transform: scaleX(1); } }
-@keyframes jen-diamond-in  { from { opacity: 0; transform: rotate(45deg) scale(.4); } to { opacity: 1; transform: rotate(45deg) scale(1); } }
+/* ---- hero keyframes ---- */
+@keyframes jen-hero-rise  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes jen-hero-img   { from { opacity: 0; transform: scale(1.04);      } to { opacity: 1; transform: scale(1);      } }
 
 @media (prefers-reduced-motion: no-preference) {
- /* Single safety envelope: NOTHING is hidden unless the browser is modern
-    enough to support scroll-driven animation — which guarantees it also
-    runs the time-based keyframes that bring the content back. Older engines
-    fall through to the original, fully-visible static page. */
- @supports (animation-timeline: view()) {
 
   /* ============================================================
-     1. HERO LOAD-IN  (time-based, plays once per page load)
-     `backwards` fill so children hold their hidden state during
-     their stagger delay, then settle — and release transform after,
-     so nothing is left pinned.
+     1. HERO LOAD-IN  (pure CSS, plays once on load, no flash)
      ============================================================ */
   .hero .hero-copy > *,
   .book-page .hero-section .hero > div:last-child > *,
@@ -59,91 +50,51 @@
   .book-page .hero-section .hero > div:last-child > *:nth-child(n+6),
   .tim-hero > div:first-child > *:nth-child(n+6) { animation-delay: 300ms; }
 
-  /* hero images settle in slowly alongside the copy */
   .hero .portrait,
   .book-page .hero-section .hero-cover,
   .tim-hero .tim-portrait {
-    animation: jen-reveal-img var(--dur-slow) var(--ease-out) backwards;
+    animation: jen-hero-img var(--dur-slow) var(--ease-out) backwards;
     animation-delay: 120ms;
   }
 
   /* ============================================================
-     2. SCROLL-DRIVEN REVEALS  (below the fold)
+     2. SCROLL REVEALS  (JS-driven; hidden only once .reveal-ready is set)
      ============================================================ */
-    .jen-reveal,
-    /* --- home --- */
-    .tagline .q,
-    .pillars .p,
-    #book .inner > div:nth-child(2),
-    .trailer-feature .tf-copy,
-    #story .story-grid > div:first-child,
-    .creed .lead,
-    .creed li,
-    #journal > .center,
-    #shop > .center,
-    .cards-3 .mini,
-    .capture .text-wrap,
-    .pull,
-    /* --- book --- */
-    .who .text-wrap,
-    .who li,
-    /* --- about --- */
-    .tim-band-inner > div,
-    .tim-then > div:last-child,
-    .tim-faith-inner > *,
-    .tim-hi .tim-card > div,
-    .tim-joy {
-      opacity: 0;
-      animation: jen-reveal-up both;
-      animation-timeline: view();
-      animation-range: entry 5% entry 55%;
-      animation-timing-function: var(--ease-out);
-    }
-
-    /* images get a gentle scale-settle instead of a rise */
-    .jen-reveal-img,
-    .book-cover,
-    .trailer-feature .tf-video,
-    #story .story-grid .ph img,
-    .tim-then .tim-gray,
-    .tim-slot-wrap {
-      opacity: 0;
-      animation: jen-reveal-img both;
-      animation-timeline: view();
-      animation-range: entry 3% entry 50%;
-      animation-timing-function: var(--ease-out);
-    }
-
-    /* ============================================================
-       3. THE THRESHOLD DRAW  (the site's signature motif)
-       Gold hairlines emanate outward from the centre diamond as the
-       rule scrolls into view; the diamond settles in first. Applies
-       to every .threshold-rule on the site for one consistent motion.
-       ============================================================ */
-    .threshold-rule::before,
-    .threshold-rule::after {
-      transform: scaleX(0);
-      animation: jen-draw-x both;
-      animation-timeline: view();
-      animation-range: entry 8% entry 60%;
-      animation-timing-function: var(--ease-out);
-    }
-    .threshold-rule::before { transform-origin: right; } /* grows from the diamond outward */
-    .threshold-rule::after  { transform-origin: left;  }
-    .threshold-rule .diamond {
-      opacity: 0;
-      animation: jen-diamond-in both;
-      animation-timeline: view();
-      animation-range: entry 2% entry 32%;
-      animation-timing-function: var(--ease-out);
-    }
+  .reveal-ready .jr {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity var(--dur-slow) var(--ease-out),
+                transform var(--dur-slow) var(--ease-out);
   }
+  .reveal-ready .jr.jr-img { transform: scale(1.05); }        /* images: fade + gentle scale */
+  .reveal-ready .jr.is-in  { opacity: 1; transform: none; }   /* revealed state */
+
+  /* ============================================================
+     3. THE THRESHOLD DRAW  (signature motif)
+     Gold hairlines grow outward from the centre diamond; diamond
+     fades in first. Every .threshold-rule, one consistent motion.
+     ============================================================ */
+  .reveal-ready .jr-threshold::before,
+  .reveal-ready .jr-threshold::after {
+    transform: scaleX(0);
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+  .reveal-ready .jr-threshold::before { transform-origin: right; } /* from the diamond outward */
+  .reveal-ready .jr-threshold::after  { transform-origin: left;  }
+  .reveal-ready .jr-threshold.is-in::before,
+  .reveal-ready .jr-threshold.is-in::after { transform: scaleX(1); }
+
+  .reveal-ready .jr-threshold .diamond {
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease-out);
+  }
+  .reveal-ready .jr-threshold.is-in .diamond { opacity: 1; }
 }
 
 /* ============================================================
    4. MICRO-INTERACTION — nav link underline grow (hover only)
-   Not gated by reduced-motion: under reduced motion the site's
-   global token override zeroes durations, so it appears instantly.
+   Not gated by reduced-motion: the global token override zeroes
+   durations there, so it simply appears instantly.
    ============================================================ */
 @media (hover: hover) and (pointer: fine) {
   .nav-links a:not(.btn) { position: relative; }
