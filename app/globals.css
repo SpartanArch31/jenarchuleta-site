@@ -46,8 +46,10 @@ section { padding-block: var(--section-y); }
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-sans);
        font-size: var(--text-ui); letter-spacing: .12em; text-transform: uppercase; font-weight: var(--w-semibold);
-       padding: 14px 26px; border-radius: var(--radius-pill); cursor: pointer; transition: all var(--dur) var(--ease);
+       padding: 14px 26px; border-radius: var(--radius-pill); cursor: pointer;
+       transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease-out);
        border: 1px solid transparent; }
+.btn:active { transform: scale(0.98); }
 .btn-primary { background: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: var(--gold-deep); text-decoration: none; color: var(--on-accent); }
 .btn-ghost { color: var(--accent-ink); border-color: var(--border-strong); background: transparent; }
@@ -110,8 +112,10 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 
 /* photo row (beauty / personality) */
 .photo-row { display:grid; grid-template-columns: repeat(4,1fr); gap:16px; margin-top:30px; }
-.photo-row img { width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); transition: transform var(--dur) var(--ease); }
-.photo-row img:hover { transform: translateY(-4px); }
+.photo-row img { width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); transition: transform var(--dur) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .photo-row img:hover { transform: translateY(-3px); }
+}
 @media (max-width:760px){ .photo-row{ grid-template-columns:1fr 1fr; } }
 
 /* pillars */

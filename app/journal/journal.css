@@ -8,7 +8,8 @@
 .chip {
   font-family: var(--font-sans); font-size: .8rem; letter-spacing:.1em; text-transform:uppercase;
   padding: 8px 16px; border-radius: var(--radius-pill); border: var(--hairline-strong);
-  color: var(--text-secondary); background: transparent; transition: all var(--dur) var(--ease);
+  color: var(--text-secondary); background: transparent;
+  transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 .chip:hover { border-color: var(--accent); text-decoration:none; }
 .chip.is-active { background: var(--accent); color: var(--on-accent); border-color: transparent; }
@@ -16,9 +17,29 @@
 /* feed grid */
 .feed { display:grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 36px; }
 .post-card { background:var(--surface); border:var(--hairline); border-radius:var(--radius-lg); overflow:hidden;
-             display:flex; flex-direction:column; transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
-.post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); text-decoration:none; }
+             display:flex; flex-direction:column; transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+.post-card:hover { text-decoration:none; }
+@media (hover: hover) and (pointer: fine) {
+  .post-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+}
 .post-card img { width:100%; aspect-ratio: 3/2; object-fit: cover; display:block; }
+
+/* feed entrance — subtle staggered fade-up on first paint.
+   `backwards` fill (not forwards) so transform is released after the
+   animation ends and never fights the :hover lift. Stagger capped so
+   below-the-fold cards don't wait seconds. Skipped for reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .feed .post-card { animation: post-card-in var(--dur) var(--ease-out) backwards; }
+  .feed .post-card:nth-child(2) { animation-delay: 40ms; }
+  .feed .post-card:nth-child(3) { animation-delay: 80ms; }
+  .feed .post-card:nth-child(4) { animation-delay: 120ms; }
+  .feed .post-card:nth-child(5) { animation-delay: 160ms; }
+  .feed .post-card:nth-child(n+6) { animation-delay: 200ms; }
+}
+@keyframes post-card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .post-card .body { padding: 22px; }
 .post-card .k { font-family:var(--font-sans); font-size:var(--text-meta); letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); }
 .post-card h3 { font-size: var(--text-h4); margin:.35em 0 .3em; }

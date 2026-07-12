@@ -29,11 +29,13 @@
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition: box-shadow var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
 }
-.shop-page .product-card:hover {
-  box-shadow: var(--shadow);
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .shop-page .product-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .shop-page .product-card:hover { transform: none; }
