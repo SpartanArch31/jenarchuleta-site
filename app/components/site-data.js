@@ -13,17 +13,36 @@ export const SOCIALS = {
 };
 
 // The Shop. Apparel lives on Jen's Etsy; the charity is The Forever Angels.
-// SIGNED BOOKS: recommended path is a Stripe Payment Link (lowest fees, stays
-// on-brand, and can collect the shipping address + a "Personalize to" field).
-// To turn it on: Stripe → Products → add "Signed copy — Beyond the Velvet
-// Ropes" → create a Payment Link (enable "Collect shipping address" + a custom
-// field "Who should Jen sign it to?") → paste the buy.stripe.com URL below.
-// While signedBook is empty, the shop shows a "coming soon" card instead of a
-// broken button.
+//
+// SIGNED BOOKS — live. Sold via a Stripe Payment Link (lowest fees, collects
+// shipping address + a "Who should Jen sign it to?" field).
+//
+// BOOKMARK — three states, checked in this order by app/shop/page.js:
+//   1. `bookmark` has a buy.stripe.com URL  → live "Buy" button.
+//      Only set this when a finished batch exists. Create the Payment Link in
+//      Stripe (Products → Signature Velvet Bookmark → Payment Link, enable
+//      "Collect shipping address" AND "Limit the number of payments" = the
+//      batch size, so it can never oversell) and paste the URL here.
+//   2. else `bookmarkWaitlist` has a Kit landing-page URL → "Join the
+//      first-drop list" button. Create the landing page in Kit (Grow →
+//      Landing Pages & Forms) with the tag "Bookmark Waitlist" and paste
+//      its URL here.
+//   3. else both empty → the card shows a quiet "Coming soon" state with no
+//      dead links.
+//
+// Prices and the fulfillment promise live here too, so copy changes never
+// require touching page code.
 export const SHOP = {
   etsyTee: 'https://www.etsy.com/listing/4320791333/be-the-bumblebee-fly-away-t-shirt',
   foreverAngels: 'https://theforeverangels.com',
+
   signedBook: 'https://buy.stripe.com/4gMaEW0vVaT70Qz9bQds402',
+  signedBookPrice: '$35',
+  signedBookLeadTime: 'Signed by hand, one at a time — please allow 2–3 weeks.',
+
+  bookmark: '',
+  bookmarkWaitlist: '',
+  bookmarkPrice: '$24.99',
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official

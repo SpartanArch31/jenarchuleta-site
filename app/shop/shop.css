@@ -1,0 +1,171 @@
+/* ============================================================
+   Shop page — scoped under .shop-page, token-driven.
+   Product merchandising on the light register. Follows the
+   book.css precedent: page-only styles live here, everything
+   inherits the design-system tokens.
+   ============================================================ */
+
+/* ---- featured product grid (the two things Jen sells direct) ---- */
+.shop-page .product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3.5vw, 44px);
+  margin-top: 44px;
+}
+@media (max-width: 860px) {
+  .shop-page .product-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+.shop-page .product-card {
+  background: var(--surface);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.shop-page .product-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .shop-page .product-card:hover { transform: none; }
+}
+
+/* media frame — fixed aspect ratio so the grid never shifts while
+   images load (and degrades to a quiet linen panel if one is missing) */
+.shop-page .product-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--surface-alt);
+  border-bottom: var(--hairline);
+}
+.shop-page .product-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* book covers shouldn't be cropped — contain them on the linen ground */
+.shop-page .product-media--contain img {
+  object-fit: contain;
+  padding: 7%;
+}
+
+/* status badge over the photo (ink scrim + cream text = AAA on any image) */
+.shop-page .badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  font-family: var(--font-sans);
+  font-size: var(--text-meta);
+  font-weight: var(--w-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-invert);
+  background: color-mix(in srgb, var(--ink) 84%, transparent);
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+}
+
+.shop-page .product-body {
+  padding: 26px 26px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.shop-page .product-body h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+.shop-page .price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: var(--w-semibold);
+  color: var(--text);
+  margin: 0;
+}
+
+.shop-page .product-desc {
+  color: var(--text-secondary);
+  font-size: var(--text-body-s);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+/* fulfillment expectation — important info, so secondary ink (AAA),
+   never the muted metadata tone */
+.shop-page .fulfill {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* CTA pinned to the card bottom so the two cards' buttons align */
+.shop-page .product-cta {
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* secure-checkout reassurance line */
+.shop-page .trust {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+}
+.shop-page .trust svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  color: var(--accent-ink);
+}
+
+/* ---- "elsewhere" row (Etsy + the rescue) ---- */
+.shop-page .more-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+  max-width: 860px;
+  margin-inline: auto;
+}
+@media (max-width: 760px) {
+  .shop-page .more-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- assurance strip ---- */
+.shop-page .assurance {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 26px 0 0;
+}
+
+/* keyboard focus — reinforce the token ring on interactive pieces */
+.shop-page a.btn:focus-visible,
+.shop-page a.mini:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
