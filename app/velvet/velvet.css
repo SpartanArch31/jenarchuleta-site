@@ -44,6 +44,47 @@
   font-size: 1.9rem; margin-top: 26px;
 }
 
+/* ---------- Velvet Letters (reader-exclusive feed) ---------- */
+.velvet-page .letters-band { background: var(--surface); }
+.velvet-page .letters-note { max-width: 54ch; margin: 10px auto 0; }
+.velvet-page .letters-feed { margin-top: 48px; display: flex; flex-direction: column; gap: 48px; }
+.velvet-page .vletter {
+  padding: clamp(28px, 4vw, 44px);
+  background: color-mix(in srgb, var(--espresso) 85%, transparent);
+  border: 1px solid var(--dark-line);
+  border-radius: var(--radius-lg, 16px);
+}
+.velvet-page .vletter + .vletter { position: relative; }
+.velvet-page .vletter-date {
+  font-family: var(--font-sans);
+  font-size: var(--text-meta, .78rem);
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--candlelight);
+  margin-bottom: 10px;
+}
+.velvet-page .vletter-title { font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 20px; }
+.velvet-page .vletter-img {
+  width: 100%; display: block;
+  border-radius: var(--radius, 10px);
+  border: 1px solid var(--dark-line);
+  margin: 0 0 24px;
+}
+.velvet-page .vletter-body p {
+  color: var(--text-secondary);
+  font-size: var(--text-body-l);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+.velvet-page .vletter-body p:last-child { margin-bottom: 0; }
+.velvet-page .vletter-body h2,
+.velvet-page .vletter-body h3 { color: var(--candlelight); margin: 24px 0 12px; }
+.velvet-page .vletter-body blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 18px; margin: 20px 0;
+  color: var(--text); font-style: italic;
+}
+.velvet-page .vletter-body a { color: var(--accent); }
+
 /* ---------- Gallery ---------- */
 .velvet-page .gallery-band { background: var(--surface); }
 .velvet-page .gallery-note { max-width: 56ch; margin: 10px auto 0; }

@@ -38,3 +38,12 @@ export async function getPostBySlug(slug) {
 export async function getAllSlugs() {
   return client.fetch(ALL_SLUGS, {}, REVALIDATE);
 }
+
+// ---- Velvet Letters (reader-exclusive updates on /velvet) ----
+const ALL_VELVET_LETTERS = groq`*[_type == "velvetLetter"] | order(publishedAt desc){
+  _id, title, publishedAt, image, body
+}`;
+
+export async function getVelvetLetters() {
+  return client.fetch(ALL_VELVET_LETTERS, {}, REVALIDATE);
+}

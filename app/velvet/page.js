@@ -1,4 +1,5 @@
 import VelvetClient from './VelvetClient';
+import { getVelvetLetters } from '../sanity/queries';
 
 export const metadata = {
   title: 'The Velvet Pages',
@@ -6,6 +7,7 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function VelvetPage() {
-  return <VelvetClient />;
+export default async function VelvetPage() {
+  const letters = await getVelvetLetters().catch(() => []);
+  return <VelvetClient letters={letters} />;
 }

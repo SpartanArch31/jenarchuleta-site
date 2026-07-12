@@ -1,9 +1,32 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { PortableText } from '@portabletext/react';
 import './velvet.css';
 import KitInlineForm from '../components/KitInlineForm';
 import { KIT_FORM_UID } from '../components/site-data';
+import { urlFor } from '../sanity/image';
+
+function formatLetterDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+// Portable Text renderers for the letter body (links + any inline images).
+const letterComponents = {
+  types: {
+    image: ({ value }) => (
+      <img
+        src={urlFor(value).width(1100).url()}
+        alt={value?.alt || ''}
+        style={{ width: '100%', borderRadius: 'var(--radius, 10px)', margin: '18px 0' }}
+      />
+    ),
+  },
+  marks: {
+    link: ({ value, children }) => <a href={value?.href}>{children}</a>,
+  },
+};
 
 /*
  * The Velvet Pages — the password-protected reader page behind the QR
@@ -32,7 +55,7 @@ const PHOTOS = [
   { src: '/velvet/the-dogs.jpg', alt: 'The whole pack' },
 ];
 
-export default function VelvetClient() {
+export default function VelvetClient({ letters = [] }) {
   const [unlocked, setUnlocked] = useState(false);
   const [ready, setReady] = useState(false);
   const [attempt, setAttempt] = useState('');
@@ -122,6 +145,42 @@ export default function VelvetClient() {
         </p>
         <p className="signoff">— Jen</p>
       </section>
+
+      {/* VELVET LETTERS — reader-exclusive updates (Sanity, newest first) */}
+      {letters && letters.length > 0 && (
+        <section className="letters-band">
+          <div className="wrap text-wrap">
+            <div className="center">
+              <div className="eyebrow">The Velvet Letters</div>
+              <h2>Notes for readers.</h2>
+              <p className="lead letters-note">
+                The behind-the-scenes updates I share with the people who read the book first.
+              </p>
+            </div>
+            <div className="letters-feed">
+              {letters.map((l) => (
+                <article className="vletter" key={l._id}>
+                  <div className="vletter-date">{formatLetterDate(l.publishedAt)}</div>
+                  <h3 className="vletter-title">{l.title}</h3>
+                  {l.image && (
+                    <img
+                      className="vletter-img"
+                      src={urlFor(l.image).width(1200).url()}
+                      alt={l.image.alt || ''}
+                      loading="lazy"
+                    />
+                  )}
+                  {l.body && (
+                    <div className="vletter-body">
+                      <PortableText value={l.body} components={letterComponents} />
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* GALLERY */}
       <section className="gallery-band">
