@@ -105,6 +105,12 @@
   margin: 0;
 }
 
+/* Jen's line — the one she wants to stand out */
+.shop-page .product-desc strong {
+  color: var(--text);
+  font-weight: var(--w-semibold);
+}
+
 /* fulfillment expectation — important info, so secondary ink (AAA),
    never the muted metadata tone */
 .shop-page .fulfill {

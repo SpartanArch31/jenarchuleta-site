@@ -81,11 +81,11 @@ export default function ShopPage() {
 
           {/* SIGNATURE VELVET BOOKMARK */}
           <article className="product-card">
-            <div className="product-media">
+            <div className="product-media product-media--contain">
               {!SHOP.bookmark && <span className="badge">First drop — coming soon</span>}
               <img
                 src="/assets/bookmark.jpg"
-                alt="The Signature Velvet Bookmark — black velvet ribbon, gold heart, and a vintage key pressed in burgundy wax, resting on an open copy of the book"
+                alt="The Signature Velvet Bookmark — black velvet ribbon, a gold heart engraved “you matter. everyone belongs”, and a vintage key pressed in burgundy wax, resting on an open copy of the book"
                 loading="lazy"
               />
             </div>
@@ -97,7 +97,8 @@ export default function ShopPage() {
                 Black velvet with gold detailing, a vintage-style key pressed into a
                 burgundy wax seal, and a gold heart engraved with a reminder I believe
                 in: <em>you matter, everyone belongs.</em> Handmade by me, one at a
-                time — every key is different, so no two are ever alike.
+                time. <strong>Every story is different. Every key is different — so no
+                two are ever alike.</strong>
               </p>
               <p className="fulfill">Made in small batches · every piece one of a kind</p>
               <div className="product-cta">
