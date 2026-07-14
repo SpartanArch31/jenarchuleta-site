@@ -138,6 +138,12 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .mini a:hover { text-decoration: none; }
 @media (max-width:760px){ .cards-3{ grid-template-columns:1fr; } }
 
+/* feature-first — the lead card reads larger, breaking the uniform 3-up rhythm */
+.cards-3.feature-first { grid-template-columns: 1.6fr 1fr 1fr; align-items: start; }
+.cards-3.feature-first .mini:first-child .body { padding: 28px; }
+.cards-3.feature-first .mini:first-child h3 { font-size: var(--text-h3); }
+@media (max-width:760px){ .cards-3.feature-first{ grid-template-columns:1fr; } }
+
 /* trailer feature — video + logline, alternated against the book row (video right) */
 .trailer-feature {
   display: grid; grid-template-columns: 1.2fr .8fr;

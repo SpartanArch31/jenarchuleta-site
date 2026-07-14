@@ -89,9 +89,7 @@ export default function Home() {
               playsInline
               preload="none"
               className="book-trailer-video"
-            >
-              <track kind="captions" srcLang="en" label="English" src="/trailer.en.vtt" default />
-            </video>
+            />
           </figure>
         </div>
       </section>
@@ -100,7 +98,6 @@ export default function Home() {
       <section id="story" className="wrap">
         <div className="story-grid">
           <div>
-            <div className="eyebrow">The Story</div>
             <h2>The long way to an ordinary, beautiful life.</h2>
             <p>I grew up in a small Ohio town being told what I couldn’t do — and I spent my twenties proving otherwise, in rooms most people never get to see. I’m grateful for every bit of it.</p>
             <p>I also walked through some genuinely hard things to get here. I stopped hiding them, and I learned that the hard chapters can become something you give back. What I’m proudest of now isn’t any of the rooms I used to stand in — it’s the plain, happy life right in front of me.</p>
@@ -115,7 +112,6 @@ export default function Home() {
       <section className="wrap">
         <div className="center">
           <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>the fun part…</div>
-          <div className="eyebrow">Meet Jen</div>
           <h2>Beautiful, a little bit of trouble, and not done yet.</h2>
           <p className="lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, getting dressed up, a good laugh. I’ve always had a soft spot for animals, and plenty of rescues at home to prove it. Faith, family, and fun, all at once — and I wouldn’t have it any other way.</p>
         </div>
@@ -132,7 +128,7 @@ export default function Home() {
 
       {/* MOVEMENT */}
       <section id="movement" className="wrap creed" style={{ background: 'var(--surface)' }}>
-        <div className="eyebrow">Beyond the Ropes</div>
+        <div className="threshold-rule" style={{ marginBottom: '20px' }}><span className="diamond" /></div>
         <h2>Everyone belongs beyond the ropes.</h2>
         <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>A velvet rope decides who gets in and who stays out. This is the opposite of that — a quiet practice of choosing the overlooked, and reminding each other that no one’s story is over.</p>
         <ul>
@@ -146,9 +142,9 @@ export default function Home() {
 
       {/* JOURNAL */}
       <section id="journal" className="wrap">
-        <div className="center"><div className="eyebrow">The Journal</div><h2>Notes from the road back to myself.</h2>
+        <div className="center"><h2>Notes from the road back to myself.</h2>
           <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Short, honest writing on faith, family, healing, and starting over.</p></div>
-        <div className="cards-3">
+        <div className="cards-3 feature-first">
           <a className="mini" href="/journal"><div className="body"><div className="k">Faith</div><h3>It is in the waiting that we become who we’re meant to be.</h3></div></a>
           <a className="mini" href="/journal"><div className="body"><div className="k">Healing</div><h3>Survival isn’t the same thing as healing.</h3></div></a>
           <a className="mini" href="/journal"><div className="body"><div className="k">Family</div><h3>What I want my kids to know about getting back up.</h3></div></a>
@@ -158,7 +154,7 @@ export default function Home() {
 
       {/* SHOP */}
       <section id="shop" className="wrap" style={{ background: 'var(--surface)' }}>
-        <div className="center"><div className="eyebrow">The Shop</div><h2>A few things worth sharing.</h2>
+        <div className="center"><h2>A few things worth sharing.</h2>
           <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>A signed copy of the book, a tee I love, and a rescue close to my heart. Story, a good reminder, and a way to give back.</p></div>
         <div className="cards-3">
           <a className="mini" href="/shop"><div className="body"><div className="k">Book</div><h3>Signed copy — <em>Beyond the Velvet Ropes</em></h3><p className="foot-meta">In the shop →</p></div></a>

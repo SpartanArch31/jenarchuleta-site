@@ -71,7 +71,6 @@ export default function BookPage() {
       {/* FILM NOTE */}
       <section className="who center">
         <div className="wrap text-wrap">
-          <div className="eyebrow">On screen</div>
           <h2>A film adaptation is in development.</h2>
           <p className="lead" style={{ maxWidth: '54ch', marginInline: 'auto' }}>The story is being adapted for the screen. More to come.</p>
         </div>
