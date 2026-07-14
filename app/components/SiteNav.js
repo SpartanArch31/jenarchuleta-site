@@ -20,6 +20,7 @@ export default function SiteNav() {
           className="nav-toggle"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
+          aria-controls="nav-links"
           onClick={() => setOpen((v) => !v)}
         >
           <span />
@@ -27,7 +28,7 @@ export default function SiteNav() {
           <span />
         </button>
 
-        <div className={`nav-links${open ? ' open' : ''}`}>
+        <div id="nav-links" className={`nav-links${open ? ' open' : ''}`}>
           <a href="/about" onClick={close}>About</a>
           <a href="/book" onClick={close}>Book</a>
           <a href="/podcast" onClick={close}>Podcast</a>

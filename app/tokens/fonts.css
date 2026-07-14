@@ -3,9 +3,9 @@
    Deliberately selected typefaces for the brand:
      Cinzel            — caps backbone: monogram, lockups, eyebrows
      Cormorant Garamond— display name + memoir reading body
-     Allura / Pinyon   — signature script accent
+     Allura            — signature script accent
      Hanken Grotesk    — clean modern sans for UI / captions
-   Loaded from Google Fonts; drop into @font-face to self-host later
-   with no design change.
+   Loaded via <link> + preconnect in app/layout.js (not @import,
+   which is render-blocking and can't be preloaded). Drop into
+   @font-face to self-host later with no design change.
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Allura&family=Pinyon+Script&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap');

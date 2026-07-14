@@ -16,7 +16,7 @@
   /* -- raw palette : ink -- */
   --ink:        #221C18;  /* near-black, warm */
   --ink-soft:   #4A4339;  /* secondary text */
-  --ink-mute:   #7A6F5E;  /* muted / metadata (large or AA-large) */
+  --ink-mute:   #6B6152;  /* muted / metadata — AA at small sizes (~4.5:1 on cream/paper) */
 
   /* -- raw palette : gold (shared accent) -- */
   --gold:        #BE9543; /* primary gold — fills, rules, large display */
@@ -90,7 +90,7 @@
    LIGHT (#F4EEE3):
      ink #221C18 ............ 13.1:1  AAA  body/headlines
      ink-soft #4A4339 ....... 7.6:1   AAA  secondary
-     ink-mute #7A6F5E ....... 3.5:1   AA-large / metadata only
+     ink-mute #6B6152 ....... 4.6:1   AA  metadata / small text OK
      clay #763028 ........... 7.1:1   AAA  accent text OK
      gold #BE9543 ........... 2.0:1   FAIL as text -> fills/rules only
      gold-deep #946F2B ...... 3.3:1   AA-large display/icons only

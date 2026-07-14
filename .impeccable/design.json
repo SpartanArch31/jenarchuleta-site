@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-14T00:00:00Z",
+  "title": "Design System: Jen Archuleta",
+  "extensions": {
+    "colorMeta": {
+      "gold": {
+        "role": "primary",
+        "displayName": "Brand Gold",
+        "canonical": "#BE9543",
+        "tonalRamp": ["#2A2008", "#4A3A16", "#6B5522", "#8C7130", "#AD8B3D", "#BE9543", "#D2A94F", "#E7CE8F"]
+      },
+      "candlelight": {
+        "role": "primary",
+        "displayName": "Candlelight",
+        "canonical": "#EBD9AC",
+        "tonalRamp": ["#3A3117", "#574928", "#75633A", "#937E4E", "#B29A64", "#CFB884", "#EBD9AC", "#F6ECCE"]
+      },
+      "clay": {
+        "role": "secondary",
+        "displayName": "Oxblood / Clay",
+        "canonical": "#763028",
+        "tonalRamp": ["#2C0F0B", "#431712", "#5C221A", "#763028", "#9A4034", "#B85A4C", "#D08373", "#E6B4A8"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#221C18",
+        "tonalRamp": ["#17120E", "#221C18", "#332B24", "#4A4339", "#7A6F5E", "#B7A98C", "#D8C7A8", "#EDE4D4"]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Warm Cream",
+        "canonical": "#F4EEE3",
+        "tonalRamp": ["#8C7F66", "#A8997C", "#C4B694", "#D8C7A8", "#EDE4D4", "#F4EEE3", "#FBF7EF", "#FFFDF8"]
+      },
+      "near-black": {
+        "role": "neutral",
+        "displayName": "Cinematic Near-Black",
+        "canonical": "#17120E",
+        "tonalRamp": ["#17120E", "#221B15", "#2C241C", "#3A3026", "#524636", "#6B5A40", "#8C7A5A", "#AD9E82"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Cormorant)", "purpose": "Hero name lockup and section-opening headlines. The loudest voice; set generous (up to 6rem)." },
+      "headline": { "displayName": "Headline / H1", "purpose": "Page and article titles. text-wrap: balance." },
+      "body": { "displayName": "Body (Cormorant)", "purpose": "Long-form memoir reading at 19px, line-height 1.62, capped at 66ch." },
+      "script": { "displayName": "Signature Script (Allura)", "purpose": "Rare handwritten grace note in oxblood — a few words only." },
+      "caps": { "displayName": "Backbone Caps (Cinzel)", "purpose": "Monogram, wordmark, footer mono. Caps-only architecture." },
+      "label": { "displayName": "Eyebrow / Label (Hanken)", "purpose": "Tracked uppercase section kickers and metadata in Gold-Deep." }
+    },
+    "shadows": [
+      { "name": "shadow-sm", "value": "0 1px 2px rgba(34,28,24,.05)", "purpose": "Barely-there lift on small elevated chips (light)." },
+      { "name": "shadow", "value": "0 2px 6px rgba(34,28,24,.05), 0 14px 36px rgba(34,28,24,.08)", "purpose": "Standard card / mini-card lift (light)." },
+      { "name": "shadow-lg", "value": "0 4px 10px rgba(34,28,24,.06), 0 36px 80px rgba(34,28,24,.14)", "purpose": "Hero portrait and book cover — the two hero objects (light)." },
+      { "name": "shadow-dark", "value": "0 2px 8px rgba(0,0,0,.45), 0 18px 48px rgba(0,0,0,.5)", "purpose": "Standard lift on dark grounds (deeper, toward true black)." },
+      { "name": "glow-gold", "value": "0 0 28px rgba(210,169,79,.28)", "purpose": "Dark-register warm halo under gold accents, in place of a drop shadow." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.4, 0, .2, 1)", "purpose": "Default easing for color / state transitions." },
+      { "name": "ease-out", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Entrance easing — reveals, threshold draw, press. Exponential ease-out, never bouncy." },
+      { "name": "dur-fast", "value": "160ms", "purpose": "Hover / press micro-interactions." },
+      { "name": "dur", "value": "280ms", "purpose": "Hero load-in rise, default transition." },
+      { "name": "dur-slow", "value": "520ms", "purpose": "Scroll reveals and the threshold draw." }
+    ],
+    "breakpoints": [
+      { "name": "book/story", "value": "820px" },
+      { "name": "hero/nav collapse", "value": "760px" },
+      { "name": "hero stack", "value": "860px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Gold pill with dark text — the main call to action (Get the book, Subscribe).",
+      "html": "<button class=\"ds-btn-primary\">GET THE BOOK</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 26px; border: 1px solid transparent; border-radius: 999px; background: #BE9543; color: #2A2008; cursor: pointer; transition: background-color 160ms cubic-bezier(.4,0,.2,1), transform 160ms cubic-bezier(.16,1,.3,1); } .ds-btn-primary:hover { background: #946F2B; } .ds-btn-primary:focus-visible { outline: 2px solid #946F2B; outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent pill with a strong hairline border and gold-deep text — the secondary action.",
+      "html": "<button class=\"ds-btn-ghost\">READ AN EXCERPT</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 8px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 26px; border: 1px solid #CBB99B; border-radius: 999px; background: transparent; color: #946F2B; cursor: pointer; transition: border-color 160ms cubic-bezier(.4,0,.2,1), transform 160ms cubic-bezier(.16,1,.3,1); } .ds-btn-ghost:hover { border-color: #BE9543; } .ds-btn-ghost:focus-visible { outline: 2px solid #946F2B; outline-offset: 2px; } .ds-btn-ghost:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Category Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Journal category filter — pill outline that inverts to a lit gold fill when active.",
+      "html": "<div class=\"ds-chip-row\"><a class=\"ds-chip is-active\">All</a><a class=\"ds-chip\">Behind the Ropes</a><a class=\"ds-chip\">The Work</a></div>",
+      "css": ".ds-chip-row { display: flex; flex-wrap: wrap; gap: 10px; } .ds-chip { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; border: 1px solid #CBB99B; color: #4A4339; background: transparent; cursor: pointer; transition: border-color 160ms cubic-bezier(.4,0,.2,1), background-color 160ms cubic-bezier(.4,0,.2,1), color 160ms cubic-bezier(.4,0,.2,1); } .ds-chip:hover { border-color: #BE9543; } .ds-chip.is-active { background: #BE9543; color: #2A2008; border-color: transparent; }"
+    },
+    {
+      "name": "Mini Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Journal / feature card — flat paper surface with a hairline border and edge-bleed image.",
+      "html": "<article class=\"ds-mini\"><div class=\"ds-mini-img\"></div><div class=\"ds-mini-body\"><span class=\"ds-mini-k\">Journal</span><h4 class=\"ds-mini-h\">Beyond the Velvet Ropes</h4></div></article>",
+      "css": ".ds-mini { background: #FBF7EF; border: 1px solid #E2D8C6; border-radius: 12px; overflow: hidden; max-width: 320px; } .ds-mini-img { height: 160px; background: linear-gradient(135deg, #EDE4D4, #D8C7A8); } .ds-mini-body { padding: 20px; } .ds-mini-k { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7A6F5E; } .ds-mini-h { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 1.3125rem; line-height: 1.2; color: #221C18; margin: 0.3em 0 0; text-wrap: balance; }"
+    },
+    {
+      "name": "Threshold Rule",
+      "kind": "custom",
+      "refersTo": "threshold-rule",
+      "description": "The signature velvet-rope motif — gold hairlines flanking a center diamond, marking a passage.",
+      "html": "<div class=\"ds-threshold\"><span class=\"ds-diamond\"></span></div>",
+      "css": ".ds-threshold { display: flex; align-items: center; gap: 14px; color: #BE9543; max-width: 220px; margin: 0 auto; } .ds-threshold::before, .ds-threshold::after { content: ''; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, currentColor 60%); } .ds-threshold::after { background: linear-gradient(270deg, transparent, currentColor 60%); } .ds-diamond { width: 5px; height: 5px; transform: rotate(45deg); background: currentColor; flex: none; }"
+    },
+    {
+      "name": "Site Nav",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky translucent bar — Cinzel caps wordmark, Hanken uppercase links with a growing gold underline on hover.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\">Jen Archuleta</span><div class=\"ds-nav-links\"><a>Podcast</a><a>Journal</a><a class=\"ds-btn-primary\">THE BOOK</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 32px; background: color-mix(in srgb, #F4EEE3 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid #E2D8C6; } .ds-brand { font-family: 'Cinzel', Georgia, serif; text-transform: uppercase; letter-spacing: 0.16em; font-size: 1.05rem; color: #221C18; } .ds-nav-links { display: flex; align-items: center; gap: 30px; } .ds-nav-links a:not(.ds-btn-primary) { position: relative; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: #4A4339; text-decoration: none; cursor: pointer; } .ds-nav-links a:not(.ds-btn-primary)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: #BE9543; transform: scaleX(0); transform-origin: left; transition: transform 160ms cubic-bezier(.16,1,.3,1); } .ds-nav-links a:not(.ds-btn-primary):hover { color: #946F2B; } .ds-nav-links a:not(.ds-btn-primary):hover::after { transform: scaleX(1); } .ds-btn-primary { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 18px; border: 1px solid transparent; border-radius: 999px; background: #BE9543; color: #2A2008; cursor: pointer; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Velvet Threshold",
+    "overview": "Every surface is a doorway. The memoir is titled Beyond the Velvet Ropes, and the whole system is built around the moment of passing through — from the public, curated front-of-house into the private truth behind it. That idea is literal in the code: a single gold hairline (the threshold motif) marks each passage, and the site runs in two registers that are the same room under different lighting. The light register is the master brand: warm, paper-toned, editorial, the voice of the reading. The dark register is the cinematic mode: near-black grounds, candlelight gold, the red-carpet hush. They share one DNA — warm gold as the recurring accent and a whisper of oxblood as the emotional undertone. The typographic thesis is 'B's voice, A's backbone': Cormorant Garamond carries both the display name and the long-form memoir reading, while Cinzel provides the engraved caps backbone for the monogram, lockups and eyebrows.",
+    "keyCharacteristics": [
+      "Two registers, one DNA: warm editorial light (default) + cinematic dark, unified by gold + oxblood.",
+      "Serif-forward: Cormorant Garamond reads as both display and body; Cinzel is the caps architecture.",
+      "Editorial restraint: small radii, hairline rules, generous white space, low-and-soft warm shadows.",
+      "One signature motif — the gold velvet-rope threshold line — used sparingly, never clustered.",
+      "Calm motion: slow, ease-out, opacity/translate/scale only; never bouncy."
+    ],
+    "rules": [
+      { "name": "The Gold-Is-A-Fill Rule", "body": "Brand Gold (#BE9543) is for fills, rules and the threshold — never body text on light. It only becomes text as Gold-Deep (#946F2B) and only at large/label sizes.", "section": "colors" },
+      { "name": "The Oxblood Whisper Rule", "body": "Oxblood is a whisper, not a voice. Script signature, links, the occasional pull-quote rule — small doses only. It never carries a surface or a heading.", "section": "colors" },
+      { "name": "The Two-Registers-One-DNA Rule", "body": "Light and dark are never two brands. Every dark surface resolves through the same semantic tokens; gold and oxblood persist across both. Don't invent a dark-only accent.", "section": "colors" },
+      { "name": "The One-Voice-Per-Job Rule", "body": "Cormorant reads and displays; Cinzel is caps-only architecture; Hanken Grotesk does all UI; Allura signs. Never set body copy in Cinzel or a button in Cormorant.", "section": "typography" },
+      { "name": "The Set-It-Large Rule", "body": "Cormorant Garamond reads small for its point size — that's why the scale runs generous (body at 19px, display up to 6rem). Don't shrink it to normal web sizes.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. A shadow is earned by a photographic or product object that genuinely sits above the page (portrait, cover, card) — not by a section or a button.", "section": "elevation" },
+      { "name": "The Warm-Shadow Rule", "body": "Light-mode shadows are tinted with ink (rgba(34,28,24,…)), never neutral black. A cold gray shadow on warm paper reads as a 2014 app.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep Brand Gold (#BE9543) as a fill / rule / motif color; when it must be text on light, use Gold-Deep (#946F2B) at label or large sizes only.",
+      "Do set Cormorant Garamond generously — 19px body, display up to 6rem — because it reads small for its point size.",
+      "Do carry both registers through the same semantic tokens (--bg, --accent, --text); gold and oxblood persist in light and dark alike.",
+      "Do keep surfaces flat by default; reserve the warm, ink-tinted shadows for genuinely lifted objects (portrait, book cover, cards).",
+      "Do use the threshold motif to mark a passage — one per section, and let it draw from the center diamond outward.",
+      "Do keep motion calm: opacity / translate / scale only, slow ease-out durations, with a prefers-reduced-motion fallback that zeroes durations.",
+      "Do hold body reading to the 66ch measure / 720px article width."
+    ],
+    "donts": [
+      "Don't set body text or sentences in Brand Gold on cream — it fails contrast (2:1). Gold is a fill, not a voice.",
+      "Don't let oxblood carry a surface or a heading; it is a whisper — links, the script signature, the odd rule.",
+      "Don't use cold, neutral-black shadows on the warm paper ground; tint every light-mode shadow with ink.",
+      "Don't invent a dark-only accent or treat light and dark as two brands — one DNA, two lightings.",
+      "Don't reach for the tech-author defaults this brand rejects: no purple gradients, neon, glassmorphism, or big-number hero-metric templates.",
+      "Don't cluster the threshold motif or scatter it decoratively — one deliberate passage line, or none.",
+      "Don't shrink Cormorant to normal web sizes or set UI/buttons in it; Hanken Grotesk does all functional UI work.",
+      "Don't put Ink-Mute (#7A6F5E) on small body copy — it's AA-large, for metadata and captions only."
+    ]
+  }
+}

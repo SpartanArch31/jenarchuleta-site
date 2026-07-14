@@ -27,10 +27,10 @@ export default function ShopPage() {
     <div className="shop-page">
       <SiteNav />
 
-      <a id="top" />
+      <a href="#main-content" className="skip-link">Skip to content</a>
 
       {/* HERO + FEATURED PRODUCTS */}
-      <section className="wrap">
+      <section id="main-content" className="wrap">
         <div className="center">
           <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>the good stuff…</div>
           <div className="eyebrow">The Shop</div>

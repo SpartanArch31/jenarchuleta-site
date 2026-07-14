@@ -23,7 +23,7 @@ export default function BookPage() {
       {/* HERO (dark register, echoes the cover) */}
       <section className="hero-section dark" style={{ background: 'var(--bg)' }}>
         <div className="wrap hero">
-          <div><img className="hero-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" /></div>
+          <div><img className="hero-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1707" height="2560" /></div>
           <div>
             <div className="eyebrow">The Memoir — Out Now</div>
             <h1>Beyond the Velvet Ropes</h1>

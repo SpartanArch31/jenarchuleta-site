@@ -3,7 +3,7 @@
    "B's voice, A's backbone":
      Cormorant Garamond  → display name + reading body (the warm voice)
      Cinzel              → caps backbone: monogram, lockups, eyebrows
-     Allura / Pinyon     → signature script accent
+     Allura              → signature script accent
      Hanken Grotesk      → UI, captions, nav, metadata (the quiet sans)
    ============================================================ */
 
@@ -12,8 +12,7 @@
   --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-body:    'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-caps:    'Cinzel', Georgia, serif;          /* backbone caps */
-  --font-script:  'Allura', 'Pinyon Script', cursive;
-  --font-script-alt: 'Pinyon Script', 'Allura', cursive;
+  --font-script:  'Allura', cursive;
   --font-sans:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
 
   /* -- weights -- */

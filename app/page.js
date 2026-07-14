@@ -8,10 +8,10 @@ export default function Home() {
     <>
       <SiteNav />
 
-      <a id="top" />
+      <a href="#main-content" className="skip-link">Skip to content</a>
 
       {/* HERO */}
-      <section className="wrap hero">
+      <section id="main-content" className="wrap hero">
         <div className="hero-copy">
           <div className="eyebrow">Author · Speaker · Advocate</div>
           <div className="hero-script">this isn’t the story<br />you think it is</div>
@@ -24,7 +24,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-media">
-          <img className="portrait" src="/assets/jen-headshot-blazer.jpg" alt="Jen Archuleta" />
+          <img className="portrait" src="/assets/jen-headshot-blazer.jpg" alt="Jen Archuleta" width="1320" height="1649" />
         </div>
       </section>
 
@@ -39,19 +39,19 @@ export default function Home() {
       <section className="wrap pillars">
         <div className="p">
           <div className="eyebrow">Story</div>
-          <h4>The Author</h4>
+          <h3>The Author</h3>
           <p>Her memoir, <em>Beyond the Velvet Ropes</em> — and the writing that turns hard chapters into hope.</p>
           <p><a href="/book" className="btn btn-ghost btn-sm">The book</a></p>
         </div>
         <div className="p">
           <div className="eyebrow">Voice</div>
-          <h4>The Speaker</h4>
+          <h3>The Speaker</h3>
           <p>Faith, resilience, and reinvention — on stages and wherever women are rebuilding.</p>
           <p><a href="#speaking" className="btn btn-ghost btn-sm">Speaking</a></p>
         </div>
         <div className="p">
           <div className="eyebrow">Heart</div>
-          <h4>The Advocate</h4>
+          <h3>The Advocate</h3>
           <p>Beyond the Ropes and The Forever Angels — choosing the overlooked, one act at a time.</p>
           <p><a href="#movement" className="btn btn-ghost btn-sm">The movement</a></p>
         </div>
@@ -60,7 +60,7 @@ export default function Home() {
       {/* BOOK (dark register) */}
       <section id="book" className="book dark">
         <div className="wrap inner">
-          <div><img className="book-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" /></div>
+          <div><img className="book-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1707" height="2560" loading="lazy" /></div>
           <div>
             <div className="eyebrow">The Memoir — Out Now</div>
             <h2>Beyond the Velvet Ropes</h2>
@@ -89,7 +89,9 @@ export default function Home() {
               playsInline
               preload="none"
               className="book-trailer-video"
-            />
+            >
+              <track kind="captions" srcLang="en" label="English" src="/trailer.en.vtt" default />
+            </video>
           </figure>
         </div>
       </section>
@@ -105,7 +107,7 @@ export default function Home() {
             <p className="pull">“You didn’t need rescuing. You needed time. Time to find your voice. Time to believe it mattered.”</p>
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-ghost">Start with the first chapter</a>
           </div>
-          <div className="ph"><img src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta portrait" /></div>
+          <div className="ph"><img src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta portrait" width="1026" height="1532" loading="lazy" /></div>
         </div>
       </section>
 
@@ -118,10 +120,10 @@ export default function Home() {
           <p className="lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, getting dressed up, a good laugh. I’ve always had a soft spot for animals, and plenty of rescues at home to prove it. Faith, family, and fun, all at once — and I wouldn’t have it any other way.</p>
         </div>
         <div className="photo-row">
-          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta — glamour portrait" />
-          <img src="/assets/jen-sultry.jpg" alt="Jen Archuleta" />
-          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" />
-          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta — fit at 50" />
+          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta — glamour portrait" width="941" height="1123" loading="lazy" />
+          <img src="/assets/jen-sultry.jpg" alt="Jen Archuleta" width="599" height="1111" loading="lazy" />
+          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
+          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta — fit at 50" width="1077" height="887" loading="lazy" />
         </div>
         <div className="center" style={{ marginTop: '26px' }}>
           <a href={SOCIALS.instagram} className="btn btn-ghost">Follow along on Instagram</a>
@@ -147,9 +149,9 @@ export default function Home() {
         <div className="center"><div className="eyebrow">The Journal</div><h2>Notes from the road back to myself.</h2>
           <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Short, honest writing on faith, family, healing, and starting over.</p></div>
         <div className="cards-3">
-          <a className="mini" href="/journal"><div className="body"><div className="k">Faith</div><h4>It is in the waiting that we become who we’re meant to be.</h4></div></a>
-          <a className="mini" href="/journal"><div className="body"><div className="k">Healing</div><h4>Survival isn’t the same thing as healing.</h4></div></a>
-          <a className="mini" href="/journal"><div className="body"><div className="k">Family</div><h4>What I want my kids to know about getting back up.</h4></div></a>
+          <a className="mini" href="/journal"><div className="body"><div className="k">Faith</div><h3>It is in the waiting that we become who we’re meant to be.</h3></div></a>
+          <a className="mini" href="/journal"><div className="body"><div className="k">Healing</div><h3>Survival isn’t the same thing as healing.</h3></div></a>
+          <a className="mini" href="/journal"><div className="body"><div className="k">Family</div><h3>What I want my kids to know about getting back up.</h3></div></a>
         </div>
         <div className="center" style={{ marginTop: '28px' }}><a href="/journal" className="btn btn-ghost">Read the journal</a></div>
       </section>
@@ -159,9 +161,9 @@ export default function Home() {
         <div className="center"><div className="eyebrow">The Shop</div><h2>A few things worth sharing.</h2>
           <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>A signed copy of the book, a tee I love, and a rescue close to my heart. Story, a good reminder, and a way to give back.</p></div>
         <div className="cards-3">
-          <a className="mini" href="/shop"><div className="body"><div className="k">Book</div><h4>Signed copy — <em>Beyond the Velvet Ropes</em></h4><p className="foot-meta">In the shop →</p></div></a>
-          <a className="mini" href={SHOP.etsyTee} target="_blank" rel="noopener"><div className="body"><div className="k">Apparel</div><h4>Be the Bumblebee tee</h4><p className="foot-meta">Shop on Etsy →</p></div></a>
-          <a className="mini" href={SHOP.foreverAngels} target="_blank" rel="noopener"><div className="body"><div className="k">Give back</div><h4>The Forever Angels</h4><p className="foot-meta">Support the rescue →</p></div></a>
+          <a className="mini" href="/shop"><div className="body"><div className="k">Book</div><h3>Signed copy — <em>Beyond the Velvet Ropes</em></h3><p className="foot-meta">In the shop →</p></div></a>
+          <a className="mini" href={SHOP.etsyTee} target="_blank" rel="noopener"><div className="body"><div className="k">Apparel</div><h3>Be the Bumblebee tee</h3><p className="foot-meta">Shop on Etsy →</p></div></a>
+          <a className="mini" href={SHOP.foreverAngels} target="_blank" rel="noopener"><div className="body"><div className="k">Give back</div><h3>The Forever Angels</h3><p className="foot-meta">Support the rescue →</p></div></a>
         </div>
         <div className="center" style={{ marginTop: '28px' }}><a href="/shop" className="btn btn-ghost">Visit the shop</a></div>
       </section>

@@ -15,10 +15,10 @@ export default function AboutPage() {
     <>
       <SiteNav />
 
-      <a id="top" />
+      <a href="#main-content" className="skip-link">Skip to content</a>
 
       {/* HERO */}
-      <section className="tim-wrap tim-hero">
+      <section id="main-content" className="tim-wrap tim-hero">
         <div>
           <p className="eyebrow">All of me</p>
           <h1 className="tim-display">Hi — I’m&nbsp;Jen.</h1>
