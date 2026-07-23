@@ -1,0 +1,30 @@
+/* Shared layout for the legal pages (/privacy, /terms, /shipping-returns).
+   Scoped under .legal-page. Defines no new colors/type — composition only,
+   built on the existing design-system tokens (see app/tokens/*). */
+
+.legal-page .legal-head { text-align: center; padding-block: 40px 6px; }
+.legal-page .legal-updated {
+  font-family: var(--font-sans);
+  font-size: var(--text-meta);
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.legal-page .legal-notice {
+  background: var(--surface-alt);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-s);
+  color: var(--text-secondary);
+  margin: 28px 0 44px;
+}
+
+.legal-page .legal-body { padding-bottom: 64px; }
+.legal-page .legal-body h2 { font-size: var(--text-h3); margin: 1.7em 0 .5em; }
+.legal-page .legal-body h2:first-child { margin-top: 0; }
+.legal-page .legal-body p { font-size: var(--text-body); }
+.legal-page .legal-body ul { margin: 0 0 1.2em 1.3em; padding: 0; }
+.legal-page .legal-body li { margin-bottom: .5em; font-size: var(--text-body); }
+.legal-page .legal-body a { text-decoration: underline; text-underline-offset: 2px; }

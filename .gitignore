@@ -12,3 +12,4 @@
 *.pem
 .env*.local
 npm-debug.log*
+.env*

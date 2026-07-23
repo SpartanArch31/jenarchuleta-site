@@ -89,6 +89,10 @@ export default function BookPage() {
       <footer>
         <div className="wrap">
           <p className="foot-meta">© 2026 Jen Archuleta — Jennifer Walcott Archuleta. <a href="/">Home</a></p>
+          <p className="foot-meta">
+            <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a> ·{' '}
+            <a href="/shipping-returns">Shipping &amp; Returns</a>
+          </p>
         </div>
       </footer>
     </div>
