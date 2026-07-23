@@ -14,7 +14,8 @@ export const SOCIALS = {
 
 // The Shop. Apparel lives on Jen's Etsy; the charity is The Forever Angels.
 //
-// SIGNED BOOKS — live. Sold via a Kit product checkout.
+// SIGNED BOOKS — live. Sold via a Stripe Payment Link (lowest fees, collects
+// shipping address + a "Who should Jen sign it to?" field).
 //
 // BOOKMARK — three states, checked in this order by app/shop/page.js:
 //   1. `bookmark` has a buy.stripe.com URL  → live "Buy" button.
@@ -35,7 +36,7 @@ export const SHOP = {
   etsyTee: 'https://www.etsy.com/listing/4320791333/be-the-bumblebee-fly-away-t-shirt',
   foreverAngels: 'https://theforeverangels.com',
 
-  signedBook: 'https://jennifer-archuleta.kit.com/products/signed-copy',
+  signedBook: 'https://buy.stripe.com/4gMaEW0vVaT70Qz9bQds402',
   signedBookPrice: '$35',
   signedBookLeadTime: 'Signed by hand, one at a time — please allow 2–3 weeks.',
 
