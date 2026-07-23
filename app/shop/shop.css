@@ -5,7 +5,7 @@
    inherits the design-system tokens.
    ============================================================ */
 
-/* ---- featured product grid (the two things Jen sells direct) ---- */
+/* ---- featured product grid (things Jen sells direct) ---- */
 .shop-page .product-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

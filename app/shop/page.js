@@ -125,6 +125,50 @@ export default function ShopPage() {
               </div>
             </div>
           </article>
+
+          {/* VELVET CIRCLE MEMBERSHIP */}
+          <article className="product-card">
+            <div className="product-media" />
+            <div className="product-body">
+              <div className="eyebrow">Membership</div>
+              <h3>Velvet Circle Membership</h3>
+              <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
+              <div className="product-cta">
+                {SHOP.velvetCircleMembership ? (
+                  <>
+                    <a href={SHOP.velvetCircleMembership} target="_blank" rel="noopener" className="btn btn-primary">
+                      Join the Velvet Circle
+                    </a>
+                    <TrustLine />
+                  </>
+                ) : (
+                  <span className="btn btn-disabled">Coming soon</span>
+                )}
+              </div>
+            </div>
+          </article>
+
+          {/* FOUNDING BOX — SEASON 1 */}
+          <article className="product-card">
+            <div className="product-media" />
+            <div className="product-body">
+              <div className="eyebrow">Founding Box · Season 1</div>
+              <h3>Founding Box</h3>
+              <p className="price">{SHOP.foundingBoxPrice}</p>
+              <div className="product-cta">
+                {SHOP.foundingBox ? (
+                  <>
+                    <a href={SHOP.foundingBox} target="_blank" rel="noopener" className="btn btn-primary">
+                      Get the Founding Box
+                    </a>
+                    <TrustLine />
+                  </>
+                ) : (
+                  <span className="btn btn-disabled">Coming soon</span>
+                )}
+              </div>
+            </div>
+          </article>
         </div>
 
         <p className="assurance">

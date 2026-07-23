@@ -14,8 +14,7 @@ export const SOCIALS = {
 
 // The Shop. Apparel lives on Jen's Etsy; the charity is The Forever Angels.
 //
-// SIGNED BOOKS — live. Sold via a Stripe Payment Link (lowest fees, collects
-// shipping address + a "Who should Jen sign it to?" field).
+// SIGNED BOOKS — live. Sold via a Kit product checkout.
 //
 // BOOKMARK — three states, checked in this order by app/shop/page.js:
 //   1. `bookmark` has a buy.stripe.com URL  → live "Buy" button.
@@ -36,13 +35,25 @@ export const SHOP = {
   etsyTee: 'https://www.etsy.com/listing/4320791333/be-the-bumblebee-fly-away-t-shirt',
   foreverAngels: 'https://theforeverangels.com',
 
-  signedBook: 'https://buy.stripe.com/4gMaEW0vVaT70Qz9bQds402',
+  signedBook: 'https://jennifer-archuleta.kit.com/products/signed-copy',
   signedBookPrice: '$35',
   signedBookLeadTime: 'Signed by hand, one at a time — please allow 2–3 weeks.',
 
   bookmark: '',
   bookmarkWaitlist: '',
   bookmarkPrice: '$24.99',
+
+  // VELVET CIRCLE MEMBERSHIP — not yet live on the site. Kit product is
+  // ready at https://jennifer-archuleta.kit.com/products/velvet-circle-membership
+  // — paste that URL into `velvetCircleMembership` below to launch it.
+  velvetCircleMembership: '',
+  velvetCircleMembershipPrice: '$19/mo',
+
+  // FOUNDING BOX (Season 1) — not yet live on the site. Kit product is
+  // ready at https://jennifer-archuleta.kit.com/products/founding-box-season-1
+  // — paste that URL into `foundingBox` below to launch it.
+  foundingBox: '',
+  foundingBoxPrice: '$59',
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official
