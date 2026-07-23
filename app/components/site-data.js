@@ -36,7 +36,7 @@ export const SHOP = {
   etsyTee: 'https://www.etsy.com/listing/4320791333/be-the-bumblebee-fly-away-t-shirt',
   foreverAngels: 'https://theforeverangels.com',
 
-  signedBook: 'https://buy.stripe.com/4gMaEW0vVaT70Qz9bQds402',
+  signedBook: 'https://buy.stripe.com/00w6oG1zZd1f6aTbjYds404',
   signedBookPrice: '$35',
   signedBookLeadTime: 'Signed by hand, one at a time — please allow 2–3 weeks.',
 
