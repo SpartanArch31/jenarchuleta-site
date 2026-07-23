@@ -37,7 +37,7 @@ export const SHOP = {
   foreverAngels: 'https://theforeverangels.com',
 
   signedBook: 'https://buy.stripe.com/00w6oG1zZd1f6aTbjYds404',
-  signedBookPrice: '$35',
+  signedBookPrice: '$42 + shipping & handling',
   signedBookLeadTime: 'Signed by hand, one at a time — please allow 2–3 weeks.',
 
   bookmark: '',
