@@ -9,6 +9,7 @@ export const metadata = {
 
 const EFFECTIVE_DATE = 'July 23, 2026';
 const CONTACT_EMAIL = 'jen@jenarchuleta.com';
+const MEMBER_PORTAL_URL = 'https://billing.stripe.com/p/login/14A8wO3l70et2YHco2ds400';
 
 export default function ShippingReturnsPage() {
   return (
@@ -50,10 +51,15 @@ export default function ShippingReturnsPage() {
 
           <h2>Velvet Circle Membership</h2>
           <p>
-            The Velvet Circle Membership is a recurring monthly subscription billed at $19/month until
+            The Velvet Circle Membership is a recurring monthly subscription billed at $9.99/month until
             you cancel. You can cancel anytime before your next billing date to avoid being charged for
             the following month; charges already processed for the current billing period are
-            non-refundable. Cancellation instructions will be added here once the membership is live.
+            non-refundable. Your membership stays active through the end of the billing period
+            you&rsquo;ve already paid for — we don&rsquo;t offer refunds for time already used, but
+            you&rsquo;ll never be charged again after you cancel. You can manage or cancel your
+            membership anytime through the link in your subscription receipt email, or by visiting our
+            member portal directly{' '}
+            <a href={MEMBER_PORTAL_URL} target="_blank" rel="noopener">here</a>.
           </p>
 
           <h2>Questions about your order</h2>
