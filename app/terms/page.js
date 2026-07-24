@@ -24,12 +24,6 @@ export default function TermsPage() {
           <p className="legal-updated">Effective {EFFECTIVE_DATE}</p>
         </div>
 
-        <p className="legal-notice">
-          This page is a general template written to cover how this site actually works today —
-          it is not legal advice and has not been reviewed by an attorney. Please have it reviewed
-          by qualified legal counsel before relying on it.
-        </p>
-
         <div className="legal-body">
           <h2>1. Acceptance of terms</h2>
           <p>

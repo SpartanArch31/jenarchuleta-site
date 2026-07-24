@@ -19,5 +19,12 @@ export default function KitInlineForm({ uid }) {
     el.dataset.loaded = '1';
   }, [uid]);
 
-  return <div ref={ref} className="kit-inline" />;
+  return (
+    <>
+      <div ref={ref} className="kit-inline" />
+      <p className="foot-meta" style={{ marginTop: '10px' }}>
+        By subscribing, you agree to our <a href="/privacy">Privacy Policy</a>.
+      </p>
+    </>
+  );
 }

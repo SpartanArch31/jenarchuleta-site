@@ -12,13 +12,19 @@ export const metadata = {
 // Small reassurance line under each live buy button.
 function TrustLine() {
   return (
-    <p className="trust">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="4" y="11" width="16" height="10" rx="2" />
-        <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-      </svg>
-      Secure checkout — Stripe · Apple Pay · Google Pay
-    </p>
+    <>
+      <p className="trust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <rect x="4" y="11" width="16" height="10" rx="2" />
+          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+        </svg>
+        Secure checkout — Stripe · Apple Pay · Google Pay
+      </p>
+      <p className="foot-meta">
+        By ordering, you agree to our <a href="/terms">Terms</a> and{' '}
+        <a href="/shipping-returns">Shipping &amp; Returns</a> policy.
+      </p>
+    </>
   );
 }
 

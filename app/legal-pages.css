@@ -10,17 +10,6 @@
   margin-top: 8px;
 }
 
-.legal-page .legal-notice {
-  background: var(--surface-alt);
-  border: var(--hairline);
-  border-radius: var(--radius-lg);
-  padding: 18px 22px;
-  font-family: var(--font-sans);
-  font-size: var(--text-body-s);
-  color: var(--text-secondary);
-  margin: 28px 0 44px;
-}
-
 .legal-page .legal-body { padding-bottom: 64px; }
 .legal-page .legal-body h2 { font-size: var(--text-h3); margin: 1.7em 0 .5em; }
 .legal-page .legal-body h2:first-child { margin-top: 0; }

@@ -24,13 +24,6 @@ export default function ShippingReturnsPage() {
           <p className="legal-updated">Effective {EFFECTIVE_DATE}</p>
         </div>
 
-        <p className="legal-notice">
-          This page is a general template written to cover how this site actually works today —
-          it is not legal advice and has not been reviewed by an attorney. Please have it reviewed
-          by qualified legal counsel before relying on it — especially the membership section once
-          Velvet Circle Membership goes live.
-        </p>
-
         <div className="legal-body">
           <h2>Signed copies of the book</h2>
           <p>
