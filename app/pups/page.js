@@ -1,34 +1,14 @@
 import './pups.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import { client } from '../sanity/client';
-import { urlFor } from '../sanity/image';
 import { PUPS } from '../../lib/pups';
+import { pupPhotoUrls } from '../../lib/pup-photos';
 
 export const metadata = {
   title: 'Pups of the Podcast',
   description:
     'Every episode of Unfiltered with Jen Archuleta features a rescue pup looking for a home. The Archuleta family donates toward adoption fees.',
 };
-
-async function heroUrls(slugs) {
-  if (!slugs.length) return {};
-  try {
-    const rows = await client.fetch(
-      `*[_type == "post" && slug.current in $slugs]{ "slug": slug.current, heroImage }`,
-      { slugs },
-      { cache: 'no-store' },
-    );
-    const urls = {};
-    for (const row of rows || []) {
-      if (!row?.heroImage) continue;
-      urls[row.slug] = urlFor(row.heroImage).width(900).fit('max').auto('format').url();
-    }
-    return urls;
-  } catch {
-    return {};
-  }
-}
 
 function PupCard({ pup, photo }) {
   return (
@@ -63,7 +43,9 @@ function PupCard({ pup, photo }) {
 
 export default async function PupsPage() {
   const pups = [...PUPS].sort((a, b) => a.date.localeCompare(b.date));
-  const photos = await heroUrls([...new Set(pups.map((p) => p.imageSlug).filter(Boolean))]);
+  const photos = await pupPhotoUrls([...new Set(pups.map((p) => p.imageSlug).filter(Boolean))]);
+  const featured = pups.find((p) => p.featured) || null;
+  const featuredPhoto = featured ? featured.src || (featured.imageSlug ? photos[featured.imageSlug] : null) : null;
 
   return (
     <div className="pups-page">
@@ -78,7 +60,27 @@ export default async function PupsPage() {
         </p>
       </section>
 
+      {featured && featuredPhoto ? (
+        <section className="wrap pups-featured" aria-labelledby="featured-pup">
+          <div className="pups-featured-card">
+            <img src={featuredPhoto} alt={featured.alt || featured.name} />
+            <div>
+              <div className="eyebrow">Featured pup</div>
+              <h2 id="featured-pup">{featured.name}</h2>
+              {featured.breedAge ? <p className="pup-breed">{featured.breedAge}</p> : null}
+              {featured.rescue ? <p className="pup-rescue"><span className="pup-k">Rescue </span>{featured.rescue}</p> : null}
+              {featured.guest ? <p className="pup-guest"><span className="pup-k">With </span>{featured.guest}</p> : null}
+              <p className="pups-featured-links">
+                {featured.watch ? <a className="btn btn-primary btn-sm" href={featured.watch} target="_blank" rel="noopener noreferrer">Watch the episode</a> : null}
+                {featured.post ? <a className="btn btn-ghost btn-sm" href={`/journal/${featured.post}`}>Read more</a> : null}
+              </p>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="wrap" style={{ paddingTop: 0 }}>
+        <div className="eyebrow center" style={{ marginBottom: '18px' }}>The full collection</div>
         <div className="pups-grid">
           {pups.map((pup) => {
             const photo = pup.src || (pup.imageSlug ? photos[pup.imageSlug] : null);
@@ -91,7 +93,7 @@ export default async function PupsPage() {
           {' · '}
           <a href="/sponsors">Sponsors</a>
           {' · '}
-          <a href="/about#faith">The dogs at home</a>
+          <a href="/about#me">The dogs at home</a>
         </p>
       </section>
 

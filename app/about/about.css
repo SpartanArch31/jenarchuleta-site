@@ -107,3 +107,11 @@
   .tim-sticky { position: static; }
   .tim-display { white-space: normal; }
 }
+
+/* October 2026: photos + professional bio */
+.tim-fun { padding-bottom: 0; }
+.tim-work { padding-block: clamp(56px, 8vw, 96px); }
+.tim-work-inner { max-width: 46rem; margin: 0 auto; }
+.tim-work-inner .tim-lead { margin-top: 18px; }
+.tim-work-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+#forever-angels { position: relative; }

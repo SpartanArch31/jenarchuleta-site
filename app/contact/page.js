@@ -1,8 +1,6 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import ChapterContact from '../components/ChapterContact';
-import KitInlineForm from '../components/KitInlineForm';
-import { BOOKING_EMAIL, KIT_FORM_UID, PODCAST, SOCIALS } from '../components/site-data';
+import { BOOKING_EMAIL } from '../components/site-data';
 import './contact.css';
 
 export const metadata = {
@@ -11,19 +9,8 @@ export const metadata = {
     'Press, interviews, speaking, and events. Email Jen Walcott Archuleta.',
 };
 
-const SOCIAL_BUTTONS = [
-  { label: 'Instagram', href: SOCIALS.instagram },
-  { label: 'X', href: SOCIALS.x },
-  { label: 'TikTok', href: SOCIALS.tiktok },
-  { label: 'Facebook', href: SOCIALS.facebook },
-];
-
-const FOLLOW = [
-  { label: 'LinkedIn', href: SOCIALS.linkedin },
-  { label: 'Podcast on Buzzsprout', href: PODCAST.buzzsprout },
-  { label: 'Podcast on YouTube', href: PODCAST.youtube },
-];
-
+// One clear contact destination for press, interviews, speaking, and events.
+// Social links live in the "Stay close" section at the bottom of every page.
 export default function ContactPage() {
   const mailto = `mailto:${BOOKING_EMAIL}`;
 
@@ -48,40 +35,15 @@ export default function ContactPage() {
       </section>
 
       <section id="speaking" className="wrap contact-body" style={{ paddingTop: 0 }}>
-        <h2>Book me to speak</h2>
+        <h2>Press, interviews, speaking, and events</h2>
         <p>
           Thank you for reaching out. Whether you are a reporter, an event planner looking for a speaker, or a podcast host who would like to have me on, I would love to hear from you.
         </p>
-        <p>For press, interviews, speaking, and events:</p>
         <p className="contact-email"><a href={mailto}>{BOOKING_EMAIL}</a></p>
         <p>
           Please include your name, your outlet or event, the date, and a little about what you have in mind. I read every message.
         </p>
-
-        <h2>Follow along</h2>
-        <div className="contact-socials">
-          {SOCIAL_BUTTONS.map((item) => (
-            <a key={item.href} className="btn btn-ghost" href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
-          ))}
-        </div>
-        <ul className="contact-follow">
-          {FOLLOW.map((item) => (
-            <li key={item.href}>
-              <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
-            </li>
-          ))}
-        </ul>
       </section>
-
-      <section id="subscribe" className="capture">
-        <div className="wrap text-wrap">
-          <h2>Subscribe</h2>
-          <p className="lead">An email from me, now and then.</p>
-          <KitInlineForm uid={KIT_FORM_UID} submitLabel="Subscribe" />
-        </div>
-      </section>
-
-      <ChapterContact />
 
       <SiteFooter />
     </div>

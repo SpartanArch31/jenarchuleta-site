@@ -1,12 +1,13 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import { KIT_FREE_CHAPTER_URL, OG_IMAGE, SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
+import VelvetCirclePanel, { VELVET_CIRCLE_PERKS } from '../components/VelvetCirclePanel';
+import { OG_IMAGE, SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
 import './shop.css';
 
 export const metadata = {
   title: 'Shop',
   description:
-    'Signed copies of Beyond the Velvet Ropes, The Backstage Bundle, the handmade Signature Velvet Bookmark, and the Be the Bumblebee tee.',
+    'The handmade Signature Velvet Bookmark, signed copies of Beyond the Velvet Ropes, the Velvet Circle book club, and The Backstage Bundle.',
   openGraph: { images: [OG_IMAGE] },
   twitter: { card: 'summary_large_image', images: [OG_IMAGE.url] },
 };
@@ -44,49 +45,12 @@ export default function ShopPage() {
           <div className="eyebrow">The Shop</div>
           <h2>A few things worth sharing.</h2>
           <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>
-            A signed copy of the book, The Backstage Bundle, a keepsake I make by hand,
-            and a tee with a message I love.
+            A keepsake I make by hand, a signed copy of the book, my private book club,
+            and a little bundle from backstage.
           </p>
         </div>
 
         <div className="product-grid">
-          {/* SIGNED BOOK */}
-          <article className="product-card">
-            <div className="product-media product-media--contain">
-              {SHOP.signedBookSoldOut && <span className="badge">Sold out — restocking soon</span>}
-              <img
-                src="/assets/book-cover.jpg"
-                alt="Beyond the Velvet Ropes book cover"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">The Book · Signed &amp; Personalized</div>
-              <h3>Signed copy — <em>Beyond the Velvet Ropes</em></h3>
-              <p className="price">{SHOP.signedBookPrice}</p>
-              <p className="product-desc">
-                Signed by me, with a note to whoever you’d like — you, or someone
-                who needs to hear that their story isn’t over.
-              </p>
-              <p className="fulfill">
-                {SHOP.signedBookSoldOut ? SHOP.signedBookSoldOutNote : SHOP.signedBookLeadTime}
-              </p>
-              <div className="product-cta">
-                {SHOP.signedBookSoldOut ? (
-                  <span className="btn btn-disabled">Sold out — restocking soon</span>
-                ) : SHOP.signedBook ? (
-                  <>
-                    <a href={SHOP.signedBook} target="_blank" rel="noopener" className="btn btn-primary">
-                      Order a signed copy
-                    </a>
-                    <TrustLine />
-                  </>
-                ) : (
-                  <span className="btn btn-disabled">Coming soon</span>
-                )}
-              </div>
-            </div>
-          </article>
-
           {/* SIGNATURE VELVET BOOKMARK */}
           <article className="product-card">
             <div className="product-media product-media--contain">
@@ -134,8 +98,44 @@ export default function ShopPage() {
             </div>
           </article>
 
+          {/* SIGNED BOOK */}
+          <article className="product-card" id="signed-copy">
+            <div className="product-media product-media--contain">
+              {SHOP.signedBookSoldOut && <span className="badge">Sold out — restocking soon</span>}
+              <img
+                src="/assets/book-cover.jpg"
+                alt="Beyond the Velvet Ropes book cover"
+              />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">The Book · Signed &amp; Personalized</div>
+              <h3>Signed copy — <em>Beyond the Velvet Ropes</em></h3>
+              <p className="price">{SHOP.signedBookPrice}</p>
+              <p className="product-desc">
+                Signed by me, with a note to whoever you’d like — you, or someone
+                who needs to hear that their story isn’t over.
+              </p>
+              <p className="fulfill">
+                {SHOP.signedBookSoldOut ? SHOP.signedBookSoldOutNote : SHOP.signedBookLeadTime}
+              </p>
+              <div className="product-cta">
+                {SHOP.signedBookSoldOut ? (
+                  <span className="btn btn-disabled">Sold out — restocking soon</span>
+                ) : SHOP.signedBook ? (
+                  <>
+                    <a href={SHOP.signedBook} target="_blank" rel="noopener" className="btn btn-primary">
+                      Order a signed copy
+                    </a>
+                    <TrustLine />
+                  </>
+                ) : (
+                  <span className="btn btn-disabled">Coming soon</span>
+                )}
+              </div>
+            </div>
+          </article>
+
           {/* VELVET CIRCLE MEMBERSHIP */}
-          {/* TODO: Velvet Circle members area idea is pending Jen's decision. Do not build yet. */}
           <article className="product-card" id="velvet-circle">
             <div className="product-media product-media--circle">
               <img
@@ -150,20 +150,12 @@ export default function ShopPage() {
               <h3>Velvet Circle Membership</h3>
               <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
               <ul className="product-list">
-                <li>The Velvet Letter, and the passcode to open it</li>
-                <li>Up to 3 questions a month that Jen answers in writing</li>
-                <li>Live monthly Zooms begin once the circle reaches 13 members</li>
-                <li>
-                  <a className="cancel-link" href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener">Cancel anytime</a>
-                </li>
+                {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
               </ul>
               <p className="product-desc">
-                Velvet Circle membership includes the passcode to The Velvet Letter. The passcode is also printed in the back of the book, right under the QR code.
+                My private book club for readers of <em>Beyond the Velvet Ropes</em>.{' '}
+                <a href="#velvet-circle-faq">How it works</a>
               </p>
-              <p className="product-desc">
-                Live monthly Zooms begin once the Velvet Circle reaches 13 members. Until then, members can send me up to 3 questions each month, and I&rsquo;ll answer every one in writing.
-              </p>
-              <p className="product-desc">I&rsquo;d love for you to join us.</p>
               <div className="product-cta">
                 {SHOP.velvetCircleMembership ? (
                   <>
@@ -179,7 +171,10 @@ export default function ShopPage() {
             </div>
           </article>
 
-          {/* THE BACKSTAGE BUNDLE. No Stripe Payment Link exists, so checkout stays off.
+          {/* THE BACKSTAGE BUNDLE ($69). No Stripe Payment Link exists yet, so checkout stays
+              off and the card says Coming soon. When it is created: one-time $69, collect
+              shipping address, paste into SHOP.foundingBox. The first month of the Velvet
+              Circle is comped by hand; continuing is the customer's choice (never auto-enroll).
               #backstage-box stays so older links still land on this card. */}
           <article className="product-card" id="backstage-bundle">
             <span id="backstage-box" />
@@ -196,16 +191,19 @@ export default function ShopPage() {
               <h3>The Backstage Bundle</h3>
               <p className="price">{SHOP.foundingBoxPrice}</p>
               <p className="product-desc">
-                My signed copy of <em>Beyond the Velvet Ropes</em>, the velvet bookmark
-                I make by hand, and a pair of black velvet bunny ears.
+                Everything from backstage, together: my signed book, the velvet bookmark I make by
+                hand, black velvet bunny ears, and your first month of the Velvet Circle.
               </p>
               <ul className="product-list">
-                <li>Jen’s signed copy of <em>Beyond the Velvet Ropes</em></li>
-                <li>Her velvet bookmark</li>
+                <li>A signed copy of <em>Beyond the Velvet Ropes</em></li>
+                <li>My handmade velvet bookmark</li>
                 <li>Black velvet bunny ears</li>
-                <li>Your first month of the Velvet Circle free, then $9.99 a month.</li>
+                <li>Your first month of the Velvet Circle, included</li>
               </ul>
-              <p className="fulfill">Ships when this drop is ready.</p>
+              <p className="fulfill">
+                After your first month, you choose whether to continue the Velvet Circle for $9.99 a
+                month. You are never enrolled automatically. No gift box is included.
+              </p>
               <div className="product-cta">
                 {SHOP.foundingBox ? (
                   <>
@@ -217,7 +215,7 @@ export default function ShopPage() {
                 ) : (
                   <>
                     <span className="btn btn-disabled">Coming soon</span>
-                    <a href="/#letter" className="btn btn-ghost">Notify me</a>
+                    <a href="#letter" className="btn btn-ghost">Get updates</a>
                   </>
                 )}
               </div>
@@ -230,33 +228,59 @@ export default function ShopPage() {
         </p>
       </section>
 
-      {/* ELSEWHERE — Etsy + the rescue */}
-      <section className="wrap" style={{ paddingTop: 0 }}>
+      {/* THE VELVET CIRCLE — explained before anyone subscribes */}
+      <div id="velvet-circle-details">
+        <VelvetCirclePanel />
+      </div>
+
+      <section id="velvet-circle-faq" className="wrap text-wrap vc-faq">
         <div className="center">
-          <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 34px' }}><span className="diamond" /></div>
-          <div className="eyebrow">And a little more</div>
+          <div className="eyebrow">The Velvet Circle</div>
+          <h2>Questions, answered.</h2>
         </div>
-
-        <div className="more-grid">
-          <a className="mini" href={SHOP.etsyTee} target="_blank" rel="noopener">
-            <div className="body">
-              <div className="k">Apparel · On Etsy</div>
-              <h4>Be the Bumblebee tee</h4>
-              <p className="foot-meta">A little reminder to fly your own way — shop on Etsy →</p>
-            </div>
-          </a>
-          <a className="mini" href={SHOP.foreverAngels} target="_blank" rel="noopener">
-            <div className="body">
-              <div className="k">Give back</div>
-              <h4>The Forever Angels</h4>
-              <p className="foot-meta">The rescue closest to my heart. Every bit helps →</p>
-            </div>
-          </a>
-        </div>
-
-        <div className="center" style={{ marginTop: '28px' }}>
-          <a href={KIT_FREE_CHAPTER_URL} className="btn btn-ghost">New here? Read the first chapter free</a>
-        </div>
+        <details>
+          <summary>What do members receive?</summary>
+          <p>
+            The Velvet Circle is my private book club for readers of <em>Beyond the Velvet Ropes</em>.
+            As a member, you can email me your questions about the book and my experiences, up to
+            three a month, and I’ll answer every one in writing.
+          </p>
+        </details>
+        <details>
+          <summary>When do the Zoom conversations begin?</summary>
+          <p>
+            Once 13 active members have joined, I’ll begin monthly group Zoom conversations. Until
+            then, membership is the written Q&amp;A.
+          </p>
+        </details>
+        <details>
+          <summary>How does billing work?</summary>
+          <p>
+            Membership is $9.99 a month, billed monthly through Stripe until you cancel.
+          </p>
+        </details>
+        <details>
+          <summary>How do I cancel?</summary>
+          <p>
+            Anytime, on your own, from your Stripe account page:{' '}
+            <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">manage or cancel your membership</a>.
+          </p>
+        </details>
+        <details>
+          <summary>Does membership include a signed book or gifts?</summary>
+          <p>
+            No. The $9.99 membership is the book club itself. If you’d like my signed book, the
+            velvet bookmark, and bunny ears, that’s <a href="#backstage-bundle">The Backstage Bundle</a>,
+            which also includes your first month of the Velvet Circle.
+          </p>
+        </details>
+        <details>
+          <summary>Is The Velvet Letter part of the membership?</summary>
+          <p>
+            The Velvet Letter is for readers of the book. Your secret passcode is beside the QR code
+            inside the back cover. <a href="/velvet">Open The Velvet Letter</a>.
+          </p>
+        </details>
       </section>
 
       <SiteFooter />

@@ -1,11 +1,15 @@
 import './velvet-circle-panel.css';
 import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 
-const PERKS = [
-  '$9.99 a month',
-  'The Velvet Letter, and the passcode to open it',
-  'Up to 3 questions a month answered in writing',
-  'Live monthly Zooms begin once the circle reaches 13 members',
+// What the $9.99 membership is, said plainly BEFORE anyone subscribes.
+// Jen's rules (October 27, 2026): members can email her questions about the
+// book and her experiences; monthly group Zooms begin once 13 active members
+// have joined. Never promise signed books, gifts, or monthly Zooms as
+// immediate benefits of the $9.99 subscription.
+export const VELVET_CIRCLE_PERKS = [
+  'Email me your questions about the book and my experiences, and I’ll answer in writing (up to 3 a month)',
+  'Monthly group Zoom conversations begin once 13 active members have joined',
+  '$9.99 a month. Cancel anytime.',
 ];
 
 export default function VelvetCirclePanel() {
@@ -35,21 +39,14 @@ export default function VelvetCirclePanel() {
         <div className="vc-announce-text">
           <p className="vc-announce-eyebrow">THE VELVET CIRCLE</p>
           <h2 id="vc-announce-title">
-            A private book club and community for readers of Beyond the Velvet Ropes.
+            My private book club for readers of Beyond the Velvet Ropes.
           </h2>
           <p className="vc-announce-line">
             Real conversations. Untold stories. A place to connect, ask questions, and grow together.
           </p>
-          <p className="vc-announce-line">
-            Membership includes the passcode to The Velvet Letter. The passcode is also printed in the back of the book, right under the QR code.
-          </p>
           <ul className="vc-announce-perks">
-            {PERKS.map((perk) => <li key={perk}>{perk}</li>)}
+            {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
           </ul>
-          <p className="vc-announce-box">
-            Want the full experience? The Backstage Bundle is coming soon. It has my signed book, my velvet bookmark, and black velvet bunny ears.{' '}
-            <a href="/shop#backstage-bundle">See the bundle</a>
-          </p>
           {join ? (
             <a className="btn btn-primary" href={join} target="_blank" rel="noopener noreferrer">
               Join the Velvet Circle
@@ -58,7 +55,7 @@ export default function VelvetCirclePanel() {
             <span className="btn btn-disabled">Coming soon</span>
           )}
           <p className="vc-announce-cancel">
-            <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Cancel anytime</a>
+            <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel your membership</a>
           </p>
         </div>
       </div>

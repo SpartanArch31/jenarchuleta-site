@@ -18,3 +18,11 @@
 .book-page .who li { margin-bottom:10px; color:var(--text-secondary); }
 
 .book-page footer { padding-block:48px; }
+
+/* October 2026: trailer, film/documentary, Velvet invite, bundle + reviews */
+.book-page .book-trailer { padding-block: clamp(32px, 6vw, 64px); }
+.book-page .book-screen { padding-block: clamp(48px, 7vw, 80px); }
+.book-page .book-screen h2 { font-size: var(--text-h1); margin: 6px 0 18px; }
+.book-page .book-screen p { color: var(--text-secondary); }
+.book-page .book-more { padding-block: clamp(48px, 7vw, 80px); }
+.book-page .book-more .buy-row { margin-top: 18px; }

@@ -3,7 +3,7 @@ import path from 'path';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import CopyTextButton from '../components/CopyTextButton';
-import { BOOKING_EMAIL, PODCAST, SOCIALS } from '../components/site-data';
+import { APPEARANCES, AS_SEEN_IN, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
@@ -23,71 +23,9 @@ export const metadata = {
 // web image (1000x1500), not a press-resolution file.
 // Outlet logos are names until files arrive in public/assets/logos/.
 
-const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A film based on her memoir is in development with Leone Marucci’s Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
+const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A feature film based on her memoir is in development with Leone Marucci and Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
 
-const PRESS = [
-  {
-    outlet: 'Tribune Chronicle',
-    headline: 'Area native offers peek behind the Velvet Rope',
-    byline: 'Andy Gray',
-    date: 'Aug 20, 2026',
-    href: 'https://www.vindy.com/life/ticket/2026/08/area-native-offers-peak-behind-the-velvet-rope/',
-  },
-  {
-    outlet: 'The Business Journal Daily',
-    headline: 'Youngstown Native Jennifer Walcott Archuleta Returns Home for Book Signing',
-    date: 'Aug 18, 2026',
-    href: 'https://businessjournaldaily.com/youngstown-native-jennifer-walcott-archuleta-returns-home-for-book-signing/',
-  },
-  {
-    outlet: 'Mahoning Matters',
-    headline: 'Youngstown native Jen Archuleta releases book focusing on overcoming challenges',
-    byline: 'Kelcey Norris',
-    date: 'Aug 13, 2026',
-    href: 'https://www.mahoningmatters.com/news/local/article316760975.html',
-  },
-  {
-    outlet: 'Boardman News',
-    headline: 'Former Playboy Playmate Will Hold Book Signing Aug. 23 at Barnes & Noble',
-    href: 'https://www.facebook.com/boardmannews/posts/former-playboy-playmate-will-hold-book-signing-aug-23-at-barnes-nobleaug-6-12-20/1703665671629905/',
-  },
-];
 
-const APPEARANCES = [
-  {
-    outlet: 'WKBN 27 First News',
-    kind: 'TV',
-    headline: 'Former Playboy Bunny holds book signing in Boardman',
-    byline: 'Sydney Brown',
-    date: 'Aug 23, 2026',
-    note: 'Video interview',
-    href: 'https://www.wkbn.com/news/local-news/boardman-news/former-playboy-bunny-holds-book-signing-in-boardman/',
-    linkLabel: 'Watch the interview',
-  },
-  {
-    outlet: 'The Mr. Sports Show, Star 94.7 FM',
-    kind: 'Radio',
-    headline: 'Interview on the memoir',
-    date: 'Aug 2026',
-    href: 'https://riverside.com/shared/exported-clip/1d1e2c38397aa65200f6',
-    linkLabel: 'Listen',
-  },
-  {
-    outlet: 'Youngstown Studio',
-    kind: 'TikTok',
-    headline: 'Youngstown Studio on TikTok',
-    href: 'https://www.tiktok.com/@youngstownstudio',
-    linkLabel: 'Watch',
-  },
-  {
-    outlet: 'Unfiltered with Jen Archuleta',
-    kind: 'Podcast',
-    headline: 'The episode where Adam interviews Jen',
-    date: 'May 26, 2026',
-    href: 'https://unfilteredwithjenarchuleta.buzzsprout.com/2467154/episodes/19243689-jennifer-archuleta-abuse-the-fbi-sting-beyond-the-velvet-ropes',
-    linkLabel: 'Listen',
-  },
-];
 
 const HEADSHOTS = [
   { href: '/assets/jen-headshot-blazer.jpg', label: 'Blazer', width: 1000, height: 1249 },
@@ -95,28 +33,14 @@ const HEADSHOTS = [
   { href: '/assets/jen-headshot-signature.jpg', label: 'Signature', width: 1162, height: 1597 },
 ];
 
-const LOGO_NAMES = [
-  'The Vindicator',
-  'Tribune Chronicle',
-  'WKBN 27 First News',
-  'The Business Journal Daily',
-  'Mahoning Matters',
-  'Star 94.7 FM',
-  'Steelyard Pictures',
-  'Crash Cat Media Group',
-];
 
 function publicFileExists(rel) {
   return fs.existsSync(path.join(process.cwd(), 'public', rel));
 }
 
-function cardMeta(item) {
-  return [item.kind, item.byline, item.date, item.note].filter(Boolean).join(' · ');
-}
 
 export default function MediaPage() {
   const hasPressKit = publicFileExists('press/jen-walcott-archuleta-press-kit.pdf');
-  const mailto = `mailto:${BOOKING_EMAIL}`;
 
   return (
     <div className="media-page">
@@ -129,16 +53,24 @@ export default function MediaPage() {
           Thank you for your interest in my story. Here you will find the interviews, articles, and conversations around Beyond the Velvet Ropes and my podcast. If you would like me on your show, at your event, or in your pages, I would love to hear from you.
         </p>
         <div className="media-actions">
-          <a className="btn btn-primary" href="/contact#speaking">Book me to speak</a>
-          <a className="btn btn-ghost" href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a className="btn btn-primary" href="/contact">Contact for press and speaking</a>
+          <a className="btn btn-ghost" href="#press-kit">Press kit</a>
         </div>
-        <h2>Follow along</h2>
-        <div className="media-actions">
-          <a className="btn btn-ghost" href={SOCIALS.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a className="btn btn-ghost" href={SOCIALS.x} target="_blank" rel="noopener noreferrer">X</a>
-          <a className="btn btn-ghost" href={SOCIALS.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
-          <a className="btn btn-ghost" href={SOCIALS.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-        </div>
+      </section>
+
+      {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js. */}
+      <section className="wrap text-wrap">
+        <h2>Film and documentary</h2>
+        <p>{FILM.film}</p>
+        <p>{FILM.documentary}</p>
+        <p>
+          {FILM.partners.map((partner, i) => (
+            <span key={partner.href}>
+              {i > 0 ? ' · ' : ''}
+              <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
+            </span>
+          ))}
+        </p>
       </section>
 
       <section className="wrap">
@@ -156,7 +88,7 @@ export default function MediaPage() {
       </section>
 
       <section className="wrap">
-        <h2>Media appearances</h2>
+        <h2>Interviews and appearances</h2>
         <div className="media-grid">
           {APPEARANCES.map((item) => (
             <article className="media-card" key={item.href}>
@@ -169,42 +101,17 @@ export default function MediaPage() {
         </div>
       </section>
 
-      <section className="wrap text-wrap">
-        <h2>Film and documentary</h2>
-        <p>
-          Beyond the Velvet Ropes is being developed into a feature film with Leone Marucci and Steelyard Pictures. The screenplay was named a Second Rounder in the 2026 Austin Film Festival Screenplay Competition.
-        </p>
-        <p>
-          A feature documentary based on Beyond the Velvet Ropes is in development with filmmaker Mark Andrew Hamer of{' '}
-          <a href="https://CrashCatMedia.com" target="_blank" rel="noopener noreferrer">Crash Cat Media Group</a>.
-        </p>
-        <p>
-          <a href="https://www.steelyardpictures.com/bio" target="_blank" rel="noopener noreferrer">Steelyard Pictures</a>
-          {' · '}
-          <a href="https://CrashCatMedia.com" target="_blank" rel="noopener noreferrer">Crash Cat Media Group</a>
-        </p>
-      </section>
-
-      <section className="wrap">
-        <h2>My podcast</h2>
-        <p className="media-lead">Unfiltered with Jen Archuleta.</p>
-        <div className="media-actions">
-          <a className="btn btn-primary" href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
-          <a className="btn btn-ghost" href={PODCAST.youtube} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-        </div>
-      </section>
-
       <section id="speaking" className="wrap text-wrap">
         <h2>Speaking</h2>
         <p>
           I speak about faith, resilience, and starting over. About surviving hard things and rebuilding.
         </p>
         <p>
-          To invite me to speak, email <a href={mailto}>{BOOKING_EMAIL}</a> or use the <a href="/contact#speaking">contact page</a>.
+          <a className="btn btn-primary" href="/contact">Invite me to speak</a>
         </p>
       </section>
 
-      <section className="wrap">
+      <section id="press-kit" className="wrap">
         <h2>Press kit</h2>
         <div className="bio-block">
           <div className="bio-head">
@@ -236,17 +143,13 @@ export default function MediaPage() {
       <section className="wrap center">
         <h2>As seen in</h2>
         <ul className="media-logos">
-          {LOGO_NAMES.map((name) => (
+          {AS_SEEN_IN.map((name) => (
             <li key={name}>{name}</li>
           ))}
         </ul>
-      </section>
-
-      <section className="booking">
-        <div className="wrap text-wrap">
-          <p className="lead">For press, interviews, and speaking, email <a href={mailto}>{BOOKING_EMAIL}</a></p>
-          <a className="btn btn-primary" href={mailto}>Email Jen</a>
-        </div>
+        <p className="media-lead" style={{ marginTop: '28px' }}>
+          For press, interviews, and speaking: <a href="/contact">contact me here</a>.
+        </p>
       </section>
 
       <SiteFooter />

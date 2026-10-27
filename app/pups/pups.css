@@ -102,3 +102,27 @@
 @media (max-width: 620px) {
   .pups-grid { grid-template-columns: 1fr; }
 }
+
+/* Featured pup, above the full collection */
+.pups-featured { padding-top: 0; }
+.pups-featured-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(22px, 4vw, 48px);
+  align-items: center;
+  background: var(--surface);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: clamp(18px, 3vw, 32px);
+}
+.pups-featured-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  display: block;
+}
+.pups-featured-card h2 { margin: 6px 0 8px; }
+.pups-featured-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+@media (max-width: 720px) {
+  .pups-featured-card { grid-template-columns: 1fr; }
+}

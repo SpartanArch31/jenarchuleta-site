@@ -12,7 +12,7 @@ import sizes from '../velvet/slide-sizes.json';
 // its slide is left out. /velvet still reads captions.json.
 // Out of this slideshow:
 // presskit-headshot-glam (home hero). jen-glam, jen-fitness, jen-sultry,
-// and jen-fun2 (the homepage photo row; the row itself stays). jen-fun
+// and jen-fun2 (the photo row on About, above this slideshow). jen-fun
 // (group of adults, not a dog photo). jen-bw-coat and velvet 07 (the coat
 // already in the story section as jen-bw-coat2). 08 and 44 are already
 // out of captions.json. 09 stays on /velvet. 24, 25, and 26 show the kids
@@ -260,7 +260,7 @@ function Chevron({ direction }) {
   );
 }
 
-export default function PhotoGallery() {
+export default function PhotoGallery({ showTitle = true } = {}) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
@@ -355,7 +355,7 @@ export default function PhotoGallery() {
   return (
     <section id="gallery" className="gallery-band" aria-labelledby="gallery-heading">
       <div className="wrap">
-        <h2 id="gallery-heading">Gallery</h2>
+        <h2 id="gallery-heading" className={showTitle ? undefined : 'visually-hidden'}>Gallery</h2>
         <div
           ref={stageRef}
           className="gallery-stage"

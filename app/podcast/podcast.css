@@ -17,3 +17,13 @@
 
 .guest { text-align:center; }
 .guest h2 { font-size: var(--text-display-l); }
+
+.pod-count {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 14px;
+}
+.pod-pup-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }

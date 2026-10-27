@@ -1,15 +1,16 @@
-import { Fragment } from 'react';
 import './journal.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import CategorySelect from './CategorySelect';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
+import { CATEGORY_ORDER, curatePosts } from './curation';
 
-// Chip order: Podcast, Pup of the Podcast, then the Sponsors page link, then
-// the rest of this list. Cooking stays in the list so its chip comes back as
-// soon as a post uses that category. Empty categories stay off the row.
-const CATEGORY_ORDER = ['Podcast', 'Pup of the Podcast', 'Faith', 'Family', 'Cooking', 'Advocacy', 'Health & Wellness', 'Behind the Book', 'Journal'];
+// Categories show in Jen's order (curation.js). Empty ones stay off the row.
+// Promotional posts are archived (curation.js): out of the feed, listed
+// under Archive, and still live at their own URLs. The public Journal never
+// shows anything from the private Velvet Letter.
 
 export const metadata = {
   title: 'Journal',
@@ -48,54 +49,54 @@ function heroUrl(img, w = 800, h = 533) {
 
 export default async function JournalPage({ searchParams }) {
   const live = await getAllPosts().catch(() => []);
-  const posts = live && live.length > 0 ? live : FALLBACK_POSTS;
+  const all = curatePosts(live && live.length > 0 ? live : FALLBACK_POSTS);
+  const posts = all.filter((p) => !p.archived);
+  const archived = all.filter((p) => p.archived);
 
-  const active = searchParams?.category || 'All';
-  const visible = active === 'All' ? posts : posts.filter((p) => p.category === active);
+  const showArchive = searchParams?.view === 'archive';
+  const active = showArchive ? 'Archive' : searchParams?.category || 'All';
+  const visible = showArchive
+    ? archived
+    : active === 'All' ? posts : posts.filter((p) => p.category === active);
 
   const counts = posts.reduce((m, p) => {
     if (p.category) m[p.category] = (m[p.category] || 0) + 1;
     return m;
   }, {});
-  // Pup of the Podcast stays up while posts are moved into it. Every other
-  // category, including Cooking, appears once counts[c] is at least one.
-  // Sponsors is a page link, not a category, and sits right after Pup.
-  // A direct empty-category URL still shows the empty line below.
-  const presentCategories = [
-    ...CATEGORY_ORDER.filter((c) => c === 'Pup of the Podcast' || counts[c]),
-    ...Object.keys(counts).filter((c) => !CATEGORY_ORDER.includes(c)).sort(),
+  const presentCategories = CATEGORY_ORDER.filter((c) => counts[c]);
+  const options = [
+    { label: 'All', href: '/journal' },
+    ...presentCategories.map((c) => ({ label: c, href: `/journal?category=${encodeURIComponent(c)}` })),
   ];
 
   return (
     <>
       <SiteNav />
+      <a href="#main-content" className="skip-link">Skip to content</a>
 
-      <section className="wrap journal-head">
+      <section id="main-content" className="wrap journal-head">
         <div className="eyebrow">The Journal</div>
         <h1>Notes from the road back to myself.</h1>
         <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
           Short, honest writing on faith, family, healing, and starting over.
         </p>
 
-        <div className="filter-row">
-          <a className={`chip ${active === 'All' ? 'is-active' : ''}`} href="/journal">All</a>
-          {presentCategories.map((c) => (
-            <Fragment key={c}>
-              <a
-                className={`chip ${active === c ? 'is-active' : ''}`}
-                href={`/journal?category=${encodeURIComponent(c)}`}
-              >
-                {c}
-              </a>
-              {c === 'Pup of the Podcast' ? (
-                <a className="chip" href="/sponsors">Sponsors</a>
-              ) : null}
-            </Fragment>
+        <nav className="filter-row" aria-label="Journal categories">
+          {options.map((o) => (
+            <a key={o.label} className={`chip ${active === o.label ? 'is-active' : ''}`} href={o.href}>
+              {o.label}
+            </a>
           ))}
-        </div>
+        </nav>
+        <CategorySelect options={options} active={active} />
         {active === 'Pup of the Podcast' && (
           <p className="center" style={{ marginTop: '18px' }}>
             <a href="/pups">Meet the Pups of the Podcast</a>
+          </p>
+        )}
+        {showArchive && (
+          <p className="center lead" style={{ marginTop: '18px' }}>
+            Earlier announcements and promotions, kept here for the record. <a href="/journal">Back to the Journal</a>
           </p>
         )}
       </section>
@@ -120,6 +121,11 @@ export default async function JournalPage({ searchParams }) {
             })}
           </div>
         )}
+        {!showArchive && archived.length > 0 ? (
+          <p className="foot-meta center" style={{ marginTop: '32px' }}>
+            <a href="/journal?view=archive">Archive: earlier announcements ({archived.length})</a>
+          </p>
+        ) : null}
       </section>
 
       <SiteFooter />

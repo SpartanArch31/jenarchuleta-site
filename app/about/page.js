@@ -1,8 +1,9 @@
 import './about.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import KitInlineForm from '../components/KitInlineForm';
-import { KIT_FORM_UID } from '../components/site-data';
+import PhotoGallery from '../components/PhotoGallery';
+import { SOCIALS } from '../components/site-data';
+import { FILM } from '../../lib/press';
 
 export const metadata = {
   title: 'About',
@@ -39,8 +40,8 @@ export default function AboutPage() {
             <span className="tim-chip">Just me</span>
           </div>
           <div className="tim-ctas">
-            <a href="#hi" className="btn btn-primary">Come say hi</a>
-            <a href="#then" className="btn btn-ghost">My story →</a>
+            <a href="#then" className="btn btn-primary">My story</a>
+            <a href="#gallery" className="btn btn-ghost">Photos →</a>
           </div>
         </div>
         <div>
@@ -72,8 +73,7 @@ export default function AboutPage() {
           </div>
         </div>
         <div>
-          {/* Photo drop-zones.
-              Swap each placeholder for <img className="tim-img tall|short" src="/assets/<name>.jpg" .../> */}
+          {/* Everyday photos. Swap a file in place to change one. */}
           <p className="tim-hint">A few true things · rescue dogs, animals, the everyday</p>
           <div className="tim-grid2">
             <div className="tim-slot-wrap tim-span">
@@ -102,11 +102,11 @@ export default function AboutPage() {
           <div>
             <p className="eyebrow">My people</p>
             <h2 className="tim-h2" style={{ fontSize: '46px', marginBottom: '24px' }}>
-              The people who are mine.
+              Fiercely loyal to the few who are mine.
             </h2>
             <p className="tim-lead" style={{ margin: 0 }}>
-              My husband, my kids, my family, friends, the handful of people I’d do anything for, and a houseful of animals
-              I love like family. I love hard and I show up. That hasn’t changed.
+              I love my husband, my children, my family, and my friends fiercely — and a houseful of
+              rescue animals I love like family. I love hard and I show up — that part of me has never changed.
             </p>
           </div>
         </div>
@@ -133,8 +133,50 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAITH & GIVING — the one dark band */}
-      <section id="faith" className="tim-faith dark">
+      {/* THE FUN PART + PHOTOS (the carousel moved here from the homepage) */}
+      <section className="tim-wrap tim-fun">
+        <div className="center">
+          <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>the fun part…</div>
+          <h2 className="tim-h2" style={{ fontSize: '46px' }}>Beautiful, a little bit of trouble, and not done yet.</h2>
+          <p className="tim-lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>
+            Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, getting dressed
+            up, a good laugh. I’ve always had a soft spot for animals, and plenty of rescues at home to
+            prove it. Faith, family, and fun, all at once — and I wouldn’t have it any other way.
+          </p>
+        </div>
+        <div className="photo-row">
+          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta — glamour portrait" width="941" height="1123" loading="lazy" />
+          <img src="/assets/jen-sultry.jpg" alt="Jen Archuleta" width="599" height="1111" loading="lazy" />
+          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
+          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta — fit at 50" width="1077" height="887" loading="lazy" />
+        </div>
+      </section>
+      <PhotoGallery showTitle={false} />
+
+      {/* THE PROFESSIONAL BIO */}
+      <section id="work" className="tim-wrap tim-work">
+        <div className="tim-work-inner">
+          <p className="eyebrow">What I do</p>
+          <h2 className="tim-h2" style={{ fontSize: '44px' }}>Author, host, speaker, advocate.</h2>
+          <p className="tim-lead">
+            I’m the author of <em>Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love</em>, and
+            the host of the podcast <em>Unfiltered with Jen Archuleta</em>. I speak about faith, resilience,
+            and starting over.
+          </p>
+          <p className="tim-lead">{FILM.film}</p>
+          <p className="tim-lead">{FILM.documentary}</p>
+          <p className="tim-work-links">
+            <a href="/book" className="btn btn-ghost btn-sm">The book</a>
+            <a href="/podcast" className="btn btn-ghost btn-sm">The podcast</a>
+            <a href="/media" className="btn btn-ghost btn-sm">Media &amp; press kit</a>
+          </p>
+        </div>
+      </section>
+
+      {/* FAITH, GIVING BACK, AND THE FOREVER ANGELS — the one dark band,
+          and the one home on the site for The Forever Angels. */}
+      <section id="forever-angels" className="tim-faith dark">
+        <span id="faith" className="anchor" aria-hidden="true" />
         <div className="tim-faith-inner">
           <p className="eyebrow" style={{ color: 'var(--accent)' }}>Faith &amp; giving back</p>
           <h2 className="tim-h2" style={{ fontSize: 'clamp(40px, 5vw, 60px)', color: 'var(--accent-ink)', maxWidth: '820px' }}>
@@ -146,30 +188,27 @@ export default function AboutPage() {
             than keep it for myself.
           </p>
           <p className="tim-lead" style={{ margin: '16px 0 0', maxWidth: '660px' }}>
-            I co-founded The Forever Angels, for the families, veterans, hospice patients, and animals who get passed over.
+            That’s why The Forever Angels is so close to my heart. It’s my 501(c)(3) nonprofit, for the
+            families, veterans, hospice patients, and animals who get passed over.
           </p>
           <div style={{ marginTop: '14px' }}>
-            <a href="/forever-angels" className="btn btn-primary">What I support</a>
+            <a href={SOCIALS.foreverAngels} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
           </div>
         </div>
       </section>
 
-      <section id="hi" className="tim-wrap tim-hi">
-        <div className="tim-card">
-          <div>
-            <p className="eyebrow">Say hi</p>
-            <h2 className="tim-h2" style={{ fontSize: '44px' }}>Come hang out. No agenda.</h2>
-            <p className="tim-lead" style={{ marginTop: '24px' }}>
-              A little note from me every now and then — whatever I’m actually thinking about that
-              week, the good and the hard. No pitch, I promise.
-            </p>
-          </div>
-          <div>
-            <span className="tim-label">Join the letter</span>
-            <KitInlineForm uid={KIT_FORM_UID} />
-            <p className="tim-note">A few times a month. Unsubscribe whenever, no hard feelings.</p>
-          </div>
-        </div>
+      {/* THE MOVEMENT (September homepage creed, moved here) */}
+      <section id="movement" className="wrap creed" style={{ background: 'var(--surface)' }}>
+        <div className="threshold-rule" style={{ marginBottom: '20px' }}><span className="diamond" /></div>
+        <h2>Everyone belongs beyond the ropes.</h2>
+        <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>A velvet rope decides who gets in and who stays out. This is the opposite of that — a quiet practice of choosing the overlooked, and reminding each other that no one’s story is over.</p>
+        <ul>
+          <li>Everyone belongs — so we choose the overlooked.</li>
+          <li>No one’s story is over — it’s still being written.</li>
+          <li>We forgive — even without the apology.</li>
+          <li>We fall, we learn, and we rise anyway.</li>
+          <li>We turn our pain into someone else’s lifeline.</li>
+        </ul>
       </section>
 
       <SiteFooter />

@@ -4,9 +4,63 @@
 > where every file lives, how to change things, and how it deploys. A new
 > session should be able to act on this without any prior context.
 
-_Last updated: 2026-07-24 (commerce build + legal pages added)._
+_Last updated: 2026-10-27 (Jen's final site organization; Velvet Letter made truly private)._
 
 ---
+
+## ⭐ How the site is organized (Jen's final instructions, 2026-10-27) — don't undo this
+
+Jen asked for the September 2026 site's wording, layout, colors, and feel, kept clean, with
+the newer features she likes. Before changing structure, re-read this section.
+
+- **One navigation, every page** (`app/components/SiteNav.js`):
+  Home | About | Book | Podcast | Journal | Media | Shop | The Velvet Letter.
+  Speaking, Quotes, Sponsors, Contact, Free First Chapter, and The Forever Angels live in the
+  footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
+  Velvet Letter page use the same components.
+- **"Stay close"** (top of `SiteFooter.js`) is the ONE home for the free first chapter signup
+  and the social links (Instagram, TikTok, X, Facebook, LinkedIn). Don't add "Follow me"
+  blocks or social buttons anywhere else. Buzzsprout/YouTube links live on the Podcast page.
+- **Homepage, in Jen's order:** intro + Get the Book · Story/Voice/Heart · the book with
+  trailer and buy links · a short Velvet Letter invitation · podcast + featured Pup of the
+  Podcast · journal previews · media & press highlights · The Backstage Bundle · free first
+  chapter (Stay close). The photo carousel is on **About**, not the homepage.
+- **The Forever Angels** (her 501(c)(3)) has ONE section: About `#forever-angels`. The footer
+  links there; `/forever-angels` redirects there.
+- **Film and documentary** are IN DEVELOPMENT. One source of wording: `lib/press.js` (`FILM`).
+  Never say released, acquired, or optioned.
+- **Podcast:** say simply that *Unfiltered with Jen Archuleta* features 13 episodes. Never say
+  the show is on hold or that new episodes are coming. Use guests' full names.
+- **Shop:** four products in this order — Velvet Bookmark, Signed copy, Velvet Circle
+  ($9.99/mo), The Backstage Bundle ($69: signed book, handmade bookmark, black bunny ears,
+  first month of the Velvet Circle; no gift box; continuing the membership is the customer's
+  choice — never auto-enroll). The Velvet Circle is explained (with an FAQ) before anyone
+  subscribes; never promise signed books, gifts, or monthly Zooms as immediate benefits.
+- **Journal:** categories in Jen's order are in `app/journal/curation.js`. Repetitive
+  promotional posts are ARCHIVED there (hidden from the feed, listed under Archive, still live
+  at their URLs). Nothing is deleted. The public Journal never shows Velvet Letter content.
+- **Quotes** have their own page; don't repeat them around the site.
+
+## ⭐ The Velvet Letter — private, and it must stay that way
+
+- **One entrance:** `/velvet`. The QR code in the back of the book encodes `/velvetropes`,
+  which redirects to `/velvet` — never change that redirect. `/velvet-letter` redirects too.
+- **Locked:** the public invitation (Jen's exact wording in `app/velvet/VelvetLocked.js`).
+  Nothing private is fetched or rendered for a visitor without the passcode.
+- **Unlocked:** the dark "You made it. You're in." page + every journal entry
+  (`VelvetInside.js`), fetched server-side only after the passcode checks out.
+- **The passcode lives ONLY in Vercel** as `VELVET_LETTER_PASSCODE` (Production + Preview).
+  Never put the passcode, or a hash of it, in this public repo. If the variable is missing the
+  gate fails CLOSED (nobody gets in). The unlock cookie is an HMAC keyed by that server-only
+  value, so it can't be forged from this code. Bump `VERSION` in `passcode.js` to sign everyone out.
+- **Private photos** live in `/private/velvet/` (NOT `/public`) and are served by
+  `app/velvet/photo/[name]/route.js`, which checks the unlock cookie first. Jen's letter
+  photo goes at `private/velvet/velvet-letter.jpg` (renders nothing until it exists).
+  `next.config.js` `outputFileTracingIncludes` ships that folder with the functions.
+- **Sanity:** the production dataset is meant to be **Private**, read server-side with
+  `SANITY_API_READ_TOKEN` (Viewer token, set in Vercel). With a public dataset, anyone can
+  read the letters straight from Sanity's API.
+
 
 ## 0. Related context — read these too if the task touches brand, book, or commerce
 
@@ -95,7 +149,7 @@ public by design (that's what a Payment Link is) — never commit a Stripe *secr
 │   ├── tokens/                    ← the design system (colors, fonts, typography, spacing, effects, base)
 │   ├── page.js                    ← HOMEPAGE
 │   ├── book/
-│   │   ├── page.js                ← BOOK page (dark register, own footer)
+│   │   ├── page.js                ← BOOK page (dark register, shared nav + footer)
 │   │   └── book.css               ← book-only styles, scoped under .book-page
 │   ├── podcast/
 │   │   ├── page.js                ← PODCAST page
@@ -112,16 +166,21 @@ public by design (that's what a Payment Link is) — never commit a Stripe *secr
 │   ├── terms/page.js              ← Terms of Service (legal, see §5b)
 │   ├── shipping-returns/page.js   ← Shipping & Returns incl. Membership cancellation copy (legal, see §5b)
 │   ├── legal-pages.css            ← shared styling for the 3 legal pages (reuses site design tokens)
-│   ├── velvet/
-│   │   └── VelvetClient.js        ← password-gated "Velvet Pages" reader page
+│   ├── velvet/                    ← THE VELVET LETTER (see the ⭐ section at the top)
+│   │   ├── page.js                ← locked invitation OR the private journal (server decides)
+│   │   ├── VelvetLocked.js / Gate.js / actions.js / passcode.js ← invitation + server-side gate
+│   │   ├── VelvetInside.js        ← private journal ("You made it. You're in.")
+│   │   └── photo/[name]/route.js  ← serves /private/velvet photos only when unlocked
 │   ├── studio/[[...tool]]/        ← embedded Sanity Studio (/studio)
 │   │   ├── page.jsx
 │   │   └── Studio.jsx             ← 'use client' wrapper (REQUIRED, see §10)
 │   ├── components/
-│   │   ├── SiteNav.js             ← light-register nav (home/podcast/journal/shop)
-│   │   ├── SiteFooter.js          ← footer + social links + legal-page links
-│   │   ├── KitForm.js             ← email-capture section (uses inline form)
-│   │   ├── KitInlineForm.jsx      ← injects Kit inline form
+│   │   ├── SiteNav.js             ← THE one nav (every page, light or dark)
+│   │   ├── SiteFooter.js          ← "Stay close" (free chapter + socials) + footer links + legal
+│   │   ├── VelvetInvite.js        ← short Velvet Letter invitation (homepage, Book page)
+│   │   ├── VelvetCirclePanel.js   ← Velvet Circle explainer (Shop), perks list lives here
+│   │   ├── PhotoGallery.js        ← the photo carousel (About page)
+│   │   ├── KitInlineForm.jsx      ← injects Kit inline form ("Built with Kit" hidden in globals.css)
 │   │   ├── BuzzsproutPlayer.jsx   ← injects Buzzsprout native player
 │   │   └── site-data.js           ← ⭐ central config: Kit ids, socials, podcast id, SHOP product
 │   │                                 links/prices (Stripe Payment Links — see §5a)
@@ -202,7 +261,10 @@ that file is updated more frequently than this one):
 - **Velvet Circle Membership** — $9.99/month — Stripe Payment Link. Cancel link is
   `STRIPE_CUSTOMER_PORTAL_URL` (capital I in the Stripe login id). It is on the shop
   membership card, the Velvet gate, and Shipping & Returns.
-- **The Backstage Bundle** is on the shop as Coming soon at $69. There is no Stripe Payment Link for it. The pictured box is for display only and is not part of the bundle. It is not on the gate or the legal pages.
+- **The Backstage Bundle** — $69, on the shop as Coming soon until a Stripe Payment Link exists
+  (one-time $69, collect shipping address → paste into `SHOP.foundingBox`). Contents: signed book,
+  handmade bookmark, black bunny ears, first month of the Velvet Circle (comped by hand). No gift box.
+  Continuing the membership after month one is the customer's choice — never auto-enroll.
 - **Signature Velvet Bookmark** — $24.99, Stripe Payment Link.
 
 The Stripe→Kit→Google Sheets automation (tagging buyers in Kit, logging orders to a Google

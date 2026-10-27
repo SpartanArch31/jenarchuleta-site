@@ -1,5 +1,9 @@
 import './book.css';
-import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, PODCAST, SHOP } from '../components/site-data';
+import SiteNav from '../components/SiteNav';
+import SiteFooter from '../components/SiteFooter';
+import VelvetInvite from '../components/VelvetInvite';
+import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP } from '../components/site-data';
+import { FILM } from '../../lib/press';
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
@@ -31,20 +35,11 @@ export default function BookPage() {
   return (
     <div className="dark book-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }} />
-      <nav className="nav">
-        <div className="nav-inner">
-          <a href="/" className="brand">Jen Archuleta</a>
-          <div className="nav-links">
-            <a href="/">Home</a>
-            <a href="/podcast">Podcast</a>
-            <a href="/quotes">Quotes</a>
-            <a href="/#letter" className="btn btn-primary btn-sm">Free Chapter</a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
+      <a href="#main-content" className="skip-link">Skip to content</a>
 
       {/* HERO (dark register, echoes the cover) */}
-      <section className="hero-section dark" style={{ background: 'var(--bg)' }}>
+      <section id="main-content" className="hero-section dark" style={{ background: 'var(--bg)' }}>
         <div className="wrap hero">
           <div><img className="hero-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" /></div>
           <div>
@@ -54,8 +49,8 @@ export default function BookPage() {
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of — fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
             <div className="buy-row">
               <a href={BOOK_BUY_URL} target="_blank" rel="noopener" className="btn btn-primary">Get the Paperback</a>
-              {SHOP.signedBook ? (
-                <a href={SHOP.signedBook} target="_blank" rel="noopener" className="btn btn-ghost">Buy a signed copy</a>
+              {SHOP.signedBook && !SHOP.signedBookSoldOut ? (
+                <a href="/shop#signed-copy" className="btn btn-ghost">Signed copy</a>
               ) : null}
               {BOOK_STORES.map((store) => (
                 <a key={store.href} href={store.href} target="_blank" rel="noopener" className="btn btn-ghost">{store.label}</a>
@@ -72,6 +67,25 @@ export default function BookPage() {
         <p className="lead" style={{ fontSize: 'var(--text-body-l)' }}>Before the spotlight, there was pain. Behind the image, there was fear. And beneath it all, there was a girl trying to hold on to who she was while everything around her tried to define her. <em>Beyond the Velvet Ropes</em> is the story of survival, resilience, and the quiet strength it takes to become who you were always meant to be.</p>
       </section>
 
+      {/* TRAILER */}
+      <section className="wrap trailer-feature book-trailer">
+        <div className="tf-copy">
+          <div className="eyebrow">Watch the Trailer</div>
+          <p className="tf-logline">“Everyone knew the headlines. No one knew the story.”</p>
+          <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em> — about ninety seconds.</p>
+        </div>
+        <figure className="tf-video">
+          <video
+            src="/trailer.mp4"
+            poster="/trailer-poster.jpg"
+            controls
+            playsInline
+            preload="none"
+            className="book-trailer-video"
+          />
+        </figure>
+      </section>
+
       {/* WHO IT'S FOR */}
       <section className="who">
         <div className="wrap text-wrap center">
@@ -86,30 +100,43 @@ export default function BookPage() {
         </div>
       </section>
 
-      <section className="capture">
-        <div className="wrap text-wrap">
-          <div className="eyebrow">Start reading</div>
-          <h2>Read the first chapter — free.</h2>
-          <p className="lead">I’ll send the opening pages straight to your inbox. If it sounds like something you’ve lived too, you’re exactly who I wrote it for.</p>
-          <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary">Send me the first chapter</a>
+      {/* FILM AND DOCUMENTARY (in development — see lib/press.js) */}
+      <section className="wrap text-wrap book-screen">
+        <div className="eyebrow">On screen</div>
+        <h2>In development for film and documentary.</h2>
+        <p>{FILM.film}</p>
+        <p>{FILM.documentary}</p>
+        <p className="foot-meta">
+          {FILM.partners.map((partner, i) => (
+            <span key={partner.href}>
+              {i > 0 ? ' · ' : ''}
+              <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
+            </span>
+          ))}
+        </p>
+      </section>
+
+      {/* THE VELVET LETTER */}
+      <div className="wrap">
+        <VelvetInvite compact />
+      </div>
+
+      {/* BUNDLE + REVIEWS */}
+      <section className="wrap text-wrap center book-more">
+        <p className="lead">
+          Want the signed book, my handmade velvet bookmark, and black velvet bunny ears together?{' '}
+          <a href="/shop#backstage-bundle">See The Backstage Bundle</a>.
+        </p>
+        <div className="threshold-rule" style={{ maxWidth: '220px', margin: '34px auto' }}><span className="diamond" /></div>
+        <div className="eyebrow">Already read it?</div>
+        <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
+        <div className="buy-row" style={{ justifyContent: 'center' }}>
+          <a href="https://www.amazon.com/review/create-review?asin=B0H6YZWDT3" target="_blank" rel="noopener" className="btn btn-ghost">Review on Amazon</a>
+          <a href="https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885" target="_blank" rel="noopener" className="btn btn-ghost">Review on Barnes &amp; Noble</a>
         </div>
       </section>
 
-      <footer>
-        <div className="wrap">
-          <div className="foot-links">
-            <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Podcast on Buzzsprout</a>
-            <a href={PODCAST.youtube} target="_blank" rel="noopener noreferrer">Podcast on YouTube</a>
-            <a href="/media">Media</a>
-            <a href="/contact">Contact</a>
-          </div>
-          <p className="foot-meta">© 2026 Jen Archuleta — Jennifer Walcott Archuleta. <a href="/">Home</a></p>
-          <p className="foot-meta">
-            <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a> ·{' '}
-            <a href="/shipping-returns">Shipping &amp; Returns</a>
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

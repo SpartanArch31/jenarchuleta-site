@@ -226,3 +226,27 @@
   outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
 }
+
+/* Velvet Circle details + FAQ (October 2026) */
+#velvet-circle-details { margin-top: clamp(24px, 4vw, 48px); }
+.vc-faq { padding-block: clamp(48px, 7vw, 88px); }
+.vc-faq h2 { margin: 6px 0 26px; }
+.vc-faq details {
+  border-top: var(--hairline);
+  padding: 18px 2px;
+}
+.vc-faq details:last-of-type { border-bottom: var(--hairline); }
+.vc-faq summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.vc-faq summary::-webkit-details-marker { display: none; }
+.vc-faq summary::after { content: '+'; color: var(--accent-ink); font-family: var(--font-sans); }
+.vc-faq details[open] summary::after { content: '–'; }
+.vc-faq details p { margin: 12px 0 0; color: var(--text-secondary); }

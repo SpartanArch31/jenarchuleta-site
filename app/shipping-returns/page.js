@@ -46,9 +46,10 @@ export default function ShippingReturnsPage() {
           <h2>Velvet Circle Membership</h2>
           <p>
             The Velvet Circle Membership is a recurring monthly subscription billed at $9.99/month until
-            you cancel. It includes the passcode to The Velvet Letter, and written answers to up to 3 questions a month. Live monthly Zooms begin
-            once the Velvet Circle reaches 13 members. Until then, members can send me up to 3 questions
-            each month, and I&rsquo;ll answer every one in writing. You can cancel anytime before your next billing date to avoid being charged for
+            you cancel. Members can email me their questions about the book and my experiences, up to
+            3 a month, and I&rsquo;ll answer every one in writing. Monthly group Zoom conversations begin
+            once 13 active members have joined; until then, membership is the written Q&amp;A. The
+            membership does not include a signed book or gifts. You can cancel anytime before your next billing date to avoid being charged for
             the following month; charges already processed for the current billing period are
             non-refundable. Your membership stays active through the end of the billing period
             you&rsquo;ve already paid for. We don&rsquo;t offer refunds for time already used, but

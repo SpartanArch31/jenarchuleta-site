@@ -1,18 +1,27 @@
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
-import PhotoGallery from './components/PhotoGallery';
-import VelvetCirclePanel from './components/VelvetCirclePanel';
-import ChapterContact from './components/ChapterContact';
-import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SOCIALS, SHOP, PODCAST } from './components/site-data';
+import VelvetInvite from './components/VelvetInvite';
+import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP, PODCAST } from './components/site-data';
+import { FILM, PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
+import { getFeaturedPup } from '../lib/pup-photos';
 
-export default function Home() {
+// Homepage, in Jen's order (October 27, 2026):
+// 1 intro + Get the Book · 2 Story, Voice, Heart · 3 the book, trailer, buy
+// 4 Velvet Letter invitation · 5 podcast + Pup of the Podcast · 6 journal
+// 7 media and press · 8 Backstage Bundle · 9 free first chapter (Stay close,
+// in SiteFooter). Wording is the September site's unless Jen changed it.
+export const revalidate = 3600;
+
+export default async function Home() {
+  const pup = await getFeaturedPup().catch(() => null);
+
   return (
     <>
       <SiteNav />
 
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      {/* HERO */}
+      {/* 1. HERO */}
       <section id="main-content" className="wrap hero">
         <div className="hero-copy">
           <div className="eyebrow">Author · Speaker · Advocate</div>
@@ -37,7 +46,7 @@ export default function Home() {
         <div className="threshold-rule"><span className="diamond" /></div>
       </section>
 
-      {/* PILLARS */}
+      {/* 2. STORY · VOICE · HEART */}
       <section className="wrap pillars">
         <div className="p">
           <div className="eyebrow">Story</div>
@@ -55,11 +64,11 @@ export default function Home() {
           <div className="eyebrow">Heart</div>
           <h3>The Advocate</h3>
           <p>Beyond the Ropes and The Forever Angels — choosing the overlooked, one act at a time.</p>
-          <p><a href="#movement" className="btn btn-ghost btn-sm">The movement</a></p>
+          <p><a href="/about#forever-angels" className="btn btn-ghost btn-sm">The movement</a></p>
         </div>
       </section>
 
-      {/* BOOK (dark register) */}
+      {/* 3. THE BOOK (dark register) + TRAILER */}
       <section id="book" className="book dark">
         <div className="wrap inner">
           <div><img className="book-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" loading="lazy" /></div>
@@ -70,6 +79,9 @@ export default function Home() {
             <p style={{ color: 'var(--text)' }}>From the outside, my twenties looked like the dream — covers, cameras, a life behind the velvet ropes. But the real story was never the part people saw. It’s in the moments I never talked about, and the long road back to the ordinary, happy life I have now. I wrote all of it down — the hard, the funny, and the faith that carried me through. If you’ve ever come through something and made it to the other side, I wrote this for you.</p>
             <p className="buy-row">
               <a href={BOOK_BUY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Get the Paperback</a>
+              {SHOP.signedBook && !SHOP.signedBookSoldOut ? (
+                <a href="/shop#signed-copy" className="btn btn-ghost">Signed copy</a>
+              ) : null}
               {BOOK_STORES.map((store) => (
                 <a key={store.href} href={store.href} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">{store.label}</a>
               ))}
@@ -96,103 +108,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STORY */}
-      <section id="story" className="wrap">
-        <div className="story-grid">
-          <div>
-            <h2>The long way to an ordinary, beautiful life.</h2>
-            <p>I grew up in a small Ohio town being told what I couldn’t do — and I spent my twenties proving otherwise, in rooms most people never get to see. I’m grateful for every bit of it.</p>
-            <p>I also walked through some genuinely hard things to get here. I stopped hiding them, and I learned that the hard chapters can become something you give back. What I’m proudest of now isn’t any of the rooms I used to stand in — it’s the plain, happy life right in front of me.</p>
-            <a href={KIT_FREE_CHAPTER_URL} className="btn btn-ghost">Start with the first chapter</a>
-          </div>
-          <div className="ph"><img src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta portrait" width="800" height="1195" loading="lazy" /></div>
-        </div>
-      </section>
+      {/* 4. THE VELVET LETTER */}
+      <VelvetInvite />
 
-      <PhotoGallery />
-
-      <VelvetCirclePanel />
-
-      {/* PODCAST. Subscribe buttons. The buy row's Spotify link is the audiobook, not the show.
-          TODO: confirm with Jen which Spotify show ID is the podcast and which is the audiobook. */}
-      <section id="podcast" className="wrap center" style={{ background: 'var(--surface)' }}>
-        <div className="eyebrow">The Podcast</div>
-        <h2>{PODCAST.name}</h2>
-        <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Honest conversations on faith, family, resilience, and starting over — the same honest voice as the book.</p>
-        <div className="hero-ctas" style={{ justifyContent: 'center', marginTop: '8px' }}>
-          <a href={PODCAST.subscribe.spotify} target="_blank" rel="noopener" className="btn btn-primary">Listen on Spotify</a>
-          <a href={PODCAST.subscribe.apple} target="_blank" rel="noopener" className="btn btn-ghost">Apple Podcasts</a>
-          <a href={PODCAST.youtube} target="_blank" rel="noopener" className="btn btn-ghost">Watch on YouTube</a>
-          <a href="/podcast" className="btn btn-ghost">All episodes</a>
-        </div>
-        <p className="foot-meta" style={{ marginTop: '18px' }}>
-          <a href="/pups">Pups of the Podcast</a>
-          {' · '}
-          <a href="/sponsors">Sponsors</a>
-          {' · '}
-          <a href="/about#faith">The dogs at home</a>
-        </p>
-      </section>
-
-      {/* MEET JEN (beauty + personality) */}
-      <section className="wrap">
+      {/* 5. PODCAST + PUP OF THE PODCAST */}
+      <section id="podcast" className="wrap home-podcast" style={{ background: 'var(--surface)' }}>
         <div className="center">
-          <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>the fun part…</div>
-          <h2>Beautiful, a little bit of trouble, and not done yet.</h2>
-          <p className="lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, getting dressed up, a good laugh. I’ve always had a soft spot for animals, and plenty of rescues at home to prove it. Faith, family, and fun, all at once — and I wouldn’t have it any other way.</p>
+          <div className="eyebrow">The Podcast</div>
+          <h2>{PODCAST.name}</h2>
+          <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Honest conversations on faith, family, resilience, and starting over — the same honest voice as the book.</p>
+          <div className="hero-ctas" style={{ justifyContent: 'center', marginTop: '8px' }}>
+            <a href="/podcast" className="btn btn-primary">Listen to all 13 episodes</a>
+          </div>
         </div>
-        <div className="photo-row">
-          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta — glamour portrait" width="941" height="1123" loading="lazy" />
-          <img src="/assets/jen-sultry.jpg" alt="Jen Archuleta" width="599" height="1111" loading="lazy" />
-          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
-          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta — fit at 50" width="1077" height="887" loading="lazy" />
-        </div>
-        <div className="center" style={{ marginTop: '26px' }}>
-          <a href={SOCIALS.instagram} className="btn btn-ghost">Follow along on Instagram</a>
-          {' '}
-          <a href={SOCIALS.tiktok} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">TikTok</a>
-        </div>
+        {pup ? (
+          <div className="home-pup">
+            <img src={pup.photo} alt={pup.alt || pup.name} loading="lazy" />
+            <div>
+              <div className="eyebrow">Pup of the Podcast</div>
+              <h3>Meet {pup.name}</h3>
+              <p>Every episode features a rescue pup looking for a home.{pup.guest ? ` ${pup.name} joined my conversation with ${pup.guest}.` : ''}</p>
+              <p><a href="/pups" className="btn btn-ghost btn-sm">Meet all the pups</a></p>
+            </div>
+          </div>
+        ) : (
+          <p className="center" style={{ marginTop: '22px' }}><a href="/pups">Meet the Pups of the Podcast →</a></p>
+        )}
       </section>
 
-      {/* MOVEMENT */}
-      <section id="movement" className="wrap creed" style={{ background: 'var(--surface)' }}>
-        <div className="threshold-rule" style={{ marginBottom: '20px' }}><span className="diamond" /></div>
-        <h2>Everyone belongs beyond the ropes.</h2>
-        <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>A velvet rope decides who gets in and who stays out. This is the opposite of that — a quiet practice of choosing the overlooked, and reminding each other that no one’s story is over.</p>
-        <ul>
-          <li>Everyone belongs — so we choose the overlooked.</li>
-          <li>No one’s story is over — it’s still being written.</li>
-          <li>We forgive — even without the apology.</li>
-          <li>We fall, we learn, and we rise anyway.</li>
-          <li>We turn our pain into someone else’s lifeline.</li>
-        </ul>
-      </section>
-
-      {/* JOURNAL */}
+      {/* 6. JOURNAL */}
       <section id="journal" className="wrap">
         <div className="center"><h2>Notes from the road back to myself.</h2>
           <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Short, honest writing on faith, family, healing, and starting over.</p></div>
         <div className="cards-3 feature-first">
-          <a className="mini" href="/journal"><div className="body"><div className="k">Faith</div><h3>It is in the waiting that we become who we’re meant to be.</h3></div></a>
-          <a className="mini" href="/journal"><div className="body"><div className="k">Healing</div><h3>Survival isn’t the same thing as healing.</h3></div></a>
-          <a className="mini" href="/journal"><div className="body"><div className="k">Family</div><h3>What I want my kids to know about getting back up.</h3></div></a>
+          <a className="mini" href="/journal?category=Faith"><div className="body"><div className="k">Faith</div><h3>It is in the waiting that we become who we’re meant to be.</h3></div></a>
+          <a className="mini" href="/journal?category=Health%20%26%20Wellness"><div className="body"><div className="k">Healing</div><h3>Survival isn’t the same thing as healing.</h3></div></a>
+          <a className="mini" href="/journal?category=Family"><div className="body"><div className="k">Family</div><h3>What I want my kids to know about getting back up.</h3></div></a>
         </div>
         <div className="center" style={{ marginTop: '28px' }}><a href="/journal" className="btn btn-ghost">Read the journal</a></div>
       </section>
 
-      {/* SHOP */}
-      <section id="shop" className="wrap" style={{ background: 'var(--surface)' }}>
-        <div className="center"><h2>A few things worth sharing.</h2>
-          <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>A signed copy of the book, a tee I love, and a rescue close to my heart. Story, a good reminder, and a way to give back.</p></div>
-        <div className="cards-3">
-          <a className="mini" href="/shop"><div className="body"><div className="k">Book</div><h3>Signed copy — <em>Beyond the Velvet Ropes</em></h3><p className="foot-meta">In the shop →</p></div></a>
-          <a className="mini" href={SHOP.etsyTee} target="_blank" rel="noopener"><div className="body"><div className="k">Apparel</div><h3>Be the Bumblebee tee</h3><p className="foot-meta">Shop on Etsy →</p></div></a>
+      {/* 7. MEDIA AND PRESS */}
+      <section id="press" className="wrap home-press" style={{ background: 'var(--surface)' }}>
+        <div className="center">
+          <div className="eyebrow">Media &amp; Press</div>
+          <h2>In the press.</h2>
         </div>
-        <div className="center" style={{ marginTop: '28px' }}><a href="/shop" className="btn btn-ghost">Visit the shop</a></div>
+        <div className="cards-3">
+          {PRESS_HIGHLIGHTS.map((item) => (
+            <a key={item.href} className="mini" href={item.href} target="_blank" rel="noopener noreferrer">
+              <div className="body">
+                <div className="k">{item.outlet}</div>
+                <h3>{item.headline}</h3>
+                <p className="foot-meta">{cardMeta(item)}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <p className="home-press-film">
+          <strong>On screen:</strong> a feature film with {FILM.partners[0].label} and a feature documentary with {FILM.partners[1].label} are in development.
+        </p>
+        <div className="center" style={{ marginTop: '18px' }}><a href="/media" className="btn btn-ghost">All press and media</a></div>
       </section>
 
-      <ChapterContact />
+      {/* 8. THE BACKSTAGE BUNDLE */}
+      <section id="bundle" className="wrap home-bundle">
+        <div className="home-bundle-card">
+          <img src="/assets/backstage-bundle.jpg" alt="The signed book, a handmade velvet bookmark, and black velvet bunny ears" width="1268" height="1600" loading="lazy" />
+          <div>
+            <div className="eyebrow">The Backstage Bundle · {SHOP.foundingBoxPrice}</div>
+            <h2>The book, signed — and a few things from backstage.</h2>
+            <p className="lead">A signed copy of <em>Beyond the Velvet Ropes</em>, my handmade velvet bookmark, black velvet bunny ears, and your first month of the Velvet Circle.</p>
+            <div className="hero-ctas">
+              {SHOP.foundingBox ? (
+                <a href="/shop#backstage-bundle" className="btn btn-primary">Get the Backstage Bundle</a>
+              ) : (
+                <span className="btn btn-disabled">Coming soon</span>
+              )}
+              <a href="/shop" className="btn btn-ghost">Visit the shop</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* 9. FREE FIRST CHAPTER (Stay close) is the top of SiteFooter. */}
       <SiteFooter />
     </>
   );
