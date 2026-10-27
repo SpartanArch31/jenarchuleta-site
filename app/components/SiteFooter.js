@@ -10,6 +10,7 @@ export default function SiteFooter() {
           <a href={SOCIALS.instagram}>Instagram</a>
           <a href={SOCIALS.x}>X</a>
           <a href={SOCIALS.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href={SOCIALS.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
           <a href="/forever-angels">The Forever Angels</a>
           <a href="/#letter">Newsletter</a>
           <a href="/quotes">Quotes</a>

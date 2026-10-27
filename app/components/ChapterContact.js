@@ -8,8 +8,8 @@ export default function ChapterContact() {
     <section id="letter" className="capture chapter-contact">
       <div className="wrap text-wrap">
         <div className="eyebrow">Stay close</div>
-        <h2>Get the First Chapter Free</h2>
-        <p className="lead">Read how it started. I’ll email you the first chapter. If it sounds like your story too, I wrote it for you.</p>
+        <h2>Read the first chapter — free.</h2>
+        <p className="lead">Before the velvet ropes. Before the headlines. The real story. I’ll send the opening pages straight to your inbox — and if it sounds like something you’ve lived too, you’re exactly who I wrote it for.</p>
         <KitInlineForm uid={KIT_FORM_UID} />
         <div className="chapter-speak">
           <h3>Book me to speak</h3>

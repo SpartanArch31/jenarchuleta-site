@@ -1,43 +1,11 @@
-import './journal/journal.css';
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import PhotoGallery from './components/PhotoGallery';
 import VelvetCirclePanel from './components/VelvetCirclePanel';
 import ChapterContact from './components/ChapterContact';
 import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SOCIALS, SHOP, PODCAST } from './components/site-data';
-import { urlFor } from './sanity/image';
-import { getAllPosts } from './sanity/queries';
 
-function formatDate(iso) {
-  if (!iso) return '';
-  return new Date(iso).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
-function cardExcerpt(excerpt) {
-  if (typeof excerpt !== 'string') return '';
-  const text = excerpt.replace(/\s+/g, ' ').trim();
-  if (text.length <= 140) return text;
-  return `${text.slice(0, 140).replace(/\s+\S*$/, '')}…`;
-}
-
-function heroUrl(img) {
-  if (!img) return null;
-  if (typeof img === 'string') return img;
-  try {
-    return urlFor(img).width(800).height(533).fit('crop').url();
-  } catch {
-    return null;
-  }
-}
-
-export default async function Home() {
-  const live = await getAllPosts().catch(() => []);
-  const featured = (Array.isArray(live) ? live : []).filter((post) => post?.slug).slice(0, 3);
-
+export default function Home() {
   return (
     <>
       <SiteNav />
@@ -133,7 +101,7 @@ export default async function Home() {
         <div className="story-grid">
           <div>
             <h2>The long way to an ordinary, beautiful life.</h2>
-            <p>I grew up in a small town being told what I couldn’t do — and I spent my twenties proving otherwise, in rooms most people never get to see. I’m grateful for every bit of it.</p>
+            <p>I grew up in a small Ohio town being told what I couldn’t do — and I spent my twenties proving otherwise, in rooms most people never get to see. I’m grateful for every bit of it.</p>
             <p>I also walked through some genuinely hard things to get here. I stopped hiding them, and I learned that the hard chapters can become something you give back. What I’m proudest of now isn’t any of the rooms I used to stand in — it’s the plain, happy life right in front of me.</p>
             <a href={KIT_FREE_CHAPTER_URL} className="btn btn-ghost">Start with the first chapter</a>
           </div>
@@ -204,25 +172,11 @@ export default async function Home() {
       <section id="journal" className="wrap">
         <div className="center"><h2>Notes from the road back to myself.</h2>
           <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Short, honest writing on faith, family, healing, and starting over.</p></div>
-        {featured.length > 0 ? (
-          <div className="feed">
-            {featured.map((post) => {
-              const img = heroUrl(post.heroImage);
-              const excerpt = cardExcerpt(post.excerpt);
-              const meta = [post.category, formatDate(post.publishedAt)].filter(Boolean).join(' · ');
-              return (
-                <a key={post.slug} className="post-card" href={`/journal/${post.slug}`}>
-                  {img ? <img src={img} alt="" /> : null}
-                  <div className="body">
-                    {meta ? <div className="k">{meta}</div> : null}
-                    <h3>{post.title}</h3>
-                    {excerpt ? <p>{excerpt}</p> : null}
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        ) : null}
+        <div className="cards-3 feature-first">
+          <a className="mini" href="/journal"><div className="body"><div className="k">Faith</div><h3>It is in the waiting that we become who we’re meant to be.</h3></div></a>
+          <a className="mini" href="/journal"><div className="body"><div className="k">Healing</div><h3>Survival isn’t the same thing as healing.</h3></div></a>
+          <a className="mini" href="/journal"><div className="body"><div className="k">Family</div><h3>What I want my kids to know about getting back up.</h3></div></a>
+        </div>
         <div className="center" style={{ marginTop: '28px' }}><a href="/journal" className="btn btn-ghost">Read the journal</a></div>
       </section>
 

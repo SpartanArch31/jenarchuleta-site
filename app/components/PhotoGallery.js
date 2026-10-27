@@ -128,6 +128,14 @@ const FAMILY = captions.filter((item) => !HOME_ONLY_SKIP.has(item.file)).map((it
   };
 });
 
+// October 27 family photos, after the velvet family slides. Full files, unedited.
+const FAMILY_OCT27 = [
+  { src: '/assets/gallery/family-beach-hands.jpg', alt: 'Jen and her daughter on the beach', width: 1320, height: 1217 },
+  { src: '/assets/gallery/girls-beach-walk.jpg', alt: 'Walking on the beach', width: 283, height: 502 },
+  { src: '/assets/gallery/girls-beach-rompers.jpg', alt: 'On the beach', width: 295, height: 407 },
+  { src: '/assets/gallery/pool-sombreros.jpg', alt: 'At the pool', width: 295, height: 391 },
+];
+
 const GALLERY_NEW = [
   { src: '/assets/gallery-new/new_03.jpg', alt: 'Jen Walcott Archuleta holding her book', width: 1062, height: 1600 },
   { src: '/assets/gallery-new/new_04.jpg', alt: 'Jen Walcott Archuleta in a white dress', width: 1320, height: 1537 },
@@ -218,13 +226,20 @@ const CHILDHOOD = [
 
 // Oct 27: current slides 68, 69, and 73 leave the slideshow. Files stay in the repo.
 // 68 gallery-picks/141.jpg, 69 gallery-picks/142.jpg, 73 gallery-picks/155.jpg (Jen in Bangkok).
+// Duplicate pairs: one copy stays, the sharper or higher-detail file.
 const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/141.jpg',
   '/assets/gallery-picks/142.jpg',
   '/assets/gallery-picks/155.jpg',
+  '/assets/gallery-picks/146.jpg',
+  '/assets/gallery-picks/151.jpg',
+  '/assets/gallery-picks/164.jpg',
+  '/assets/gallery-picks/168.jpg',
+  '/assets/gallery-picks/171.jpg',
+  '/assets/jen-beauty.jpg',
 ]);
 
-const SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...GALLERY_NEW, ...PICKS, ...OCT26, ...PLACES, ...CHILDHOOD]
+const SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...GALLERY_NEW, ...PICKS, ...OCT26, ...PLACES, ...CHILDHOOD]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // Slides 19 and 27 of the 59-photo order (before the Hollywood set was

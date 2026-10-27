@@ -72,7 +72,7 @@ export default function AboutPage() {
           </div>
         </div>
         <div>
-          {/* Photo drop-zones. Privacy: dogs/animals/everyday — no kids' faces.
+          {/* Photo drop-zones.
               Swap each placeholder for <img className="tim-img tall|short" src="/assets/<name>.jpg" .../> */}
           <p className="tim-hint">A few true things · rescue dogs, animals, the everyday</p>
           <div className="tim-grid2">
@@ -89,7 +89,6 @@ export default function AboutPage() {
               <span className="tim-slot-cap">Before the house wakes up</span>
             </div>
             <div className="tim-slot-wrap tim-span">
-              {/* Was kids.jpg (kids’ faces visible) — swapped 2026-10-24 for a dogs-only crop of the same photo per the no-kids’-faces rule. */}
               <img className="tim-img" src="/assets/dogs-on-the-bed.jpg" alt="Two of the rescue dogs curled up on the bed" width="660" height="520" loading="lazy" decoding="async" />
               <span className="tim-slot-cap">A full, happy house</span>
             </div>

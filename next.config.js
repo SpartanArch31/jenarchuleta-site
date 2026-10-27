@@ -15,6 +15,7 @@ const pageRedirects = [
   { source: '/about-1', destination: '/about', permanent: true },
   { source: '/bio', destination: '/about', permanent: true },
   { source: '/story', destination: '/#story', permanent: true },
+  { source: '/gallery', destination: '/#gallery', permanent: true },
   { source: '/my-story', destination: '/#story', permanent: true },
   { source: '/speaking', destination: '/media#speaking', permanent: true },
   // Old Squarespace store, product, and cart URLs → the shop.
