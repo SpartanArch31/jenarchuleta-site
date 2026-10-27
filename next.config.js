@@ -14,9 +14,9 @@ const pageRedirects = [
   { source: '/about-me', destination: '/about', permanent: true },
   { source: '/about-1', destination: '/about', permanent: true },
   { source: '/bio', destination: '/about', permanent: true },
-  { source: '/story', destination: '/#story', permanent: true },
-  { source: '/gallery', destination: '/#gallery', permanent: true },
-  { source: '/my-story', destination: '/#story', permanent: true },
+  { source: '/story', destination: '/about#then', permanent: true },
+  { source: '/gallery', destination: '/about#gallery', permanent: true },
+  { source: '/my-story', destination: '/about#then', permanent: true },
   { source: '/speaking', destination: '/media#speaking', permanent: true },
   // Old Squarespace store, product, and cart URLs → the shop.
   { source: '/store/:path*', destination: '/shop', permanent: true },
@@ -29,7 +29,9 @@ const pageRedirects = [
   { source: '/signup', destination: '/#letter', permanent: false },
   { source: '/sign-up', destination: '/#letter', permanent: false },
   { source: '/mailing-list', destination: '/#letter', permanent: false },
-  { source: '/the-forever-angels', destination: '/forever-angels', permanent: true },
+  // The Forever Angels has one home: its section on the About page.
+  { source: '/the-forever-angels', destination: '/about#forever-angels', permanent: true },
+  { source: '/forever-angels', destination: '/about#forever-angels', permanent: true },
   { source: '/newsletter', destination: '/#letter', permanent: true },
   // /contact and /media are real pages. /press stays a permanent alias.
   { source: '/press', destination: '/media', permanent: true },
@@ -40,6 +42,14 @@ const pageRedirects = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // The Velvet Letter's private photos live in /private (never /public) and are
+  // read from disk by the gated route, so they must ship with these functions.
+  experimental: {
+    outputFileTracingIncludes: {
+      '/velvet': ['./private/velvet/**/*'],
+      '/velvet/photo/[name]': ['./private/velvet/**/*'],
+    },
+  },
   // Preserve old Squarespace/static URLs and SEO.
   async redirects() {
     return [

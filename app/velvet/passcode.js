@@ -1,23 +1,30 @@
 import { createHash, createHmac, timingSafeEqual } from 'crypto';
 import { cookies } from 'next/headers';
 
-const COOKIE = 'velvet_pages';
-
-// SHA-256 of the word the live site already accepts, after the same
-// normalization used below. The word itself stays out of this repo.
-const LIVE_DIGEST = Buffer.from(
-  'f4c44266a2dfad9847930615218f2811c5ee3248c6df3d3921a6d2b8e67c8bf6',
-  'hex',
-);
+// The Velvet Letter gate.
+//
+// The passcode printed in the back of the book lives ONLY in the Vercel
+// environment variable VELVET_LETTER_PASSCODE (Production and Preview).
+// Nothing in this public repo reveals it: no word, no digest.
+//
+// The unlock cookie is an HMAC keyed by that server-only passcode (plus the
+// optional VELVET_COOKIE_SECRET), so it cannot be forged by anyone reading
+// this code. If the env var is missing, the gate fails CLOSED: nobody gets in
+// until it is set. That is deliberate: a missing setting must never open the
+// private journal.
+//
+// Bump VERSION to sign everyone out (readers just re-enter the passcode).
+const COOKIE = 'velvet_letter';
+const VERSION = 'v2';
 
 export function normalizePasscode(value) {
   return String(value || '')
     .normalize('NFKC')
-    .replace(/[\u2018\u2019\u201A\u201B\u2032\u0060\u00B4]/g, "'")
-    .replace(/[\u201C\u201D\u201E\u201F\u2033]/g, '"')
-    .replace(/[\u2013\u2014\u2212]/g, '-')
-    .replace(/[\u200B-\u200D\uFEFF]/g, '')
-    .replace(/\u00A0/g, ' ')
+    .replace(/[‘’‚‛′`´]/g, "'")
+    .replace(/[“”„‟″]/g, '"')
+    .replace(/[–—−]/g, '-')
+    .replace(/[​-‍﻿]/g, '')
+    .replace(/ /g, ' ')
     .trim()
     .toLowerCase()
     .replace(/\s+/g, '')
@@ -28,53 +35,51 @@ function sha(value) {
   return createHash('sha256').update(String(value)).digest();
 }
 
-function same(attempt, expected) {
-  return timingSafeEqual(sha(attempt), sha(expected));
-}
-
-function configuredSecret() {
+function configuredPasscode() {
   for (const value of [process.env.VELVET_LETTER_PASSCODE, process.env.VELVET_PAGES_PASSCODE]) {
-    if (value && String(value).trim()) return String(value);
+    const normalized = normalizePasscode(value);
+    if (normalized) return normalized;
   }
   return '';
 }
 
+export function gateConfigured() {
+  return Boolean(configuredPasscode());
+}
+
 export function passcodeMatches(pass) {
   const attempt = normalizePasscode(pass);
-  if (!attempt) return false;
-  const secrets = [process.env.VELVET_LETTER_PASSCODE, process.env.VELVET_PAGES_PASSCODE]
-    .map((value) => normalizePasscode(value))
-    .filter(Boolean);
-  if (secrets.some((secret) => same(attempt, secret))) return true;
-  const digest = sha(attempt);
-  return digest.length === LIVE_DIGEST.length && timingSafeEqual(digest, LIVE_DIGEST);
+  const secret = configuredPasscode();
+  if (!attempt || !secret) return false;
+  return timingSafeEqual(sha(attempt), sha(secret));
 }
 
-// Cookie signatures keep the raw env value when one is set, so a
-// passcode saved before this change still opens the door. With no env
-// value, the signature key is the digest above, never the word.
-export function gateKey() {
-  return configuredSecret() || LIVE_DIGEST.toString('hex');
+function unlockToken() {
+  const secret = configuredPasscode();
+  if (!secret) return '';
+  const key = createHmac('sha256', `jen-velvet-letter-${VERSION}`)
+    .update(`${secret}|${process.env.VELVET_COOKIE_SECRET || ''}`)
+    .digest();
+  return createHmac('sha256', key).update('unlocked').digest('hex');
 }
 
-function pagesToken() {
-  return createHmac('sha256', gateKey()).update('velvet-pages').digest('hex');
-}
-
-export function isPagesUnlocked() {
+export function isUnlocked() {
+  const expected = unlockToken();
+  if (!expected) return false;
   const got = cookies().get(COOKIE)?.value || '';
-  const expected = pagesToken();
   const a = Buffer.from(got);
   const b = Buffer.from(expected);
   if (a.length !== b.length || a.length === 0) return false;
   return timingSafeEqual(a, b);
 }
 
-export function setPagesCookie() {
-  cookies().set(COOKIE, pagesToken(), {
+export function setUnlockCookie() {
+  const token = unlockToken();
+  if (!token) return;
+  cookies().set(COOKIE, token, {
     httpOnly: true,
     sameSite: 'lax',
-    secure: Boolean(process.env.VERCEL),
+    secure: process.env.NODE_ENV === 'production',
     path: '/velvet',
     maxAge: 60 * 60 * 24 * 30,
   });

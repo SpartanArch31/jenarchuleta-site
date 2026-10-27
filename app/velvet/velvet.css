@@ -1,4 +1,4 @@
-/* The Velvet Pages — dark register, scoped under .velvet-page so nothing
+/* The Velvet Letter (private journal) — dark register, scoped under .velvet-page so nothing
    collides with home/book styles. Reader-only page behind the book QR. */
 
 .velvet-page { min-height: 100vh; background: var(--bg); overflow-x: clip; }
@@ -259,3 +259,12 @@ html:has(.velvet-page) { overflow-x: clip; }
 
 /* Centering helper (matches site conventions) */
 .velvet-page .center { text-align: center; }
+
+/* Closing line on the private journal. */
+.velvet-page .velvet-close {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 4.4vw, 2.6rem);
+  line-height: 1.1;
+  color: var(--accent);
+  margin-bottom: 14px;
+}

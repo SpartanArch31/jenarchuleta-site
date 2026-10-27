@@ -2,18 +2,25 @@ import { existsSync } from 'fs';
 import path from 'path';
 import { PortableText } from '@portabletext/react';
 import './velvet.css';
+import SiteNav from '../components/SiteNav';
+import SiteFooter from '../components/SiteFooter';
 import { urlFor } from '../sanity/image';
 
-// Private letter photo. Drop the file at public/assets/velvet-letter.jpg.
+// Every photo on this page is private. Files live in /private/velvet (never
+// /public) and are served by app/velvet/photo/[name]/route.js, which checks the
+// signed unlock cookie first. A direct URL without the passcode gets a 404.
+const photo = (name) => `/velvet/photo/${name}`;
+
+// Jen's letter photo. Drop the file at private/velvet/velvet-letter.jpg.
 // Until that file is here, this renders nothing. No placeholder.
-const LETTER_PHOTO = '/assets/velvet-letter.jpg';
+const LETTER_PHOTO_FILE = 'velvet-letter.jpg';
 
 function VelvetLetterPhoto() {
-  const file = path.join(process.cwd(), 'public', LETTER_PHOTO.slice(1));
+  const file = path.join(process.cwd(), 'private', 'velvet', LETTER_PHOTO_FILE);
   if (!existsSync(file)) return null;
   return (
     <figure className="letter-photo">
-      <img src={LETTER_PHOTO} alt="Jen Walcott Archuleta" />
+      <img src={photo(LETTER_PHOTO_FILE)} alt="Jen Walcott Archuleta" />
     </figure>
   );
 }
@@ -70,37 +77,28 @@ const letterComponents = {
 };
 
 const PHOTOS = [
-  { src: '/velvet/young-jen.jpg', alt: 'Jen as a young girl' },
-  { src: '/velvet/kitchen-1981.jpg', alt: 'The kitchen, February 1981' },
-  { src: '/velvet/cowgirl.jpg', alt: 'Little cowgirl' },
-  { src: '/velvet/horseback.jpg', alt: 'On horseback' },
-  { src: '/velvet/her-parents.jpg', alt: 'Her parents, back then' },
-  { src: '/velvet/girls.jpg', alt: 'The girls' },
-  { src: '/velvet/photo-booth.jpg', alt: 'The photo booth' },
-  { src: '/velvet/glam.jpg', alt: 'The glamour years' },
-  { src: '/velvet/bunny-era.jpg', alt: 'The velvet-rope world' },
-  { src: '/velvet/mansion-group.jpg', alt: 'Inside the world of velvet ropes' },
-  { src: '/velvet/flying.jpg', alt: 'At the controls' },
-  { src: '/velvet/mom-dad-kiss.jpg', alt: 'Mom and Dad' },
-  { src: '/velvet/wedding.jpg', alt: 'The wedding' },
-  { src: '/velvet/the-dip.jpg', alt: 'Still us' },
-  { src: '/velvet/the-dogs.jpg', alt: 'The whole pack' },
+  { src: photo('young-jen.jpg'), alt: 'Jen as a young girl' },
+  { src: photo('kitchen-1981.jpg'), alt: 'The kitchen, February 1981' },
+  { src: photo('cowgirl.jpg'), alt: 'Little cowgirl' },
+  { src: photo('horseback.jpg'), alt: 'On horseback' },
+  { src: photo('her-parents.jpg'), alt: 'Her parents, back then' },
+  { src: photo('girls.jpg'), alt: 'The girls' },
+  { src: photo('photo-booth.jpg'), alt: 'The photo booth' },
+  { src: photo('glam.jpg'), alt: 'The glamour years' },
+  { src: photo('bunny-era.jpg'), alt: 'The velvet-rope world' },
+  { src: photo('mansion-group.jpg'), alt: 'Inside the world of velvet ropes' },
+  { src: photo('flying.jpg'), alt: 'At the controls' },
+  { src: photo('mom-dad-kiss.jpg'), alt: 'Mom and Dad' },
+  { src: photo('wedding.jpg'), alt: 'The wedding' },
+  { src: photo('the-dip.jpg'), alt: 'Still us' },
+  { src: photo('the-dogs.jpg'), alt: 'The whole pack' },
 ];
 
 export default function VelvetInside({ letters = [] }) {
   return (
     <>
       <div className="dark velvet-page">
-        <nav className="nav">
-          <div className="nav-inner">
-            <a href="/" className="brand">Jen Archuleta</a>
-            <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="/book">The Book</a>
-              <a href="/podcast">Podcast</a>
-            </div>
-          </div>
-        </nav>
+        <SiteNav homeHref="https://jenarchuleta.com/" />
 
         <section className="wrap text-wrap letter">
           <VelvetLetterPhoto />
@@ -225,24 +223,14 @@ export default function VelvetInside({ letters = [] }) {
         </section>
 
         <section className="wrap text-wrap center">
+          <p className="velvet-close">The story doesn’t stop here.</p>
           <p>
-            The Velvet Circle is $9.99 a month. Live monthly Zooms begin once the Velvet Circle reaches 13 members.{' '}
-            <a href="/shop#velvet-circle">See the membership</a>.
+            Want to keep the conversation going? The Velvet Circle is my private book club.{' '}
+            <a href="/shop#velvet-circle">See how it works</a>.
           </p>
-          <p>The story doesn’t stop here.</p>
         </section>
 
-        <footer>
-          <div className="wrap">
-            <p className="foot-meta">
-              © 2026 Jen Archuleta, Jennifer Walcott Archuleta. <a href="/">Home</a>
-            </p>
-            <p className="foot-meta">
-              <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a> ·{' '}
-              <a href="/shipping-returns">Shipping &amp; Returns</a>
-            </p>
-          </div>
-        </footer>
+        <SiteFooter stayClose={false} homeHref="https://jenarchuleta.com/" />
       </div>
     </>
   );

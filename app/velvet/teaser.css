@@ -1,165 +1,155 @@
-.vp-teaser {
+/* The Velvet Letter: public invitation (locked state).
+   Dark register, centered, quiet. One key, one promise, two doors. */
+.vl-page {
   background: var(--bg);
   color: var(--text);
   overflow-x: clip;
 }
 
-.vp-intro {
-  max-width: 46rem;
+.vl-invite {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  display: grid;
+  place-items: center;
+  padding: clamp(72px, 12vh, 140px) var(--gutter);
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 38%, rgba(118, 48, 40, 0.38), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 50% 100%, rgba(190, 149, 67, 0.08), transparent 75%),
+    var(--bg);
 }
 
-.vp-intro h1 {
-  font-size: var(--text-display-l);
-  margin: 0 0 16px;
+.vl-inner {
+  max-width: 38rem;
+  text-align: center;
 }
 
-.vp-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.vl-key {
+  width: 34px;
+  height: 34px;
+  color: var(--accent);
+  margin: 0 auto 26px;
+  display: block;
 }
 
-.vp-title .vp-key {
-  width: 28px;
-  height: 28px;
+.vl-title {
+  font-family: var(--font-caps);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin: 0 0 22px;
+  line-height: 1.15;
 }
 
-.vp-intro .lead {
-  max-width: 42rem;
-}
-
-.vp-lock-note {
-  margin: 28px 0 12px;
-  max-width: 34rem;
+.vl-hook {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
-  line-height: 1.35;
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0 0 22px;
 }
 
-.vp-return {
-  margin: 0 0 26px;
+.vl-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-l);
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 auto 26px;
   max-width: 34rem;
 }
 
-.vp-close {
-  margin: 8px 0 16px;
-  max-width: 34rem;
+.vl-script {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 4.6vw, 2.75rem);
+  line-height: 1.1;
+  color: var(--accent);
+  margin: 0 0 34px;
 }
 
-.vp-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 16px 28px;
+.vl-gate-actions {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
 }
 
-.vp-gate {
+.vl-buttons {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  gap: 14px;
+  justify-content: center;
+}
+
+.vl-form {
+  width: 100%;
+  max-width: 26rem;
+  display: grid;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.vl-form { display: none; }
+.vl-form.is-open,
+.vl-form:target { display: grid; }
+
+.vl-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.vl-field {
+  display: flex;
   gap: 10px;
 }
 
-.vp-gate label {
-  flex-basis: 100%;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.vp-key {
-  width: 15px;
-  height: 15px;
-  color: var(--gold);
-  flex: 0 0 auto;
-}
-
-.vp-gate input {
-  width: min(100%, 220px);
-  padding: 13px 14px;
-  border: 1px solid var(--border-strong);
-  background: var(--surface);
+.vl-field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  border: var(--hairline-strong);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text);
-  font: inherit;
-}
-
-.vp-error {
-  flex-basis: 100%;
-  margin: 0;
-  color: var(--text-secondary);
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
 }
 
-.vp-entries {
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+.vl-field input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
-.vp-entry {
-  margin: 0;
-  padding: 22px 22px 18px;
-  background: var(--paper);
-  border: var(--hairline);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.vp-entry-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-.vp-date,
-.vp-lock {
+.vl-error {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: var(--text-caption);
+  color: var(--accent-ink);
+  margin: 4px 0 0;
+}
+
+.vl-small {
+  margin: 30px auto 0;
+  max-width: 30rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  line-height: 1.6;
   color: var(--text-muted);
 }
 
-.vp-lock {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--accent-ink);
-}
-
-.vp-lock svg {
-  width: 14px;
-  height: 14px;
-}
-
-.vp-entry h2 {
-  margin: 12px 0 0;
-  font-size: var(--text-h4);
-}
-
-.vp-excerpt {
-  margin: 10px 0 0;
-  max-height: 2.8em;
-  overflow: hidden;
-  filter: blur(4px);
-  user-select: none;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-@media (min-width: 800px) {
-  .vp-entries {
-    grid-template-columns: 1fr 1fr;
+@media (max-width: 520px) {
+  .vl-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .vl-field {
+    flex-direction: column;
+  }
+  .vl-field .btn {
+    justify-content: center;
   }
 }
