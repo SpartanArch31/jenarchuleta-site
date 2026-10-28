@@ -1,6 +1,6 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import VelvetCirclePanel, { VELVET_CIRCLE_PERKS } from '../components/VelvetCirclePanel';
+import { VELVET_CIRCLE_PERKS } from '../components/VelvetCirclePanel';
 import { OG_IMAGE, SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
 import './shop.css';
 
@@ -45,59 +45,12 @@ export default function ShopPage() {
           <div className="eyebrow">The Shop</div>
           <h2>A few things worth sharing.</h2>
           <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>
-            A keepsake I make by hand, a signed copy of the book, my private book club,
-            and a little bundle from backstage.
+            A signed copy of the book, my private book club, a one-time gift bundle from
+            backstage, and a keepsake I make by hand.
           </p>
         </div>
 
         <div className="product-grid">
-          {/* SIGNATURE VELVET BOOKMARK */}
-          <article className="product-card">
-            <div className="product-media product-media--contain">
-              {!SHOP.bookmark && <span className="badge">First drop, coming soon</span>}
-              <img
-                src="/assets/bookmark.jpg"
-                alt="The Signature Velvet Bookmark, black velvet ribbon, a gold heart engraved “you matter. everyone belongs”, and a vintage key pressed in burgundy wax, resting on an open copy of the book"
-                loading="lazy"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">Handmade Keepsake</div>
-              <h3>The Signature Velvet Bookmark</h3>
-              <p className="price">{SHOP.bookmarkPrice}</p>
-              <p className="product-desc">
-                Black velvet with gold detailing, a vintage-style key pressed into a
-                burgundy wax seal, and a gold heart engraved with a reminder I believe
-                in: <em>you matter, everyone belongs.</em> Handmade by me, one at a
-                time. <strong>Every story is different. Every key is different, so no
-                two are ever alike.</strong>
-              </p>
-              <p className="fulfill">Made in small batches · every piece one of a kind</p>
-              <div className="product-cta">
-                {SHOP.bookmark ? (
-                  <>
-                    <a href={SHOP.bookmark} target="_blank" rel="noopener" className="btn btn-primary">
-                      Buy the bookmark
-                    </a>
-                    <TrustLine />
-                  </>
-                ) : SHOP.bookmarkWaitlist ? (
-                  <>
-                    <a href={SHOP.bookmarkWaitlist} target="_blank" rel="noopener" className="btn btn-primary">
-                      Join the first-drop list
-                    </a>
-                    <p className="fulfill">Small handmade batches — the list hears first.</p>
-                  </>
-                ) : (
-                  <>
-                    <span className="btn btn-disabled">Coming soon</span>
-                    <p className="fulfill">First batch is being made now.</p>
-                  </>
-                )}
-              </div>
-            </div>
-          </article>
-
           {/* SIGNED BOOK */}
           <article className="product-card" id="signed-copy">
             <div className="product-media product-media--contain">
@@ -147,7 +100,7 @@ export default function ShopPage() {
             </div>
             <div className="product-body">
               <div className="eyebrow">Monthly Book Club</div>
-              <h3>Velvet Circle Membership</h3>
+              <h3>The Velvet Circle Book Club</h3>
               <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
               <ul className="product-list">
                 {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
@@ -225,6 +178,53 @@ export default function ShopPage() {
               </div>
             </div>
           </article>
+          {/* SIGNATURE VELVET BOOKMARK */}
+          <article className="product-card">
+            <div className="product-media product-media--contain">
+              {!SHOP.bookmark && <span className="badge">First drop, coming soon</span>}
+              <img
+                src="/assets/bookmark.jpg"
+                alt="The Signature Velvet Bookmark, black velvet ribbon, a gold heart engraved “you matter. everyone belongs”, and a vintage key pressed in burgundy wax, resting on an open copy of the book"
+                loading="lazy"
+              />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">Handmade Keepsake</div>
+              <h3>The Signature Velvet Bookmark</h3>
+              <p className="price">{SHOP.bookmarkPrice}</p>
+              <p className="product-desc">
+                Black velvet with gold detailing, a vintage-style key pressed into a
+                burgundy wax seal, and a gold heart engraved with a reminder I believe
+                in: <em>you matter, everyone belongs.</em> Handmade by me, one at a
+                time. <strong>Every story is different. Every key is different, so no
+                two are ever alike.</strong>
+              </p>
+              <p className="fulfill">Made in small batches · every piece one of a kind</p>
+              <div className="product-cta">
+                {SHOP.bookmark ? (
+                  <>
+                    <a href={SHOP.bookmark} target="_blank" rel="noopener" className="btn btn-primary">
+                      Buy the bookmark
+                    </a>
+                    <TrustLine />
+                  </>
+                ) : SHOP.bookmarkWaitlist ? (
+                  <>
+                    <a href={SHOP.bookmarkWaitlist} target="_blank" rel="noopener" className="btn btn-primary">
+                      Join the first-drop list
+                    </a>
+                    <p className="fulfill">Small handmade batches — the list hears first.</p>
+                  </>
+                ) : (
+                  <>
+                    <span className="btn btn-disabled">Coming soon</span>
+                    <p className="fulfill">First batch is being made now.</p>
+                  </>
+                )}
+              </div>
+            </div>
+          </article>
+
         </div>
 
         <p className="assurance">
@@ -232,11 +232,10 @@ export default function ShopPage() {
         </p>
       </section>
 
-      {/* THE VELVET CIRCLE — explained before anyone subscribes */}
-      <div id="velvet-circle-details">
-        <VelvetCirclePanel />
-      </div>
-
+      {/* The Velvet Circle is explained once: its card above, then these questions, before
+          anyone subscribes (Jen, Oct 28: no repeated description). #velvet-circle-details
+          stays as an anchor so older links land here. */}
+      <div id="velvet-circle-details" aria-hidden="true" />
       <section id="velvet-circle-faq" className="wrap text-wrap vc-faq">
         <div className="center">
           <div className="eyebrow">The Velvet Circle</div>

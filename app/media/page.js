@@ -24,7 +24,7 @@ export const metadata = {
 // web image (1000x1500), not a press-resolution file.
 // Outlet logos are names until files arrive in public/assets/logos/.
 
-const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A feature film based on her memoir is in development with Leone Marucci and Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
+const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A feature film based on her memoir is in development with Leone Marucci and Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives in Scottsdale, Arizona, with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
 
 
 

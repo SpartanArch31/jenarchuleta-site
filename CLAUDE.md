@@ -29,10 +29,12 @@ the newer features she likes. Before changing structure, re-read this section.
   links there; `/forever-angels` redirects there.
 - **Film and documentary** are IN DEVELOPMENT. One source of wording: `lib/press.js` (`FILM`).
   Never say released, acquired, or optioned.
-- **Podcast:** say simply that *Unfiltered with Jen Archuleta* features 13 episodes. Never say
-  the show is on hold or that new episodes are coming. Use guests' full names.
-- **Shop:** four products in this order — Velvet Bookmark, Signed copy, Velvet Circle,
-  The Backstage Bundle. Jen's two offers (2026-10-28), labeled plainly:
+- **Podcast:** "Explore all 13 episodes of Unfiltered with Jen Archuleta." (Season 1 is
+  complete.) Buzzsprout and YouTube sit together. Never say the show is on hold or that new
+  episodes are coming. Use guests' full names.
+- **Shop:** four products in this order (Jen, 2026-10-28) — Signed copy, The Velvet Circle Book
+  Club, The Backstage Bundle, Velvet Bookmark. The Velvet Circle is described once (its card),
+  then the FAQ; no second panel repeating it. Jen's two offers, labeled plainly:
   - **Velvet Circle = "Monthly Book Club"**, $9.99/mo: one-page discussion guide, up to three
     questions a month that Jen answers personally in writing, and monthly Zooms once 13 active
     PAYING members have joined. Never a signed book, bookmark, ears, or any physical item.

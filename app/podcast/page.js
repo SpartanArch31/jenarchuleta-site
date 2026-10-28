@@ -12,7 +12,8 @@ export const metadata = {
 };
 
 // Jen's rules for this page (October 27, 2026): say simply that the show
-// features 13 episodes; Buzzsprout and YouTube live here; never say the show
+// "Explore all 13 episodes of Unfiltered with Jen Archuleta." (Jen, Oct 28); Buzzsprout and
+// YouTube sit together here; never say the show
 // is on hold or that new episodes are coming out. Use guests' full names.
 export const revalidate = 3600;
 
@@ -33,7 +34,7 @@ export default async function PodcastPage() {
         <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>
           Honest conversations on faith, family, resilience, and starting over — the same honest voice as the book.
         </p>
-        <p className="pod-count">{name} features 13 episodes.</p>
+        <p className="pod-count">Explore all 13 episodes of {name}.</p>
         <div className="subscribe-row">
           <a href={PODCAST.buzzsprout} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
           <a href={PODCAST.youtube} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
