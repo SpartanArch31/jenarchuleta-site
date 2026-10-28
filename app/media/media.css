@@ -151,26 +151,101 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
   margin: 8px 0 28px;
-  align-items: start;
+  align-items: end; /* names and download buttons line up */
+}
+
+.headshot-title {
+  font-size: var(--text-h4);
+  margin: 36px 0 6px;
+}
+
+.headshot-note {
+  font-family: var(--font-sans);
+  font-size: var(--text-meta);
+  color: var(--text-muted);
+  margin: 0 0 18px;
+}
+
+/* Whole photo at its own ratio. No crop, no tinted box around it. */
+.headshot-frame {
+  padding: 6px;
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  box-shadow: var(--shadow);
 }
 
 .headshot-grid img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
-  background: var(--linen);
+}
+
+.headshot-grid figure {
+  margin: 0;
 }
 
 .headshot-grid figcaption {
-  margin: 12px 0;
+  margin: 14px 0 10px;
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.headshot-tag {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+/* The primary Media photo (the floral portrait) beside the introduction. */
+.media-page .media-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.media-hero-photo {
+  margin: 0;
+  padding: 7px;
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  box-shadow: var(--shadow-lg);
+  max-width: 440px;
+  justify-self: end;
+  width: 100%;
+}
+
+.media-hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 860px) {
+  .media-page .media-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .media-hero-photo {
+    justify-self: center;
+    max-width: 420px;
+  }
 }
 
 @media (max-width: 760px) {
   .media-grid,
   .headshot-grid {
     grid-template-columns: 1fr;
+  }
+
+  .headshot-grid {
+    max-width: 420px;
+    margin-inline: auto;
   }
 }

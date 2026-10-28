@@ -1,5 +1,6 @@
 import './about.css';
 import SiteNav from '../components/SiteNav';
+import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
 import { SOCIALS } from '../components/site-data';
@@ -8,7 +9,7 @@ import { FILM } from '../../lib/press';
 export const metadata = {
   title: 'About',
   description:
-    'Hi, I’m Jen — a mom, a wife, and the human behind a houseful of five rescue dogs and two tortoises. Faith, family, and giving back. This is me.',
+    'Hi, I’m Jen — a mom, a wife, and the human behind a houseful of rescue dogs. Faith, family, and giving back. This is me.',
 };
 
 export default function AboutPage() {
@@ -24,18 +25,23 @@ export default function AboutPage() {
           <p className="eyebrow">All of me</p>
           <h1 className="tim-display">Hi — I’m&nbsp;Jen.</h1>
           <p className="tim-script">and this is me</p>
+          {/* September wording, plus Jen's one addition (October 27, her exact words). */}
           <p className="tim-lead">
-            I don’t really do labels. I’m just me — a mom, a wife, and yes, the human behind a houseful of five rescue dogs and two tortoises.
+            I don’t really do labels. I’m just me — a mom, a wife, and yes, the human behind a houseful of rescue dogs.
             I had a whole lot of incredible experiences in my twenties… but honestly? These days it’s the
-            small stuff that gets me. Kids everywhere, rescue dogs on the couch they’re not allowed on. My
+            small stuff that gets me. Kids everywhere, dogs on the couch they’re not allowed on. My
             faith, my family, and giving back. That’s pretty much it.
+          </p>
+          <p className="tim-lead" style={{ marginTop: '18px' }}>
+            Above all, I love fiercely. My husband, my children, my family, and my friends are the heart of
+            my world. I’m grateful for the life we’ve built, the memories we share, and the love that carries
+            us through it all.
           </p>
           <div className="tim-chips">
             <span className="tim-chip">Mom</span>
             <span className="tim-chip">Wife</span>
             <span className="tim-chip">Faith</span>
             <span className="tim-chip">Five rescue dogs</span>
-            <span className="tim-chip">Two tortoises</span>
             <span className="tim-chip">Giving back</span>
             <span className="tim-chip">Just me</span>
           </div>
@@ -73,19 +79,21 @@ export default function AboutPage() {
           </div>
         </div>
         <div>
-          {/* Everyday photos. Swap a file in place to change one. */}
+          {/* The September photos: the dogs, the tortoise, the coffee cup, and the dogs on the
+              bed. Jen chose these on purpose. Do not remove or replace them unless she asks.
+              Full September files, served at the right size by next/image. */}
           <p className="tim-hint">A few true things · rescue dogs, animals, the everyday</p>
           <div className="tim-grid2">
             <div className="tim-slot-wrap tim-span">
-              <img className="tim-img" src="/assets/dogs.jpg" alt="Jen’s five rescue dogs together in the garden" width="1400" height="786" loading="lazy" decoding="async" />
+              <Image className="tim-img" src="/assets/dogs.jpg" alt="Jen’s five rescue dogs together in the garden" width={1400} height={786} sizes="(max-width: 860px) 92vw, 640px" quality={85} />
               <span className="tim-slot-cap">All five of them</span>
             </div>
             <div className="tim-slot-wrap">
-              <img className="tim-img" src="/assets/wandered-in.jpg" alt="The family tortoise wandering through the house" width="600" height="1067" loading="lazy" decoding="async" />
+              <Image className="tim-img" src="/assets/wandered-in.jpg" alt="The family tortoise wandering through the house" width={787} height={1400} sizes="(max-width: 860px) 92vw, 300px" quality={85} />
               <span className="tim-slot-cap">Whoever else wandered in</span>
             </div>
             <div className="tim-slot-wrap">
-              <img className="tim-img" src="/assets/coffee.jpg" alt="A quiet morning coffee before the house wakes up" width="700" height="700" loading="lazy" decoding="async" />
+              <Image className="tim-img" src="/assets/coffee.jpg" alt="A quiet morning coffee before the house wakes up" width={1400} height={1400} sizes="(max-width: 860px) 92vw, 360px" quality={85} />
               <span className="tim-slot-cap">Before the house wakes up</span>
             </div>
             <div className="tim-slot-wrap tim-span">
@@ -105,8 +113,8 @@ export default function AboutPage() {
               Fiercely loyal to the few who are mine.
             </h2>
             <p className="tim-lead" style={{ margin: 0 }}>
-              I love my husband, my children, my family, and my friends fiercely — and a houseful of
-              rescue animals I love like family. I love hard and I show up — that part of me has never changed.
+              My husband, my kids, a handful of people I’d do anything for, and a houseful of animals
+              I love like family. I love hard and I show up — that part of me has never changed.
             </p>
           </div>
         </div>
@@ -115,7 +123,9 @@ export default function AboutPage() {
       {/* THEN & NOW */}
       <section id="then" className="tim-wrap tim-then">
         <div>
-          <img className="tim-gray" src="/assets/jen-headshot-blazer.jpg" alt="Jen Walcott Archuleta" width="1000" height="1249" loading="lazy" decoding="async" />
+          {/* Jen's pick for this section since July: the black-and-white photo in the long black
+              trench coat. Do not swap in a headshot. */}
+          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Walcott Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         </div>
         <div>
           <p className="eyebrow">Then &amp; now</p>

@@ -41,6 +41,29 @@ the newer features she likes. Before changing structure, re-read this section.
   at their URLs). Nothing is deleted. The public Journal never shows Velvet Letter content.
 - **Quotes** have their own page; don't repeat them around the site.
 
+## ⭐ Photos — Jen's rules (2026-10-27 final corrections) — don't undo this
+
+- **Gallery (About `#gallery`, `app/components/PhotoGallery.js`):** every photo is shown whole,
+  at its own ratio, as big as the stage allows (about 900px wide for a landscape photo on a
+  laptop, nearly full width on a phone), on a thin white mat that hugs the photo. Never put the
+  slides in a shared cover-crop frame, never stretch, never enlarge a file more than 1.6x
+  (small files go blurry; get the larger original instead). Review photos one by one: crop off
+  phone buttons, status bars, TikTok marks, and white/black edge bands with a simple crop, but
+  never paint over or rebuild part of a photo. If a mark can't be cropped off cleanly, ask Jen
+  for the original. Link straight to a slide with `/about?photo=46#gallery`.
+- **"My twenties were something else"** uses the black-and-white long black trench coat photo
+  (`jen-bw-coat2.jpg`), Jen's pick since July. Never swap in a headshot.
+- **About wording** is the September 2026 wording plus Jen's one addition near the top
+  ("Above all, I love fiercely…"). Her dogs are always rescue dogs. Keep the September photos
+  (dogs, tortoise, coffee cup, dogs on the bed) where they are.
+- **Media & Speaking:** Jen's three approved photos only: the floral portrait (primary Media
+  image, `presskit-headshot-floral.jpg`), the glamour portrait in black
+  (`jen-headshot-signature.jpg`), and the black-and-white editorial (`jen-headshot-bw.jpg`),
+  each downloadable. No retouching. The Contact page uses a headshot, not the puppy photo.
+- **Velvet Circle:** the circular logo and the bunny-ears book club photo, both shown whole.
+- Every photo change is logged in `docs/photo-changes-2026-10-27.md` (originals stay in git
+  history and in the pre-change backup tag).
+
 ## ⭐ The Velvet Letter — private, and it must stay that way
 
 - **One entrance:** `/velvet`. The QR code in the back of the book encodes `/velvetropes`,

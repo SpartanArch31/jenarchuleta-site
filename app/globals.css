@@ -229,37 +229,49 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .center { text-align:center; }
 .threshold-rule { max-width: 220px; margin: 0 auto; }
 
-/* homepage gallery */
+/* About gallery. Big, whole photos (Jen, October 27): each slide is shown at
+   its own ratio, as large as the stage allows, never stretched or cropped.
+   The white mat hugs the photo, so there is no empty frame around it.
+   --g-w (set per slide in PhotoGallery.js) = min(--g-max-w, --g-max-h x ratio,
+   1.6 x the file's width). */
 .gallery-band { background: var(--bg); text-align: center; }
 .gallery-band h2 { margin-bottom: clamp(36px, 5vw, 64px); }
+.gallery-band .wrap { container-type: inline-size; }
 .gallery-stage {
+  --g-arrow: 46px;
+  --g-gap: clamp(12px, 2vw, 28px);
+  --g-pad: clamp(5px, 0.6vw, 8px);
+  --g-max-w: min(900px, calc(100cqw - 2 * var(--g-arrow) - 2 * var(--g-gap) - 2 * var(--g-pad) - 2px));
+  --g-max-h: min(78vh, 860px);
   display: grid;
-  grid-template-columns: 52px minmax(0, 440px) 52px;
+  grid-template-columns: var(--g-arrow) minmax(0, calc(var(--g-max-w) + 2 * var(--g-pad) + 2px)) var(--g-arrow);
+  grid-template-areas:
+    "prev area next"
+    ".    meta .";
   align-items: center;
   justify-content: center;
-  gap: clamp(18px, 3vw, 36px);
-  width: min(680px, 100%);
-  margin-inline: auto;
+  column-gap: var(--g-gap);
+  row-gap: 14px;
+}
+/* A fixed-height stage on larger screens, so the page below does not jump
+   as the slides change. The photo sits centered in it. */
+.gallery-area {
+  grid-area: area;
+  height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  touch-action: pan-y;
 }
 .gallery-frame {
-  width: 100%;
-  padding: clamp(12px, 1.8vw, 16px);
+  padding: var(--g-pad);
   background: var(--paper);
   border: 1px solid var(--gold);
   box-shadow: var(--shadow-lg);
-  touch-action: pan-y;
+  line-height: 0;
 }
-.gallery-viewport {
-  position: relative;
-  width: 100%;
-  border: 1px solid var(--gold);
-  background: var(--linen);
-  touch-action: pan-y;
-  overflow: visible;
-}
-/* One photo in flow sets the frame. The rest fade over it.
-   Natural ratio, nothing cropped. A shared 3/4 cover frame was cutting
-   heads and the sides of wider photos. */
+.gallery-viewport { position: relative; }
 .gallery-slide {
   position: absolute;
   inset: 0;
@@ -275,53 +287,32 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   inset: auto;
   opacity: 1;
   z-index: 1;
-  width: 100%;
   pointer-events: auto;
 }
+/* Neighbors fade inside the active photo's box, whole and uncropped. */
 .gallery-slide img {
   display: block;
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: min(82vh, 840px);
+  max-height: 100%;
   object-fit: contain;
-  margin-inline: auto;
 }
-.gallery-viewport:has(.gallery-slide.is-full.is-active) {
-  overflow: visible;
-}
-.gallery-slide.is-full {
-  overflow: visible;
-}
-.gallery-slide.is-full img {
-  width: 100%;
+.gallery-slide.is-active img {
+  width: var(--g-w);
   height: auto;
-  max-width: 100%;
+  max-width: none;
   max-height: none;
-  object-fit: contain;
 }
-/* Tall portraits stay fully in the frame. Align to the top so a head
-   is not the part that would be cut if the frame is short. */
-.gallery-frame:has(.gallery-slide.is-portrait.is-active),
-.gallery-viewport:has(.gallery-slide.is-portrait.is-active),
-.gallery-slide.is-portrait {
-  overflow: visible;
-}
-.gallery-slide.is-portrait {
-  align-items: flex-start;
-}
-.gallery-slide.is-portrait img {
-  object-fit: contain;
-  object-position: center top;
-}
+.gallery-meta { grid-area: meta; min-height: 2.6em; }
 .gallery-caption {
-  margin: 12px 0 0;
+  margin: 0;
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.45;
 }
 .gallery-count {
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   font-family: var(--font-sans);
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -342,19 +333,30 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   cursor: pointer;
 }
 .gallery-arrow:hover { color: var(--ink); border-color: var(--gold-deep); }
+.gallery-arrow--prev { grid-area: prev; }
+.gallery-arrow--next { grid-area: next; }
+/* Phones: the photo runs nearly edge to edge with small, even margins.
+   The stage follows each photo's height, arrows sit underneath. */
 @media (max-width: 759px) {
+  .gallery-band .wrap { padding-inline: 12px; }
   .gallery-stage {
+    --g-pad: 4px;
+    --g-max-w: calc(100cqw - 2 * var(--g-pad) - 2px);
+    --g-max-h: 76vh;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "frame frame"
+      "area area"
+      "meta meta"
       "prev next";
-    justify-items: center;
-    gap: 22px 14px;
-    width: min(440px, 100%);
+    column-gap: 14px;
+    row-gap: 12px;
   }
-  .gallery-frame { grid-area: frame; width: 100%; }
-  .gallery-arrow--prev { grid-area: prev; }
-  .gallery-arrow--next { grid-area: next; }
+  .gallery-area { height: auto; }
+}
+@supports (height: 1svh) {
+  @media (max-width: 759px) {
+    .gallery-stage { --g-max-h: 76svh; }
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .gallery-slide { transition: none; }

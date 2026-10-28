@@ -17,27 +17,32 @@ export default function VelvetCirclePanel() {
 
   return (
     <section className="vc-announce" aria-labelledby="vc-announce-title">
+      {/* Both Velvet Circle images, each shown whole (Jen, October 27): the book club
+          photo Jen sent, and the circular Velvet Circle logo above the words. */}
       <div className="vc-announce-photo">
-        <img
-          className="vc-watermark"
-          src="/assets/velvet-circle-watermark.png"
-          alt=""
-          width="436"
-          height="436"
-        />
-        <div className="vc-announce-frame">
+        <figure className="vc-announce-frame">
           <img
             src="/assets/velvet-circle-group.jpg"
-            alt="A younger group together, three of them wearing black bunny ears, holding copies of Beyond the Velvet Ropes"
+            alt="A book club gathered on couches, some wearing black bunny ears, holding copies of Beyond the Velvet Ropes"
             width="1152"
             height="864"
+            loading="lazy"
+            decoding="async"
           />
-        </div>
+        </figure>
       </div>
 
       <div className="vc-announce-copy">
         <div className="vc-announce-text">
-          <p className="vc-announce-eyebrow">THE VELVET CIRCLE</p>
+          <img
+            className="vc-mark"
+            src="/assets/velvet-circle-mark.png"
+            alt="The Velvet Circle"
+            width="436"
+            height="436"
+            loading="lazy"
+            decoding="async"
+          />
           <h2 id="vc-announce-title">
             My private book club for readers of Beyond the Velvet Ropes.
           </h2>

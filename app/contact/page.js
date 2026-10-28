@@ -20,12 +20,14 @@ export default function ContactPage() {
       <a href="#main-content" className="skip-link">Skip to content</a>
 
       <section id="main-content" className="wrap contact-hero">
+        {/* A professional headshot, not the puppy photo (Jen, October 27). One of her three
+            approved photos; the floral portrait leads on /media. */}
         <img
           className="contact-cover"
-          src="/assets/jen-fun.jpg"
-          alt="Jen Walcott Archuleta with friends"
-          width="1320"
-          height="1756"
+          src="/assets/jen-headshot-signature.jpg"
+          alt="Jen Walcott Archuleta"
+          width="1162"
+          height="1597"
         />
         <p className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>Let’s connect</p>
         <h1>Jen Walcott Archuleta</h1>
