@@ -43,13 +43,25 @@ export default function ShippingReturnsPage() {
             handmade, one-of-a-kind pieces, all other sales are final.
           </p>
 
+          <h2>The Backstage Bundle</h2>
+          <p>
+            The Backstage Bundle is a one-time purchase of $69, not a subscription. It includes a signed
+            copy of <em>Beyond the Velvet Ropes</em>, my handmade velvet bookmark, black velvet bunny
+            ears, and one month to send me up to 3 questions, which I&rsquo;ll answer personally in
+            writing. After that month it ends. It does not start a Velvet Circle membership, and you
+            are never charged again unless you choose to join the Velvet Circle yourself. The physical
+            items ship under the policy above.
+          </p>
+
           <h2>Velvet Circle Membership</h2>
           <p>
             The Velvet Circle Membership is a recurring monthly subscription billed at $9.99/month until
-            you cancel. Members can email me their questions about the book and my experiences, up to
-            3 a month, and I&rsquo;ll answer every one in writing. Monthly group Zoom conversations begin
-            once 13 active members have joined; until then, membership is the written Q&amp;A. The
-            membership does not include a signed book or gifts. You can cancel anytime before your next billing date to avoid being charged for
+            you cancel. Members receive a one-page discussion guide for the book and can send me their
+            questions about the book and my experiences, up to 3 a month, and I&rsquo;ll answer every
+            one personally in writing. Monthly group Zoom conversations begin once 13 active paying
+            members have joined; until then, membership is the discussion guide and the written
+            answers. The membership does not include a signed book, the bookmark, bunny ears, or any
+            other physical item. You can cancel anytime before your next billing date to avoid being charged for
             the following month; charges already processed for the current billing period are
             non-refundable. Your membership stays active through the end of the billing period
             you&rsquo;ve already paid for. We don&rsquo;t offer refunds for time already used, but

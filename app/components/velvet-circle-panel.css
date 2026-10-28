@@ -18,30 +18,13 @@
   padding: 28px 12px 0;
 }
 
-/* The book club photo, whole, on a thin white mat like the gallery. */
-.vc-announce-frame {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 600px);
-  margin: 0;
-  padding: 6px;
-  background: var(--paper);
-  border: 1px solid var(--gold);
-  box-shadow: var(--shadow-lg);
-}
-
-.vc-announce-frame img {
+/* The circular Velvet Circle logo, whole, on the cream panel. */
+.vc-logo {
   display: block;
-  width: 100%;
+  width: min(78%, 360px);
   height: auto;
-}
-
-/* The circular Velvet Circle logo, crisp, above the headline. */
-.vc-mark {
-  display: block;
-  width: clamp(104px, 10vw, 132px);
-  height: auto;
-  margin: 0 0 18px;
+  margin: 0 auto;
+  filter: drop-shadow(0 18px 36px rgba(40, 24, 12, 0.22));
 }
 
 .vc-announce-photo,

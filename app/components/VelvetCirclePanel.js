@@ -2,13 +2,18 @@ import './velvet-circle-panel.css';
 import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 
 // What the $9.99 membership is, said plainly BEFORE anyone subscribes.
-// Jen's rules (October 27, 2026): members can email her questions about the
-// book and her experiences; monthly group Zooms begin once 13 active members
-// have joined. Never promise signed books, gifts, or monthly Zooms as
-// immediate benefits of the $9.99 subscription.
+// Jen's rules (October 28, 2026): the Velvet Circle is the MONTHLY BOOK CLUB.
+// It includes the one-page discussion guide and up to three questions a month
+// that Jen answers personally in writing. Monthly group Zooms begin once 13
+// active paying members have joined. It never includes a signed book, the
+// bookmark, bunny ears, or any other physical item; those are only in The
+// Backstage Bundle (the one-time gift). Never promise Zooms as an immediate
+// benefit. The bunny-ears photo belongs with the bundle, not here, so nobody
+// thinks the membership includes the ears.
 export const VELVET_CIRCLE_PERKS = [
-  'Email me your questions about the book and my experiences, and I’ll answer in writing (up to 3 a month)',
-  'Monthly group Zoom conversations begin once 13 active members have joined',
+  'A one-page discussion guide for the book',
+  'Up to three questions a month about the book and my experiences, answered personally by me in writing',
+  'Monthly group Zooms begin once 13 active paying members have joined',
   '$9.99 a month. Cancel anytime.',
 ];
 
@@ -17,34 +22,24 @@ export default function VelvetCirclePanel() {
 
   return (
     <section className="vc-announce" aria-labelledby="vc-announce-title">
-      {/* Both Velvet Circle images, each shown whole (Jen, October 27): the book club
-          photo Jen sent, and the circular Velvet Circle logo above the words. */}
+      {/* The circular Velvet Circle logo, whole (Jen: keep the logo). */}
       <div className="vc-announce-photo">
-        <figure className="vc-announce-frame">
-          <img
-            src="/assets/velvet-circle-group.jpg"
-            alt="A book club gathered on couches, some wearing black bunny ears, holding copies of Beyond the Velvet Ropes"
-            width="1152"
-            height="864"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
+        <img
+          className="vc-logo"
+          src="/assets/velvet-circle-mark.png"
+          alt="The Velvet Circle"
+          width="436"
+          height="436"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
 
       <div className="vc-announce-copy">
         <div className="vc-announce-text">
-          <img
-            className="vc-mark"
-            src="/assets/velvet-circle-mark.png"
-            alt="The Velvet Circle"
-            width="436"
-            height="436"
-            loading="lazy"
-            decoding="async"
-          />
+          <p className="vc-announce-eyebrow">MONTHLY BOOK CLUB</p>
           <h2 id="vc-announce-title">
-            My private book club for readers of Beyond the Velvet Ropes.
+            The Velvet Circle: my private book club for readers of Beyond the Velvet Ropes.
           </h2>
           <p className="vc-announce-line">
             Real conversations. Untold stories. A place to connect, ask questions, and grow together.
@@ -52,6 +47,11 @@ export default function VelvetCirclePanel() {
           <ul className="vc-announce-perks">
             {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
           </ul>
+          <p className="vc-announce-box">
+            Looking for the signed book, bookmark, and bunny ears? That’s{' '}
+            <a href="/shop#backstage-bundle">The Backstage Bundle</a>, a one-time gift. It doesn’t
+            sign you up for the Velvet Circle.
+          </p>
           {join ? (
             <a className="btn btn-primary" href={join} target="_blank" rel="noopener noreferrer">
               Join the Velvet Circle

@@ -31,11 +31,17 @@ the newer features she likes. Before changing structure, re-read this section.
   Never say released, acquired, or optioned.
 - **Podcast:** say simply that *Unfiltered with Jen Archuleta* features 13 episodes. Never say
   the show is on hold or that new episodes are coming. Use guests' full names.
-- **Shop:** four products in this order — Velvet Bookmark, Signed copy, Velvet Circle
-  ($9.99/mo), The Backstage Bundle ($69: signed book, handmade bookmark, black bunny ears,
-  first month of the Velvet Circle; no gift box; continuing the membership is the customer's
-  choice — never auto-enroll). The Velvet Circle is explained (with an FAQ) before anyone
-  subscribes; never promise signed books, gifts, or monthly Zooms as immediate benefits.
+- **Shop:** four products in this order — Velvet Bookmark, Signed copy, Velvet Circle,
+  The Backstage Bundle. Jen's two offers (2026-10-28), labeled plainly:
+  - **Velvet Circle = "Monthly Book Club"**, $9.99/mo: one-page discussion guide, up to three
+    questions a month that Jen answers personally in writing, and monthly Zooms once 13 active
+    PAYING members have joined. Never a signed book, bookmark, ears, or any physical item.
+  - **Backstage Bundle = "One-Time Gift Bundle"**, $69 once: signed book, handmade bookmark,
+    black bunny ears, and one month to send up to three questions for Jen's written answers.
+    Then it ends. It never starts a membership and never charges again; joining the Circle is
+    the customer's choice. No gift box (don't use the box photo, `backstage-bundle.jpg`).
+  The Velvet Circle is explained (with an FAQ) before anyone subscribes; never promise monthly
+  Zooms as an immediate benefit.
 - **Journal:** categories in Jen's order are in `app/journal/curation.js`. Repetitive
   promotional posts are ARCHIVED there (hidden from the feed, listed under Archive, still live
   at their URLs). Nothing is deleted. The public Journal never shows Velvet Letter content.
@@ -60,7 +66,8 @@ the newer features she likes. Before changing structure, re-read this section.
   image, `presskit-headshot-floral.jpg`), the glamour portrait in black
   (`jen-headshot-signature.jpg`), and the black-and-white editorial (`jen-headshot-bw.jpg`),
   each downloadable. No retouching. The Contact page uses a headshot, not the puppy photo.
-- **Velvet Circle:** the circular logo and the bunny-ears book club photo, both shown whole.
+- **Velvet Circle:** shows the circular logo. The bunny-ears book club photo goes with The
+  Backstage Bundle only (Shop card and homepage), so nobody thinks the membership includes ears.
 - Every photo change is logged in `docs/photo-changes-2026-10-27.md` (originals stay in git
   history and in the pre-change backup tag).
 

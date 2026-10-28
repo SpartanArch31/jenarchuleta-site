@@ -59,4 +59,5 @@ only the five above have fuller versions on file.
 |---|---|
 | Media | The floral portrait leads the page (primary Media image). The press-photo set is now Jen's three approved photos: floral, glamour in black, black-and-white. The blazer headshot is no longer offered. Each has a download link. |
 | Contact | `jen-fun.jpg` (puppy photo) replaced with `jen-headshot-signature.jpg`. |
-| Velvet Circle (Shop) | The book club photo is shown whole on a white mat, and the circular logo (`velvet-circle-mark.png`) sits above the headline. The faint logo watermark behind the photo is gone. |
+| Velvet Circle (Shop) | October 28 (Jen): the membership panel shows the circular logo (`velvet-circle-mark.png`) only. The faint logo watermark is gone. |
+| Backstage Bundle (Shop + homepage) | October 28 (Jen): the bunny-ears book club photo (`velvet-circle-group.jpg`) moved here from the membership, replacing the gift-box photo (`backstage-bundle.jpg`, no box is included). |

@@ -174,11 +174,13 @@ export default async function Home() {
       {/* 8. THE BACKSTAGE BUNDLE */}
       <section id="bundle" className="wrap home-bundle">
         <div className="home-bundle-card">
-          <img src="/assets/backstage-bundle.jpg" alt="The signed book, a handmade velvet bookmark, and black velvet bunny ears" width="1268" height="1600" loading="lazy" />
+          {/* One-time gift bundle (Jen, October 28). The bunny-ears picture lives with the
+              bundle; there is no gift box, so the box photo is not used. */}
+          <img src="/assets/velvet-circle-group.jpg" alt="Readers on couches with copies of Beyond the Velvet Ropes, some wearing black bunny ears" width="1152" height="864" loading="lazy" />
           <div>
-            <div className="eyebrow">The Backstage Bundle · {SHOP.foundingBoxPrice}</div>
+            <div className="eyebrow">One-Time Gift Bundle · {SHOP.foundingBoxPrice}</div>
             <h2>The book, signed — and a few things from backstage.</h2>
-            <p className="lead">A signed copy of <em>Beyond the Velvet Ropes</em>, my handmade velvet bookmark, black velvet bunny ears, and your first month of the Velvet Circle.</p>
+            <p className="lead">A signed copy of <em>Beyond the Velvet Ropes</em>, my handmade velvet bookmark, black velvet bunny ears, and one month to send me up to three questions, answered personally in writing. One payment, no subscription.</p>
             <div className="hero-ctas">
               {SHOP.foundingBox ? (
                 <a href="/shop#backstage-bundle" className="btn btn-primary">Get the Backstage Bundle</a>
