@@ -27,3 +27,45 @@
   margin-top: 14px;
 }
 .pod-pup-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+
+/* Listen beside Watch (Jen, November 2026): Buzzsprout's player on the left,
+   the YouTube "Full Episodes" playlist on the right; stacked on phones. */
+.pod-players {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 36px);
+  align-items: start;
+}
+.pod-player { min-width: 0; }
+.pod-player-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.pod-player-head .eyebrow { margin: 0; }
+.pod-player-head a {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  color: var(--accent-ink);
+}
+.pod-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--ink, #221C18);
+}
+.pod-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.pod-video-note {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+@media (max-width: 860px) {
+  .pod-players { grid-template-columns: 1fr; }
+}

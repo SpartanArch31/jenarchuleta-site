@@ -67,7 +67,7 @@ const personJsonLd = {
   url: 'https://jenarchuleta.com',
   image: 'https://jenarchuleta.com/assets/presskit-headshot-floral.jpg',
   jobTitle: 'Author',
-  sameAs: [SOCIALS.instagram, SOCIALS.x, SOCIALS.tiktok, PODCAST.subscribe.spotify, PODCAST.subscribe.apple, PODCAST.subscribe.youtube],
+  sameAs: [SOCIALS.instagram, SOCIALS.tiktok, SOCIALS.x, SOCIALS.facebook, SOCIALS.linkedin, PODCAST.subscribe.spotify, PODCAST.subscribe.apple, PODCAST.subscribe.youtube],
 };
 
 export default function RootLayout({ children }) {

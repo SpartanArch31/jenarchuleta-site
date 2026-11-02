@@ -15,16 +15,28 @@ the newer features she likes. Before changing structure, re-read this section.
 
 - **One navigation, every page** (`app/components/SiteNav.js`):
   Home | About | Book | Podcast | Journal | Media | Shop | The Velvet Letter.
-  Speaking, Quotes, Sponsors, Contact, Free First Chapter, and The Forever Angels live in the
-  footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
+  Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors, Contact, Free First Chapter, and
+  The Forever Angels live in the footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
   Velvet Letter page use the same components.
 - **"Stay close"** (top of `SiteFooter.js`) is the ONE home for the free first chapter signup
   and the social links (Instagram, TikTok, X, Facebook, LinkedIn). Don't add "Follow me"
-  blocks or social buttons anywhere else. Buzzsprout/YouTube links live on the Podcast page.
-- **Homepage, in Jen's order:** intro + Get the Book · Story/Voice/Heart · the book with
-  trailer and buy links · a short Velvet Letter invitation · podcast + featured Pup of the
-  Podcast · journal previews · media & press highlights · The Backstage Bundle · free first
-  chapter (Stay close). The photo carousel is on **About**, not the homepage.
+  blocks or social buttons anywhere else. Buzzsprout/YouTube links live on the Podcast page
+  (players side by side) plus one "Listen on Buzzsprout • Watch on YouTube" line on the
+  homepage. "Watch on YouTube" opens the channel's Full Episodes playlist (`PODCAST.youtubeEpisodes`).
+- **Homepage, in Jen's order (Nov 2026):** intro + Get the Book · Story/Voice/Heart · featured
+  photos (`HomeCarousel.js`, a short row: candid portrait, family and dogs, the book; away from
+  the hero portrait; no children's faces) · the book with trailer and buy links · The Backstage
+  Bundle (`BundleFeature.js`, also on the Book page) · a short Velvet Letter invitation ·
+  podcast + featured Pup of the Podcast · journal previews · media & press highlights · free
+  first chapter (Stay close). The full photo gallery stays on **About** (`#gallery`).
+- **Hero photo:** Jen asked for her blue-dress candid as the homepage's main photo. Don't swap
+  it in until she confirms which file it is (candidates sent Nov 2, 2026).
+- **The Velvet Letter entrance** (`/velvet`, locked) is Jen's short version: title, "Some things
+  only live inside the book.", Get the Book, the passcode field (always visible) with Enter,
+  and "Access comes with the book. Your passcode is in the back of the book, under the QR code."
+- **Journal podcast links:** `app/journal/repair-body.mjs` points old posts' episode links at
+  the episode each post is about (`CORRECT_EPISODE`, audited Nov 2, 2026). Add a post there if
+  it links the wrong guest; never edit Sanity from code.
 - **The Forever Angels** (her 501(c)(3)) has ONE section: About `#forever-angels`. The footer
   links there; `/forever-angels` redirects there.
 - **Film and documentary** are IN DEVELOPMENT. One source of wording: `lib/press.js` (`FILM`).
@@ -39,11 +51,16 @@ the newer features she likes. Before changing structure, re-read this section.
     questions a month that Jen answers personally in writing, and monthly Zooms once 13 active
     PAYING members have joined. Never a signed book, bookmark, ears, or any physical item.
   - **Backstage Bundle = "One-Time Gift Bundle"**, $69 once: signed book, handmade bookmark,
-    black bunny ears, and one month to send up to three questions for Jen's written answers.
-    Then it ends. It never starts a membership and never charges again; joining the Circle is
-    the customer's choice. No gift box (don't use the box photo, `backstage-bundle.jpg`).
+    black bunny ears, and ONE COMPLIMENTARY MONTH of The Velvet Circle Book Club (Jen, Nov
+    2026), which does NOT renew automatically. It never starts a paid membership and never
+    charges again; joining afterward is the customer's choice. No gift box (don't use the box
+    photo, `backstage-bundle.jpg`).
+  - **One name:** "The Velvet Circle Book Club" everywhere (cards, FAQ, Shipping & Returns,
+    buttons). The Velvet Circle never includes The Velvet Letter; Letter access comes with the
+    book (passcode in the back of the book, under the QR code).
   The Velvet Circle is explained (with an FAQ) before anyone subscribes; never promise monthly
-  Zooms as an immediate benefit.
+  Zooms as an immediate benefit. The Be the Bumblebee T-shirt (Etsy, `SHOP.etsyTee`) sits in a
+  separate "And a little more" spot below the four products, never among them.
 - **Journal:** categories in Jen's order are in `app/journal/curation.js`. Repetitive
   promotional posts are ARCHIVED there (hidden from the feed, listed under Archive, still live
   at their URLs). Nothing is deleted. The public Journal never shows Velvet Letter content.
@@ -64,10 +81,11 @@ the newer features she likes. Before changing structure, re-read this section.
 - **About wording** is the September 2026 wording plus Jen's one addition near the top
   ("Above all, I love fiercely…"). Her dogs are always rescue dogs. Keep the September photos
   (dogs, tortoise, coffee cup, dogs on the bed) where they are.
-- **Media & Speaking:** Jen's three approved photos only: the floral portrait (primary Media
-  image, `presskit-headshot-floral.jpg`), the glamour portrait in black
-  (`jen-headshot-signature.jpg`), and the black-and-white editorial (`jen-headshot-bw.jpg`),
-  each downloadable. No retouching. The Contact page uses a headshot, not the puppy photo.
+- **Media & Speaking:** Jen's three headshot options, named her way: **Signature**
+  (`jen-headshot-signature.jpg`), **Glamour** (`jen-headshot-bw.jpg`), and **Candid** (the floral
+  portrait, `presskit-headshot-floral.jpg`, which replaced the blazer and is the primary Media
+  image). Each downloadable. No retouching. The Contact page uses a headshot, not the puppy
+  photo. The floral portrait is not a gallery slide.
 - **Velvet Circle:** shows the circular logo. The bunny-ears book club photo goes with The
   Backstage Bundle only (Shop card and homepage), so nobody thinks the membership includes ears.
 - Every photo change is logged in `docs/photo-changes-2026-10-27.md` (originals stay in git

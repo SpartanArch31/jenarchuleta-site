@@ -2,6 +2,7 @@ import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetInvite from '../components/VelvetInvite';
+import BundleFeature from '../components/BundleFeature';
 import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP } from '../components/site-data';
 import { FILM } from '../../lib/press';
 
@@ -60,6 +61,9 @@ export default function BookPage() {
           </div>
         </div>
       </section>
+
+      {/* THE BACKSTAGE BUNDLE, right under the buy buttons (Jen, November 2026) */}
+      <BundleFeature showShopLink={false} />
 
       {/* THE HOOK */}
       <section className="wrap text-wrap center">
@@ -121,13 +125,8 @@ export default function BookPage() {
         <VelvetInvite compact />
       </div>
 
-      {/* BUNDLE + REVIEWS */}
+      {/* REVIEWS (the bundle is featured once, near the top) */}
       <section className="wrap text-wrap center book-more">
-        <p className="lead">
-          Want the signed book, my handmade velvet bookmark, and black velvet bunny ears together?{' '}
-          <a href="/shop#backstage-bundle">See The Backstage Bundle</a>.
-        </p>
-        <div className="threshold-rule" style={{ maxWidth: '220px', margin: '34px auto' }}><span className="diamond" /></div>
         <div className="eyebrow">Already read it?</div>
         <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
         <div className="buy-row" style={{ justifyContent: 'center' }}>

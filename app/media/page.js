@@ -28,41 +28,41 @@ const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet
 
 
 
-// Jen's three approved photos for Media & Speaking (October 27). The floral
-// portrait (IMG_5389) is the primary Media image. Unretouched, uncropped.
-// `download` is the largest file we have of each; swap in her full-resolution
-// originals at the same paths when they arrive.
+// Jen's three headshot options for Media & Speaking, in her words (Oct 28):
+// Signature, Glamour, and Candid. Candid is the floral portrait (IMG_5389), which
+// replaced the blazer headshot and is also the primary Media image at the top of
+// the page. Unretouched, uncropped. `download` is the largest file we have of each.
 const HEADSHOTS = [
-  {
-    src: '/assets/presskit-headshot-floral.jpg',
-    download: '/assets/presskit-headshot-floral.jpg',
-    fileName: 'Jen-Walcott-Archuleta-floral-portrait.jpg',
-    label: 'Floral portrait',
-    note: 'Primary photo',
-    alt: 'Jen Walcott Archuleta smiling in a floral top',
-    width: 1100,
-    height: 1370,
-  },
   {
     src: '/assets/jen-headshot-signature.jpg',
     download: '/assets/jen-headshot-signature.jpg',
-    fileName: 'Jen-Walcott-Archuleta-glamour-portrait.jpg',
-    label: 'Glamour portrait',
-    alt: 'Jen Walcott Archuleta in a black top',
+    fileName: 'Jen-Walcott-Archuleta-Signature.jpg',
+    label: 'Signature',
+    alt: 'Jen Walcott Archuleta smiling in a black top',
     width: 1162,
     height: 1597,
   },
   {
     src: '/assets/jen-headshot-bw.jpg',
     download: '/assets/jen-headshot-bw.jpg',
-    fileName: 'Jen-Walcott-Archuleta-black-and-white-portrait.jpg',
-    label: 'Black-and-white portrait',
-    alt: 'Black-and-white editorial portrait of Jen Walcott Archuleta',
+    fileName: 'Jen-Walcott-Archuleta-Glamour.jpg',
+    label: 'Glamour',
+    alt: 'Black-and-white portrait of Jen Walcott Archuleta',
     width: 1320,
     height: 1946,
   },
+  {
+    src: '/assets/presskit-headshot-floral.jpg',
+    download: '/assets/presskit-headshot-floral.jpg',
+    fileName: 'Jen-Walcott-Archuleta-Candid.jpg',
+    label: 'Candid',
+    note: 'Primary photo',
+    alt: 'Jen Walcott Archuleta smiling in a floral top',
+    width: 1100,
+    height: 1370,
+  },
 ];
-const PRIMARY = HEADSHOTS[0];
+const PRIMARY = HEADSHOTS.find((shot) => shot.label === 'Candid');
 
 
 function publicFileExists(rel) {

@@ -27,7 +27,7 @@ export default function VelvetCirclePanel() {
         <img
           className="vc-logo"
           src="/assets/velvet-circle-mark.png"
-          alt="The Velvet Circle"
+          alt="The Velvet Circle Book Club"
           width="436"
           height="436"
           loading="lazy"
@@ -39,7 +39,7 @@ export default function VelvetCirclePanel() {
         <div className="vc-announce-text">
           <p className="vc-announce-eyebrow">MONTHLY BOOK CLUB</p>
           <h2 id="vc-announce-title">
-            The Velvet Circle: my private book club for readers of Beyond the Velvet Ropes.
+            The Velvet Circle Book Club: my private book club for readers of Beyond the Velvet Ropes.
           </h2>
           <p className="vc-announce-line">
             Real conversations. Untold stories. A place to connect, ask questions, and grow together.
@@ -49,12 +49,12 @@ export default function VelvetCirclePanel() {
           </ul>
           <p className="vc-announce-box">
             Looking for the signed book, bookmark, and bunny ears? That’s{' '}
-            <a href="/shop#backstage-bundle">The Backstage Bundle</a>, a one-time gift. It doesn’t
-            sign you up for the Velvet Circle.
+            <a href="/shop#backstage-bundle">The Backstage Bundle</a>, a one-time gift. Its
+            complimentary month does not renew automatically.
           </p>
           {join ? (
             <a className="btn btn-primary" href={join} target="_blank" rel="noopener noreferrer">
-              Join the Velvet Circle
+              Join the Velvet Circle Book Club
             </a>
           ) : (
             <span className="btn btn-disabled">Coming soon</span>

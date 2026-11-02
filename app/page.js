@@ -1,15 +1,19 @@
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import VelvetInvite from './components/VelvetInvite';
+import BundleFeature from './components/BundleFeature';
+import HomeCarousel from './components/HomeCarousel';
 import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP, PODCAST } from './components/site-data';
 import { FILM, PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
 import { getFeaturedPup } from '../lib/pup-photos';
 
-// Homepage, in Jen's order (October 27, 2026):
-// 1 intro + Get the Book · 2 Story, Voice, Heart · 3 the book, trailer, buy
-// 4 Velvet Letter invitation · 5 podcast + Pup of the Podcast · 6 journal
-// 7 media and press · 8 Backstage Bundle · 9 free first chapter (Stay close,
-// in SiteFooter). Wording is the September site's unless Jen changed it.
+// Homepage, in Jen's order (October 27, 2026; November 2026 additions):
+// 1 intro + Get the Book · 2 Story, Voice, Heart · 2b featured photos
+// (HomeCarousel, away from the hero portrait) · 3 the book, trailer, buy
+// 3b The Backstage Bundle, next to the book (BundleFeature) · 4 Velvet Letter
+// invitation · 5 podcast + Pup of the Podcast · 6 journal · 7 media and press
+// · 8 free first chapter (Stay close, in SiteFooter). Wording is the
+// September site's unless Jen changed it.
 export const revalidate = 3600;
 
 export default async function Home() {
@@ -68,6 +72,9 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* 2b. FEATURED PHOTOS */}
+      <HomeCarousel />
+
       {/* 3. THE BOOK (dark register) + TRAILER */}
       <section id="book" className="book dark">
         <div className="wrap inner">
@@ -108,6 +115,9 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* 3b. THE BACKSTAGE BUNDLE, next to the book */}
+      <BundleFeature />
+
       {/* 4. THE VELVET LETTER */}
       <VelvetInvite />
 
@@ -120,6 +130,11 @@ export default async function Home() {
           <div className="hero-ctas" style={{ justifyContent: 'center', marginTop: '8px' }}>
             <a href="/podcast" className="btn btn-primary">Listen to all 13 episodes</a>
           </div>
+          <p className="home-pod-cross">
+            <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+            <span aria-hidden="true"> • </span>
+            <a href={PODCAST.youtubeEpisodes || PODCAST.youtube} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+          </p>
         </div>
         {pup ? (
           <div className="home-pup">
@@ -127,7 +142,7 @@ export default async function Home() {
             <div>
               <div className="eyebrow">Pup of the Podcast</div>
               <h3>Meet {pup.name}</h3>
-              <p>Every episode features a rescue pup looking for a home.{pup.guest ? ` ${pup.name} joined my conversation with ${pup.guest}.` : ''}</p>
+              <p>Every episode features a rescue pup looking for a home.{pup.homeLine ? ` ${pup.homeLine}` : pup.guest ? ` ${pup.name} joined my conversation with ${pup.guest}.` : ''}</p>
               <p><a href="/pups" className="btn btn-ghost btn-sm">Meet all the pups</a></p>
             </div>
           </div>
@@ -171,29 +186,7 @@ export default async function Home() {
         <div className="center" style={{ marginTop: '18px' }}><a href="/media" className="btn btn-ghost">All press and media</a></div>
       </section>
 
-      {/* 8. THE BACKSTAGE BUNDLE */}
-      <section id="bundle" className="wrap home-bundle">
-        <div className="home-bundle-card">
-          {/* One-time gift bundle (Jen, October 28). The bunny-ears picture lives with the
-              bundle; there is no gift box, so the box photo is not used. */}
-          <img src="/assets/velvet-circle-group.jpg" alt="Readers on couches with copies of Beyond the Velvet Ropes, some wearing black bunny ears" width="1152" height="864" loading="lazy" />
-          <div>
-            <div className="eyebrow">One-Time Gift Bundle · {SHOP.foundingBoxPrice}</div>
-            <h2>The book, signed — and a few things from backstage.</h2>
-            <p className="lead">A signed copy of <em>Beyond the Velvet Ropes</em>, my handmade velvet bookmark, black velvet bunny ears, and one month to send me up to three questions, answered personally in writing. One payment, no subscription.</p>
-            <div className="hero-ctas">
-              {SHOP.foundingBox ? (
-                <a href="/shop#backstage-bundle" className="btn btn-primary">Get the Backstage Bundle</a>
-              ) : (
-                <span className="btn btn-disabled">Coming soon</span>
-              )}
-              <a href="/shop" className="btn btn-ghost">Visit the shop</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. FREE FIRST CHAPTER (Stay close) is the top of SiteFooter. */}
+      {/* 8. FREE FIRST CHAPTER (Stay close) is the top of SiteFooter. */}
       <SiteFooter />
     </>
   );

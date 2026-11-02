@@ -5,8 +5,9 @@ import { usePathname } from 'next/navigation';
 
 // ONE navigation for the whole site, every page, light or dark.
 // Main: Home | About | Book | Podcast | Journal | Media | Shop | The Velvet Letter
-// Everything else (Speaking, Quotes, Sponsors, Contact, Free First Chapter,
-// The Forever Angels) lives in the footer. See SiteFooter.js.
+// Everything else (Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors,
+// Contact, Free First Chapter, The Forever Angels) lives in the footer, the
+// same on every page. See SiteFooter.js.
 // Desktop: inline links. Narrow screens: hamburger toggles a dropdown.
 const LINKS = [
   { href: '/', label: 'Home', home: true },

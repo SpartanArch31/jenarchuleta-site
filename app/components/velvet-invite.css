@@ -37,12 +37,14 @@
   margin: 0 0 12px;
   color: var(--text);
 }
-.velvet-invite-script {
-  font-family: var(--font-script);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  color: var(--accent);
-  line-height: 1.1;
-  margin: 0 0 28px;
+.velvet-invite-hook + .velvet-invite-actions { margin-top: 26px; }
+.velvet-invite-note {
+  margin: 18px auto 0;
+  max-width: 30rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 .velvet-invite-actions {
   display: flex;

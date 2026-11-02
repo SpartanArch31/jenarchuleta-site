@@ -68,7 +68,8 @@ export const BOOK_STORES = [
 ];
 
 export const SHOP = {
-  etsyTee: 'https://www.etsy.com/listing/4320791333/be-the-bumblebee-fly-away-t-shirt',
+  // Jen's corrected listing (Oct 28).
+  etsyTee: 'https://www.etsy.com/listing/4321696666/be-the-bumblebee-unisex-classic-tee',
   foreverAngels: 'https://theforeverangels.com/',
 
   signedBook: 'https://buy.stripe.com/3cI5kC0vVf9n1UDewads405',
@@ -115,6 +116,11 @@ export const PODCAST = {
   // Numeric show id (powers the native large player). Sourced from the show.
   buzzsproutId: '2467154',
   youtube: 'https://www.youtube.com/@jenarchuletaunfiltered',
+  // The channel's "Unfiltered with Jen Archuleta | Full Episodes" playlist:
+  // all 13 episodes, Ep. 1 first (checked November 2, 2026). The Podcast page
+  // embeds it beside the Buzzsprout player; "Watch on YouTube" opens it.
+  youtubeEpisodes: 'https://www.youtube.com/playlist?list=PLQqx8LCwrxbY',
+  youtubeEmbed: 'https://www.youtube-nocookie.com/embed/videoseries?list=PLQqx8LCwrxbY',
   subscribe: {
     spotify: 'https://open.spotify.com/show/2HmclW6k1CEjTJmp0wpy7Z',
     apple: 'https://podcasts.apple.com/podcast/id1806868424',

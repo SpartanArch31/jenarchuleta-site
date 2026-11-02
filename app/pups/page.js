@@ -28,7 +28,9 @@ function PupCard({ pup, photo }) {
             ) : pup.rescue}
           </p>
         ) : null}
-        {pup.guest ? (
+        {pup.episode ? (
+          <p className="pup-guest"><span className="pup-k">Episode </span>{pup.episode}</p>
+        ) : pup.guest ? (
           <p className="pup-guest"><span className="pup-k">With </span>{pup.guest}</p>
         ) : null}
         {pup.note ? <p className="pup-note">{pup.note}</p> : null}
@@ -69,7 +71,11 @@ export default async function PupsPage() {
               <h2 id="featured-pup">{featured.name}</h2>
               {featured.breedAge ? <p className="pup-breed">{featured.breedAge}</p> : null}
               {featured.rescue ? <p className="pup-rescue"><span className="pup-k">Rescue </span>{featured.rescue}</p> : null}
-              {featured.guest ? <p className="pup-guest"><span className="pup-k">With </span>{featured.guest}</p> : null}
+              {featured.episode ? (
+                <p className="pup-guest"><span className="pup-k">Episode </span>{featured.episode}</p>
+              ) : featured.guest ? (
+                <p className="pup-guest"><span className="pup-k">With </span>{featured.guest}</p>
+              ) : null}
               <p className="pups-featured-links">
                 {featured.watch ? <a className="btn btn-primary btn-sm" href={featured.watch} target="_blank" rel="noopener noreferrer">Watch the episode</a> : null}
                 {featured.post ? <a className="btn btn-ghost btn-sm" href={`/journal/${featured.post}`}>Read more</a> : null}

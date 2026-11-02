@@ -13,7 +13,9 @@ function KeyIcon() {
 }
 
 // The public invitation. Nothing private is fetched or rendered here.
-// Wording is Jen's, exactly as she wrote it (October 27, 2026).
+// Jen's short entrance (November 2026): the title, one line, Get the Book,
+// and the passcode field. Access comes with the book. The Velvet Letter is
+// never sold separately and never part of the Velvet Circle.
 export default function VelvetLocked() {
   return (
     <div className="dark vl-page">
@@ -25,13 +27,12 @@ export default function VelvetLocked() {
           <KeyIcon />
           <h1 className="vl-title">The Velvet Letter</h1>
           <p className="vl-hook">Some things only live inside the book.</p>
-          <p className="vl-body">
-            A private collection of stories, photographs, reflections, and behind-the-scenes moments reserved for readers of <em>Beyond the Velvet Ropes</em>.
-          </p>
-          <p className="vl-script">Your invitation is waiting inside the book.</p>
+          <div className="vl-buttons">
+            <a className="btn btn-primary" href="/book">Get the Book</a>
+          </div>
           <VelvetGate />
-          <p className="vl-small">
-            Already have the book? Find your secret passcode beside the QR code inside the back cover.
+          <p className="vl-small" id="velvet-passcode-note">
+            Access comes with the book. Your passcode is in the back of the book, under the QR code.
           </p>
         </div>
       </section>

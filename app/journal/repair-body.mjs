@@ -136,7 +136,123 @@ const EPISODE_BY_SLUG = {
   'jessica-jordaan': 11,
   'brett-tippie-2': 12,
   'pup-of-the-podcast-3': 13,
+  // Added November 2, 2026, from the audit of every post's podcast links.
+  'coming-soon': 2,
+  'weston-funder': 2,
+  'pup-of-the-podcast-meet-tippy': 2,
+  'unfiltered-with-jen-archuleta': 2,
+  'the-small-interruptions-we-needed': 2,
+  live: 2,
+  'live-now': 2,
+  'this-month-2': 2,
+  'my-kids-had-so-much': 2,
+  'fentanyl-is-very-addictive': 2,
+  'graduation-day': 2,
+  'sean-lauren-flanery': 3,
+  'pup-of-the-podcast-meet-lexi': 3,
+  'amy-palmiero-winters': 5,
+  'amy-palmiero-winters-2': 5,
+  august: 5,
+  'pup-of-the-podcast': 5,
+  'watch-now': 5,
+  'national-security-expert': 6,
+  'pup-of-the-podcast-2': 6,
+  'live-4': 7,
+  'father-tim': 7,
+  'this-month': 9,
+  'coming-soon-on-unfiltered-with-jen-archuleta': 10,
+  'coming-soon-3': 11,
+  'brett-tippie': 12,
+  'season-finale': 13,
 };
+
+// Posts whose OWN links open a different guest's episode (Jen, November 2026:
+// "old blog links open the wrong guest's episode"). Audited November 2, 2026
+// against every post in Sanity: twelve posts about Anne Fundner linked Adam's
+// Episode 1, the Flanery preview linked Episode 1, Amy Palmiero-Winters' post
+// linked Brande Roderick's Episode 4, and Freddie's post linked Episode 5.
+// Each link is pointed at the episode the post is about, on the same platform
+// (YouTube stays YouTube, Apple stays Apple). Only these posts are touched.
+const CORRECT_EPISODE = {
+  'coming-soon': 2,
+  'weston-funder': 2,
+  'pup-of-the-podcast-meet-tippy': 2,
+  'unfiltered-with-jen-archuleta': 2,
+  'the-small-interruptions-we-needed': 2,
+  live: 2,
+  'live-now': 2,
+  'this-month-2': 2,
+  'my-kids-had-so-much': 2,
+  'they-all-grieve-differently': 2,
+  'fentanyl-is-very-addictive': 2,
+  'graduation-day': 2,
+  'sean-lauren-flanery': 3,
+  'amy-palmiero-winters-2': 5,
+  'pup-of-the-podcast-2': 6,
+};
+
+// A merch post ("It's Live", the Bumblebee Collection) that said "Subscribe to
+// the podcast ... YouTube" but linked Episode 1. It goes to the channel.
+const CHANNEL_INSTEAD = new Set(['it-s-live']);
+const YOUTUBE_CHANNEL = 'https://www.youtube.com/@jenarchuletaunfiltered';
+
+function episodeIdMaps() {
+  const yt = {};
+  const apple = {};
+  const buzz = {};
+  for (const [n, links] of Object.entries(EPISODES)) {
+    const y = links.youtube.match(/v=([A-Za-z0-9_-]{11})/);
+    const a = links.apple.match(/[?&]i=(\d+)/);
+    const b = links.buzz.match(/episodes\/(\d+)/);
+    if (y) yt[y[1]] = Number(n);
+    if (a) apple[a[1]] = Number(n);
+    if (b) buzz[b[1]] = Number(n);
+  }
+  return { yt, apple, buzz };
+}
+const EPISODE_IDS = episodeIdMaps();
+
+const YT_EPISODE_URL = /https?:\/\/(?:www\.|m\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})(?:[?&][A-Za-z0-9_=&%.-]*)?/g;
+const APPLE_EPISODE_URL = /https?:\/\/podcasts\.apple\.com\/[A-Za-z0-9_/%.-]*\?(?:[A-Za-z0-9_=&%.-]*&)?i=(\d+)(?:&[A-Za-z0-9_=&%.-]*)?/g;
+const BUZZ_EPISODE_URL = /https?:\/\/(?:www\.)?buzzsprout\.com\/2467154\/episodes\/(\d+)[A-Za-z0-9_\-]*/g;
+
+function correctEpisodeText(text, slug) {
+  if (typeof text !== 'string' || !text) return text;
+  const target = CORRECT_EPISODE[slug];
+  const channel = CHANNEL_INSTEAD.has(slug);
+  if (!target && !channel) return text;
+  return text
+    .replace(YT_EPISODE_URL, (url, id) => {
+      const ep = EPISODE_IDS.yt[id];
+      if (!ep) return url;
+      if (channel) return YOUTUBE_CHANNEL;
+      return ep === target ? url : EPISODES[target].youtube;
+    })
+    .replace(APPLE_EPISODE_URL, (url, id) => {
+      const ep = EPISODE_IDS.apple[id];
+      if (!ep || channel || ep === target) return url;
+      return EPISODES[target].apple;
+    })
+    .replace(BUZZ_EPISODE_URL, (url, id) => {
+      const ep = EPISODE_IDS.buzz[id];
+      if (!ep || channel || ep === target) return url;
+      return EPISODES[target].buzz;
+    });
+}
+
+function correctEpisodeLinks(blocks, slug) {
+  if (!CORRECT_EPISODE[slug] && !CHANNEL_INSTEAD.has(slug)) return blocks;
+  return blocks.map((block) => {
+    if (!block || block._type !== 'block' || !Array.isArray(block.children)) return block;
+    const markDefs = (block.markDefs || []).map((def) => (
+      def && def._type === 'link' && def.href ? { ...def, href: correctEpisodeText(def.href, slug) } : def
+    ));
+    const children = block.children.map((span) => (
+      span && typeof span.text === 'string' ? { ...span, text: correctEpisodeText(span.text, slug) } : span
+    ));
+    return { ...block, markDefs, children };
+  });
+}
 
 // These posts name a platform and then stop, but they are not a podcast episode.
 const REMOVE_ONLY = new Set([
@@ -381,7 +497,7 @@ function dropPrivatePitches(blocks) {
 
 export function prepareJournalBody(blocks, slug) {
   if (!Array.isArray(blocks)) return blocks;
-  let next = linkifyBody(rewriteBlocks(dropPrivatePitches(blocks)));
+  let next = linkifyBody(correctEpisodeLinks(rewriteBlocks(dropPrivatePitches(blocks)), slug));
   if (slug === 'homemade-formula') {
     next = linkPhrase(next, 'THE HOMEMADE FORMULA RECIPES', WESTON_FORMULA);
     next = linkPhrase(next, 'Weston A. Price Foundation', WESTON_FORMULA);

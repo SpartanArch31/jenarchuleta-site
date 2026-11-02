@@ -1,5 +1,5 @@
 /* The Velvet Letter: public invitation (locked state).
-   Dark register, centered, quiet. One key, one promise, two doors. */
+   Dark register, centered, quiet. One key, one line, the book, the passcode. */
 .vl-page {
   background: var(--bg);
   color: var(--text);
@@ -51,47 +51,22 @@
   margin: 0 0 22px;
 }
 
-.vl-body {
-  font-family: var(--font-body);
-  font-size: var(--text-body-l);
-  line-height: 1.55;
-  color: var(--text-secondary);
-  margin: 0 auto 26px;
-  max-width: 34rem;
-}
-
-.vl-script {
-  font-family: var(--font-script);
-  font-size: clamp(2rem, 4.6vw, 2.75rem);
-  line-height: 1.1;
-  color: var(--accent);
-  margin: 0 0 34px;
-}
-
-.vl-gate-actions {
-  display: grid;
-  gap: 18px;
-  justify-items: center;
-}
-
 .vl-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   justify-content: center;
+  margin: 0 0 34px;
 }
 
+/* The passcode field is always visible: one label, one field, one button. */
 .vl-form {
   width: 100%;
   max-width: 26rem;
+  margin: 0 auto;
   display: grid;
   gap: 10px;
-  margin-top: 6px;
 }
-
-.vl-form { display: none; }
-.vl-form.is-open,
-.vl-form:target { display: grid; }
 
 .vl-label {
   font-family: var(--font-sans);
@@ -133,7 +108,7 @@
 }
 
 .vl-small {
-  margin: 30px auto 0;
+  margin: 18px auto 0;
   max-width: 30rem;
   font-family: var(--font-sans);
   font-size: var(--text-caption);

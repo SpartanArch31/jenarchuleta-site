@@ -7,7 +7,7 @@ import './shop.css';
 export const metadata = {
   title: 'Shop',
   description:
-    'The handmade Signature Velvet Bookmark, signed copies of Beyond the Velvet Ropes, the Velvet Circle book club, and The Backstage Bundle.',
+    'Signed copies of Beyond the Velvet Ropes, The Velvet Circle Book Club, The Backstage Bundle, and the handmade Signature Velvet Bookmark.',
   openGraph: { images: [OG_IMAGE] },
   twitter: { card: 'summary_large_image', images: [OG_IMAGE.url] },
 };
@@ -93,7 +93,7 @@ export default function ShopPage() {
             <div className="product-media product-media--circle">
               <img
                 src="/assets/velvet-circle-membership.jpg"
-                alt="The Velvet Circle, for readers of Beyond the Velvet Ropes"
+                alt="The Velvet Circle Book Club, for readers of Beyond the Velvet Ropes"
                 width="1000"
                 height="667"
               />
@@ -113,7 +113,7 @@ export default function ShopPage() {
                 {SHOP.velvetCircleMembership ? (
                   <>
                     <a href={SHOP.velvetCircleMembership} target="_blank" rel="noopener" className="btn btn-primary">
-                      Join the Velvet Circle
+                      Join the Velvet Circle Book Club
                     </a>
                     <TrustLine />
                   </>
@@ -124,11 +124,12 @@ export default function ShopPage() {
             </div>
           </article>
 
-          {/* THE BACKSTAGE BUNDLE: the ONE-TIME GIFT BUNDLE, $69 once (Jen, October 28).
-              Signed book, handmade bookmark, bunny ears, and one month to send Jen up to three
-              questions for her written answers. Then it ends. It never starts a Velvet Circle
-              membership; joining afterward is the customer's choice. No gift box, so the photo
-              is the bunny-ears book club picture, not the box photo (backstage-bundle.jpg).
+          {/* THE BACKSTAGE BUNDLE: the ONE-TIME GIFT BUNDLE, $69 once (Jen, October 28;
+              wording updated November 2026). Signed book, handmade bookmark, bunny ears, and ONE
+              COMPLIMENTARY MONTH of The Velvet Circle Book Club that does NOT renew automatically.
+              It never starts a paid membership; joining afterward is the customer's choice. No
+              gift box, so the photo is the bunny-ears book club picture, not the box photo
+              (backstage-bundle.jpg).
               No Stripe Payment Link exists yet, so the card says Coming soon. When it is
               created: one-time $69, collect shipping address, paste into SHOP.foundingBox.
               #backstage-box stays so older links still land on this card. */}
@@ -149,17 +150,18 @@ export default function ShopPage() {
               <p className="price">{SHOP.foundingBoxPrice} one time</p>
               <p className="product-desc">
                 A gift from backstage: my signed book, the velvet bookmark I make by hand, black
-                velvet bunny ears, and one month to send me your questions.
+                velvet bunny ears, and one complimentary month of The Velvet Circle Book Club.
               </p>
               <ul className="product-list">
                 <li>A signed copy of <em>Beyond the Velvet Ropes</em></li>
                 <li>My handmade velvet bookmark</li>
                 <li>Black velvet bunny ears</li>
-                <li>One month to send me up to three questions, answered personally by me in writing</li>
+                <li>One complimentary month of The Velvet Circle Book Club: the discussion guide, plus up to three questions answered personally by me in writing</li>
               </ul>
               <p className="fulfill">
-                One payment. After the month, it simply ends. Joining the Velvet Circle ($9.99 a month)
-                afterward is up to you. You are never signed up automatically.
+                One payment. Your complimentary month does not renew automatically, and you are
+                never charged again. Joining The Velvet Circle Book Club ($9.99 a month) afterward
+                is up to you.
               </p>
               <div className="product-cta">
                 {SHOP.foundingBox ? (
@@ -232,29 +234,47 @@ export default function ShopPage() {
         </p>
       </section>
 
-      {/* The Velvet Circle is explained once: its card above, then these questions, before
+      {/* AND A LITTLE MORE: the Be the Bumblebee tee, kept apart from the four main
+          products (Jen, Oct 28). It sells on Etsy, so it links out. */}
+      <section className="wrap shop-more" style={{ paddingTop: 0 }}>
+        <div className="center">
+          <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 30px' }}><span className="diamond" /></div>
+          <div className="eyebrow">And a little more</div>
+        </div>
+        <div className="more-grid more-grid--one">
+          <a className="mini" href={SHOP.etsyTee} target="_blank" rel="noopener noreferrer">
+            <div className="body">
+              <div className="k">Apparel · On Etsy</div>
+              <h3>Be the Bumblebee T-shirt</h3>
+              <p className="foot-meta">A little reminder to fly your own way. Shop it on Etsy →</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      {/* The Velvet Circle Book Club is explained once: its card above, then these questions, before
           anyone subscribes (Jen, Oct 28: no repeated description). #velvet-circle-details
           stays as an anchor so older links land here. */}
       <div id="velvet-circle-details" aria-hidden="true" />
       <section id="velvet-circle-faq" className="wrap text-wrap vc-faq">
         <div className="center">
-          <div className="eyebrow">The Velvet Circle</div>
+          <div className="eyebrow">The Velvet Circle Book Club</div>
           <h2>Questions, answered.</h2>
         </div>
         <details>
-          <summary>What’s the difference between the Velvet Circle and the Backstage Bundle?</summary>
+          <summary>What’s the difference between The Velvet Circle Book Club and The Backstage Bundle?</summary>
           <p>
-            The Velvet Circle is my monthly book club, $9.99 a month until you cancel. The Backstage
-            Bundle is a one-time $69 gift: my signed book, my handmade bookmark, black velvet bunny
-            ears, and one month to send me up to three questions. After that month, the bundle ends.
-            Joining the Velvet Circle is always your choice.
+            The Velvet Circle Book Club is my monthly membership, $9.99 a month until you cancel. The
+            Backstage Bundle is a one-time $69 gift: my signed book, my handmade bookmark, black
+            velvet bunny ears, and one complimentary month of The Velvet Circle Book Club. That month
+            does not renew automatically. Joining afterward is always your choice.
           </p>
         </details>
         <details>
           <summary>What do members receive?</summary>
           <p>
-            The Velvet Circle is my private book club for readers of <em>Beyond the Velvet Ropes</em>.
-            Members get a one-page discussion guide for the book, and you can send me your questions
+            The Velvet Circle Book Club is my private book club for readers of <em>Beyond the Velvet
+            Ropes</em>. Members get a one-page discussion guide for the book, and you can send me your questions
             about the book and my experiences, up to three a month. I answer every one personally, in
             writing.
           </p>
@@ -290,8 +310,8 @@ export default function ShopPage() {
         <details>
           <summary>Is The Velvet Letter part of the membership?</summary>
           <p>
-            The Velvet Letter is for readers of the book. Your secret passcode is beside the QR code
-            inside the back cover. <a href="/velvet">Open The Velvet Letter</a>.
+            No. Access to The Velvet Letter comes with the book. Your passcode is in the back of the
+            book, under the QR code. <a href="/velvet">Open The Velvet Letter</a>.
           </p>
         </details>
       </section>

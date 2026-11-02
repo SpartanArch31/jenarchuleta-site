@@ -250,3 +250,9 @@
 .vc-faq summary::after { content: '+'; color: var(--accent-ink); font-family: var(--font-sans); }
 .vc-faq details[open] summary::after { content: '–'; }
 .vc-faq details p { margin: 12px 0 0; color: var(--text-secondary); }
+
+/* One extra item (the tee), centered under the four main products. */
+.shop-page .more-grid--one {
+  grid-template-columns: minmax(0, 420px);
+  justify-content: center;
+}
