@@ -37,6 +37,9 @@ the newer features she likes. Before changing structure, re-read this section.
 - **Journal podcast links:** `app/journal/repair-body.mjs` points old posts' episode links at
   the episode each post is about (`CORRECT_EPISODE`, audited Nov 2, 2026). Add a post there if
   it links the wrong guest; never edit Sanity from code.
+- **Privacy: Jen's home location is never on the site.** The bio says "She lives on the West
+  Coast" (Jen, Nov 3, 2026). Never name the city, state, or neighborhood in any bio, page, or
+  photo caption.
 - **The Forever Angels** (her 501(c)(3)) has ONE section: About `#forever-angels`. The footer
   links there; `/forever-angels` redirects there.
 - **Film and documentary** are IN DEVELOPMENT. One source of wording: `lib/press.js` (`FILM`).
