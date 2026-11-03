@@ -8,7 +8,27 @@
 > break; Cursor also loads `.cursor/rules/jen-site.mdc`. Jen makes her own changes with
 > Cursor: branch, pull request, check the preview, merge (Nov 2026).
 
-_Last updated: 2026-11-03 (Jen's 16 changes: About Me page, menu drop-downs, one book-club offer, no children's photos)._
+_Last updated: 2026-11-03, evening (About Me in Jen's words, About the Author page, gallery of 19, nothing repeated, no em dashes)._
+
+## ⭐ Jen's standing rules from November 3 (evening). Read before writing any copy.
+
+- **No em dashes anywhere** on the site: body copy, headings, buttons, captions, alt text,
+  and page titles (the title template is "%s, Jen Archuleta"). Use a period or a comma.
+  Journal and Velvet Letter text is cleaned at render time (`repair-body.mjs`,
+  `VelvetInside.js`).
+- **Nothing repeated.** The film and documentary news has ONE home: Media `#film`, with Jen's
+  FilmFreeway link right under Leone and Mark. The Book page, homepage, and About the Author
+  link there. The podcast's "Honest conversations..." line lives on the Podcast page only. The
+  "every episode features a rescue pup" line lives on /pups only. The passcode note ("Your
+  passcode is in the back of the book, under the QR code.") lives on /velvet only.
+- **About Me is Jen's own words**, one page, exactly as she wrote them (Nov 3). Don't add,
+  trim, or reword. Say "rescues", not "rescue dogs". **About the Author** (`/about-the-author`)
+  is the separate formal page.
+- **Gallery:** 19 photos, Jen's "best 15 to 20" (`GALLERY_PICKS` in `PhotoGallery.js`).
+- **Menu:** "Get the first chapter free" is in the Book drop-down and is a button at the bottom
+  of the phone menu.
+- **Footer:** the book credit reads "Jen Walcott Archuleta." YouTube (the podcast channel) is
+  in the "Stay close" links.
 
 ---
 
@@ -37,9 +57,10 @@ the newer features she likes. Before changing structure, re-read this section.
   (Stay close). The full photo gallery stays on **About Me** (`#gallery`). No bundle or offer
   block on the homepage (Jen, Nov 3).
 - **About Me, one page (Jen, Nov 3, 2026):** everything about Jen lives on `/about` (menu label
-  "About Me"): her life now, her people, "My twenties were something else," faith and The
-  Forever Angels. The homepage hero does NOT repeat it (no "these days I'm happiest..."
-  paragraph); it keeps the headline, "Author of Beyond the Velvet Ropes," and the buttons.
+  "About Me"), in the exact text Jen sent that evening, from "Faith, family, and a bunch of
+  rescues." to "Thanks for being here. Jen". The homepage hero does NOT repeat it (no "these
+  days I'm happiest..." paragraph); it keeps the headline, "Author of Beyond the Velvet
+  Ropes," and the buttons. The formal bio is `/about-the-author`.
 - **Hero photo:** the candid floral portrait (`presskit-headshot-floral.jpg`), Jen's pick
   (Nov 3, 2026). It is not repeated in the homepage photo row.
 - **The Velvet Letter entrance** (`/velvet`, locked) is Jen's short version: title, "Some things
@@ -97,20 +118,22 @@ the newer features she likes. Before changing structure, re-read this section.
   phone buttons, status bars, TikTok marks, and white/black edge bands with a simple crop, but
   never paint over or rebuild part of a photo. If a mark can't be cropped off cleanly, ask Jen
   for the original. Link straight to a slide with `/about?photo=46#gallery`.
-- **"My twenties were something else"** uses the black-and-white long black trench coat photo
-  (`jen-bw-coat2.jpg`), Jen's pick since July. Never swap in a headshot.
-- **About wording** is the September 2026 wording plus Jen's one addition near the top
-  ("Above all, I love fiercely…"). Her dogs are always rescue dogs. Keep the September photos
-  (dogs, tortoise, coffee cup, dogs on the bed) where they are.
+- **The twenties paragraph** on About Me ("I'll be honest, I've never minded the camera...")
+  sits beside the black-and-white long black trench coat photo (`jen-bw-coat2.jpg`), Jen's pick
+  since July. Never swap in a headshot.
+- **About wording** is Jen's own text from November 3 (see above); it replaced the September
+  wording. Her dogs are "rescues". Keep the September photos (dogs, tortoise, coffee cup) and
+  her full house photo (`full-house-kids-dogs.jpg`) where they are.
 - **Media & Speaking:** Jen's three headshots for press downloads, in her order and her names
   (Nov 3, 2026): **Glamorous** (black and white, `jen-headshot-bw.jpg`), **Candid** (floral top,
   `presskit-headshot-floral.jpg`, the primary Media image and the homepage hero), and
   **Signature** (black top, smiling, `jen-headshot-signature.jpg`). Each downloadable. No
   retouching. The Contact page uses a headshot, not the puppy photo. None of the three is a
   gallery slide.
-- **Velvet Circle:** shows the circular logo. The AI bunny-ears book club picture
-  (`velvet-circle-group.jpg`) shows fake book covers; it is off the site. Never use a picture of
-  the book that isn't Jen's real cover (`book-cover.jpg`).
+- **Velvet Circle:** the Book Club card shows the group photo (`velvet-circle-group.jpg`) with
+  the round logo in the corner. The first version of that picture showed a made-up cover; on
+  Nov 3 Jen's real cover was put on every book in it. Never use a picture of the book that
+  isn't Jen's real cover (`book-cover.jpg`).
 - **Children (Jen, Nov 3, 2026):** no photo of Jen's children anywhere on the site, except
   Jen's own files with the kids' faces blurred (`public/assets/gallery-nov3/`). The old photos
   of the kids were deleted from `public/`, not just hidden, because anything in `public/` can

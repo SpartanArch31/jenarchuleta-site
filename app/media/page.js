@@ -8,7 +8,7 @@ import { APPEARANCES, AS_SEEN_IN, FILM, PRESS, cardMeta } from '../../lib/press'
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Media | Jen Walcott Archuleta' },
+  title: { absolute: 'Media, Jen Walcott Archuleta' },
   description:
     'Interviews, articles, and conversations with Jen Walcott Archuleta, plus a short bio and headshots for press.',
 };
@@ -106,18 +106,22 @@ export default function MediaPage() {
         </figure>
       </section>
 
-      {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js. */}
+      {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js.
+          This is the ONE home for the film news; other pages link to /media#film.
+          FilmFreeway sits right with Leone and Mark (Jen, November 3). */}
       <section id="film" className="wrap text-wrap">
         <h2>Film and documentary</h2>
         <p>{FILM.film}</p>
         <p>{FILM.documentary}</p>
-        <p>
-          {FILM.partners.map((partner, i) => (
+        <p className="media-film-links">
+          {FILM.partners.map((partner) => (
             <span key={partner.href}>
-              {i > 0 ? ' · ' : ''}
               <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
+              {' · '}
             </span>
           ))}
+          FilmFreeway:{' '}
+          <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
         </p>
       </section>
 

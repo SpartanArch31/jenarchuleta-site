@@ -90,6 +90,17 @@
   object-fit: contain;
   padding: 0;
 }
+/* The Velvet Circle logo, small, over the corner of the group photo. */
+.shop-page .product-media .vc-card-mark {
+  inset: auto;
+  left: 14px;
+  bottom: 14px;
+  width: clamp(64px, 16%, 92px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.45));
+}
 /* Book plus bookmark. No box photo. */
 .shop-page .product-media--pair {
   display: flex;

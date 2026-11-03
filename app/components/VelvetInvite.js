@@ -1,7 +1,8 @@
 import './velvet-invite.css';
 
-// A short invitation to The Velvet Letter. The passcode field is on /velvet.
-// Wording is Jen's short entrance (November 2026): access comes with the book.
+// A short invitation to The Velvet Letter. The passcode field, and the note
+// about where the passcode is, live on /velvet only (Jen, November 3: the
+// passcode blurb is not repeated on other pages).
 export default function VelvetInvite({ compact = false }) {
   return (
     <section className={`velvet-invite dark${compact ? ' is-compact' : ''}`} aria-labelledby="velvet-invite-title">
@@ -16,9 +17,6 @@ export default function VelvetInvite({ compact = false }) {
           <a className="btn btn-primary" href="/book">Get the Book</a>
           <a className="btn btn-ghost" href="/velvet">Enter Your Passcode</a>
         </div>
-        <p className="velvet-invite-note">
-          Access comes with the book. Your passcode is in the back of the book, under the QR code.
-        </p>
       </div>
     </section>
   );

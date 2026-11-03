@@ -3,7 +3,7 @@ import SiteFooter from './components/SiteFooter';
 import VelvetInvite from './components/VelvetInvite';
 import HomeCarousel from './components/HomeCarousel';
 import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP, PODCAST } from './components/site-data';
-import { FILM, PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
+import { PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
 import { getFeaturedPup } from '../lib/pup-photos';
 
 // Homepage, in Jen's order (October 27, 2026; November 2026 additions):
@@ -15,6 +15,9 @@ import { getFeaturedPup } from '../lib/pup-photos';
 // November 3 (Jen): everything about her lives on the About Me page, so the
 // hero no longer repeats it (no "these days I'm happiest..." paragraph here).
 // The hero photo is her candid floral portrait. No bundle on the homepage.
+// November 3 (Jen): nothing repeated. The film news lives on Media (#film) and
+// is only linked from here; the podcast and pup lines live on the Podcast and
+// Pups pages. No em dashes anywhere.
 export const revalidate = 3600;
 
 export default async function Home() {
@@ -56,19 +59,19 @@ export default async function Home() {
         <div className="p">
           <div className="eyebrow">Story</div>
           <h3>The Author</h3>
-          <p>Her memoir, <em>Beyond the Velvet Ropes</em> — and the writing that turns hard chapters into hope.</p>
+          <p>Her memoir, <em>Beyond the Velvet Ropes</em>, and the writing that turns hard chapters into hope.</p>
           <p><a href="/book" className="btn btn-ghost btn-sm">The book</a></p>
         </div>
         <div className="p">
           <div className="eyebrow">Voice</div>
           <h3>The Speaker</h3>
-          <p>Faith, resilience, and reinvention — on stages and wherever women are rebuilding.</p>
+          <p>Faith, resilience, and reinvention, on stages and wherever women are rebuilding.</p>
           <p><a href="/media#speaking" className="btn btn-ghost btn-sm">Speaking</a></p>
         </div>
         <div className="p">
           <div className="eyebrow">Heart</div>
           <h3>The Advocate</h3>
-          <p>Beyond the Ropes and The Forever Angels — choosing the overlooked, one act at a time.</p>
+          <p>Beyond the Ropes and The Forever Angels, choosing the overlooked, one act at a time.</p>
           <p><a href="/about#forever-angels" className="btn btn-ghost btn-sm">The movement</a></p>
         </div>
       </section>
@@ -81,10 +84,10 @@ export default async function Home() {
         <div className="wrap inner">
           <div><img className="book-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" loading="lazy" /></div>
           <div>
-            <div className="eyebrow">The Memoir — Out Now</div>
+            <div className="eyebrow">The Memoir. Out Now.</div>
             <h2>Beyond the Velvet Ropes</h2>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
-            <p style={{ color: 'var(--text)' }}>From the outside, my twenties looked like the dream — covers, cameras, a life behind the velvet ropes. But the real story was never the part people saw. It’s in the moments I never talked about, and the long road back to the ordinary, happy life I have now. I wrote all of it down — the hard, the funny, and the faith that carried me through. If you’ve ever come through something and made it to the other side, I wrote this for you.</p>
+            <p style={{ color: 'var(--text)' }}>From the outside, my twenties looked like the dream. Covers, cameras, a life behind the velvet ropes. But the real story was never the part people saw. It’s in the moments I never talked about, and the long road back to the ordinary, happy life I have now. I wrote all of it down. The hard, the funny, and the faith that carried me through. If you’ve ever come through something and made it to the other side, I wrote this for you.</p>
             <p className="buy-row">
               <a href={BOOK_BUY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Get the Paperback</a>
               {SHOP.signedBook && !SHOP.signedBookSoldOut ? (
@@ -101,7 +104,7 @@ export default async function Home() {
           <div className="tf-copy">
             <div className="eyebrow">Watch the Trailer</div>
             <p className="tf-logline">“Everyone knew the headlines. No one knew the story.”</p>
-            <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em> — about ninety seconds.</p>
+            <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
           </div>
           <figure className="tf-video">
             <video
@@ -124,7 +127,6 @@ export default async function Home() {
         <div className="center">
           <div className="eyebrow">The Podcast</div>
           <h2>{PODCAST.name}</h2>
-          <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Honest conversations on faith, family, resilience, and starting over — the same honest voice as the book.</p>
           <div className="hero-ctas" style={{ justifyContent: 'center', marginTop: '8px' }}>
             <a href="/podcast" className="btn btn-primary">Listen to all 13 episodes</a>
           </div>
@@ -140,7 +142,9 @@ export default async function Home() {
             <div>
               <div className="eyebrow">Pup of the Podcast</div>
               <h3>Meet {pup.name}</h3>
-              <p>Every episode features a rescue pup looking for a home.{pup.homeLine ? ` ${pup.homeLine}` : pup.guest ? ` ${pup.name} joined my conversation with ${pup.guest}.` : ''}</p>
+              {pup.homeLine || pup.guest ? (
+                <p>{pup.homeLine || `${pup.name} joined my conversation with ${pup.guest}.`}</p>
+              ) : null}
               <p><a href="/pups" className="btn btn-ghost btn-sm">Meet all the pups</a></p>
             </div>
           </div>
@@ -179,7 +183,7 @@ export default async function Home() {
           ))}
         </div>
         <p className="home-press-film">
-          <strong>On screen:</strong> a feature film with {FILM.partners[0].label} and a feature documentary with {FILM.partners[1].label} are in development.
+          <strong>On screen:</strong> <a href="/media#film">in development for film and documentary</a>.
         </p>
         <div className="center" style={{ marginTop: '18px' }}><a href="/media" className="btn btn-ghost">All press and media</a></div>
       </section>

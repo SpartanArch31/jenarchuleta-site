@@ -162,7 +162,7 @@ export default async function JournalPost({ params }) {
         <div className="book-cta">
           <img src="/assets/quiet-mornings.jpg" alt="A quiet morning" width="1248" height="1400" />
           <div>
-            <div className="eyebrow">The Memoir — Out Now</div>
+            <div className="eyebrow">The Memoir. Out Now.</div>
             <h3 style={{ margin: '.2em 0 .3em' }}>Beyond the Velvet Ropes</h3>
             <p className="foot-meta" style={{ margin: '0 0 14px' }}>My Story of Perseverance, Hope, and Love</p>
             <a href="/book" className="btn btn-primary btn-sm">Get the book</a>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { CATEGORY_ORDER } from '../journal/curation';
+import { KIT_FREE_CHAPTER_URL } from './site-data';
 
 // ONE navigation for the whole site, every page, light or dark.
 // Main: Home | About Me | Book | Podcast | Journal | Media | Shop | The Velvet Letter
@@ -22,13 +23,10 @@ const MENU = [
     href: '/about',
     label: 'About Me',
     items: [
-      { href: '/about', label: 'Hi, I’m Jen' },
-      { href: '/about#me', label: 'The everyday' },
-      { href: '/about#life', label: 'My people' },
-      { href: '/about#then', label: 'Then & now' },
+      { href: '/about', label: 'About me' },
       { href: '/about#gallery', label: 'Photos' },
-      { href: '/about#work', label: 'What I do' },
-      { href: '/about#forever-angels', label: 'Faith & giving back' },
+      { href: '/about#forever-angels', label: 'Giving back' },
+      { href: '/about-the-author', label: 'About the Author' },
     ],
   },
   {
@@ -37,9 +35,11 @@ const MENU = [
     label: 'Book',
     items: [
       { href: '/book', label: 'Get the book' },
+      // Jen, November 3: the free first chapter belongs in the main menu.
+      { href: KIT_FREE_CHAPTER_URL, label: 'Get the first chapter free' },
       { href: '/book#trailer', label: 'Watch the trailer' },
       { href: '/book#who', label: 'Who this book is for' },
-      { href: '/book#on-screen', label: 'On screen' },
+      { href: '/media#film', label: 'Film and documentary' },
       { href: '/book#reviews', label: 'Leave a review' },
     ],
   },
@@ -252,6 +252,11 @@ export default function SiteNav({ homeHref = '/' }) {
               <path d="M11.6 11.2 L20 19.2 M15.6 16.4 L18.4 19.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
             </svg>
             The Velvet Letter
+          </a>
+          {/* Phones: the free first chapter sits at the bottom of the menu as a
+              button. On a laptop it is in the Book drop-down. */}
+          <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary nav-chapter" onClick={close}>
+            Get the first chapter free
           </a>
         </div>
       </div>

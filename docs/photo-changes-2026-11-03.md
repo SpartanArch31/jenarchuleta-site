@@ -28,4 +28,15 @@ Before these changes the gallery had 94 photos; now it has 92.
 | Where | Change |
 |---|---|
 | Media press photos | Jen's names and order: Glamorous (`jen-headshot-bw.jpg`), Candid (`presskit-headshot-floral.jpg`, primary), Signature (`jen-headshot-signature.jpg`). The copies Jen attached were phone screenshots of these same photos (one had a Google Lens button, one a white strip), so the clean files stay. |
-| Shop / Book / homepage | `velvet-circle-group.jpg` (AI picture of readers holding books with a made-up cover) deleted. Jen: "isn't my real cover." Only `book-cover.jpg` shows the book. |
+| Shop / Book / homepage | `velvet-circle-group.jpg` (AI picture of readers holding books with a made-up cover) deleted. Jen: "isn’t my real cover." (Later that day it came back with her real cover; see below.) |
+
+## Later on November 3 (Jen's second list)
+
+| Where | Change |
+|---|---|
+| Gallery | Trimmed to 19 photos, Jen's "best 15 to 20" (`GALLERY_PICKS` in `PhotoGallery.js`): Howard Stern, Tommy Lee, the dolphin, jen-joy, the A2Z cover, the "perfect off-the-field match" story, the beach wedding, the red dress, the beach kiss, the houseboat, the family at the mountains, rafting, rappelling, the camel, the hike, the Spartan race, Childhelp, the dog on the tortoise, and Jen as a girl. Every other photo stays in the repo. |
+| Gallery | Old #1 (`gallery-hw/hw_01.jpg`, the Rock the Rabbit stage photo) is out. Old #42 (`gallery-nov3/01-sleeping-dogs.jpg`, the old blurred bed photo) is out and the file is deleted ("completely"). Old #61 (`gallery-new/new_04.jpg`) moved to the About Me photo row. |
+| Gallery | Old #51 (rappelling) and #66 (camel): Jen re-sent both photos. They swap in when the files arrive (her attachments came through as copies of the bed photo). |
+| About Me | `full-house-kids-dogs.jpg` (Jen's file, kids' faces softly blurred) replaces the dogs-only crop (`dogs-on-the-bed.jpg`) as "A full, happy house". In the red carpet photo row, `new_04.jpg` replaces `jen-sultry.jpg` (the black corset photo). |
+| Homepage | The photo row drops the old blurred bed photo. |
+| Shop | `velvet-circle-group.jpg` is back on The Velvet Circle Book Club card, with Jen's real cover (`book-cover.jpg`) put on all four books (perspective fit, hands and hair kept in front, lit to match the room) and the round logo in the corner. The original with the made-up covers is in git history. |

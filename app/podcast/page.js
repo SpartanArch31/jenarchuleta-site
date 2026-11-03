@@ -18,7 +18,7 @@ const DESCRIPTION =
   'Unfiltered with Jen Archuleta features 13 episodes of honest conversations on faith, family, resilience, and starting over. Listen on Buzzsprout or watch on YouTube.';
 
 export const metadata = {
-  title: { absolute: 'Podcast — Unfiltered with Jen Archuleta' },
+  title: { absolute: 'Podcast, Unfiltered with Jen Archuleta' },
   description: DESCRIPTION,
   openGraph: {
     title: 'Unfiltered with Jen Archuleta',
@@ -57,7 +57,7 @@ export default async function PodcastPage() {
         <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>unfiltered…</div>
         <h1>{name}</h1>
         <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>
-          Honest conversations on faith, family, resilience, and starting over — the same honest voice as the book.
+          Honest conversations on faith, family, resilience, and starting over. The same honest voice as the book.
         </p>
         <p className="pod-count">Explore all 13 episodes of {name}.</p>
         <div className="subscribe-row">
@@ -108,14 +108,12 @@ export default async function PodcastPage() {
         </div>
       </section>
 
-      {/* PUPS OF THE PODCAST — featured pup + the full collection */}
+      {/* PUPS OF THE PODCAST: the featured pup + a link to the full collection.
+          The "every episode features a rescue pup" line lives on /pups only
+          (Jen, November 3: nothing repeated). */}
       <section id="pups" className="wrap pod-pups" style={{ background: 'var(--surface)' }}>
         <div className="center">
           <div className="eyebrow">Pups of the Podcast</div>
-          <h2>Every episode features a rescue pup looking for a home.</h2>
-          <p className="lead" style={{ maxWidth: '54ch', marginInline: 'auto' }}>
-            The Archuleta family donates toward each pup’s adoption fees.
-          </p>
         </div>
         {pup ? (
           <div className="home-pup">

@@ -3,7 +3,6 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetInvite from '../components/VelvetInvite';
 import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP } from '../components/site-data';
-import { FILM } from '../../lib/press';
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
@@ -43,10 +42,10 @@ export default function BookPage() {
         <div className="wrap hero">
           <div><img className="hero-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" /></div>
           <div>
-            <div className="eyebrow">The Memoir — Out Now</div>
+            <div className="eyebrow">The Memoir. Out Now.</div>
             <h1>Beyond the Velvet Ropes</h1>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
-            <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of — fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
+            <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
             <div className="buy-row">
               <a href={BOOK_BUY_URL} target="_blank" rel="noopener" className="btn btn-primary">Get the Paperback</a>
               {SHOP.signedBook && !SHOP.signedBookSoldOut ? (
@@ -72,7 +71,7 @@ export default function BookPage() {
         <div className="tf-copy">
           <div className="eyebrow">Watch the Trailer</div>
           <p className="tf-logline">“Everyone knew the headlines. No one knew the story.”</p>
-          <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em> — about ninety seconds.</p>
+          <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
         </div>
         <figure className="tf-video">
           <video
@@ -94,26 +93,18 @@ export default function BookPage() {
           <ul style={{ textAlign: 'left' }}>
             <li>The woman who’s holding it all together with both hands and no one knows.</li>
             <li>Anyone who’s survived something and is learning that survival isn’t the same as healing.</li>
-            <li>Anyone rebuilding — after loss, reinvention, a crisis of faith, or starting over.</li>
+            <li>Anyone rebuilding, after loss, reinvention, a crisis of faith, or starting over.</li>
             <li>Anyone who’s ever felt judged, underestimated, or counted out.</li>
           </ul>
         </div>
       </section>
 
-      {/* FILM AND DOCUMENTARY (in development — see lib/press.js) */}
+      {/* FILM AND DOCUMENTARY: the news has one home, Media (#film). Jen, November 3:
+          link to it from here, never copy it. */}
       <section id="on-screen" className="wrap text-wrap book-screen">
         <div className="eyebrow">On screen</div>
         <h2>In development for film and documentary.</h2>
-        <p>{FILM.film}</p>
-        <p>{FILM.documentary}</p>
-        <p className="foot-meta">
-          {FILM.partners.map((partner, i) => (
-            <span key={partner.href}>
-              {i > 0 ? ' · ' : ''}
-              <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
-            </span>
-          ))}
-        </p>
+        <p><a href="/media#film" className="btn btn-ghost btn-sm">Film and documentary news</a></p>
       </section>
 
       {/* THE VELVET LETTER */}

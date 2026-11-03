@@ -1,5 +1,5 @@
 import KitInlineForm from './KitInlineForm';
-import { KIT_FORM_UID, SOCIALS } from './site-data';
+import { KIT_FORM_UID, PODCAST, SOCIALS } from './site-data';
 
 // The one home for social links: the "Stay close" section (free first
 // chapter + socials), then the footer with the remaining links.
@@ -11,6 +11,8 @@ const SOCIAL_LINKS = [
   { label: 'X', href: SOCIALS.x },
   { label: 'Facebook', href: SOCIALS.facebook },
   { label: 'LinkedIn', href: SOCIALS.linkedin },
+  // The podcast's YouTube channel (Jen, November 3: the footer's YouTube link).
+  { label: 'YouTube', href: PODCAST.youtube },
 ];
 
 function StayClose() {
@@ -19,8 +21,8 @@ function StayClose() {
       <span id="stay-close" className="anchor" aria-hidden="true" />
       <div className="wrap text-wrap">
         <div className="eyebrow">Stay close</div>
-        <h2>Read the first chapter — free.</h2>
-        <p className="lead">Before the velvet ropes. Before the headlines. The real story. I’ll send the opening pages straight to your inbox — and if it sounds like something you’ve lived too, you’re exactly who I wrote it for.</p>
+        <h2>Read the first chapter free.</h2>
+        <p className="lead">Before the velvet ropes. Before the headlines. The real story. I’ll send the opening pages straight to your inbox, and if it sounds like something you’ve lived too, you’re exactly who I wrote it for.</p>
         <KitInlineForm uid={KIT_FORM_UID} />
         <ul className="stay-socials" aria-label="Follow Jen">
           {SOCIAL_LINKS.map((item) => (
@@ -66,7 +68,7 @@ export default function SiteFooter({ stayClose = true, homeHref = '/' }) {
           </nav>
           <p className="foot-meta">
             © 2026 Jen Archuleta. Author of <em>Beyond the Velvet Ropes</em>.<br />
-            Jennifer Walcott Archuleta.
+            Jen Walcott Archuleta.
           </p>
           <p className="foot-meta">
             <a href={`${home}/privacy`}>Privacy Policy</a> · <a href={`${home}/terms`}>Terms of Service</a> ·{' '}

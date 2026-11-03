@@ -4,7 +4,7 @@ import { BOOKING_EMAIL } from '../components/site-data';
 import './contact.css';
 
 export const metadata = {
-  title: { absolute: 'Contact | Jen Walcott Archuleta' },
+  title: { absolute: 'Contact, Jen Walcott Archuleta' },
   description:
     'Press, interviews, speaking, and events. Email Jen Walcott Archuleta.',
 };

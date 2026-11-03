@@ -14,6 +14,7 @@ export default async function sitemap() {
   const pages = [
     { url: `${BASE}/`, changeFrequency: 'weekly', priority: 1 },
     { url: `${BASE}/about`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/about-the-author`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/book`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/quotes`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/podcast`, changeFrequency: 'weekly', priority: 0.8 },

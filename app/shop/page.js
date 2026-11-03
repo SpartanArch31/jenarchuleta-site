@@ -53,7 +53,7 @@ export default function ShopPage() {
           {/* SIGNED BOOK */}
           <article className="product-card" id="signed-copy">
             <div className="product-media product-media--contain">
-              {SHOP.signedBookSoldOut && <span className="badge">Sold out — restocking soon</span>}
+              {SHOP.signedBookSoldOut && <span className="badge">Sold out. Restocking soon.</span>}
               <img
                 src="/assets/book-cover.jpg"
                 alt="Beyond the Velvet Ropes book cover"
@@ -61,10 +61,10 @@ export default function ShopPage() {
             </div>
             <div className="product-body">
               <div className="eyebrow">The Book · Signed &amp; Personalized</div>
-              <h3>Signed copy — <em>Beyond the Velvet Ropes</em></h3>
+              <h3>Signed copy, <em>Beyond the Velvet Ropes</em></h3>
               <p className="price">{SHOP.signedBookPrice}</p>
               <p className="product-desc">
-                Signed by me, with a note to whoever you’d like — you, or someone
+                Signed by me, with a note to whoever you’d like. You, or someone
                 who needs to hear that their story isn’t over.
               </p>
               <p className="fulfill">
@@ -72,7 +72,7 @@ export default function ShopPage() {
               </p>
               <div className="product-cta">
                 {SHOP.signedBookSoldOut ? (
-                  <span className="btn btn-disabled">Sold out — restocking soon</span>
+                  <span className="btn btn-disabled">Sold out. Restocking soon.</span>
                 ) : SHOP.signedBook ? (
                   <>
                     <a href={SHOP.signedBook} target="_blank" rel="noopener" className="btn btn-primary">
@@ -90,17 +90,21 @@ export default function ShopPage() {
           {/* THE VELVET CIRCLE BOOK CLUB: the one book-club offer (Jen, November 3:
               the book club and the old Backstage Bundle are one offer, so the bundle
               card is gone). #backstage-bundle and #backstage-box stay here so older
-              bundle links land on this card. */}
+              bundle links land on this card.
+              Photo (Jen, November 3): the Velvet Circle group photo, with her REAL
+              cover now on every book (the first version showed a made-up cover), and
+              the round Velvet Circle logo in the corner. */}
           <article className="product-card" id="velvet-circle">
             <span id="backstage-bundle" />
             <span id="backstage-box" />
-            <div className="product-media product-media--circle">
+            <div className="product-media">
               <img
-                src="/assets/velvet-circle-membership.jpg"
-                alt="The Velvet Circle Book Club, for readers of Beyond the Velvet Ropes"
-                width="1000"
-                height="667"
+                src="/assets/velvet-circle-group.jpg"
+                alt="Readers gathered with copies of Beyond the Velvet Ropes, some wearing black bunny ears"
+                width="1152"
+                height="864"
               />
+              <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="" width="436" height="436" />
             </div>
             <div className="product-body">
               <div className="eyebrow">Monthly Book Club</div>
@@ -163,7 +167,7 @@ export default function ShopPage() {
                     <a href={SHOP.bookmarkWaitlist} target="_blank" rel="noopener" className="btn btn-primary">
                       Join the first-drop list
                     </a>
-                    <p className="fulfill">Small handmade batches — the list hears first.</p>
+                    <p className="fulfill">Small handmade batches. The list hears first.</p>
                   </>
                 ) : (
                   <>
@@ -249,8 +253,7 @@ export default function ShopPage() {
         <details>
           <summary>Is The Velvet Letter part of the membership?</summary>
           <p>
-            No. Access to The Velvet Letter comes with the book. Your passcode is in the back of the
-            book, under the QR code. <a href="/velvet">Open The Velvet Letter</a>.
+            No. Access to The Velvet Letter comes with the book. <a href="/velvet">Open The Velvet Letter</a>.
           </p>
         </details>
       </section>

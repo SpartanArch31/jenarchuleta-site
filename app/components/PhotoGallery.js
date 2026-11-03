@@ -173,7 +173,6 @@ const FAMILY_OCT27 = [
 // They replace the photos of her children; the kids' faces are blurred in
 // her files. 13 is the Ozarks canoe, so it keeps that caption.
 const NOV3 = [
-  { src: '/assets/gallery-nov3/01-sleeping-dogs.jpg', alt: 'Asleep in a pile with the dogs', width: 1320, height: 943 },
   { src: '/assets/gallery-nov3/02-beach-kiss.jpg', alt: 'A kiss on the beach', width: 951, height: 1761 },
   { src: '/assets/gallery-nov3/03-wedding-beach.jpg', alt: 'Jen and Adam on their wedding day, on the beach at sunset', width: 1308, height: 1319 },
   { src: '/assets/gallery-nov3/04-bride-friend.jpg', alt: 'Jen as a bride, laughing with a friend', width: 1320, height: 1962 },
@@ -285,8 +284,40 @@ const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/160.jpg',
 ]);
 
-const SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...CHILDHOOD]
+// Every photo defined above, in the old order. The slideshow shows only
+// GALLERY_PICKS below; the rest stay in the repo so a swap is one line.
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...CHILDHOOD]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
+
+// November 3 (Jen): "Trim the gallery to the best 15 to 20 photos." These 19,
+// in this order. Also from her list that day: old #1 (hw_01, the Rock the
+// Rabbit stage photo) is out, old #42 (the old blurred bed photo) is out and its
+// file deleted, old #61 (new_04) moved to the About Me photo row, and old #51
+// (rappelling) and #66 (camel) are the photos Jen re-sent. To swap a photo,
+// replace its line with any src from the lists above.
+const GALLERY_PICKS = [
+  '/assets/gallery-hw/hw_04.jpg', // With Howard Stern
+  '/assets/gallery-hw/hw_03.jpg', // With Tommy Lee
+  '/assets/gallery-hw/hw_07.jpg', // Swimming with a dolphin
+  '/assets/jen-joy.jpg',
+  '/velvet-carousel/06.jpg', // A2Z Magazine cover
+  '/velvet-carousel/17.jpg', // the "perfect off-the-field match" story, with Adam
+  '/assets/gallery-nov3/03-wedding-beach.jpg',
+  '/velvet-carousel/21.jpg', // the red dress, dancing with Adam
+  '/assets/gallery-nov3/02-beach-kiss.jpg',
+  '/assets/gallery-nov3/10-houseboat-couple.jpg',
+  '/assets/gallery-nov3/08-volcano-railing.jpg',
+  '/assets/gallery-nov3/09-rafting.jpg',
+  '/assets/gallery-nov3/11-rappelling.jpg',
+  '/assets/gallery-new/new_13.jpg', // the camel
+  '/assets/gallery-nov3/14-grand-canyon.jpg',
+  '/assets/gallery-nov3/20-spartan-race.jpg',
+  '/assets/gallery-picks/159.jpg', // Childhelp
+  '/assets/gallery-oct26/dog-tortoise.jpg',
+  '/assets/gallery-childhood/jen-childhood.jpg',
+];
+
+const SLIDES = GALLERY_PICKS.map((src) => ALL_SLIDES.find((slide) => slide.src === src)).filter(Boolean);
 
 const INTERVAL_MS = 4000;
 // Never enlarge a file more than this, so small photos stay sharp.

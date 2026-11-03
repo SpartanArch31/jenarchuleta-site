@@ -108,6 +108,33 @@
   .tim-display { white-space: normal; }
 }
 
+/* November 2026: About Me in Jen's words, one page */
+.tim-display--wrap { white-space: normal; font-size: clamp(42px, 5vw, 70px); line-height: 1.1; }
+.tim-words .tim-lead + .tim-lead { margin-top: 22px; }
+.tim-lead--center { text-align: center; margin: 0 auto; max-width: 640px; }
+.tim-close { max-width: 46rem; margin: 0 auto; text-align: center; padding-block: clamp(64px, 8vw, 96px); }
+.tim-close .tim-lead { margin: 0 auto 18px; max-width: none; }
+.tim-close .tim-lead a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.tim-sign { font-family: var(--font-script); font-size: clamp(44px, 5vw, 60px); line-height: 1;
+            color: var(--accent-ink); margin: 6px 0 0; }
+.tim-author-link { margin: 34px 0 0; font-family: var(--font-sans); font-size: 13px; letter-spacing: .14em;
+                   text-transform: uppercase; }
+.tim-author-link a { color: var(--accent-ink); }
+
+/* About the Author: the formal page */
+.tim-author { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(32px, 5vw, 64px); align-items: center;
+              padding-block: clamp(56px, 7vw, 96px); }
+.tim-author .tim-portrait { max-width: 420px; }
+.tim-author-title { font-size: clamp(36px, 4.4vw, 54px); }
+.tim-author .tim-lead { margin-top: 22px; }
+.tim-author-back { margin: 30px 0 0; font-family: var(--font-sans); font-size: 13px; letter-spacing: .14em;
+                   text-transform: uppercase; }
+.tim-author-back a { color: var(--accent-ink); }
+@media (max-width: 860px) {
+  .tim-author { grid-template-columns: 1fr; }
+  .tim-author .tim-portrait { margin-inline: auto; }
+}
+
 /* October 2026: photos + professional bio */
 .tim-fun { padding-bottom: 0; }
 .tim-work { padding-block: clamp(56px, 8vw, 96px); }

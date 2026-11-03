@@ -10,15 +10,15 @@ import './home-carousel.css';
 // Every photo is shown whole at its own ratio, one height, with quiet arrows
 // and dots; no autoplay. Children: only Jen's own files with the kids' faces
 // blurred (gallery-nov3). Never add a photo that shows a child's face.
+// November 3: the old blurred bed photo (01-sleeping-dogs) is gone for good.
 // To change the photos, edit this list (width/height are the file's pixels).
 export const HOME_SLIDES = [
-  { src: '/assets/dogs.jpg', width: 1400, height: 786, alt: 'Jen’s five rescue dogs together in the garden' },
+  { src: '/assets/dogs.jpg', width: 1400, height: 786, alt: 'Jen’s five rescues together in the garden' },
   { src: '/assets/gallery-nov3/03-wedding-beach.jpg', width: 1308, height: 1319, alt: 'Jen and Adam on their wedding day, on the beach at sunset' },
-  { src: '/assets/gallery-nov3/01-sleeping-dogs.jpg', width: 1320, height: 943, alt: 'Asleep in a pile with the dogs' },
   { src: '/assets/gallery-oct26/dog-tortoise.jpg', width: 1320, height: 1320, alt: 'A dog on a tortoise' },
   { src: '/assets/gallery-nov3/02-beach-kiss.jpg', width: 951, height: 1761, alt: 'A kiss on the beach' },
   { src: '/assets/gallery-nov3/08-volcano-railing.jpg', width: 1316, height: 739, alt: 'The family looking out at the mountains' },
-  { src: '/assets/quiet-mornings.jpg', width: 1248, height: 1400, alt: 'Jen resting with one of her rescue dogs' },
+  { src: '/assets/quiet-mornings.jpg', width: 1248, height: 1400, alt: 'Jen resting with one of her rescues' },
   { src: '/assets/book-cover.jpg', width: 1000, height: 1500, alt: 'Beyond the Velvet Ropes book cover', href: '/book' },
 ];
 

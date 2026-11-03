@@ -3,18 +3,23 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import { SOCIALS } from '../components/site-data';
-import { FILM } from '../../lib/press';
+import { KIT_FREE_CHAPTER_URL, SOCIALS } from '../components/site-data';
 
-// About Me (Jen, November 3): everything about her lives on this one page,
-// including how much she loves her life now and the "my twenties" story.
-// The homepage no longer repeats it. The menu calls this page "About Me".
 export const metadata = {
   title: 'About Me',
   description:
-    'Hi, I’m Jen — a mom, a wife, and the human behind a houseful of rescue dogs. Faith, family, and giving back. This is me.',
+    'Faith, family, and a bunch of rescues. I love fiercely and I protect my peace. I love my husband, my kids and my family with everything I have.',
 };
 
+// About Me, in Jen's own words (November 3, 2026). One page: her text replaced
+// the old "Hi, I'm Jen", everyday, my people, then and now, fun part, faith,
+// and creed sections. Every sentence below is hers, in her order. Don't add,
+// trim, or reword it, and never use an em dash. The formal bio is its own
+// page, /about-the-author. Photos are shown whole. The kids appear only in
+// Jen's own blurred file (full-house-kids-dogs.jpg).
+// Old links still land: #life and #me (the everyday), #then (the twenties
+// photo), #gallery, #forever-angels and #faith (giving back), #work (the
+// About the Author link at the end).
 export default function AboutPage() {
   return (
     <>
@@ -22,73 +27,46 @@ export default function AboutPage() {
 
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      {/* HERO */}
+      {/* OPENING */}
       <section id="main-content" className="tim-wrap tim-hero">
         <div>
-          <p className="eyebrow">All of me</p>
-          <h1 className="tim-display">Hi — I’m&nbsp;Jen.</h1>
-          <p className="tim-script">and this is me</p>
-          {/* September wording, plus Jen's one addition (October 27, her exact words). */}
+          <p className="eyebrow">About me</p>
+          <h1 className="tim-display tim-display--wrap">Faith, family, and a bunch of rescues.</h1>
           <p className="tim-lead">
-            I don’t really do labels. I’m just me — a mom, a wife, and yes, the human behind a houseful of rescue dogs.
-            I had a whole lot of incredible experiences in my twenties… but honestly? These days it’s the
-            small stuff that gets me. Kids everywhere, dogs on the couch they’re not allowed on. My
-            faith, my family, and giving back. That’s pretty much it.
+            I love fiercely and I protect my peace. I love my husband, my kids and my family with
+            everything I have.
           </p>
-          <p className="tim-lead" style={{ marginTop: '18px' }}>
-            Above all, I love fiercely. My husband, my children, my family, and my friends are the heart of
-            my world. I’m grateful for the life we’ve built, the memories we share, and the love that carries
-            us through it all.
-          </p>
-          <div className="tim-chips">
-            <span className="tim-chip">Mom</span>
-            <span className="tim-chip">Wife</span>
-            <span className="tim-chip">Faith</span>
-            <span className="tim-chip">Five rescue dogs</span>
-            <span className="tim-chip">Giving back</span>
-            <span className="tim-chip">Just me</span>
-          </div>
-          <div className="tim-ctas">
-            <a href="#then" className="btn btn-primary">My story</a>
-            <a href="#gallery" className="btn btn-ghost">Photos →</a>
-          </div>
         </div>
         <div>
-          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta" width="1100" height="1370" />
+          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
           <p className="tim-cap">Caught mid-laugh, which is most of the time</p>
         </div>
       </section>
 
-      {/* THRESHOLD */}
       <div className="tim-wrap">
         <div className="threshold-rule"><span className="diamond" /></div>
       </div>
 
-      {/* THE EVERYDAY */}
+      {/* EVERYDAY */}
       <section id="me" className="tim-wrap tim-everyday">
-        <div className="tim-sticky">
-          <p className="eyebrow">The everyday</p>
-          <h2 className="tim-h2" style={{ fontSize: '46px' }}>The good stuff is the small stuff.</h2>
-          <p className="tim-lead" style={{ marginTop: '28px' }}>
-            I’ve seen a lot of the big, shiny version of life. Turns out my favorite parts are the
-            ones nobody’s photographing.
+        <span id="life" className="anchor" aria-hidden="true" />
+        <div className="tim-sticky tim-words">
+          <p className="tim-lead">
+            I don’t really do labels. I’m a mom, a wife, and the one who lets the rescues on the
+            couch they’re not allowed on. Our house is loud, the table is full, and that is exactly
+            how I like it.
           </p>
-          <div className="tim-joys">
-            <div className="tim-joy"><span className="dot" />Coffee before anyone else is up</div>
-            <div className="tim-joy"><span className="dot" />Surrounded by animals</div>
-            <div className="tim-joy"><span className="dot" />A loud house and a full table</div>
-            <div className="tim-joy"><span className="dot" />Sunday, and a little quiet for my faith</div>
-            <div className="tim-joy"><span className="dot" />Finding ways to give back</div>
-          </div>
+          <p className="tim-lead">
+            My favorite part of the day is coffee before anyone else is up. Sundays, I keep a little
+            quiet for my faith. It keeps me steady and it keeps me humble.
+          </p>
         </div>
         <div>
-          {/* The September photos: the dogs, the tortoise, the coffee cup, and the dogs on the
-              bed. Jen chose these on purpose. Do not remove or replace them unless she asks.
-              Full September files, served at the right size by next/image. */}
-          <p className="tim-hint">A few true things · rescue dogs, animals, the everyday</p>
+          {/* The September photos (the dogs, the tortoise, the coffee cup) plus Jen's
+              full house photo (November 3), which replaced the dogs-only crop. */}
           <div className="tim-grid2">
             <div className="tim-slot-wrap tim-span">
-              <Image className="tim-img" src="/assets/dogs.jpg" alt="Jen’s five rescue dogs together in the garden" width={1400} height={786} sizes="(max-width: 860px) 92vw, 640px" quality={85} />
+              <Image className="tim-img" src="/assets/dogs.jpg" alt="Jen’s five rescues together in the garden" width={1400} height={786} sizes="(max-width: 860px) 92vw, 640px" quality={85} />
               <span className="tim-slot-cap">All five of them</span>
             </div>
             <div className="tim-slot-wrap">
@@ -100,128 +78,65 @@ export default function AboutPage() {
               <span className="tim-slot-cap">Before the house wakes up</span>
             </div>
             <div className="tim-slot-wrap tim-span">
-              <img className="tim-img" src="/assets/dogs-on-the-bed.jpg" alt="Two of the rescue dogs curled up on the bed" width="660" height="520" loading="lazy" decoding="async" />
+              <Image className="tim-img" src="/assets/full-house-kids-dogs.jpg" alt="The kids asleep in a big bed with two of the rescues" width={1320} height={943} sizes="(max-width: 860px) 92vw, 640px" quality={85} />
               <span className="tim-slot-cap">A full, happy house</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* MY PEOPLE */}
-      <section id="life" className="tim-band">
-        <div className="tim-wrap tim-band-inner is-solo">
-          <div>
-            <p className="eyebrow">My people</p>
-            <h2 className="tim-h2" style={{ fontSize: '46px', marginBottom: '24px' }}>
-              Fiercely loyal to the few who are mine.
-            </h2>
-            <p className="tim-lead" style={{ margin: 0 }}>
-              My husband, my kids, a handful of people I’d do anything for, and a houseful of animals
-              I love like family. I love hard and I show up — that part of me has never changed.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* THEN & NOW */}
+      {/* THE CAMERA, AND MY TWENTIES */}
       <section id="then" className="tim-wrap tim-then">
         <div>
-          {/* Jen's pick for this section since July: the black-and-white photo in the long black
-              trench coat. Do not swap in a headshot. */}
+          {/* Jen's pick since July: the black-and-white photo in the long black trench
+              coat. Do not swap in a headshot. */}
           <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Walcott Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         </div>
         <div>
-          <p className="eyebrow">Then &amp; now</p>
-          <h2 className="tim-h2" style={{ fontSize: '50px' }}>My twenties were something else.</h2>
-          <p className="tim-lead" style={{ marginTop: '28px' }}>
-            Incredible experiences, rooms most people never get to see, a version of my life that
-            looked like a highlight reel. I’m grateful for all of it. I also walked through some
-            genuinely hard things to get here — but that’s not the headline. The headline is the
-            ordinary, beautiful life I get to wake up to now. I wouldn’t trade a single regular
-            morning for any of it.
+          <p className="tim-lead">
+            I’ll be honest, I’ve never minded the camera. Red carpets, magazine covers, getting
+            dressed up. My twenties gave me some incredible experiences and some hard ones too.
+            I’m grateful for all of it. But the life I love most is the regular one I wake up to now.
           </p>
-          <div className="threshold-rule" style={{ marginTop: '30px', maxWidth: '320px' }}>
-            <span className="diamond" />
-          </div>
         </div>
       </section>
 
-      {/* THE FUN PART + PHOTOS (the carousel moved here from the homepage) */}
+      {/* The red carpet photo row. Second photo: Jen's glamour headshot (gallery-new/new_04),
+          which replaced the black corset photo (jen-sultry) on November 3. */}
       <section className="tim-wrap tim-fun">
-        <div className="center">
-          <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>the fun part…</div>
-          <h2 className="tim-h2" style={{ fontSize: '46px' }}>Beautiful, a little bit of trouble, and not done yet.</h2>
-          <p className="tim-lead" style={{ maxWidth: '62ch', marginInline: 'auto' }}>
-            Let’s be honest — I’ve never minded the camera. Magazine covers, red carpets, getting dressed
-            up, a good laugh. I’ve always had a soft spot for animals, and plenty of rescues at home to
-            prove it. Faith, family, and fun, all at once — and I wouldn’t have it any other way.
-          </p>
-        </div>
         <div className="photo-row">
-          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta — glamour portrait" width="941" height="1123" loading="lazy" />
-          <img src="/assets/jen-sultry.jpg" alt="Jen Archuleta" width="599" height="1111" loading="lazy" />
+          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta, glamour portrait" width="941" height="1123" loading="lazy" />
+          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Walcott Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
           <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
-          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta — fit at 50" width="1077" height="887" loading="lazy" />
+          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
         </div>
       </section>
       <PhotoGallery showTitle={false} />
 
-      {/* THE PROFESSIONAL BIO */}
-      <section id="work" className="tim-wrap tim-work">
-        <div className="tim-work-inner">
-          <p className="eyebrow">What I do</p>
-          <h2 className="tim-h2" style={{ fontSize: '44px' }}>Author, host, speaker, advocate.</h2>
-          <p className="tim-lead">
-            I’m the author of <em>Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love</em>, and
-            the host of the podcast <em>Unfiltered with Jen Archuleta</em>. I speak about faith, resilience,
-            and starting over.
-          </p>
-          <p className="tim-lead">{FILM.film}</p>
-          <p className="tim-lead">{FILM.documentary}</p>
-          <p className="tim-work-links">
-            <a href="/book" className="btn btn-ghost btn-sm">The book</a>
-            <a href="/podcast" className="btn btn-ghost btn-sm">The podcast</a>
-            <a href="/media" className="btn btn-ghost btn-sm">Media &amp; press kit</a>
-          </p>
-        </div>
-      </section>
-
-      {/* FAITH, GIVING BACK, AND THE FOREVER ANGELS — the one dark band,
-          and the one home on the site for The Forever Angels. */}
+      {/* GIVING BACK. The one home on the site for The Forever Angels (the footer,
+          the homepage, and /forever-angels all land here). */}
       <section id="forever-angels" className="tim-faith dark">
         <span id="faith" className="anchor" aria-hidden="true" />
         <div className="tim-faith-inner">
-          <p className="eyebrow" style={{ color: 'var(--accent)' }}>Faith &amp; giving back</p>
-          <h2 className="tim-h2" style={{ fontSize: 'clamp(40px, 5vw, 60px)', color: 'var(--accent-ink)', maxWidth: '820px' }}>
-            Grounded by faith, happiest when I’m giving some of it back.
-          </h2>
-          <p className="tim-lead" style={{ margin: 0, maxWidth: '660px' }}>
-            My faith keeps me steady and it keeps me humble. So does remembering how lucky I am.
-            Whatever I’ve got — time, a story, a hand to lend — I’d rather use it for somebody else
-            than keep it for myself.
+          <p className="tim-lead tim-lead--center">
+            Giving back matters to me. If I have time, a story, or a hand to lend, I’d rather use
+            it for someone else.
           </p>
-          <p className="tim-lead" style={{ margin: '16px 0 0', maxWidth: '660px' }}>
-            That’s why The Forever Angels is so close to my heart. It’s my 501(c)(3) nonprofit, for the
-            families, veterans, hospice patients, and animals who get passed over.
-          </p>
-          <div style={{ marginTop: '14px' }}>
-            <a href={SOCIALS.foreverAngels} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
-          </div>
+          <a href={SOCIALS.foreverAngels} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
         </div>
       </section>
 
-      {/* THE MOVEMENT (September homepage creed, moved here) */}
-      <section id="movement" className="wrap creed" style={{ background: 'var(--surface)' }}>
-        <div className="threshold-rule" style={{ marginBottom: '20px' }}><span className="diamond" /></div>
-        <h2>Everyone belongs beyond the ropes.</h2>
-        <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>A velvet rope decides who gets in and who stays out. This is the opposite of that — a quiet practice of choosing the overlooked, and reminding each other that no one’s story is over.</p>
-        <ul>
-          <li>Everyone belongs — so we choose the overlooked.</li>
-          <li>No one’s story is over — it’s still being written.</li>
-          <li>We forgive — even without the apology.</li>
-          <li>We fall, we learn, and we rise anyway.</li>
-          <li>We turn our pain into someone else’s lifeline.</li>
-        </ul>
+      {/* CLOSING */}
+      <section className="tim-wrap tim-close">
+        <span id="work" className="anchor" aria-hidden="true" />
+        <p className="tim-lead">
+          Want to be part of something? <a href="/book">Buy my book</a> and check out{' '}
+          <a href="/velvet">the Velvet Letter</a> with your passcode. You can also{' '}
+          <a href={KIT_FREE_CHAPTER_URL}>get the first chapter free</a>.
+        </p>
+        <p className="tim-lead">Thanks for being here.</p>
+        <p className="tim-sign">Jen</p>
+        <p className="tim-author-link"><a href="/about-the-author">About the Author</a></p>
       </section>
 
       <SiteFooter />

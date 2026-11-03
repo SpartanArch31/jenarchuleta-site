@@ -38,8 +38,12 @@ anything.** It is the full rulebook. The rules below are the ones that must neve
 8. **Nothing gets deleted from the Journal.** Posts are archived in
    `app/journal/curation.js`; Pup of the Podcast posts live on `/pups`, not in the Journal.
    Wrong podcast links are corrected in `app/journal/repair-body.mjs`.
-9. **About Me is one page.** Everything about Jen lives on `/about`. Don't copy it back onto
-   the homepage.
+9. **About Me is one page, in Jen's exact words.** Everything about Jen lives on `/about`.
+   Don't reword it or copy it onto other pages. The formal bio is `/about-the-author`.
+10. **No em dashes, and nothing repeated.** Never write an em dash anywhere on the site,
+   page titles included; use a period or a comma. Film and documentary news lives only on
+   Media (`#film`); the passcode note only on `/velvet`; the podcast blurb only on `/podcast`;
+   the rescue pup line only on `/pups`. Other pages link to those.
 
 ## When you're done
 - Check the Vercel preview on a phone and a laptop before merging.

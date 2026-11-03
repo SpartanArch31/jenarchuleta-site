@@ -31,12 +31,12 @@ export const POSTS = [
       'The hardest seasons weren’t the ones that broke me. They were the ones that taught me how to wait without losing myself.',
     body: [
       'For a long time I thought faith meant the rescue would come quickly. That if I prayed hard enough, the waiting would be short.',
-      'It wasn’t. And in the waiting — the long, quiet, unglamorous waiting — I found the version of myself I’d been looking for the whole time.',
+      'It wasn’t. And in the waiting, the long, quiet, unglamorous waiting, I found the version of myself I’d been looking for the whole time.',
       'This is the part no one photographs. But it’s the part that mattered most.',
     ],
     affiliateLinks: [],
     sponsor: null,
-    seoTitle: 'In the Waiting — Jen Archuleta',
+    seoTitle: 'In the Waiting',
     seoDescription: 'On faith, patience, and becoming who you’re meant to be.',
   },
   {
@@ -46,14 +46,14 @@ export const POSTS = [
     category: 'Health & Wellness',
     heroImage: '/assets/jen-fitness.jpg',
     excerpt:
-      'I survived for years. Healing was a different, braver choice — and it started in the gym as much as anywhere.',
+      'I survived for years. Healing was a different, braver choice, and it started in the gym as much as anywhere.',
     body: [
       'Survival is holding it together. Healing is finally letting yourself fall apart in a safe place and rebuilding on purpose.',
-      'For me, movement became part of that. Not punishment — proof that this body carried me through everything and is still here.',
+      'For me, movement became part of that. Not punishment. Proof that this body carried me through everything and is still here.',
     ],
     affiliateLinks: [],
     sponsor: null,
-    seoTitle: 'Survival Isn’t Healing — Jen Archuleta',
+    seoTitle: 'Survival Isn’t Healing',
     seoDescription: 'Why surviving and healing are not the same thing.',
   },
   {
@@ -70,7 +70,7 @@ export const POSTS = [
     ],
     affiliateLinks: [],
     sponsor: null,
-    seoTitle: 'Getting Back Up — Jen Archuleta',
+    seoTitle: 'Getting Back Up',
     seoDescription: 'A letter to my kids about resilience.',
   },
 ];
