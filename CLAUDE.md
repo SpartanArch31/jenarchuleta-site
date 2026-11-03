@@ -3,6 +3,10 @@
 > **Read this first.** It's the operating guide for the whole site: what it is,
 > where every file lives, how to change things, and how it deploys. A new
 > session should be able to act on this without any prior context.
+>
+> **Other AIs (Cursor, Grok, and the like):** `AGENTS.md` has the rules that must never
+> break; Cursor also loads `.cursor/rules/jen-site.mdc`. Jen makes her own changes with
+> Cursor: branch, pull request, check the preview, merge (Nov 2026).
 
 _Last updated: 2026-10-27 (Jen's final site organization; Velvet Letter made truly private)._
 

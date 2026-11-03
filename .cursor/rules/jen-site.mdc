@@ -1,0 +1,11 @@
+---
+description: Rules for Jen Archuleta's live website (jenarchuleta.com)
+alwaysApply: true
+---
+
+This repo is Jen Archuleta's LIVE website. Anything merged into `main` goes live on
+jenarchuleta.com within minutes.
+
+Before changing anything, read `AGENTS.md` (the rules that must never break) and
+`CLAUDE.md` (the full rulebook) at the repo root, and follow them. Work on a branch,
+open a pull request, and never push straight to `main`.
