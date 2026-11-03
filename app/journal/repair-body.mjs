@@ -21,8 +21,6 @@ const RETIRED_SET = new Set(RETIRED_URLS);
 export function isRetiredHref(href) {
   const value = href || '';
   if (RETIRED_SET.has(value)) return true;
-  // FilmFreeway profiles publish birth date, height, and school. Do not link them.
-  if (/filmfreeway\.com/i.test(value)) return true;
   if (/tdi-dog\.org/i.test(value)) return true;
   return false;
 }
@@ -297,7 +295,6 @@ function rewriteText(text) {
   });
   next = next.replace(/\bFelling the Love\b/g, 'Feeling the Love');
   next = next.replace(/\bShawn Patrick Flanery\b/g, 'Sean Patrick Flanery');
-  next = next.replace(/\s*View Jennifer[’']s press coverage, media appearances and screenplay recognition on FilmFreeway\.?\s*/gi, ' ');
   return next;
 }
 
@@ -487,17 +484,11 @@ function repairLabels(blocks, slug) {
   });
 }
 
-function dropPrivatePitches(blocks) {
-  return blocks.filter((block) => {
-    const text = blockText(block);
-    if (/press coverage, media appearances and screenplay recognition on FilmFreeway/i.test(text)) return false;
-    return true;
-  });
-}
-
 export function prepareJournalBody(blocks, slug) {
   if (!Array.isArray(blocks)) return blocks;
-  let next = linkifyBody(correctEpisodeLinks(rewriteBlocks(dropPrivatePitches(blocks)), slug));
+  // FilmFreeway links and Jen's "View Jennifer's press coverage... on FilmFreeway"
+  // lines show as she wrote them (she asked for her FilmFreeway link, November 3).
+  let next = linkifyBody(correctEpisodeLinks(rewriteBlocks(blocks), slug));
   if (slug === 'homemade-formula') {
     next = linkPhrase(next, 'THE HOMEMADE FORMULA RECIPES', WESTON_FORMULA);
     next = linkPhrase(next, 'Weston A. Price Foundation', WESTON_FORMULA);

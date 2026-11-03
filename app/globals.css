@@ -47,6 +47,49 @@ section { padding-block: var(--section-y); }
   .nav--collapsible .nav-links .btn-primary { margin-top: 10px; text-align: center; }
 }
 
+/* nav drop-downs: each main page's sections (Jen, November 2026) */
+.nav-item { position: relative; display: inline-flex; align-items: center; gap: 1px; }
+.nav-caret { display: inline-grid; place-items: center; width: 20px; height: 28px; padding: 0; margin: 0;
+             border: 0; border-radius: 4px; background: none; color: var(--text-secondary); cursor: pointer; }
+.nav-caret svg { width: 11px; height: 11px; transition: transform var(--dur-fast) var(--ease); }
+.nav-item.is-open .nav-caret svg { transform: rotate(180deg); }
+.nav-caret:hover, .nav-item.is-open .nav-caret { color: var(--accent-ink); }
+.nav-caret:focus-visible { outline: 2px solid var(--focus-ring, var(--gold)); outline-offset: 1px; }
+.nav-sub { list-style: none; margin: 0; padding: 8px 0; }
+.nav-sub[hidden] { display: none !important; }
+.nav-sub li { margin: 0; }
+.nav-sub a { display: block; padding: 9px 20px; white-space: nowrap; font-family: var(--font-sans);
+             text-transform: none; letter-spacing: .01em; font-size: .92rem; color: var(--text); }
+.nav-sub a:hover { color: var(--accent-ink); background: var(--surface); }
+@media (min-width: 1024px){
+  .nav-sub { position: absolute; top: calc(100% + 14px); left: -16px; z-index: 60; min-width: 230px;
+             background: var(--bg); border: var(--hairline); border-radius: var(--radius);
+             box-shadow: 0 14px 30px rgba(0,0,0,.14); }
+  /* an invisible bridge so the menu stays open while the mouse moves down to it */
+  .nav-sub::before { content: ''; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+  .nav-item--end .nav-sub { left: auto; right: -12px; }
+  .brand { white-space: nowrap; }
+}
+/* Small laptops and tablets held sideways: tighter spacing keeps the menu on one line. */
+@media (min-width: 1024px) and (max-width: 1199px){
+  .nav-inner { gap: 16px; }
+  .nav-links { gap: 10px 11px; }
+  .nav-links > a, .nav-item > a { letter-spacing: .1em; }
+  .nav-caret { width: 16px; }
+}
+@media (max-width: 1023px){
+  .nav--collapsible .nav-links { max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px);
+                                 overflow-y: auto; overscroll-behavior: contain; }
+  .nav--collapsible .nav-item { display: flex; flex-wrap: wrap; align-items: center; }
+  .nav--collapsible .nav-item > a { flex: 1; }
+  .nav--collapsible .nav-caret { width: 44px; height: 44px; }
+  .nav--collapsible .nav-caret svg { width: 13px; height: 13px; }
+  .nav--collapsible .nav-sub { flex-basis: 100%; padding: 0 0 10px; margin-left: 4px; border-left: 1px solid var(--border); }
+  .nav--collapsible .nav-sub a { padding: 10px 2px 10px 16px; }
+}
+/* Section links land below the sticky menu, not under it. */
+[id] { scroll-margin-top: 88px; }
+
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-sans);
        font-size: var(--text-ui); letter-spacing: .12em; text-transform: uppercase; font-weight: var(--w-semibold);
@@ -447,23 +490,8 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   color: var(--text-secondary);
   font-size: var(--text-body-s);
 }
-.home-bundle-card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(24px, 5vw, 64px);
-  align-items: center;
-}
-.home-bundle-card img {
-  width: 100%;
-  max-width: 420px;
-  height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  justify-self: center;
-}
-.home-bundle-card h2 { font-size: var(--text-display-l); margin: 8px 0 14px; }
 @media (max-width: 760px) {
-  .home-pup, .home-bundle-card { grid-template-columns: 1fr; }
+  .home-pup { grid-template-columns: 1fr; }
   .home-pup img { max-width: 320px; margin: 0 auto; }
 }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;

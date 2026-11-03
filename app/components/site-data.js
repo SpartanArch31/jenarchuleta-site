@@ -94,12 +94,8 @@ export const SHOP = {
   velvetCircleMembership: 'https://buy.stripe.com/6oU3cuemL2mB1UD73Ids406',
   velvetCircleMembershipPrice: '$9.99/month',
 
-  // THE BACKSTAGE BOX. No $69 Stripe Payment Link exists in this repo or its
-  // history. The old checkout was a Kit product URL, which cannot collect a
-  // shipping address, so it stays empty. Empty renders a Coming soon button
-  // that does not go to checkout.
-  foundingBox: '',
-  foundingBoxPrice: '$69',
+  // The Backstage Bundle ($69 one-time) was removed November 3 (Jen: one
+  // book-club offer). It never had a Stripe link.
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official

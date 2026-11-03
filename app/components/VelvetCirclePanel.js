@@ -6,10 +6,10 @@ import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 // It includes the one-page discussion guide and up to three questions a month
 // that Jen answers personally in writing. Monthly group Zooms begin once 13
 // active paying members have joined. It never includes a signed book, the
-// bookmark, bunny ears, or any other physical item; those are only in The
-// Backstage Bundle (the one-time gift). Never promise Zooms as an immediate
-// benefit. The bunny-ears photo belongs with the bundle, not here, so nobody
-// thinks the membership includes the ears.
+// bookmark, or any other physical item; the signed book and the bookmark are
+// sold separately in the Shop. Never promise Zooms as an immediate benefit.
+// November 3 (Jen): the book club is the one book-club offer; the old
+// Backstage Bundle is gone.
 export const VELVET_CIRCLE_PERKS = [
   'A one-page discussion guide for the book',
   'Up to three questions a month about the book and my experiences, answered personally by me in writing',
@@ -47,11 +47,6 @@ export default function VelvetCirclePanel() {
           <ul className="vc-announce-perks">
             {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
           </ul>
-          <p className="vc-announce-box">
-            Looking for the signed book, bookmark, and bunny ears? That’s{' '}
-            <a href="/shop#backstage-bundle">The Backstage Bundle</a>, a one-time gift. Its
-            complimentary month does not renew automatically.
-          </p>
           {join ? (
             <a className="btn btn-primary" href={join} target="_blank" rel="noopener noreferrer">
               Join the Velvet Circle Book Club

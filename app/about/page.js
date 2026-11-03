@@ -6,8 +6,11 @@ import PhotoGallery from '../components/PhotoGallery';
 import { SOCIALS } from '../components/site-data';
 import { FILM } from '../../lib/press';
 
+// About Me (Jen, November 3): everything about her lives on this one page,
+// including how much she loves her life now and the "my twenties" story.
+// The homepage no longer repeats it. The menu calls this page "About Me".
 export const metadata = {
-  title: 'About',
+  title: 'About Me',
   description:
     'Hi, I’m Jen — a mom, a wife, and the human behind a houseful of rescue dogs. Faith, family, and giving back. This is me.',
 };

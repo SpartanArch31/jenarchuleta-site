@@ -16,22 +16,30 @@ anything.** It is the full rulebook. The rules below are the ones that must neve
    that exact change.
 2. **Privacy.** Never put Jen's home city, state, or neighborhood anywhere. Her bio says
    "She lives on the West Coast."
-3. **Children.** Never add a photo that shows a child's face unless Jen supplied that
-   exact file. Never remove or weaken an existing blur.
+3. **Children.** No photo of Jen's children anywhere on the site, except Jen's own files with
+   the kids' faces blurred (`public/assets/gallery-nov3/`). Never add one back, never remove or
+   weaken a blur, and never leave such a photo sitting in `public/` (anything there can be
+   opened by its URL).
 4. **The Velvet Letter is private.** The passcode lives only in the Vercel setting
    `VELVET_LETTER_PASSCODE`. Never put the passcode, a hint, or a hash of it in the code.
    Private entries and photos only appear after the passcode is entered. Never show
    Velvet Letter content on a public page.
 5. **One menu, one footer.** Every page uses `app/components/SiteNav.js` and
-   `app/components/SiteFooter.js`. Social links live only in the footer's "Stay close".
+   `app/components/SiteFooter.js`. The menu says "About Me", and each main page has a
+   drop-down of its sections; if you rename or remove a section, fix its link in `SiteNav.js`.
+   Social links live only in the footer's "Stay close".
 6. **Photos are shown whole.** No cropping into frames, no stretching, no enlarging a
    small file past 1.6x. Don't paint over or rebuild part of a photo.
 7. **Facts.** The film and documentary are in development (wording in `lib/press.js`).
-   The podcast has 13 episodes; never say new episodes are coming. The shop has four
-   products in Jen's order (see `CLAUDE.md`).
+   The podcast has 13 episodes; never say new episodes are coming. The shop has three
+   products in Jen's order (see `CLAUDE.md`). The Velvet Circle Book Club is the one
+   book-club offer: no Backstage Bundle, and no "backstage" wording anywhere. Only Jen's real
+   book cover (`book-cover.jpg`), never a picture with a made-up cover.
 8. **Nothing gets deleted from the Journal.** Posts are archived in
-   `app/journal/curation.js`. Wrong podcast links are corrected in
-   `app/journal/repair-body.mjs`.
+   `app/journal/curation.js`; Pup of the Podcast posts live on `/pups`, not in the Journal.
+   Wrong podcast links are corrected in `app/journal/repair-body.mjs`.
+9. **About Me is one page.** Everything about Jen lives on `/about`. Don't copy it back onto
+   the homepage.
 
 ## When you're done
 - Check the Vercel preview on a phone and a laptop before merging.

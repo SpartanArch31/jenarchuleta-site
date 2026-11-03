@@ -73,7 +73,7 @@ export default async function PodcastPage() {
 
       {/* EPISODES — listen (Buzzsprout's player lists every episode) beside
           watch (the YouTube "Full Episodes" playlist, Ep. 1 first). */}
-      <section className="wrap pod-players" style={{ paddingTop: 0 }} aria-label="All 13 episodes">
+      <section id="episodes" className="wrap pod-players" style={{ paddingTop: 0 }} aria-label="All 13 episodes">
         <div className="pod-player">
           <div className="pod-player-head">
             <div className="eyebrow">Listen</div>
@@ -109,7 +109,7 @@ export default async function PodcastPage() {
       </section>
 
       {/* PUPS OF THE PODCAST — featured pup + the full collection */}
-      <section className="wrap pod-pups" style={{ background: 'var(--surface)' }}>
+      <section id="pups" className="wrap pod-pups" style={{ background: 'var(--surface)' }}>
         <div className="center">
           <div className="eyebrow">Pups of the Podcast</div>
           <h2>Every episode features a rescue pup looking for a home.</h2>
@@ -137,7 +137,7 @@ export default async function PodcastPage() {
       </section>
 
       {/* SPONSORS */}
-      <section className="wrap center">
+      <section id="sponsors" className="wrap center">
         <div className="eyebrow">Sponsors</div>
         <h2>Thank you.</h2>
         <p className="lead" style={{ maxWidth: '46ch', marginInline: 'auto' }}>

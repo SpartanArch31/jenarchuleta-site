@@ -13,8 +13,10 @@ export const metadata = {
     'Interviews, articles, and conversations with Jen Walcott Archuleta, plus a short bio and headshots for press.',
 };
 
-// Do not publish FilmFreeway personal details (birth date, height, school, college)
-// or a representative's phone number or street address.
+// FilmFreeway: Jen asked for her FilmFreeway link (November 3). It is in
+// lib/press.js with the film partners. Do not copy details from that profile
+// onto this site, and never publish a representative's phone number or
+// street address.
 // Speaking reel and past events: render nothing until Jen supplies them.
 // Boardman News links to the outlet's Facebook post. The article host's
 // certificate is expired, so the card does not point at boardmannews.net.
@@ -28,25 +30,18 @@ const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet
 
 
 
-// Jen's three headshot options for Media & Speaking, in her words (Oct 28):
-// Signature, Glamour, and Candid. Candid is the floral portrait (IMG_5389), which
-// replaced the blazer headshot and is also the primary Media image at the top of
-// the page. Unretouched, uncropped. `download` is the largest file we have of each.
+// Jen's three headshots for press downloads, in her order and her words
+// (November 3): Glamorous (black and white), Candid (floral top), and
+// Signature (black top, smiling). Candid is the floral portrait (IMG_5389),
+// also the primary Media image at the top of the page and the homepage hero.
+// Unretouched, uncropped. `download` is the largest clean file we have of
+// each (the copies Jen attached were phone screenshots of these same files).
 const HEADSHOTS = [
-  {
-    src: '/assets/jen-headshot-signature.jpg',
-    download: '/assets/jen-headshot-signature.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Signature.jpg',
-    label: 'Signature',
-    alt: 'Jen Walcott Archuleta smiling in a black top',
-    width: 1162,
-    height: 1597,
-  },
   {
     src: '/assets/jen-headshot-bw.jpg',
     download: '/assets/jen-headshot-bw.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Glamour.jpg',
-    label: 'Glamour',
+    fileName: 'Jen-Walcott-Archuleta-Glamorous.jpg',
+    label: 'Glamorous',
     alt: 'Black-and-white portrait of Jen Walcott Archuleta',
     width: 1320,
     height: 1946,
@@ -60,6 +55,15 @@ const HEADSHOTS = [
     alt: 'Jen Walcott Archuleta smiling in a floral top',
     width: 1100,
     height: 1370,
+  },
+  {
+    src: '/assets/jen-headshot-signature.jpg',
+    download: '/assets/jen-headshot-signature.jpg',
+    fileName: 'Jen-Walcott-Archuleta-Signature.jpg',
+    label: 'Signature',
+    alt: 'Jen Walcott Archuleta smiling in a black top',
+    width: 1162,
+    height: 1597,
   },
 ];
 const PRIMARY = HEADSHOTS.find((shot) => shot.label === 'Candid');
@@ -103,7 +107,7 @@ export default function MediaPage() {
       </section>
 
       {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js. */}
-      <section className="wrap text-wrap">
+      <section id="film" className="wrap text-wrap">
         <h2>Film and documentary</h2>
         <p>{FILM.film}</p>
         <p>{FILM.documentary}</p>
@@ -117,7 +121,7 @@ export default function MediaPage() {
         </p>
       </section>
 
-      <section className="wrap">
+      <section id="press" className="wrap">
         <h2>Press coverage</h2>
         <div className="media-grid">
           {PRESS.map((item) => (
@@ -131,7 +135,7 @@ export default function MediaPage() {
         </div>
       </section>
 
-      <section className="wrap">
+      <section id="interviews" className="wrap">
         <h2>Interviews and appearances</h2>
         <div className="media-grid">
           {APPEARANCES.map((item) => (

@@ -20,6 +20,14 @@
     margin-inline: auto;
   }
 }
+/* An odd last card (three products, November 2026) sits centered on its own row. */
+@media (min-width: 861px) {
+  .shop-page .product-grid > .product-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - clamp(24px, 3.5vw, 44px) / 2);
+  }
+}
 
 .shop-page .product-card {
   background: var(--surface);

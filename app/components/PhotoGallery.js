@@ -37,13 +37,27 @@ import sizes from '../velvet/slide-sizes.json';
 // - velvet-carousel 13, 16, 18, 19, and 31 were 4:5 crops that cut people
 //   off at the edges. They are now the full photos from the book.
 //
+// November 3 (Jen's list):
+// - Slides 46, 48, 55, 62, and 74 are out (jen-headshot-bw, new_05,
+//   new_16, new_28, gallery-picks/160). See HIDDEN_SLIDE_SRC.
+// - Every photo of her children is out, and those files are deleted from the
+//   site: velvet 35, family-beach-hands, girls-beach-walk,
+//   girls-beach-rompers, ski, pajamas, hug, lawn, hangar, jet-seats, beach,
+//   cliff, tree, driveway, ozarks-canoe, and muskoka-boat. (Velvet 24, 25,
+//   26, Quiet_Mornings.jpeg, and new_15 were never shown but sat in the
+//   public folder with the kids' faces, so they are deleted too.)
+// - In their place, Jen's 19 new photos (gallery-nov3, her numbering, the
+//   kids' faces already blurred by her) follow the family photos. Never
+//   add a photo of the children unless Jen supplied that exact file.
+//
 // Out of this slideshow:
-// presskit-headshot-glam (home hero). jen-glam, jen-fitness, jen-sultry,
+// presskit-headshot-glam (the old home hero). jen-glam, jen-fitness, jen-sultry,
 // and jen-fun2 (the photo row on About, above this slideshow). jen-fun
 // (group of adults, not a dog photo). jen-bw-coat and velvet 07 (the coat
 // is the photo beside "My twenties were something else" as jen-bw-coat2).
-// 08 and 44 are already out of captions.json. 09, 24, 25, and 26 are left
-// out. 27 and 45 are dog photos on /pups. 43 is the same Urban Axes outing
+// 08 and 44 are already out of captions.json. 09 is left out. 24, 25, 26,
+// and 35 (the children) were deleted on November 3. 27 and 45 are dog
+// photos on /pups. 43 is the same Urban Axes outing
 // as gallery-new new_24, so new_24 stays.
 // gallery-new left out: new_02, new_10, new_11, new_12, new_15, new_17,
 // new_20, new_21, new_26, new_27. new_27 stays out. It is not the same
@@ -129,9 +143,6 @@ const PORTRAITS = [
 const HOME_ONLY_SKIP = new Set([
   '07.jpg',
   '09.jpg',
-  '24.jpg',
-  '25.jpg',
-  '26.jpg',
   '27.jpg',
   '33.jpg',
   '34.jpg',
@@ -152,14 +163,35 @@ const FAMILY = captions.filter((item) => !HOME_ONLY_SKIP.has(item.file)).map((it
   };
 });
 
-// October 27 family photos, after the velvet family slides.
-// girls-beach-walk, girls-beach-rompers, and pool-sombreros are small
-// files waiting on Jen's larger originals.
+// October 27, after the velvet family slides. pool-sombreros is a small
+// file waiting on Jen's larger original.
 const FAMILY_OCT27 = [
-  { src: '/assets/gallery/family-beach-hands.jpg', alt: 'Jen and her daughter on the beach', width: 954, height: 1217 },
-  { src: '/assets/gallery/girls-beach-walk.jpg', alt: 'Walking on the beach', width: 276, height: 496 },
-  { src: '/assets/gallery/girls-beach-rompers.jpg', alt: 'On the beach', width: 295, height: 407 },
   { src: '/assets/gallery/pool-sombreros.jpg', alt: 'At the pool', width: 295, height: 391 },
+];
+
+// November 3: Jen's new photos, in her numbering (there is no 06 or 17).
+// They replace the photos of her children; the kids' faces are blurred in
+// her files. 13 is the Ozarks canoe, so it keeps that caption.
+const NOV3 = [
+  { src: '/assets/gallery-nov3/01-sleeping-dogs.jpg', alt: 'Asleep in a pile with the dogs', width: 1320, height: 943 },
+  { src: '/assets/gallery-nov3/02-beach-kiss.jpg', alt: 'A kiss on the beach', width: 951, height: 1761 },
+  { src: '/assets/gallery-nov3/03-wedding-beach.jpg', alt: 'Jen and Adam on their wedding day, on the beach at sunset', width: 1308, height: 1319 },
+  { src: '/assets/gallery-nov3/04-bride-friend.jpg', alt: 'Jen as a bride, laughing with a friend', width: 1320, height: 1962 },
+  { src: '/assets/gallery-nov3/05-fashion-show.jpg', alt: 'A fashion show luncheon', width: 1316, height: 1756 },
+  { src: '/assets/gallery-nov3/07-dressing-room.jpg', alt: 'Jen peeking out of a dressing room with a friend', width: 1316, height: 1756 },
+  { src: '/assets/gallery-nov3/08-volcano-railing.jpg', alt: 'The family looking out at the mountains', width: 1316, height: 739 },
+  { src: '/assets/gallery-nov3/09-rafting.jpg', alt: 'White-water rafting', width: 1316, height: 883 },
+  { src: '/assets/gallery-nov3/10-houseboat-couple.jpg', alt: 'Jen and Adam on a houseboat', width: 1316, height: 1756 },
+  { src: '/assets/gallery-nov3/11-rappelling.jpg', alt: 'Rappelling through the jungle', width: 1316, height: 739 },
+  { src: '/assets/gallery-nov3/12-boat.jpg', alt: 'A day on the boat', width: 1316, height: 1756 },
+  { src: '/assets/gallery-nov3/13-canoe.jpg', alt: 'Ozarks', caption: 'Ozarks', width: 952, height: 1202 },
+  { src: '/assets/gallery-nov3/14-grand-canyon.jpg', alt: 'Jen on a hiking trail', width: 1160, height: 1055 },
+  { src: '/assets/gallery-nov3/15-lake-jump.jpg', alt: 'A leap into the lake', width: 1316, height: 1756 },
+  { src: '/assets/gallery-nov3/16-ocean-overlook.jpg', alt: 'Above the ocean', width: 1792, height: 1008 },
+  { src: '/assets/gallery-nov3/18-mansion-lawn.jpg', alt: 'On the lawn', width: 1792, height: 1008 },
+  { src: '/assets/gallery-nov3/19-private-jet.jpg', alt: 'In front of a private jet', width: 1600, height: 1200 },
+  { src: '/assets/gallery-nov3/20-spartan-race.jpg', alt: 'Jen and a friend after a Spartan race', width: 1264, height: 1568 },
+  { src: '/assets/gallery-nov3/21-rv-family.jpg', alt: 'The family in front of the RV', width: 1600, height: 1200 },
 ];
 
 const GALLERY_NEW = [
@@ -213,33 +245,17 @@ const PICKS = [
   { src: '/assets/gallery-picks/175.jpg', alt: 'Jen Walcott Archuleta', width: 960, height: 884 },
 ];
 
-// October 26 batch, after the picks, in Jen's order. Two files from
-// that batch are not here: the ivy-door family photo is already
-// velvet-carousel/26.jpg, and the five dogs under the bougainvillea
-// are already dogs.jpg. Full frames, no upscaling.
+// October 26 batch, after the picks, in Jen's order. The five dogs under
+// the bougainvillea are already dogs.jpg. The photos of the children from
+// this batch were removed on November 3 (see the top of this file).
+// Full frames, no upscaling.
 const OCT26 = [
   { src: '/assets/gallery-oct26/wedding.jpg', alt: 'A wedding at sunset', width: 1070, height: 1147 },
   { src: '/assets/gallery-oct26/snow.jpg', alt: 'Jen Walcott Archuleta in the snow', width: 1320, height: 1266 },
-  { src: '/assets/gallery-oct26/ski.jpg', alt: 'On a ski lift', width: 1217, height: 1600 },
-  { src: '/assets/gallery-oct26/pajamas.jpg', alt: 'Christmas pajamas', width: 1296, height: 1164 },
-  { src: '/assets/gallery-oct26/hug.jpg', alt: 'A family hug', width: 851, height: 1527 },
-  { src: '/assets/gallery-oct26/lawn.jpg', alt: 'On the lawn', width: 1320, height: 1461 },
   { src: '/assets/gallery-oct26/jet-cabin.jpg', alt: 'Inside a private jet', width: 1029, height: 845 },
   { src: '/assets/gallery-oct26/jet-stairs.jpg', alt: 'On the stairs of a private jet', width: 1320, height: 1271 },
-  { src: '/assets/gallery-oct26/hangar.jpg', alt: 'A plane in the hangar', width: 922, height: 1260 },
-  { src: '/assets/gallery-oct26/jet-seats.jpg', alt: 'In front of a private jet in the hangar', width: 1320, height: 1248 },
-  { src: '/assets/gallery-oct26/beach.jpg', alt: 'A beach with palm trees', width: 1320, height: 1165 },
-  { src: '/assets/gallery-oct26/cliff.jpg', alt: 'Above the ocean', width: 1320, height: 1597 },
-  { src: '/assets/gallery-oct26/tree.jpg', alt: 'A Christmas tree', width: 1320, height: 1216 },
-  { src: '/assets/gallery-oct26/driveway.jpg', alt: 'On the driveway', width: 1320, height: 1301 },
   { src: '/assets/gallery-oct26/dog-tortoise.jpg', alt: 'A dog on a tortoise', width: 1320, height: 1320 },
   { src: '/assets/gallery-oct26/tortoise.jpg', alt: 'A tortoise with greens', width: 665, height: 940 },
-];
-
-// After every earlier slide. Place captions, same style as Costa Rica.
-const PLACES = [
-  { src: '/assets/gallery-places/ozarks-canoe.jpg', alt: 'Ozarks', caption: 'Ozarks', width: 940, height: 1140 },
-  { src: '/assets/gallery-places/muskoka-boat.jpg', alt: 'Muskoka, Canada', caption: 'Muskoka, Canada', width: 842, height: 1075 },
 ];
 
 // Childhood portrait. The Hollywood set stays first, so this follows every earlier slide.
@@ -250,6 +266,8 @@ const CHILDHOOD = [
 // Oct 27: slides Jen took out, and duplicate pairs (one copy stays, the
 // sharper or higher-detail file). Files stay in the repo.
 // 141 and 142 (old slides 68 and 69), 155 (Jen in Bangkok, old 73).
+// Nov 3: old slides 46, 48, 55, 62, and 74. jen-headshot-bw stays the
+// Glamorous press headshot on Media; it is just not a gallery slide.
 const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/141.jpg',
   '/assets/gallery-picks/142.jpg',
@@ -260,9 +278,14 @@ const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/168.jpg',
   '/assets/gallery-picks/171.jpg',
   '/assets/jen-beauty.jpg',
+  '/assets/jen-headshot-bw.jpg',
+  '/assets/gallery-new/new_05.jpg',
+  '/assets/gallery-new/new_16.jpg',
+  '/assets/gallery-new/new_28.jpg',
+  '/assets/gallery-picks/160.jpg',
 ]);
 
-const SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...GALLERY_NEW, ...PICKS, ...OCT26, ...PLACES, ...CHILDHOOD]
+const SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...CHILDHOOD]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 const INTERVAL_MS = 4000;

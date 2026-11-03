@@ -7,7 +7,7 @@ import './shop.css';
 export const metadata = {
   title: 'Shop',
   description:
-    'Signed copies of Beyond the Velvet Ropes, The Velvet Circle Book Club, The Backstage Bundle, and the handmade Signature Velvet Bookmark.',
+    'Signed copies of Beyond the Velvet Ropes, The Velvet Circle Book Club, and the handmade Signature Velvet Bookmark.',
   openGraph: { images: [OG_IMAGE] },
   twitter: { card: 'summary_large_image', images: [OG_IMAGE.url] },
 };
@@ -45,8 +45,7 @@ export default function ShopPage() {
           <div className="eyebrow">The Shop</div>
           <h2>A few things worth sharing.</h2>
           <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>
-            A signed copy of the book, my private book club, a one-time gift bundle from
-            backstage, and a keepsake I make by hand.
+            A signed copy of the book, my private book club, and a keepsake I make by hand.
           </p>
         </div>
 
@@ -88,8 +87,13 @@ export default function ShopPage() {
             </div>
           </article>
 
-          {/* VELVET CIRCLE MEMBERSHIP */}
+          {/* THE VELVET CIRCLE BOOK CLUB: the one book-club offer (Jen, November 3:
+              the book club and the old Backstage Bundle are one offer, so the bundle
+              card is gone). #backstage-bundle and #backstage-box stay here so older
+              bundle links land on this card. */}
           <article className="product-card" id="velvet-circle">
+            <span id="backstage-bundle" />
+            <span id="backstage-box" />
             <div className="product-media product-media--circle">
               <img
                 src="/assets/velvet-circle-membership.jpg"
@@ -124,64 +128,8 @@ export default function ShopPage() {
             </div>
           </article>
 
-          {/* THE BACKSTAGE BUNDLE: the ONE-TIME GIFT BUNDLE, $69 once (Jen, October 28;
-              wording updated November 2026). Signed book, handmade bookmark, bunny ears, and ONE
-              COMPLIMENTARY MONTH of The Velvet Circle Book Club that does NOT renew automatically.
-              It never starts a paid membership; joining afterward is the customer's choice. No
-              gift box, so the photo is the bunny-ears book club picture, not the box photo
-              (backstage-bundle.jpg).
-              No Stripe Payment Link exists yet, so the card says Coming soon. When it is
-              created: one-time $69, collect shipping address, paste into SHOP.foundingBox.
-              #backstage-box stays so older links still land on this card. */}
-          <article className="product-card" id="backstage-bundle">
-            <span id="backstage-box" />
-            <div className="product-media">
-              <img
-                src="/assets/velvet-circle-group.jpg"
-                alt="Readers on couches with copies of Beyond the Velvet Ropes, some wearing black bunny ears"
-                width="1152"
-                height="864"
-                loading="lazy"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">One-Time Gift Bundle</div>
-              <h3>The Backstage Bundle</h3>
-              <p className="price">{SHOP.foundingBoxPrice} one time</p>
-              <p className="product-desc">
-                A gift from backstage: my signed book, the velvet bookmark I make by hand, black
-                velvet bunny ears, and one complimentary month of The Velvet Circle Book Club.
-              </p>
-              <ul className="product-list">
-                <li>A signed copy of <em>Beyond the Velvet Ropes</em></li>
-                <li>My handmade velvet bookmark</li>
-                <li>Black velvet bunny ears</li>
-                <li>One complimentary month of The Velvet Circle Book Club: the discussion guide, plus up to three questions answered personally by me in writing</li>
-              </ul>
-              <p className="fulfill">
-                One payment. Your complimentary month does not renew automatically, and you are
-                never charged again. Joining The Velvet Circle Book Club ($9.99 a month) afterward
-                is up to you.
-              </p>
-              <div className="product-cta">
-                {SHOP.foundingBox ? (
-                  <>
-                    <a href={SHOP.foundingBox} target="_blank" rel="noopener" className="btn btn-primary">
-                      Get the Backstage Bundle
-                    </a>
-                    <TrustLine />
-                  </>
-                ) : (
-                  <>
-                    <span className="btn btn-disabled">Coming soon</span>
-                    <a href="#letter" className="btn btn-ghost">Get updates</a>
-                  </>
-                )}
-              </div>
-            </div>
-          </article>
           {/* SIGNATURE VELVET BOOKMARK */}
-          <article className="product-card">
+          <article className="product-card" id="bookmark">
             <div className="product-media product-media--contain">
               {!SHOP.bookmark && <span className="badge">First drop, coming soon</span>}
               <img
@@ -262,15 +210,6 @@ export default function ShopPage() {
           <h2>Questions, answered.</h2>
         </div>
         <details>
-          <summary>What’s the difference between The Velvet Circle Book Club and The Backstage Bundle?</summary>
-          <p>
-            The Velvet Circle Book Club is my monthly membership, $9.99 a month until you cancel. The
-            Backstage Bundle is a one-time $69 gift: my signed book, my handmade bookmark, black
-            velvet bunny ears, and one complimentary month of The Velvet Circle Book Club. That month
-            does not renew automatically. Joining afterward is always your choice.
-          </p>
-        </details>
-        <details>
           <summary>What do members receive?</summary>
           <p>
             The Velvet Circle Book Club is my private book club for readers of <em>Beyond the Velvet
@@ -303,8 +242,8 @@ export default function ShopPage() {
           <summary>Does membership include a signed book or gifts?</summary>
           <p>
             No. The $9.99 membership is the book club itself: the discussion guide and my written
-            answers. My signed book, the velvet bookmark, and bunny ears come in{' '}
-            <a href="#backstage-bundle">The Backstage Bundle</a>, a one-time gift.
+            answers. My <a href="#signed-copy">signed book</a> and the{' '}
+            <a href="#bookmark">velvet bookmark</a> are sold separately, above.
           </p>
         </details>
         <details>

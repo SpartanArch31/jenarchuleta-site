@@ -8,7 +8,7 @@
 > break; Cursor also loads `.cursor/rules/jen-site.mdc`. Jen makes her own changes with
 > Cursor: branch, pull request, check the preview, merge (Nov 2026).
 
-_Last updated: 2026-10-27 (Jen's final site organization; Velvet Letter made truly private)._
+_Last updated: 2026-11-03 (Jen's 16 changes: About Me page, menu drop-downs, one book-club offer, no children's photos)._
 
 ---
 
@@ -18,23 +18,30 @@ Jen asked for the September 2026 site's wording, layout, colors, and feel, kept 
 the newer features she likes. Before changing structure, re-read this section.
 
 - **One navigation, every page** (`app/components/SiteNav.js`):
-  Home | About | Book | Podcast | Journal | Media | Shop | The Velvet Letter.
+  Home | About Me | Book | Podcast | Journal | Media | Shop | The Velvet Letter.
+  Each main page has a drop-down of its sections (Jen, Nov 3, 2026) so people can jump straight
+  to them; the links point at section ids on those pages (`/about#then`, `/shop#bookmark`...).
+  Rename or remove a section → update its link in `SiteNav.js`.
   Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors, Contact, Free First Chapter, and
-  The Forever Angels live in the footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
+  The Forever Angels also live in the footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
   Velvet Letter page use the same components.
 - **"Stay close"** (top of `SiteFooter.js`) is the ONE home for the free first chapter signup
   and the social links (Instagram, TikTok, X, Facebook, LinkedIn). Don't add "Follow me"
   blocks or social buttons anywhere else. Buzzsprout/YouTube links live on the Podcast page
   (players side by side) plus one "Listen on Buzzsprout • Watch on YouTube" line on the
   homepage. "Watch on YouTube" opens the channel's Full Episodes playlist (`PODCAST.youtubeEpisodes`).
-- **Homepage, in Jen's order (Nov 2026):** intro + Get the Book · Story/Voice/Heart · featured
-  photos (`HomeCarousel.js`, a short row: candid portrait, family and dogs, the book; away from
-  the hero portrait; no children's faces) · the book with trailer and buy links · The Backstage
-  Bundle (`BundleFeature.js`, also on the Book page) · a short Velvet Letter invitation ·
-  podcast + featured Pup of the Podcast · journal previews · media & press highlights · free
-  first chapter (Stay close). The full photo gallery stays on **About** (`#gallery`).
-- **Hero photo:** Jen asked for her blue-dress candid as the homepage's main photo. Don't swap
-  it in until she confirms which file it is (candidates sent Nov 2, 2026).
+- **Homepage, in Jen's order (Nov 2026):** intro + Get the Book / About me · Story/Voice/Heart ·
+  featured photos (`HomeCarousel.js`, a short row: family, the dogs, the book; no children's
+  faces) · the book with trailer and buy links · a short Velvet Letter invitation · podcast +
+  featured Pup of the Podcast · journal previews · media & press highlights · free first chapter
+  (Stay close). The full photo gallery stays on **About Me** (`#gallery`). No bundle or offer
+  block on the homepage (Jen, Nov 3).
+- **About Me, one page (Jen, Nov 3, 2026):** everything about Jen lives on `/about` (menu label
+  "About Me"): her life now, her people, "My twenties were something else," faith and The
+  Forever Angels. The homepage hero does NOT repeat it (no "these days I'm happiest..."
+  paragraph); it keeps the headline, "Author of Beyond the Velvet Ropes," and the buttons.
+- **Hero photo:** the candid floral portrait (`presskit-headshot-floral.jpg`), Jen's pick
+  (Nov 3, 2026). It is not repeated in the homepage photo row.
 - **The Velvet Letter entrance** (`/velvet`, locked) is Jen's short version: title, "Some things
   only live inside the book.", Get the Book, the passcode field (always visible) with Enter,
   and "Access comes with the book. Your passcode is in the back of the book, under the QR code."
@@ -51,26 +58,33 @@ the newer features she likes. Before changing structure, re-read this section.
 - **Podcast:** "Explore all 13 episodes of Unfiltered with Jen Archuleta." (Season 1 is
   complete.) Buzzsprout and YouTube sit together. Never say the show is on hold or that new
   episodes are coming. Use guests' full names.
-- **Shop:** four products in this order (Jen, 2026-10-28) — Signed copy, The Velvet Circle Book
-  Club, The Backstage Bundle, Velvet Bookmark. The Velvet Circle is described once (its card),
-  then the FAQ; no second panel repeating it. Jen's two offers, labeled plainly:
+- **Shop:** three products in this order (Jen, 2026-10-28; Nov 3) — Signed copy, The Velvet
+  Circle Book Club, Velvet Bookmark. The Velvet Circle is described once (its card), then the
+  FAQ; no second panel repeating it.
   - **Velvet Circle = "Monthly Book Club"**, $9.99/mo: one-page discussion guide, up to three
     questions a month that Jen answers personally in writing, and monthly Zooms once 13 active
     PAYING members have joined. Never a signed book, bookmark, ears, or any physical item.
-  - **Backstage Bundle = "One-Time Gift Bundle"**, $69 once: signed book, handmade bookmark,
-    black bunny ears, and ONE COMPLIMENTARY MONTH of The Velvet Circle Book Club (Jen, Nov
-    2026), which does NOT renew automatically. It never starts a paid membership and never
-    charges again; joining afterward is the customer's choice. No gift box (don't use the box
-    photo, `backstage-bundle.jpg`).
+  - **One book-club offer (Jen, Nov 3, 2026):** "The Velvet Circle Book Club and The Backstage
+    Bundle should be one offer." The Backstage Bundle ($69 one-time, never had a Stripe link)
+    is gone from the Shop, the homepage, the Book page, the FAQ, and Shipping & Returns. Its
+    old `#backstage-bundle` / `#backstage-box` anchors land on the book club card. Don't bring
+    the bundle or the word "backstage" back ("I'm not a rock star"). If Jen wants the signed
+    book, bookmark, or ears folded into the book club, that needs a new Stripe price first.
   - **One name:** "The Velvet Circle Book Club" everywhere (cards, FAQ, Shipping & Returns,
     buttons). The Velvet Circle never includes The Velvet Letter; Letter access comes with the
     book (passcode in the back of the book, under the QR code).
   The Velvet Circle is explained (with an FAQ) before anyone subscribes; never promise monthly
   Zooms as an immediate benefit. The Be the Bumblebee T-shirt (Etsy, `SHOP.etsyTee`) sits in a
-  separate "And a little more" spot below the four products, never among them.
+  separate "And a little more" spot below the products, never among them.
 - **Journal:** categories in Jen's order are in `app/journal/curation.js`. Repetitive
   promotional posts are ARCHIVED there (hidden from the feed, listed under Archive, still live
-  at their URLs). Nothing is deleted. The public Journal never shows Velvet Letter content.
+  at their URLs). Pup of the Podcast posts are off the Journal (`OFF_JOURNAL_CATEGORIES`, Jen,
+  Nov 3): they live on `/pups`, whose "Read more" links still open them. Nothing is deleted.
+  The public Journal never shows Velvet Letter content.
+- **FilmFreeway:** Jen asked for her FilmFreeway link (Nov 3, 2026). It sits with the film
+  partners in `lib/press.js` (Book "On screen" and Media), and journal posts show their
+  FilmFreeway lines as she wrote them. Don't copy details from that profile onto the site.
+- **Pups:** a pup with a `bio` in `lib/pups.js` shows Jen's words exactly (Charlie, Nov 3).
 - **Quotes** have their own page; don't repeat them around the site.
 
 ## ⭐ Photos — Jen's rules (2026-10-27 final corrections) — don't undo this
@@ -88,13 +102,19 @@ the newer features she likes. Before changing structure, re-read this section.
 - **About wording** is the September 2026 wording plus Jen's one addition near the top
   ("Above all, I love fiercely…"). Her dogs are always rescue dogs. Keep the September photos
   (dogs, tortoise, coffee cup, dogs on the bed) where they are.
-- **Media & Speaking:** Jen's three headshot options, named her way: **Signature**
-  (`jen-headshot-signature.jpg`), **Glamour** (`jen-headshot-bw.jpg`), and **Candid** (the floral
-  portrait, `presskit-headshot-floral.jpg`, which replaced the blazer and is the primary Media
-  image). Each downloadable. No retouching. The Contact page uses a headshot, not the puppy
-  photo. The floral portrait is not a gallery slide.
-- **Velvet Circle:** shows the circular logo. The bunny-ears book club photo goes with The
-  Backstage Bundle only (Shop card and homepage), so nobody thinks the membership includes ears.
+- **Media & Speaking:** Jen's three headshots for press downloads, in her order and her names
+  (Nov 3, 2026): **Glamorous** (black and white, `jen-headshot-bw.jpg`), **Candid** (floral top,
+  `presskit-headshot-floral.jpg`, the primary Media image and the homepage hero), and
+  **Signature** (black top, smiling, `jen-headshot-signature.jpg`). Each downloadable. No
+  retouching. The Contact page uses a headshot, not the puppy photo. None of the three is a
+  gallery slide.
+- **Velvet Circle:** shows the circular logo. The AI bunny-ears book club picture
+  (`velvet-circle-group.jpg`) shows fake book covers; it is off the site. Never use a picture of
+  the book that isn't Jen's real cover (`book-cover.jpg`).
+- **Children (Jen, Nov 3, 2026):** no photo of Jen's children anywhere on the site, except
+  Jen's own files with the kids' faces blurred (`public/assets/gallery-nov3/`). The old photos
+  of the kids were deleted from `public/`, not just hidden, because anything in `public/` can
+  be opened by its URL. Never add one back.
 - Every photo change is logged in `docs/photo-changes-2026-10-27.md` (originals stay in git
   history and in the pre-change backup tag).
 
@@ -318,10 +338,8 @@ that file is updated more frequently than this one):
 - **Velvet Circle Membership** — $9.99/month — Stripe Payment Link. Cancel link is
   `STRIPE_CUSTOMER_PORTAL_URL` (capital I in the Stripe login id). It is on the shop
   membership card, the Velvet gate, and Shipping & Returns.
-- **The Backstage Bundle** — $69, on the shop as Coming soon until a Stripe Payment Link exists
-  (one-time $69, collect shipping address → paste into `SHOP.foundingBox`). Contents: signed book,
-  handmade bookmark, black bunny ears, first month of the Velvet Circle (comped by hand). No gift box.
-  Continuing the membership after month one is the customer's choice — never auto-enroll.
+- **The Backstage Bundle** — removed Nov 3, 2026 (Jen: one book-club offer). It never had a
+  Stripe link.
 - **Signature Velvet Bookmark** — $24.99, Stripe Payment Link.
 
 The Stripe→Kit→Google Sheets automation (tagging buyers in Kit, logging orders to a Google

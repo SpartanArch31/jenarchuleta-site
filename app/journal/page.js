@@ -9,7 +9,8 @@ import { CATEGORY_ORDER, curatePosts } from './curation';
 
 // Categories show in Jen's order (curation.js). Empty ones stay off the row.
 // Promotional posts are archived (curation.js): out of the feed, listed
-// under Archive, and still live at their own URLs. The public Journal never
+// under Archive, and still live at their own URLs. Pup of the Podcast posts
+// live on /pups, not here (Jen, November 3). The public Journal never
 // shows anything from the private Velvet Letter.
 
 export const metadata = {
@@ -49,7 +50,7 @@ function heroUrl(img, w = 800, h = 533) {
 
 export default async function JournalPage({ searchParams }) {
   const live = await getAllPosts().catch(() => []);
-  const all = curatePosts(live && live.length > 0 ? live : FALLBACK_POSTS);
+  const all = curatePosts(live && live.length > 0 ? live : FALLBACK_POSTS).filter((p) => !p.offJournal);
   const posts = all.filter((p) => !p.archived);
   const archived = all.filter((p) => p.archived);
 
@@ -89,11 +90,6 @@ export default async function JournalPage({ searchParams }) {
           ))}
         </nav>
         <CategorySelect options={options} active={active} />
-        {active === 'Pup of the Podcast' && (
-          <p className="center" style={{ marginTop: '18px' }}>
-            <a href="/pups">Meet the Pups of the Podcast</a>
-          </p>
-        )}
         {showArchive && (
           <p className="center lead" style={{ marginTop: '18px' }}>
             Earlier announcements and promotions, kept here for the record. <a href="/journal">Back to the Journal</a>
@@ -103,7 +99,11 @@ export default async function JournalPage({ searchParams }) {
 
       <section className="wrap" style={{ paddingTop: 0 }}>
         {visible.length === 0 ? (
-          <p className="center lead">No posts in “{active}” yet. Check back soon.</p>
+          active === 'Pup of the Podcast' ? (
+            <p className="center lead"><a href="/pups">Meet the Pups of the Podcast</a></p>
+          ) : (
+            <p className="center lead">No posts in “{active}” yet. Check back soon.</p>
+          )
         ) : (
           <div className="feed">
             {visible.map((p) => {

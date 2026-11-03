@@ -2,7 +2,6 @@ import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetInvite from '../components/VelvetInvite';
-import BundleFeature from '../components/BundleFeature';
 import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP } from '../components/site-data';
 import { FILM } from '../../lib/press';
 
@@ -62,9 +61,6 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* THE BACKSTAGE BUNDLE, right under the buy buttons (Jen, November 2026) */}
-      <BundleFeature showShopLink={false} />
-
       {/* THE HOOK */}
       <section className="wrap text-wrap center">
         <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 24px' }}><span className="diamond" /></div>
@@ -72,7 +68,7 @@ export default function BookPage() {
       </section>
 
       {/* TRAILER */}
-      <section className="wrap trailer-feature book-trailer">
+      <section id="trailer" className="wrap trailer-feature book-trailer">
         <div className="tf-copy">
           <div className="eyebrow">Watch the Trailer</div>
           <p className="tf-logline">“Everyone knew the headlines. No one knew the story.”</p>
@@ -91,7 +87,7 @@ export default function BookPage() {
       </section>
 
       {/* WHO IT'S FOR */}
-      <section className="who">
+      <section id="who" className="who">
         <div className="wrap text-wrap center">
           <div className="eyebrow">Who this book is for</div>
           <h2>If your past has ever tried to define you.</h2>
@@ -105,7 +101,7 @@ export default function BookPage() {
       </section>
 
       {/* FILM AND DOCUMENTARY (in development — see lib/press.js) */}
-      <section className="wrap text-wrap book-screen">
+      <section id="on-screen" className="wrap text-wrap book-screen">
         <div className="eyebrow">On screen</div>
         <h2>In development for film and documentary.</h2>
         <p>{FILM.film}</p>
@@ -125,8 +121,8 @@ export default function BookPage() {
         <VelvetInvite compact />
       </div>
 
-      {/* REVIEWS (the bundle is featured once, near the top) */}
-      <section className="wrap text-wrap center book-more">
+      {/* REVIEWS */}
+      <section id="reviews" className="wrap text-wrap center book-more">
         <div className="eyebrow">Already read it?</div>
         <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
         <div className="buy-row" style={{ justifyContent: 'center' }}>

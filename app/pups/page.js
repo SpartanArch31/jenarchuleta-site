@@ -19,21 +19,28 @@ function PupCard({ pup, photo }) {
       </div>
       <div className="pup-body">
         <h2>{pup.name}</h2>
-        {pup.breedAge ? <p className="pup-breed">{pup.breedAge}</p> : null}
-        {pup.rescue ? (
-          <p className="pup-rescue">
-            <span className="pup-k">Rescue </span>
-            {pup.rescueHref ? (
-              <a href={pup.rescueHref} target="_blank" rel="noopener noreferrer">{pup.rescue}</a>
-            ) : pup.rescue}
-          </p>
-        ) : null}
-        {pup.episode ? (
-          <p className="pup-guest"><span className="pup-k">Episode </span>{pup.episode}</p>
-        ) : pup.guest ? (
-          <p className="pup-guest"><span className="pup-k">With </span>{pup.guest}</p>
-        ) : null}
-        {pup.note ? <p className="pup-note">{pup.note}</p> : null}
+        {pup.bio ? (
+          // Jen's own words for this pup (lib/pups.js), shown as she wrote them.
+          pup.bio.map((line) => <p key={line} className="pup-bio">{line}</p>)
+        ) : (
+          <>
+            {pup.breedAge ? <p className="pup-breed">{pup.breedAge}</p> : null}
+            {pup.rescue ? (
+              <p className="pup-rescue">
+                <span className="pup-k">Rescue </span>
+                {pup.rescueHref ? (
+                  <a href={pup.rescueHref} target="_blank" rel="noopener noreferrer">{pup.rescue}</a>
+                ) : pup.rescue}
+              </p>
+            ) : null}
+            {pup.episode ? (
+              <p className="pup-guest"><span className="pup-k">Episode </span>{pup.episode}</p>
+            ) : pup.guest ? (
+              <p className="pup-guest"><span className="pup-k">With </span>{pup.guest}</p>
+            ) : null}
+            {pup.note ? <p className="pup-note">{pup.note}</p> : null}
+          </>
+        )}
         {pup.watch ? (
           <a className="pup-more" href={pup.watch} target="_blank" rel="noopener noreferrer">Watch the episode</a>
         ) : null}

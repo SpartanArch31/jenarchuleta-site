@@ -11,8 +11,12 @@ export const CATEGORY_ORDER = [
   'Health & Wellness',
   'Behind the Book',
   'Podcast',
-  'Pup of the Podcast',
 ];
+
+// Categories that live on their own page, not in the Journal (Jen, November 3:
+// Pups of the Podcast repeated in the Journal). Their posts stay live at their
+// own URLs, and /pups links to them ("Read more"). Nothing is deleted.
+export const OFF_JOURNAL_CATEGORIES = new Set(['Pup of the Podcast']);
 
 // Repetitive promotional posts: "coming soon" teasers, duplicate "now live"
 // announcements, review and sponsor asks, giveaways, contests, event ticket
@@ -68,6 +72,11 @@ export const CATEGORY_OVERRIDES = {};
 export function curatePosts(posts) {
   return (posts || []).map((p) => {
     const category = CATEGORY_OVERRIDES[p.slug] || p.category;
-    return { ...p, category, archived: ARCHIVED_SLUGS.has(p.slug) };
+    return {
+      ...p,
+      category,
+      archived: ARCHIVED_SLUGS.has(p.slug),
+      offJournal: OFF_JOURNAL_CATEGORIES.has(category),
+    };
   });
 }

@@ -1,7 +1,6 @@
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import VelvetInvite from './components/VelvetInvite';
-import BundleFeature from './components/BundleFeature';
 import HomeCarousel from './components/HomeCarousel';
 import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP, PODCAST } from './components/site-data';
 import { FILM, PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
@@ -9,11 +8,13 @@ import { getFeaturedPup } from '../lib/pup-photos';
 
 // Homepage, in Jen's order (October 27, 2026; November 2026 additions):
 // 1 intro + Get the Book · 2 Story, Voice, Heart · 2b featured photos
-// (HomeCarousel, away from the hero portrait) · 3 the book, trailer, buy
-// 3b The Backstage Bundle, next to the book (BundleFeature) · 4 Velvet Letter
-// invitation · 5 podcast + Pup of the Podcast · 6 journal · 7 media and press
+// (HomeCarousel) · 3 the book, trailer, buy · 4 Velvet Letter invitation
+// · 5 podcast + Pup of the Podcast · 6 journal · 7 media and press
 // · 8 free first chapter (Stay close, in SiteFooter). Wording is the
 // September site's unless Jen changed it.
+// November 3 (Jen): everything about her lives on the About Me page, so the
+// hero no longer repeats it (no "these days I'm happiest..." paragraph here).
+// The hero photo is her candid floral portrait. No bundle on the homepage.
 export const revalidate = 3600;
 
 export default async function Home() {
@@ -31,15 +32,15 @@ export default async function Home() {
           <div className="eyebrow">Author · Speaker · Advocate</div>
           <div className="hero-script">this isn’t the story<br />you think it is</div>
           <h1>Faith, family, and a bunch of dogs.</h1>
-          <div className="eyebrow" style={{ marginTop: '16px' }}>Author of <em>Beyond the Velvet Ropes</em></div>
-          <p className="lead">These days I’m happiest in the small stuff — my kids, my husband, a houseful of rescue animals, my faith, and finding ways to give back. I had a wild, wonderful run in my twenties, and I’m grateful for all of it. But the part I care about most isn’t the glamorous version — it’s the ordinary, happy life I have now, and the book I wrote about finding my way here.</p>
+          <div className="eyebrow" style={{ marginTop: '16px', marginBottom: '30px' }}>Author of <em>Beyond the Velvet Ropes</em></div>
           <div className="hero-ctas">
             <a href="/book" className="btn btn-primary">Get the book</a>
+            <a href="/about" className="btn btn-ghost">About me</a>
           </div>
         </div>
         <div className="hero-media">
           <div className="portrait hero-frame">
-            <img src="/assets/presskit-headshot-glam.jpg" alt="Jen Walcott Archuleta" width="1320" height="1259" />
+            <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
           </div>
         </div>
       </section>
@@ -114,9 +115,6 @@ export default async function Home() {
           </figure>
         </div>
       </section>
-
-      {/* 3b. THE BACKSTAGE BUNDLE, next to the book */}
-      <BundleFeature />
 
       {/* 4. THE VELVET LETTER */}
       <VelvetInvite />

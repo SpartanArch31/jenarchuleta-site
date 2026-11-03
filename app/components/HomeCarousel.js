@@ -4,18 +4,20 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './home-carousel.css';
 
-// Homepage featured photos (Jen, November 2026): her candid portrait, family
-// and the rescue dogs, and the book. It sits below Story · Voice · Heart, away
-// from the hero portrait. Every photo is shown whole at its own ratio, one
-// height, with quiet arrows and dots; no autoplay. No children's faces: the
-// pajamas photo shows the kids from behind and the beach photo keeps the blur.
+// Homepage featured photos (Jen, November 2026): family, the rescue dogs,
+// and the book. It sits below Story · Voice · Heart. The candid floral
+// portrait is the hero photo now (November 3), so it is not repeated here.
+// Every photo is shown whole at its own ratio, one height, with quiet arrows
+// and dots; no autoplay. Children: only Jen's own files with the kids' faces
+// blurred (gallery-nov3). Never add a photo that shows a child's face.
 // To change the photos, edit this list (width/height are the file's pixels).
 export const HOME_SLIDES = [
-  { src: '/assets/presskit-headshot-floral.jpg', width: 1100, height: 1370, alt: 'Jen Walcott Archuleta' },
   { src: '/assets/dogs.jpg', width: 1400, height: 786, alt: 'Jen’s five rescue dogs together in the garden' },
-  { src: '/assets/gallery-oct26/pajamas.jpg', width: 1296, height: 1164, alt: 'The family in matching Christmas pajamas' },
+  { src: '/assets/gallery-nov3/03-wedding-beach.jpg', width: 1308, height: 1319, alt: 'Jen and Adam on their wedding day, on the beach at sunset' },
+  { src: '/assets/gallery-nov3/01-sleeping-dogs.jpg', width: 1320, height: 943, alt: 'Asleep in a pile with the dogs' },
   { src: '/assets/gallery-oct26/dog-tortoise.jpg', width: 1320, height: 1320, alt: 'A dog on a tortoise' },
-  { src: '/assets/gallery/family-beach-hands.jpg', width: 954, height: 1217, alt: 'Jen and her daughter on the beach' },
+  { src: '/assets/gallery-nov3/02-beach-kiss.jpg', width: 951, height: 1761, alt: 'A kiss on the beach' },
+  { src: '/assets/gallery-nov3/08-volcano-railing.jpg', width: 1316, height: 739, alt: 'The family looking out at the mountains' },
   { src: '/assets/quiet-mornings.jpg', width: 1248, height: 1400, alt: 'Jen resting with one of her rescue dogs' },
   { src: '/assets/book-cover.jpg', width: 1000, height: 1500, alt: 'Beyond the Velvet Ropes book cover', href: '/book' },
 ];
@@ -49,13 +51,17 @@ export default function HomeCarousel() {
         const center = track.scrollLeft + track.clientWidth / 2;
         let best = 0;
         let bestDistance = Infinity;
-        Array.from(track.children).forEach((el, i) => {
+        const slides = Array.from(track.children);
+        slides.forEach((el, i) => {
           const distance = Math.abs(el.offsetLeft + el.clientWidth / 2 - center);
           if (distance < bestDistance) {
             bestDistance = distance;
             best = i;
           }
         });
+        // At either end of the row, the first or last dot is the active one.
+        if (track.scrollLeft < 4) best = 0;
+        else if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
         setActive(best);
       });
     };

@@ -43,16 +43,6 @@ export default function ShippingReturnsPage() {
             handmade, one-of-a-kind pieces, all other sales are final.
           </p>
 
-          <h2>The Backstage Bundle</h2>
-          <p>
-            The Backstage Bundle is a one-time purchase of $69, not a subscription. It includes a signed
-            copy of <em>Beyond the Velvet Ropes</em>, my handmade velvet bookmark, black velvet bunny
-            ears, and one complimentary month of The Velvet Circle Book Club: the discussion guide and
-            up to 3 questions, which I&rsquo;ll answer personally in writing. The complimentary month
-            does not renew automatically, and you are never charged again unless you choose to join
-            The Velvet Circle Book Club yourself. The physical items ship under the policy above.
-          </p>
-
           <h2>The Velvet Circle Book Club</h2>
           <p>
             The Velvet Circle Book Club is a recurring monthly subscription billed at $9.99/month until
