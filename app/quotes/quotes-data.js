@@ -1,5 +1,6 @@
-// One list. The homepage bands and /quotes both read from here,
-// so a line cannot drift or get reworded in one place only.
+// One list. The Quotes section on About Me (#quotes) reads from here, so a
+// line cannot drift or get reworded in one place only. (/quotes forwards to
+// /about#quotes since Jen's site notes, November 4, 2026.)
 export const QUOTE_STORY = {
   text: 'Your story isn’t what happened to you. It’s what you do with it.',
 };
@@ -23,7 +24,7 @@ export const QUOTE_HAPPY = {
 
 export const QUOTE_WKBN = {
   text: 'It’s not who I am, it’s what I did. And the bunny ears here were just representing a piece of my life, not my whole life.',
-  source: 'Jen Walcott Archuleta, WKBN 27 First News, Aug 23, 2026',
+  source: 'Jen Archuleta, WKBN 27 First News, Aug 23, 2026',
 };
 
 export const QUOTES = [

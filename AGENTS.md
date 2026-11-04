@@ -23,11 +23,16 @@ anything.** It is the full rulebook. The rules below are the ones that must neve
 4. **The Velvet Letter is private.** The passcode lives only in the Vercel setting
    `VELVET_LETTER_PASSCODE`. Never put the passcode, a hint, or a hash of it in the code.
    Private entries and photos only appear after the passcode is entered. Never show
-   Velvet Letter content on a public page.
+   Velvet Letter content on a public page. The public site says only Jen's line: "Would you
+   like to see the Velvet Letter? Buy my book, and you'll find out how." No QR code, no word
+   about where the passcode is, and no link to `/velvet` from any public page.
 5. **One menu, one footer.** Every page uses `app/components/SiteNav.js` and
-   `app/components/SiteFooter.js`. The menu says "About Me", and each main page has a
+   `app/components/SiteFooter.js`. The menu is six tabs (Home, About Me, Book, Podcast,
+   Journal, Media) plus Contact and The Forever Angels (its own website); each tab has a
    drop-down of its sections; if you rename or remove a section, fix its link in `SiteNav.js`.
-   Social links live only in the footer's "Stay close".
+   The footer is the six tabs plus the legal links. The Shop lives on the Book page. The free
+   first chapter signup appears only on the Book page; social links only on Media (`#follow`).
+   Say "Gallery", never "Photos".
 6. **Photos are shown whole.** No cropping into frames, no stretching, no enlarging a
    small file past 1.6x. Don't paint over or rebuild part of a photo.
 7. **Facts.** The film and documentary are in development (wording in `lib/press.js`).
@@ -35,17 +40,20 @@ anything.** It is the full rulebook. The rules below are the ones that must neve
    products in Jen's order (see `CLAUDE.md`). The Velvet Circle Book Club is the one
    book-club offer: no Backstage Bundle, and no "backstage" wording anywhere. Shop prices and
    promises match Stripe: the signed copy shows $41.99 total ($35 + $6.99 shipping); the book
-   club's group Zooms start once 13 paying members join, so never promise live meetings or
-   replays as current. Don't change a price in the site without changing it in Stripe too. Only Jen's real
+   club's Zoom sessions start once 13 members join, so never promise live meetings or
+   replays as current. One email everywhere: `BOOKING_EMAIL` (the podcast Gmail). "Jen
+   Archuleta" everywhere except the book's own byline; keep the hidden Google name note in
+   `app/layout.js`. No Arizona anywhere except Charlie's pup card. Don't change a price in the site without changing it in Stripe too. Only Jen's real
    book cover (`book-cover.jpg`), never a picture with a made-up cover.
 8. **Nothing gets deleted from the Journal.** Posts are archived in
    `app/journal/curation.js`; Pup of the Podcast posts live on `/pups`, not in the Journal.
    Wrong podcast links are corrected in `app/journal/repair-body.mjs`.
-9. **About Me is one page, in Jen's exact words.** Everything about Jen lives on `/about`.
-   Don't reword it or copy it onto other pages. The formal bio is `/about-the-author`.
+9. **About Me is one page, in Jen's exact words, and the ONE bio.** Everything about Jen
+   lives on `/about` (with the Gallery and the Quotes); her founder page is
+   `/about/the-forever-angels`. Don't reword it or copy it onto other pages.
 10. **No em dashes, and nothing repeated.** Never write an em dash anywhere on the site,
    page titles included; use a period or a comma. Film and documentary news lives only on
-   Media (`#film`); the passcode note only on `/velvet`; the podcast blurb only on `/podcast`;
+   Media (`#film`); no passcode note anywhere; the podcast blurb only on `/podcast`;
    the rescue pup line only on `/pups`. Other pages link to those.
 
 ## When you're done

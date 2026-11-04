@@ -8,7 +8,61 @@
 > break; Cursor also loads `.cursor/rules/jen-site.mdc`. Jen makes her own changes with
 > Cursor: branch, pull request, check the preview, merge (Nov 2026).
 
-_Last updated: 2026-11-03, night (Shop: every offer says what you get, the total price, and when it ships or starts). Before that, same evening: About Me in Jen's words, About the Author page, gallery of 19, nothing repeated, no em dashes._
+_Last updated: 2026-11-04 (Jen's site build plan: six tabs + Contact + The Forever Angels, Shop inside Book, one bio, one email, Jen Archuleta everywhere, photo descriptions). Before that, Nov 3: Shop offers, About Me in Jen's words, gallery of 19, nothing repeated, no em dashes._
+
+## ⭐⭐ Jen's site build plan (November 4, 2026). It wins over anything older below.
+
+- **Menu** (`SiteNav.js`): six tabs, **Home | About Me | Book | Podcast | Journal | Media**, plus
+  **Contact** and **The Forever Angels** as their own links. The Forever Angels opens
+  theforeverangels.com (new tab). Drop-downs: About Me (About me, Gallery, Quotes, Founder of
+  The Forever Angels) · Book (get the book, first chapter, signed copy, book club, bookmark,
+  Book Club FAQs, trailer, review) · Podcast (Episodes, Pups of the Podcast, Sponsors) ·
+  Journal (all posts + the albums) · Media (press kit, interviews, press, film, speaking,
+  Follow Jen, Contact, Sign up). No Shop tab, no Velvet Letter link, no phone-menu button.
+- **Footer** (`SiteFooter.js`): the six tabs, then Privacy · Terms · Shipping & Returns, and
+  "© 2026 Jen Archuleta. Author of Beyond the Velvet Ropes." Nothing else (no signup, no socials).
+- **About Me = the ONE bio** (`/about`, Jen's words, don't reword). `/about-the-author` and the
+  Media short bio are gone (`/about-the-author` → `/about`). About Me holds the **Gallery** (her
+  19 photos, one slideshow, titled "Gallery"; never call it "Photos"), the **Quotes**
+  (`#quotes`, from `app/quotes/quotes-data.js`; `/quotes` → `/about#quotes`), and a link to her
+  **founder page** `/about/the-forever-angels` (drafted from her own Journal posts; Jen approves
+  or edits it). `/forever-angels` and `/the-forever-angels` → the founder page.
+- **Book = the book + the Shop + the ONE free first chapter signup.** The Shop is a light band
+  on the Book page (`app/components/ShopOffers.js`, `#shop`, `#signed-copy`, `#velvet-circle`,
+  `#bookmark`, `#velvet-circle-faq`). `/shop` forwards in the browser so `/shop#signed-copy`
+  style links still land (`app/shop/page.js`). The Kit signup form appears ONLY on the Book page
+  (`FreeChapter.js`, `#free-chapter`); every other page links to `/book#free-chapter`.
+- **The Velvet Letter: Jen's mystery line only**: "Would you like to see the Velvet Letter? Buy my
+  book, and you'll find out how." (`VelvetInvite.js`, `#velvet-letter`). Never show or describe a
+  QR code, a passcode, or where the passcode is, and never link to `/velvet` from the public
+  site. `/velvet` itself keeps the passcode box (the QR code in the book still opens it).
+- **Book card shows "Zoom sessions start once 13 members join"** (Jen's wording).
+- **Podcast** holds the episodes, Pups (`/pups`) and Sponsors (`/sponsors`).
+- **Journal: albums, not tabs.** No category chips across the top; each category is a
+  clickable album with a cover photo and a post count (plus the Archive album). Keep every post
+  (the 47th birthday post and the baby formula posts included). Never delete a post.
+- **Media is for press:** press kit, interviews, press, film (Leone Marucci, Crash Cat Media,
+  FilmFreeway), speaking, ALL social links (`#follow`, their one home now), contact
+  (`#media-contact`), sign-up (`#sign-up`, a link to the Book page). Keep the Business Journal
+  headline exactly as published (`lib/press.js`).
+- **ONE email for everything:** `BOOKING_EMAIL` (therealunfilteredpod@gmail.com), on Contact,
+  Media, the book club, Shipping & Returns, Privacy, and Terms. The Stripe book club welcome
+  message says the same. Don't bring back jen@jenarchuleta.com.
+- **Name rule: "Jen Archuleta" everywhere** (text, alt text, page titles, Google descriptions,
+  download file names) **except the book itself**: the Book page title and book data keep the
+  printed byline (the cover says Jennifer Walcott Archuleta). KEEP the hidden Google note in
+  `layout.js` (`alternateName`: Jennifer Walcott Archuleta, Jennifer Walcott, Jennifer
+  Archuleta); it catches "Jennifer Walcott" searches. The Business Journal headline and the
+  legal pages' party name stay as they are.
+- **No Arizona** anywhere except Charlie's pup card (`lib/pups.js`). Journal text is corrected
+  as it is read (`queries.js`, `repair-body.mjs`). Left as is, on purpose: the Terms'
+  governing-law clause (Adam's call: a lawyer's decision), and proper names (Adam's Arizona
+  State walk-on, Phoenix Children's Hospital, the @uptownjunglephoenix handle, the Optimize
+  Scottsdale sponsor) until Jen says otherwise.
+- **Photo descriptions:** every Journal photo has a short, plain hidden description
+  (`app/journal/photo-alt.js`, written by looking at each photo, Nov 4). A description Jen types
+  in Sanity Studio always wins. Names come from the post, never a face; never name the kids.
+  Don't remove "duplicate" photo files: each copy belongs to its own post.
 
 ## ⭐ Jen's standing rules from November 3 (evening). Read before writing any copy.
 
@@ -19,16 +73,16 @@ _Last updated: 2026-11-03, night (Shop: every offer says what you get, the total
 - **Nothing repeated.** The film and documentary news has ONE home: Media `#film`, with Jen's
   FilmFreeway link right under Leone and Mark. The Book page, homepage, and About the Author
   link there. The podcast's "Honest conversations..." line lives on the Podcast page only. The
-  "every episode features a rescue pup" line lives on /pups only. The passcode note ("Your
-  passcode is in the back of the book, under the QR code.") lives on /velvet only.
+  "every episode features a rescue pup" line lives on /pups only. (Nov 4: no passcode note
+  anywhere; the Velvet Letter is Jen's mystery line only.)
 - **About Me is Jen's own words**, one page, exactly as she wrote them (Nov 3). Don't add,
-  trim, or reword. Say "rescues", not "rescue dogs". **About the Author** (`/about-the-author`)
-  is the separate formal page.
+  trim, or reword. Say "rescues", not "rescue dogs". (Nov 4: it is the ONE bio; About the
+  Author is gone.)
 - **Gallery:** 19 photos, Jen's "best 15 to 20" (`GALLERY_PICKS` in `PhotoGallery.js`).
-- **Menu:** "Get the first chapter free" is in the Book drop-down and is a button at the bottom
-  of the phone menu.
-- **Footer:** the book credit reads "Jen Walcott Archuleta." YouTube (the podcast channel) is
-  in the "Stay close" links.
+- **Menu:** "Get the first chapter free" is in the Book drop-down (Nov 4: it links to
+  `/book#free-chapter`; no phone-menu button).
+- **Footer:** (Nov 4) the six tabs and the legal links only; no Walcott line. YouTube and the
+  other social links live on Media `#follow`.
 
 ---
 
@@ -37,7 +91,9 @@ _Last updated: 2026-11-03, night (Shop: every offer says what you get, the total
 Jen asked for the September 2026 site's wording, layout, colors, and feel, kept clean, with
 the newer features she likes. Before changing structure, re-read this section.
 
-- **One navigation, every page** (`app/components/SiteNav.js`):
+- **One navigation, every page** (`app/components/SiteNav.js`). SUPERSEDED Nov 4 (see the
+  build plan at the top): Home | About Me | Book | Podcast | Journal | Media + Contact + The
+  Forever Angels. The notes below are the older history:
   Home | About Me | Book | Podcast | Journal | Media | Shop.
   Each main page has a drop-down of its sections (Jen, Nov 3, 2026) so people can jump straight
   to them; the links point at section ids on those pages (`/about#then`, `/shop#bookmark`...).
@@ -50,48 +106,52 @@ the newer features she likes. Before changing structure, re-read this section.
   Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors, Contact, Free First Chapter, and
   The Forever Angels also live in the footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
   Velvet Letter page use the same components.
-- **"Stay close"** (top of `SiteFooter.js`) is the ONE home for the free first chapter signup
-  and the social links (Instagram, TikTok, X, Facebook, LinkedIn). Don't add "Follow me"
-  blocks or social buttons anywhere else. Buzzsprout/YouTube links live on the Podcast page
+- **"Stay close" is gone (Nov 4).** The free first chapter signup lives ONLY on the Book page
+  (`FreeChapter.js`, `#free-chapter`) and the social links ONLY on Media (`#follow`). Don't add
+  "Follow me" blocks or social buttons anywhere else. Buzzsprout/YouTube links live on the Podcast page
   (players side by side) plus one "Listen on Buzzsprout • Watch on YouTube" line on the
   homepage. "Watch on YouTube" opens the channel's Full Episodes playlist (`PODCAST.youtubeEpisodes`).
 - **Homepage, in Jen's order (Nov 2026):** intro + Get the Book / About me · Story/Voice/Heart ·
   featured photos (`HomeCarousel.js`, a short row: family, the dogs, the book; no children's
   faces) · the book with trailer and buy links · a short Velvet Letter invitation · podcast +
-  featured Pup of the Podcast · the three newest Journal posts · media & press highlights · free
-  first chapter (Stay close). The full photo gallery stays on **About Me** (`#gallery`). No bundle or offer
+  featured Pup of the Podcast · the three newest Journal posts · media & press highlights (Nov 4:
+  no signup form here; "Or read the first chapter free" links to `/book#free-chapter`). The full photo gallery stays on **About Me** (`#gallery`). No bundle or offer
   block on the homepage (Jen, Nov 3).
 - **About Me, one page (Jen, Nov 3, 2026):** everything about Jen lives on `/about` (menu label
   "About Me"), in the exact text Jen sent that evening, from "Faith, family, and a bunch of
   rescues." to "Thanks for being here. Jen". The homepage hero does NOT repeat it (no "these
   days I'm happiest..." paragraph); it keeps the headline, "Author of Beyond the Velvet
-  Ropes," and the buttons. The formal bio is `/about-the-author`.
+  Ropes," and the buttons. (Nov 4: About Me is the one bio; `/about-the-author` is gone.)
 - **Buying the book** (`app/components/BuyOptions.js`, homepage and Book page, Nov 2026):
   "Get the Paperback" is the main button, then every store grouped by format (Paperback,
   Ebook, Audiobook, Signed copy) from `BOOK_FORMATS` in `site-data.js`. Up to three reader
   reviews show under it from `READER_REVIEWS`: real reviews only, chosen by Jen, word for word
   with the reader's OK. Never write or paraphrase a review.
 - **Journal** (`/journal`, Nov 2026): a search box, 12 posts at a time with "Load more"
-  (`app/journal/JournalBrowser.js`), and the Archive as the last chip in the filter row.
+  (`app/journal/JournalBrowser.js`). Nov 4: the filter chips are gone; the categories and the
+  Archive are photo albums above the posts.
 - **Hero photo:** the candid floral portrait (`presskit-headshot-floral.jpg`), Jen's pick
   (Nov 3, 2026). It is not repeated in the homepage photo row.
-- **The Velvet Letter entrance** (`/velvet`, locked) is Jen's short version: title, "Some things
-  only live inside the book.", Get the Book, the passcode field (always visible) with Enter,
-  and "Access comes with the book. Your passcode is in the back of the book, under the QR code."
+- **The Velvet Letter entrance** (`/velvet`, locked), Nov 4: the title, Jen's mystery line
+  ("Would you like to see the Velvet Letter? Buy my book, and you'll find out how."), and the
+  passcode field with Enter. No note about where the passcode is; a wrong passcode just says
+  "That's not quite it. Please try again."
 - **Journal podcast links:** `app/journal/repair-body.mjs` points old posts' episode links at
   the episode each post is about (`CORRECT_EPISODE`, audited Nov 2, 2026). Add a post there if
   it links the wrong guest; never edit Sanity from code.
 - **Privacy: Jen's home location is never on the site.** The bio says "She lives on the West
   Coast" (Jen, Nov 3, 2026). Never name the city, state, or neighborhood in any bio, page, or
   photo caption.
-- **The Forever Angels** (her 501(c)(3)) has ONE section: About `#forever-angels`. The footer
-  links there; `/forever-angels` redirects there.
+- **The Forever Angels** (her 501(c)(3)): the menu link opens theforeverangels.com; About
+  `#forever-angels` (her "Giving back" line) links to her founder page
+  `/about/the-forever-angels`, where `/forever-angels` now lands (Nov 4).
 - **Film and documentary** are IN DEVELOPMENT. One source of wording: `lib/press.js` (`FILM`).
   Never say released, acquired, or optioned.
 - **Podcast:** "Explore all 13 episodes of Unfiltered with Jen Archuleta." (Season 1 is
   complete.) Buzzsprout and YouTube sit together. Never say the show is on hold or that new
   episodes are coming. Use guests' full names.
-- **Shop:** three products in this order (Jen, 2026-10-28; Nov 3) — Signed copy, The Velvet
+- **Shop** (inside the Book page since Nov 4, 2026: `ShopOffers.js`, `/book#shop`; `/shop`
+  forwards): three products in this order (Jen, 2026-10-28; Nov 3) — Signed copy, The Velvet
   Circle Book Club, Velvet Bookmark. The Velvet Circle is described once (its card), then the
   FAQ; no second panel repeating it.
   - **Velvet Circle = "Monthly Book Club"**, $9.99/mo: one-page discussion guide, up to three
@@ -118,8 +178,8 @@ the newer features she likes. Before changing structure, re-read this section.
       says "Signed by Jen, $41.99 with shipping".
     - **Book club:** "What you get now" (the one-page discussion guide, emailed after joining;
       up to three questions a month answered in writing, emailed to
-      `SHOP.velvetCircleQuestionsEmail`, jen@jenarchuleta.com) and "Starting once 13 paying
-      members join" (monthly group Zooms). Never promise monthly live meetings or replays as
+      `SHOP.velvetCircleQuestionsEmail` = BOOKING_EMAIL, the one site email since Nov 4) and
+      "Zoom sessions start once 13 members join" (Jen's wording, Nov 4; monthly group Zooms). Never promise monthly live meetings or replays as
       current, on the site or in Stripe, until they are actually running. When the Zooms
       start, update the card, the FAQ, Shipping & Returns, AND the Stripe product description
       and checkout text together.
@@ -306,8 +366,10 @@ public by design (that's what a Payment Link is) — never commit a Stripe *secr
 │   │   └── Studio.jsx             ← 'use client' wrapper (REQUIRED, see §10)
 │   ├── components/
 │   │   ├── SiteNav.js             ← THE one nav (every page, light or dark)
-│   │   ├── SiteFooter.js          ← "Stay close" (free chapter + socials) + footer links + legal
-│   │   ├── VelvetInvite.js        ← short Velvet Letter invitation (homepage, Book page)
+│   │   ├── SiteFooter.js          ← footer: the six tabs + legal links (Nov 4)
+│   │   ├── FreeChapter.js         ← THE free first chapter signup (Book page only, Nov 4)
+│   │   ├── ShopOffers.js          ← the Shop, shown on the Book page (Nov 4)
+│   │   ├── VelvetInvite.js        ← Jen's Velvet Letter mystery line (homepage, Book page)
 │   │   ├── VelvetCirclePanel.js   ← Velvet Circle explainer (Shop), perks list lives here
 │   │   ├── PhotoGallery.js        ← the photo carousel (About page)
 │   │   ├── KitInlineForm.jsx      ← injects Kit inline form ("Built with Kit" hidden in globals.css)
@@ -458,8 +520,9 @@ Website records (point to Vercel):
 - `CNAME cka._domainkey`, `cka2._domainkey`, `ckespa` (DKIM/SPF)
 - `TXT _dmarc`
 
-`jen@jenarchuleta.com` **is live and receives mail** (confirmed 2026-07-24) — it's used as
-the contact address on the site's legal pages (`/privacy`, `/terms`, `/shipping-returns`).
+`jen@jenarchuleta.com` **is live and receives mail** (confirmed 2026-07-24), but since
+Nov 4, 2026 the site shows ONE email everywhere, the podcast Gmail (`BOOKING_EMAIL`), legal
+pages included (Jen's site notes).
 
 ---
 

@@ -295,6 +295,8 @@ function rewriteText(text) {
   });
   next = next.replace(/\bFelling the Love\b/g, 'Feeling the Love');
   next = next.replace(/\bShawn Patrick Flanery\b/g, 'Sean Patrick Flanery');
+  // No Arizona on the site except Charlie's pup card (Jen, Nov 4, 2026).
+  next = next.replace(/\bLos Angeles, Arizona, and Las Vegas\b/g, 'Los Angeles and Las Vegas');
   // No em dashes on the site (Jen, November 3): a dash before a signature
   // goes, and any other becomes a comma.
   next = next.replace(/^\s*—\s*/, '').replace(/\s*—\s*/g, ', ');

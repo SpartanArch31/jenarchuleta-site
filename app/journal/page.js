@@ -1,7 +1,6 @@
 import './journal.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import CategorySelect from './CategorySelect';
 import JournalBrowser from './JournalBrowser';
 import { urlFor } from '../sanity/image';
 import { photoAlt } from './photo-alt';
@@ -9,10 +8,12 @@ import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
 import { CATEGORY_ORDER, categoryLabel, curatePosts } from './curation';
 
-// Categories show in Jen's order (curation.js). Empty ones stay off the row.
-// Promotional posts are archived (curation.js): out of the feed, listed
-// under Archive (its chip sits at the end of the row, Nov 2026), and still
-// live at their own URLs. Pup of the Podcast posts live on /pups, not here
+// Jen's site notes (November 4, 2026): no category tabs across the top. The
+// categories are clickable ALBUMS on this page, each with a cover photo (its
+// newest post's photo) and a post count, in Jen's order (curation.js). Empty
+// ones are left out. Every post is kept. Promotional posts are archived
+// (curation.js): out of the main feed, in the Archive album, and still live at
+// their own URLs. Pup of the Podcast posts live on /pups, not here
 // (Jen, November 3). The public Journal never shows anything from the
 // private Velvet Letter.
 // The feed itself (search box, 12 posts at a time, Load more) is
@@ -70,11 +71,26 @@ export default async function JournalPage({ searchParams }) {
     return m;
   }, {});
   const presentCategories = CATEGORY_ORDER.filter((c) => counts[c]);
-  const options = [
-    { key: 'All', label: 'All', href: '/journal' },
-    ...presentCategories.map((c) => ({ key: c, label: categoryLabel(c), href: `/journal?category=${encodeURIComponent(c)}` })),
-    ...(archived.length > 0 ? [{ key: 'Archive', label: 'Archive', href: '/journal?view=archive' }] : []),
+  // The albums: each category's cover is its newest post that has a photo.
+  const coverFor = (list) => list.find((p) => p.heroImage);
+  const album = (key, label, href, list) => {
+    const cover = coverFor(list);
+    return {
+      key,
+      label,
+      href,
+      count: list.length,
+      cover: cover ? heroUrl(cover.heroImage, 480, 360) : null,
+      coverAlt: cover ? photoAlt(cover.heroImage, cover.title) : '',
+    };
+  };
+  const albums = [
+    ...presentCategories.map((c) =>
+      album(c, categoryLabel(c), `/journal?category=${encodeURIComponent(c)}`, posts.filter((p) => p.category === c))
+    ),
+    ...(archived.length > 0 ? [album('Archive', 'Archive', '/journal?view=archive', archived)] : []),
   ];
+  const activeAlbum = albums.find((a) => a.key === active);
 
   // Only what a card needs goes to the browser.
   const cards = visible.map((p) => ({
@@ -103,18 +119,39 @@ export default async function JournalPage({ searchParams }) {
           Short, honest writing on faith, family, healing, and starting over.
         </p>
 
-        <nav className="filter-row" aria-label="Journal categories">
-          {options.map((o) => (
-            <a key={o.key} className={`chip ${active === o.key ? 'is-active' : ''}`} href={o.href}>
-              {o.label}
+      </section>
+
+      {/* ALBUMS: one per category, plus the Archive. */}
+      <section className="wrap journal-albums-wrap" aria-labelledby="albums-title">
+        <h2 id="albums-title" className="albums-title">Albums</h2>
+        <nav className="albums" aria-label="Journal albums">
+          {albums.map((a) => (
+            <a
+              key={a.key}
+              className={`album${active === a.key ? ' is-active' : ''}`}
+              href={a.href}
+              aria-current={active === a.key ? 'page' : undefined}
+            >
+              <span className="album-cover">
+                {a.cover ? <img src={a.cover} alt={a.coverAlt} loading="lazy" width="480" height="360" /> : null}
+              </span>
+              <span className="album-name">{a.label}</span>
+              <span className="album-count">{a.count} {a.count === 1 ? 'post' : 'posts'}</span>
             </a>
           ))}
         </nav>
-        <CategorySelect options={options} active={active} />
-        {showArchive && (
-          <p className="center lead" style={{ marginTop: '18px' }}>
-            Earlier announcements and promotions, kept here for the record. <a href="/journal">Back to the Journal</a>
-          </p>
+        {active !== 'All' ? (
+          <div className="album-head">
+            <h2>{activeAlbum ? activeAlbum.label : categoryLabel(active)}</h2>
+            {showArchive ? (
+              <p className="lead">Earlier announcements and promotions, kept here for the record.</p>
+            ) : null}
+            <p><a href="/journal">All posts</a></p>
+          </div>
+        ) : (
+          <div className="album-head">
+            <h2>All posts</h2>
+          </div>
         )}
       </section>
 

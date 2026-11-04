@@ -1,7 +1,7 @@
 import '../legal-pages.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
+import { SHOP, STRIPE_CUSTOMER_PORTAL_URL, BOOKING_EMAIL } from '../components/site-data';
 
 export const metadata = {
   title: 'Shipping & Returns',
@@ -9,9 +9,11 @@ export const metadata = {
 };
 
 const EFFECTIVE_DATE = 'July 23, 2026';
-// Shipping costs, ship times, and how members send questions spelled out (Nov 3).
-const UPDATED_DATE = 'November 3, 2026';
-const CONTACT_EMAIL = 'jen@jenarchuleta.com';
+// Shipping costs, ship times, and how members send questions spelled out
+// (Nov 3), and the one email for everything (Nov 4).
+const UPDATED_DATE = 'November 4, 2026';
+// One email for everything on the site (Jen, Nov 4, 2026).
+const CONTACT_EMAIL = BOOKING_EMAIL;
 
 export default function ShippingReturnsPage() {
   return (

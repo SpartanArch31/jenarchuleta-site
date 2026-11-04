@@ -39,7 +39,9 @@ function fixPublishedCopy(text) {
   if (typeof text !== 'string') return text;
   return text
     .replace(/\bFelling the Love\b/g, 'Feeling the Love')
-    .replace(/\bShawn Patrick Flanery\b/g, 'Sean Patrick Flanery');
+    .replace(/\bShawn Patrick Flanery\b/g, 'Sean Patrick Flanery')
+    // No Arizona on the site except Charlie's pup card (Jen, Nov 4, 2026).
+    .replace(/^Back to School featured on Arizona family partnered with /, 'Back to School featured on local TV, partnered with ');
 }
 
 function fixTree(value) {

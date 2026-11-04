@@ -3,10 +3,17 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetInvite from '../components/VelvetInvite';
 import BuyOptions from '../components/BuyOptions';
-import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
+import ShopOffers from '../components/ShopOffers';
+import FreeChapter from '../components/FreeChapter';
 
+// The Book page (Jen's site notes, November 4, 2026): the book, the Shop
+// (signed copy, The Velvet Circle Book Club, the bookmark, FAQs), and the ONE
+// free first chapter signup on the site. The Velvet Letter is only the mystery
+// line (VelvetInvite). The book keeps its printed byline, so this page's title
+// and the book data below use the name on the cover; everywhere else the site
+// says "Jen Archuleta".
 export const metadata = {
-  // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
+  // Matches the printed cover and the retail listings exactly.
   title: { absolute: 'Beyond the Velvet Ropes by Jennifer Walcott Archuleta' },
   description:
     'Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love by Jennifer Walcott Archuleta. Out now. Read the first chapter free.',
@@ -47,8 +54,8 @@ export default function BookPage() {
             <h1>Beyond the Velvet Ropes</h1>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
-            <BuyOptions />
-            <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
+            <div id="buy"><BuyOptions /></div>
+            <p><a href="#free-chapter" style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
       </section>
@@ -92,6 +99,17 @@ export default function BookPage() {
         </div>
       </section>
 
+      {/* THE FREE FIRST CHAPTER: the one signup on the site. */}
+      <FreeChapter />
+
+      {/* THE SHOP: signed copy, book club, bookmark, FAQs (light band). */}
+      <ShopOffers />
+
+      {/* THE VELVET LETTER: Jen's mystery line, nothing more. */}
+      <div className="wrap">
+        <VelvetInvite compact />
+      </div>
+
       {/* FILM AND DOCUMENTARY: the news has one home, Media (#film). Jen, November 3:
           link to it from here, never copy it. */}
       <section id="on-screen" className="wrap text-wrap book-screen">
@@ -99,11 +117,6 @@ export default function BookPage() {
         <h2>In development for film and documentary.</h2>
         <p><a href="/media#film" className="btn btn-ghost btn-sm">Film and documentary news</a></p>
       </section>
-
-      {/* THE VELVET LETTER */}
-      <div className="wrap">
-        <VelvetInvite compact />
-      </div>
 
       {/* REVIEWS */}
       <section id="reviews" className="wrap text-wrap center book-more">

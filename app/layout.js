@@ -40,7 +40,7 @@ export const metadata = {
     template: '%s, Jen Archuleta',
   },
   description:
-    'Jen Archuleta (Jennifer Walcott Archuleta), author, speaker, and advocate. Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love. Read the first chapter free.',
+    'Jen Archuleta, author, speaker, and advocate. Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love. Read the first chapter free.',
   icons: {
     icon: '/assets/favicon.svg',
     apple: '/assets/app-icon-512.png',
@@ -59,7 +59,9 @@ export const metadata = {
 
 // The site brand is "Jen Archuleta"; the book listings (Amazon, B&N, Spotify)
 // say "Jennifer Walcott Archuleta." This structured data tells search engines
-// they're the same person without changing what visitors see.
+// they're the same person without changing what visitors see. KEEP IT (Jen's
+// site notes, November 4, 2026): this hidden note is how people searching
+// "Jennifer Walcott" find the site, while every visible line says Jen Archuleta.
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',

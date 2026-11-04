@@ -3,15 +3,29 @@ import path from 'path';
 import Image from 'next/image';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import CopyTextButton from '../components/CopyTextButton';
 import { APPEARANCES, AS_SEEN_IN, FILM, PRESS, cardMeta } from '../../lib/press';
+import { BOOKING_EMAIL, PODCAST, SOCIALS } from '../components/site-data';
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Media, Jen Walcott Archuleta' },
+  title: 'Media',
   description:
-    'Interviews, articles, and conversations with Jen Walcott Archuleta, plus a short bio and headshots for press.',
+    'Press kit, interviews, and press for Jen Archuleta, author of Beyond the Velvet Ropes, plus headshots, social links, and contact.',
 };
+
+// Media stays its own page, for press (Jen's site notes, November 4, 2026):
+// press kit, interviews, press, film (Leone Marucci, Crash Cat Media,
+// FilmFreeway), speaking, all social links, contact, and sign-up. The Business
+// Journal headline stays exactly as published (lib/press.js). There is no bio
+// here any more: the ONE bio is About Me (/about). "Jen Archuleta" everywhere.
+const SOCIAL_LINKS = [
+  { label: 'Instagram', href: SOCIALS.instagram },
+  { label: 'TikTok', href: SOCIALS.tiktok },
+  { label: 'X', href: SOCIALS.x },
+  { label: 'Facebook', href: SOCIALS.facebook },
+  { label: 'LinkedIn', href: SOCIALS.linkedin },
+  { label: 'YouTube', href: PODCAST.youtube },
+];
 
 // FilmFreeway: Jen asked for her FilmFreeway link (November 3). It is in
 // lib/press.js with the film partners. Do not copy details from that profile
@@ -26,9 +40,6 @@ export const metadata = {
 // web image (1000x1500), not a press-resolution file.
 // Outlet logos are names until files arrive in public/assets/logos/.
 
-const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A feature film based on her memoir is in development with Leone Marucci and Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
-
-
 
 // Jen's three headshots for press downloads, in her order and her words
 // (November 3): Glamorous (black and white), Candid (floral top), and
@@ -40,28 +51,28 @@ const HEADSHOTS = [
   {
     src: '/assets/jen-headshot-bw.jpg',
     download: '/assets/jen-headshot-bw.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Glamorous.jpg',
+    fileName: 'Jen-Archuleta-Glamorous.jpg',
     label: 'Glamorous',
-    alt: 'Black-and-white portrait of Jen Walcott Archuleta',
+    alt: 'Black-and-white portrait of Jen Archuleta',
     width: 1320,
     height: 1946,
   },
   {
     src: '/assets/presskit-headshot-floral.jpg',
     download: '/assets/presskit-headshot-floral.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Candid.jpg',
+    fileName: 'Jen-Archuleta-Candid.jpg',
     label: 'Candid',
     note: 'Primary photo',
-    alt: 'Jen Walcott Archuleta smiling in a floral top',
+    alt: 'Jen Archuleta smiling in a floral top',
     width: 1100,
     height: 1370,
   },
   {
     src: '/assets/jen-headshot-signature.jpg',
     download: '/assets/jen-headshot-signature.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Signature.jpg',
+    fileName: 'Jen-Archuleta-Signature.jpg',
     label: 'Signature',
-    alt: 'Jen Walcott Archuleta smiling in a black top',
+    alt: 'Jen Archuleta smiling in a black top',
     width: 1162,
     height: 1597,
   },
@@ -106,72 +117,11 @@ export default function MediaPage() {
         </figure>
       </section>
 
-      {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js.
-          This is the ONE home for the film news; other pages link to /media#film.
-          FilmFreeway sits right with Leone and Mark (Jen, November 3). */}
-      <section id="film" className="wrap text-wrap">
-        <h2>Film and documentary</h2>
-        <p>{FILM.film}</p>
-        <p>{FILM.documentary}</p>
-        <p className="media-film-links">
-          {FILM.partners.map((partner) => (
-            <span key={partner.href}>
-              <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
-              {' · '}
-            </span>
-          ))}
-          FilmFreeway:{' '}
-          <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
-        </p>
-      </section>
-
-      <section id="press" className="wrap">
-        <h2>Press coverage</h2>
-        <div className="media-grid">
-          {PRESS.map((item) => (
-            <article className="media-card" key={item.href}>
-              <p className="eyebrow">{item.outlet}</p>
-              <h3>{item.headline}</h3>
-              <p className="media-meta">{cardMeta(item)}</p>
-              <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">Read</a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="interviews" className="wrap">
-        <h2>Interviews and appearances</h2>
-        <div className="media-grid">
-          {APPEARANCES.map((item) => (
-            <article className="media-card" key={item.href}>
-              <p className="eyebrow">{item.outlet}</p>
-              <h3>{item.headline}</h3>
-              <p className="media-meta">{cardMeta(item)}</p>
-              <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel}</a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="speaking" className="wrap text-wrap">
-        <h2>Speaking</h2>
-        <p>
-          I speak about faith, resilience, and starting over. About surviving hard things and rebuilding.
-        </p>
-        <p>
-          <a className="btn btn-primary" href="/contact">Invite me to speak</a>
-        </p>
-      </section>
-
       <section id="press-kit" className="wrap">
         <h2>Press kit</h2>
-        <div className="bio-block">
-          <div className="bio-head">
-            <h3>Short bio</h3>
-            <CopyTextButton text={PRESS_BIO} label="Copy" />
-          </div>
-          <p>{PRESS_BIO}</p>
-        </div>
+        <p className="media-bio-note">
+          My bio lives in one place, on <a href="/about">About Me</a>.
+        </p>
         <h3 className="headshot-title">Photos for press and speaking</h3>
         <p className="headshot-note">Approved for media and event use. Please do not crop through the face or retouch.</p>
         <div className="headshot-grid">
@@ -204,6 +154,89 @@ export default function MediaPage() {
             </a>
           ) : null}
         </div>
+      </section>
+
+      <section id="interviews" className="wrap">
+        <h2>Interviews and appearances</h2>
+        <div className="media-grid">
+          {APPEARANCES.map((item) => (
+            <article className="media-card" key={item.href}>
+              <p className="eyebrow">{item.outlet}</p>
+              <h3>{item.headline}</h3>
+              <p className="media-meta">{cardMeta(item)}</p>
+              <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel}</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="press" className="wrap">
+        <h2>Press coverage</h2>
+        <div className="media-grid">
+          {PRESS.map((item) => (
+            <article className="media-card" key={item.href}>
+              <p className="eyebrow">{item.outlet}</p>
+              <h3>{item.headline}</h3>
+              <p className="media-meta">{cardMeta(item)}</p>
+              <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">Read</a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js.
+          This is the ONE home for the film news; other pages link to /media#film.
+          FilmFreeway sits right with Leone and Mark (Jen, November 3). */}
+      <section id="film" className="wrap text-wrap">
+        <h2>Film and documentary</h2>
+        <p>{FILM.film}</p>
+        <p>{FILM.documentary}</p>
+        <p className="media-film-links">
+          {FILM.partners.map((partner) => (
+            <span key={partner.href}>
+              <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
+              {' · '}
+            </span>
+          ))}
+          FilmFreeway:{' '}
+          <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
+        </p>
+      </section>
+
+      <section id="speaking" className="wrap text-wrap">
+        <h2>Speaking</h2>
+        <p>
+          I speak about faith, resilience, and starting over. About surviving hard things and rebuilding.
+        </p>
+        <p>
+          <a className="btn btn-primary" href="/contact">Invite me to speak</a>
+        </p>
+      </section>
+
+      {/* All social links (they used to sit at the bottom of every page). */}
+      <section id="follow" className="wrap center">
+        <h2>Follow along</h2>
+        <ul className="stay-socials" aria-label="Follow Jen">
+          {SOCIAL_LINKS.map((item) => (
+            <li key={item.label}>
+              <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Contact: the one email for everything (Jen, November 4). */}
+      <section id="media-contact" className="wrap text-wrap center">
+        <h2>Contact</h2>
+        <p>For press, interviews, and speaking, email me at <a href={`mailto:${BOOKING_EMAIL}`}>{BOOKING_EMAIL}</a>.</p>
+        <p><a className="btn btn-ghost btn-sm" href="/contact">Contact page</a></p>
+      </section>
+
+      {/* Sign-up: the free first chapter signup lives on the Book page only. */}
+      <section id="sign-up" className="wrap text-wrap center">
+        <h2>Sign up</h2>
+        <p>Read the first chapter of <em>Beyond the Velvet Ropes</em> free.</p>
+        <p><a className="btn btn-primary btn-sm" href="/book#free-chapter">Get the first chapter free</a></p>
       </section>
 
       <section className="wrap center">

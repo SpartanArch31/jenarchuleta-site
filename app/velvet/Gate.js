@@ -37,14 +37,13 @@ export default function VelvetGate() {
           autoComplete="off"
           autoCapitalize="off"
           spellCheck="false"
-          aria-describedby="velvet-passcode-note"
           required
         />
         <EnterButton />
       </div>
       {state?.error ? (
         <p className="vl-error" role="alert" key={state.tries}>
-          That’s not quite it. Your passcode is in the back of the book, under the QR code.
+          That’s not quite it. Please try again.
         </p>
       ) : null}
     </form>

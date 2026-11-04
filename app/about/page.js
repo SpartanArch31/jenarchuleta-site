@@ -3,7 +3,9 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import { KIT_FREE_CHAPTER_URL, SOCIALS } from '../components/site-data';
+import { SOCIALS } from '../components/site-data';
+import { QUOTES } from '../quotes/quotes-data';
+import '../quotes/quotes.css';
 
 export const metadata = {
   title: 'About Me',
@@ -14,12 +16,18 @@ export const metadata = {
 // About Me, in Jen's own words (November 3, 2026). One page: her text replaced
 // the old "Hi, I'm Jen", everyday, my people, then and now, fun part, faith,
 // and creed sections. Every sentence below is hers, in her order. Don't add,
-// trim, or reword it, and never use an em dash. The formal bio is its own
-// page, /about-the-author. Photos are shown whole. The kids appear only in
-// Jen's own blurred file (full-house-kids-dogs.jpg).
+// trim, or reword it, and never use an em dash. Photos are shown whole. The
+// kids appear only in Jen's own blurred file (full-house-kids-dogs.jpg).
+// Jen's site notes (November 4, 2026): this is the ONE bio on the site (About
+// the Author and the Media short bio are gone and forward here), with the
+// Gallery (her 19 photos, one slideshow, called "Gallery", never "Photos"),
+// the Quotes, and a link to her founder page for The Forever Angels. The
+// closing paragraph keeps her words; its links now point at the Book page
+// (the one free chapter signup, and the Velvet Letter mystery line) instead
+// of /velvet, so no page shows a passcode box or says where the passcode is.
 // Old links still land: #life and #me (the everyday), #then (the twenties
-// photo), #gallery, #forever-angels and #faith (giving back), #work (the
-// About the Author link at the end).
+// photo), #gallery, #quotes, #forever-angels and #faith (giving back), #work
+// (the closing).
 export default function AboutPage() {
   return (
     <>
@@ -38,7 +46,7 @@ export default function AboutPage() {
           </p>
         </div>
         <div>
-          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
+          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
           <p className="tim-cap">Caught mid-laugh, which is most of the time</p>
         </div>
       </section>
@@ -90,7 +98,7 @@ export default function AboutPage() {
         <div>
           {/* Jen's pick since July: the black-and-white photo in the long black trench
               coat. Do not swap in a headshot. */}
-          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Walcott Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
+          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         </div>
         <div>
           <p className="tim-lead">
@@ -106,12 +114,28 @@ export default function AboutPage() {
       <section className="tim-wrap tim-fun">
         <div className="photo-row">
           <img src="/assets/jen-glam.jpg" alt="Jen Archuleta, glamour portrait" width="941" height="1123" loading="lazy" />
-          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Walcott Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
+          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
           <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
           <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
         </div>
       </section>
-      <PhotoGallery showTitle={false} />
+      <PhotoGallery showTitle />
+
+      {/* QUOTES (Jen, November 4: moved here from their own page). */}
+      <section id="quotes" className="tim-wrap tim-quotes">
+        <p className="eyebrow" style={{ textAlign: 'center' }}>In my words</p>
+        <h2 className="tim-quotes-title">Quotes</h2>
+        <div className="quotes-list">
+          {QUOTES.map((quote) => (
+            <figure key={quote.text}>
+              <blockquote>
+                <p>{quote.text}</p>
+              </blockquote>
+              {quote.source ? <figcaption>{quote.source}</figcaption> : null}
+            </figure>
+          ))}
+        </div>
+      </section>
 
       {/* GIVING BACK. The one home on the site for The Forever Angels (the footer,
           the homepage, and /forever-angels all land here). */}
@@ -122,7 +146,10 @@ export default function AboutPage() {
             Giving back matters to me. If I have time, a story, or a hand to lend, I’d rather use
             it for someone else.
           </p>
-          <a href={SOCIALS.foreverAngels} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
+          <div className="tim-faith-actions">
+            <a href="/about/the-forever-angels" className="btn btn-primary">Why I founded The Forever Angels</a>
+            <a href={SOCIALS.foreverAngels} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
+          </div>
         </div>
       </section>
 
@@ -131,12 +158,11 @@ export default function AboutPage() {
         <span id="work" className="anchor" aria-hidden="true" />
         <p className="tim-lead">
           Want to be part of something? <a href="/book">Buy my book</a> and check out{' '}
-          <a href="/velvet">the Velvet Letter</a> with your passcode. You can also{' '}
-          <a href={KIT_FREE_CHAPTER_URL}>get the first chapter free</a>.
+          <a href="/book#velvet-letter">the Velvet Letter</a> with your passcode. You can also{' '}
+          <a href="/book#free-chapter">get the first chapter free</a>.
         </p>
         <p className="tim-lead">Thanks for being here.</p>
         <p className="tim-sign">Jen</p>
-        <p className="tim-author-link"><a href="/about-the-author">About the Author</a></p>
       </section>
 
       <SiteFooter />

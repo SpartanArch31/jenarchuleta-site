@@ -6,7 +6,9 @@ export const KIT_FREE_CHAPTER_URL = 'https://jennifer-archuleta.kit.com/ea44cdb3
 // Kit (ConvertKit) INLINE form uid — the embeddable email-capture form.
 export const KIT_FORM_UID = 'ab5cfa4752';
 
-// Press, interviews, speaking, podcast guests, and the contact page.
+// THE one email for everything on the site (Jen's site notes, November 4,
+// 2026: "single email for everything, the podcast Gmail"): press, speaking,
+// guests, the contact page, book club questions, orders, and the legal pages.
 export const BOOKING_EMAIL = 'therealunfilteredpod@gmail.com';
 
 export const SOCIALS = {
@@ -23,7 +25,7 @@ export const OG_IMAGE = {
   url: 'https://jenarchuleta.com/assets/og-floral-1200x630.jpg',
   width: 1200,
   height: 630,
-  alt: 'Jen Walcott Archuleta',
+  alt: 'Jen Archuleta',
 };
 
 // Live Stripe Customer Portal login link. Capital I after wO3.
@@ -136,8 +138,9 @@ export const SHOP = {
   velvetCircleMembership: 'https://buy.stripe.com/6oU3cuemL2mB1UD73Ids406',
   velvetCircleMembershipPrice: '$9.99/month',
   // Members email their questions here, up to three a month (Shop card, FAQ,
-  // Shipping & Returns, and the Stripe welcome message all say so).
-  velvetCircleQuestionsEmail: 'jen@jenarchuleta.com',
+  // Shipping & Returns, and the Stripe welcome message all say so). One email
+  // for everything on the site (Jen, Nov 4): the podcast Gmail, BOOKING_EMAIL.
+  velvetCircleQuestionsEmail: BOOKING_EMAIL,
 
   // The Backstage Bundle ($69 one-time) was removed November 3 (Jen: one
   // book-club offer). It never had a Stripe link.

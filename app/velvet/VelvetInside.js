@@ -20,7 +20,7 @@ function VelvetLetterPhoto() {
   if (!existsSync(file)) return null;
   return (
     <figure className="letter-photo">
-      <img src={photo(LETTER_PHOTO_FILE)} alt="Jen Walcott Archuleta" />
+      <img src={photo(LETTER_PHOTO_FILE)} alt="Jen Archuleta" />
     </figure>
   );
 }
@@ -226,7 +226,7 @@ export default function VelvetInside({ letters = [] }) {
           <p className="velvet-close">The story doesn’t stop here.</p>
           <p>
             Want to keep the conversation going? Join me in The Velvet Circle Book Club.{' '}
-            <a href="/shop#velvet-circle">See how it works</a>.
+            <a href="/book#velvet-circle">See how it works</a>.
           </p>
         </section>
 

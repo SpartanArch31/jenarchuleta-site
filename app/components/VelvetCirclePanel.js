@@ -12,12 +12,14 @@ import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 // Backstage Bundle is gone.
 // November 3 (Adam): say what members get NOW, how they send questions (email,
 // SHOP.velvetCircleQuestionsEmail), and that Zooms start at 13 paying members.
-// The Shop card (app/shop/page.js) carries the live copy; this panel isn't on
-// any page right now, and its list is kept matching in case it comes back.
+// The Shop card (app/components/ShopOffers.js, on the Book page) carries the
+// live copy; this panel isn't on any page right now, and its list is kept
+// matching in case it comes back. Nov 4 (Jen): "Zoom sessions start once 13
+// members join."
 export const VELVET_CIRCLE_PERKS = [
   'A one-page discussion guide for the book, emailed to you after you join',
   `Up to three questions a month about the book and my experiences, answered personally by me in writing. Email them to ${SHOP.velvetCircleQuestionsEmail}.`,
-  'Monthly group Zooms begin once 13 paying members join',
+  'Zoom sessions start once 13 members join',
   '$9.99 a month. Cancel anytime.',
 ];
 

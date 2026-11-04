@@ -16,23 +16,31 @@ const pageRedirects = [
   { source: '/bio', destination: '/about', permanent: true },
   { source: '/story', destination: '/about#then', permanent: true },
   { source: '/gallery', destination: '/about#gallery', permanent: true },
+  { source: '/photos', destination: '/about#gallery', permanent: false },
   { source: '/my-story', destination: '/about#then', permanent: true },
   { source: '/speaking', destination: '/media#speaking', permanent: true },
-  // Old Squarespace store, product, and cart URLs → the shop.
-  { source: '/store/:path*', destination: '/shop', permanent: true },
-  { source: '/shop/p/:path*', destination: '/shop', permanent: true },
-  { source: '/cart', destination: '/shop', permanent: true },
-  { source: '/checkout', destination: '/shop', permanent: true },
+  // Old Squarespace store, product, and cart URLs → the Shop, which is on the
+  // Book page now (Jen, Nov 4, 2026). /shop itself forwards in the browser so
+  // its #signed-copy style links keep working (app/shop/page.js).
+  { source: '/store/:path*', destination: '/book#shop', permanent: false },
+  { source: '/shop/p/:path*', destination: '/book#shop', permanent: false },
+  { source: '/cart', destination: '/book#shop', permanent: false },
+  { source: '/checkout', destination: '/book#shop', permanent: false },
   // Old newsletter / Mailchimp-era signup paths → the free-chapter signup.
   // Temporary (307) so a real page can take these paths later without cached redirects.
-  { source: '/subscribe', destination: '/#letter', permanent: false },
-  { source: '/signup', destination: '/#letter', permanent: false },
-  { source: '/sign-up', destination: '/#letter', permanent: false },
-  { source: '/mailing-list', destination: '/#letter', permanent: false },
-  // The Forever Angels has one home: its section on the About page.
-  { source: '/the-forever-angels', destination: '/about#forever-angels', permanent: true },
-  { source: '/forever-angels', destination: '/about#forever-angels', permanent: true },
-  { source: '/newsletter', destination: '/#letter', permanent: true },
+  // The free first chapter signup lives on the Book page only (Jen, Nov 4, 2026).
+  { source: '/subscribe', destination: '/book#free-chapter', permanent: false },
+  { source: '/signup', destination: '/book#free-chapter', permanent: false },
+  { source: '/sign-up', destination: '/book#free-chapter', permanent: false },
+  { source: '/mailing-list', destination: '/book#free-chapter', permanent: false },
+  // The Forever Angels: Jen's founder page under About Me (Nov 4, 2026). The
+  // menu's "The Forever Angels" link goes straight to its own website.
+  { source: '/the-forever-angels', destination: '/about/the-forever-angels', permanent: false },
+  { source: '/forever-angels', destination: '/about/the-forever-angels', permanent: false },
+  // One bio (About Me) and the Quotes are on About Me now (Jen, Nov 4, 2026).
+  { source: '/about-the-author', destination: '/about', permanent: false },
+  { source: '/quotes', destination: '/about#quotes', permanent: false },
+  { source: '/newsletter', destination: '/book#free-chapter', permanent: true },
   // /contact and /media are real pages. /press stays a permanent alias.
   { source: '/press', destination: '/media', permanent: true },
   { source: '/events', destination: '/', permanent: true },

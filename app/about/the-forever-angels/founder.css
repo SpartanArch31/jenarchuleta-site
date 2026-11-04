@@ -1,0 +1,16 @@
+/* Jen's founder page for The Forever Angels (November 2026). */
+.founder-hero { padding-block: clamp(56px, 8vw, 104px) clamp(28px, 4vw, 44px); text-align: center; }
+.founder-hero .tim-lead { max-width: 640px; margin: 22px auto 0; }
+.founder-body { max-width: 46rem; padding-block: clamp(28px, 4vw, 48px); }
+.founder-body > section { padding-block: 0; }
+.founder-body > section + section { margin-top: clamp(36px, 5vw, 56px); }
+.founder-body h2 { font-size: var(--text-h2); margin: 0 0 14px; }
+.founder-body .tim-lead + .tim-lead { margin-top: 18px; }
+.founder-facts {
+  margin: 22px 0 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-s);
+  color: var(--text-secondary);
+}
+.founder-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.founder-back { margin-top: 26px; font-family: var(--font-sans); font-size: var(--text-meta); letter-spacing: 0.12em; text-transform: uppercase; }

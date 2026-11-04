@@ -3,7 +3,7 @@ import SiteFooter from './components/SiteFooter';
 import VelvetInvite from './components/VelvetInvite';
 import HomeCarousel from './components/HomeCarousel';
 import BuyOptions from './components/BuyOptions';
-import { KIT_FREE_CHAPTER_URL, PODCAST } from './components/site-data';
+import { PODCAST } from './components/site-data';
 import { PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
 import { getFeaturedPup } from '../lib/pup-photos';
 import { getRecentPosts } from './sanity/queries';
@@ -12,9 +12,12 @@ import { curatePosts } from './journal/curation';
 // Homepage, in Jen's order (October 27, 2026; November 2026 additions):
 // 1 intro + Get the Book · 2 Story, Voice, Heart · 2b featured photos
 // (HomeCarousel) · 3 the book, trailer, buy · 4 Velvet Letter invitation
-// · 5 podcast + Pup of the Podcast · 6 journal · 7 media and press
-// · 8 free first chapter (Stay close, in SiteFooter). Wording is the
-// September site's unless Jen changed it.
+// · 5 podcast + Pup of the Podcast · 6 journal · 7 media and press.
+// Wording is the September site's unless Jen changed it.
+// November 4 (Jen's site notes): the free first chapter signup lives on the
+// Book page only (this page links to it), the Velvet Letter is her mystery
+// line only, and the site says "Jen Archuleta" (never Walcott) outside the
+// book itself.
 // November 3 (Jen): everything about her lives on the About Me page, so the
 // hero no longer repeats it (no "these days I'm happiest..." paragraph here).
 // The hero photo is her candid floral portrait. No bundle on the homepage.
@@ -59,7 +62,7 @@ export default async function Home() {
         </div>
         <div className="hero-media">
           <div className="portrait hero-frame">
-            <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
+            <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
           </div>
         </div>
       </section>
@@ -105,7 +108,7 @@ export default async function Home() {
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>From the outside, my twenties looked like the dream. Covers, cameras, a life behind the velvet ropes. But the real story was never the part people saw. It’s in the moments I never talked about, and the long road back to the ordinary, happy life I have now. I wrote all of it down. The hard, the funny, and the faith that carried me through. If you’ve ever come through something and made it to the other side, I wrote this for you.</p>
             <BuyOptions />
-            <p style={{ marginTop: '6px' }}><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
+            <p style={{ marginTop: '6px' }}><a href="/book#free-chapter" style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
         <div className="wrap trailer-feature">
@@ -209,7 +212,6 @@ export default async function Home() {
         <div className="center" style={{ marginTop: '18px' }}><a href="/media" className="btn btn-ghost">All press and media</a></div>
       </section>
 
-      {/* 8. FREE FIRST CHAPTER (Stay close) is the top of SiteFooter. */}
       <SiteFooter />
     </>
   );

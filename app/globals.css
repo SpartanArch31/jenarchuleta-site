@@ -538,6 +538,7 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 /* Any dark-register wrapper re-applies the text color so inherited text
    (and the shared footer inside it) uses the dark palette. */
 .dark { color: var(--text); }
+.light { color: var(--text); background: var(--bg); }
 
 /* Homepage podcast cross-promotion line (Jen, November 2026). */
 .home-pod-cross {

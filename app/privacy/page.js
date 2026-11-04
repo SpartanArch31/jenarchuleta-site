@@ -1,6 +1,7 @@
 import '../legal-pages.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import { BOOKING_EMAIL } from '../components/site-data';
 
 export const metadata = {
   title: 'Privacy Policy',
@@ -8,7 +9,8 @@ export const metadata = {
 };
 
 const EFFECTIVE_DATE = 'July 23, 2026';
-const CONTACT_EMAIL = 'jen@jenarchuleta.com';
+// One email for everything on the site (Jen, Nov 4, 2026).
+const CONTACT_EMAIL = BOOKING_EMAIL;
 
 export default function PrivacyPage() {
   return (

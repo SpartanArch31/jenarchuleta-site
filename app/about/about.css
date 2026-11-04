@@ -142,3 +142,9 @@
 .tim-work-inner .tim-lead { margin-top: 18px; }
 .tim-work-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 #forever-angels { position: relative; }
+
+/* Quotes on About Me (Jen, November 4, 2026). */
+.tim-quotes { padding-block: clamp(48px, 7vw, 88px); }
+.tim-quotes-title { text-align: center; font-size: var(--text-display-l); margin: 6px 0 0; }
+/* Giving back: Jen's founder page, then The Forever Angels website. */
+.tim-faith-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }

@@ -43,6 +43,15 @@
   --shadow-lg: 0 30px 80px rgba(0, 0, 0, .6);
 }
 
+.light,
+[data-mode="light"] {
+  --hairline:        1px solid var(--border);
+  --hairline-strong: 1px solid var(--border-strong);
+  --shadow-sm: 0 1px 2px rgba(34, 28, 24, .05);
+  --shadow:    0 2px 6px rgba(34, 28, 24, .05), 0 14px 36px rgba(34, 28, 24, .08);
+  --shadow-lg: 0 4px 10px rgba(34, 28, 24, .06), 0 36px 80px rgba(34, 28, 24, .14);
+}
+
 /* ============================================================
    THE THRESHOLD MOTIF — utilities
    A restrained "velvet-rope / doorway" line used sparingly to

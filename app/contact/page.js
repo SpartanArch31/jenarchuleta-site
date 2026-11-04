@@ -4,13 +4,15 @@ import { BOOKING_EMAIL } from '../components/site-data';
 import './contact.css';
 
 export const metadata = {
-  title: { absolute: 'Contact, Jen Walcott Archuleta' },
+  title: 'Contact',
   description:
-    'Press, interviews, speaking, and events. Email Jen Walcott Archuleta.',
+    'Press, interviews, speaking, events, and questions. Email Jen Archuleta.',
 };
 
-// One clear contact destination for press, interviews, speaking, and events.
-// Social links live in the "Stay close" section at the bottom of every page.
+// One clear contact destination. Jen's site notes (November 4, 2026): a single
+// email for everything (BOOKING_EMAIL, the podcast Gmail), and "Jen Archuleta"
+// everywhere outside the book itself. Contact is its own link in the menu.
+// Social links live on Media (#follow).
 export default function ContactPage() {
   const mailto = `mailto:${BOOKING_EMAIL}`;
 
@@ -25,12 +27,12 @@ export default function ContactPage() {
         <img
           className="contact-cover"
           src="/assets/jen-headshot-signature.jpg"
-          alt="Jen Walcott Archuleta"
+          alt="Jen Archuleta"
           width="1162"
           height="1597"
         />
         <p className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>Let’s connect</p>
-        <h1>Jen Walcott Archuleta</h1>
+        <h1>Jen Archuleta</h1>
         <p className="contact-role">
           Author of Beyond the Velvet Ropes. Host of Unfiltered with Jen Archuleta.
         </p>

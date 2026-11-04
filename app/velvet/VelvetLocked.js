@@ -13,9 +13,11 @@ function KeyIcon() {
 }
 
 // The public invitation. Nothing private is fetched or rendered here.
-// Jen's short entrance (November 2026): the title, one line, Get the Book,
-// and the passcode field. Access comes with the book. The Velvet Letter is
-// never sold separately and never part of the Velvet Circle.
+// Jen's site notes (November 4, 2026): the only public words about the Velvet
+// Letter are her mystery line. Nothing here says where the passcode is or
+// shows a QR code. The passcode field stays, for readers who came here from
+// the QR code in their book. The Velvet Letter is never sold separately and
+// never part of the Velvet Circle.
 export default function VelvetLocked() {
   return (
     <div className="dark vl-page">
@@ -26,14 +28,10 @@ export default function VelvetLocked() {
         <div className="vl-inner">
           <KeyIcon />
           <h1 className="vl-title">The Velvet Letter</h1>
-          <p className="vl-hook">Some things only live inside the book.</p>
-          <div className="vl-buttons">
-            <a className="btn btn-primary" href="/book">Get the Book</a>
-          </div>
-          <VelvetGate />
-          <p className="vl-small" id="velvet-passcode-note">
-            Access comes with the book. Your passcode is in the back of the book, under the QR code.
+          <p className="vl-hook">
+            Would you like to see the Velvet Letter? <a href="/book#buy">Buy my book</a>, and you’ll find out how.
           </p>
+          <VelvetGate />
         </div>
       </section>
 

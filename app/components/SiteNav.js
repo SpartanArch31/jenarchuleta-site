@@ -3,20 +3,25 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { CATEGORY_ORDER, categoryLabel } from '../journal/curation';
-import { KIT_FREE_CHAPTER_URL } from './site-data';
+import { SOCIALS } from './site-data';
 
 // ONE navigation for the whole site, every page, light or dark.
-// Main: Home | About Me | Book | Podcast | Journal | Media | Shop
-// Each main page has a drop-down of its sections (Jen, November 3: "so people
-// can jump straight to the sections they want"). The section links point at
-// ids on those pages; if you rename or remove a section, update its link here.
-// Simplified (Nov 2026): The Velvet Letter lives in the Book drop-down (it comes
-// with the book; the QR code in the book goes straight to /velvet), About the
-// Author sits with Media and the press kit, Film and documentary is only under
-// Media, and each link appears once.
-// Everything else (Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors,
-// Contact, Free First Chapter, The Forever Angels) is also in the footer, the
-// same on every page. See SiteFooter.js.
+// Jen's site notes (November 4, 2026): six main tabs, Home | About Me | Book |
+// Podcast | Journal | Media, plus Contact and The Forever Angels as their own
+// links. The Forever Angels goes straight to its own website.
+// Each main tab has a drop-down of its sections ("so people can jump straight
+// to the sections they want"). The section links point at ids on those pages;
+// if you rename or remove a section, update its link here.
+// - About Me holds the one bio, the Gallery, the Quotes, and Jen's founder
+//   page for The Forever Angels. ("Gallery" everywhere, never "Photos".)
+// - Book holds the Shop (signed copy, book club, bookmark, FAQs) and the one
+//   free first chapter signup. The Velvet Letter is never linked from the
+//   menu: the site only says "Would you like to see the Velvet Letter? Buy my
+//   book, and you'll find out how." The QR code in the book still opens /velvet.
+// - Podcast holds the episodes, Pups, and Sponsors.
+// - Media is for press: press kit, interviews, press, film, speaking, social
+//   links, contact, sign-up.
+// The footer repeats the six tabs and the legal links (SiteFooter.js).
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.
 // Narrow screens: the hamburger opens the menu, and each arrow opens that
 // page's sections underneath it.
@@ -28,31 +33,34 @@ const MENU = [
     label: 'About Me',
     items: [
       { href: '/about', label: 'About me' },
-      { href: '/about#gallery', label: 'Photos' },
-      { href: '/about#forever-angels', label: 'Giving back' },
+      { href: '/about#gallery', label: 'Gallery' },
+      { href: '/about#quotes', label: 'Quotes' },
+      { href: '/about/the-forever-angels', label: 'Founder of The Forever Angels' },
     ],
   },
   {
     id: 'book',
     href: '/book',
     label: 'Book',
-    also: ['/velvet'],
+    also: ['/shop'],
     items: [
       { href: '/book', label: 'Get the book' },
-      // Jen, November 3: the free first chapter belongs in the main menu.
-      { href: KIT_FREE_CHAPTER_URL, label: 'Get the first chapter free' },
+      { href: '/book#free-chapter', label: 'Get the first chapter free' },
+      { href: '/book#signed-copy', label: 'Signed copy' },
+      { href: '/book#velvet-circle', label: 'The Velvet Circle Book Club' },
+      { href: '/book#bookmark', label: 'The Signature Velvet Bookmark' },
+      { href: '/book#velvet-circle-faq', label: 'Book Club FAQs' },
       { href: '/book#trailer', label: 'Watch the trailer' },
-      { href: '/book#who', label: 'Who this book is for' },
       { href: '/book#reviews', label: 'Leave a review' },
-      { href: '/velvet', label: 'The Velvet Letter', icon: 'key' },
     ],
   },
   {
     id: 'podcast',
     href: '/podcast',
     label: 'Podcast',
+    also: ['/pups', '/sponsors'],
     items: [
-      { href: '/podcast#episodes', label: 'All 13 episodes' },
+      { href: '/podcast#episodes', label: 'Episodes' },
       { href: '/pups', label: 'Pups of the Podcast' },
       { href: '/sponsors', label: 'Sponsors' },
     ],
@@ -73,30 +81,20 @@ const MENU = [
     id: 'media',
     href: '/media',
     label: 'Media',
-    also: ['/about-the-author', '/contact'],
     alignEnd: true,
     items: [
+      { href: '/media#press-kit', label: 'Press kit' },
+      { href: '/media#interviews', label: 'Interviews' },
+      { href: '/media#press', label: 'Press' },
       { href: '/media#film', label: 'Film and documentary' },
-      { href: '/media#press', label: 'Press coverage' },
-      { href: '/media#interviews', label: 'Interviews and appearances' },
       { href: '/media#speaking', label: 'Speaking' },
-      { href: '/media#press-kit', label: 'Press kit and photos' },
-      { href: '/about-the-author', label: 'About the Author' },
-      { href: '/contact', label: 'Contact' },
+      { href: '/media#follow', label: 'Follow Jen' },
+      { href: '/media#media-contact', label: 'Contact' },
+      { href: '/media#sign-up', label: 'Sign up' },
     ],
   },
-  {
-    id: 'shop',
-    href: '/shop',
-    label: 'Shop',
-    alignEnd: true,
-    items: [
-      { href: '/shop#signed-copy', label: 'Signed copy' },
-      { href: '/shop#velvet-circle', label: 'The Velvet Circle Book Club' },
-      { href: '/shop#bookmark', label: 'The Signature Velvet Bookmark' },
-      { href: '/shop#velvet-circle-faq', label: 'Book Club FAQs' },
-    ],
-  },
+  { href: '/contact', label: 'Contact' },
+  { href: SOCIALS.foreverAngels, label: 'The Forever Angels', external: true },
 ];
 
 const DESKTOP = '(min-width: 1024px)';
@@ -111,16 +109,6 @@ function Caret() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
       <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-// The Velvet Letter's small gold key, kept on its menu link.
-function Key() {
-  return (
-    <svg className="nav-key" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="8.2" cy="8.2" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.7" />
-      <path d="M11.6 11.2 L20 19.2 M15.6 16.4 L18.4 19.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   );
 }
@@ -222,6 +210,13 @@ export default function SiteNav({ homeHref = '/' }) {
                 ? 'page'
                 : undefined;
             if (!link.items) {
+              if (link.external) {
+                return (
+                  <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" onClick={close}>
+                    {link.label}
+                  </a>
+                );
+              }
               return (
                 <a key={link.href} href={link.home ? homeHref : link.href} aria-current={current} onClick={close}>
                   {link.label}
@@ -253,8 +248,7 @@ export default function SiteNav({ homeHref = '/' }) {
                 <ul id={`nav-sub-${link.id}`} className="nav-sub" hidden={!expanded}>
                   {link.items.map((item) => (
                     <li key={item.href}>
-                      <a href={item.href} onClick={close} className={item.icon === 'key' ? 'nav-velvet' : undefined}>
-                        {item.icon === 'key' ? <Key /> : null}
+                      <a href={item.href} onClick={close}>
                         {item.label}
                       </a>
                     </li>
@@ -263,11 +257,6 @@ export default function SiteNav({ homeHref = '/' }) {
               </div>
             );
           })}
-          {/* Phones: the free first chapter sits at the bottom of the menu as a
-              button. On a laptop it is in the Book drop-down. */}
-          <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary nav-chapter" onClick={close}>
-            Get the first chapter free
-          </a>
         </div>
       </div>
     </nav>
