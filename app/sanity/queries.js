@@ -84,6 +84,16 @@ export async function getAllSlugs() {
   return client.fetch(ALL_SLUGS, {}, REVALIDATE);
 }
 
+// The homepage's newest posts (Nov 2026). Cached for 10 minutes so the
+// homepage stays fast; the caller drops archived and Pup of the Podcast posts,
+// so it asks for more than it shows.
+const RECENT_POSTS = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc)[0...40]{ ${POST_FIELDS} }`;
+
+export async function getRecentPosts() {
+  const posts = await client.fetch(RECENT_POSTS, {}, { next: { revalidate: 600 } });
+  return Array.isArray(posts) ? posts.map(withFixes) : [];
+}
+
 // ---- Velvet Letters (reader-exclusive updates on /velvet) ----
 // Published only, newest first. Read on each request so a Studio publish
 // shows up on the next load. The public client is used unless

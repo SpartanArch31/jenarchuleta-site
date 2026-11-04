@@ -6,6 +6,8 @@ import BuyOptions from './components/BuyOptions';
 import { KIT_FREE_CHAPTER_URL, PODCAST } from './components/site-data';
 import { PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
 import { getFeaturedPup } from '../lib/pup-photos';
+import { getRecentPosts } from './sanity/queries';
+import { curatePosts } from './journal/curation';
 
 // Homepage, in Jen's order (October 27, 2026; November 2026 additions):
 // 1 intro + Get the Book · 2 Story, Voice, Heart · 2b featured photos
@@ -19,10 +21,23 @@ import { getFeaturedPup } from '../lib/pup-photos';
 // November 3 (Jen): nothing repeated. The film news lives on Media (#film) and
 // is only linked from here; the podcast and pup lines live on the Podcast and
 // Pups pages. No em dashes anywhere.
+// Nov 2026: the book's stores are grouped by format (BuyOptions.js), and the
+// journal previews are the three newest posts (the three category cards only
+// show if Sanity can't be reached).
 export const revalidate = 3600;
+
+function postDate(iso) {
+  return iso ? new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+}
+
+// House style: no em dashes on the site.
+const noDash = (text) => String(text || '').replace(/\s*—\s*/g, ', ');
 
 export default async function Home() {
   const pup = await getFeaturedPup().catch(() => null);
+  const newest = curatePosts(await getRecentPosts().catch(() => []))
+    .filter((p) => !p.archived && !p.offJournal)
+    .slice(0, 3);
 
   return (
     <>
@@ -150,11 +165,24 @@ export default async function Home() {
       <section id="journal" className="wrap">
         <div className="center"><h2>Notes from the road back to myself.</h2>
           <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>Short, honest writing on faith, family, healing, and starting over.</p></div>
-        <div className="cards-3 feature-first">
-          <a className="mini" href="/journal?category=Faith"><div className="body"><div className="k">Faith</div><h3>It is in the waiting that we become who we’re meant to be.</h3></div></a>
-          <a className="mini" href="/journal?category=Health%20%26%20Wellness"><div className="body"><div className="k">Healing</div><h3>Survival isn’t the same thing as healing.</h3></div></a>
-          <a className="mini" href="/journal?category=Family"><div className="body"><div className="k">Family</div><h3>What I want my kids to know about getting back up.</h3></div></a>
-        </div>
+        {newest.length === 3 ? (
+          <div className="cards-3 feature-first">
+            {newest.map((p) => (
+              <a key={p.slug} className="mini" href={`/journal/${p.slug}`}>
+                <div className="body">
+                  <div className="k">{p.category ? `${p.category} · ` : ''}{postDate(p.publishedAt)}</div>
+                  <h3>{noDash(p.title)}</h3>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="cards-3 feature-first">
+            <a className="mini" href="/journal?category=Faith"><div className="body"><div className="k">Faith</div><h3>It is in the waiting that we become who we’re meant to be.</h3></div></a>
+            <a className="mini" href="/journal?category=Health%20%26%20Wellness"><div className="body"><div className="k">Healing</div><h3>Survival isn’t the same thing as healing.</h3></div></a>
+            <a className="mini" href="/journal?category=Family"><div className="body"><div className="k">Family</div><h3>What I want my kids to know about getting back up.</h3></div></a>
+          </div>
+        )}
         <div className="center" style={{ marginTop: '28px' }}><a href="/journal" className="btn btn-ghost">Read the journal</a></div>
       </section>
 
