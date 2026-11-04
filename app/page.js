@@ -2,7 +2,8 @@ import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import VelvetInvite from './components/VelvetInvite';
 import HomeCarousel from './components/HomeCarousel';
-import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP, PODCAST } from './components/site-data';
+import BuyOptions from './components/BuyOptions';
+import { KIT_FREE_CHAPTER_URL, PODCAST } from './components/site-data';
 import { PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
 import { getFeaturedPup } from '../lib/pup-photos';
 
@@ -88,15 +89,7 @@ export default async function Home() {
             <h2>Beyond the Velvet Ropes</h2>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>From the outside, my twenties looked like the dream. Covers, cameras, a life behind the velvet ropes. But the real story was never the part people saw. It’s in the moments I never talked about, and the long road back to the ordinary, happy life I have now. I wrote all of it down. The hard, the funny, and the faith that carried me through. If you’ve ever come through something and made it to the other side, I wrote this for you.</p>
-            <p className="buy-row">
-              <a href={BOOK_BUY_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Get the Paperback</a>
-              {SHOP.signedBook && !SHOP.signedBookSoldOut ? (
-                <a href="/shop#signed-copy" className="btn btn-ghost">Signed copy</a>
-              ) : null}
-              {BOOK_STORES.map((store) => (
-                <a key={store.href} href={store.href} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">{store.label}</a>
-              ))}
-            </p>
+            <BuyOptions />
             <p style={{ marginTop: '6px' }}><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>

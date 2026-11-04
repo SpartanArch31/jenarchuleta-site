@@ -2,7 +2,8 @@ import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetInvite from '../components/VelvetInvite';
-import { BOOK_BUY_URL, BOOK_STORES, KIT_FREE_CHAPTER_URL, SHOP } from '../components/site-data';
+import BuyOptions from '../components/BuyOptions';
+import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
@@ -46,15 +47,7 @@ export default function BookPage() {
             <h1>Beyond the Velvet Ropes</h1>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
-            <div className="buy-row">
-              <a href={BOOK_BUY_URL} target="_blank" rel="noopener" className="btn btn-primary">Get the Paperback</a>
-              {SHOP.signedBook && !SHOP.signedBookSoldOut ? (
-                <a href="/shop#signed-copy" className="btn btn-ghost">Signed copy</a>
-              ) : null}
-              {BOOK_STORES.map((store) => (
-                <a key={store.href} href={store.href} target="_blank" rel="noopener" className="btn btn-ghost">{store.label}</a>
-              ))}
-            </div>
+            <BuyOptions />
             <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>

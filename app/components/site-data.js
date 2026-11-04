@@ -53,19 +53,41 @@ export const STRIPE_CUSTOMER_PORTAL_URL = 'https://billing.stripe.com/p/login/14
 // Paperback purchase page. books.by sends readers to the live BookSpace listing.
 export const BOOK_BUY_URL = 'https://books.by/beyond-the-velvet-ropes';
 
-// Product pages only. Search pages and stores without a confirmed listing stay off.
+// Every other place to buy the book, grouped by format (Nov 2026) so the
+// choices are easy to follow. "Get the Paperback" (BOOK_BUY_URL) stays the main
+// button; the signed copy row comes from SHOP below. Shown by BuyOptions.js on
+// the homepage and the Book page.
 // Confirmed product pages only. Google Play, Audible, Bookshop, and an Apple
 // Books ebook do not have a confirmed page, so they stay off this list.
-export const BOOK_STORES = [
-  { label: 'Also on Amazon', href: 'https://www.amazon.com/dp/B0H6YZWDT3' },
-  { label: 'Kindle (Amazon)', href: 'https://www.amazon.com/dp/B0H6YK1KTL' },
-  { label: 'Barnes & Noble', href: 'https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885' },
-  { label: 'Audiobook (Spotify)', href: 'https://open.spotify.com/show/153EBrZVIkJY1xaY703km4' },
-  { label: 'Audiobook (Apple)', href: 'https://books.apple.com/us/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance/id6789345549?uo=4' },
-  { label: 'Audiobook (Kobo)', href: 'https://www.kobo.com/us/en/audiobook/beyond-the-velvet-ropes' },
-  { label: 'Audiobook (Audiobooks.com)', href: 'https://www.audiobooks.com/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance-hope-and-love/1088666' },
-  { label: 'Audiobook (Chirp)', href: 'https://www.chirpbooks.com/audiobooks/beyond-the-velvet-ropes-by-jennifer-walcott-archuleta' },
+export const BOOK_FORMATS = [
+  {
+    format: 'Paperback',
+    links: [
+      { label: 'Amazon', href: 'https://www.amazon.com/dp/B0H6YZWDT3' },
+      { label: 'Barnes & Noble', href: 'https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885' },
+    ],
+  },
+  {
+    format: 'Ebook',
+    links: [{ label: 'Kindle', href: 'https://www.amazon.com/dp/B0H6YK1KTL' }],
+  },
+  {
+    format: 'Audiobook',
+    links: [
+      { label: 'Apple Books', href: 'https://books.apple.com/us/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance/id6789345549?uo=4' },
+      { label: 'Spotify', href: 'https://open.spotify.com/show/153EBrZVIkJY1xaY703km4' },
+      { label: 'Kobo', href: 'https://www.kobo.com/us/en/audiobook/beyond-the-velvet-ropes' },
+      { label: 'Audiobooks.com', href: 'https://www.audiobooks.com/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance-hope-and-love/1088666' },
+      { label: 'Chirp', href: 'https://www.chirpbooks.com/audiobooks/beyond-the-velvet-ropes-by-jennifer-walcott-archuleta' },
+    ],
+  },
 ];
+
+// Reader reviews shown next to the buy buttons (homepage and Book page).
+// REAL reviews only, chosen by Jen, quoted word for word with the reader's
+// OK. Two or three short ones. Nothing shows while this list is empty.
+// Example: { quote: 'Short line from the review.', source: 'Amazon review' }
+export const READER_REVIEWS = [];
 
 export const SHOP = {
   // Jen's corrected listing (Oct 28).
