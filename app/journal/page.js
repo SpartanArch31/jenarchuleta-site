@@ -2,16 +2,20 @@ import './journal.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import CategorySelect from './CategorySelect';
+import JournalBrowser from './JournalBrowser';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
-import { CATEGORY_ORDER, curatePosts } from './curation';
+import { CATEGORY_ORDER, categoryLabel, curatePosts } from './curation';
 
 // Categories show in Jen's order (curation.js). Empty ones stay off the row.
 // Promotional posts are archived (curation.js): out of the feed, listed
-// under Archive, and still live at their own URLs. Pup of the Podcast posts
-// live on /pups, not here (Jen, November 3). The public Journal never
-// shows anything from the private Velvet Letter.
+// under Archive (its chip sits at the end of the row, Nov 2026), and still
+// live at their own URLs. Pup of the Podcast posts live on /pups, not here
+// (Jen, November 3). The public Journal never shows anything from the
+// private Velvet Letter.
+// The feed itself (search box, 12 posts at a time, Load more) is
+// JournalBrowser.js.
 
 export const metadata = {
   title: 'Journal',
@@ -66,9 +70,24 @@ export default async function JournalPage({ searchParams }) {
   }, {});
   const presentCategories = CATEGORY_ORDER.filter((c) => counts[c]);
   const options = [
-    { label: 'All', href: '/journal' },
-    ...presentCategories.map((c) => ({ label: c, href: `/journal?category=${encodeURIComponent(c)}` })),
+    { key: 'All', label: 'All', href: '/journal' },
+    ...presentCategories.map((c) => ({ key: c, label: categoryLabel(c), href: `/journal?category=${encodeURIComponent(c)}` })),
+    ...(archived.length > 0 ? [{ key: 'Archive', label: 'Archive', href: '/journal?view=archive' }] : []),
   ];
+
+  // Only what a card needs goes to the browser.
+  const cards = visible.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: cardExcerpt(p.excerpt) || '',
+    category: p.category || '',
+    kicker: `${p.category} · ${formatDate(p.publishedAt)}`,
+    img: heroUrl(p.heroImage),
+  }));
+  const showAllParams = new URLSearchParams();
+  if (showArchive) showAllParams.set('view', 'archive');
+  else if (active !== 'All') showAllParams.set('category', active);
+  showAllParams.set('show', 'all');
 
   return (
     <>
@@ -84,7 +103,7 @@ export default async function JournalPage({ searchParams }) {
 
         <nav className="filter-row" aria-label="Journal categories">
           {options.map((o) => (
-            <a key={o.label} className={`chip ${active === o.label ? 'is-active' : ''}`} href={o.href}>
+            <a key={o.key} className={`chip ${active === o.key ? 'is-active' : ''}`} href={o.href}>
               {o.label}
             </a>
           ))}
@@ -97,35 +116,22 @@ export default async function JournalPage({ searchParams }) {
         )}
       </section>
 
-      <section className="wrap" style={{ paddingTop: 0 }}>
+      <section className="wrap journal-feed" style={{ paddingTop: 0 }}>
         {visible.length === 0 ? (
           active === 'Pup of the Podcast' ? (
             <p className="center lead"><a href="/pups">Meet the Pups of the Podcast</a></p>
           ) : (
-            <p className="center lead">No posts in “{active}” yet. Check back soon.</p>
+            <p className="center lead">No posts in “{categoryLabel(active)}” yet. Check back soon.</p>
           )
         ) : (
-          <div className="feed">
-            {visible.map((p) => {
-              const img = heroUrl(p.heroImage);
-              return (
-                <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
-                  {img && <img src={img} alt="" />}
-                  <div className="body">
-                    <div className="k">{p.category} · {formatDate(p.publishedAt)}</div>
-                    <h3>{p.title}</h3>
-                    <p>{cardExcerpt(p.excerpt)}</p>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
+          <JournalBrowser
+            key={active}
+            posts={cards}
+            initialQuery={typeof searchParams?.q === 'string' ? searchParams.q : ''}
+            showAll={searchParams?.show === 'all'}
+            showAllHref={`/journal?${showAllParams.toString()}`}
+          />
         )}
-        {!showArchive && archived.length > 0 ? (
-          <p className="foot-meta center" style={{ marginTop: '32px' }}>
-            <a href="/journal?view=archive">Archive: earlier announcements ({archived.length})</a>
-          </p>
-        ) : null}
       </section>
 
       <SiteFooter />
