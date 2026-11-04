@@ -49,3 +49,6 @@ anything.** It is the full rulebook. The rules below are the ones that must neve
 - Check the Vercel preview on a phone and a laptop before merging.
 - If something looks wrong after it goes live, use GitHub's "Revert" button on the
   pull request. That puts the site back the way it was.
+- Every version is already saved: each change is a commit in GitHub, and Vercel keeps every
+  deploy (Vercel, Deployments, pick the last good one, "Instant Rollback"). Nothing has to be
+  copied by hand before a change, and nothing removed is ever lost.

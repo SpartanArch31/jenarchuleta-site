@@ -38,9 +38,14 @@ Jen asked for the September 2026 site's wording, layout, colors, and feel, kept 
 the newer features she likes. Before changing structure, re-read this section.
 
 - **One navigation, every page** (`app/components/SiteNav.js`):
-  Home | About Me | Book | Podcast | Journal | Media | Shop | The Velvet Letter.
+  Home | About Me | Book | Podcast | Journal | Media | Shop.
   Each main page has a drop-down of its sections (Jen, Nov 3, 2026) so people can jump straight
   to them; the links point at section ids on those pages (`/about#then`, `/shop#bookmark`...).
+  Simplified (Nov 2026): The Velvet Letter is in the Book drop-down (with its key icon),
+  About the Author is under Media next to the press kit, Film and documentary is only under
+  Media, the Journal's "Podcast" category is labeled "Podcast Posts" (the category name in
+  Sanity is unchanged; see `CATEGORY_LABELS` in `app/journal/curation.js`), and the Shop's
+  FAQ link says "Book Club FAQs". Each link appears once.
   Rename or remove a section → update its link in `SiteNav.js`.
   Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors, Contact, Free First Chapter, and
   The Forever Angels also live in the footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
@@ -53,14 +58,21 @@ the newer features she likes. Before changing structure, re-read this section.
 - **Homepage, in Jen's order (Nov 2026):** intro + Get the Book / About me · Story/Voice/Heart ·
   featured photos (`HomeCarousel.js`, a short row: family, the dogs, the book; no children's
   faces) · the book with trailer and buy links · a short Velvet Letter invitation · podcast +
-  featured Pup of the Podcast · journal previews · media & press highlights · free first chapter
-  (Stay close). The full photo gallery stays on **About Me** (`#gallery`). No bundle or offer
+  featured Pup of the Podcast · the three newest Journal posts · media & press highlights · free
+  first chapter (Stay close). The full photo gallery stays on **About Me** (`#gallery`). No bundle or offer
   block on the homepage (Jen, Nov 3).
 - **About Me, one page (Jen, Nov 3, 2026):** everything about Jen lives on `/about` (menu label
   "About Me"), in the exact text Jen sent that evening, from "Faith, family, and a bunch of
   rescues." to "Thanks for being here. Jen". The homepage hero does NOT repeat it (no "these
   days I'm happiest..." paragraph); it keeps the headline, "Author of Beyond the Velvet
   Ropes," and the buttons. The formal bio is `/about-the-author`.
+- **Buying the book** (`app/components/BuyOptions.js`, homepage and Book page, Nov 2026):
+  "Get the Paperback" is the main button, then every store grouped by format (Paperback,
+  Ebook, Audiobook, Signed copy) from `BOOK_FORMATS` in `site-data.js`. Up to three reader
+  reviews show under it from `READER_REVIEWS`: real reviews only, chosen by Jen, word for word
+  with the reader's OK. Never write or paraphrase a review.
+- **Journal** (`/journal`, Nov 2026): a search box, 12 posts at a time with "Load more"
+  (`app/journal/JournalBrowser.js`), and the Archive as the last chip in the filter row.
 - **Hero photo:** the candid floral portrait (`presskit-headshot-floral.jpg`), Jen's pick
   (Nov 3, 2026). It is not repeated in the homepage photo row.
 - **The Velvet Letter entrance** (`/velvet`, locked) is Jen's short version: title, "Some things
