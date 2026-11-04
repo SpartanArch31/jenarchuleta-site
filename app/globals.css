@@ -79,8 +79,13 @@ section { padding-block: var(--section-y); }
   .nav-caret { width: 16px; }
 }
 @media (max-width: 1023px){
+  /* One column that scrolls from the top. (Wrapping pushed Shop and the
+     first-chapter button off the side of the phone when a drop-down was open,
+     and bottom alignment hid Home above the top edge.) */
   .nav--collapsible .nav-links { max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px);
-                                 overflow-y: auto; overscroll-behavior: contain; }
+                                 overflow-y: auto; overscroll-behavior: contain;
+                                 flex-wrap: nowrap; justify-content: flex-start; }
+  .nav--collapsible .nav-links > * { flex-shrink: 0; }
   .nav--collapsible .nav-item { display: flex; flex-wrap: wrap; align-items: center; }
   .nav--collapsible .nav-item > a { flex: 1; }
   .nav--collapsible .nav-caret { width: 44px; height: 44px; }
