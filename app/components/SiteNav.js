@@ -2,14 +2,18 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { CATEGORY_ORDER } from '../journal/curation';
+import { CATEGORY_ORDER, categoryLabel } from '../journal/curation';
 import { KIT_FREE_CHAPTER_URL } from './site-data';
 
 // ONE navigation for the whole site, every page, light or dark.
-// Main: Home | About Me | Book | Podcast | Journal | Media | Shop | The Velvet Letter
+// Main: Home | About Me | Book | Podcast | Journal | Media | Shop
 // Each main page has a drop-down of its sections (Jen, November 3: "so people
 // can jump straight to the sections they want"). The section links point at
 // ids on those pages; if you rename or remove a section, update its link here.
+// Simplified (Nov 2026): The Velvet Letter lives in the Book drop-down (it comes
+// with the book; the QR code in the book goes straight to /velvet), About the
+// Author sits with Media and the press kit, Film and documentary is only under
+// Media, and each link appears once.
 // Everything else (Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors,
 // Contact, Free First Chapter, The Forever Angels) is also in the footer, the
 // same on every page. See SiteFooter.js.
@@ -26,21 +30,21 @@ const MENU = [
       { href: '/about', label: 'About me' },
       { href: '/about#gallery', label: 'Photos' },
       { href: '/about#forever-angels', label: 'Giving back' },
-      { href: '/about-the-author', label: 'About the Author' },
     ],
   },
   {
     id: 'book',
     href: '/book',
     label: 'Book',
+    also: ['/velvet'],
     items: [
       { href: '/book', label: 'Get the book' },
       // Jen, November 3: the free first chapter belongs in the main menu.
       { href: KIT_FREE_CHAPTER_URL, label: 'Get the first chapter free' },
       { href: '/book#trailer', label: 'Watch the trailer' },
       { href: '/book#who', label: 'Who this book is for' },
-      { href: '/media#film', label: 'Film and documentary' },
       { href: '/book#reviews', label: 'Leave a review' },
+      { href: '/velvet', label: 'The Velvet Letter', icon: 'key' },
     ],
   },
   {
@@ -61,7 +65,7 @@ const MENU = [
       { href: '/journal', label: 'All posts' },
       ...CATEGORY_ORDER.map((category) => ({
         href: `/journal?category=${encodeURIComponent(category)}`,
-        label: category,
+        label: categoryLabel(category),
       })),
     ],
   },
@@ -69,6 +73,7 @@ const MENU = [
     id: 'media',
     href: '/media',
     label: 'Media',
+    also: ['/about-the-author', '/contact'],
     alignEnd: true,
     items: [
       { href: '/media#film', label: 'Film and documentary' },
@@ -76,6 +81,7 @@ const MENU = [
       { href: '/media#interviews', label: 'Interviews and appearances' },
       { href: '/media#speaking', label: 'Speaking' },
       { href: '/media#press-kit', label: 'Press kit and photos' },
+      { href: '/about-the-author', label: 'About the Author' },
       { href: '/contact', label: 'Contact' },
     ],
   },
@@ -88,7 +94,7 @@ const MENU = [
       { href: '/shop#signed-copy', label: 'Signed copy' },
       { href: '/shop#velvet-circle', label: 'The Velvet Circle Book Club' },
       { href: '/shop#bookmark', label: 'The Signature Velvet Bookmark' },
-      { href: '/shop#velvet-circle-faq', label: 'Questions, answered' },
+      { href: '/shop#velvet-circle-faq', label: 'Book Club FAQs' },
     ],
   },
 ];
@@ -105,6 +111,16 @@ function Caret() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
       <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// The Velvet Letter's small gold key, kept on its menu link.
+function Key() {
+  return (
+    <svg className="nav-key" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="8.2" cy="8.2" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M11.6 11.2 L20 19.2 M15.6 16.4 L18.4 19.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   );
 }
@@ -201,7 +217,10 @@ export default function SiteNav({ homeHref = '/' }) {
 
         <div id="nav-links" className={`nav-links${open ? ' open' : ''}`}>
           {MENU.map((link) => {
-            const current = isCurrent(pathname, link.href) ? 'page' : undefined;
+            const current =
+              isCurrent(pathname, link.href) || (link.also || []).some((href) => isCurrent(pathname, href))
+                ? 'page'
+                : undefined;
             if (!link.items) {
               return (
                 <a key={link.href} href={link.home ? homeHref : link.href} aria-current={current} onClick={close}>
@@ -234,25 +253,16 @@ export default function SiteNav({ homeHref = '/' }) {
                 <ul id={`nav-sub-${link.id}`} className="nav-sub" hidden={!expanded}>
                   {link.items.map((item) => (
                     <li key={item.href}>
-                      <a href={item.href} onClick={close}>{item.label}</a>
+                      <a href={item.href} onClick={close} className={item.icon === 'key' ? 'nav-velvet' : undefined}>
+                        {item.icon === 'key' ? <Key /> : null}
+                        {item.label}
+                      </a>
                     </li>
                   ))}
                 </ul>
               </div>
             );
           })}
-          <a
-            href="/velvet"
-            className="nav-velvet"
-            aria-current={isCurrent(pathname, '/velvet') ? 'page' : undefined}
-            onClick={close}
-          >
-            <svg className="nav-key" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="8.2" cy="8.2" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.7" />
-              <path d="M11.6 11.2 L20 19.2 M15.6 16.4 L18.4 19.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-            </svg>
-            The Velvet Letter
-          </a>
           {/* Phones: the free first chapter sits at the bottom of the menu as a
               button. On a laptop it is in the Book drop-down. */}
           <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary nav-chapter" onClick={close}>

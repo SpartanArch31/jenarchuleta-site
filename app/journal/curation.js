@@ -13,6 +13,12 @@ export const CATEGORY_ORDER = [
   'Podcast',
 ];
 
+// What a category is called in the menu and on the Journal's filter row. The
+// category itself (in Sanity and in links) keeps its name. "Podcast Posts"
+// tells visitors these are articles, not the episodes (Nov 2026).
+export const CATEGORY_LABELS = { Podcast: 'Podcast Posts' };
+export const categoryLabel = (category) => CATEGORY_LABELS[category] || category;
+
 // Categories that live on their own page, not in the Journal (Jen, November 3:
 // Pups of the Podcast repeated in the Journal). Their posts stay live at their
 // own URLs, and /pups links to them ("Read more"). Nothing is deleted.

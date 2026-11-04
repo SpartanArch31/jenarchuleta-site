@@ -30,6 +30,7 @@ section { padding-block: var(--section-y); }
                color: var(--text-secondary); text-transform: uppercase; font-size: .78rem; letter-spacing: .14em; }
 .nav-links a:hover { color: var(--accent-ink); text-decoration: none; }
 .nav-velvet { display: inline-flex; align-items: center; gap: 6px; }
+.nav-sub a.nav-velvet { display: flex; gap: 8px; }
 .nav-key { width: 14px; height: 14px; color: #BE9543; flex: 0 0 auto; }
 .nav-links a[aria-current="page"] { color: var(--accent-ink); box-shadow: inset 0 -1px 0 var(--accent); }
 .nav-toggle { display: none; }
