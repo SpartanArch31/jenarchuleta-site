@@ -8,6 +8,7 @@ import { urlFor } from '../../sanity/image';
 import { getPostBySlug, getAllSlugs } from '../../sanity/queries';
 import { POSTS as FALLBACK_POSTS, getPost as getFallbackPost } from '../_posts';
 import { isRetiredHref, prepareJournalBody } from '../repair-body.mjs';
+import { photoAlt } from '../photo-alt';
 
 // Render each post from the published Sanity document on the request.
 // These routes were static ISR. The first view after a publish still received
@@ -81,7 +82,7 @@ const isExternal = (href) =>
 const ptComponents = {
   types: {
     image: ({ value }) => (
-      <img src={urlFor(value).width(1100).url()} alt={value?.alt || ''} style={{ width: '100%', borderRadius: 'var(--radius-lg)', margin: '20px 0' }} />
+      <img src={urlFor(value).width(1100).url()} alt={photoAlt(value)} style={{ width: '100%', borderRadius: 'var(--radius-lg)', margin: '20px 0' }} />
     ),
   },
   marks: {
@@ -114,7 +115,7 @@ export default async function JournalPost({ params }) {
           <div className="meta">{formatDate(post.publishedAt)}</div>
         </div>
 
-        {hero && <img className="article-hero" src={hero} alt="" />}
+        {hero && <img className="article-hero" src={hero} alt={photoAlt(post.heroImage, post.title)} />}
 
         <div className="article-body">
           {bodyIsStrings

@@ -4,6 +4,7 @@ import SiteFooter from '../components/SiteFooter';
 import CategorySelect from './CategorySelect';
 import JournalBrowser from './JournalBrowser';
 import { urlFor } from '../sanity/image';
+import { photoAlt } from './photo-alt';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
 import { CATEGORY_ORDER, categoryLabel, curatePosts } from './curation';
@@ -83,6 +84,7 @@ export default async function JournalPage({ searchParams }) {
     category: p.category || '',
     kicker: `${p.category} · ${formatDate(p.publishedAt)}`,
     img: heroUrl(p.heroImage),
+    imgAlt: p.heroImage ? photoAlt(p.heroImage, p.title) : '',
   }));
   const showAllParams = new URLSearchParams();
   if (showArchive) showAllParams.set('view', 'archive');
