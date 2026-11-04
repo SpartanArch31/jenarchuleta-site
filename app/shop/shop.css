@@ -154,6 +154,77 @@
   margin: 0;
 }
 
+/* Price + what it really costs (Adam, Nov 3): the total, then the breakdown. */
+.shop-page .price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.shop-page .price-unit {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-s);
+  font-weight: var(--w-medium);
+  color: var(--text-secondary);
+  margin-left: 2px;
+}
+.shop-page .price-note {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* "What you get now" / "Starting once 13 paying members join" */
+.shop-page .offer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.shop-page .offer-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-meta);
+  font-weight: var(--w-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin: 4px 0 0;
+}
+
+/* Bookmark details: Size / Packaging / Ships */
+.shop-page .offer-facts {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+.shop-page .offer-facts > div {
+  display: grid;
+  grid-template-columns: 6.25rem 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+.shop-page .offer-facts dt {
+  font-family: var(--font-sans);
+  font-size: var(--text-meta);
+  font-weight: var(--w-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.shop-page .offer-facts dd {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-body-s);
+  line-height: var(--leading-body);
+}
+
+/* Links inside the offer copy (the question email, the FAQ link) read as links. */
+.shop-page .product-list a,
+.shop-page .fulfill a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .shop-page .product-desc {
   color: var(--text-secondary);
   font-size: var(--text-body-s);
@@ -188,6 +259,12 @@
   letter-spacing: 0.02em;
   color: var(--text-secondary);
   margin: 0;
+}
+/* The signed copy's "Personally signed and personalized..." line: the promise
+   people most need before ordering, so it reads at body size in full ink. */
+.shop-page .fulfill--key {
+  font-size: var(--text-body-s);
+  color: var(--text);
 }
 
 /* CTA pinned to the card bottom so the two cards' buttons align */

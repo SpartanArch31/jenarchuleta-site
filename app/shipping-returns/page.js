@@ -1,7 +1,7 @@
 import '../legal-pages.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import { STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
+import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
 
 export const metadata = {
   title: 'Shipping & Returns',
@@ -9,6 +9,8 @@ export const metadata = {
 };
 
 const EFFECTIVE_DATE = 'July 23, 2026';
+// Shipping costs, ship times, and how members send questions spelled out (Nov 3).
+const UPDATED_DATE = 'November 3, 2026';
 const CONTACT_EMAIL = 'jen@jenarchuleta.com';
 
 export default function ShippingReturnsPage() {
@@ -22,14 +24,16 @@ export default function ShippingReturnsPage() {
         <div className="legal-head">
           <div className="eyebrow">Legal</div>
           <h1>Shipping &amp; Returns</h1>
-          <p className="legal-updated">Effective {EFFECTIVE_DATE}</p>
+          <p className="legal-updated">Effective {EFFECTIVE_DATE}. Updated {UPDATED_DATE}.</p>
         </div>
 
         <div className="legal-body">
           <h2>Signed copies of the book</h2>
           <p>
-            Each signed copy is personalized and signed by hand by Jen, one at a time. Please allow
-            2&ndash;3 weeks for your order to ship. Orders currently ship within the United States only.
+            Each signed copy is personalized and signed by hand by Jen, one at a time. A signed copy
+            is {SHOP.signedBookPrice} plus {SHOP.signedBookShipping} shipping, {SHOP.signedBookTotal} total.
+            Please allow 2&ndash;3 weeks before your book ships. Orders currently ship within the
+            United States only.
             Because each book is personalized to your order, we&rsquo;re unable to accept returns for a
             change of mind, but if your book arrives damaged or defective, contact us within 14 days at{' '}
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> with a photo, and we&rsquo;ll make it
@@ -38,17 +42,21 @@ export default function ShippingReturnsPage() {
 
           <h2>The Signature Velvet Bookmark</h2>
           <p>
-            Each bookmark is handmade in small batches, and no two are exactly alike. Once a batch is
-            available for purchase, the same damaged/defective policy above applies. Because these are
-            handmade, one-of-a-kind pieces, all other sales are final.
+            Each bookmark is handmade in small batches, and no two are exactly alike. The{' '}
+            {SHOP.bookmarkPrice} price includes shipping, and we ship to US addresses only.
+            {SHOP.bookmarkShips ? ` Bookmarks ship ${SHOP.bookmarkShips}.` : ''} If your bookmark
+            arrives damaged or defective, the same policy above applies. Because these are handmade,
+            one-of-a-kind pieces, all other sales are final.
           </p>
 
           <h2>The Velvet Circle Book Club</h2>
           <p>
             The Velvet Circle Book Club is a recurring monthly subscription billed at $9.99/month until
-            you cancel. Members receive a one-page discussion guide for the book and can send me their
-            questions about the book and my experiences, up to 3 a month, and I&rsquo;ll answer every
-            one personally in writing. Monthly group Zoom conversations begin once 13 active paying
+            you cancel. Members receive a one-page discussion guide for the book, emailed after they
+            join, and can email me their questions about the book and my experiences at{' '}
+            <a href={`mailto:${SHOP.velvetCircleQuestionsEmail}`}>{SHOP.velvetCircleQuestionsEmail}</a>,
+            up to 3 a month, and I&rsquo;ll answer every one personally in writing. Monthly group Zoom
+            conversations begin once 13 active paying
             members have joined; until then, membership is the discussion guide and the written
             answers. The membership does not include a signed book, the bookmark, bunny ears, or any
             other physical item. You can cancel anytime before your next billing date to avoid being charged for

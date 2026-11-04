@@ -8,7 +8,7 @@
 > break; Cursor also loads `.cursor/rules/jen-site.mdc`. Jen makes her own changes with
 > Cursor: branch, pull request, check the preview, merge (Nov 2026).
 
-_Last updated: 2026-11-03, evening (About Me in Jen's words, About the Author page, gallery of 19, nothing repeated, no em dashes)._
+_Last updated: 2026-11-03, night (Shop: every offer says what you get, the total price, and when it ships or starts). Before that, same evening: About Me in Jen's words, About the Author page, gallery of 19, nothing repeated, no em dashes._
 
 ## ⭐ Jen's standing rules from November 3 (evening). Read before writing any copy.
 
@@ -109,6 +109,24 @@ the newer features she likes. Before changing structure, re-read this section.
   The Velvet Circle is explained (with an FAQ) before anyone subscribes; never promise monthly
   Zooms as an immediate benefit. The Be the Bumblebee T-shirt (Etsy, `SHOP.etsyTee`) sits in a
   separate "And a little more" spot below the products, never among them.
+  - **Every card says what you get, the real price, and when it ships or starts (Adam, Nov 3,
+    2026).** The Shop, the Stripe checkouts, and Shipping & Returns say the same thing:
+    - **Signed copy:** shown as the TOTAL, "$41.99 total" with "$35 book + $6.99 shipping, US
+      only" under it (`signedBookTotal`, `signedBookPrice`, `signedBookShipping`). The line is
+      exactly "Personally signed and personalized. Please allow 2–3 weeks before your book
+      ships." (`signedBookLeadTime`; the Stripe checkout shows it too). The Book page's buy box
+      says "Signed by Jen, $41.99 with shipping".
+    - **Book club:** "What you get now" (the one-page discussion guide, emailed after joining;
+      up to three questions a month answered in writing, emailed to
+      `SHOP.velvetCircleQuestionsEmail`, jen@jenarchuleta.com) and "Starting once 13 paying
+      members join" (monthly group Zooms). Never promise monthly live meetings or replays as
+      current, on the site or in Stripe, until they are actually running. When the Zooms
+      start, update the card, the FAQ, Shipping & Returns, AND the Stripe product description
+      and checkout text together.
+    - **Bookmark:** $24.99, free shipping, US only (`bookmarkShipping`). Size, packaging, and
+      when it ships come from `bookmarkSize`, `bookmarkPackaging`, `bookmarkShips` in
+      `site-data.js`; each line shows only once it's filled in. Use Jen's real answers, never a
+      guess.
 - **Journal:** categories in Jen's order are in `app/journal/curation.js`. Repetitive
   promotional posts are ARCHIVED there (hidden from the feed, listed under Archive, still live
   at their URLs). Pup of the Podcast posts are off the Journal (`OFF_JOURNAL_CATEGORIES`, Jen,
@@ -370,12 +388,13 @@ never land on Kit's own checkout page.
 Current products (verify against `VELVET-CIRCLE-COMMERCE-STATUS.md` before trusting these —
 that file is updated more frequently than this one):
 - **Signed Copy** — $41.99 total ($35 + $6.99 shipping) — Stripe Payment Link, live.
-- **Velvet Circle Membership** — $9.99/month — Stripe Payment Link. Cancel link is
+- **The Velvet Circle Book Club** (Stripe product renamed from "Velvet Circle Membership" on
+  Nov 3, 2026) — $9.99/month — Stripe Payment Link. Cancel link is
   `STRIPE_CUSTOMER_PORTAL_URL` (capital I in the Stripe login id). It is on the shop
   membership card, the Velvet gate, and Shipping & Returns.
 - **The Backstage Bundle** — removed Nov 3, 2026 (Jen: one book-club offer). It never had a
   Stripe link.
-- **Signature Velvet Bookmark** — $24.99, Stripe Payment Link.
+- **Signature Velvet Bookmark** — $24.99, shipping included, US only — Stripe Payment Link.
 
 The Stripe→Kit→Google Sheets automation (tagging buyers in Kit, logging orders to a Google
 Sheet fulfillment tracker) is built and maintained in a separate Make.com scenario, not in

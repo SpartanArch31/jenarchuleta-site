@@ -1,6 +1,5 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import { VELVET_CIRCLE_PERKS } from '../components/VelvetCirclePanel';
 import { OG_IMAGE, SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
 import './shop.css';
 
@@ -31,7 +30,23 @@ function TrustLine({ note = 'Secure checkout. Stripe, Apple Pay, Google Pay' }) 
   );
 }
 
+const capitalize = (text) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
+
+// The book club's question inbox, with a subject line so Jen can spot member questions.
+function QuestionsEmail() {
+  const email = SHOP.velvetCircleQuestionsEmail;
+  return <a href={`mailto:${email}?subject=Velvet%20Circle%20question`}>{email}</a>;
+}
+
 export default function ShopPage() {
+  // Bookmark details (Adam, Nov 3: size, packaging, when it ships). A line only
+  // shows once its value is filled in, in SHOP (site-data.js).
+  const bookmarkFacts = [
+    ['Size', SHOP.bookmarkSize],
+    ['Packaging', SHOP.bookmarkPackaging],
+    ['Ships', capitalize(SHOP.bookmarkShips)],
+  ].filter(([, value]) => value);
+
   return (
     <div className="shop-page">
       <SiteNav />
@@ -49,8 +64,10 @@ export default function ShopPage() {
           </p>
         </div>
 
+        {/* Every card answers the same three things (Adam, Nov 3): what you get, the
+            real price with shipping, and when it ships or starts. */}
         <div className="product-grid">
-          {/* SIGNED BOOK */}
+          {/* SIGNED BOOK: priced as the total, $35 + $6.99 shipping. */}
           <article className="product-card" id="signed-copy">
             <div className="product-media product-media--contain">
               {SHOP.signedBookSoldOut && <span className="badge">Sold out. Restocking soon.</span>}
@@ -60,14 +77,21 @@ export default function ShopPage() {
               />
             </div>
             <div className="product-body">
-              <div className="eyebrow">The Book · Signed &amp; Personalized</div>
+              <div className="eyebrow">The Book</div>
               <h3>Signed copy, <em>Beyond the Velvet Ropes</em></h3>
-              <p className="price">{SHOP.signedBookPrice}</p>
+              <div className="price-block">
+                <p className="price">
+                  {SHOP.signedBookTotal} <span className="price-unit">total</span>
+                </p>
+                <p className="price-note">
+                  {SHOP.signedBookPrice} book + {SHOP.signedBookShipping} shipping, US only
+                </p>
+              </div>
               <p className="product-desc">
-                Signed by me, with a note to whoever you’d like. You, or someone
-                who needs to hear that their story isn’t over.
+                For you, or for someone who needs to hear that their story isn’t over. At
+                checkout, tell me who to make it out to.
               </p>
-              <p className="fulfill">
+              <p className="fulfill fulfill--key">
                 {SHOP.signedBookSoldOut ? SHOP.signedBookSoldOutNote : SHOP.signedBookLeadTime}
               </p>
               <div className="product-cta">
@@ -93,7 +117,11 @@ export default function ShopPage() {
               bundle links land on this card.
               Photo (Jen, November 3): the Velvet Circle group photo, with her REAL
               cover now on every book (the first version showed a made-up cover), and
-              the round Velvet Circle logo in the corner. */}
+              the round Velvet Circle logo in the corner.
+              What it promises (Adam, Nov 3): what members get NOW, how to send
+              questions, and that the Zooms start at 13 paying members. Never promise
+              monthly live meetings or replays as current, here or in Stripe, until
+              they are actually running. */}
           <article className="product-card" id="velvet-circle">
             <span id="backstage-bundle" />
             <span id="backstage-box" />
@@ -109,13 +137,31 @@ export default function ShopPage() {
             <div className="product-body">
               <div className="eyebrow">Monthly Book Club</div>
               <h3>The Velvet Circle Book Club</h3>
-              <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
-              <ul className="product-list">
-                {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
-              </ul>
+              <div className="price-block">
+                <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
+                <p className="price-note">Billed monthly. Cancel anytime.</p>
+              </div>
               <p className="product-desc">
-                My private book club for readers of <em>Beyond the Velvet Ropes</em>.{' '}
-                <a href="#velvet-circle-faq">How it works</a>
+                My private book club for readers of <em>Beyond the Velvet Ropes</em>.
+              </p>
+              <div className="offer-group">
+                <p className="offer-label">What you get now</p>
+                <ul className="product-list">
+                  <li>A one-page discussion guide for the book, emailed to you after you join.</li>
+                  <li>
+                    Up to three questions a month about the book and my experiences, answered
+                    personally by me, in writing. Email them to <QuestionsEmail />.
+                  </li>
+                </ul>
+              </div>
+              <div className="offer-group">
+                <p className="offer-label">Starting once 13 paying members join</p>
+                <ul className="product-list">
+                  <li>Monthly group Zoom conversations with me.</li>
+                </ul>
+              </div>
+              <p className="fulfill">
+                <a href="#velvet-circle-faq">Book Club FAQs</a>
               </p>
               <div className="product-cta">
                 {SHOP.velvetCircleMembership ? (
@@ -132,7 +178,7 @@ export default function ShopPage() {
             </div>
           </article>
 
-          {/* SIGNATURE VELVET BOOKMARK */}
+          {/* SIGNATURE VELVET BOOKMARK: $24.99, shipping included, US only. */}
           <article className="product-card" id="bookmark">
             <div className="product-media product-media--contain">
               {!SHOP.bookmark && <span className="badge">First drop, coming soon</span>}
@@ -145,7 +191,10 @@ export default function ShopPage() {
             <div className="product-body">
               <div className="eyebrow">Handmade Keepsake</div>
               <h3>The Signature Velvet Bookmark</h3>
-              <p className="price">{SHOP.bookmarkPrice}</p>
+              <div className="price-block">
+                <p className="price">{SHOP.bookmarkPrice}</p>
+                <p className="price-note">{SHOP.bookmarkShipping}</p>
+              </div>
               <p className="product-desc">
                 Black velvet with gold detailing, a vintage-style key pressed into a
                 burgundy wax seal, and a gold heart engraved with a reminder I believe
@@ -153,6 +202,16 @@ export default function ShopPage() {
                 time. <strong>Every story is different. Every key is different, so no
                 two are ever alike.</strong>
               </p>
+              {bookmarkFacts.length > 0 && (
+                <dl className="offer-facts">
+                  {bookmarkFacts.map(([label, value]) => (
+                    <div key={label}>
+                      <dt>{label}</dt>
+                      <dd>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
               <p className="fulfill">Made in small batches · every piece one of a kind</p>
               <div className="product-cta">
                 {SHOP.bookmark ? (
@@ -186,7 +245,7 @@ export default function ShopPage() {
         </p>
       </section>
 
-      {/* AND A LITTLE MORE: the Be the Bumblebee tee, kept apart from the four main
+      {/* AND A LITTLE MORE: the Be the Bumblebee tee, kept apart from the main
           products (Jen, Oct 28). It sells on Etsy, so it links out. */}
       <section className="wrap shop-more" style={{ paddingTop: 0 }}>
         <div className="center">
@@ -214,19 +273,27 @@ export default function ShopPage() {
           <h2>Questions, answered.</h2>
         </div>
         <details>
-          <summary>What do members receive?</summary>
+          <summary>What do members get right now?</summary>
           <p>
-            The Velvet Circle Book Club is my private book club for readers of <em>Beyond the Velvet
-            Ropes</em>. Members get a one-page discussion guide for the book, and you can send me your questions
-            about the book and my experiences, up to three a month. I answer every one personally, in
-            writing.
+            Two things: a one-page discussion guide for <em>Beyond the Velvet Ropes</em>, which I
+            email to you after you join, and my personal answers to your questions, in writing, up
+            to three a month.
+          </p>
+        </details>
+        <details>
+          <summary>How do I send my questions?</summary>
+          <p>
+            Email them to <QuestionsEmail /> from the email address you joined with, so I know
+            it’s you. Ask me about the book or my experiences, up to three questions a month. I
+            answer every one personally, in writing.
           </p>
         </details>
         <details>
           <summary>When do the Zoom conversations begin?</summary>
           <p>
-            Once 13 active paying members have joined, I’ll begin monthly group Zoom conversations.
-            Until then, membership is the discussion guide and my written answers.
+            Once 13 paying members have joined, I’ll begin monthly group Zoom conversations and
+            email every member the details. Until then, membership is the discussion guide and my
+            written answers.
           </p>
         </details>
         <details>

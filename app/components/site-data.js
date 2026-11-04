@@ -94,9 +94,16 @@ export const SHOP = {
   etsyTee: 'https://www.etsy.com/listing/4321696666/be-the-bumblebee-unisex-classic-tee',
   foreverAngels: 'https://theforeverangels.com/',
 
+  // SIGNED COPY. The Shop leads with the TOTAL (Adam, Nov 3): $35 book + $6.99
+  // shipping = $41.99. These must match the Stripe Payment Link, and Make.com
+  // routes signed-copy sales on the Stripe total (4199), so a price or shipping
+  // change in Stripe needs the Make route and these three lines changed too.
   signedBook: 'https://buy.stripe.com/3cI5kC0vVf9n1UDewads405',
   signedBookPrice: '$35',
-  signedBookLeadTime: 'Signed by hand, one at a time. Please allow 2–3 weeks.',
+  signedBookShipping: '$6.99',
+  signedBookTotal: '$41.99',
+  // Adam's exact wording (Nov 3). The Stripe checkout shows the same line.
+  signedBookLeadTime: 'Personally signed and personalized. Please allow 2–3 weeks before your book ships.',
 
   // SOLD OUT SWITCH — flip to false to put signed copies back on sale.
   // NOTE: `signedBook` above is deliberately left populated. The printed
@@ -108,6 +115,19 @@ export const SHOP = {
   bookmark: 'https://buy.stripe.com/4gM4gyfqP1ixbvdewads407',
   bookmarkWaitlist: '',
   bookmarkPrice: '$24.99',
+  // Shipping is included in the $24.99 (Sept 4 decision); Stripe takes US
+  // addresses only.
+  bookmarkShipping: 'Free shipping, US only',
+  // What the customer gets (Adam, Nov 3: "Customers should know exactly what they
+  // are getting"). Each line shows on the Shop card only once it's filled in, so
+  // fill these with Jen's real answers and never a guess:
+  //   bookmarkSize       e.g. 'About 9 x 1 inches, plus the seal'
+  //   bookmarkPackaging  e.g. 'Wrapped in tissue, in a gift box'
+  //   bookmarkShips      a phrase that reads after "Ships", e.g. 'within 3 business days'
+  //                      (Shipping & Returns uses it too: "Bookmarks ship within ...")
+  bookmarkSize: '',
+  bookmarkPackaging: '',
+  bookmarkShips: '',
 
   // VELVET CIRCLE MEMBERSHIP. LIVE as of 2026-08-19. Recurring Stripe Payment
   // Link, $9.99/mo. Self-service cancel uses STRIPE_CUSTOMER_PORTAL_URL.
@@ -115,6 +135,9 @@ export const SHOP = {
   // Do not take the membership live through any checkout that lacks that portal.
   velvetCircleMembership: 'https://buy.stripe.com/6oU3cuemL2mB1UD73Ids406',
   velvetCircleMembershipPrice: '$9.99/month',
+  // Members email their questions here, up to three a month (Shop card, FAQ,
+  // Shipping & Returns, and the Stripe welcome message all say so).
+  velvetCircleQuestionsEmail: 'jen@jenarchuleta.com',
 
   // The Backstage Bundle ($69 one-time) was removed November 3 (Jen: one
   // book-club offer). It never had a Stripe link.
