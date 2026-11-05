@@ -273,6 +273,31 @@ const OCT26 = [
   { src: '/assets/gallery-oct26/tortoise.jpg', alt: 'A tortoise with greens', width: 665, height: 940 },
 ];
 
+// November 4 batch, after OCT26. No captions (Jen). Children's faces and
+// the names on the pajama shirts are blurred; screenshots cropped to the photo.
+const NOV4 = [
+  { src: '/assets/gallery-nov4/nov4-01-christmas-tree.jpg', alt: 'Christmas tree with a ladder', caption: '', width: 1320, height: 1216 },
+  { src: '/assets/gallery-nov4/nov4-02-ivy-fountain.jpg', alt: 'A little girl at an ivy-covered fountain', caption: '', width: 1320, height: 1274 },
+  { src: '/assets/gallery-nov4/nov4-03-christmas-pajamas.jpg', alt: 'Jen Archuleta and her family in matching Christmas pajamas', caption: '', width: 1320, height: 1164 },
+  { src: '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg', alt: 'Five dogs and two tortoises on the grass', caption: '', width: 1102, height: 863 },
+  { src: '/assets/gallery-nov4/nov4-05-ski-gondola.jpg', alt: 'Jen Archuleta with a toddler on a ski gondola', caption: '', width: 1289, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-06-beach-bodyboard.jpg', alt: 'A dad and kids walking to the beach with a yellow bodyboard', caption: '', width: 1320, height: 1165 },
+  { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1263 },
+  { src: '/assets/gallery-nov4/nov4-08-book-signing.jpg', alt: 'Jen Archuleta at her book signing in Boardman', caption: '', width: 1155, height: 876 },
+  { src: '/assets/gallery-nov4/nov4-09-playboy-collage.jpg', alt: 'Collage of Jen Archuleta from Playboy', caption: '', width: 1320, height: 1202 },
+  { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 267 },
+  { src: '/assets/gallery-nov4/nov4-11-beach-bikini.jpg', alt: 'Jen Archuleta on the beach in a coral top and blue bikini', caption: '', width: 365, height: 547 },
+  { src: '/assets/gallery-nov4/nov4-12-bunny-costume.jpg', alt: 'Jen Archuleta in a bunny costume with her husband at a Playboy party', caption: '', width: 1259, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-13-family-ocean.jpg', alt: 'Jen Archuleta and her family in the ocean', caption: '', width: 1063, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-14-hawaii-beach.jpg', alt: 'Jen Archuleta with a friend on a Hawaii beach', caption: '', width: 1275, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-15-red-leather-seat.jpg', alt: 'Jen Archuleta in a red leather seat', caption: '', width: 1600, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-16-ballet-chair.jpg', alt: 'Jen Archuleta on a chair in ballet shoes', caption: '', width: 910, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-17-pink-aprons.jpg', alt: 'Jen Archuleta and a friend in pink aprons', caption: '', width: 1320, height: 1287 },
+  { src: '/assets/gallery-nov4/nov4-18-playboy-lite-red-carpet.jpg', alt: 'Jen Archuleta with Hugh Hefner and a group on the Playboy red carpet', caption: '', width: 612, height: 396 },
+  { src: '/assets/gallery-nov4/nov4-19-magazine-spread-1.jpg', alt: 'Magazine spread of Jen Archuleta and her husband', caption: '', width: 1104, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-20-magazine-spread-2.jpg', alt: 'Magazine spread of Jen Archuleta and her husband on a sofa', caption: '', width: 1200, height: 1600 },
+];
+
 // Childhood portrait. The Hollywood set stays first, so this follows every earlier slide.
 const CHILDHOOD = [
   { src: '/assets/gallery-childhood/jen-childhood.jpg', alt: 'Jen as a girl', width: 552, height: 552 },
@@ -302,7 +327,7 @@ const HIDDEN_SLIDE_SRC = new Set([
 
 // Every photo defined above, in the November 3 order, minus slides Jen had
 // already taken out (HIDDEN_SLIDE_SRC) and the November 5 removals.
-const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...CHILDHOOD]
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).
