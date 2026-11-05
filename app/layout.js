@@ -35,8 +35,8 @@ const hankenGrotesk = Hanken_Grotesk({
 export const metadata = {
   metadataBase: new URL('https://jenarchuleta.com'),
   title: {
-    // No em dashes anywhere, page titles included (Jen, November 3).
-    default: 'Jen Archuleta, Author of Beyond the Velvet Ropes by Jennifer Walcott Archuleta',
+    // Site name only. The book credit stays on the book page and book credit lines.
+    default: 'Jen Archuleta',
     template: '%s, Jen Archuleta',
   },
   description:
@@ -46,13 +46,14 @@ export const metadata = {
     apple: '/assets/app-icon-512.png',
   },
   openGraph: {
-    title: 'Jen Archuleta, Beyond the Velvet Ropes by Jennifer Walcott Archuleta',
+    title: 'Jen Archuleta',
     description: "This isn't the story you think it is. Read the first chapter free.",
     type: 'website',
     images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'Jen Archuleta',
     images: [OG_IMAGE.url],
   },
 };
