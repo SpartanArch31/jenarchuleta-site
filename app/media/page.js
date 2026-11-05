@@ -9,9 +9,9 @@ import { APPEARANCES, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Press, Jen Archuleta' },
+  title: { absolute: 'Press: Beyond the Velvet Ropes, Jen Archuleta' },
   description:
-    'Press, television, film, and speaking.',
+    'Articles, TV and appearances for Beyond the Velvet Ropes.',
 };
 
 // FilmFreeway sits with Leone and Mark. Never publish a representative's
@@ -110,8 +110,8 @@ export default function MediaPage() {
 
       <section id="main-content" className="wrap media-hero media-intro">
         <div>
-          <h1>Press</h1>
-          <p className="media-lead">Articles, television, film, speaking, and how to reach me.</p>
+          <h1>Press: Beyond the Velvet Ropes</h1>
+          <p className="media-lead">Articles, TV and appearances for Beyond the Velvet Ropes</p>
           <MediaCats />
         </div>
       </section>
@@ -226,6 +226,10 @@ export default function MediaPage() {
           <figure>
             <img src="/assets/turbo-ronald-mcdonald.jpg" alt="Jen with her therapy dog Turbo at a group visit" width="1158" height="1164" />
             <figcaption>Turbo doing TDI therapy dog work for Ronald McDonald House</figcaption>
+          </figure>
+          <figure>
+            <img src="/assets/childhelp-wings-podium.jpg" alt="Jen Archuleta speaking at the Childhelp WINGS podium" width="1179" height="1343" />
+            <figcaption>Speaking at Childhelp WINGS</figcaption>
           </figure>
         </div>
         <p className="text-wrap">

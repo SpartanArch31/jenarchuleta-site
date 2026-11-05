@@ -152,3 +152,44 @@
 .tim-work-inner .tim-lead { margin-top: 18px; }
 .tim-work-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 #forever-angels { position: relative; }
+
+/* 20s, Jen's Nov 5 layout: one square photo that opens the slideshow.
+   The square is only the button. Inside, every photo is whole. */
+.twenties-show { width: 100%; }
+.twenties-cover {
+  position: relative; display: block; width: min(100%, 420px); aspect-ratio: 1 / 1;
+  padding: 0; border: 0; border-radius: var(--radius-lg); overflow: hidden; cursor: pointer;
+  box-shadow: var(--shadow); background: var(--surface-alt);
+}
+.twenties-cover img { object-fit: cover; object-position: center; transition: transform .4s ease; }
+.twenties-cover:hover img { transform: scale(1.03); }
+.twenties-cover:focus-visible { outline: 2px solid var(--accent, #BE9543); outline-offset: 4px; }
+.twenties-cover-label {
+  position: absolute; left: 12px; bottom: 12px; padding: 7px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, .92); color: var(--text-primary, #222);
+  font-family: var(--font-sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+}
+.twenties-dialog {
+  width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0;
+  border: 0; background: rgba(12, 10, 9, .94); color: #fff;
+}
+.twenties-dialog::backdrop { background: rgba(12, 10, 9, .94); }
+.twenties-stage {
+  position: relative; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 14px; padding: 56px 12px 20px;
+}
+.twenties-figure { margin: 0; display: flex; align-items: center; justify-content: center;
+  width: 100%; flex: 1 1 auto; min-height: 0; }
+.twenties-figure img {
+  width: auto; height: auto; max-width: min(94vw, 900px); max-height: calc(100dvh - 140px);
+  object-fit: contain; display: block; border-radius: 6px;
+}
+.twenties-preload { position: absolute; width: 1px !important; height: 1px !important; opacity: 0; pointer-events: none; }
+.twenties-controls { display: flex; align-items: center; gap: 22px; font-family: var(--font-sans);
+  font-size: 13px; letter-spacing: .12em; }
+.twenties-controls button, .twenties-close {
+  width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .45);
+  background: transparent; color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+}
+.twenties-close { position: absolute; top: 10px; right: 12px; }
+.twenties-controls button:focus-visible, .twenties-close:focus-visible { outline: 2px solid #BE9543; outline-offset: 3px; }

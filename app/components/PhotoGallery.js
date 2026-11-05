@@ -100,7 +100,7 @@ const HOLLYWOOD = [
     alt: 'With Tommy Lee',
     caption: 'With Tommy Lee',
     width: 960,
-    height: 972,
+    height: 812,
   },
   {
     src: '/assets/gallery-hw/hw_04.jpg',
@@ -286,7 +286,7 @@ const NOV4 = [
   { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1263 },
   { src: '/assets/gallery-nov4/nov4-08-book-signing.jpg', alt: 'Jen Archuleta at her book signing', caption: '', width: 1155, height: 876 },
   { src: '/assets/gallery-nov4/nov4-09-playboy-collage.jpg', alt: 'Collage of Jen Archuleta from Playboy', caption: '', width: 1320, height: 1202 },
-  { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 267 },
+  { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 242 },
   { src: '/assets/gallery-nov4/nov4-11-beach-bikini.jpg', alt: 'Jen Archuleta on the beach in a coral top and blue bikini', caption: '', width: 365, height: 547 },
   { src: '/assets/gallery-nov4/nov4-12-bunny-costume.jpg', alt: 'Jen Archuleta in a bunny costume with her husband at a Playboy party', caption: '', width: 1259, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-13-family-ocean.jpg', alt: 'Jen Archuleta and her family in the ocean', caption: '', width: 1063, height: 1600 },
@@ -312,7 +312,7 @@ const NOV4B = [
   { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 1243 },
   { src: '/assets/gallery-nov4b/nov4b-06-couch-fishburne.jpg', alt: 'Jen Archuleta seated on a couch', caption: '', width: 1242, height: 1188 },
   { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1440 },
-  { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 920, height: 940 },
+  { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 861, height: 940 },
   { src: '/assets/gallery-nov4b/nov4b-09-four-people-beads.jpg', alt: 'Jen Archuleta with friends', caption: '', width: 1040, height: 820 },
   { src: '/assets/gallery-nov4b/nov4b-10-green-top-white-shorts.jpg', alt: 'Jen Archuleta in a green top and white shorts', caption: '', width: 1150, height: 1480 },
   { src: '/assets/gallery-nov4b/nov4b-11-hefner-calendar-signing.jpg', alt: 'Jen Archuleta at a calendar signing', caption: '', width: 930, height: 700 },
@@ -347,9 +347,17 @@ const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/160.jpg',
 ]);
 
+// Photos that were a row on About Me (Jen, Nov 5: Gallery only). Whole files,
+// at the end so the earlier slide numbers stay the same. The black top on the
+// couch and the blonde portrait (jen-glam, new_04) were already slides.
+const FROM_ABOUT = [
+  { src: '/assets/jen-fun2.jpeg', alt: 'Jen Archuleta with a rescue puppy', caption: '', width: 510, height: 512 },
+  { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 1077, height: 887 },
+];
+
 // Every photo defined above, in the November 3 order, minus slides Jen had
 // already taken out (HIDDEN_SLIDE_SRC) and the November 5 removals.
-const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B]
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B, ...FROM_ABOUT]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).
@@ -360,19 +368,26 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-hw/hw_01.jpg',
   '/assets/gallery-new/new_14.jpg',
   '/velvet-carousel/10.jpg',
+  // Jen, Nov 5: one flower photo on About Me. The Childhelp dressing-room
+  // photo (her caption) stays; these flower repeats come out.
+  '/assets/gallery-new/new_09.jpg',
+  '/assets/gallery-new/new_22.jpg',
+  '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg',
+  // ImageCollect watermark is tiled across the painting. It cannot be cropped off without cutting her.
+  '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
 ]);
 
-// Jen's captions (Nov 4), matched by file. Empty means no caption line.
+// Jen's captions (Nov 4; slides 1, 7, 8, and 9 reworded by her Nov 5), matched by file. Empty means no caption line.
 // Photos after the first 88, and any she marked blank or not yet confirmed, stay blank.
 const GALLERY_CAPTIONS = {
-  '/assets/gallery-hw/hw_02.jpg': 'South by Southwest on stage',
+  '/assets/gallery-hw/hw_02.jpg': 'SXSW Austin, on stage',
   '/assets/gallery-hw/hw_03.jpg': 'With Tommy Lee',
   '/assets/gallery-hw/hw_04.jpg': 'With Howard Stern',
   '/assets/gallery-hw/hw_05.jpg': 'With Shaggy',
   '/assets/gallery-hw/hw_06.jpg': 'My Name on the Palms Marquee in Las Vegas',
   '/assets/gallery-hw/hw_07.jpg': 'Swimming with a Dolphin',
-  '/assets/gallery-hw/hw_09.jpg': 'My Bodyguard. Who’s Protecting Who?',
-  '/assets/jen-joy.jpg': 'Just Call Me Snow White',
+  '/assets/gallery-hw/hw_09.jpg': 'My bodyguard. Who’s protecting who?',
+  '/assets/jen-joy.jpg': 'Animals love me. Just call me Snow White.',
   '/velvet-carousel/01.jpg': 'Charity event',
   '/velvet-carousel/02.jpg': 'Modeling photo',
   '/velvet-carousel/03.jpg': 'Photo by Alex Ardenti',
