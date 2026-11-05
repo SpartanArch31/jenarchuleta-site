@@ -39,75 +39,41 @@ export default function BookOffers() {
           <h2>Buy the book here, and find a few other things you might love.</h2>
         </div>
         <div className="product-grid">
-          <article className="product-card" id="velvet-circle">
-            <span id="velvet-circle-faq" />
-            <span id="velvet-circle-details" />
-            <div className="product-media">
-              <img
-                src="/assets/velvet-circle-group.jpg"
-                alt="The Velvet Circle book club, readers in bunny ears with the book"
-                width="1152"
-                height="864"
-              />
-              <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="The Velvet Circle logo, a gold ring of lights" width="436" height="436" />
+          <article className="product-card" id="signed-copy">
+            <div className="product-media product-media--contain">
+              {SHOP.signedBookSoldOut && <span className="badge">Sold out. Restocking soon.</span>}
+              <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" />
             </div>
             <div className="product-body">
-              <div className="eyebrow">Monthly Book Club</div>
-              <h3>The Velvet Circle Book Club</h3>
-              <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
-              <ol className="club-gets">
-                <li>The full discussion sheet</li>
-                <li>Up to three questions a month, answered by Jen</li>
-                <li>A monthly group Zoom once 13 members join</li>
-              </ol>
-              <div className="book-club-peek" id="book-club-guide">
-                <h4 id="book-club-guide-title">From the discussion sheet</h4>
-                <ol>
-                  {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
-                    <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
-                  ))}
-                </ol>
+              <div className="eyebrow">The Book</div>
+              <h3>Signed copy, <em>Beyond the Velvet Ropes</em> by Jennifer Walcott Archuleta</h3>
+              <div className="price-block">
+                <p className="price">
+                  {SHOP.signedBookTotal} <span className="price-unit">total</span>
+                </p>
+                <p className="price-note">
+                  {SHOP.signedBookPrice} book + {SHOP.signedBookShipping} shipping, US only
+                </p>
               </div>
-              <p className="club-note">
-                Cancel anytime.{' '}
-                <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel</a>.
-                {' '}Email questions to <QuestionsEmail />.
+              <p className="product-desc">
+                For you, or for someone who needs to hear that their story isn’t over. At checkout, tell me who to make it out to.
+              </p>
+              <p className="fulfill fulfill--key">
+                {SHOP.signedBookSoldOut ? SHOP.signedBookSoldOutNote : SHOP.signedBookLeadTime}
               </p>
               <div className="product-cta">
-                {SHOP.velvetCircleMembership ? (
-                  <a href={SHOP.velvetCircleMembership} target="_blank" rel="noopener" className="btn btn-primary">
-                    Join the Velvet Circle Book Club
-                  </a>
+                {SHOP.signedBookSoldOut ? (
+                  <span className="btn btn-disabled">Sold out. Restocking soon.</span>
+                ) : SHOP.signedBook ? (
+                  <>
+                    <a href={SHOP.signedBook} target="_blank" rel="noopener" className="btn btn-primary">
+                      Order a signed copy
+                    </a>
+                    <TrustLine />
+                  </>
                 ) : (
                   <span className="btn btn-disabled">Coming soon</span>
                 )}
-              </div>
-            </div>
-          </article>
-
-          <article className="product-card" id="bundle">
-            <span id="backstage-bundle" />
-            <span id="backstage-box" />
-            <div className="product-media product-media--contain">
-              <img
-                src="/assets/backstage-bundle.jpg"
-                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
-                width="1268"
-                height="1600"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">The Bundle</div>
-              <h3>Signed book, bookmark, and bunny ears</h3>
-              <p className="price">{SHOP.bundlePrice}</p>
-              <p className="product-desc">
-                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears, packaged together in a padded gift case. Shipped by regular mail.
-              </p>
-              <div className="product-cta">
-                <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
-                  Buy the bundle
-                </a>
-                <TrustLine />
               </div>
             </div>
           </article>
@@ -155,38 +121,72 @@ export default function BookOffers() {
             </div>
           </article>
 
-          <article className="product-card" id="signed-copy">
+          <article className="product-card" id="bundle">
+            <span id="backstage-bundle" />
+            <span id="backstage-box" />
             <div className="product-media product-media--contain">
-              {SHOP.signedBookSoldOut && <span className="badge">Sold out. Restocking soon.</span>}
-              <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" />
+              <img
+                src="/assets/backstage-bundle.jpg"
+                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
+                width="1268"
+                height="1600"
+              />
             </div>
             <div className="product-body">
-              <div className="eyebrow">The Book</div>
-              <h3>Signed copy, <em>Beyond the Velvet Ropes</em> by Jennifer Walcott Archuleta</h3>
-              <div className="price-block">
-                <p className="price">
-                  {SHOP.signedBookTotal} <span className="price-unit">total</span>
-                </p>
-                <p className="price-note">
-                  {SHOP.signedBookPrice} book + {SHOP.signedBookShipping} shipping, US only
-                </p>
-              </div>
+              <div className="eyebrow">The Bundle</div>
+              <h3>Signed book, bookmark, and bunny ears</h3>
+              <p className="price">{SHOP.bundlePrice}</p>
               <p className="product-desc">
-                For you, or for someone who needs to hear that their story isn’t over. At checkout, tell me who to make it out to.
-              </p>
-              <p className="fulfill fulfill--key">
-                {SHOP.signedBookSoldOut ? SHOP.signedBookSoldOutNote : SHOP.signedBookLeadTime}
+                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears, packaged together in a padded gift case. Shipped by regular mail.
               </p>
               <div className="product-cta">
-                {SHOP.signedBookSoldOut ? (
-                  <span className="btn btn-disabled">Sold out. Restocking soon.</span>
-                ) : SHOP.signedBook ? (
-                  <>
-                    <a href={SHOP.signedBook} target="_blank" rel="noopener" className="btn btn-primary">
-                      Order a signed copy
-                    </a>
-                    <TrustLine />
-                  </>
+                <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
+                  Buy the bundle
+                </a>
+                <TrustLine />
+              </div>
+            </div>
+          </article>
+
+          <article className="product-card" id="velvet-circle">
+            <span id="velvet-circle-faq" />
+            <span id="velvet-circle-details" />
+            <div className="product-media">
+              <img
+                src="/assets/velvet-circle-group.jpg"
+                alt="The Velvet Circle book club, readers in bunny ears with the book"
+                width="1152"
+                height="864"
+              />
+              <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="The Velvet Circle logo, a gold ring of lights" width="436" height="436" />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">Monthly Book Club</div>
+              <h3>The Velvet Circle Book Club</h3>
+              <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
+              <ol className="club-gets">
+                <li>The full discussion sheet</li>
+                <li>Up to three questions a month, answered by Jen</li>
+                <li>A monthly group Zoom once 13 members join</li>
+              </ol>
+              <div className="book-club-peek" id="book-club-guide">
+                <h4 id="book-club-guide-title">From the discussion sheet</h4>
+                <ol>
+                  {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
+                    <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
+                  ))}
+                </ol>
+              </div>
+              <p className="club-note">
+                Cancel anytime.{' '}
+                <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel</a>.
+                {' '}Email questions to <QuestionsEmail />.
+              </p>
+              <div className="product-cta">
+                {SHOP.velvetCircleMembership ? (
+                  <a href={SHOP.velvetCircleMembership} target="_blank" rel="noopener" className="btn btn-primary">
+                    Join the Velvet Circle Book Club
+                  </a>
                 ) : (
                   <span className="btn btn-disabled">Coming soon</span>
                 )}

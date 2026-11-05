@@ -46,8 +46,8 @@ import sizes from '../velvet/slide-sizes.json';
 // then these are out. See OUT_OF_GALLERY.
 // - Old #1, hw_01, the Playboy Rock the Rabbit stage photo.
 // - Old #42, the blurred kids-and-dogs bed photo. That file stays deleted.
-// - Old #61, new_04, the glamour headshot with long highlighted hair. It
-//   stays on the About Me red carpet row. It is not added again here.
+// - The two glamour portraits (jen-glam and new_04) are slides here, not
+//   beside the 20s line. The black coat is not repeated in this slideshow.
 // - gallery-new/new_14.jpg, the beach bodyboard photo. A
 //   "JENNIFER WALCOTT.COM" banner sits over her leg, so it cannot be
 //   cropped off an edge. Left out and flagged.
@@ -64,10 +64,10 @@ import sizes from '../velvet/slide-sizes.json';
 //   add a photo of the children unless Jen supplied that exact file.
 //
 // Out of this slideshow:
-// presskit-headshot-glam (the old home hero). jen-glam, jen-fitness, jen-sultry,
-// and jen-fun2 (the photo row on About, above this slideshow). jen-fun
-// (group of adults, not a dog photo). jen-bw-coat and velvet 07 (the coat
-// is the photo beside "My twenties were something else" as jen-bw-coat2).
+// presskit-headshot-glam (the old home hero). jen-fitness and jen-fun2 stay
+// on the About photo row, above this slideshow. jen-fun (group of adults,
+// not a dog photo). jen-bw-coat and velvet 07 (the coat is the photo above
+// the 20s line, as jen-bw-coat2). That coat is not a slide.
 // 08 and 44 are already out of captions.json. 09 is left out. 24, 25, 26,
 // and 35 (the children) were deleted on November 3. 27 and 45 are dog
 // photos on /pups. 43 is the same Urban Axes outing
@@ -211,7 +211,8 @@ const NOV3 = [
 
 const GALLERY_NEW = [
   { src: '/assets/jen-headshot-bw.jpg', alt: 'Jen Archuleta in a black and white portrait', width: 1320, height: 1946 },
-  { src: '/assets/gallery-new/new_04.jpg', alt: 'Jen Archuleta, glamour portrait', width: 1320, height: 1537 },
+  { src: '/assets/jen-glam.jpg', alt: 'Jen Archuleta, glamour portrait', width: 700, height: 835 },
+  { src: '/assets/gallery-new/new_04.jpg', alt: 'Jen Archuleta, glamour headshot', width: 1320, height: 1537 },
   { src: '/assets/gallery-new/new_05.jpg', alt: 'Jen Archuleta with a friend', width: 1280, height: 1600 },
   { src: '/assets/gallery-new/new_06.jpg', alt: 'Selfie with a friend, both in sunglasses and backward caps', caption: 'Selfie with a friend, both in sunglasses and backward caps', width: 1065, height: 1600 },
   { src: '/assets/gallery-new/new_07.jpg', alt: 'Close-up with a friend making a face, outdoors', caption: 'Close-up with a friend making a face, outdoors', width: 1266, height: 1600 },
@@ -352,14 +353,12 @@ const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...N
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).
-// #1 Playboy stage, #61 glamour headshot (it stays on the About red carpet
-// row), and the bodyboard photo whose watermark cannot be cropped off.
+// #1 Playboy stage, and the bodyboard photo whose watermark cannot be cropped off.
+// The beach dress (velvet-carousel/10.jpg) is not a stand-in on About Me.
 // #42, the blurred kids-and-dogs bed photo, is not in NOV3. Its file is deleted.
 const OUT_OF_GALLERY = new Set([
   '/assets/gallery-hw/hw_01.jpg',
-  '/assets/gallery-new/new_04.jpg',
   '/assets/gallery-new/new_14.jpg',
-  // Shown once under the 20s line on About Me, so it is not also a slide.
   '/velvet-carousel/10.jpg',
 ]);
 

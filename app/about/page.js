@@ -88,9 +88,8 @@ export default function AboutPage() {
       <section id="then" className="tim-wrap tim-then">
         <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         <p className="tim-lead">My 20s were amazing. I saw and did things most people dream about.</p>
-        {/* One modeling photo from the gallery, not used anywhere else on this page.
-            velvet-carousel/10.jpg is left out of the slideshow below. */}
-        <Image className="tim-model" src="/velvet-carousel/10.jpg" alt="Jen Archuleta in a dark green dress on the beach" width={1200} height={1500} sizes="(max-width: 860px) 92vw, 480px" quality={85} />
+        {/* One empty slot for the photo Jen will send. No stand-in image. */}
+        <div className="tim-slot tim-slot--waiting" role="img" aria-label="Photo coming">Photo coming</div>
       </section>
 
       <section className="tim-wrap tim-fun">
