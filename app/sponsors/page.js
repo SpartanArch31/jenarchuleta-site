@@ -12,7 +12,7 @@ export const metadata = {
 // sunsetsandbonfires.com now redirects to the Etsy shop, so that shop is the link.
 // Etsy answers a script with 403; the shop URL is the one she confirmed.
 // Full names. A link is included only when that page itself loads.
-const SPONSORS = [
+export const SPONSORS = [
   {
     name: 'Sunsets & Bonfires',
     links: [

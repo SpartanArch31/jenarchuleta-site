@@ -51,8 +51,10 @@ const MENU = [
     also: ['/pups', '/sponsors'],
     items: [
       { href: '/podcast#episodes', label: 'Buzzsprout episodes' },
-      { href: '/pups', label: 'Pups' },
-      { href: '/sponsors', label: 'Sponsors' },
+      { href: '/podcast#pups', label: 'Pups of the Podcast' },
+      { href: '/pups', label: 'All the pups' },
+      { href: '/podcast#sponsors', label: 'Sponsors' },
+      { href: '/sponsors', label: 'All the sponsors' },
     ],
   },
   { href: '/behind-the-velvet-ropes', label: 'Velvet Letter', key: true },
