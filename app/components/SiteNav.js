@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-// Home, About Me, Book, Press, Journal, Podcast, Velvet Ropes, Thank You.
-// /velvet stays unlisted. Press lives at /media.
+import VelvetKey from './VelvetKey';
+// Home, About Me, Book, Press, Journal, Podcast, Velvet Letter, Thank You.
+// The Velvet Letter item opens /behind-the-velvet-ropes. /velvet stays unlisted.
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.
 // Narrow screens: the hamburger opens the menu, and each arrow opens that
 // page's sections underneath it.
@@ -54,7 +55,7 @@ const MENU = [
       { href: '/sponsors', label: 'Sponsors' },
     ],
   },
-  { href: '/behind-the-velvet-ropes', label: 'Velvet Ropes' },
+  { href: '/behind-the-velvet-ropes', label: 'Velvet Letter', key: true },
   { href: '/thank-you', label: 'Thank You' },
 ];
 
@@ -172,7 +173,14 @@ export default function SiteNav({ homeHref = '/' }) {
                 : undefined;
             if (!link.items) {
               return (
-                <a key={link.href} href={link.home ? homeHref : link.href} aria-current={current} onClick={close}>
+                <a
+                  key={link.href}
+                  href={link.home ? homeHref : link.href}
+                  className={link.key ? 'nav-with-key' : undefined}
+                  aria-current={current}
+                  onClick={close}
+                >
+                  {link.key ? <VelvetKey className="nav-key" /> : null}
                   {link.label}
                 </a>
               );
