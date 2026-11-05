@@ -398,11 +398,6 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   object-fit: contain;
   object-position: center center;
 }
-/* Slide 39, the Halloween party. The file is 1200px wide, so this stays inside the file. */
-.gallery-slide.is-large img {
-  max-width: min(1100px, calc(100cqw - 24px));
-  max-height: min(92vh, 1400px);
-}
 .gallery-meta { grid-area: meta; min-height: 2.6em; }
 .gallery-caption {
   margin: 0;
