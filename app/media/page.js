@@ -3,7 +3,9 @@ import path from 'path';
 import Image from 'next/image';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import KitInlineForm from '../components/KitInlineForm';
 import CopyTextButton from '../components/CopyTextButton';
+import { KIT_FORM_UID, SOCIALS } from '../components/site-data';
 import { APPEARANCES, AS_SEEN_IN, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
@@ -13,10 +15,8 @@ export const metadata = {
     'Interviews, articles, and conversations with Jen Archuleta, plus a short bio and headshots for press.',
 };
 
-// FilmFreeway: Jen asked for her FilmFreeway link (November 3). It is in
-// lib/press.js with the film partners. Do not copy details from that profile
-// onto this site, and never publish a representative's phone number or
-// street address.
+// Film partners are Leone (Steelyard) and Mark (Crash Cat). No FilmFreeway
+// link, and no phone number or email for Mark.
 // Speaking reel and past events: render nothing until Jen supplies them.
 // Boardman News links to the outlet's Facebook post. The article host's
 // certificate is expired, so the card does not point at boardmannews.net.
@@ -68,6 +68,37 @@ const HEADSHOTS = [
 ];
 const PRIMARY = HEADSHOTS.find((shot) => shot.label === 'Candid');
 
+const SPEAKING_TOPICS = [
+  '1) Small-town roots and big dreams',
+  '2) Work ethic and grit',
+  '3) Finding your voice after childhood fear',
+  '4) Healing from assault, trauma, and grief',
+  '5) Bullying, gossip, and self-worth',
+  '6) Drugs and the wake-up call',
+  '7) Body image and feeling ugly',
+  '8) Surviving domestic violence',
+  '9) Rebuilding alone after abuse',
+  '10) Faith, prayer, and second chances',
+  '11) Playboy and the power of sisterhood',
+  '12) Choosing real love and marriage',
+  '13) Pregnancy loss, natural childbirth, and motherhood',
+  '14) Moving from fame to purpose and peace',
+  '15) Giving back through advocacy and adoption',
+  '16) The hidden cost of fame',
+  '17) Finding light, grace, and gratitude',
+  '18) From humble beginnings to financially stable',
+  '19) Barely finishing school, still writing a book',
+  '20) Advocating for kids with CASA and Childhelp',
+  '21) Founding The Forever Angels',
+  '22) Helping animals and rescues',
+];
+
+const MEDIA_SOCIALS = [
+  { label: 'LinkedIn', href: SOCIALS.linkedin },
+  { label: 'X', href: 'https://x.com/jenniferwalcott' },
+  { label: 'TikTok', href: SOCIALS.tiktok },
+];
+
 
 function publicFileExists(rel) {
   return fs.existsSync(path.join(process.cwd(), 'public', rel));
@@ -76,6 +107,8 @@ function publicFileExists(rel) {
 
 export default function MediaPage() {
   const hasPressKit = publicFileExists('press/jen-walcott-archuleta-press-kit.pdf');
+  const tv = APPEARANCES.filter((item) => item.kind === 'TV');
+  const otherAppearances = APPEARANCES.filter((item) => item.kind !== 'TV');
 
   return (
     <div className="media-page">
@@ -108,25 +141,23 @@ export default function MediaPage() {
 
       {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js.
           This is the ONE home for the film news; other pages link to /media#film.
-          FilmFreeway sits right with Leone and Mark (Jen, November 3). */}
+          Leone and Mark only. No FilmFreeway, and no contact details for Mark. */}
       <section id="film" className="wrap text-wrap">
         <h2>Film and documentary</h2>
         <p>{FILM.film}</p>
         <p>{FILM.documentary}</p>
         <p className="media-film-links">
-          {FILM.partners.map((partner) => (
+          {FILM.partners.map((partner, index) => (
             <span key={partner.href}>
+              {index > 0 ? ' · ' : null}
               <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
-              {' · '}
             </span>
           ))}
-          FilmFreeway:{' '}
-          <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
         </p>
       </section>
 
       <section id="press" className="wrap">
-        <h2>Press coverage</h2>
+        <h2>Press articles</h2>
         <div className="media-grid">
           {PRESS.map((item) => (
             <article className="media-card" key={item.href}>
@@ -139,10 +170,10 @@ export default function MediaPage() {
         </div>
       </section>
 
-      <section id="interviews" className="wrap">
-        <h2>Interviews and appearances</h2>
+      <section id="tv" className="wrap">
+        <h2>TV appearances</h2>
         <div className="media-grid">
-          {APPEARANCES.map((item) => (
+          {tv.map((item) => (
             <article className="media-card" key={item.href}>
               <p className="eyebrow">{item.outlet}</p>
               <h3>{item.headline}</h3>
@@ -153,11 +184,44 @@ export default function MediaPage() {
         </div>
       </section>
 
+      {otherAppearances.length ? (
+        <section id="interviews" className="wrap">
+          <h2>Interviews and appearances</h2>
+          <div className="media-grid">
+            {otherAppearances.map((item) => (
+              <article className="media-card" key={item.href}>
+                <p className="eyebrow">{item.outlet}</p>
+                <h3>{item.headline}</h3>
+                <p className="media-meta">{cardMeta(item)}</p>
+                <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel}</a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section id="social" className="wrap">
+        <h2>Social</h2>
+        <ul className="media-socials">
+          {MEDIA_SOCIALS.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section id="speaking" className="wrap text-wrap">
         <h2>Speaking</h2>
         <p>
-          I speak about faith, resilience, and starting over. About surviving hard things and rebuilding.
+          I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
         </p>
+        <h3 className="speak-topics-title">Topics</h3>
+        <ol className="speak-topics">
+          {SPEAKING_TOPICS.map((topic) => (
+            <li key={topic}>{topic}</li>
+          ))}
+        </ol>
         <p>
           <a className="btn btn-primary" href="/contact">Invite me to speak</a>
         </p>
@@ -218,7 +282,12 @@ export default function MediaPage() {
         </p>
       </section>
 
-      <SiteFooter />
+      <section id="letter" className="wrap text-wrap media-signup">
+        <h2>Read the first chapter free.</h2>
+        <KitInlineForm uid={KIT_FORM_UID} />
+      </section>
+
+      <SiteFooter stayClose={false} />
     </div>
   );
 }
