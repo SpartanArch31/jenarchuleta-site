@@ -4,7 +4,7 @@ import VelvetKey from '../components/VelvetKey';
 
 export const metadata = {
   title: 'Velvet Ropes',
-  description: 'Buy the book. The last page holds a QR code and the passcode to a secret Velvet Letter.',
+  description: 'The story doesn’t end on the last page. Find the QR code in the back of the book to unlock a secret Velvet Letter.',
 };
 
 export default function VelvetRopesPage() {
@@ -15,16 +15,9 @@ export default function VelvetRopesPage() {
       <section id="main-content" className="wrap hero">
         <div className="hero-copy">
           <h1>Velvet Ropes</h1>
-          <p>
-            Want to get behind the velvet ropes? Buy the book, because it doesn’t stop there. The last page has a QR code with the passcode to a secret Velvet Letter.
-          </p>
-          <div className="velvet-letter-line">
-            <VelvetKey className="velvet-ropes-key" />
-            <div>
-              <h2>What’s the Velvet Letter?</h2>
-              <p>It’s a secret letter that picks up where the book ends. Buy the book and use the QR code in the back to unlock it.</p>
-            </div>
-          </div>
+          <VelvetKey className="velvet-ropes-key" />
+          <h2>What’s the Velvet Letter?</h2>
+          <p>The story doesn’t end on the last page. Find the QR code in the back of the book to unlock a secret Velvet Letter.</p>
           <p style={{ marginTop: '22px' }}>
             <a className="btn btn-primary" href="/book#buy">Buy the book</a>
           </p>

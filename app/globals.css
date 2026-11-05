@@ -304,10 +304,7 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .foot-links a { font-family: var(--font-sans); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color: var(--text-secondary); }
 .foot-meta { font-family: var(--font-sans); font-size: var(--text-meta); color: var(--text-muted); }
 
-.velvet-ropes-key { width: 28px; height: 28px; color: var(--accent); display: block; flex: 0 0 auto; margin-top: 6px; }
-.velvet-letter-line { display: flex; gap: 14px; align-items: flex-start; margin-top: 28px; }
-.velvet-letter-line h2 { font-size: var(--text-h2); margin: 0 0 8px; }
-.velvet-letter-line p { margin: 0; }
+.velvet-ropes-key { width: 28px; height: 28px; color: var(--accent); display: block; margin: 18px 0 12px; }
 .home-jumps { padding-bottom: var(--space-9); }
 .home-jumps h2 { margin-bottom: 22px; }
 .center { text-align:center; }
