@@ -25,9 +25,7 @@ export default function VelvetRopesPage() {
             </a>
           </p>
           <p className="foot-meta" style={{ marginTop: '16px' }}>No passcode yet? Buy the book to find it.</p>
-          <p style={{ marginTop: '10px' }}>
-            <a className="btn btn-ghost" href="/book#buy">Buy the book</a>
-          </p>
+          {/* Adam, Nov 5: no Buy the book button here. */}
           {/* Jen, Nov 5: one line for audiobook buyers. Never put the companion's password on the site. */}
           <p className="foot-meta" style={{ marginTop: '22px' }}>Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
         </div>
