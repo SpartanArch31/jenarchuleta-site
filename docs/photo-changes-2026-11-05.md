@@ -73,7 +73,7 @@ The phone black bars and the home-indicator line were cropped off `childhelp-sta
 
 ## My 20s carousel
 
-Twelve photos sit in a large carousel under "My 20s were amazing. I saw and did things most people dream about." The black coat stays once, above that line, and is not a slide. The phone Crop button was cropped off the black turtleneck. The empty black area was cropped off the bottom of the Playboy race car. Heads were not cropped. No other photo was changed. The archive had no 08 or 10.
+Twelve photos sit in a still collage under Jen's two 20s paragraphs. The black coat stays once, above that text, and is not a slide. The dark carousel frame is gone. The phone Crop button was cropped off the black turtleneck. The empty black area was cropped off the bottom of the Playboy race car. Heads were not cropped. No other photo was changed. The archive had no 08 or 10.
 
 The MuscleMag swimsuit cover and the Holistic Health cover are in the main gallery, full and uncropped.
 

@@ -91,81 +91,36 @@
   aspect-ratio: 3 / 4;
   border-style: dashed;
 }
-/* 20s carousel. One large photo at a time, whole, on a dark mat. */
-.twenties-carousel { padding: 4px var(--gutter) clamp(28px, 5vw, 48px); }
-.twenties-stage {
-  position: relative;
+/* 20s collage. Every photo is visible at once, at its own ratio. No dark mat. */
+.tim-then-copy { max-width: 40rem; }
+.tim-then-copy .tim-lead { max-width: none; }
+.twenties-collage {
   display: grid;
-  grid-template-columns: 46px minmax(0, 1fr) 46px;
-  align-items: center;
-  gap: clamp(8px, 2vw, 18px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
   max-width: 1180px;
   margin: 0 auto;
+  padding: 4px var(--gutter) clamp(28px, 5vw, 48px);
+  background: transparent;
 }
-.twenties-frame {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--espresso);
-  border: 1px solid var(--gold);
-  padding: 8px;
-  line-height: 0;
-  min-height: 220px;
-  touch-action: pan-y;
-}
-.twenties-frame img {
-  display: block;
-  width: auto;
+.twenties-collage figure { margin: 0; min-width: 0; }
+.twenties-collage .is-wide { grid-column: span 2; }
+.twenties-collage img {
+  width: 100%;
   height: auto;
-  max-width: min(1040px, 100%);
-  max-height: min(78vh, 880px);
   object-fit: contain;
   object-position: center center;
-}
-.twenties-arrow {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(34, 28, 24, 0.14);
-  background: rgba(251, 247, 239, 0.92);
-  color: var(--ink);
-  cursor: pointer;
-}
-.twenties-arrow svg { width: 22px; height: 22px; }
-.twenties-arrow:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.twenties-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 2px; margin-top: 12px; }
-.twenties-dot {
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-.twenties-dot::after {
-  content: '';
   display: block;
-  width: 8px;
-  height: 8px;
-  margin: 10px auto;
-  border-radius: 50%;
-  background: var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: transparent;
 }
-.twenties-dot.is-active::after { background: var(--gold); }
-@media (max-width: 700px) {
-  .twenties-stage { grid-template-columns: 1fr; }
-  .twenties-arrow {
-    position: absolute;
-    top: 50%;
-    z-index: 2;
-    transform: translateY(-50%);
-  }
-  .twenties-prev { left: 8px; }
-  .twenties-next { right: 8px; }
-  .twenties-frame img { max-width: calc(100vw - 32px); max-height: 72vh; }
+@media (max-width: 800px) {
+  .twenties-collage { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .twenties-collage { grid-template-columns: 1fr; }
+  .twenties-collage .is-wide { grid-column: auto; }
 }
 
 /* Whole portrait. A fixed 520px cover frame was cutting the coat. */
