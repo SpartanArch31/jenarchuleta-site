@@ -91,38 +91,6 @@
   aspect-ratio: 3 / 4;
   border-style: dashed;
 }
-/* 20s collage. Every photo is visible at once, at its own ratio. No dark mat. */
-.tim-then-copy { max-width: 40rem; }
-.tim-then-copy .tim-lead { max-width: none; }
-.twenties-collage {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  align-items: start;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 4px var(--gutter) clamp(28px, 5vw, 48px);
-  background: transparent;
-}
-.twenties-collage figure { margin: 0; min-width: 0; }
-.twenties-collage .is-wide { grid-column: span 2; }
-.twenties-collage img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: center center;
-  display: block;
-  border-radius: var(--radius-lg);
-  background: transparent;
-}
-@media (max-width: 800px) {
-  .twenties-collage { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 520px) {
-  .twenties-collage { grid-template-columns: 1fr; }
-  .twenties-collage .is-wide { grid-column: auto; }
-}
-
 /* Whole portrait. A fixed 520px cover frame was cutting the coat. */
 .tim-gray { width: 100%; height: auto; object-fit: contain; object-position: center center;
             border-radius: var(--radius-lg); display: block; filter: grayscale(1); box-shadow: var(--shadow); }

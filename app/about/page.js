@@ -3,7 +3,6 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import TwentiesCollage from './TwentiesCollage';
 
 export const metadata = {
   title: 'About Me',
@@ -11,11 +10,12 @@ export const metadata = {
     'Faith, family, and a bunch of rescues. I love fiercely and I protect my peace. I love my husband, my kids and my family with everything I have.',
 };
 
-// About Me, in Jen's own words (November 3, 2026), plus the two 20s paragraphs
-// she sent November 5. Don't add, trim, or reword her sentences, and never use
-// an em dash. The formal bio is its own page, /about-the-author. Photos are
-// shown whole. The kids appear only in Jen's own blurred file
-// (full-house-kids-dogs.jpg).
+// About Me, in Jen's own words (November 3, 2026). One page: her text replaced
+// the old "Hi, I'm Jen", everyday, my people, then and now, fun part, faith,
+// and creed sections. Every sentence below is hers, in her order. Don't add,
+// trim, or reword it, and never use an em dash. The formal bio is its own
+// page, /about-the-author. Photos are shown whole. The kids appear only in
+// Jen's own blurred file (full-house-kids-dogs.jpg).
 // Old links still land: #life and #me (the everyday), #then (the twenties
 // photo), #gallery, #forever-angels and #faith (giving back), #work (the
 // About the Author link at the end).
@@ -84,16 +84,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Coat first, then Jen's two paragraphs, then the still collage. */}
+      {/* Coat above the 20s line. This file is not also a gallery slide. */}
       <section id="then" className="tim-wrap tim-then">
         <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
-        <div className="tim-then-copy">
-          <p className="tim-lead">My 20s were loud. I got into rooms most people never see, stood next to people you only know from a screen, and went places I didn’t grow up thinking I’d ever go. Some of it was exactly as fun as it looked. Some of it wasn’t.</p>
-          <p className="tim-lead">A lot of it looked like the dream from the outside. Inside it was survival. I learned who I was while everything around me tried to tell me who to be. I wouldn’t trade it. It made me. But it cost something, and I know that now.</p>
+        <p className="tim-lead">My 20s were amazing. I saw and did things most people dream about.</p>
+        {/* One empty slot for the photo Jen will send. No stand-in image. */}
+        <div className="tim-slot tim-slot--waiting" role="img" aria-label="Photo coming">Photo coming</div>
+      </section>
+
+      <section className="tim-wrap tim-fun">
+        <div className="photo-row photo-row--two">
+          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
+          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
         </div>
       </section>
-      <TwentiesCollage />
-
       <PhotoGallery />
 
       <section className="tim-wrap tim-close">
