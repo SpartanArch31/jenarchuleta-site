@@ -238,11 +238,11 @@ export default function MediaPage() {
       <section id="forever-angels" className="wrap text-wrap">
         <h2>Want to get involved with me?</h2>
         <img
-          src="/assets/presskit-headshot-floral.jpg"
-          alt="Jen Archuleta smiling in a floral top"
-          width="1100"
-          height="1370"
-          style={{ width: 'min(280px, 70%)', height: 'auto', display: 'block', margin: '0 0 18px' }}
+          src="/assets/forever-angels-tree.jpg"
+          alt="Jen and her Forever Angels co-founder at an angel tree event"
+          width="1200"
+          height="1852"
+          style={{ width: 'min(480px, 100%)', height: 'auto', display: 'block', margin: '0 0 18px' }}
         />
         <p>
           I co-founded The Forever Angels with Allison Kiefer. We help families through referrals and trusted community partners, with fairness and dignity. A family may receive support once a year.
