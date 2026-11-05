@@ -9,7 +9,7 @@ import { defineType, defineField } from 'sanity';
  */
 export default defineType({
   name: 'velvetLetter',
-  title: 'Velvet Letter',
+  title: 'Velvet Letters',
   type: 'document',
   fields: [
     defineField({

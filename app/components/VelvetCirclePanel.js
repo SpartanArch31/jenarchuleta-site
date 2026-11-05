@@ -5,7 +5,7 @@ import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 // One membership, the existing $9.99/month Payment Link.
 export const VELVET_CIRCLE_PERKS = [
   'A sneak peek of the book club discussion guide (not the full guide)',
-  'The Velvet Letter with the gold key',
+  'The Velvet Letters with the gold key',
   'The velvet bookmark',
   'Up to three questions a month, answered promptly and in detail',
   'Cancel anytime',

@@ -121,7 +121,7 @@ export default function VelvetInside({ letters = [] }) {
           <section className="letters-band">
             <div className="wrap text-wrap">
               <div className="center">
-                <div className="eyebrow">The Velvet Letter</div>
+                <div className="eyebrow">The Velvet Letters</div>
                 <h2>Notes for readers.</h2>
                 <p className="lead letters-note">
                   The behind-the-scenes updates I share with the people who read the book first.

@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata = {
-  title: 'The Velvet Letter',
+  title: 'The Velvet Letters',
   description: 'Some things only live inside the book. A private collection for readers of Beyond the Velvet Ropes.',
   robots: { index: false, follow: false },
   openGraph: { images: [OG_IMAGE] },

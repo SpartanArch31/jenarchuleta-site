@@ -25,7 +25,7 @@ export default function VelvetLocked() {
       <section id="main-content" className="vl-invite">
         <div className="vl-inner">
           <KeyIcon />
-          <h1 className="vl-title">The Velvet Letter</h1>
+          <h1 className="vl-title">The Velvet Letters</h1>
           <p className="vl-hook">Some things only live inside the book.</p>
           <div className="vl-buttons">
             <a className="btn btn-primary" href="/book">Get the Book</a>

@@ -24,7 +24,7 @@ export default function VelvetHomeGate() {
     <section className="home-velvet" aria-labelledby="home-velvet-title">
       <div className="home-velvet-card">
         <VelvetKey className="home-velvet-key" />
-        <h2 id="home-velvet-title">Psst. There’s a secret Velvet Letter waiting at the end of the book.</h2>
+        <h2 id="home-velvet-title">Psst. There are secret Velvet Letters waiting at the end of the book.</h2>
         <form action={formAction}>
           <div className="home-velvet-form">
             <label className="visually-hidden" htmlFor="home-velvet-passcode">Your passcode</label>
