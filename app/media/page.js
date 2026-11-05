@@ -222,7 +222,10 @@ export default function MediaPage() {
             <img src="/assets/casa-sworn-in.jpg" alt="Jen Archuleta raising her hand while being sworn in as a CASA volunteer" width="933" height="960" />
             <figcaption>Getting sworn in as a CASA volunteer</figcaption>
           </figure>
-          {/* Turbo photo removed Nov 5, 2026 (audit MEDIA-01): team branding in it pointed to the family's home state. Ask Jen for an unbranded therapy-visit photo. */}
+          <figure>
+            <img src="/assets/turbo-ronald-mcdonald.jpg" alt="Jen with her therapy dog Turbo at a group visit" width="1158" height="1164" />
+            <figcaption>Turbo doing TDI therapy dog work for Ronald McDonald House</figcaption>
+          </figure>
           <figure>
             <img src="/assets/childhelp-wings-podium.jpg" alt="Jen Archuleta speaking at the Childhelp WINGS podium" width="1179" height="1343" />
             <figcaption>Speaking at Childhelp WINGS</figcaption>

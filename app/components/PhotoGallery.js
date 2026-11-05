@@ -430,7 +430,7 @@ const GALLERY_CAPTIONS = {
   '/velvet-carousel/11.jpg': 'Sponsored by PlayStation with Playmate friends / Playing video games all day',
   '/velvet-carousel/12.jpg': 'Bally slot machine',
   '/velvet-carousel/13.jpg': 'HEF',
-  // 14.jpg caption removed Nov 5, 2026 (audit ABOUT-01): the team name pointed to the family's home metro.
+  '/velvet-carousel/14.jpg': 'With Hef at the Suns game',
   '/velvet-carousel/16.jpg': 'The night I met Hef and my life changed',
   '/velvet-carousel/17.jpg': 'E! True Hollywood Story with Adam',
   '/velvet-carousel/18.jpg': 'Pursuing my private pilot license',
