@@ -103,7 +103,7 @@ export default async function PodcastPage() {
             );
           })}
         </ol>
-        <p><a href="/pups" className="btn btn-primary">See the pups</a></p>
+        <p className="pod-cta"><a href="/pups" className="btn btn-primary">See the pups</a></p>
       </section>
 
       <section id="episodes" className="wrap pod-players" aria-label="All 13 episodes">
@@ -162,10 +162,10 @@ export default async function PodcastPage() {
             </li>
           ))}
         </ol>
-        <p><a href="/sponsors" className="btn btn-ghost">See the sponsors</a></p>
+        <p className="pod-cta"><a href="/sponsors" className="btn btn-ghost">See the sponsors</a></p>
       </section>
 
-      <section id="reviews" className="wrap center" style={{ paddingTop: 0 }}>
+      <section id="reviews" className="wrap center">
         <div className="eyebrow">Listener reviews</div>
         <h2>Love the show?</h2>
         <p className="lead" style={{ maxWidth: '46ch', marginInline: 'auto' }}>Reviews listeners left on Apple Podcasts, typed out here in their own words.</p>

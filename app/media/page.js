@@ -45,7 +45,7 @@ const HEADSHOTS = [
     fileName: 'Jen-Archuleta-Signature.jpg',
     label: 'Signature',
     alt: 'Jen Archuleta smiling in a black top',
-    width: 1162,
+    width: 1151,
     height: 1597,
   },
 ];
@@ -89,7 +89,16 @@ function Cards({ items }) {
           <p className="eyebrow">{item.outlet}</p>
           <h3>{item.headline}</h3>
           <p className="media-meta">{cardMeta(item)}</p>
-          <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel || 'Read'}</a>
+          {/* MEDIA-10: the link stretches over the whole card (see media.css). */}
+          <a
+            className="text-link"
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${item.linkLabel || 'Read'} on ${item.outlet} (opens in new tab)`}
+          >
+            {item.linkLabel || 'Read'}<span aria-hidden="true"> ↗</span>
+          </a>
         </article>
       ))}
     </div>
@@ -175,7 +184,7 @@ export default function MediaPage() {
           ) : null}
         </div>
 
-        <div id="film" className="media-block text-wrap" style={{ paddingInline: 0 }}>
+        <div id="film" className="media-block">
           <h3>Film and documentary</h3>
           <p>{FILM.film}</p>
           <p>{FILM.documentary}</p>
@@ -207,7 +216,7 @@ export default function MediaPage() {
       </section>
 
       <section id="forever-angels" className="wrap">
-        <div className="text-wrap">
+        <div>
           <h2>Want to get involved with me?</h2>
           <p>
             I co-founded The Forever Angels with Allison Kiefer. We help people through social workers and our trusted community partners. We help veterans, families in need, the elderly in hospice, and animals. Turbo has worked with Ronald McDonald Children’s Hospitals and veterans hospitals, and he has also worked in hospice.
@@ -231,10 +240,10 @@ export default function MediaPage() {
             <figcaption>Speaking at Childhelp WINGS</figcaption>
           </figure>
         </div>
-        <p className="text-wrap">
+        <p>
           I have worked with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
         </p>
-        <p className="text-wrap">
+        <p>
           <a href="https://theforeverangels.com/our-founders/" target="_blank" rel="noopener noreferrer">The Forever Angels</a>
         </p>
       </section>

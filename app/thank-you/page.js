@@ -15,7 +15,7 @@ export default function ThankYouPage() {
     <>
       <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <section id="main-content" className="wrap hero">
+      <section id="main-content" className="wrap hero thank-hero">
         <div className="hero-copy">
           <h1>Thank you</h1>
           {/* Jen's words, exactly (November 5, 2026). */}

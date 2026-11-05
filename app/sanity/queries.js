@@ -92,7 +92,7 @@ const SEARCH_POSTS = groq`*[_type == "post" && defined(slug.current) && !(_id in
   title,
   excerpt,
   seoDescription,
-  "text": pt::text(body)[0...1500]
+  "text": pt::text(body)
 }`;
 
 export async function getSearchPosts() {

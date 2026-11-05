@@ -39,10 +39,15 @@ section { padding-block: var(--section-y); }
 .nav-links a:hover { color: var(--accent-ink); text-decoration: none; }
 .nav-links a[aria-current="page"] { color: var(--accent-ink); box-shadow: inset 0 -1px 0 var(--accent); }
 .nav-toggle { display: none; }
-@media (max-width: 1023px){
-  .nav--collapsible .nav-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px;
-                background: none; border: 0; padding: 8px 4px; cursor: pointer; }
-  .nav--collapsible .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+@media (max-width: 1179px){
+  .nav--collapsible .nav-toggle { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+                width: 44px; height: 44px; margin-right: -10px;
+                background: none; border: 0; padding: 0; cursor: pointer; }
+  .nav--collapsible .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px;
+                transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease); }
+  .nav--collapsible .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav--collapsible .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav--collapsible .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .nav--collapsible .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
                flex-direction: column; align-items: stretch; gap: 2px;
                background: var(--bg); border-bottom: var(--hairline);
@@ -67,7 +72,7 @@ section { padding-block: var(--section-y); }
 .nav-sub a { display: block; padding: 9px 20px; white-space: nowrap; font-family: var(--font-sans);
              text-transform: none; letter-spacing: .01em; font-size: .92rem; color: var(--text); }
 .nav-sub a:hover { color: var(--accent-ink); background: var(--surface); }
-@media (min-width: 1024px){
+@media (min-width: 1180px){
   .nav-sub { position: absolute; top: calc(100% + 14px); left: -16px; z-index: 60; min-width: 230px;
              background: var(--bg); border: var(--hairline); border-radius: var(--radius);
              box-shadow: 0 14px 30px rgba(0,0,0,.14); }
@@ -77,14 +82,14 @@ section { padding-block: var(--section-y); }
   .brand { white-space: nowrap; }
 }
 /* Small laptops and tablets held sideways: tighter spacing keeps the menu on one line. */
-@media (min-width: 1024px) and (max-width: 1199px){
+@media (min-width: 1180px) and (max-width: 1279px){
   .nav-inner { gap: 16px; }
   .nav-search { width: 36px; height: 36px; }
   .nav-links { gap: 10px 11px; }
   .nav-links > a, .nav-item > a { letter-spacing: .1em; }
   .nav-caret { width: 16px; }
 }
-@media (max-width: 1023px){
+@media (max-width: 1179px){
   /* One column that scrolls from the top. (Wrapping pushed Shop and the
      first-chapter button off the side of the phone when a drop-down was open,
      and bottom alignment hid Home above the top edge.) */
@@ -102,7 +107,7 @@ section { padding-block: var(--section-y); }
 /* The free first chapter: a button at the bottom of the phone menu only.
    (.nav-links raises the weight so .btn's display can't show it on a laptop.) */
 .nav-links .nav-chapter { display: none; }
-@media (max-width: 1023px){
+@media (max-width: 1179px){
   .nav--collapsible .nav-links a.nav-chapter { display: inline-flex; justify-content: center; margin-top: 14px;
     padding: 13px 20px; color: var(--on-accent); letter-spacing: .12em; }
 }
@@ -318,6 +323,13 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .foot-links { display:flex; flex-wrap:wrap; gap: 22px; justify-content:center; margin: 22px 0; }
 .foot-links a { font-family: var(--font-sans); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color: var(--text-secondary); }
 .foot-meta { font-family: var(--font-sans); font-size: var(--text-meta); color: var(--text-muted); }
+/* Legal links: quiet and readable in both registers (audit G-05). */
+footer .foot-meta a { color: var(--text-secondary); text-decoration: underline; text-decoration-color: var(--border-strong);
+                      text-underline-offset: 3px; display: inline-block; padding-block: 6px; }
+footer .foot-meta a:hover { color: var(--accent-ink); text-decoration-color: var(--accent); }
+/* Dims the page behind the open phone menu; a tap on it closes the menu (audit G-03). */
+.nav-scrim { position: fixed; inset: 0; z-index: 49; background: rgba(34, 28, 24, .28); }
+@media (min-width: 1180px){ .nav-scrim { display: none; } }
 
 .velvet-ropes-key { width: 28px; height: 28px; color: var(--accent); display: block; margin: 18px 0 12px; }
 .velvet-unlock { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
@@ -325,6 +337,9 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .velvet-ropes-hero .hero-media { width: 100%; max-width: 400px; justify-self: center; }
 @media (max-width: 860px){ .velvet-ropes-hero .hero-media { max-width: 240px; } }
 @media (max-width: 420px){ .velvet-unlock { white-space: normal; } }
+/* VL-05: instruction lines on /behind-the-velvet-ropes, readable, not footer meta */
+.velvet-ropes-note { font-family: var(--font-sans); font-size: var(--text-caption); line-height: 1.6; color: var(--text-secondary); max-width: 40ch; margin: 16px 0 0; }
+.velvet-ropes-note + .velvet-ropes-note { margin-top: 24px; padding-top: 20px; border-top: var(--hairline); }
 .velvet-unlock .velvet-ropes-key { width: 18px; height: 18px; margin: 0; color: currentColor; }
 .home-jumps { padding-bottom: var(--space-9); }
 .home-jumps h2 { margin-bottom: 22px; }

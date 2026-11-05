@@ -109,7 +109,7 @@ export default async function JournalPost({ params }) {
     <>
       <SiteNav />
 
-      <article className="wrap text-wrap">
+      <article className="wrap text-wrap journal-article">
         <div className="article-head">
           <div className="k">{post.category}</div>
           <h1>{post.title}</h1>

@@ -24,10 +24,10 @@ export default function VelvetRopesPage() {
               Unlock the secret Velvet Letters
             </a>
           </p>
-          <p className="foot-meta" style={{ marginTop: '16px' }}>No passcode yet? Buy the book to find it.</p>
+          <p className="velvet-ropes-note">No passcode yet? Buy the book to find it.</p>
           {/* Adam, Nov 5: no Buy the book button here. */}
           {/* Jen, Nov 5: one line for audiobook buyers. Never put the companion's password on the site. */}
-          <p className="foot-meta" style={{ marginTop: '22px' }}>Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
+          <p className="velvet-ropes-note">Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
         </div>
         <div className="hero-media">
           <div className="hero-frame">

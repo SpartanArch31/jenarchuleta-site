@@ -67,3 +67,10 @@
   font-size: var(--text-body-s);
   line-height: 1.45;
 }
+/* SR-04: matched words in result snippets. */
+.search-excerpt mark {
+  background: color-mix(in srgb, var(--gold) 22%, transparent);
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}

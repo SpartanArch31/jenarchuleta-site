@@ -129,7 +129,7 @@ export default function BookOffers() {
                 src="/assets/backstage-bundle.jpg"
                 alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
                 width="1268"
-                height="1600"
+                height="1586"
               />
             </div>
             <div className="product-body">

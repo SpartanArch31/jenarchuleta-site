@@ -83,8 +83,13 @@
 .tim-quotes { display: flex; flex-direction: column; gap: 22px; }
 
 /* ---- then & now ---- */
-.tim-then { display: flex; flex-direction: column; align-items: flex-start; gap: 28px;
-            padding-block: clamp(64px, 8vw, 92px); max-width: 520px; }
+/* ABOUT-03: a two-column spread on the same 1200px grid as the hero, so the
+   20s text keeps a readable measure (about 60ch) instead of a 392px column. */
+.tim-then { display: grid; grid-template-columns: 0.8fr 1.2fr; grid-template-rows: auto auto 1fr;
+            column-gap: clamp(32px, 5vw, 64px); row-gap: 0; align-items: start;
+            padding-block: clamp(64px, 8vw, 92px); max-width: 1200px; }
+.tim-then > .tim-gray { grid-column: 1; grid-row: 1 / span 3; }
+.tim-then > .twenties-show, .tim-then > .tim-lead { grid-column: 2; max-width: 600px; }
 .tim-model { width: 100%; height: auto; object-fit: contain; display: block; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
 .tim-slot--waiting {
   width: min(100%, 360px);
@@ -116,6 +121,8 @@
   .tim-grid2 { grid-template-columns: 1fr; }
   .tim-sticky { position: static; }
   .tim-display { white-space: normal; }
+  /* ABOUT-03: stack again on narrow screens. */
+  .tim-then { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; max-width: 520px; }
 }
 
 /* November 2026: About Me in Jen's words, one page */
@@ -199,3 +206,18 @@
 .twenties-close { position: absolute; top: 10px; right: 12px; }
 .twenties-controls button:focus-visible, .twenties-close:focus-visible { outline: 2px solid #BE9543; outline-offset: 3px; }
 .twenties-caption { margin: 16px 4px 0; font-size: clamp(20px, 2.2vw, 24px); font-weight: 600; line-height: 1.35; color: var(--text-primary, #222); }
+
+/* ABOUT-02: the gallery stage keeps one height for every slide, so the page
+   below (and the phone arrows) no longer jump on each 4s advance. The frame
+   still hugs each photo at its own ratio; the space around it is the page. */
+.gallery-band .gallery-area { height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px); align-items: center; }
+.gallery-band .gallery-meta { min-height: calc(2 * 1.45 * 0.95rem + 8px + 1.2em); }
+@media (max-width: 759px) {
+  .gallery-band .gallery-stage { --g-max-h: min(76vh, 125cqw); }
+  .gallery-band .gallery-area { height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px); }
+}
+@supports (height: 1svh) {
+  @media (max-width: 759px) {
+    .gallery-band .gallery-stage { --g-max-h: min(76svh, 125cqw); }
+  }
+}

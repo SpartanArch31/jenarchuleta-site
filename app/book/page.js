@@ -111,7 +111,7 @@ export default function BookPage() {
       </section>
 
       <section id="author" className="wrap book-author">
-        <img src="/assets/jen-headshot-signature.jpg" alt="Jen Archuleta smiling in a black top" width="1162" height="1597" />
+        <img src="/assets/jen-headshot-signature.jpg" alt="Jen Archuleta smiling in a black top" width="1151" height="1597" />
         <div>
           <p className="eyebrow">About the author</p>
           <h2>Author, host, speaker, advocate.</h2>
@@ -121,10 +121,12 @@ export default function BookPage() {
           </p>
         </div>
       </section>
-      </div>
 
+      {/* BOOK-V1: shop and footer stay inside .book-page so the sticky nav
+          (whose containing block is this div) stays on screen to the end. */}
       <BookOffers />
       <SiteFooter />
+    </div>
     </>
   );
 }

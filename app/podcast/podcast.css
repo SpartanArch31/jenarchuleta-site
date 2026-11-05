@@ -113,15 +113,30 @@
 }
 
 /* Meet the pups: photo, episode, name, shelter ID (Nov 5). */
-.pod-pups { list-style: none; margin: 26px auto 8px; padding: 0; max-width: 60rem;
+.pod-pups { list-style: none; margin: 26px auto 0; padding: 0; max-width: 60rem;
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 18px; text-align: center; }
 .pod-pup { margin: 0; min-width: 0; }
 .pod-pup-media { aspect-ratio: 4 / 5; border-radius: var(--radius-lg); overflow: hidden;
-  background: var(--surface-alt); border: var(--hairline); display: flex; align-items: center; justify-content: center; }
-.pod-pup-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  background: var(--surface-alt); border: var(--hairline); display: flex; align-items: center; justify-content: center;
+  padding: var(--space-3); }
+/* POD-04: photos stay whole (no crop). The img now shrinks to the photo's own
+   ratio inside an even linen mat, with its own edge, so every pup reads as a
+   print mounted on the same mat instead of floating in uneven bars. */
+.pod-pup-media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%;
+  border-radius: var(--radius-sm, 4px); box-shadow: 0 0 0 1px rgba(34, 28, 24, .08); }
 .pod-pup-paw { width: 38%; color: var(--accent); opacity: .55; }
 .pod-pup-ep { margin-top: 10px; font-family: var(--font-sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink, var(--text-secondary)); }
 .pod-pup-name { margin-top: 2px; font-size: 18px; }
 .pod-pup-id { font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); }
 @media (max-width: 900px) { .pod-pups { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .pod-pups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; } }
+
+/* POD-08: breathing room above the section buttons. */
+.pod-cta { margin-top: var(--space-7); margin-bottom: 0; }
+
+/* POD-M1 / POD-07: spacing on one side of each join, one rhythm down the page.
+   min() keeps phones on the smaller --section-y. */
+.pod-hero { padding-bottom: var(--space-8); }
+.pod-panel { padding-block: min(var(--space-9), var(--section-y)); }
+.pod-panel + section,
+.pod-players { padding-block: min(var(--space-9), var(--section-y)); }

@@ -47,7 +47,8 @@ function PupFacts({ pup }) {
 function PupCard({ pup, photo }) {
   return (
     <article className="pup-card">
-      <div className="pup-media">
+      {/* PS-03: with a photo, the frame takes the photo's own ratio (no linen bars, no crop). */}
+      <div className={photo ? 'pup-media pup-media--photo' : 'pup-media'}>
         {photo ? <img src={photo} alt={pup.alt || pup.name} /> : <Paw />}
         {pup.adopted ? <span className="pup-badge">Adopted</span> : null}
       </div>

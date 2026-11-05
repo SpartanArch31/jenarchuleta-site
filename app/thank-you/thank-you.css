@@ -71,3 +71,81 @@
   max-width: 42rem;
   margin-inline: auto;
 }
+
+/* TY-01: size the cream mat and gold hairline to the photo's own ratio,
+   so there are no empty side bars inside the frame. The full photo stays visible. */
+.thank-hero .hero-media {
+  display: flex;
+  justify-content: center;
+}
+.thank-hero .hero-frame {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+}
+.thank-hero .hero-frame img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(640px, 72svh);
+  object-fit: initial;
+}
+
+/* TY-02: on mobile the heading and letter come first, the photo follows. */
+@media (max-width: 860px) {
+  .thank-hero .hero-media {
+    order: 0;
+    max-width: none;
+    margin-top: var(--space-6);
+  }
+  .thank-hero .hero-frame img {
+    max-height: 60svh;
+  }
+}
+
+/* TY-03: bring Kit's injected form onto the design system (Hanken, pill
+   button with dark text on gold, Paper field). Kit ships inline styles,
+   so these need !important. */
+.thank-signup .kit-inline .formkit-form {
+  padding: 0 !important;
+  max-width: none !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+.thank-signup .kit-inline .formkit-fields {
+  gap: 10px !important;
+}
+.thank-signup .kit-inline .formkit-input {
+  min-height: 48px !important;
+  padding: 10px 18px !important;
+  border: var(--hairline) !important;
+  border-radius: var(--radius-pill) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 1rem !important;
+}
+.thank-signup .kit-inline .formkit-input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+.thank-signup .kit-inline .formkit-input:focus-visible {
+  outline: 2px solid var(--focus-ring, var(--gold)) !important;
+  outline-offset: 2px !important;
+}
+.thank-signup .kit-inline .formkit-submit {
+  min-height: 48px !important;
+  border-radius: var(--radius-pill) !important;
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+.thank-signup .kit-inline .formkit-submit > span {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+}

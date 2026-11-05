@@ -1,5 +1,5 @@
-/* Homepage featured photos: one row, every photo whole at its own ratio and
-   the same height. Quiet arrows on larger screens, swipe on phones, dots. */
+/* Homepage featured photos: one row, every photo whole at its own ratio, up to
+   a shared max height. Quiet arrows on larger screens, swipe on phones, dots. */
 .home-carousel {
   padding-block: clamp(28px, 5vw, 64px);
   overflow: hidden;
@@ -16,28 +16,31 @@
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  align-items: center; /* HOME-02: shorter landscapes sit centered */
 }
 .hc-track::-webkit-scrollbar { display: none; }
 .hc-slide {
+  /* HOME-02: the slide wraps the photo exactly, so no espresso letterbox bars.
+     Every photo stays whole at its own ratio, capped to a shared max height. */
   flex: 0 0 auto;
-  height: clamp(220px, 34vw, 380px);
+  height: auto;
   scroll-snap-align: center;
   border-radius: var(--radius-lg);
   overflow: visible;
-  background: var(--espresso);
+  background: transparent;
   box-shadow: var(--shadow);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.hc-slide a { display: flex; align-items: center; justify-content: center; height: 100%; }
+.hc-slide a { display: flex; align-items: center; justify-content: center; }
 .hc-slide img {
   display: block;
   width: auto;
-  height: 100%;
-  max-width: min(78vw, 520px);
-  object-fit: contain;
-  object-position: center center;
+  height: auto;
+  max-height: clamp(220px, 34vw, 380px);
+  max-width: min(86vw, 680px);
+  object-fit: initial;
   border-radius: var(--radius-lg);
 }
 .hc-arrow {

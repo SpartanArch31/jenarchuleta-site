@@ -83,6 +83,14 @@
 .article-head .k { font-family:var(--font-sans); font-size:var(--text-meta); letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink); }
 .article-head h1 { font-size: var(--text-display-l); margin:.2em 0 .15em; }
 .article-head .meta { font-family:var(--font-sans); font-size:var(--text-meta); color:var(--text-muted); }
+/* J-04: the post is an <article>, not a <section>, so it missed the global
+   section padding and the head sat right under the nav rule. Give the head
+   its own breathing room and a short accent rule before the body. */
+.journal-article { padding-bottom: var(--space-8); }
+.journal-article .article-head { padding-top: clamp(48px, 7vw, 96px); padding-bottom: var(--space-6); }
+.journal-article .article-head .k { margin-bottom: var(--space-3); font-weight: 600; letter-spacing: .28em; font-size: .6875rem; }
+.journal-article .article-head .meta { margin-top: var(--space-3); }
+.journal-article .article-head::after { content: ''; display: block; width: 64px; height: 1px; background: var(--accent); margin: var(--space-6) auto 0; }
 .article-hero { width:100%; max-height:520px; object-fit:cover; border-radius:var(--radius-lg); box-shadow:var(--shadow); margin:28px 0; }
 .article-body p { font-size: var(--text-body); margin:0 0 1.1em; }
 .article-body a { overflow-wrap: anywhere; }

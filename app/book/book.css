@@ -4,13 +4,16 @@
 
 .book-page { min-height: 100vh; background: var(--bg); }
 
-.book-page .hero { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,6vw,72px); align-items:center; }
+/* BOOK-01: section padding + .hero padding stacked to ~240px of empty dark
+   above the cover. One modest top pad, cover top level with the eyebrow. */
+.book-page .hero-section { padding-top: clamp(28px,4vw,56px); }
+.book-page .hero { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,6vw,72px); align-items:start; padding-top:0; }
 .book-page .hero-cover { width:100%; height: auto; max-width:380px; border-radius:var(--radius); box-shadow:var(--shadow-lg); display:block; }
 .book-page .hero h1 { font-size:var(--text-display-l); margin-bottom:4px; }
 .book-page .hero .sub { font-style:italic; color:var(--text-secondary); font-size:var(--text-body-l); margin-bottom:22px; }
 .book-page .buy-row { display:flex; flex-wrap:wrap; gap:12px; margin:22px 0 12px; }
 .book-page .book-to-shop { display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; margin: 8px 0 0; }
-@media (max-width:760px){ .book-page .hero{ grid-template-columns:1fr; } .book-page .hero-cover{ margin-inline:auto; } }
+@media (max-width:760px){ .book-page .hero{ grid-template-columns:1fr; } .book-page .hero-cover{ margin-inline:auto; max-width:min(60vw,240px); /* BOOK-01 */ } }
 
 .book-page .pull { font-family:var(--font-display); font-style:italic; font-size:clamp(1.4rem,3vw,2rem); line-height:1.35; text-align:center; max-width:34ch; margin-inline:auto; padding-block:22px; margin-block:26px; border-block:var(--hairline); color:var(--text); }
 
@@ -21,31 +24,29 @@
 .book-page footer { padding-block:48px; }
 
 /* October 2026: trailer, film/documentary, Velvet invite, reviews */
-.book-page .book-trailer { padding-block: clamp(32px, 6vw, 64px); }
+/* BOOK-04: one centered column (heading, caption, video) instead of a
+   caption far left and video far right; H2 sized below the page H1; a
+   static gold glow instead of an endless pulse (DESIGN.md: calm motion). */
+.book-page .book-trailer {
+  padding-block: clamp(32px, 6vw, 64px);
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  row-gap: 20px;
+}
 .book-page .book-trailer-title {
   grid-column: 1 / -1;
-  font-size: var(--text-display-l);
+  font-size: var(--text-h1);
   line-height: 1.05;
   margin: 0;
   text-align: center;
 }
+.book-page .book-trailer .tf-cap { margin-inline: auto; }
+.book-page .book-trailer .tf-video { justify-self: center; max-width: 320px; margin-inline: auto; }
+.book-page .book-trailer-video {
+  box-shadow: 0 0 28px rgba(210, 169, 79, .28), 0 24px 60px rgba(0, 0, 0, .55);
+}
 .book-page .book-worldwide { margin: 14px 0 0; color: var(--text-secondary); }
-@media (prefers-reduced-motion: no-preference) {
-  .book-page .book-trailer-title {
-    animation: book-trailer-glow 2.8s ease-in-out infinite;
-  }
-  .book-page .book-trailer-video {
-    animation: book-trailer-frame 2.8s ease-in-out infinite;
-  }
-}
-@keyframes book-trailer-glow {
-  0%, 100% { text-shadow: 0 0 0 rgba(190, 149, 67, 0); }
-  50% { text-shadow: 0 0 18px rgba(190, 149, 67, 0.9); }
-}
-@keyframes book-trailer-frame {
-  0%, 100% { box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55); }
-  50% { box-shadow: 0 0 22px rgba(190, 149, 67, 0.75), 0 24px 60px rgba(0, 0, 0, 0.55); }
-}
 .book-page .book-screen { padding-block: clamp(48px, 7vw, 80px); }
 .book-page .book-screen h2 { font-size: var(--text-h1); margin: 6px 0 18px; }
 .book-page .book-screen p { color: var(--text-secondary); }
@@ -83,3 +84,24 @@
   font-size: var(--text-body);
   line-height: 1.55;
 }
+
+/* BOOK-06: country store links. Dark-register --accent-2 is now clay-bright
+   (4.9:1); give each link a real tap target. */
+.book-page .buy-world a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  font-family: var(--font-sans);
+  font-size: .85rem;
+}
+@media (pointer: coarse) {
+  .book-page .buy-world a { min-height: 44px; }
+}
+
+/* BOOK-05: a leftover margin on this empty anchor span (shop.css) opened a
+   48px blank band above the Velvet Circle photo. The anchor stays for old links. */
+.book-page #velvet-circle-details { margin-top: 0; }
+
+/* BOOK-02: the unbuyable "Coming soon" bundle card no longer stretches to the
+   Velvet Circle card's height. */
+.book-page .shop-page #bundle.product-card { align-self: start; }

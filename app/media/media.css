@@ -108,6 +108,41 @@
   color: var(--accent);
 }
 
+/* MEDIA-10: whole card is the tap target; the Read link stretches over it. */
+.media-card {
+  position: relative;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+
+.media-card .text-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.media-card:hover,
+.media-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.media-card .text-link:focus-visible { outline: none; }
+
+.media-card:has(.text-link:focus-visible) {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* MEDIA-06 / MEDIA-07: one left edge for the whole page, with long text
+   capped at the reading measure instead of centered in a narrower column. */
+.media-page #film p,
+.media-page #speaking > p,
+.media-page #forever-angels p,
+.media-page .bio-block p {
+  max-width: var(--measure);
+}
+
 .media-actions {
   display: flex;
   flex-wrap: wrap;
@@ -308,41 +343,42 @@
   padding-bottom: 0;
 }
 
+/* MEDIA-02 / MEDIA-03: jump links as wrapping pill chips (DESIGN.md chip),
+   so four items never orphan one on its own row and stay ~2 rows on mobile. */
 .media-cats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
 }
 
 .media-cats a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-height: 72px;
-  padding: 14px 16px;
-  text-align: center;
-  background: var(--surface);
-  border: var(--hairline);
-  border-radius: var(--radius-lg);
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  line-height: 1.3;
-  color: inherit;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border: var(--hairline-strong);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--text-ui);
+  font-weight: var(--w-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 
-.media-cats a:hover { text-decoration: none; }
+.media-cats a:hover { text-decoration: none; border-color: var(--accent); color: var(--text); }
 
 .media-cats a.is-active {
-  border-color: var(--gold);
-  box-shadow: var(--shadow);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  box-shadow: none;
 }
 
 .media-block { margin-top: clamp(36px, 5vw, 64px); }
-
-@media (max-width: 700px) {
-  .media-cats { grid-template-columns: 1fr; }
-}
 
 @media (min-width: 860px) {
   .speak-topics {

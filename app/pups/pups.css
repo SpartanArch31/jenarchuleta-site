@@ -30,10 +30,17 @@
   align-items: center;
   justify-content: center;
 }
+/* PS-03: a fixed 4:5 box letterboxed most photos with big linen bars.
+   With a photo, the frame now sizes to the photo's own ratio, so the whole
+   photo shows edge to edge with nothing cropped. The 4:5 box stays only for
+   the paw fallback. */
+.pup-media--photo {
+  aspect-ratio: auto;
+  display: block;
+}
 .pup-media img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
 }
 .pup-paw {

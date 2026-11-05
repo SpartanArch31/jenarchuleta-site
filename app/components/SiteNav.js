@@ -69,7 +69,7 @@ const MENU = [
   },
 ];
 
-const DESKTOP = '(min-width: 1024px)';
+const DESKTOP = '(min-width: 1180px)';
 
 function isCurrent(pathname, href) {
   if (!pathname) return false;
@@ -134,6 +134,25 @@ export default function SiteNav({ homeHref = '/' }) {
 
   useEffect(() => () => clearTimeout(leaveTimer.current), []);
 
+  // Phone menu: Escape closes it, and the page behind it doesn't scroll (audit G-03).
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKey = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        navRef.current?.querySelector('.nav-toggle')?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    const root = document.documentElement;
+    const previous = root.style.overflow;
+    root.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      root.style.overflow = previous;
+    };
+  }, [open]);
+
   // Hover opens a drop-down only with a mouse on the desktop layout, so a tap
   // on a phone or tablet never opens and closes it in the same touch.
   const hoverable = (event) =>
@@ -158,6 +177,7 @@ export default function SiteNav({ homeHref = '/' }) {
   };
 
   return (
+    <>
     <nav className="nav nav--collapsible" aria-label="Main" ref={navRef}>
       <div className="nav-inner">
         <a href={homeHref} className="brand" onClick={close}>Jen Archuleta</a>
@@ -240,5 +260,7 @@ export default function SiteNav({ homeHref = '/' }) {
         </div>
       </div>
     </nav>
+    {open ? <div className="nav-scrim" aria-hidden="true" onClick={close} /> : null}
+    </>
   );
 }

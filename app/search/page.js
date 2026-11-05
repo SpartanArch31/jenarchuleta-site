@@ -1,9 +1,51 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import { getSearchPosts } from '../sanity/queries';
-import { SEARCH_EPISODES, SEARCH_PAGES, searchRecords, snippet } from '../../lib/site-search';
+import { SEARCH_EPISODES, SEARCH_PAGES, searchRecords } from '../../lib/site-search';
 import { EPISODE_CREDITS } from '../../lib/episode-credits';
 import './search.css';
+
+// SR-04: show the part of the text where the term matched, with a real
+// ellipsis, and mark the matched words. Falls back to the opening lines.
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function matchSnippet(text, query, limit = 160) {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  if (!clean) return null;
+  const words = query.toLowerCase().split(/\s+/).filter((word) => word.length > 1);
+  const lower = clean.toLowerCase();
+  let hit = -1;
+  for (const word of words) {
+    const at = lower.indexOf(word);
+    if (at !== -1 && (hit === -1 || at < hit)) hit = at;
+  }
+  let start = 0;
+  if (clean.length > limit && hit > limit / 3) {
+    start = Math.min(hit - Math.floor(limit / 3), clean.length - limit);
+    const space = clean.lastIndexOf(' ', start);
+    if (space > start - 20 && space > 0) start = space + 1;
+  }
+  let end = Math.min(clean.length, start + limit);
+  if (end < clean.length) {
+    const space = clean.lastIndexOf(' ', end);
+    if (space > start + 80) end = space;
+  }
+  const body = clean.slice(start, end).trim();
+  const lead = start > 0 ? '\u2026' : '';
+  const tail = end < clean.length ? '\u2026' : '';
+  if (!words.length) return `${lead}${body}${tail}`;
+  const pattern = new RegExp(`(${words.map(escapeRegExp).join('|')})`, 'gi');
+  const parts = body.split(pattern);
+  return (
+    <>
+      {lead}
+      {parts.map((part, i) => (i % 2 === 1 ? <mark key={i}>{part}</mark> : part))}
+      {tail}
+    </>
+  );
+}
 
 export const metadata = {
   title: 'Search',
@@ -26,7 +68,7 @@ export default async function SearchPage({ searchParams }) {
       href: `/journal/${post.slug}`,
       title: post.title,
       excerpt: post.excerpt || post.seoDescription || '',
-      text: post.text || '',
+      text: (post.text || '').slice(0, 1500),
       kind: 'Journal',
     })),
   ].filter((item) => {
@@ -66,15 +108,22 @@ export default async function SearchPage({ searchParams }) {
         )}
         {results.length > 0 ? (
           <ul className="search-results">
-            {results.map((item) => (
-              <li key={`${item.kind}-${item.href}`}>
-                <a href={item.href}>
-                  <span className="search-kind">{item.kind}</span>
-                  <span className="search-title">{item.title}</span>
-                  {snippet(item.excerpt || item.text) ? <span className="search-excerpt">{snippet(item.excerpt || item.text)}</span> : null}
-                </a>
-              </li>
-            ))}
+            {results.map((item) => {
+              // Prefer the excerpt; use the body text when only the body holds the term.
+              const terms = query.toLowerCase().split(/\s+/).filter((word) => word.length > 1);
+              const has = (value) => terms.some((word) => String(value || '').toLowerCase().includes(word));
+              const source = item.excerpt && (has(item.excerpt) || !has(item.text)) ? item.excerpt : item.text || item.excerpt;
+              const excerpt = matchSnippet(source, query);
+              return (
+                <li key={`${item.kind}-${item.href}`}>
+                  <a href={item.href}>
+                    <span className="search-kind">{item.kind}</span>
+                    <span className="search-title">{item.title}</span>
+                    {excerpt ? <span className="search-excerpt">{excerpt}</span> : null}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         ) : null}
       </section>
