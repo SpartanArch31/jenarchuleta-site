@@ -283,7 +283,7 @@ const NOV4 = [
   { src: '/assets/gallery-nov4/nov4-05-ski-gondola.jpg', alt: 'Jen Archuleta with a toddler on a ski gondola', caption: '', width: 1289, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-06-beach-bodyboard.jpg', alt: 'A dad and kids walking to the beach with a yellow bodyboard', caption: '', width: 1320, height: 1165 },
   { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1263 },
-  { src: '/assets/gallery-nov4/nov4-08-book-signing.jpg', alt: 'Jen Archuleta at her book signing in Boardman', caption: '', width: 1155, height: 876 },
+  { src: '/assets/gallery-nov4/nov4-08-book-signing.jpg', alt: 'Jen Archuleta at her book signing', caption: '', width: 1155, height: 876 },
   { src: '/assets/gallery-nov4/nov4-09-playboy-collage.jpg', alt: 'Collage of Jen Archuleta from Playboy', caption: '', width: 1320, height: 1202 },
   { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 267 },
   { src: '/assets/gallery-nov4/nov4-11-beach-bikini.jpg', alt: 'Jen Archuleta on the beach in a coral top and blue bikini', caption: '', width: 365, height: 547 },
