@@ -22,7 +22,7 @@ export default function NotFound() {
         <div className="hero-ctas" style={{ justifyContent: 'center', marginTop: '8px' }}>
           <a href="/" className="btn btn-primary">Home</a>
           <a href="/book" className="btn btn-ghost">The Book</a>
-          <a href="/journal" className="btn btn-ghost">Journal</a>
+          <a href="/journal" className="btn btn-ghost">My Journals</a>
           <a href="/podcast" className="btn btn-ghost">Podcast</a>
         </div>
       </section>

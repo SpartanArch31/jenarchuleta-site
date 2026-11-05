@@ -33,6 +33,13 @@ function PupCard({ pup, photo }) {
                 ) : pup.rescue}
               </p>
             ) : null}
+            {pup.animalId ? (
+              <p className="pup-rescue">
+                {pup.rescueHref ? (
+                  <a href={pup.rescueHref} target="_blank" rel="noopener noreferrer">{pup.animalId}</a>
+                ) : pup.animalId}
+              </p>
+            ) : null}
             {pup.episode ? (
               <p className="pup-guest"><span className="pup-k">Episode </span>{pup.episode}</p>
             ) : pup.guest ? (
@@ -41,6 +48,9 @@ function PupCard({ pup, photo }) {
             {pup.note ? <p className="pup-note">{pup.note}</p> : null}
           </>
         )}
+        {pup.adoptHref ? (
+          <a className="pup-more" href={pup.adoptHref} target="_blank" rel="noopener noreferrer">{pup.adoptLabel || `Meet ${pup.name}`}</a>
+        ) : null}
         {pup.watch ? (
           <a className="pup-more" href={pup.watch} target="_blank" rel="noopener noreferrer">Watch the episode</a>
         ) : null}

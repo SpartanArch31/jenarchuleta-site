@@ -59,6 +59,7 @@ export default function SiteFooter({ stayClose = true, homeHref = '/' }) {
           <div className="foot-mono">JA</div>
           <nav className="foot-links" aria-label="More">
             <a href={`${home}/about#gallery`}>Gallery</a>
+            <a href={`${home}/journal`}>My Journals</a>
             <a href={`${home}/pups`}>Pups of the Podcast</a>
             <a href={`${home}/media#speaking`}>Speaking</a>
             <a href={`${home}/sponsors`}>Sponsors</a>
