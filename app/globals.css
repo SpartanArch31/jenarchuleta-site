@@ -128,7 +128,7 @@ section { padding-block: var(--section-y); }
                 cursor: default; pointer-events: none; }
 
 /* hero */
-.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 6vw, 80px); align-items: center;
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(32px, 6vw, 80px); align-items: center;
         padding-top: clamp(48px, 8vw, 96px); }
 .hero-script { font-family: var(--font-script); color: var(--accent-2); font-size: var(--text-script-l); line-height: 1; margin-bottom: 8px; }
 .hero h1 { font-size: var(--text-display-l); font-weight: var(--w-semibold); line-height: 1.04; margin: 0 0 22px; }
@@ -320,7 +320,11 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .foot-meta { font-family: var(--font-sans); font-size: var(--text-meta); color: var(--text-muted); }
 
 .velvet-ropes-key { width: 28px; height: 28px; color: var(--accent); display: block; margin: 18px 0 12px; }
-.velvet-unlock { display: inline-flex; align-items: center; gap: 10px; }
+.velvet-unlock { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+/* Velvet Ropes page: keep the cover a book-sized object beside the copy (audit VL-01). */
+.velvet-ropes-hero .hero-media { width: 100%; max-width: 400px; justify-self: center; }
+@media (max-width: 860px){ .velvet-ropes-hero .hero-media { max-width: 240px; } }
+@media (max-width: 420px){ .velvet-unlock { white-space: normal; } }
 .velvet-unlock .velvet-ropes-key { width: 18px; height: 18px; margin: 0; color: currentColor; }
 .home-jumps { padding-bottom: var(--space-9); }
 .home-jumps h2 { margin-bottom: 22px; }

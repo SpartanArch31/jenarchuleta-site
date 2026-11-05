@@ -12,7 +12,7 @@ export default function VelvetRopesPage() {
     <>
       <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <section id="main-content" className="wrap hero">
+      <section id="main-content" className="wrap hero velvet-ropes-hero">
         <div className="hero-copy">
           <h1>Velvet Ropes</h1>
           <VelvetKey className="velvet-ropes-key" />
@@ -30,7 +30,9 @@ export default function VelvetRopesPage() {
           <p className="foot-meta" style={{ marginTop: '22px' }}>Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
         </div>
         <div className="hero-media">
-          <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" />
+          <div className="hero-frame">
+            <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" />
+          </div>
         </div>
       </section>
       <SiteFooter />
