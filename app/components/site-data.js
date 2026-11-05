@@ -92,6 +92,8 @@ export const READER_REVIEWS = [];
 export const SHOP = {
   // Jen's corrected listing (Oct 28).
   etsyTee: 'https://www.etsy.com/listing/4321696666/be-the-bumblebee-unisex-classic-tee',
+  // The UnfilteredByJen shop. The site had only the Be the Bumblebee listing.
+  etsyShop: 'https://www.etsy.com/shop/UnfilteredByJen',
   foreverAngels: 'https://theforeverangels.com/',
 
   // SIGNED COPY. The Shop leads with the TOTAL (Adam, Nov 3): $35 book + $6.99

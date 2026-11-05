@@ -148,6 +148,29 @@ export default function BookOffers() {
             </div>
           </article>
 
+          <article className="product-card" id="podcast-apparel">
+            <div className="product-media product-media--contain">
+              <img
+                src="/assets/og-podcast-1200x630.jpg"
+                alt="Unfiltered with Jen Archuleta"
+                width="1200"
+                height="630"
+              />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">The Podcast</div>
+              <h3>Podcast Apparel</h3>
+              <p className="product-desc">
+                Apparel for Unfiltered with Jen Archuleta, on Etsy.
+              </p>
+              <div className="product-cta">
+                <a href={SHOP.etsyShop} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Shop apparel
+                </a>
+              </div>
+            </div>
+          </article>
+
           <article className="product-card" id="velvet-circle">
             <span id="velvet-circle-faq" />
             <span id="velvet-circle-details" />
