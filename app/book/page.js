@@ -3,6 +3,7 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetInvite from '../components/VelvetInvite';
 import BuyOptions from '../components/BuyOptions';
+import BookOffers from './BookOffers';
 import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
 
 export const metadata = {
@@ -52,6 +53,8 @@ export default function BookPage() {
           </div>
         </div>
       </section>
+
+      <BookOffers />
 
       {/* THE HOOK */}
       <section className="wrap text-wrap center">

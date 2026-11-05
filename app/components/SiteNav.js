@@ -6,7 +6,7 @@ import { CATEGORY_ORDER, categoryLabel } from '../journal/curation';
 import { KIT_FREE_CHAPTER_URL } from './site-data';
 
 // ONE navigation for the whole site, every page, light or dark.
-// Main: Home | About Me | Book | Podcast | Journal | Media | Shop
+// Main: Home | About Me | Book | Podcast | Journal | Media
 // Each main page has a drop-down of its sections (Jen, November 3: "so people
 // can jump straight to the sections they want"). The section links point at
 // ids on those pages; if you rename or remove a section, update its link here.
@@ -39,6 +39,10 @@ const MENU = [
     also: ['/velvet'],
     items: [
       { href: '/book', label: 'Get the book' },
+      { href: '/book#signed-copy', label: 'Signed copy' },
+      { href: '/book#velvet-circle', label: 'The Velvet Circle Book Club' },
+      { href: '/book#bookmark', label: 'The Signature Velvet Bookmark' },
+      { href: '/book#velvet-circle-faq', label: 'Book Club FAQs' },
       // Jen, November 3: the free first chapter belongs in the main menu.
       { href: KIT_FREE_CHAPTER_URL, label: 'Get the first chapter free' },
       { href: '/book#trailer', label: 'Watch the trailer' },
@@ -83,18 +87,6 @@ const MENU = [
       { href: '/media#press-kit', label: 'Press kit and photos' },
       { href: '/about-the-author', label: 'About the Author' },
       { href: '/contact', label: 'Contact' },
-    ],
-  },
-  {
-    id: 'shop',
-    href: '/shop',
-    label: 'Shop',
-    alignEnd: true,
-    items: [
-      { href: '/shop#signed-copy', label: 'Signed copy' },
-      { href: '/shop#velvet-circle', label: 'The Velvet Circle Book Club' },
-      { href: '/shop#bookmark', label: 'The Signature Velvet Bookmark' },
-      { href: '/shop#velvet-circle-faq', label: 'Book Club FAQs' },
     ],
   },
 ];

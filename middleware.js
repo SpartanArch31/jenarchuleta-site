@@ -21,6 +21,18 @@ function isProtected(pathname) {
 }
 
 export function middleware(req) {
+  const path = req.nextUrl.pathname.replace(/\/$/, '') || '/';
+  // The shop lives on the book page. A hash has to be set here; a
+  // next.config redirect cannot keep one.
+  if (path === '/shop') {
+    const dest = new URL('/book', req.url);
+    dest.hash = 'shop';
+    return new NextResponse(null, {
+      status: 308,
+      headers: { Location: dest.toString() },
+    });
+  }
+
   // Public route — pass straight through, no auth.
   if (!isProtected(req.nextUrl.pathname)) {
     return NextResponse.next();

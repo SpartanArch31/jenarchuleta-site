@@ -1,18 +1,7 @@
-import SiteNav from '../components/SiteNav';
-import SiteFooter from '../components/SiteFooter';
-import { OG_IMAGE, SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
+import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
 import { BOOK_CLUB_SNEAK_PEEK } from '../../lib/book-club-guide';
-import './shop.css';
+import '../shop/shop.css';
 
-export const metadata = {
-  title: 'Shop',
-  description:
-    'Signed copies of Beyond the Velvet Ropes by Jennifer Walcott Archuleta, The Velvet Circle Book Club, and the handmade Signature Velvet Bookmark.',
-  openGraph: { images: [OG_IMAGE] },
-  twitter: { card: 'summary_large_image', images: [OG_IMAGE.url] },
-};
-
-// Small reassurance line under each live buy button.
 function TrustLine({ note = 'Secure checkout. Stripe, Apple Pay, Google Pay' }) {
   return (
     <>
@@ -31,9 +20,6 @@ function TrustLine({ note = 'Secure checkout. Stripe, Apple Pay, Google Pay' }) 
   );
 }
 
-const capitalize = (text) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
-
-// Same gold key as the menu's Velvet Letter link.
 function GoldKey() {
   return (
     <svg className="gold-key" viewBox="0 0 24 24" aria-hidden="true">
@@ -43,42 +29,23 @@ function GoldKey() {
   );
 }
 
-// The book club's question inbox, with a subject line so Jen can spot member questions.
 function QuestionsEmail() {
   const email = SHOP.velvetCircleQuestionsEmail;
   return <a href={`mailto:${email}?subject=Velvet%20Circle%20question`}>{email}</a>;
 }
 
-export default function ShopPage() {
-  // Bookmark details (Adam, Nov 3: size, packaging, when it ships). A line only
-  // shows once its value is filled in, in SHOP (site-data.js).
+// Signed copy, Velvet Circle tiers, bookmark, and book club questions.
+// The paperback chooser stays in BuyOptions. /shop redirects here.
+export default function BookOffers() {
   const bookmarkFacts = [
     ['Size', SHOP.bookmarkSize],
     ['Packaging', SHOP.bookmarkPackaging],
-    ['Ships', capitalize(SHOP.bookmarkShips)],
   ].filter(([, value]) => value);
 
   return (
-    <div className="shop-page">
-      <SiteNav />
-
-      <a href="#main-content" className="skip-link">Skip to content</a>
-
-      {/* HERO + FEATURED PRODUCTS */}
-      <section id="main-content" className="wrap">
-        <div className="center">
-          <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>the good stuff…</div>
-          <div className="eyebrow">The Shop</div>
-          <h2>A few things worth sharing.</h2>
-          <p className="lead" style={{ maxWidth: '58ch', marginInline: 'auto' }}>
-            A signed copy of the book, my private book club, and a keepsake I make by hand.
-          </p>
-        </div>
-
-        {/* Every card answers the same three things (Adam, Nov 3): what you get, the
-            real price with shipping, and when it ships or starts. */}
+    <div className="shop-page" id="shop">
+      <section className="wrap">
         <div className="product-grid">
-          {/* SIGNED BOOK: priced as the total, $35 + $6.99 shipping. */}
           <article className="product-card" id="signed-copy">
             <div className="product-media product-media--contain">
               {SHOP.signedBookSoldOut && <span className="badge">Sold out. Restocking soon.</span>}
@@ -122,10 +89,6 @@ export default function ShopPage() {
             </div>
           </article>
 
-          {/* THE VELVET CIRCLE BOOK CLUB: two tiers, both the existing $9.99/month
-              Payment Link (Jen, November 5). No second Stripe product.
-              #backstage-bundle and #backstage-box stay so older links land here.
-              Photo: the group photo with her real cover, and the round logo. */}
           <article className="product-card product-card--club" id="velvet-circle">
             <span id="backstage-bundle" />
             <span id="backstage-box" />
@@ -181,7 +144,6 @@ export default function ShopPage() {
             </div>
           </article>
 
-          {/* SIGNATURE VELVET BOOKMARK: $24.99, shipping included, US only. */}
           <article className="product-card" id="bookmark">
             <div className="product-media product-media--contain">
               {!SHOP.bookmark && <span className="badge">First drop, coming soon</span>}
@@ -199,11 +161,7 @@ export default function ShopPage() {
                 <p className="price-note">{SHOP.bookmarkShipping}</p>
               </div>
               <p className="product-desc">
-                Black velvet with gold detailing, a vintage-style key pressed into a
-                burgundy wax seal, and a gold heart engraved with a reminder I believe
-                in: <em>you matter, everyone belongs.</em> Handmade by me, one at a
-                time. <strong>Every story is different. Every key is different, so no
-                two are ever alike.</strong>
+                About 6 inches long. Handmade from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Packaged in a padded gift case and shipped by regular mail.
               </p>
               {bookmarkFacts.length > 0 && (
                 <dl className="offer-facts">
@@ -215,7 +173,6 @@ export default function ShopPage() {
                   ))}
                 </dl>
               )}
-              <p className="fulfill">Made in small batches · every piece one of a kind</p>
               <div className="product-cta">
                 {SHOP.bookmark ? (
                   <>
@@ -240,7 +197,6 @@ export default function ShopPage() {
               </div>
             </div>
           </article>
-
         </div>
 
         <section id="book-club-guide" className="book-club-peek" aria-labelledby="book-club-guide-title">
@@ -252,17 +208,10 @@ export default function ShopPage() {
             ))}
           </ol>
         </section>
-
-        <p className="assurance">
-          Every direct order checks out securely.
-        </p>
       </section>
 
-      {/* AND A LITTLE MORE: the Be the Bumblebee tee, kept apart from the main
-          products (Jen, Oct 28). It sells on Etsy, so it links out. */}
-      <section className="wrap shop-more" style={{ paddingTop: 0 }}>
+      <section className="wrap shop-more">
         <div className="center">
-          <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 30px' }}><span className="diamond" /></div>
           <div className="eyebrow">And a little more</div>
         </div>
         <div className="more-grid more-grid--one">
@@ -276,8 +225,6 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* Short practical answers only. The tiers card lists what members get.
-          #velvet-circle-details stays so older links land here. */}
       <div id="velvet-circle-details" aria-hidden="true" />
       <section id="velvet-circle-faq" className="wrap text-wrap vc-faq">
         <div className="center">
@@ -298,8 +245,6 @@ export default function ShopPage() {
           </p>
         </details>
       </section>
-
-      <SiteFooter />
     </div>
   );
 }

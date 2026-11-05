@@ -226,7 +226,7 @@ export default function VelvetInside({ letters = [] }) {
           <p className="velvet-close">The story doesn’t stop here.</p>
           <p>
             Want to keep the conversation going? Join me in The Velvet Circle Book Club.{' '}
-            <a href="/shop#velvet-circle">See how it works</a>.
+            <a href="/book#velvet-circle">See how it works</a>.
           </p>
         </section>
 

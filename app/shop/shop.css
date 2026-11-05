@@ -426,3 +426,25 @@
   padding-left: 1.3em;
 }
 .shop-page .book-club-peek li { margin: 0.55em 0; }
+
+/* The book page is dark. This block stays the light shop, in one place. */
+.book-page .shop-page {
+  --bg: var(--cream);
+  --surface: var(--paper);
+  --surface-alt: var(--linen);
+  --surface-invert: var(--near-black);
+  --border: #E2D8C6;
+  --border-strong: #CBB99B;
+  --text: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-mute);
+  --text-invert: #F0E8D8;
+  --accent: var(--gold);
+  --accent-ink: var(--gold-deep);
+  --accent-2: var(--clay);
+  --on-accent: #2A2008;
+  --focus-ring: #946F2B;
+  background: var(--cream);
+  color: var(--ink);
+  padding-block: clamp(48px, 7vw, 88px);
+}

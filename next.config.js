@@ -18,11 +18,12 @@ const pageRedirects = [
   { source: '/gallery', destination: '/about#gallery', permanent: true },
   { source: '/my-story', destination: '/about#then', permanent: true },
   { source: '/speaking', destination: '/media#speaking', permanent: true },
-  // Old Squarespace store, product, and cart URLs → the shop.
-  { source: '/store/:path*', destination: '/shop', permanent: true },
-  { source: '/shop/p/:path*', destination: '/shop', permanent: true },
-  { source: '/cart', destination: '/shop', permanent: true },
-  { source: '/checkout', destination: '/shop', permanent: true },
+  // Old Squarespace store, product, and cart URLs. /shop itself redirects
+  // from app/shop/page.js so the hash can land on the book page section.
+  { source: '/store/:path*', destination: '/book', permanent: true },
+  { source: '/shop/p/:path*', destination: '/book', permanent: true },
+  { source: '/cart', destination: '/book', permanent: true },
+  { source: '/checkout', destination: '/book', permanent: true },
   // Old newsletter / Mailchimp-era signup paths → the free-chapter signup.
   // Temporary (307) so a real page can take these paths later without cached redirects.
   { source: '/subscribe', destination: '/#letter', permanent: false },
