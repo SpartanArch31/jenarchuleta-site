@@ -87,3 +87,16 @@ AGENTS.md; do not re-blur them without asking Adam and Jen.
 | `gallery-nov4/nov4-01-christmas-tree.jpg` | Soft rectangle blur over the child on the ladder and the child at the bottom | Jen's original, no blur |
 | `gallery-nov4/nov4-03-christmas-pajamas.jpg` | Solid blocks over the children and the names on their shirts | Jen's original, no blur |
 | `gallery-nov4/nov4-06-beach-bodyboard.jpg` | Hard-edged blurs over the held child and the two boys | Jen's original, no blur |
+
+## Evening: slide 91 replaced, five photos added
+
+| File | Change |
+|---|---|
+| `gallery-nov4/nov4-07-private-jet.jpg` | Jen's plain original (no blur); a 4px black line on the bottom edge cropped off (922x1259). Same no-blur decision as above. |
+| `gallery-nov5/nov5-01-airstream.jpg` | New. Whole photo. |
+| `gallery-nov5/nov5-02-childhelp-wings-booth.jpg` | New. Black phone bands (top and bottom) cropped off. |
+| `gallery-nov5/nov5-03-night-out.jpg` | New. Brown phone bands (top and bottom) cropped off. |
+| `gallery-nov5/nov5-04-floral-dresses.jpg` | New. Whole photo. |
+| `gallery-nov5/nov5-05-spartan-team.jpg` | New. Whole photo, resized to 1320 wide. |
+
+All saved fresh as JPEG with no metadata. Checked against every image on the site: none is a duplicate.

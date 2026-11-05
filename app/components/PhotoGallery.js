@@ -276,7 +276,7 @@ const OCT26 = [
 // November 4 batch, after OCT26. No captions (Jen). Children's faces and
 // the names on the pajama shirts are blurred; screenshots cropped to the photo.
 const NOV4 = [
-  // Nov 5, 2026: nov4-01, nov4-03 and nov4-06 are Jen's own originals, shown with
+  // Nov 5, 2026: nov4-01, nov4-03, nov4-06 and nov4-07 are Jen's own originals, shown with
   // NO blur, on Adam's explicit decision ("No blur at all", names on the pajama
   // shirts included). This is a deliberate exception to the kids rule in
   // AGENTS.md. Do not re-blur or swap these without asking Adam and Jen.
@@ -286,7 +286,7 @@ const NOV4 = [
   { src: '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg', alt: 'Five rescues and two tortoises on the grass', caption: '', width: 1102, height: 863 },
   { src: '/assets/gallery-nov4/nov4-05-ski-gondola.jpg', alt: 'Jen Archuleta with a toddler on a ski gondola', caption: '', width: 1289, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-06-beach-bodyboard.jpg', alt: 'A dad and kids walking to the beach with a yellow bodyboard', caption: '', width: 1320, height: 1165 },
-  { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1263 },
+  { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1259 },
   { src: '/assets/gallery-nov4/nov4-08-book-signing.jpg', alt: 'Jen Archuleta at her book signing', caption: '', width: 1155, height: 876 },
   { src: '/assets/gallery-nov4/nov4-09-playboy-collage.jpg', alt: 'Collage of Jen Archuleta from Playboy', caption: '', width: 1320, height: 1202 },
   { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 242 },
@@ -358,9 +358,19 @@ const FROM_ABOUT = [
   { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 904, height: 833 },
 ];
 
+// Jen's photos sent November 5 (evening), at the end of the slideshow, no
+// captions. Phone bands cropped off 02 and 03; no other edits, no metadata.
+const NOV5 = [
+  { src: '/assets/gallery-nov5/nov5-01-airstream.jpg', alt: 'Jen Archuleta and a friend in beanies in front of a vintage Airstream trailer', caption: '', width: 960, height: 1706 },
+  { src: '/assets/gallery-nov5/nov5-02-childhelp-wings-booth.jpg', alt: 'Jen Archuleta with friends at the Childhelp WINGS Fashion Show Luncheon photo booth', caption: '', width: 923, height: 919 },
+  { src: '/assets/gallery-nov5/nov5-03-night-out.jpg', alt: 'Jen Archuleta and friends making playful faces on a night out', caption: '', width: 923, height: 688 },
+  { src: '/assets/gallery-nov5/nov5-04-floral-dresses.jpg', alt: 'Jen Archuleta and four friends in floral dresses by a pool', caption: '', width: 1224, height: 1224 },
+  { src: '/assets/gallery-nov5/nov5-05-spartan-team.jpg', alt: 'Jen Archuleta and her team with medals after a Spartan race', caption: '', width: 1320, height: 1650 },
+];
+
 // Every photo defined above, in the November 3 order, minus slides Jen had
 // already taken out (HIDDEN_SLIDE_SRC) and the November 5 removals.
-const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B, ...FROM_ABOUT]
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B, ...FROM_ABOUT, ...NOV5]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // November 5: gallery-new/new_37 (a news clipping) is removed, file and all.
