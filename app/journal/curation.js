@@ -2,15 +2,14 @@
 // Nothing here deletes or edits a post in Sanity. Archived posts stay live at
 // their own URL and are listed under "Archive" on /journal.
 //
-// Jen's categories. Behind the Book leads the Journal (November 5, 2026).
-// Archive is added last on the page.
+// Jen's categories, in her order (October 27, 2026).
 export const CATEGORY_ORDER = [
-  'Behind the Book',
   'Faith',
   'Family',
   'Cooking',
   'Advocacy',
   'Health & Wellness',
+  'Behind the Book',
   'Podcast',
 ];
 

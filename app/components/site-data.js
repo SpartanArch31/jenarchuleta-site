@@ -57,9 +57,8 @@ export const BOOK_BUY_URL = 'https://books.by/beyond-the-velvet-ropes';
 // choices are easy to follow. "Get the Paperback" (BOOK_BUY_URL) stays the main
 // button; the signed copy row comes from SHOP below. Shown by BuyOptions.js on
 // the homepage and the Book page.
-// Confirmed product pages only. Google Play, Bookshop, and an Apple Books
-// ebook do not have a confirmed page, so they stay off this list.
-// Audible (checked November 5, 2026): the live audiobook page.
+// Confirmed product pages only. Google Play, Audible, Bookshop, and an Apple
+// Books ebook do not have a confirmed page, so they stay off this list.
 export const BOOK_FORMATS = [
   {
     format: 'Paperback',
@@ -75,7 +74,6 @@ export const BOOK_FORMATS = [
   {
     format: 'Audiobook',
     links: [
-      { label: 'Audible', href: 'https://www.audible.com/pd/Beyond-the-Velvet-Ropes-My-Story-of-Perseverance-Hope-and-Love-Audiobook/B0HP8SPHGT' },
       { label: 'Apple Books', href: 'https://books.apple.com/us/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance/id6789345549?uo=4' },
       { label: 'Spotify', href: 'https://open.spotify.com/show/153EBrZVIkJY1xaY703km4' },
       { label: 'Kobo', href: 'https://www.kobo.com/us/en/audiobook/beyond-the-velvet-ropes' },

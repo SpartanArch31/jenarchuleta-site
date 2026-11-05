@@ -64,11 +64,10 @@ import sizes from '../velvet/slide-sizes.json';
 //   add a photo of the children unless Jen supplied that exact file.
 //
 // Out of this slideshow:
-// presskit-headshot-glam (the old home hero). jen-fun (group of adults,
+// presskit-headshot-glam (the old home hero). jen-fitness and jen-fun2 stay
+// on the About photo row, above this slideshow. jen-fun (group of adults,
 // not a dog photo). jen-bw-coat and velvet 07 (the coat is the photo above
-// the 20s line, as jen-bw-coat2). That coat is not a slide. The puppy photo
-// (jen-fun2) and the white sports top (jen-fitness) are slides, not a row
-// on the page.
+// the 20s line, as jen-bw-coat2). That coat is not a slide.
 // 08 and 44 are already out of captions.json. 09 is left out. 24, 25, 26,
 // and 35 (the children) were deleted on November 3. 27 and 45 are dog
 // photos on /pups. 43 is the same Urban Axes outing
@@ -101,7 +100,7 @@ const HOLLYWOOD = [
     alt: 'With Tommy Lee',
     caption: 'With Tommy Lee',
     width: 960,
-    height: 812,
+    height: 972,
   },
   {
     src: '/assets/gallery-hw/hw_04.jpg',
@@ -287,7 +286,7 @@ const NOV4 = [
   { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1263 },
   { src: '/assets/gallery-nov4/nov4-08-book-signing.jpg', alt: 'Jen Archuleta at her book signing', caption: '', width: 1155, height: 876 },
   { src: '/assets/gallery-nov4/nov4-09-playboy-collage.jpg', alt: 'Collage of Jen Archuleta from Playboy', caption: '', width: 1320, height: 1202 },
-  { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 242 },
+  { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 267 },
   { src: '/assets/gallery-nov4/nov4-11-beach-bikini.jpg', alt: 'Jen Archuleta on the beach in a coral top and blue bikini', caption: '', width: 365, height: 547 },
   { src: '/assets/gallery-nov4/nov4-12-bunny-costume.jpg', alt: 'Jen Archuleta in a bunny costume with her husband at a Playboy party', caption: '', width: 1259, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-13-family-ocean.jpg', alt: 'Jen Archuleta and her family in the ocean', caption: '', width: 1063, height: 1600 },
@@ -313,7 +312,7 @@ const NOV4B = [
   { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 1243 },
   { src: '/assets/gallery-nov4b/nov4b-06-couch-fishburne.jpg', alt: 'Jen Archuleta seated on a couch', caption: '', width: 1242, height: 1188 },
   { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1440 },
-  { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 861, height: 940 },
+  { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 920, height: 940 },
   { src: '/assets/gallery-nov4b/nov4b-09-four-people-beads.jpg', alt: 'Jen Archuleta with friends', caption: '', width: 1040, height: 820 },
   { src: '/assets/gallery-nov4b/nov4b-10-green-top-white-shorts.jpg', alt: 'Jen Archuleta in a green top and white shorts', caption: '', width: 1150, height: 1480 },
   { src: '/assets/gallery-nov4b/nov4b-11-hefner-calendar-signing.jpg', alt: 'Jen Archuleta at a calendar signing', caption: '', width: 930, height: 700 },
@@ -348,35 +347,19 @@ const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/160.jpg',
 ]);
 
-// Photos that were sitting alone on About Me. Whole files, at the end so the
-// earlier slides keep their order. The black coat stays on the page, not here.
-const FROM_ABOUT = [
-  { src: '/assets/jen-fun2.jpeg', alt: 'Jen Archuleta with a rescue puppy', caption: '', width: 510, height: 512 },
-  { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 1077, height: 887 },
-  { src: '/assets/brown-dress-portrait.jpg', alt: 'Jen Archuleta portrait', caption: '', width: 941, height: 883 },
-  { src: '/assets/covers/mag-musclemag.jpg', alt: 'Jen Archuleta on the MuscleMag swimsuit cover', caption: '', width: 1179, height: 1487 },
-  { src: '/assets/covers/mag-holistic-health.jpg', alt: 'Jen Archuleta on a Holistic Health magazine cover', caption: '', width: 1320, height: 1636 },
-];
-
 // Every photo defined above, in the November 3 order, minus slides Jen had
 // already taken out (HIDDEN_SLIDE_SRC) and the November 5 removals.
-const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B, ...FROM_ABOUT]
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).
 // #1 Playboy stage, and the bodyboard photo whose watermark cannot be cropped off.
-// The beach dress (velvet-carousel/10.jpg) is a slide again, not a photo on the page.
+// The beach dress (velvet-carousel/10.jpg) is not a stand-in on About Me.
 // #42, the blurred kids-and-dogs bed photo, is not in NOV3. Its file is deleted.
 const OUT_OF_GALLERY = new Set([
   '/assets/gallery-hw/hw_01.jpg',
   '/assets/gallery-new/new_14.jpg',
-  // Floral repeats. The About hero (presskit-headshot-floral) is the one flower photo.
-  '/assets/gallery-nov3/07-dressing-room.jpg',
-  '/assets/gallery-new/new_09.jpg',
-  '/assets/gallery-new/new_22.jpg',
-  '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg',
-  // ImageCollect watermark is tiled across the painting. It cannot be cropped off without cutting her.
-  '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
+  '/velvet-carousel/10.jpg',
 ]);
 
 // Jen's captions (Nov 4), matched by file. Empty means no caption line.
