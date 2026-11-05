@@ -102,8 +102,8 @@ export const SHOP = {
   signedBookPrice: '$35',
   signedBookShipping: '$6.99',
   signedBookTotal: '$41.99',
-  // Adam's exact wording (Nov 3). The Stripe checkout shows the same line.
-  signedBookLeadTime: 'Personally signed and personalized. Please allow 2–3 weeks before your book ships.',
+  // Jen, Nov 5: no day or week count. Signed and shipped by regular mail.
+  signedBookLeadTime: 'Signed and shipped by regular mail.',
 
   // SOLD OUT SWITCH — flip to false to put signed copies back on sale.
   // NOTE: `signedBook` above is deliberately left populated. The printed

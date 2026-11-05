@@ -45,8 +45,8 @@ the newer features she likes. Before changing structure, re-read this section.
   Each main page has a drop-down of its sections (Jen, Nov 3, 2026) so people can jump straight
   to them; the links point at section ids on those pages (`/about#then`, `/shop#bookmark`...).
   The Book page is the book. Signed copies, the bookmark, and the book club live on `/shop`.
-  Simplified (Nov 2026): The Velvet Letter is in the Book drop-down (with its key icon),
-  About the Author is under Media next to the press kit, Film and documentary is only under
+  Simplified (Nov 2026): The Velvet Letter is not in the menu. /velvet is reached by the
+  book’s QR code. About the Author is under Media next to the press kit, Film and documentary is only under
   Media, the Journal's "Podcast" category is labeled "Podcast Posts" (the category name in
   Sanity is unchanged; see `CATEGORY_LABELS` in `app/journal/curation.js`), and the Shop's
   FAQ link says "Book Club FAQs". Each link appears once.
@@ -114,8 +114,8 @@ the newer features she likes. Before changing structure, re-read this section.
     2026).** The Shop, the Stripe checkouts, and Shipping & Returns say the same thing:
     - **Signed copy:** shown as the TOTAL, "$41.99 total" with "$35 book + $6.99 shipping, US
       only" under it (`signedBookTotal`, `signedBookPrice`, `signedBookShipping`). The line is
-      exactly "Personally signed and personalized. Please allow 2–3 weeks before your book
-      ships." (`signedBookLeadTime`; the Stripe checkout shows it too). The Book page's buy box
+      exactly "Signed and shipped by regular mail." (`signedBookLeadTime`). No day or week
+      count. The Book page's buy box
       says "Signed by Jen, $41.99 with shipping".
     - **Book club:** one membership at `velvetCircleMembershipPrice` ($9.99/month) on the existing
       Payment Link. The card has the fun line, the five items, and the line that the monthly

@@ -32,7 +32,7 @@ export default function ShippingReturnsPage() {
           <p>
             Each signed copy is personalized and signed by hand by Jen, one at a time. A signed copy
             is {SHOP.signedBookPrice} plus {SHOP.signedBookShipping} shipping, {SHOP.signedBookTotal} total.
-            Please allow 2&ndash;3 weeks before your book ships. Orders currently ship within the
+            Signed and shipped by regular mail. Orders currently ship within the
             United States only.
             Because each book is personalized to your order, we&rsquo;re unable to accept returns for a
             change of mind, but if your book arrives damaged or defective, contact us within 14 days at{' '}
