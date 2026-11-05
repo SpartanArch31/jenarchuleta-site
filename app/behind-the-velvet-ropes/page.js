@@ -14,11 +14,17 @@ export default function VelvetRopesPage() {
       <a href="#main-content" className="skip-link">Skip to content</a>
       <section id="main-content" className="wrap hero">
         <div className="hero-copy">
-          <VelvetKey className="velvet-ropes-key" />
           <h1>Velvet Ropes</h1>
           <p>
             Want to get behind the velvet ropes? Buy the book, because it doesn’t stop there. The last page has a QR code with the passcode to a secret Velvet Letter.
           </p>
+          <div className="velvet-letter-line">
+            <VelvetKey className="velvet-ropes-key" />
+            <div>
+              <h2>What’s the Velvet Letter?</h2>
+              <p>It’s a secret letter that picks up where the book ends. Buy the book and use the QR code in the back to unlock it.</p>
+            </div>
+          </div>
           <p style={{ marginTop: '22px' }}>
             <a className="btn btn-primary" href="/book#buy">Buy the book</a>
           </p>
