@@ -99,11 +99,15 @@ export default function BookOffers() {
             <div className="product-body">
               <div className="eyebrow">The Bundle</div>
               <h3>Signed book, bookmark, and bunny ears</h3>
+              <p className="price">{SHOP.bundlePrice}</p>
               <p className="product-desc">
                 A signed copy of the book, the Signature Velvet Bookmark, and bunny ears, packaged together in a padded gift case. Shipped by regular mail.
               </p>
               <div className="product-cta">
-                <span className="btn btn-disabled">Coming soon</span>
+                <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
+                  Buy the bundle
+                </a>
+                <TrustLine />
               </div>
             </div>
           </article>

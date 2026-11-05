@@ -50,7 +50,7 @@ export default function ShippingReturnsPage() {
 
           <h2>The Bundle</h2>
           <p>
-            The Bundle is not for sale yet. When it is, it is a signed copy of the book, the Signature Velvet Bookmark,
+            The Bundle is {SHOP.bundlePrice}. It is a signed copy of the book, the Signature Velvet Bookmark,
             and bunny ears, packaged together in a padded gift case and shipped by regular mail.
           </p>
 

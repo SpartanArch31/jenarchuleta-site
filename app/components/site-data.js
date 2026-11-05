@@ -135,8 +135,10 @@ export const SHOP = {
   // and in detail every month.
   velvetCircleQuestionsEmail: 'therealunfilteredpod@gmail.com',
 
-  // The Backstage Bundle is not a separate shop product. It never had a Stripe
-  // link. Old #backstage-bundle anchors land on the book club card.
+  // The Bundle. $69, sold through the existing Kit product page (no Stripe link).
+  // Old #backstage-bundle anchors land on this card.
+  bundle: 'https://jennifer-archuleta.kit.com/products/founding-box-season-1',
+  bundlePrice: '$69',
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official
