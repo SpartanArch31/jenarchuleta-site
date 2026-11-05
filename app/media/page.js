@@ -235,29 +235,28 @@ export default function MediaPage() {
         <p>Please include your name, your outlet or event, the date, and a little about what you have in mind.</p>
       </section>
 
-      <section id="forever-angels" className="wrap text-wrap">
-        <h2>Want to get involved with me?</h2>
-        <img
-          src="/assets/forever-angels-tree.jpg"
-          alt="Jen and her Forever Angels co-founder at an angel tree event"
-          width="1200"
-          height="1852"
-          style={{ width: 'min(480px, 100%)', height: 'auto', display: 'block', margin: '0 0 18px' }}
-        />
-        <p>
-          I co-founded The Forever Angels with Allison Kiefer. We help families through referrals and trusted community partners, with fairness and dignity. A family may receive support once a year.
-        </p>
-        <p>
-          I grew up in a close family that taught me compassion. At 18 I moved to the West Coast and built a career as a makeup artist, aesthetician, and model. The hard seasons made my purpose clearer. In 2008 I stepped away from modeling to focus on my family. My husband, former NFL safety Adam Archuleta, and I keep a lively house with our rescues and two tortoises. I love camping, snowboarding, rock climbing, and traveling with them. My faith keeps me steady.
-        </p>
-        <p>
-          I serve as a Court Appointed Special Advocate for children in foster care. My rescue, Turbo, is a certified therapy dog who brings comfort to people in hospitals and hospices.
-        </p>
-        <p>
-          I have worked with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
-        </p>
-        <p>What I want is simple. Bring happiness and kindness, one act at a time.</p>
-        <p>
+      <section id="forever-angels" className="wrap">
+        <div className="text-wrap">
+          <h2>Want to get involved with me?</h2>
+          <p>
+            I co-founded The Forever Angels with Allison Kiefer. We help families through referrals and trusted community partners, with fairness and dignity. A family may receive support once a year.
+          </p>
+        </div>
+        <div className="give-back">
+          <figure>
+            <img src="/assets/forever-angels-tree.jpg" alt="Jen and her Forever Angels co-founder at an angel tree event" width="1200" height="1852" />
+            <figcaption>The Forever Angels angel tree</figcaption>
+          </figure>
+          <figure>
+            <img src="/assets/casa-sworn-in.jpg" alt="Jen Archuleta raising her hand while being sworn in" width="933" height="745" />
+            <figcaption>Getting sworn in as a CASA volunteer</figcaption>
+          </figure>
+          <figure>
+            <img src="/assets/turbo-ronald-mcdonald.jpg" alt="Jen with her therapy dog Turbo at a group visit" width="1158" height="1164" />
+            <figcaption>Turbo doing TDI therapy dog work for Ronald McDonald House</figcaption>
+          </figure>
+        </div>
+        <p className="text-wrap">
           <a href="https://theforeverangels.com/our-founders/" target="_blank" rel="noopener noreferrer">The Forever Angels</a>
         </p>
       </section>
