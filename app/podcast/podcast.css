@@ -3,8 +3,6 @@
 .pod-hero { text-align:center; }
 .pod-hero h1 { font-size: var(--text-display-l); margin-bottom: 10px; }
 
-.subscribe-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:24px; }
-
 .pod-embed {
   margin-top: 8px;
   border: var(--hairline);

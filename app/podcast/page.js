@@ -60,10 +60,11 @@ export default async function PodcastPage() {
           Honest conversations on faith, family, resilience, and starting over. The same honest voice as the book.
         </p>
         <p className="pod-count">Explore all 13 episodes of {name}.</p>
-        <div className="subscribe-row">
-          <a href={PODCAST.buzzsprout} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
-          <a href={watchHref} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-        </div>
+        <p className="home-pod-cross">
+          Listen on <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Buzzsprout</a>
+          <span aria-hidden="true"> • </span>
+          Watch on <a href={PODCAST.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
+        </p>
         <p className="foot-meta" style={{ marginTop: '14px' }}>
           Also on <a href={subscribe.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
           {' · '}
