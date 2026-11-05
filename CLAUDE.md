@@ -41,11 +41,10 @@ Jen asked for the September 2026 site's wording, layout, colors, and feel, kept 
 the newer features she likes. Before changing structure, re-read this section.
 
 - **One navigation, every page** (`app/components/SiteNav.js`):
-  Home | About Me | Book | Podcast | Journal | Media.
+  Home | About Me | Book | Podcast | Journal | Media | Shop.
   Each main page has a drop-down of its sections (Jen, Nov 3, 2026) so people can jump straight
-  to them; the links point at section ids on those pages (`/about#then`, `/book#bookmark`...).
-  The shop is not its own page. Signed copies, the book club, and the bookmark live on `/book`.
-  `/shop` redirects to `/book#shop`.
+  to them; the links point at section ids on those pages (`/about#then`, `/shop#bookmark`...).
+  The Book page is the book. Signed copies, the bookmark, and the book club live on `/shop`.
   Simplified (Nov 2026): The Velvet Letter is in the Book drop-down (with its key icon),
   About the Author is under Media next to the press kit, Film and documentary is only under
   Media, the Journal's "Podcast" category is labeled "Podcast Posts" (the category name in

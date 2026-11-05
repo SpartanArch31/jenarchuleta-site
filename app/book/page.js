@@ -3,7 +3,6 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetInvite from '../components/VelvetInvite';
 import BuyOptions from '../components/BuyOptions';
-import BookOffers from './BookOffers';
 import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
 
 export const metadata = {
@@ -48,13 +47,15 @@ export default function BookPage() {
             <h1>Beyond the Velvet Ropes</h1>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
-            <BuyOptions />
+            <BuyOptions signedLink={false} />
+            <p className="book-to-shop">
+              Signed copies, the bookmark, and the book club.
+              <a className="btn btn-ghost btn-sm" href="/shop">Shop</a>
+            </p>
             <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
       </section>
-
-      <BookOffers />
 
       {/* THE HOOK */}
       <section className="wrap text-wrap center">

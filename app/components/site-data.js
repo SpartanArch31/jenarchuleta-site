@@ -35,7 +35,7 @@ export const STRIPE_CUSTOMER_PORTAL_URL = 'https://billing.stripe.com/p/login/14
 // SIGNED BOOKS — live. Sold via a Stripe Payment Link (lowest fees, collects
 // shipping address + a "Who should Jen sign it to?" field).
 //
-// BOOKMARK — three states, checked in this order by app/book/BookOffers.js:
+// BOOKMARK — three states, checked in this order by the shop (app/book/BookOffers.js):
 //   1. `bookmark` has a buy.stripe.com URL  → live "Buy" button.
 //      Only set this when a finished batch exists. Create the Payment Link in
 //      Stripe (Products → Signature Velvet Bookmark → Payment Link, enable

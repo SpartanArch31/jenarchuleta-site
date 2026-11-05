@@ -34,8 +34,7 @@ function QuestionsEmail() {
   return <a href={`mailto:${email}?subject=Velvet%20Circle%20question`}>{email}</a>;
 }
 
-// Signed copy, Velvet Circle tiers, bookmark, and book club questions.
-// The paperback chooser stays in BuyOptions. /shop redirects here.
+// Signed copy, bookmark, and Velvet Circle. Shown on /shop only.
 export default function BookOffers() {
   const bookmarkFacts = [
     ['Size', SHOP.bookmarkSize],
@@ -44,7 +43,11 @@ export default function BookOffers() {
 
   return (
     <div className="shop-page" id="shop">
-      <section className="wrap">
+      <section id="main-content" className="wrap">
+        <div className="center">
+          <div className="eyebrow">The Shop</div>
+          <h2>A few things worth sharing.</h2>
+        </div>
         <div className="product-grid">
           <article className="product-card" id="signed-copy">
             <div className="product-media product-media--contain">

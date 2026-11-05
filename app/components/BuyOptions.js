@@ -4,7 +4,7 @@ import { BOOK_BUY_URL, BOOK_FORMATS, READER_REVIEWS, SHOP } from './site-data';
 // "Get the Paperback" stays the main button, then every other store grouped by
 // format: Paperback, Ebook, Audiobook, Signed copy. Then up to three real
 // reader reviews, once Jen has chosen them (READER_REVIEWS in site-data.js).
-export default function BuyOptions() {
+export default function BuyOptions({ signedLink = true }) {
   const signed = Boolean(SHOP.signedBook) && !SHOP.signedBookSoldOut;
   const reviews = READER_REVIEWS.slice(0, 3);
 
@@ -26,16 +26,18 @@ export default function BuyOptions() {
             </dd>
           </div>
         ))}
-        <div className="buy-format">
-          <dt>Signed copy</dt>
-          <dd>
-            {signed ? (
-              <a className="buy-pill" href="/book#signed-copy">Signed by Jen, {SHOP.signedBookTotal} with shipping</a>
-            ) : (
-              <span className="buy-note">Sold out for now</span>
-            )}
-          </dd>
-        </div>
+        {signedLink ? (
+          <div className="buy-format">
+            <dt>Signed copy</dt>
+            <dd>
+              {signed ? (
+                <a className="buy-pill" href="/shop#signed-copy">Signed by Jen, {SHOP.signedBookTotal} with shipping</a>
+              ) : (
+                <span className="buy-note">Sold out for now</span>
+              )}
+            </dd>
+          </div>
+        ) : null}
       </dl>
       {reviews.length ? (
         <div className="reader-reviews">
