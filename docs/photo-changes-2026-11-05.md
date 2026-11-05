@@ -56,3 +56,20 @@ No other TikTok logo turned up on the restored slides (edges and bottoms of the 
 ## Captions
 
 Vague or wrong lines such as "Jen Walcott Archuleta", "on a red carpet" (that file is the stage seen from the crowd), "Childhelp", "With Adam", "With friends", and "Photo from Jen's personal collection" now say what is in the picture. Specific lines that were already clear (Tommy Lee, the magazine credits, the Playboy Mansion, Celebrity Fight Night, the Childhelp luncheon) were left as they were. No children's names, no school, no home city or state, no em dashes.
+
+## Soft blur on the children's faces
+
+Eight photos. Where a child's face had a hard square or a tight block, that block is now a soft oval: a Gaussian blur that feathers into the surrounding skin. The blur still hides who the child is. Adults are unchanged. Dogs, clothes, and the rest of each photo are unchanged. Git has no unblurred original of these files, so the oval replaces the block that was already in the file. Nothing was generated or painted.
+
+| File | Where it shows | Whose face |
+|---|---|---|
+| `full-house-kids-dogs.jpg` | About Me, the family asleep with the rescues | Three faces |
+| `gallery-nov3/09-rafting.jpg` | Gallery | Two children in green helmets |
+| `gallery-nov3/16-ocean-overlook.jpg` | Gallery | The toddler, and the boy in the cap. The boy in the blue shirt is turned away, so his hair is unchanged. |
+| `gallery-nov3/21-rv-family.jpg` | Gallery | Two faces |
+| `gallery-nov4/nov4-05-ski-gondola.jpg` | Gallery | The child in the gondola |
+| `gallery-nov4/nov4-06-beach-bodyboard.jpg` | Gallery | Three children |
+| `gallery-nov4/nov4-07-private-jet.jpg` | Gallery | The child by the window. The girl with the bow is turned away. |
+| `gallery-nov4/nov4-13-family-ocean.jpg` | Gallery | Three children |
+
+Left as they were: `gallery-nov3/19-private-jet.jpg` (the baby already had a soft oval), backs of heads with no face (the volcano, the ivy fountain, the mansion lawn, the camel photo), and the pajama photo (those blocks cover names on the shirts). `jen-childhood.jpg` is Jen. The asleep-with-the-rescues photo is not on the homepage. The Journal photos live in Sanity, not in these files, so they were not edited.
