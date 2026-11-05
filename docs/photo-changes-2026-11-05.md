@@ -73,3 +73,17 @@ Eight photos. Where a child's face had a hard square or a tight block, that bloc
 | `gallery-nov4/nov4-13-family-ocean.jpg` | Gallery | Three children |
 
 Left as they were: `gallery-nov3/19-private-jet.jpg` (the baby already had a soft oval), backs of heads with no face (the volcano, the ivy fountain, the mansion lawn, the camel photo), and the pajama photo (those blocks cover names on the shirts). `jen-childhood.jpg` is Jen. The asleep-with-the-rescues photo is not on the homepage. The Journal photos live in Sanity, not in these files, so they were not edited.
+
+## Later November 5: three originals, no blur (Adam's decision)
+
+Jen sent her originals of three gallery photos. Adam was asked whether to blur
+the children's faces or the two names printed on the pajama shirts, and chose
+"No blur at all". The files below are her originals, same size as before, saved as
+JPEG with no metadata. This is a deliberate exception to the kids rule in
+AGENTS.md; do not re-blur them without asking Adam and Jen.
+
+| File | Was | Now |
+|---|---|---|
+| `gallery-nov4/nov4-01-christmas-tree.jpg` | Soft rectangle blur over the child on the ladder and the child at the bottom | Jen's original, no blur |
+| `gallery-nov4/nov4-03-christmas-pajamas.jpg` | Solid blocks over the children and the names on their shirts | Jen's original, no blur |
+| `gallery-nov4/nov4-06-beach-bodyboard.jpg` | Hard-edged blurs over the held child and the two boys | Jen's original, no blur |

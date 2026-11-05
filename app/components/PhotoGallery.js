@@ -276,6 +276,10 @@ const OCT26 = [
 // November 4 batch, after OCT26. No captions (Jen). Children's faces and
 // the names on the pajama shirts are blurred; screenshots cropped to the photo.
 const NOV4 = [
+  // Nov 5, 2026: nov4-01, nov4-03 and nov4-06 are Jen's own originals, shown with
+  // NO blur, on Adam's explicit decision ("No blur at all", names on the pajama
+  // shirts included). This is a deliberate exception to the kids rule in
+  // AGENTS.md. Do not re-blur or swap these without asking Adam and Jen.
   { src: '/assets/gallery-nov4/nov4-01-christmas-tree.jpg', alt: 'Christmas tree with a ladder', caption: '', width: 1320, height: 1216 },
   { src: '/assets/gallery-nov4/nov4-02-ivy-fountain.jpg', alt: 'A little girl at an ivy-covered fountain', caption: '', width: 1320, height: 1274 },
   { src: '/assets/gallery-nov4/nov4-03-christmas-pajamas.jpg', alt: 'Jen Archuleta and her family in matching Christmas pajamas', caption: '', width: 1320, height: 1164 },
