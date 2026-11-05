@@ -55,6 +55,7 @@ export default async function PupsPage() {
   const photos = await pupPhotoUrls([...new Set(pups.map((p) => p.imageSlug).filter(Boolean))]);
   const featured = pups.find((p) => p.featured) || null;
   const featuredPhoto = featured ? featured.src || (featured.imageSlug ? photos[featured.imageSlug] : null) : null;
+  const showFeatured = Boolean(featured && featuredPhoto);
 
   return (
     <div className="pups-page">
@@ -69,7 +70,7 @@ export default async function PupsPage() {
         </p>
       </section>
 
-      {featured && featuredPhoto ? (
+      {showFeatured ? (
         <section className="wrap pups-featured" aria-labelledby="featured-pup">
           <div className="pups-featured-card">
             <img src={featuredPhoto} alt={featured.alt || featured.name} />
@@ -95,7 +96,7 @@ export default async function PupsPage() {
       <section className="wrap" style={{ paddingTop: 0 }}>
         <div className="eyebrow center" style={{ marginBottom: '18px' }}>The full collection</div>
         <div className="pups-grid">
-          {pups.map((pup) => {
+          {pups.filter((pup) => !(showFeatured && pup.name === featured.name)).map((pup) => {
             const photo = pup.src || (pup.imageSlug ? photos[pup.imageSlug] : null);
             if (!photo) return null;
             return <PupCard key={pup.name} pup={pup} photo={photo} />;

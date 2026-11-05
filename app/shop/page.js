@@ -30,8 +30,6 @@ function TrustLine({ note = 'Secure checkout. Stripe, Apple Pay, Google Pay' }) 
   );
 }
 
-const capitalize = (text) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
-
 // The book club's question inbox, with a subject line so Jen can spot member questions.
 function QuestionsEmail() {
   const email = SHOP.velvetCircleQuestionsEmail;
@@ -39,12 +37,11 @@ function QuestionsEmail() {
 }
 
 export default function ShopPage() {
-  // Bookmark details (Adam, Nov 3: size, packaging, when it ships). A line only
-  // shows once its value is filled in, in SHOP (site-data.js).
+  // Optional size and packaging lines. The paragraph above the button is the
+  // description, including regular mail. No day-count ships line.
   const bookmarkFacts = [
     ['Size', SHOP.bookmarkSize],
     ['Packaging', SHOP.bookmarkPackaging],
-    ['Ships', capitalize(SHOP.bookmarkShips)],
   ].filter(([, value]) => value);
 
   return (
@@ -196,11 +193,7 @@ export default function ShopPage() {
                 <p className="price-note">{SHOP.bookmarkShipping}</p>
               </div>
               <p className="product-desc">
-                Black velvet with gold detailing, a vintage-style key pressed into a
-                burgundy wax seal, and a gold heart engraved with a reminder I believe
-                in: <em>you matter, everyone belongs.</em> Handmade by me, one at a
-                time. <strong>Every story is different. Every key is different, so no
-                two are ever alike.</strong>
+                About 6 inches long. Handmade from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Packaged in a padded gift case and shipped by regular mail.
               </p>
               {bookmarkFacts.length > 0 && (
                 <dl className="offer-facts">
@@ -212,7 +205,6 @@ export default function ShopPage() {
                   ))}
                 </dl>
               )}
-              <p className="fulfill">Made in small batches · every piece one of a kind</p>
               <div className="product-cta">
                 {SHOP.bookmark ? (
                   <>
@@ -315,12 +307,6 @@ export default function ShopPage() {
             No. The $9.99 membership is the book club itself: the discussion guide and my written
             answers. My <a href="#signed-copy">signed book</a> and the{' '}
             <a href="#bookmark">velvet bookmark</a> are sold separately, above.
-          </p>
-        </details>
-        <details>
-          <summary>Is The Velvet Letter part of the membership?</summary>
-          <p>
-            No. Access to The Velvet Letter comes with the book. <a href="/velvet">Open The Velvet Letter</a>.
           </p>
         </details>
       </section>

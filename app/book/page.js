@@ -1,8 +1,8 @@
 import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import VelvetInvite from '../components/VelvetInvite';
 import BuyOptions from '../components/BuyOptions';
+import VelvetKey from '../components/VelvetKey';
 import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
 
 export const metadata = {
@@ -47,7 +47,13 @@ export default function BookPage() {
             <h1>Beyond the Velvet Ropes</h1>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
-            <BuyOptions />
+            <div id="buy">
+              <div className="book-velvet">
+                <VelvetKey className="book-velvet-key" />
+                <p>Psst. The last page isn’t really the end. Tucked in the back of the book is a little QR code, and it holds the key to a secret Velvet Letter, written just for readers. No book, no key. Turn the last page, scan, and step behind one more velvet rope.</p>
+              </div>
+              <BuyOptions />
+            </div>
             <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
@@ -99,11 +105,6 @@ export default function BookPage() {
         <h2>In development for film and documentary.</h2>
         <p><a href="/media#film" className="btn btn-ghost btn-sm">Film and documentary news</a></p>
       </section>
-
-      {/* THE VELVET LETTER */}
-      <div className="wrap">
-        <VelvetInvite compact />
-      </div>
 
       {/* REVIEWS */}
       <section id="reviews" className="wrap text-wrap center book-more">

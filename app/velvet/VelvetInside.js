@@ -20,7 +20,7 @@ function VelvetLetterPhoto() {
   if (!existsSync(file)) return null;
   return (
     <figure className="letter-photo">
-      <img src={photo(LETTER_PHOTO_FILE)} alt="Jen Walcott Archuleta" />
+      <img src={photo(LETTER_PHOTO_FILE)} alt="Jen Archuleta" />
     </figure>
   );
 }

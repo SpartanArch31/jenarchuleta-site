@@ -38,7 +38,7 @@ export default function AboutPage() {
           </p>
         </div>
         <div>
-          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
+          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
           <p className="tim-cap">Caught mid-laugh, which is most of the time</p>
         </div>
       </section>
@@ -90,7 +90,7 @@ export default function AboutPage() {
         <div>
           {/* Jen's pick since July: the black-and-white photo in the long black trench
               coat. Do not swap in a headshot. */}
-          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Walcott Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
+          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         </div>
         <div>
           <p className="tim-lead">
@@ -106,7 +106,7 @@ export default function AboutPage() {
       <section className="tim-wrap tim-fun">
         <div className="photo-row">
           <img src="/assets/jen-glam.jpg" alt="Jen Archuleta, glamour portrait" width="941" height="1123" loading="lazy" />
-          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Walcott Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
+          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
           <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
           <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
         </div>
@@ -130,8 +130,7 @@ export default function AboutPage() {
       <section className="tim-wrap tim-close">
         <span id="work" className="anchor" aria-hidden="true" />
         <p className="tim-lead">
-          Want to be part of something? <a href="/book">Buy my book</a> and check out{' '}
-          <a href="/velvet">the Velvet Letter</a> with your passcode. You can also{' '}
+          Want to be part of something? <a href="/book">Buy my book</a>. You can also{' '}
           <a href={KIT_FREE_CHAPTER_URL}>get the first chapter free</a>.
         </p>
         <p className="tim-lead">Thanks for being here.</p>

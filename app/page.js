@@ -1,8 +1,7 @@
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
-import VelvetInvite from './components/VelvetInvite';
+import VelvetHomeGate from './components/VelvetHomeGate';
 import HomeCarousel from './components/HomeCarousel';
-import BuyOptions from './components/BuyOptions';
 import { KIT_FREE_CHAPTER_URL, PODCAST } from './components/site-data';
 import { PRESS_HIGHLIGHTS, cardMeta } from '../lib/press';
 import { getFeaturedPup } from '../lib/pup-photos';
@@ -11,7 +10,8 @@ import { curatePosts } from './journal/curation';
 
 // Homepage, in Jen's order (October 27, 2026; November 2026 additions):
 // 1 intro + Get the Book · 2 Story, Voice, Heart · 2b featured photos
-// (HomeCarousel) · 3 the book, trailer, buy · 4 Velvet Letter invitation
+// (HomeCarousel) · 3 the book, trailer, and a link to buy on the Book page
+// · 4 Velvet Letter passcode box (the full line lives on the Book page)
 // · 5 podcast + Pup of the Podcast · 6 journal · 7 media and press
 // · 8 free first chapter (Stay close, in SiteFooter). Wording is the
 // September site's unless Jen changed it.
@@ -21,9 +21,10 @@ import { curatePosts } from './journal/curation';
 // November 3 (Jen): nothing repeated. The film news lives on Media (#film) and
 // is only linked from here; the podcast and pup lines live on the Podcast and
 // Pups pages. No em dashes anywhere.
-// Nov 2026: the book's stores are grouped by format (BuyOptions.js), and the
-// journal previews are the three newest posts (the three category cards only
-// show if Sanity can't be reached).
+// Nov 2026: the book's stores are grouped by format on the Book page
+// (BuyOptions.js). Home keeps a link there. The journal previews are the
+// three newest posts (the three category cards only show if Sanity can't
+// be reached).
 export const revalidate = 3600;
 
 function postDate(iso) {
@@ -50,7 +51,7 @@ export default async function Home() {
         <div className="hero-copy">
           <div className="eyebrow">Author · Speaker · Advocate</div>
           <div className="hero-script">this isn’t the story<br />you think it is</div>
-          <h1>Faith, family, and a bunch of dogs.</h1>
+          <h1>Faith, family, and a bunch of rescues.</h1>
           <div className="eyebrow" style={{ marginTop: '16px', marginBottom: '30px' }}>Author of <em>Beyond the Velvet Ropes</em></div>
           <div className="hero-ctas">
             <a href="/book" className="btn btn-primary">Get the book</a>
@@ -59,7 +60,7 @@ export default async function Home() {
         </div>
         <div className="hero-media">
           <div className="portrait hero-frame">
-            <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
+            <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
           </div>
         </div>
       </section>
@@ -103,11 +104,12 @@ export default async function Home() {
             <div className="eyebrow">The Memoir. Out Now.</div>
             <h2>Beyond the Velvet Ropes</h2>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
-            <p style={{ color: 'var(--text)' }}>From the outside, my twenties looked like the dream. Covers, cameras, a life behind the velvet ropes. But the real story was never the part people saw. It’s in the moments I never talked about, and the long road back to the ordinary, happy life I have now. I wrote all of it down. The hard, the funny, and the faith that carried me through. If you’ve ever come through something and made it to the other side, I wrote this for you.</p>
-            <BuyOptions />
+            <p style={{ color: 'var(--text)' }}>I wrote it all down. The hard, the funny, and the faith that carried me through.</p>
+            <p style={{ marginTop: '18px' }}><a href="/book#buy" className="btn btn-primary">Get the book</a></p>
             <p style={{ marginTop: '6px' }}><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
+        <VelvetHomeGate />
         <div className="wrap trailer-feature">
           <div className="tf-copy">
             <div className="eyebrow">Watch the Trailer</div>
@@ -127,10 +129,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 4. THE VELVET LETTER */}
-      <VelvetInvite />
-
-      {/* 5. PODCAST + PUP OF THE PODCAST */}
+      {/* 4. PODCAST + PUP OF THE PODCAST */}
       <section id="podcast" className="wrap home-podcast" style={{ background: 'var(--surface)' }}>
         <div className="center">
           <div className="eyebrow">The Podcast</div>

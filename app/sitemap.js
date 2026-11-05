@@ -11,6 +11,7 @@ export default async function sitemap() {
     changeFrequency: 'monthly',
     priority: 0.6,
   }));
+  // /velvet is unlisted. It is not in this sitemap.
   const pages = [
     { url: `${BASE}/`, changeFrequency: 'weekly', priority: 1 },
     { url: `${BASE}/about`, changeFrequency: 'monthly', priority: 0.8 },
