@@ -175,6 +175,10 @@ export default function BookOffers() {
                 <li>Up to three questions a month, answered by Jen</li>
                 <li>A monthly group Zoom once 13 members join</li>
               </ol>
+              {/* Jen, Nov 5: a fun nudge toward the 13. */}
+              <p className="club-note club-nudge">
+                Already in a book club? Bring the whole group. Once there are 13 of us, the monthly Zoom starts, so the more friends you bring, the sooner we get to talk.
+              </p>
               <div className="book-club-peek" id="book-club-guide">
                 <h4 id="book-club-guide-title">From the discussion sheet</h4>
                 <ol>

@@ -211,16 +211,16 @@ export default function MediaPage() {
         <div className="text-wrap">
           <h2>Want to get involved with me?</h2>
           <p>
-            I co-founded The Forever Angels with Allison Kiefer. We help families through referrals and trusted community partners, with fairness and dignity. A family may receive support once a year.
+            I co-founded The Forever Angels with Allison Kiefer. We help people through social workers and our trusted community partners. We help veterans, families in need, the elderly in hospice, and animals. Turbo has worked with Ronald McDonald Children’s Hospitals and veterans hospitals, and he has also worked in hospice.
           </p>
         </div>
         <div className="give-back">
           <figure>
             <img src="/assets/forever-angels-tree.jpg" alt="Jen and her Forever Angels co-founder at an angel tree event" width="1200" height="1852" />
-            <figcaption>The Forever Angels angel tree</figcaption>
+            <figcaption>The Forever Angels</figcaption>
           </figure>
           <figure>
-            <img src="/assets/casa-sworn-in.jpg" alt="Jen Archuleta raising her hand while being sworn in" width="933" height="745" />
+            <img src="/assets/casa-sworn-in.jpg" alt="Jen Archuleta raising her hand while being sworn in as a CASA volunteer" width="933" height="960" />
             <figcaption>Getting sworn in as a CASA volunteer</figcaption>
           </figure>
           <figure>

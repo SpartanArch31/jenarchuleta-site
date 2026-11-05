@@ -97,6 +97,10 @@ export default function BookPage() {
 
       {/* REVIEWS */}
       <section id="reviews" className="wrap text-wrap center book-more">
+        {/* Jen, Nov 5: say what these are. */}
+        <div className="eyebrow">Reader reviews</div>
+        <h2>What readers are saying</h2>
+        <p className="lead">These are reviews readers posted on Amazon, typed out here in their own words.</p>
         <PublicReviews reviews={BOOK_REVIEWS} />
         <div className="eyebrow">Already read it?</div>
         <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
