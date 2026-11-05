@@ -361,7 +361,51 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-new/new_14.jpg',
 ]);
 
-const SLIDES = ALL_SLIDES.filter((slide) => !OUT_OF_GALLERY.has(slide.src));
+// Jen's captions (Nov 4), matched by file. Empty means no caption line.
+// Photos after the first 88, and any she marked blank or not yet confirmed, stay blank.
+const GALLERY_CAPTIONS = {
+  '/assets/gallery-hw/hw_02.jpg': 'South by Southwest on stage',
+  '/assets/gallery-hw/hw_03.jpg': 'With Tommy Lee',
+  '/assets/gallery-hw/hw_04.jpg': 'With Howard Stern',
+  '/assets/gallery-hw/hw_05.jpg': 'With Shaggy',
+  '/assets/gallery-hw/hw_06.jpg': 'My Name on the Palms Marquee in Las Vegas',
+  '/assets/gallery-hw/hw_07.jpg': 'Swimming with a Dolphin',
+  '/assets/gallery-hw/hw_09.jpg': 'My Bodyguard. Who’s Protecting Who?',
+  '/assets/jen-joy.jpg': 'Just Call Me Snow White',
+  '/velvet-carousel/01.jpg': 'Charity event',
+  '/velvet-carousel/02.jpg': 'Modeling photo',
+  '/velvet-carousel/03.jpg': 'Photo by Alex Ardenti',
+  '/velvet-carousel/04.jpg': 'Modeling photo',
+  '/velvet-carousel/05.jpg': 'A to Z magazine cover',
+  '/velvet-carousel/06.jpg': 'A2Z Magazine cover',
+  '/velvet-carousel/10.jpg': 'Modeling photo',
+  '/velvet-carousel/11.jpg': 'Sponsored by PlayStation with Playmate friends / Playing video games all day',
+  '/velvet-carousel/12.jpg': 'Dolly slot machine ad',
+  '/velvet-carousel/13.jpg': 'HEF',
+  '/velvet-carousel/14.jpg': 'With Hef at the Suns game',
+  '/velvet-carousel/16.jpg': 'The night I met Hef and my life changed',
+  '/velvet-carousel/17.jpg': 'Pursuing my private pilot license',
+  '/velvet-carousel/18.jpg': 'Pursuing my private pilot license',
+  '/velvet-carousel/19.jpg': 'Married the love of my life',
+  '/velvet-carousel/20.jpg': 'Celebrity fight night with Adam',
+  '/velvet-carousel/23.jpg': 'Costa Rica',
+  '/velvet-carousel/37.jpg': 'Childhelp Wings Fashion Show Luncheon',
+  '/velvet-carousel/41.jpg': 'Spa day for my friend Gwen',
+  '/velvet-carousel/42.jpg': 'Halloween',
+  '/assets/gallery-nov3/04-bride-friend.jpg': 'Married my best friend twice, in the same dress. The second time was in Las Vegas for our 10-year anniversary, with my childhood best friend and family there.',
+  '/assets/gallery-nov3/07-dressing-room.jpg': 'Getting ready with my co-chair for the Childhelp fashion show',
+  '/assets/gallery-nov3/09-rafting.jpg': 'My family loves adventure',
+  '/assets/gallery-new/new_18.jpg': 'A birthday cake worth remembering',
+  '/assets/gallery-picks/154.jpg': 'Bangkok, Thailand',
+  '/assets/gallery-picks/175.jpg': 'Turkey trot, thankful for friends',
+  '/assets/gallery-oct26/snow.jpg': 'Aspen',
+  '/assets/gallery-oct26/jet-cabin.jpg': 'Jet setting',
+  '/assets/gallery-oct26/jet-stairs.jpg': 'Jet setting',
+};
+
+const SLIDES = ALL_SLIDES
+  .filter((slide) => !OUT_OF_GALLERY.has(slide.src))
+  .map((slide) => ({ ...slide, caption: GALLERY_CAPTIONS[slide.src] || '' }));
 
 const INTERVAL_MS = 4000;
 // Never enlarge a file more than this, so small photos stay sharp.
