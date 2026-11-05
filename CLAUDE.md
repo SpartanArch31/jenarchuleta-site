@@ -24,7 +24,7 @@ _Last updated: 2026-11-03, night (Shop: every offer says what you get, the total
 - **About Me is Jen's own words**, one page, exactly as she wrote them (Nov 3). Don't add,
   trim, or reword. Say "rescues", not "rescue dogs". **About the Author** (`/about-the-author`)
   is the separate formal page.
-- **Gallery:** 19 photos, Jen's "best 15 to 20" (`GALLERY_PICKS` in `PhotoGallery.js`).
+- **Gallery:** the full November 3 set is back (`SLIDES` in `PhotoGallery.js`), not the 19-photo shortlist. Out of the carousel: the Playboy SXSW stage photo, the blurred kids-and-dogs bed photo, and the long-hair glamour headshot (that one stays on the About Me red carpet row).
 - **Menu:** "Get the first chapter free" is in the Book drop-down and is a button at the bottom
   of the phone menu.
 - **Footer:** the book credit reads "Jen Walcott Archuleta." YouTube (the podcast channel) is
