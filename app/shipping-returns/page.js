@@ -51,14 +51,11 @@ export default function ShippingReturnsPage() {
 
           <h2>The Velvet Circle Book Club</h2>
           <p>
-            The Velvet Circle Book Club is billed at {SHOP.velvetCircleMembershipPrice} until you
-            cancel. Tier 1, for groups of 12 or fewer members, includes a sneak peek of the book
-            club discussion guide, The Velvet Letter with the gold key, the velvet bookmark, and
-            up to three questions a month, which Jen answers promptly and in detail every month. Tier 2,
-            for groups of 13 or more members, includes everything in Tier 1, a signed copy of the
-            book, and a live monthly Zoom with Jen. Once 13 paying members have joined, we&rsquo;ll
-            begin my monthly group Zoom. Until then, you get up to three questions a month, plus the
-            Tier 1 extras. Email questions to{' '}
+            The Velvet Circle Book Club is {SHOP.velvetCircleMembershipPrice} until you cancel.
+            It includes a sneak peek of the book club discussion guide (not the full guide), The
+            Velvet Letter with the gold key, the velvet bookmark, and up to three questions a month,
+            answered promptly and in detail. Once 13 paying members have joined, we&rsquo;ll begin my
+            monthly group Zoom. Email questions to{' '}
             <a href={`mailto:${SHOP.velvetCircleQuestionsEmail}`}>{SHOP.velvetCircleQuestionsEmail}</a>.
             You can cancel anytime before your next billing date to avoid being charged for
             the following month; charges already processed for the current billing period are

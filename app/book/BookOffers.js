@@ -92,7 +92,7 @@ export default function BookOffers() {
             </div>
           </article>
 
-          <article className="product-card product-card--club" id="velvet-circle">
+          <article className="product-card" id="velvet-circle">
             <span id="backstage-bundle" />
             <span id="backstage-box" />
             <div className="product-media">
@@ -104,36 +104,22 @@ export default function BookOffers() {
               />
               <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="" width="436" height="436" />
             </div>
-            <div className="product-body" id="velvet-circle-tiers">
+            <div className="product-body">
               <div className="eyebrow">Monthly Book Club</div>
               <h3>The Velvet Circle Book Club</h3>
+              <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
               <p className="club-nudge">
                 Grab 13 of your favorite people, a bottle of something bubbly (sparkling water counts), and start a book club. Hit 13 and I'll see you on Zoom every month.
               </p>
-              <div className="tier-grid">
-                <div className="tier">
-                  <h4 className="tier-name">Tier 1, groups of 12 or fewer members</h4>
-                  <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
-                  <ul className="product-list">
-                    <li>A sneak peek of the book club discussion guide (not the full guide)</li>
-                    <li><GoldKey /> The Velvet Letter with the gold key</li>
-                    <li>The velvet bookmark</li>
-                    <li>Up to three questions a month. Jen answers them promptly and in detail every month.</li>
-                    <li>Cancel anytime</li>
-                  </ul>
-                </div>
-                <div className="tier">
-                  <h4 className="tier-name">Tier 2, groups of 13 or more members</h4>
-                  <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
-                  <ul className="product-list">
-                    <li>Everything in Tier 1</li>
-                    <li>A signed copy of the book</li>
-                    <li>A live monthly Zoom with Jen</li>
-                  </ul>
-                </div>
-              </div>
+              <ul className="product-list">
+                <li>A sneak peek of the book club discussion guide (not the full guide)</li>
+                <li><GoldKey /> The Velvet Letter with the gold key</li>
+                <li>The velvet bookmark</li>
+                <li>Up to three questions a month, answered promptly and in detail</li>
+                <li>Cancel anytime</li>
+              </ul>
               <p className="club-note">
-                Once 13 paying members have joined, we’ll begin my monthly group Zoom. Until then, you get up to three questions a month, plus the Tier 1 extras.
+                Once 13 paying members have joined, we’ll begin my monthly group Zoom.
               </p>
               <div className="product-cta">
                 {SHOP.velvetCircleMembership ? (
@@ -237,7 +223,7 @@ export default function BookOffers() {
         <details>
           <summary>Where do I send my questions?</summary>
           <p>
-            Email them to <QuestionsEmail />. Up to three questions a month. Jen answers them promptly and in detail every month.
+            Email them to <QuestionsEmail />.
           </p>
         </details>
         <details>

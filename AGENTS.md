@@ -32,10 +32,9 @@ anything.** It is the full rulebook. The rules below are the ones that must neve
    small file past 1.6x. Don't paint over or rebuild part of a photo.
 7. **Facts.** The film and documentary are in development (wording in `lib/press.js`).
    The podcast has 13 episodes; never say new episodes are coming. The shop has three
-   products in Jen's order (see `CLAUDE.md`). The Velvet Circle Book Club is two tiers, both
-   $9.99 a month on the existing Stripe membership link. Tier 1 is groups of 12 or fewer.
-   Tier 2 is groups of 13 or more and adds a signed copy and a live monthly Zoom. The Zoom
-   only happens at 13 or more members. Don't add the word "backstage". The book credit is
+   products in Jen's order (see `CLAUDE.md`). The Velvet Circle Book Club is one membership,
+   $9.99 a month on the existing Stripe link. The monthly group Zoom begins once 13 paying
+   members have joined. Don't add the word "backstage". The book credit is
    "Beyond the Velvet Ropes by Jennifer Walcott Archuleta". Everywhere else the person is
    Jen Archuleta. Don't change Walcott inside URLs, handles, or press article titles. Shop prices and
    promises match Stripe: the signed copy shows $41.99 total ($35 + $6.99 shipping). Don't change a price in the site without changing it in Stripe too. Only Jen's real

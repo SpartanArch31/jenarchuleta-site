@@ -129,7 +129,7 @@ export const SHOP = {
   bookmarkPackaging: '',
   bookmarkShips: '',
 
-  // VELVET CIRCLE. Both tiers are this same $9.99/month Payment Link (Jen, Nov 5).
+  // VELVET CIRCLE. One membership, this $9.99/month Payment Link.
   // Do not create a second Stripe product or a second price.
   // Self-service cancel uses STRIPE_CUSTOMER_PORTAL_URL.
   velvetCircleMembership: 'https://buy.stripe.com/6oU3cuemL2mB1UD73Ids406',

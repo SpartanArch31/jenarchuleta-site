@@ -96,15 +96,13 @@ the newer features she likes. Before changing structure, re-read this section.
   complete.) Buzzsprout and YouTube sit together. Never say the show is on hold or that new
   episodes are coming. Use guests' full names.
 - **Shop:** three products in this order (Jen, 2026-10-28; Nov 3): Signed copy, The Velvet
-  Circle Book Club, Velvet Bookmark. The Velvet Circle tiers are listed once on the card.
-  - **Velvet Circle = "Monthly Book Club"** (Jen, Nov 5, 2026): two tiers, both $9.99/month on
+  Circle Book Club, Velvet Bookmark. The Velvet Circle is one membership on its card.
+  - **Velvet Circle = "Monthly Book Club"** (Jen, Nov 5, 2026): one membership, $9.99/month on
     the existing Stripe membership link. Do not create a second Stripe product or invent a price.
-    Tier 1, groups of 12 or fewer: a sneak peek of the discussion guide (not the full guide),
-    The Velvet Letter with the gold key, the velvet bookmark, up to three questions a month.
-    Jen answers them promptly and in detail every month. Cancel anytime. Tier 2, groups of 13 or more:
-    everything in Tier 1, a signed copy of the book, and a live monthly Zoom with Jen.
-    Once 13 paying members have joined, the monthly group Zoom begins. Until then, members get
-    up to three questions a month, plus the Tier 1 extras. The full guide is `lib/book-club-guide.js` for
+    It includes a sneak peek of the discussion guide (not the full guide), The Velvet Letter with
+    the gold key, the velvet bookmark, up to three questions a month answered promptly and in
+    detail, and cancel anytime. Once 13 paying members have joined, the monthly group Zoom begins.
+    The full guide is `lib/book-club-guide.js` for
     emailing to new members. The shop shows only the title, the intro, and questions 1 and 2.
   - **One name:** "The Velvet Circle Book Club" everywhere (cards, FAQ, Shipping & Returns,
     buttons). The Backstage Bundle is not a separate shop product. Don't add the word
@@ -119,10 +117,11 @@ the newer features she likes. Before changing structure, re-read this section.
       exactly "Personally signed and personalized. Please allow 2–3 weeks before your book
       ships." (`signedBookLeadTime`; the Stripe checkout shows it too). The Book page's buy box
       says "Signed by Jen, $41.99 with shipping".
-    - **Book club:** both tiers show `velvetCircleMembershipPrice` ($9.99/month) and the same
-      Payment Link. The card lists the tier items, that price, the 13-member Zoom note, and
-      Jen's one fun line. Questions go to `SHOP.velvetCircleQuestionsEmail`. Shipping & Returns
-      says the same thing. Cancel anytime via `STRIPE_CUSTOMER_PORTAL_URL`.
+    - **Book club:** one membership at `velvetCircleMembershipPrice` ($9.99/month) on the existing
+      Payment Link. The card has the fun line, the five items, and the line that the monthly
+      group Zoom begins once 13 paying members have joined. Questions go to
+      `SHOP.velvetCircleQuestionsEmail`. Shipping & Returns says the same thing. Cancel anytime
+      via `STRIPE_CUSTOMER_PORTAL_URL`.
     - **Bookmark:** $24.99, free shipping, US only (`bookmarkShipping`). Size, packaging, and
       when it ships come from `bookmarkSize`, `bookmarkPackaging`, `bookmarkShips` in
       `site-data.js`; each line shows only once it's filled in. Use Jen's real answers, never a
@@ -389,7 +388,7 @@ Current products (verify against `VELVET-CIRCLE-COMMERCE-STATUS.md` before trust
 that file is updated more frequently than this one):
 - **Signed Copy** — $41.99 total ($35 + $6.99 shipping) — Stripe Payment Link, live.
 - **The Velvet Circle Book Club** (Stripe product renamed from "Velvet Circle Membership" on
-  Nov 3, 2026). Both tiers are $9.99/month on this same Payment Link (Jen, Nov 5). No second
+  Nov 3, 2026). One membership at $9.99/month on this Payment Link. No second
   Stripe product. Cancel link is `STRIPE_CUSTOMER_PORTAL_URL` (capital I in the Stripe login
   id). It is on the shop card and Shipping & Returns.
 - **The Backstage Bundle** is not a separate shop product. It never had a Stripe link.

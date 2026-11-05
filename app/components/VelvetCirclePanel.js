@@ -2,12 +2,13 @@ import './velvet-circle-panel.css';
 import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 
 // Kept in step with the Shop card. Not mounted on a page right now.
-// Both tiers are the existing $9.99/month Payment Link (Jen, November 5).
+// One membership, the existing $9.99/month Payment Link.
 export const VELVET_CIRCLE_PERKS = [
-  'Tier 1, groups of 12 or fewer: a sneak peek of the discussion guide, The Velvet Letter with the gold key, the velvet bookmark, up to three questions a month. Jen answers them promptly and in detail every month. Cancel anytime',
-  'Tier 2, groups of 13 or more: everything in Tier 1, a signed copy of the book, and a live monthly Zoom with Jen',
-  'Once 13 paying members have joined, we’ll begin my monthly group Zoom. Until then, you get up to three questions a month, plus the Tier 1 extras.',
-  `${SHOP.velvetCircleMembershipPrice}. Cancel anytime.`,
+  'A sneak peek of the book club discussion guide (not the full guide)',
+  'The Velvet Letter with the gold key',
+  'The velvet bookmark',
+  'Up to three questions a month, answered promptly and in detail',
+  'Cancel anytime',
 ];
 
 export default function VelvetCirclePanel() {
@@ -37,9 +38,11 @@ export default function VelvetCirclePanel() {
           <p className="vc-announce-line">
             Grab 13 of your favorite people, a bottle of something bubbly (sparkling water counts), and start a book club. Hit 13 and I'll see you on Zoom every month.
           </p>
+          <p className="vc-announce-line">{SHOP.velvetCircleMembershipPrice}</p>
           <ul className="vc-announce-perks">
             {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
           </ul>
+          <p className="vc-announce-line">Once 13 paying members have joined, we’ll begin my monthly group Zoom.</p>
           {join ? (
             <a className="btn btn-primary" href={join} target="_blank" rel="noopener noreferrer">
               Join the Velvet Circle Book Club
