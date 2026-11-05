@@ -134,6 +134,18 @@ export default async function JournalPage({ searchParams }) {
 
       <section id="main-content" className="wrap journal-head">
         <h1>Journal</h1>
+        {/* Adam, Nov 5: search at the very top. On the main Journal page the
+            posts live in their category albums; a search shows its results here. */}
+        {!opened ? (
+          <JournalBrowser
+            key="all"
+            posts={cards}
+            initialQuery={typeof searchParams?.q === 'string' ? searchParams.q : ''}
+            showAll={searchParams?.show === 'all'}
+            showAllHref={`/journal?${showAllParams.toString()}`}
+            collapsedUntilSearch
+          />
+        ) : null}
         <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
           Notes from the road back to myself.
         </p>
@@ -164,8 +176,9 @@ export default async function JournalPage({ searchParams }) {
         )}
       </section>
 
+      {opened ? (
       <section className="wrap journal-feed" style={{ paddingTop: 0 }}>
-        {opened && visible.length === 0 ? (
+        {visible.length === 0 ? (
           active === 'Pup of the Podcast' ? (
             <p className="center lead"><a href="/pups">Meet the Pups of the Podcast</a></p>
           ) : (
@@ -182,6 +195,7 @@ export default async function JournalPage({ searchParams }) {
           />
         )}
       </section>
+      ) : null}
 
       <SiteFooter />
     </>
