@@ -305,6 +305,8 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .foot-meta { font-family: var(--font-sans); font-size: var(--text-meta); color: var(--text-muted); }
 
 .velvet-ropes-key { width: 28px; height: 28px; color: var(--accent); display: block; margin: 18px 0 12px; }
+.velvet-unlock { display: inline-flex; align-items: center; gap: 10px; }
+.velvet-unlock .velvet-ropes-key { width: 18px; height: 18px; margin: 0; color: currentColor; }
 .home-jumps { padding-bottom: var(--space-9); }
 .home-jumps h2 { margin-bottom: 22px; }
 .center { text-align:center; }
