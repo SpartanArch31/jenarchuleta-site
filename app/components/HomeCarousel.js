@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './home-carousel.css';
 
-// Homepage featured photos (Jen, November 2026): family, the rescues,
-// and the book. It sits below Story · Voice · Heart. The candid floral
+// Homepage featured photos (Jen, November 2026): family and the rescues.
+// The book cover stays on the Book page. The candid floral
 // portrait is the hero photo now (November 3), so it is not repeated here.
 // Every photo is shown whole at its own ratio, one height, with quiet arrows
 // and dots; no autoplay. Children: only Jen's own files with the kids' faces
@@ -19,7 +19,6 @@ export const HOME_SLIDES = [
   { src: '/assets/gallery-nov3/02-beach-kiss.jpg', width: 951, height: 1761, alt: 'A kiss on the beach' },
   { src: '/assets/gallery-nov3/08-volcano-railing.jpg', width: 1316, height: 739, alt: 'The family looking out at the mountains' },
   { src: '/assets/quiet-mornings.jpg', width: 1248, height: 1400, alt: 'Jen resting with one of her rescues' },
-  { src: '/assets/book-cover.jpg', width: 1000, height: 1500, alt: 'Beyond the Velvet Ropes book cover', href: '/book' },
 ];
 
 export default function HomeCarousel() {
