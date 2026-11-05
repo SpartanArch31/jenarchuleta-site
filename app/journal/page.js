@@ -7,6 +7,7 @@ import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
 import { CATEGORY_ORDER, categoryLabel, curatePosts } from './curation';
+import { heroAlt } from './hero-alt';
 
 // Categories show in Jen's order (curation.js). Empty ones stay off the row.
 // Promotional posts are archived (curation.js): out of the feed, listed
@@ -83,6 +84,7 @@ export default async function JournalPage({ searchParams }) {
     category: p.category || '',
     kicker: `${p.category} · ${formatDate(p.publishedAt)}`,
     img: heroUrl(p.heroImage),
+    imgAlt: heroAlt(p.heroImage, p.slug),
   }));
   const showAllParams = new URLSearchParams();
   if (showArchive) showAllParams.set('view', 'archive');

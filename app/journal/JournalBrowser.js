@@ -70,7 +70,7 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
         <div className="feed">
           {visible.map((p) => (
             <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
-              {p.img ? <img src={p.img} alt="" loading="lazy" /> : null}
+              {p.img ? <img src={p.img} alt={p.imgAlt || ''} loading="lazy" /> : null}
               <div className="body">
                 <div className="k">{p.kicker}</div>
                 <h3>{p.title}</h3>

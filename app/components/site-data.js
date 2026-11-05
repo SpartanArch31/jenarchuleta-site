@@ -23,7 +23,7 @@ export const OG_IMAGE = {
   url: 'https://jenarchuleta.com/assets/og-floral-1200x630.jpg',
   width: 1200,
   height: 630,
-  alt: 'Jen Walcott Archuleta',
+  alt: 'Jen Archuleta smiling in a floral top',
 };
 
 // Live Stripe Customer Portal login link. Capital I after wO3.

@@ -46,6 +46,8 @@ the newer features she likes. Before changing structure, re-read this section.
   Media, the Journal's "Podcast" category is labeled "Podcast Posts" (the category name in
   Sanity is unchanged; see `CATEGORY_LABELS` in `app/journal/curation.js`), and the Shop's
   FAQ link says "Book Club FAQs". Each link appears once.
+  The About drop-down says Gallery, not Photos. Media says "Press kit and gallery", and the
+  press kit heading is "Gallery for press and speaking."
   Rename or remove a section → update its link in `SiteNav.js`.
   Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors, Contact, Free First Chapter, and
   The Forever Angels also live in the footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private
