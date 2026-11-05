@@ -42,7 +42,7 @@ const HEADSHOTS = [
     download: '/assets/jen-headshot-bw.jpg',
     fileName: 'Jen-Walcott-Archuleta-Glamorous.jpg',
     label: 'Glamorous',
-    alt: 'Black-and-white portrait of Jen Walcott Archuleta',
+    alt: 'Black-and-white portrait of Jen Archuleta',
     width: 1320,
     height: 1946,
   },
@@ -52,7 +52,7 @@ const HEADSHOTS = [
     fileName: 'Jen-Walcott-Archuleta-Candid.jpg',
     label: 'Candid',
     note: 'Primary photo',
-    alt: 'Jen Walcott Archuleta smiling in a floral top',
+    alt: 'Jen Archuleta smiling in a floral top',
     width: 1100,
     height: 1370,
   },
@@ -61,7 +61,7 @@ const HEADSHOTS = [
     download: '/assets/jen-headshot-signature.jpg',
     fileName: 'Jen-Walcott-Archuleta-Signature.jpg',
     label: 'Signature',
-    alt: 'Jen Walcott Archuleta smiling in a black top',
+    alt: 'Jen Archuleta smiling in a black top',
     width: 1162,
     height: 1597,
   },
@@ -90,7 +90,7 @@ export default function MediaPage() {
           </p>
           <div className="media-actions">
             <a className="btn btn-primary" href="/contact">Contact for press and speaking</a>
-            <a className="btn btn-ghost" href="#press-kit">Press kit and photos</a>
+            <a className="btn btn-ghost" href="#press-kit">Press kit and gallery</a>
           </div>
         </div>
         <figure className="media-hero-photo">
@@ -172,7 +172,7 @@ export default function MediaPage() {
           </div>
           <p>{PRESS_BIO}</p>
         </div>
-        <h3 className="headshot-title">Photos for press and speaking</h3>
+        <h3 className="headshot-title">Gallery for press and speaking</h3>
         <p className="headshot-note">Approved for media and event use. Please do not crop through the face or retouch.</p>
         <div className="headshot-grid">
           {HEADSHOTS.map((shot) => (
