@@ -50,8 +50,15 @@
   margin: 28px 0;
   align-items: start;
 }
-.give-back figure { margin: 0; }
-.give-back img { width: 100%; height: auto; display: block; }
+.give-back figure { margin: 0; overflow: visible; }
+.give-back img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center top;
+  display: block;
+}
 .give-back figcaption {
   margin-top: 10px;
   font-family: var(--font-sans);

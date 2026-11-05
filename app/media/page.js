@@ -257,6 +257,9 @@ export default function MediaPage() {
           </figure>
         </div>
         <p className="text-wrap">
+          I have worked with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
+        </p>
+        <p className="text-wrap">
           <a href="https://theforeverangels.com/our-founders/" target="_blank" rel="noopener noreferrer">The Forever Angels</a>
         </p>
       </section>
