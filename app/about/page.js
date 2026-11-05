@@ -3,6 +3,7 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
+import TwentiesCarousel from './TwentiesCarousel';
 
 export const metadata = {
   title: 'About Me',
@@ -88,9 +89,8 @@ export default function AboutPage() {
       <section id="then" className="tim-wrap tim-then">
         <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         <p className="tim-lead">My 20s were amazing. I saw and did things most people dream about.</p>
-        {/* One empty slot for the photo Jen will send. No stand-in image. */}
-        <div className="tim-slot tim-slot--waiting" role="img" aria-label="Photo coming">Photo coming</div>
       </section>
+      <TwentiesCarousel />
 
       <PhotoGallery />
 

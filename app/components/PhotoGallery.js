@@ -354,6 +354,8 @@ const FROM_ABOUT = [
   { src: '/assets/jen-fun2.jpeg', alt: 'Jen Archuleta with a rescue puppy', caption: '', width: 510, height: 512 },
   { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 1077, height: 887 },
   { src: '/assets/brown-dress-portrait.jpg', alt: 'Jen Archuleta portrait', caption: '', width: 941, height: 883 },
+  { src: '/assets/covers/mag-musclemag.jpg', alt: 'Jen Archuleta on the MuscleMag swimsuit cover', caption: '', width: 1179, height: 1487 },
+  { src: '/assets/covers/mag-holistic-health.jpg', alt: 'Jen Archuleta on a Holistic Health magazine cover', caption: '', width: 1320, height: 1636 },
 ];
 
 // Every photo defined above, in the November 3 order, minus slides Jen had
