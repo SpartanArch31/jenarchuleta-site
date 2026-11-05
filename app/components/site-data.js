@@ -11,7 +11,7 @@ export const BOOKING_EMAIL = 'therealunfilteredpod@gmail.com';
 
 export const SOCIALS = {
   instagram: 'https://www.instagram.com/jenniferwalcott/',
-  x: 'https://x.com/Jenniferwalcott',
+  x: 'https://x.com/jenniferwalcott',
   facebook: 'https://facebook.com/therealjenniferwalcott',
   linkedin: 'https://www.linkedin.com/in/jennifer-archuleta-633805115',
   tiktok: 'https://www.tiktok.com/@jenarchuleta578',
@@ -164,3 +164,14 @@ export const PODCAST = {
     youtube: 'https://www.youtube.com/@jenarchuletaunfiltered',
   },
 };
+
+// Social accounts, in Jen's order. YouTube is the podcast channel.
+// Buzzsprout sits beside it. The newsletter form is only on /media#social.
+export const CONNECT_LINKS = [
+  { label: 'LinkedIn', href: SOCIALS.linkedin },
+  { label: 'X', href: SOCIALS.x },
+  { label: 'TikTok', href: SOCIALS.tiktok },
+  { label: 'Instagram', href: SOCIALS.instagram },
+  { label: 'YouTube', href: PODCAST.youtube },
+  { label: 'Buzzsprout', href: PODCAST.buzzsproutSite },
+];

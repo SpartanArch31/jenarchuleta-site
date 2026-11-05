@@ -25,16 +25,17 @@ const pageRedirects = [
   { source: '/checkout', destination: '/shop', permanent: true },
   // Old newsletter / Mailchimp-era signup paths → the free-chapter signup.
   // Temporary (307) so a real page can take these paths later without cached redirects.
-  { source: '/subscribe', destination: '/#letter', permanent: false },
-  { source: '/signup', destination: '/#letter', permanent: false },
-  { source: '/sign-up', destination: '/#letter', permanent: false },
-  { source: '/mailing-list', destination: '/#letter', permanent: false },
+  { source: '/subscribe', destination: '/media#social', permanent: false },
+  { source: '/signup', destination: '/media#social', permanent: false },
+  { source: '/sign-up', destination: '/media#social', permanent: false },
+  { source: '/mailing-list', destination: '/media#social', permanent: false },
   // The Forever Angels page is /forever-angels. The older spelled-out path lands there.
   { source: '/the-forever-angels', destination: '/forever-angels', permanent: true },
-  { source: '/newsletter', destination: '/#letter', permanent: true },
+  { source: '/newsletter', destination: '/media#social', permanent: false },
   // Quotes now live on About Me.
   { source: '/quotes', destination: '/about', permanent: true },
-  // /contact and /media are real pages. /press stays a permanent alias.
+  // /contact lands on the contact section of the combined Media page.
+  { source: '/contact', destination: '/media#contact', permanent: false },
   { source: '/press', destination: '/media', permanent: true },
   { source: '/events', destination: '/', permanent: true },
   { source: '/home', destination: '/', permanent: true },

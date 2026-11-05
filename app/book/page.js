@@ -3,13 +3,12 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuyOptions from '../components/BuyOptions';
 import VelvetKey from '../components/VelvetKey';
-import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
   title: { absolute: 'Beyond the Velvet Ropes by Jennifer Walcott Archuleta' },
   description:
-    'Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love by Jennifer Walcott Archuleta. Out now. Read the first chapter free.',
+    'Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love by Jennifer Walcott Archuleta. Out now.',
 };
 
 const bookJsonLd = {
@@ -58,7 +57,6 @@ export default function BookPage() {
                 <a className="btn btn-ghost btn-sm" href="/shop">Shop</a>
               </p>
             </div>
-            <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>
         </div>
       </section>
@@ -100,14 +98,6 @@ export default function BookPage() {
             <li>Anyone who’s ever felt judged, underestimated, or counted out.</li>
           </ul>
         </div>
-      </section>
-
-      {/* FILM AND DOCUMENTARY: the news has one home, Media (#film). Jen, November 3:
-          link to it from here, never copy it. */}
-      <section id="on-screen" className="wrap text-wrap book-screen">
-        <div className="eyebrow">On screen</div>
-        <h2>In development for film and documentary.</h2>
-        <p><a href="/media#film" className="btn btn-ghost btn-sm">Film and documentary news</a></p>
       </section>
 
       {/* REVIEWS */}

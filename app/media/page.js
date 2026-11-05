@@ -5,44 +5,28 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import KitInlineForm from '../components/KitInlineForm';
 import CopyTextButton from '../components/CopyTextButton';
-import { KIT_FORM_UID, SOCIALS } from '../components/site-data';
-import { APPEARANCES, AS_SEEN_IN, FILM, PRESS, cardMeta } from '../../lib/press';
+import MediaCats from './MediaCats';
+import { BOOKING_EMAIL, CONNECT_LINKS, KIT_FORM_UID } from '../components/site-data';
+import { APPEARANCES, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Media, Jen Archuleta' },
+  title: { absolute: 'Media & Contact, Jen Archuleta' },
   description:
-    'Interviews, articles, and conversations with Jen Archuleta, plus a short bio and headshots for press.',
+    'Press, television, the author bio, social links, the newsletter, and how to reach Jen Archuleta.',
 };
 
-// FilmFreeway: Jen asked for her FilmFreeway link (November 3). It is in
-// lib/press.js with the film partners. Do not copy details from that profile
-// onto this site, and never publish a representative's phone number or
-// street address.
-// Speaking reel and past events: render nothing until Jen supplies them.
-// Boardman News links to the outlet's Facebook post. The article host's
-// certificate is expired, so the card does not point at boardmannews.net.
-// Direct WKBN video embed is omitted until a video URL exists. The article link stands in.
-// Press kit PDF is shown only when public/press/jen-walcott-archuleta-press-kit.pdf exists.
-// Book cover download is omitted. public/assets/book-cover.jpg is the compressed
-// web image (1000x1500), not a press-resolution file.
-// Outlet logos are names until files arrive in public/assets/logos/.
+// FilmFreeway sits with Leone and Mark. Never publish a representative's
+// phone number or email. The newsletter form is the only signup on the site.
+// /contact redirects here (#contact).
 
 const PRESS_BIO = 'Jen Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A feature film based on her memoir is in development with Leone Marucci and Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
 
-
-
-// Jen's three headshots for press downloads, in her order and her words
-// (November 3): Glamorous (black and white), Candid (floral top), and
-// Signature (black top, smiling). Candid is the floral portrait (IMG_5389),
-// also the primary Media image at the top of the page and the homepage hero.
-// Unretouched, uncropped. `download` is the largest clean file we have of
-// each (the copies Jen attached were phone screenshots of these same files).
 const HEADSHOTS = [
   {
     src: '/assets/jen-headshot-bw.jpg',
     download: '/assets/jen-headshot-bw.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Glamorous.jpg',
+    fileName: 'Jen-Archuleta-Glamorous.jpg',
     label: 'Glamorous',
     alt: 'Black-and-white portrait of Jen Archuleta',
     width: 1320,
@@ -51,7 +35,7 @@ const HEADSHOTS = [
   {
     src: '/assets/presskit-headshot-floral.jpg',
     download: '/assets/presskit-headshot-floral.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Candid.jpg',
+    fileName: 'Jen-Archuleta-Candid.jpg',
     label: 'Candid',
     note: 'Primary photo',
     alt: 'Jen Archuleta smiling in a floral top',
@@ -61,14 +45,13 @@ const HEADSHOTS = [
   {
     src: '/assets/jen-headshot-signature.jpg',
     download: '/assets/jen-headshot-signature.jpg',
-    fileName: 'Jen-Walcott-Archuleta-Signature.jpg',
+    fileName: 'Jen-Archuleta-Signature.jpg',
     label: 'Signature',
     alt: 'Jen Archuleta smiling in a black top',
     width: 1162,
     height: 1597,
   },
 ];
-const PRIMARY = HEADSHOTS.find((shot) => shot.label === 'Candid');
 
 const SPEAKING_TOPICS = [
   '1) Small-town roots and big dreams',
@@ -95,203 +78,160 @@ const SPEAKING_TOPICS = [
   '22) Helping animals and rescues',
 ];
 
-const MEDIA_SOCIALS = [
-  { label: 'LinkedIn', href: SOCIALS.linkedin },
-  { label: 'X', href: 'https://x.com/jenniferwalcott' },
-  { label: 'TikTok', href: SOCIALS.tiktok },
-];
-
-
 function publicFileExists(rel) {
   return fs.existsSync(path.join(process.cwd(), 'public', rel));
 }
 
+function Cards({ items }) {
+  return (
+    <div className="media-grid">
+      {items.map((item) => (
+        <article className="media-card" key={item.href}>
+          <p className="eyebrow">{item.outlet}</p>
+          <h3>{item.headline}</h3>
+          <p className="media-meta">{cardMeta(item)}</p>
+          <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel || 'Read'}</a>
+        </article>
+      ))}
+    </div>
+  );
+}
 
 export default function MediaPage() {
   const hasPressKit = publicFileExists('press/jen-walcott-archuleta-press-kit.pdf');
   const tv = APPEARANCES.filter((item) => item.kind === 'TV');
-  const otherAppearances = APPEARANCES.filter((item) => item.kind !== 'TV');
+  const more = APPEARANCES.filter((item) => item.kind !== 'TV');
 
   return (
     <div className="media-page">
       <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      <section id="main-content" className="wrap media-hero">
-        <div className="media-hero-text">
-          <h1>Media</h1>
-          <p className="media-lead">
-            Thank you for your interest in my story. Here you will find the interviews, articles, and conversations around Beyond the Velvet Ropes and my podcast. If you would like me on your show, at your event, or in your pages, I would love to hear from you.
-          </p>
-          <div className="media-actions">
-            <a className="btn btn-primary" href="/contact">Contact for press and speaking</a>
-            <a className="btn btn-ghost" href="#press-kit">Press kit and gallery</a>
+      <section id="main-content" className="wrap media-hero media-intro">
+        <div>
+          <h1>Media & Contact</h1>
+          <p className="media-lead">Press, socials, and how to reach me.</p>
+          <MediaCats />
+        </div>
+      </section>
+
+      <section id="media" className="wrap">
+        <h2>Media</h2>
+
+        <div id="press">
+          <h3>Press</h3>
+          <Cards items={PRESS} />
+        </div>
+
+        <div id="tv" className="media-block">
+          <h3>TV</h3>
+          <Cards items={tv} />
+        </div>
+
+        {more.length ? (
+          <div id="interviews" className="media-block">
+            <h3>More appearances</h3>
+            <Cards items={more} />
           </div>
-        </div>
-        <figure className="media-hero-photo">
-          <Image
-            src={PRIMARY.src}
-            alt={PRIMARY.alt}
-            width={PRIMARY.width}
-            height={PRIMARY.height}
-            sizes="(max-width: 860px) 88vw, 440px"
-            quality={88}
-            priority
-          />
-        </figure>
-      </section>
+        ) : null}
 
-      {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js.
-          This is the ONE home for the film news; other pages link to /media#film.
-          FilmFreeway sits right with Leone and Mark (Jen, November 3). */}
-      <section id="film" className="wrap text-wrap">
-        <h2>Film and documentary</h2>
-        <p>{FILM.film}</p>
-        <p>{FILM.documentary}</p>
-        <p className="media-film-links">
-          {FILM.partners.map((partner) => (
-            <span key={partner.href}>
-              <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
-              {' · '}
-            </span>
-          ))}
-          FilmFreeway:{' '}
-          <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
-        </p>
-      </section>
-
-      <section id="press" className="wrap">
-        <h2>Press articles</h2>
-        <div className="media-grid">
-          {PRESS.map((item) => (
-            <article className="media-card" key={item.href}>
-              <p className="eyebrow">{item.outlet}</p>
-              <h3>{item.headline}</h3>
-              <p className="media-meta">{cardMeta(item)}</p>
-              <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">Read</a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="tv" className="wrap">
-        <h2>TV appearances</h2>
-        <div className="media-grid">
-          {tv.map((item) => (
-            <article className="media-card" key={item.href}>
-              <p className="eyebrow">{item.outlet}</p>
-              <h3>{item.headline}</h3>
-              <p className="media-meta">{cardMeta(item)}</p>
-              <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel}</a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {otherAppearances.length ? (
-        <section id="interviews" className="wrap">
-          <h2>Interviews and appearances</h2>
-          <div className="media-grid">
-            {otherAppearances.map((item) => (
-              <article className="media-card" key={item.href}>
-                <p className="eyebrow">{item.outlet}</p>
-                <h3>{item.headline}</h3>
-                <p className="media-meta">{cardMeta(item)}</p>
-                <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel}</a>
-              </article>
+        <div id="press-kit" className="media-block">
+          <div className="bio-block">
+            <div className="bio-head">
+              <h3>Author bio</h3>
+              <CopyTextButton text={PRESS_BIO} label="Copy" />
+            </div>
+            <p>{PRESS_BIO}</p>
+          </div>
+          <h3 className="headshot-title">Photos for press</h3>
+          <div className="headshot-grid">
+            {HEADSHOTS.map((shot) => (
+              <figure key={shot.src}>
+                <div className="headshot-frame">
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
+                    sizes="(max-width: 760px) 88vw, 360px"
+                    quality={88}
+                  />
+                </div>
+                <figcaption>
+                  {shot.label}
+                  {shot.note ? <span className="headshot-tag">{shot.note}</span> : null}
+                </figcaption>
+                <a className="btn btn-ghost btn-sm" href={shot.download} download={shot.fileName}>
+                  Download
+                </a>
+              </figure>
             ))}
           </div>
-        </section>
-      ) : null}
+          {hasPressKit ? (
+            <p>
+              <a className="btn btn-ghost btn-sm" href="/press/jen-walcott-archuleta-press-kit.pdf" download>
+                Press kit PDF
+              </a>
+            </p>
+          ) : null}
+        </div>
+
+        <div id="film" className="media-block text-wrap" style={{ paddingInline: 0 }}>
+          <h3>Film and documentary</h3>
+          <p>{FILM.film}</p>
+          <p>{FILM.documentary}</p>
+          <p className="media-film-links">
+            {FILM.partners.map((partner) => (
+              <span key={partner.href}>
+                <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
+                {' · '}
+              </span>
+            ))}
+            FilmFreeway:{' '}
+            <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
+          </p>
+        </div>
+
+        <div id="speaking" className="media-block">
+          <h3>Speaking</h3>
+          <p>
+            I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
+          </p>
+          <p><a className="btn btn-primary" href="#contact">Invite me to speak</a></p>
+          <ol className="speak-topics">
+            {SPEAKING_TOPICS.map((topic) => (
+              <li key={topic}>{topic}</li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
       <section id="social" className="wrap">
-        <h2>Social</h2>
+        <span id="letter" className="anchor" aria-hidden="true" />
+        <h2>Social media and sign up</h2>
         <ul className="media-socials">
-          {MEDIA_SOCIALS.map((item) => (
-            <li key={item.href}>
+          {CONNECT_LINKS.map((item) => (
+            <li key={item.label}>
               <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
             </li>
           ))}
         </ul>
+        <div className="media-signup">
+          <h3>Read the first chapter free.</h3>
+          <KitInlineForm uid={KIT_FORM_UID} />
+        </div>
       </section>
 
-      <section id="speaking" className="wrap text-wrap">
-        <h2>Speaking</h2>
+      <section id="contact" className="wrap text-wrap">
+        <h2>Contact me</h2>
         <p>
-          I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
+          For press, interviews, speaking, and events, email{' '}
+          <a href={`mailto:${BOOKING_EMAIL}`}>{BOOKING_EMAIL}</a>.
         </p>
-        <h3 className="speak-topics-title">Topics</h3>
-        <ol className="speak-topics">
-          {SPEAKING_TOPICS.map((topic) => (
-            <li key={topic}>{topic}</li>
-          ))}
-        </ol>
-        <p>
-          <a className="btn btn-primary" href="/contact">Invite me to speak</a>
-        </p>
+        <p>Please include your name, your outlet or event, the date, and a little about what you have in mind.</p>
       </section>
 
-      <section id="press-kit" className="wrap">
-        <h2>Press kit</h2>
-        <div className="bio-block">
-          <div className="bio-head">
-            <h3>Short bio</h3>
-            <CopyTextButton text={PRESS_BIO} label="Copy" />
-          </div>
-          <p>{PRESS_BIO}</p>
-        </div>
-        <h3 className="headshot-title">Gallery for press and speaking</h3>
-        <p className="headshot-note">Approved for media and event use. Please do not crop through the face or retouch.</p>
-        <div className="headshot-grid">
-          {HEADSHOTS.map((shot) => (
-            <figure key={shot.src}>
-              <div className="headshot-frame">
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={shot.width}
-                  height={shot.height}
-                  sizes="(max-width: 760px) 88vw, 360px"
-                  quality={88}
-                />
-              </div>
-              <figcaption>
-                {shot.label}
-                {shot.note ? <span className="headshot-tag">{shot.note}</span> : null}
-              </figcaption>
-              <a className="btn btn-ghost btn-sm" href={shot.download} download={shot.fileName}>
-                Download ({shot.width} × {shot.height})
-              </a>
-            </figure>
-          ))}
-        </div>
-        <div className="media-actions">
-          {hasPressKit ? (
-            <a className="btn btn-ghost btn-sm" href="/press/jen-walcott-archuleta-press-kit.pdf" download>
-              Press kit PDF
-            </a>
-          ) : null}
-        </div>
-      </section>
-
-      <section className="wrap center">
-        <h2>As seen in</h2>
-        <ul className="media-logos">
-          {AS_SEEN_IN.map((name) => (
-            <li key={name}>{name}</li>
-          ))}
-        </ul>
-        <p className="media-lead" style={{ marginTop: '28px' }}>
-          For press, interviews, and speaking: <a href="/contact">contact me here</a>.
-        </p>
-      </section>
-
-      <section id="letter" className="wrap text-wrap media-signup">
-        <h2>Read the first chapter free.</h2>
-        <KitInlineForm uid={KIT_FORM_UID} />
-      </section>
-
-      <SiteFooter stayClose={false} />
+      <SiteFooter />
     </div>
   );
 }

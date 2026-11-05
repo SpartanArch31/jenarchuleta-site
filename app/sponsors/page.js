@@ -1,6 +1,5 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import { BOOKING_EMAIL } from '../components/site-data';
 import './sponsors.css';
 
 export const metadata = {
@@ -109,15 +108,7 @@ export default function SponsorsPage() {
           ))}
         </ul>
         <p className="sponsors-close">
-          Want to sponsor an episode? Email{' '}
-          <a href={`mailto:${BOOKING_EMAIL}`}>{BOOKING_EMAIL}</a>.
-        </p>
-        <p className="sponsors-close">
-          <a href="/podcast">The podcast</a>
-          {' · '}
-          <a href="/pups">Pups of the Podcast</a>
-          {' · '}
-          <a href="/about#faith">The dogs at home</a>
+          Want to sponsor an episode? <a href="/media#contact">Contact me</a>.
         </p>
       </section>
 

@@ -160,15 +160,6 @@ export default async function JournalPost({ params }) {
           <a className="btn btn-ghost btn-sm" href={`mailto:?subject=${shareText}&body=${encodeURIComponent(url)}`}>Email</a>
         </div>
 
-        {/* Book CTA */}
-        <div className="book-cta">
-          <img src="/assets/quiet-mornings.jpg" alt="A quiet morning" width="1248" height="1400" />
-          <div>
-            <div className="eyebrow">The Memoir. Out Now.</div>
-            <h3 style={{ margin: '.2em 0 14px' }}>Beyond the Velvet Ropes by Jennifer Walcott Archuleta</h3>
-            <a href="/book" className="btn btn-primary btn-sm">Get the book</a>
-          </div>
-        </div>
       </article>
 
       <SiteFooter />

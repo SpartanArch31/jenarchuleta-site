@@ -199,21 +199,6 @@ export default function BookOffers() {
         </section>
       </section>
 
-      <section className="wrap shop-more">
-        <div className="center">
-          <div className="eyebrow">And a little more</div>
-        </div>
-        <div className="more-grid more-grid--one">
-          <a className="mini" href={SHOP.etsyTee} target="_blank" rel="noopener noreferrer">
-            <div className="body">
-              <div className="k">Apparel · On Etsy</div>
-              <h3>Be the Bumblebee T-shirt</h3>
-              <p className="foot-meta">A little reminder to fly your own way. Shop it on Etsy →</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
       <div id="velvet-circle-details" aria-hidden="true" />
       <section id="velvet-circle-faq" className="wrap text-wrap vc-faq">
         <div className="center">

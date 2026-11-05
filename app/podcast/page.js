@@ -3,7 +3,6 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuzzsproutPlayer from '../components/BuzzsproutPlayer';
 import { PODCAST } from '../components/site-data';
-import { getFeaturedPup } from '../../lib/pup-photos';
 
 // The sharing preview for this page (Jen, November 2026): its own card, not
 // the site-wide floral image, so a shared Podcast link looks like the show.
@@ -39,12 +38,9 @@ export const metadata = {
 // and YouTube sit together (side by side on a laptop, stacked on a phone),
 // each with a plain link as a backup; never say the show is on hold or that
 // new episodes are coming out. Use guests' full names.
-export const revalidate = 3600;
-
-export default async function PodcastPage() {
-  const { name, buzzsproutSite, buzzsproutId, subscribe } = PODCAST;
+export default function PodcastPage() {
+  const { name, buzzsproutSite, buzzsproutId } = PODCAST;
   const watchHref = PODCAST.youtubeEpisodes || PODCAST.youtube;
-  const pup = await getFeaturedPup().catch(() => null);
 
   return (
     <>
@@ -56,19 +52,11 @@ export default async function PodcastPage() {
         <div className="eyebrow">The Podcast</div>
         <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>unfiltered…</div>
         <h1>{name}</h1>
-        <p className="lead" style={{ maxWidth: '60ch', marginInline: 'auto' }}>
-          Honest conversations on faith, family, resilience, and starting over. The same honest voice as the book.
-        </p>
         <p className="pod-count">Explore all 13 episodes of {name}.</p>
         <p className="home-pod-cross">
           Listen on <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Buzzsprout</a>
           <span aria-hidden="true"> • </span>
           Watch on <a href={PODCAST.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
-        </p>
-        <p className="foot-meta" style={{ marginTop: '14px' }}>
-          Also on <a href={subscribe.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
-          {' · '}
-          <a href={subscribe.apple} target="_blank" rel="noopener noreferrer">Apple Podcasts</a>
         </p>
       </section>
 
@@ -112,27 +100,9 @@ export default async function PodcastPage() {
       {/* PUPS OF THE PODCAST: the featured pup + a link to the full collection.
           The "every episode features a rescue pup" line lives on /pups only
           (Jen, November 3: nothing repeated). */}
-      <section id="pups" className="wrap pod-pups" style={{ background: 'var(--surface)' }}>
-        <div className="center">
-          <div className="eyebrow">Pups of the Podcast</div>
-        </div>
-        {pup ? (
-          <div className="home-pup">
-            <img src={pup.photo} alt={pup.alt || pup.name} loading="lazy" />
-            <div>
-              <div className="eyebrow">Featured pup</div>
-              <h3>{pup.name}</h3>
-              {pup.breedAge ? <p>{pup.breedAge}</p> : null}
-              {pup.episode ? <p>{pup.episode}</p> : pup.guest ? <p>With {pup.guest}</p> : null}
-              <p className="pod-pup-links">
-                {pup.watch ? <a href={pup.watch} className="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">Watch the episode</a> : null}
-              </p>
-            </div>
-          </div>
-        ) : null}
-        <div className="center" style={{ marginTop: '26px' }}>
-          <a href="/pups" className="btn btn-primary">See all the pups</a>
-        </div>
+      <section id="pups" className="wrap center">
+        <div className="eyebrow">Pups of the Podcast</div>
+        <p><a href="/pups" className="btn btn-primary">See all the pups</a></p>
       </section>
 
       {/* SPONSORS */}

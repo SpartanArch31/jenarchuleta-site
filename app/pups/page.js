@@ -112,13 +112,6 @@ export default async function PupsPage() {
             return <PupCard key={pup.name} pup={pup} photo={photo} />;
           })}
         </div>
-        <p className="foot-meta center" style={{ marginTop: '28px' }}>
-          <a href="/podcast">The podcast</a>
-          {' · '}
-          <a href="/sponsors">Sponsors</a>
-          {' · '}
-          <a href="/about#me">The dogs at home</a>
-        </p>
       </section>
 
       <SiteFooter />

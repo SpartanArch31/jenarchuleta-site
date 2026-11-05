@@ -12,11 +12,11 @@ export const metadata = {
 
 export default function ShopPage() {
   return (
-    <div className="shop-page">
+    <>
       <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
       <BookOffers />
       <SiteFooter />
-    </div>
+    </>
   );
 }

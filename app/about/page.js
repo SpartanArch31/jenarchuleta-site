@@ -3,7 +3,6 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
 import { QUOTE_FORGIVE, QUOTE_LOST, QUOTE_RESCUE } from '../quotes/quotes-data';
 
 export const metadata = {
@@ -116,7 +115,7 @@ export default function AboutPage() {
           <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
         </div>
       </section>
-      <PhotoGallery showTitle={false} />
+      <PhotoGallery />
 
       <section className="tim-wrap tim-band-inner tim-from-book" aria-label="From the book">
         <img
@@ -155,7 +154,7 @@ export default function AboutPage() {
         <span id="work" className="anchor" aria-hidden="true" />
         <p className="tim-lead">
           Want to be part of something? <a href="/book">Buy my book</a>. You can also{' '}
-          <a href={KIT_FREE_CHAPTER_URL}>get the first chapter free</a>.
+          <a href="/media#social">get the first chapter free</a>.
         </p>
         <p className="tim-lead">Thanks for being here.</p>
         <p className="tim-sign">Jen</p>

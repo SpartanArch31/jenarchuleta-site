@@ -2,20 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { KIT_FREE_CHAPTER_URL } from './site-data';
-
 // ONE navigation for the whole site, every page, light or dark.
-// Main: Home | About Me | Book | Podcast | My Journals | Media | Shop
-// Each main page has a drop-down of its sections (Jen, November 3: "so people
-// can jump straight to the sections they want"). The section links point at
-// ids on those pages; if you rename or remove a section, update its link here.
-// November 5, 2026: The Velvet Letter is not in the menu. /velvet stays
-// unlisted. About the
-// Author sits with Media and the press kit, Film and documentary is only under
-// Media, and each link appears once.
-// Everything else (Gallery, Pups of the Podcast, Speaking, Sponsors,
-// Contact, Free First Chapter, The Forever Angels) is also in the footer, the
-// same on every page. See SiteFooter.js.
+// Main: Home | About Me | Book | Podcast | My Journals | Media & Contact | Shop
+// The Velvet Letter is not in the menu. /velvet stays unlisted.
+// Media, social signup, and contact are one page (/media). /contact redirects there.
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.
 // Narrow screens: the hamburger opens the menu, and each arrow opens that
 // page's sections underneath it.
@@ -37,8 +27,7 @@ const MENU = [
     label: 'Book',
     items: [
       { href: '/book', label: 'Get the book' },
-      // Jen, November 3: the free first chapter belongs in the main menu.
-      { href: KIT_FREE_CHAPTER_URL, label: 'Get the first chapter free' },
+      { href: '/media#social', label: 'Get the first chapter free' },
       { href: '/book#trailer', label: 'Watch the trailer' },
       { href: '/book#who', label: 'Who this book is for' },
       { href: '/book#reviews', label: 'Leave a review' },
@@ -58,17 +47,13 @@ const MENU = [
   {
     id: 'media',
     href: '/media',
-    label: 'Media',
-    also: ['/about-the-author', '/contact'],
+    label: 'Media & Contact',
+    also: ['/contact'],
     alignEnd: true,
     items: [
-      { href: '/media#film', label: 'Film and documentary' },
-      { href: '/media#press', label: 'Press coverage' },
-      { href: '/media#interviews', label: 'Interviews and appearances' },
-      { href: '/media#speaking', label: 'Speaking' },
-      { href: '/media#press-kit', label: 'Press kit and gallery' },
-      { href: '/about-the-author', label: 'About the Author' },
-      { href: '/contact', label: 'Contact' },
+      { href: '/media#media', label: 'Media' },
+      { href: '/media#social', label: 'Social media and sign up' },
+      { href: '/media#contact', label: 'Contact me' },
     ],
   },
   {
@@ -240,7 +225,7 @@ export default function SiteNav({ homeHref = '/' }) {
           })}
           {/* Phones: the free first chapter sits at the bottom of the menu as a
               button. On a laptop it is in the Book drop-down. */}
-          <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary nav-chapter" onClick={close}>
+          <a href="/media#social" className="btn btn-primary nav-chapter" onClick={close}>
             Get the first chapter free
           </a>
         </div>
