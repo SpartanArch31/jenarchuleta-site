@@ -87,12 +87,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Coat first, then Jen's two paragraphs, then the square that opens the slideshow. */}
+      {/* Coat, then the square that opens the slideshow (with Jen's caption), then her two paragraphs (Nov 5). */}
       <section id="then" className="tim-wrap tim-then">
         <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
+        <TwentiesSlideshow />
         <p className="tim-lead">My 20s were loud. I got into rooms most people never see, stood next to people you only know from a screen, and went places I didn’t grow up thinking I’d ever go. Some of it was exactly as fun as it looked. Some of it wasn’t.</p>
         <p className="tim-lead">A lot of it looked like the dream from the outside. Inside it was survival. I learned who I was while everything around me tried to tell me who to be. I wouldn’t trade it. It made me. But it cost something, and I know that now.</p>
-        <TwentiesSlideshow />
       </section>
 
       <PhotoGallery />

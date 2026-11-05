@@ -8,8 +8,10 @@ import Image from 'next/image';
 // ratio, never cropped or stretched. The black coat photo sits above this on
 // the page and is not repeated here. Order: the Ferrari first (Jen: coat,
 // then the Ferrari), then the rest in Jen's numbering.
-// Files 03 (race car) and 11 (turtleneck) are the clean copies from earlier
-// on November 5; Jen's re-sent copies had a black band and phone buttons.
+// 03 (race car) is the clean copy from earlier on November 5. Later Nov 5
+// (Jen): the Air Bali helicopter photo is out; 10 and 11 are her closer
+// crops of the FOX interview and turtleneck photos; 14 (bunnies) is new.
+// Under the square: her caption, "A little glam, a lot of fun, and a life I love."
 const PHOTOS = [
   { src: '/assets/twenties/12.jpg', width: 1320, height: 907, alt: 'Jen Archuleta with a red Ferrari' },
   { src: '/assets/twenties/01.jpg', width: 909, height: 605, alt: 'A crowd in front of the Playboy Mansion' },
@@ -19,11 +21,11 @@ const PHOTOS = [
   { src: '/assets/twenties/05.jpg', width: 853, height: 2007, alt: 'Jen Archuleta in a ski snowsuit' },
   { src: '/assets/twenties/06.jpg', width: 1320, height: 1737, alt: 'Jen Archuleta on the beach in a sombrero' },
   { src: '/assets/twenties/07.jpg', width: 912, height: 1239, alt: 'Jen Archuleta at a golden temple in Bangkok' },
-  { src: '/assets/twenties/08.jpg', width: 1552, height: 1280, alt: 'Jen Archuleta beside an Air Bali helicopter' },
   { src: '/assets/twenties/09.jpg', width: 1025, height: 1459, alt: 'Jen Archuleta in a makeup chair' },
-  { src: '/assets/twenties/10.jpg', width: 1320, height: 1334, alt: 'Jen Archuleta at a pool during a FOX interview' },
-  { src: '/assets/twenties/11.jpg', width: 944, height: 1880, alt: 'Jen Archuleta in a black turtleneck' },
+  { src: '/assets/twenties/10.jpg', width: 867, height: 1334, alt: 'Jen Archuleta giving an interview by a pool' },
+  { src: '/assets/twenties/11.jpg', width: 944, height: 1274, alt: 'Jen Archuleta in a black turtleneck, close up' },
   { src: '/assets/twenties/13.jpg', width: 1320, height: 1309, alt: 'Jen Archuleta crowd surfing' },
+  { src: '/assets/twenties/14.jpg', width: 604, height: 453, alt: 'A group of Playboy bunnies in white at a party' },
 ];
 
 export default function TwentiesSlideshow() {
@@ -84,6 +86,7 @@ export default function TwentiesSlideshow() {
         <Image src={PHOTOS[0].src} alt="" fill sizes="(max-width: 600px) 86vw, 420px" quality={85} />
         <span className="twenties-cover-label">My 20s · {PHOTOS.length} photos</span>
       </button>
+      <p className="twenties-caption">A little glam, a lot of fun, and a life I love.</p>
 
       <dialog
         ref={dialogRef}
