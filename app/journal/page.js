@@ -1,24 +1,19 @@
 import './journal.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import CategorySelect from './CategorySelect';
 import JournalBrowser from './JournalBrowser';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
 import { CATEGORY_ORDER, categoryLabel, curatePosts } from './curation';
 
-// Categories show in Jen's order (curation.js). Empty ones stay off the row.
-// Promotional posts are archived (curation.js): out of the feed, listed
-// under Archive (its chip sits at the end of the row, Nov 2026), and still
-// live at their own URLs. Pup of the Podcast posts live on /pups, not here
-// (Jen, November 3). The public Journal never shows anything from the
-// private Velvet Letter.
-// The feed itself (search box, 12 posts at a time, Load more) is
-// JournalBrowser.js.
+// Categories show in Jen's order (curation.js). The page opens on album
+// tiles. A tile opens that category's posts. Promotional posts stay under
+// the Archive tile, still live at their own URLs. Pup of the Podcast posts
+// live on /pups. Nothing is deleted, and no post body is edited here.
 
 export const metadata = {
-  title: 'Journal',
+  title: 'My Journals',
   description:
     'Short, honest writing on faith, family, healing, and starting over, from Jen Archuleta.',
 };
@@ -52,6 +47,23 @@ function heroUrl(img, w = 800, h = 533) {
   return urlFor(img).width(w).height(h).fit('crop').url();
 }
 
+// Album covers stay whole. No crop, no stretch.
+function coverUrl(img) {
+  if (!img) return null;
+  if (typeof img === 'string') return img;
+  return urlFor(img).width(900).fit('max').url();
+}
+
+function byNewest(a, b) {
+  return String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''));
+}
+
+function newestCover(list) {
+  const sorted = [...list].sort(byNewest);
+  const withImage = sorted.find((p) => p.heroImage);
+  return withImage ? coverUrl(withImage.heroImage) : null;
+}
+
 export default async function JournalPage({ searchParams }) {
   const live = await getAllPosts().catch(() => []);
   const all = curatePosts(live && live.length > 0 ? live : FALLBACK_POSTS).filter((p) => !p.offJournal);
@@ -60,6 +72,7 @@ export default async function JournalPage({ searchParams }) {
 
   const showArchive = searchParams?.view === 'archive';
   const active = showArchive ? 'Archive' : searchParams?.category || 'All';
+  const opened = showArchive || active !== 'All';
   const visible = showArchive
     ? archived
     : active === 'All' ? posts : posts.filter((p) => p.category === active);
@@ -68,12 +81,20 @@ export default async function JournalPage({ searchParams }) {
     if (p.category) m[p.category] = (m[p.category] || 0) + 1;
     return m;
   }, {});
-  const presentCategories = CATEGORY_ORDER.filter((c) => counts[c]);
-  const options = [
-    { key: 'All', label: 'All', href: '/journal' },
-    ...presentCategories.map((c) => ({ key: c, label: categoryLabel(c), href: `/journal?category=${encodeURIComponent(c)}` })),
-    ...(archived.length > 0 ? [{ key: 'Archive', label: 'Archive', href: '/journal?view=archive' }] : []),
-  ];
+  const albums = CATEGORY_ORDER.filter((c) => counts[c]).map((category) => ({
+    key: category,
+    label: categoryLabel(category),
+    href: `/journal?category=${encodeURIComponent(category)}`,
+    img: newestCover(posts.filter((p) => p.category === category)),
+  }));
+  if (archived.length > 0) {
+    albums.push({
+      key: 'Archive',
+      label: 'Archive',
+      href: '/journal?view=archive',
+      img: newestCover(archived),
+    });
+  }
 
   // Only what a card needs goes to the browser.
   const cards = visible.map((p) => ({
@@ -95,29 +116,39 @@ export default async function JournalPage({ searchParams }) {
       <a href="#main-content" className="skip-link">Skip to content</a>
 
       <section id="main-content" className="wrap journal-head">
-        <div className="eyebrow">The Journal</div>
-        <h1>Notes from the road back to myself.</h1>
+        <h1>My Journals</h1>
+        <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
+          Notes from the road back to myself.
+        </p>
         <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
           Short, honest writing on faith, family, healing, and starting over.
         </p>
 
-        <nav className="filter-row" aria-label="Journal categories">
-          {options.map((o) => (
-            <a key={o.key} className={`chip ${active === o.key ? 'is-active' : ''}`} href={o.href}>
-              {o.label}
-            </a>
-          ))}
-        </nav>
-        <CategorySelect options={options} active={active} />
+        {opened ? (
+          <p className="journal-back">
+            <a href="/journal">My Journals</a>
+            <span aria-hidden="true"> · </span>
+            {showArchive ? 'Archive' : categoryLabel(active)}
+          </p>
+        ) : (
+          <nav className="journal-albums" aria-label="Journal categories">
+            {albums.map((album) => (
+              <a key={album.key} className="journal-album" href={album.href}>
+                {album.img ? <img src={album.img} alt="" /> : <span className="journal-album-blank" aria-hidden="true" />}
+                <span className="journal-album-name">{album.label}</span>
+              </a>
+            ))}
+          </nav>
+        )}
         {showArchive && (
           <p className="center lead" style={{ marginTop: '18px' }}>
-            Earlier announcements and promotions, kept here for the record. <a href="/journal">Back to the Journal</a>
+            Earlier announcements and promotions, kept here for the record.
           </p>
         )}
       </section>
 
       <section className="wrap journal-feed" style={{ paddingTop: 0 }}>
-        {visible.length === 0 ? (
+        {opened && visible.length === 0 ? (
           active === 'Pup of the Podcast' ? (
             <p className="center lead"><a href="/pups">Meet the Pups of the Podcast</a></p>
           ) : (
@@ -130,6 +161,7 @@ export default async function JournalPage({ searchParams }) {
             initialQuery={typeof searchParams?.q === 'string' ? searchParams.q : ''}
             showAll={searchParams?.show === 'all'}
             showAllHref={`/journal?${showAllParams.toString()}`}
+            collapsedUntilSearch={!opened}
           />
         )}
       </section>
