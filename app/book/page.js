@@ -62,9 +62,9 @@ export default function BookPage() {
 
       {/* TRAILER */}
       <section id="trailer" className="wrap trailer-feature book-trailer">
+        <h2 className="book-trailer-title">Book Trailer</h2>
         <div className="tf-copy">
-          <div className="eyebrow">Watch the Trailer</div>
-            <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
+          <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
         </div>
         <figure className="tf-video">
           <video

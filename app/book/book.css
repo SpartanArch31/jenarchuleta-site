@@ -22,6 +22,13 @@
 
 /* October 2026: trailer, film/documentary, Velvet invite, reviews */
 .book-page .book-trailer { padding-block: clamp(32px, 6vw, 64px); }
+.book-page .book-trailer-title {
+  grid-column: 1 / -1;
+  font-size: var(--text-h1);
+  line-height: 1.1;
+  margin: 0;
+  text-align: center;
+}
 .book-page .book-screen { padding-block: clamp(48px, 7vw, 80px); }
 .book-page .book-screen h2 { font-size: var(--text-h1); margin: 6px 0 18px; }
 .book-page .book-screen p { color: var(--text-secondary); }
