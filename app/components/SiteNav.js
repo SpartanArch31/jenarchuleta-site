@@ -162,6 +162,13 @@ export default function SiteNav({ homeHref = '/' }) {
       <div className="nav-inner">
         <a href={homeHref} className="brand" onClick={close}>Jen Archuleta</a>
 
+        <div className="nav-end">
+        <a href="/search" className="nav-search" aria-label="Search" aria-current={pathname === '/search' ? 'page' : undefined}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.25" fill="none" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M16 16.5 20 20.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        </a>
         <button
           type="button"
           className="nav-toggle"
@@ -229,6 +236,7 @@ export default function SiteNav({ homeHref = '/' }) {
               </div>
             );
           })}
+        </div>
         </div>
       </div>
     </nav>
