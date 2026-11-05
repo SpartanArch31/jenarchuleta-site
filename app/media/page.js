@@ -15,8 +15,10 @@ export const metadata = {
     'Interviews, articles, and conversations with Jen Archuleta, plus a short bio and headshots for press.',
 };
 
-// Film partners are Leone (Steelyard) and Mark (Crash Cat). No FilmFreeway
-// link, and no phone number or email for Mark.
+// FilmFreeway: Jen asked for her FilmFreeway link (November 3). It is in
+// lib/press.js with the film partners. Do not copy details from that profile
+// onto this site, and never publish a representative's phone number or
+// street address.
 // Speaking reel and past events: render nothing until Jen supplies them.
 // Boardman News links to the outlet's Facebook post. The article host's
 // certificate is expired, so the card does not point at boardmannews.net.
@@ -141,18 +143,20 @@ export default function MediaPage() {
 
       {/* Film and documentary: both IN DEVELOPMENT. Wording lives in lib/press.js.
           This is the ONE home for the film news; other pages link to /media#film.
-          Leone and Mark only. No FilmFreeway, and no contact details for Mark. */}
+          FilmFreeway sits right with Leone and Mark (Jen, November 3). */}
       <section id="film" className="wrap text-wrap">
         <h2>Film and documentary</h2>
         <p>{FILM.film}</p>
         <p>{FILM.documentary}</p>
         <p className="media-film-links">
-          {FILM.partners.map((partner, index) => (
+          {FILM.partners.map((partner) => (
             <span key={partner.href}>
-              {index > 0 ? ' · ' : null}
               <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
+              {' · '}
             </span>
           ))}
+          FilmFreeway:{' '}
+          <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
         </p>
       </section>
 
