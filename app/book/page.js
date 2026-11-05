@@ -3,6 +3,8 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuyOptions from '../components/BuyOptions';
 import BookOffers from './BookOffers';
+import PublicReviews from '../components/PublicReviews';
+import { BOOK_REVIEWS } from '../../lib/public-reviews';
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
@@ -95,6 +97,7 @@ export default function BookPage() {
 
       {/* REVIEWS */}
       <section id="reviews" className="wrap text-wrap center book-more">
+        <PublicReviews reviews={BOOK_REVIEWS} />
         <div className="eyebrow">Already read it?</div>
         <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
         <div className="buy-row" style={{ justifyContent: 'center' }}>

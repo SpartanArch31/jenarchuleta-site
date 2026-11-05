@@ -3,8 +3,9 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuzzsproutPlayer from '../components/BuzzsproutPlayer';
 import { PODCAST } from '../components/site-data';
-import { PUPS } from '../../lib/pups';
-import { SPONSORS } from '../sponsors/page';
+import { EPISODE_CREDITS } from '../../lib/episode-credits';
+import { PODCAST_REVIEWS } from '../../lib/public-reviews';
+import PublicReviews from '../components/PublicReviews';
 
 const PODCAST_OG = {
   url: 'https://jenarchuleta.com/assets/og-podcast-1200x630.jpg',
@@ -53,6 +54,11 @@ export default function PodcastPage() {
         <div className="eyebrow">The Podcast</div>
         <h1>{name}</h1>
         <p className="pod-count">Explore all 13 episodes of {name}.</p>
+        <div className="pod-subscribe">
+          <a className="btn btn-primary" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Subscribe on Apple Podcasts</a>
+          <a className="btn btn-primary" href={PODCAST.subscribe.spotify} target="_blank" rel="noopener noreferrer">Subscribe on Spotify</a>
+          <a className="btn btn-ghost" href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Buzzsprout</a>
+        </div>
         <nav className="pod-boxes" aria-label="Podcast">
           <a href="#pups">Pups of the Podcast</a>
           <a href="#episodes">Buzzsprout episodes</a>
@@ -63,12 +69,14 @@ export default function PodcastPage() {
       <section id="pups" className="wrap pod-panel center">
         <div className="eyebrow">Pups of the Podcast</div>
         <h2>Meet the pups</h2>
-        <ul className="pod-name-list">
-          {PUPS.map((pup) => (
-            <li key={pup.name}><a href="/pups">{pup.name}</a></li>
+        <ol className="pod-credits">
+          {EPISODE_CREDITS.map((row) => (
+            <li key={row.episode}>
+              Ep. {row.episode}. Pup: {row.pup}{row.id ? ` (${row.id})` : ''}.
+            </li>
           ))}
-        </ul>
-        <p><a href="/pups" className="btn btn-primary">See all the pups</a></p>
+        </ol>
+        <p><a href="/pups" className="btn btn-primary">See the pups</a></p>
       </section>
 
       <section id="episodes" className="wrap pod-players" aria-label="All 13 episodes">
@@ -117,16 +125,22 @@ export default function PodcastPage() {
         <p className="lead" style={{ maxWidth: '46ch', marginInline: 'auto' }}>
           Thank you to the sponsors who have supported the show.
         </p>
-        <ul className="pod-name-list">
-          {SPONSORS.map((sponsor) => (
-            <li key={sponsor.name}><a href="/sponsors">{sponsor.name}</a></li>
+        <ol className="pod-credits">
+          {EPISODE_CREDITS.filter((row) => row.sponsor).map((row) => (
+            <li key={row.episode}>
+              Ep. {row.episode}.{' '}
+              {row.sponsorHref ? (
+                <a href={row.sponsorHref} target="_blank" rel="noopener noreferrer">{row.sponsor}</a>
+              ) : row.sponsor}
+            </li>
           ))}
-        </ul>
+        </ol>
         <p><a href="/sponsors" className="btn btn-ghost">See the sponsors</a></p>
       </section>
 
       <section id="reviews" className="wrap center" style={{ paddingTop: 0 }}>
         <h2>Love the show?</h2>
+        <PublicReviews reviews={PODCAST_REVIEWS} />
         <p className="lead" style={{ maxWidth: '42ch', marginInline: 'auto' }}>A short review helps the next listener find it.</p>
         <div className="hero-ctas" style={{ justifyContent: 'center' }}>
           <a className="btn btn-ghost" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Review on Apple Podcasts</a>

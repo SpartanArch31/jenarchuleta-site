@@ -5,7 +5,7 @@ import JournalBrowser from './JournalBrowser';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
-import { CATEGORY_ORDER, categoryLabel, curatePosts } from './curation';
+import { CATEGORY_ORDER, FEATURED_SLUGS, categoryLabel, curatePosts } from './curation';
 import { heroAlt } from './hero-alt';
 
 // Categories show in Jen's order (curation.js). The page opens on album
@@ -70,13 +70,24 @@ export default async function JournalPage({ searchParams }) {
   const all = curatePosts(live && live.length > 0 ? live : FALLBACK_POSTS).filter((p) => !p.offJournal);
   const posts = all.filter((p) => !p.archived);
   const archived = all.filter((p) => p.archived);
+  const featuredRank = new Map(FEATURED_SLUGS.map((slug, index) => [slug, index]));
+  const orderedPosts = [...posts].sort((a, b) => {
+    const ar = featuredRank.has(a.slug) ? featuredRank.get(a.slug) : 1000;
+    const br = featuredRank.has(b.slug) ? featuredRank.get(b.slug) : 1000;
+    if (ar !== br) return ar - br;
+    return byNewest(a, b);
+  });
 
   const showArchive = searchParams?.view === 'archive';
   const active = showArchive ? 'Archive' : searchParams?.category || 'All';
   const opened = showArchive || active !== 'All';
+  const featuredPosts = FEATURED_SLUGS
+    .map((slug) => orderedPosts.find((p) => p.slug === slug))
+    .filter(Boolean);
+  const restPosts = orderedPosts.filter((p) => !featuredRank.has(p.slug));
   const visible = showArchive
     ? archived
-    : active === 'All' ? posts : posts.filter((p) => p.category === active);
+    : active === 'All' ? restPosts : posts.filter((p) => p.category === active);
 
   const counts = posts.reduce((m, p) => {
     if (p.category) m[p.category] = (m[p.category] || 0) + 1;
@@ -97,8 +108,8 @@ export default async function JournalPage({ searchParams }) {
     });
   }
 
-  // Only what a card needs goes to the browser.
-  const cards = visible.map((p) => ({
+  function toCard(p) {
+    return {
     slug: p.slug,
     title: p.title,
     excerpt: cardExcerpt(p.excerpt) || '',
@@ -106,7 +117,10 @@ export default async function JournalPage({ searchParams }) {
     kicker: `${p.category} · ${formatDate(p.publishedAt)}`,
     img: heroUrl(p.heroImage),
     imgAlt: heroAlt(p.heroImage, p.slug),
-  }));
+    };
+  }
+  const featuredCards = featuredPosts.map(toCard);
+  const cards = visible.map(toCard);
   const showAllParams = new URLSearchParams();
   if (showArchive) showAllParams.set('view', 'archive');
   else if (active !== 'All') showAllParams.set('category', active);
@@ -125,6 +139,21 @@ export default async function JournalPage({ searchParams }) {
         <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
           Short, honest writing on faith, family, healing, and starting over.
         </p>
+
+        {!opened && featuredCards.length > 0 ? (
+          <div className="feed journal-featured">
+            {featuredCards.map((p) => (
+              <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
+                {p.img ? <img src={p.img} alt={p.imgAlt || ''} /> : null}
+                <div className="body">
+                  <div className="k">{p.kicker}</div>
+                  <h3>{p.title}</h3>
+                  <p>{p.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : null}
 
         {opened ? (
           <p className="journal-back">
@@ -163,7 +192,7 @@ export default async function JournalPage({ searchParams }) {
             initialQuery={typeof searchParams?.q === 'string' ? searchParams.q : ''}
             showAll={searchParams?.show === 'all'}
             showAllHref={`/journal?${showAllParams.toString()}`}
-            collapsedUntilSearch={!opened}
+            collapsedUntilSearch={false}
           />
         )}
       </section>

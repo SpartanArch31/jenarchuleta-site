@@ -78,6 +78,15 @@ export const CATEGORY_OVERRIDES = {
   'beyond-the-velvet-ropes-the-documentary-is-coming': 'Behind the Book',
 };
 
+// Book launch, the documentary, and press, ahead of the rest of the feed.
+export const FEATURED_SLUGS = [
+  'beyond-the-velvet-ropes-the-documentary-is-coming',
+  'beyond-the-velvet-ropes-or-in-the-press',
+  'beyond-the-velvet-ropes-featured-in-the-akron-beacon-journal-s-book-talk',
+  'this-is-why-i-wrote-beyond-the-velvet-ropes',
+  'book-signing',
+];
+
 export function curatePosts(posts) {
   return (posts || []).map((p) => {
     const category = CATEGORY_OVERRIDES[p.slug] || p.category;

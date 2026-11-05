@@ -2,6 +2,10 @@
 
 .pod-hero { text-align:center; }
 .pod-hero h1 { font-size: var(--text-display-l); margin-bottom: 10px; }
+.pod-subscribe { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 22px; }
+.pod-credits { list-style: none; margin: 22px auto 0; padding: 0; max-width: 40rem; text-align: left; }
+.pod-credits li { margin: 0; padding: 12px 0; border-top: var(--hairline); }
+.pod-credits li:last-child { border-bottom: var(--hairline); }
 
 .pod-embed {
   margin-top: 8px;
