@@ -17,7 +17,7 @@ function fold(text) {
     .toLowerCase();
 }
 
-export default function JournalBrowser({ posts = [], initialQuery = '', showAll = false, showAllHref = '/journal?show=all' }) {
+export default function JournalBrowser({ posts = [], initialQuery = '', showAll = false, showAllHref = '/journal?show=all', collapsedUntilSearch = false }) {
   const [query, setQuery] = useState(initialQuery);
   const [shown, setShown] = useState(showAll ? Number.MAX_SAFE_INTEGER : PAGE_SIZE);
 
@@ -31,6 +31,7 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
     ? index.filter(({ haystack }) => words.every((w) => haystack.includes(w))).map(({ post }) => post)
     : posts;
   const visible = matches.slice(0, shown);
+  const showResults = !collapsedUntilSearch || words.length > 0;
 
   // Keep ?q= in the address bar (no reload), so a search can be shared.
   useEffect(() => {
@@ -43,11 +44,11 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
   return (
     <>
       <form className="journal-search" role="search" onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="journal-search-input" className="visually-hidden">Search the Journal</label>
+        <label htmlFor="journal-search-input" className="visually-hidden">Search My Journals</label>
         <input
           id="journal-search-input"
           type="search"
-          placeholder="Search the Journal"
+          placeholder="Search My Journals"
           value={query}
           autoComplete="off"
           enterKeyHint="search"
@@ -66,7 +67,7 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
         </p>
       ) : null}
 
-      {visible.length ? (
+      {showResults && visible.length ? (
         <div className="feed">
           {visible.map((p) => (
             <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
@@ -81,7 +82,7 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
         </div>
       ) : null}
 
-      {matches.length > visible.length ? (
+      {showResults && matches.length > visible.length ? (
         <div className="journal-more center">
           <p className="foot-meta">Showing {visible.length} of {matches.length}</p>
           <button type="button" className="btn btn-ghost" onClick={() => setShown((n) => n + PAGE_SIZE)}>

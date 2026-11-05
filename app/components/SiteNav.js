@@ -2,11 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { CATEGORY_ORDER, categoryLabel } from '../journal/curation';
 import { KIT_FREE_CHAPTER_URL } from './site-data';
 
 // ONE navigation for the whole site, every page, light or dark.
-// Main: Home | About Me | Book | Podcast | Journal | Media | Shop
+// Main: Home | About Me | Book | Podcast | My Journals | Media | Shop
 // Each main page has a drop-down of its sections (Jen, November 3: "so people
 // can jump straight to the sections they want"). The section links point at
 // ids on those pages; if you rename or remove a section, update its link here.
@@ -57,18 +56,7 @@ const MENU = [
       { href: '/sponsors', label: 'Sponsors' },
     ],
   },
-  {
-    id: 'journal',
-    href: '/journal',
-    label: 'Journal',
-    items: [
-      { href: '/journal', label: 'All posts' },
-      ...CATEGORY_ORDER.map((category) => ({
-        href: `/journal?category=${encodeURIComponent(category)}`,
-        label: categoryLabel(category),
-      })),
-    ],
-  },
+  { href: '/journal', label: 'My Journals' },
   {
     id: 'media',
     href: '/media',

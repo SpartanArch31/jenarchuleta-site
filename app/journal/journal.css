@@ -3,18 +3,46 @@
 .journal-head { text-align:center; padding-bottom: clamp(14px, 3vw, 26px); }
 .journal-head h1 { font-size: var(--text-display-l); }
 
-/* category filter chips */
-.filter-row { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:22px; }
-.chip {
-  font-family: var(--font-sans); font-size: .8rem; letter-spacing:.1em; text-transform:uppercase;
-  padding: 8px 16px; border-radius: var(--radius-pill); border: var(--hairline-strong);
-  color: var(--text-secondary); background: transparent;
-  transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+/* Category albums. The photo stays whole. */
+.journal-albums {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+  text-align: left;
 }
-.chip:hover { border-color: var(--accent); text-decoration:none; }
-.chip.is-active { background: var(--accent); color: var(--on-accent); border-color: transparent; }
-@media (pointer: coarse) {
-  .chip { min-height: 44px; display: inline-flex; align-items: center; }
+.journal-album {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--surface);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: inherit;
+}
+.journal-album:hover { text-decoration: none; }
+.journal-album img,
+.journal-album-blank {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: var(--surface-alt);
+  display: block;
+}
+.journal-album-name {
+  padding: 14px 16px 16px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+.journal-back { margin-top: 22px; }
+@media (max-width: 800px) {
+  .journal-albums { grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+@media (max-width: 420px) {
+  .journal-albums { grid-template-columns: 1fr; }
 }
 
 /* feed grid */
@@ -70,25 +98,6 @@
             background:var(--surface); border:var(--hairline); border-radius:var(--radius-lg); padding:24px; margin:36px 0; }
 .book-cta img { width:96px; border-radius:var(--radius); box-shadow:var(--shadow); display:block; }
 @media (max-width:560px){ .book-cta{ grid-template-columns:1fr; text-align:center; justify-items:center; } }
-
-/* Category dropdown on phones; chips on larger screens. */
-.category-select { display: none; margin-top: 18px; }
-.category-select select {
-  width: 100%;
-  max-width: 320px;
-  min-height: 46px;
-  padding: 0 14px;
-  border-radius: var(--radius-pill);
-  border: var(--hairline-strong);
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: .95rem;
-}
-@media (max-width: 640px) {
-  .journal-head .filter-row { display: none; }
-  .category-select { display: block; }
-}
 
 /* Search and "Load more" (Nov 2026) */
 .journal-search { display: flex; justify-content: center; margin: 4px auto 0; }
