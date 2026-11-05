@@ -1,15 +1,16 @@
 import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import VelvetInvite from '../components/VelvetInvite';
 import BuyOptions from '../components/BuyOptions';
-import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
+import BookOffers from './BookOffers';
+import PublicReviews from '../components/PublicReviews';
+import { BOOK_REVIEWS } from '../../lib/public-reviews';
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
   title: { absolute: 'Beyond the Velvet Ropes by Jennifer Walcott Archuleta' },
   description:
-    'Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love by Jennifer Walcott Archuleta. Out now. Read the first chapter free.',
+    'Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love by Jennifer Walcott Archuleta. Out now.',
 };
 
 const bookJsonLd = {
@@ -33,6 +34,7 @@ const bookJsonLd = {
 
 export default function BookPage() {
   return (
+    <>
     <div className="dark book-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }} />
       <SiteNav />
@@ -47,8 +49,11 @@ export default function BookPage() {
             <h1>Beyond the Velvet Ropes</h1>
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
-            <BuyOptions />
-            <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
+            <div id="buy">
+              <BuyOptions signedLink={false} />
+              <p className="book-worldwide">Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
+              <p className="book-worldwide">Available around the world in paperback, ebook and audiobook.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -61,9 +66,8 @@ export default function BookPage() {
 
       {/* TRAILER */}
       <section id="trailer" className="wrap trailer-feature book-trailer">
+        <h2 className="book-trailer-title">Book Trailer</h2>
         <div className="tf-copy">
-          <div className="eyebrow">Watch the Trailer</div>
-          <p className="tf-logline">“Everyone knew the headlines. No one knew the story.”</p>
           <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
         </div>
         <figure className="tf-video">
@@ -92,21 +96,9 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* FILM AND DOCUMENTARY: the news has one home, Media (#film). Jen, November 3:
-          link to it from here, never copy it. */}
-      <section id="on-screen" className="wrap text-wrap book-screen">
-        <div className="eyebrow">On screen</div>
-        <h2>In development for film and documentary.</h2>
-        <p><a href="/media#film" className="btn btn-ghost btn-sm">Film and documentary news</a></p>
-      </section>
-
-      {/* THE VELVET LETTER */}
-      <div className="wrap">
-        <VelvetInvite compact />
-      </div>
-
       {/* REVIEWS */}
       <section id="reviews" className="wrap text-wrap center book-more">
+        <PublicReviews reviews={BOOK_REVIEWS} />
         <div className="eyebrow">Already read it?</div>
         <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
         <div className="buy-row" style={{ justifyContent: 'center' }}>
@@ -115,7 +107,21 @@ export default function BookPage() {
         </div>
       </section>
 
+      <section id="author" className="wrap book-author">
+        <img src="/assets/jen-headshot-signature.jpg" alt="Jen Archuleta smiling in a black top" width="1162" height="1597" />
+        <div>
+          <p className="eyebrow">About the author</p>
+          <h2>Author, host, speaker, advocate.</h2>
+          <p>
+            I’m the author of <em>Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love</em>,
+            and the host of the podcast <em>Unfiltered with Jen Archuleta</em>.
+          </p>
+        </div>
+      </section>
+      </div>
+
+      <BookOffers />
       <SiteFooter />
-    </div>
+    </>
   );
 }

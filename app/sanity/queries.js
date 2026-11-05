@@ -84,6 +84,22 @@ export async function getAllSlugs() {
   return client.fetch(ALL_SLUGS, {}, REVALIDATE);
 }
 
+// Published journal posts for site search. Drafts are excluded. Body text is
+// capped so the search stays quick. Velvet Letters are a different type and
+// are not included.
+const SEARCH_POSTS = groq`*[_type == "post" && defined(slug.current) && !(_id in path("drafts.**"))]{
+  "slug": slug.current,
+  title,
+  excerpt,
+  seoDescription,
+  "text": pt::text(body)[0...1500]
+}`;
+
+export async function getSearchPosts() {
+  const posts = await client.fetch(SEARCH_POSTS, {}, REVALIDATE);
+  return Array.isArray(posts) ? posts.map(withFixes) : [];
+}
+
 // The homepage's newest posts (Nov 2026). Cached for 10 minutes so the
 // homepage stays fast; the caller drops archived and Pup of the Podcast posts,
 // so it asks for more than it shows.

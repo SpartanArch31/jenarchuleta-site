@@ -1,5 +1,5 @@
-// One list. The homepage bands and /quotes both read from here,
-// so a line cannot drift or get reworded in one place only.
+// Every quote the site has carried, word for word, from the quotes page
+// (live /quotes and origin/main). Thank You is their home. /quotes redirects there.
 export const QUOTE_STORY = {
   text: 'Your story isn’t what happened to you. It’s what you do with it.',
 };

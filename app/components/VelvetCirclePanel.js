@@ -1,24 +1,14 @@
 import './velvet-circle-panel.css';
 import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 
-// What the $9.99 membership is, said plainly BEFORE anyone subscribes.
-// Jen's rules (October 28, 2026): the Velvet Circle is the MONTHLY BOOK CLUB.
-// It includes the one-page discussion guide and up to three questions a month
-// that Jen answers personally in writing. Monthly group Zooms begin once 13
-// active paying members have joined. It never includes a signed book, the
-// bookmark, or any other physical item; the signed book and the bookmark are
-// sold separately in the Shop. Never promise Zooms as an immediate benefit.
-// November 3 (Jen): the book club is the one book-club offer; the old
-// Backstage Bundle is gone.
-// November 3 (Adam): say what members get NOW, how they send questions (email,
-// SHOP.velvetCircleQuestionsEmail), and that Zooms start at 13 paying members.
-// The Shop card (app/shop/page.js) carries the live copy; this panel isn't on
-// any page right now, and its list is kept matching in case it comes back.
+// Kept in step with the Shop card. Not mounted on a page right now.
+// One membership, the existing $9.99/month Payment Link.
 export const VELVET_CIRCLE_PERKS = [
-  'A one-page discussion guide for the book, emailed to you after you join',
-  `Up to three questions a month about the book and my experiences, answered personally by me in writing. Email them to ${SHOP.velvetCircleQuestionsEmail}.`,
-  'Monthly group Zooms begin once 13 paying members join',
-  '$9.99 a month. Cancel anytime.',
+  'A sneak peek of the book club discussion guide (not the full guide)',
+  'The Velvet Letters with the gold key',
+  'The velvet bookmark',
+  'Up to three questions a month, answered promptly and in detail',
+  'Cancel anytime',
 ];
 
 export default function VelvetCirclePanel() {
@@ -43,14 +33,16 @@ export default function VelvetCirclePanel() {
         <div className="vc-announce-text">
           <p className="vc-announce-eyebrow">MONTHLY BOOK CLUB</p>
           <h2 id="vc-announce-title">
-            The Velvet Circle Book Club: my private book club for readers of Beyond the Velvet Ropes.
+            The Velvet Circle Book Club
           </h2>
           <p className="vc-announce-line">
-            Real conversations. Untold stories. A place to connect, ask questions, and grow together.
+            Grab 13 of your favorite people, a bottle of something bubbly (sparkling water counts), and start a book club. Hit 13 and I'll see you on Zoom every month.
           </p>
+          <p className="vc-announce-line">{SHOP.velvetCircleMembershipPrice}</p>
           <ul className="vc-announce-perks">
             {VELVET_CIRCLE_PERKS.map((perk) => <li key={perk}>{perk}</li>)}
           </ul>
+          <p className="vc-announce-line">Once 13 paying members have joined, we’ll begin my monthly group Zoom.</p>
           {join ? (
             <a className="btn btn-primary" href={join} target="_blank" rel="noopener noreferrer">
               Join the Velvet Circle Book Club

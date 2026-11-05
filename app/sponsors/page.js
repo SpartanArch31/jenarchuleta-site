@@ -1,6 +1,5 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import { BOOKING_EMAIL } from '../components/site-data';
 import './sponsors.css';
 
 export const metadata = {
@@ -13,7 +12,7 @@ export const metadata = {
 // sunsetsandbonfires.com now redirects to the Etsy shop, so that shop is the link.
 // Etsy answers a script with 403; the shop URL is the one she confirmed.
 // Full names. A link is included only when that page itself loads.
-const SPONSORS = [
+export const SPONSORS = [
   {
     name: 'Sunsets & Bonfires',
     links: [
@@ -109,15 +108,7 @@ export default function SponsorsPage() {
           ))}
         </ul>
         <p className="sponsors-close">
-          Want to sponsor an episode? Email{' '}
-          <a href={`mailto:${BOOKING_EMAIL}`}>{BOOKING_EMAIL}</a>.
-        </p>
-        <p className="sponsors-close">
-          <a href="/podcast">The podcast</a>
-          {' · '}
-          <a href="/pups">Pups of the Podcast</a>
-          {' · '}
-          <a href="/about#faith">The dogs at home</a>
+          Want to sponsor an episode? <a href="/thank-you#contact">Contact me</a>.
         </p>
       </section>
 

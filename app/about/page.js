@@ -3,7 +3,7 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import { KIT_FREE_CHAPTER_URL, SOCIALS } from '../components/site-data';
+import TwentiesCollage from './TwentiesCollage';
 
 export const metadata = {
   title: 'About Me',
@@ -11,12 +11,11 @@ export const metadata = {
     'Faith, family, and a bunch of rescues. I love fiercely and I protect my peace. I love my husband, my kids and my family with everything I have.',
 };
 
-// About Me, in Jen's own words (November 3, 2026). One page: her text replaced
-// the old "Hi, I'm Jen", everyday, my people, then and now, fun part, faith,
-// and creed sections. Every sentence below is hers, in her order. Don't add,
-// trim, or reword it, and never use an em dash. The formal bio is its own
-// page, /about-the-author. Photos are shown whole. The kids appear only in
-// Jen's own blurred file (full-house-kids-dogs.jpg).
+// About Me, in Jen's own words (November 3, 2026), plus the two 20s paragraphs
+// she sent November 5. Don't add, trim, or reword her sentences, and never use
+// an em dash. The formal bio is its own page, /about-the-author. Photos are
+// shown whole. The kids appear only in Jen's own blurred file
+// (full-house-kids-dogs.jpg).
 // Old links still land: #life and #me (the everyday), #then (the twenties
 // photo), #gallery, #forever-angels and #faith (giving back), #work (the
 // About the Author link at the end).
@@ -38,7 +37,7 @@ export default function AboutPage() {
           </p>
         </div>
         <div>
-          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
+          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
           <p className="tim-cap">Caught mid-laugh, which is most of the time</p>
         </div>
       </section>
@@ -85,58 +84,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* THE CAMERA, AND MY TWENTIES */}
+      {/* Coat first, then Jen's two paragraphs, then the still collage. */}
       <section id="then" className="tim-wrap tim-then">
-        <div>
-          {/* Jen's pick since July: the black-and-white photo in the long black trench
-              coat. Do not swap in a headshot. */}
-          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Walcott Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
-        </div>
-        <div>
-          <p className="tim-lead">
-            I’ll be honest, I’ve never minded the camera. Red carpets, magazine covers, getting
-            dressed up. My twenties gave me some incredible experiences and some hard ones too.
-            I’m grateful for all of it. But the life I love most is the regular one I wake up to now.
-          </p>
+        <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
+        <div className="tim-then-copy">
+          <p className="tim-lead">My 20s were loud. I got into rooms most people never see, stood next to people you only know from a screen, and went places I didn’t grow up thinking I’d ever go. Some of it was exactly as fun as it looked. Some of it wasn’t.</p>
+          <p className="tim-lead">A lot of it looked like the dream from the outside. Inside it was survival. I learned who I was while everything around me tried to tell me who to be. I wouldn’t trade it. It made me. But it cost something, and I know that now.</p>
         </div>
       </section>
+      <TwentiesCollage />
 
-      {/* The red carpet photo row. Second photo: Jen's glamour headshot (gallery-new/new_04),
-          which replaced the black corset photo (jen-sultry) on November 3. */}
-      <section className="tim-wrap tim-fun">
-        <div className="photo-row">
-          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta, glamour portrait" width="941" height="1123" loading="lazy" />
-          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Walcott Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
-          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
-          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
-        </div>
-      </section>
-      <PhotoGallery showTitle={false} />
+      <PhotoGallery />
 
-      {/* GIVING BACK. The one home on the site for The Forever Angels (the footer,
-          the homepage, and /forever-angels all land here). */}
-      <section id="forever-angels" className="tim-faith dark">
-        <span id="faith" className="anchor" aria-hidden="true" />
-        <div className="tim-faith-inner">
-          <p className="tim-lead tim-lead--center">
-            Giving back matters to me. If I have time, a story, or a hand to lend, I’d rather use
-            it for someone else.
-          </p>
-          <a href={SOCIALS.foreverAngels} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
-        </div>
-      </section>
-
-      {/* CLOSING */}
       <section className="tim-wrap tim-close">
-        <span id="work" className="anchor" aria-hidden="true" />
-        <p className="tim-lead">
-          Want to be part of something? <a href="/book">Buy my book</a> and check out{' '}
-          <a href="/velvet">the Velvet Letter</a> with your passcode. You can also{' '}
-          <a href={KIT_FREE_CHAPTER_URL}>get the first chapter free</a>.
-        </p>
         <p className="tim-lead">Thanks for being here.</p>
         <p className="tim-sign">Jen</p>
-        <p className="tim-author-link"><a href="/about-the-author">About the Author</a></p>
       </section>
 
       <SiteFooter />

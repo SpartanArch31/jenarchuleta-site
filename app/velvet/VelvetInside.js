@@ -20,7 +20,7 @@ function VelvetLetterPhoto() {
   if (!existsSync(file)) return null;
   return (
     <figure className="letter-photo">
-      <img src={photo(LETTER_PHOTO_FILE)} alt="Jen Walcott Archuleta" />
+      <img src={photo(LETTER_PHOTO_FILE)} alt="Jen Archuleta" />
     </figure>
   );
 }
@@ -121,7 +121,7 @@ export default function VelvetInside({ letters = [] }) {
           <section className="letters-band">
             <div className="wrap text-wrap">
               <div className="center">
-                <div className="eyebrow">The Velvet Letter</div>
+                <div className="eyebrow">The Velvet Letters</div>
                 <h2>Notes for readers.</h2>
                 <p className="lead letters-note">
                   The behind-the-scenes updates I share with the people who read the book first.
@@ -156,7 +156,7 @@ export default function VelvetInside({ letters = [] }) {
           <div className="wrap">
             <div className="center">
               <div className="eyebrow">From the book</div>
-              <h2>The photos, up close.</h2>
+              <h2>The gallery, up close.</h2>
               <p className="lead gallery-note">
                 Every photo from the book, bigger than the printed page could show
                 them. I&rsquo;m adding the story behind each one. Check back.

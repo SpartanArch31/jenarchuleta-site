@@ -2,21 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { CATEGORY_ORDER, categoryLabel } from '../journal/curation';
-import { KIT_FREE_CHAPTER_URL } from './site-data';
-
-// ONE navigation for the whole site, every page, light or dark.
-// Main: Home | About Me | Book | Podcast | Journal | Media | Shop
-// Each main page has a drop-down of its sections (Jen, November 3: "so people
-// can jump straight to the sections they want"). The section links point at
-// ids on those pages; if you rename or remove a section, update its link here.
-// Simplified (Nov 2026): The Velvet Letter lives in the Book drop-down (it comes
-// with the book; the QR code in the book goes straight to /velvet), About the
-// Author sits with Media and the press kit, Film and documentary is only under
-// Media, and each link appears once.
-// Everything else (Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors,
-// Contact, Free First Chapter, The Forever Angels) is also in the footer, the
-// same on every page. See SiteFooter.js.
+import VelvetKey from './VelvetKey';
+// Home, About Me, Book, Press, Journal, Podcast, Velvet Letter, Thank You.
+// The Velvet Letter item opens /behind-the-velvet-ropes. /velvet stays unlisted.
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.
 // Narrow screens: the hamburger opens the menu, and each arrow opens that
 // page's sections underneath it.
@@ -28,73 +16,55 @@ const MENU = [
     label: 'About Me',
     items: [
       { href: '/about', label: 'About me' },
-      { href: '/about#gallery', label: 'Photos' },
-      { href: '/about#forever-angels', label: 'Giving back' },
+      { href: '/about#gallery', label: 'Gallery' },
     ],
   },
   {
     id: 'book',
     href: '/book',
     label: 'Book',
-    also: ['/velvet'],
     items: [
-      { href: '/book', label: 'Get the book' },
-      // Jen, November 3: the free first chapter belongs in the main menu.
-      { href: KIT_FREE_CHAPTER_URL, label: 'Get the first chapter free' },
-      { href: '/book#trailer', label: 'Watch the trailer' },
-      { href: '/book#who', label: 'Who this book is for' },
-      { href: '/book#reviews', label: 'Leave a review' },
-      { href: '/velvet', label: 'The Velvet Letter', icon: 'key' },
+      { href: '/book#buy', label: 'Buy the book' },
+      { href: '/book#author', label: 'About the author' },
+      { href: '/book#shop', label: 'Signed copies and more' },
     ],
   },
+  {
+    id: 'press',
+    href: '/media',
+    label: 'Press',
+    also: ['/contact'],
+    items: [
+      { href: '/media#press', label: 'Press' },
+      { href: '/media#film', label: 'Film and documentary' },
+      { href: '/media#speaking', label: 'Speaking' },
+      { href: '/media#forever-angels', label: 'Get involved' },
+    ],
+  },
+  { href: '/journal', label: 'Journal' },
   {
     id: 'podcast',
     href: '/podcast',
     label: 'Podcast',
+    also: ['/pups', '/sponsors'],
     items: [
-      { href: '/podcast#episodes', label: 'All 13 episodes' },
-      { href: '/pups', label: 'Pups of the Podcast' },
-      { href: '/sponsors', label: 'Sponsors' },
+      { href: '/podcast#episodes', label: 'Buzzsprout episodes' },
+      { href: '/podcast#pups', label: 'Pups of the Podcast' },
+      { href: '/pups', label: 'All the pups' },
+      { href: '/podcast#sponsors', label: 'Sponsors' },
+      { href: '/sponsors', label: 'All the sponsors' },
     ],
   },
+  { href: '/behind-the-velvet-ropes', label: 'Velvet Letters', key: true },
   {
-    id: 'journal',
-    href: '/journal',
-    label: 'Journal',
-    items: [
-      { href: '/journal', label: 'All posts' },
-      ...CATEGORY_ORDER.map((category) => ({
-        href: `/journal?category=${encodeURIComponent(category)}`,
-        label: categoryLabel(category),
-      })),
-    ],
-  },
-  {
-    id: 'media',
-    href: '/media',
-    label: 'Media',
-    also: ['/about-the-author', '/contact'],
+    id: 'thanks',
+    href: '/thank-you',
+    label: 'Thank You',
     alignEnd: true,
     items: [
-      { href: '/media#film', label: 'Film and documentary' },
-      { href: '/media#press', label: 'Press coverage' },
-      { href: '/media#interviews', label: 'Interviews and appearances' },
-      { href: '/media#speaking', label: 'Speaking' },
-      { href: '/media#press-kit', label: 'Press kit and photos' },
-      { href: '/about-the-author', label: 'About the Author' },
-      { href: '/contact', label: 'Contact' },
-    ],
-  },
-  {
-    id: 'shop',
-    href: '/shop',
-    label: 'Shop',
-    alignEnd: true,
-    items: [
-      { href: '/shop#signed-copy', label: 'Signed copy' },
-      { href: '/shop#velvet-circle', label: 'The Velvet Circle Book Club' },
-      { href: '/shop#bookmark', label: 'The Signature Velvet Bookmark' },
-      { href: '/shop#velvet-circle-faq', label: 'Book Club FAQs' },
+      { href: '/thank-you#quotes', label: 'Quotes' },
+      { href: '/thank-you#stay', label: 'Stay in touch' },
+      { href: '/thank-you#contact', label: 'Contact' },
     ],
   },
 ];
@@ -111,16 +81,6 @@ function Caret() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
       <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-// The Velvet Letter's small gold key, kept on its menu link.
-function Key() {
-  return (
-    <svg className="nav-key" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="8.2" cy="8.2" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.7" />
-      <path d="M11.6 11.2 L20 19.2 M15.6 16.4 L18.4 19.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   );
 }
@@ -202,6 +162,13 @@ export default function SiteNav({ homeHref = '/' }) {
       <div className="nav-inner">
         <a href={homeHref} className="brand" onClick={close}>Jen Archuleta</a>
 
+        <div className="nav-end">
+        <a href="/search" className="nav-search" aria-label="Search" aria-current={pathname === '/search' ? 'page' : undefined}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.25" fill="none" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M16 16.5 20 20.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        </a>
         <button
           type="button"
           className="nav-toggle"
@@ -223,7 +190,14 @@ export default function SiteNav({ homeHref = '/' }) {
                 : undefined;
             if (!link.items) {
               return (
-                <a key={link.href} href={link.home ? homeHref : link.href} aria-current={current} onClick={close}>
+                <a
+                  key={link.href}
+                  href={link.home ? homeHref : link.href}
+                  className={link.key ? 'nav-with-key' : undefined}
+                  aria-current={current}
+                  onClick={close}
+                >
+                  {link.key ? <VelvetKey className="nav-key" /> : null}
                   {link.label}
                 </a>
               );
@@ -253,8 +227,7 @@ export default function SiteNav({ homeHref = '/' }) {
                 <ul id={`nav-sub-${link.id}`} className="nav-sub" hidden={!expanded}>
                   {link.items.map((item) => (
                     <li key={item.href}>
-                      <a href={item.href} onClick={close} className={item.icon === 'key' ? 'nav-velvet' : undefined}>
-                        {item.icon === 'key' ? <Key /> : null}
+                      <a href={item.href} onClick={close}>
                         {item.label}
                       </a>
                     </li>
@@ -263,11 +236,7 @@ export default function SiteNav({ homeHref = '/' }) {
               </div>
             );
           })}
-          {/* Phones: the free first chapter sits at the bottom of the menu as a
-              button. On a laptop it is in the Book drop-down. */}
-          <a href={KIT_FREE_CHAPTER_URL} className="btn btn-primary nav-chapter" onClick={close}>
-            Get the first chapter free
-          </a>
+        </div>
         </div>
       </div>
     </nav>

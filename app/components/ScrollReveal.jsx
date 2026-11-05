@@ -31,7 +31,7 @@ const REVEAL = [
   '.creed .lead',
   '.creed li',
   '#journal > .center',
-  '#shop > .center',
+  '#shop .center',
   '.cards-3 .mini',
   '.capture .text-wrap',
   '.pull',

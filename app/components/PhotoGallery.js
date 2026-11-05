@@ -40,6 +40,19 @@ import sizes from '../velvet/slide-sizes.json';
 // November 3 (Jen's list):
 // - Slides 46, 48, 55, 62, and 74 are out (jen-headshot-bw, new_05,
 //   new_16, new_28, gallery-picks/160). See HIDDEN_SLIDE_SRC.
+//
+// November 5 (Jen): the full gallery is back. The 19-photo shortlist is
+// gone. The set is the 92-slide gallery from November 3 (commit baa5258),
+// then these are out. See OUT_OF_GALLERY.
+// - Old #1, hw_01, the Playboy Rock the Rabbit stage photo.
+// - Old #42, the blurred kids-and-dogs bed photo. That file stays deleted.
+// - The two glamour portraits (jen-glam and new_04) are slides here, not
+//   beside the 20s line. The black coat is not repeated in this slideshow.
+// - gallery-new/new_14.jpg, the beach bodyboard photo. A
+//   "JENNIFER WALCOTT.COM" banner sits over her leg, so it cannot be
+//   cropped off an edge. Left out and flagged.
+// new_16 (TikTok handle over the birthday cake) was already out and stays out.
+// Old #51 is the new rappelling photo. Old #66 is the new camel photo.
 // - Every photo of her children is out, and those files are deleted from the
 //   site: velvet 35, family-beach-hands, girls-beach-walk,
 //   girls-beach-rompers, ski, pajamas, hug, lawn, hangar, jet-seats, beach,
@@ -51,10 +64,11 @@ import sizes from '../velvet/slide-sizes.json';
 //   add a photo of the children unless Jen supplied that exact file.
 //
 // Out of this slideshow:
-// presskit-headshot-glam (the old home hero). jen-glam, jen-fitness, jen-sultry,
-// and jen-fun2 (the photo row on About, above this slideshow). jen-fun
-// (group of adults, not a dog photo). jen-bw-coat and velvet 07 (the coat
-// is the photo beside "My twenties were something else" as jen-bw-coat2).
+// presskit-headshot-glam (the old home hero). jen-fun (group of adults,
+// not a dog photo). jen-bw-coat and velvet 07 (the coat is the photo above
+// the 20s line, as jen-bw-coat2). That coat is not a slide. The puppy photo
+// (jen-fun2) and the white sports top (jen-fitness) are slides, not a row
+// on the page.
 // 08 and 44 are already out of captions.json. 09 is left out. 24, 25, 26,
 // and 35 (the children) were deleted on November 3. 27 and 45 are dog
 // photos on /pups. 43 is the same Urban Axes outing
@@ -77,7 +91,8 @@ const HOLLYWOOD = [
   },
   {
     src: '/assets/gallery-hw/hw_02.jpg',
-    alt: 'Jen Walcott Archuleta on a red carpet',
+    alt: 'On a dark stage, seen from the crowd, wearing bunny ears',
+    caption: 'On a dark stage, seen from the crowd, wearing bunny ears',
     width: 1320,
     height: 1067,
   },
@@ -86,7 +101,7 @@ const HOLLYWOOD = [
     alt: 'With Tommy Lee',
     caption: 'With Tommy Lee',
     width: 960,
-    height: 972,
+    height: 812,
   },
   {
     src: '/assets/gallery-hw/hw_04.jpg',
@@ -118,7 +133,8 @@ const HOLLYWOOD = [
   },
   {
     src: '/assets/gallery-hw/hw_09.jpg',
-    alt: 'Jen Walcott Archuleta',
+    alt: 'Jen in a denim skirt beside a man in a dark coat, at a Playboy sign',
+    caption: 'Jen in a denim skirt beside a man in a dark coat, at a Playboy sign',
     width: 786,
     height: 1570,
   },
@@ -127,13 +143,14 @@ const HOLLYWOOD = [
 const PORTRAITS = [
   {
     src: '/assets/jen-joy.jpg',
-    alt: 'Jen Walcott Archuleta',
+    alt: 'Smiling, with a small monkey on her shoulder',
+    caption: 'Smiling, with a small monkey on her shoulder',
     width: 841,
     height: 1960,
   },
   {
     src: '/assets/jen-beauty.jpg',
-    alt: 'Jen Walcott Archuleta',
+    alt: 'Jen Archuleta smiling in a white top',
     width: 900,
     height: 1520,
   },
@@ -166,7 +183,7 @@ const FAMILY = captions.filter((item) => !HOME_ONLY_SKIP.has(item.file)).map((it
 // October 27, after the velvet family slides. pool-sombreros is a small
 // file waiting on Jen's larger original.
 const FAMILY_OCT27 = [
-  { src: '/assets/gallery/pool-sombreros.jpg', alt: 'At the pool', width: 295, height: 391 },
+  { src: '/assets/gallery/pool-sombreros.jpg', alt: 'Four friends in sombreros beside a pool', caption: 'Four friends in sombreros beside a pool', width: 295, height: 391 },
 ];
 
 // November 3: Jen's new photos, in her numbering (there is no 06 or 17).
@@ -181,7 +198,7 @@ const NOV3 = [
   { src: '/assets/gallery-nov3/08-volcano-railing.jpg', alt: 'The family looking out at the mountains', width: 1316, height: 739 },
   { src: '/assets/gallery-nov3/09-rafting.jpg', alt: 'White-water rafting', width: 1316, height: 883 },
   { src: '/assets/gallery-nov3/10-houseboat-couple.jpg', alt: 'Jen and Adam on a houseboat', width: 1316, height: 1756 },
-  { src: '/assets/gallery-nov3/11-rappelling.jpg', alt: 'Rappelling through the jungle', width: 1316, height: 739 },
+  { src: '/assets/gallery-nov3/11-rappelling.jpg', alt: 'Rappelling through the jungle in a blue helmet', caption: 'Rappelling through the jungle in a blue helmet', width: 1320, height: 737 },
   { src: '/assets/gallery-nov3/12-boat.jpg', alt: 'A day on the boat', width: 1316, height: 1756 },
   { src: '/assets/gallery-nov3/13-canoe.jpg', alt: 'Ozarks', caption: 'Ozarks', width: 952, height: 1202 },
   { src: '/assets/gallery-nov3/14-grand-canyon.jpg', alt: 'Jen on a hiking trail', width: 1160, height: 1055 },
@@ -194,28 +211,29 @@ const NOV3 = [
 ];
 
 const GALLERY_NEW = [
-  { src: '/assets/jen-headshot-bw.jpg', alt: 'Jen Walcott Archuleta in a black and white portrait', width: 1320, height: 1946 },
-  { src: '/assets/gallery-new/new_04.jpg', alt: 'Jen Walcott Archuleta, glamour portrait', width: 1320, height: 1537 },
-  { src: '/assets/gallery-new/new_05.jpg', alt: 'Jen Walcott Archuleta with a friend', width: 1280, height: 1600 },
-  { src: '/assets/gallery-new/new_06.jpg', alt: 'Jen Walcott Archuleta and a friend in sunglasses', width: 1065, height: 1600 },
-  { src: '/assets/gallery-new/new_07.jpg', alt: 'Jen Walcott Archuleta with a friend', width: 1266, height: 1600 },
-  { src: '/assets/gallery-new/new_08.jpg', alt: 'Jen Walcott Archuleta with a black sports car', width: 869, height: 1232 },
-  { src: '/assets/gallery-new/new_09.jpg', alt: 'Jen Walcott Archuleta greeting friends at a party', width: 1320, height: 837 },
-  { src: '/assets/gallery-new/new_13.jpg', alt: 'Jen Walcott Archuleta with a camel', width: 845, height: 1600 },
-  { src: '/assets/gallery-new/new_14.jpg', alt: 'Jen Walcott Archuleta on the beach with a bodyboard', width: 1097, height: 1600 },
-  { src: '/assets/gallery-new/new_16.jpg', alt: 'Jen Walcott Archuleta celebrating her birthday', width: 1168, height: 1460 },
-  { src: '/assets/gallery-new/new_18.jpg', alt: 'Jen Walcott Archuleta with a birthday cake', width: 827, height: 1002 },
-  { src: '/assets/gallery-new/new_19.jpg', alt: 'Jen Walcott Archuleta with friends', width: 1200, height: 1591 },
-  { src: '/assets/gallery-new/new_22.jpg', alt: 'Jen Walcott Archuleta with friends by a pool', width: 1224, height: 917 },
-  { src: '/assets/gallery-new/new_23.jpg', alt: 'Jen Walcott Archuleta with her team at a race', width: 828, height: 914 },
-  { src: '/assets/gallery-new/new_24.jpg', alt: 'Jen Walcott Archuleta with friends at Urban Axes', width: 828, height: 818 },
-  { src: '/assets/gallery-new/new_25.jpg', alt: 'Jen Walcott Archuleta at a group dinner', width: 1600, height: 1200 },
-  { src: '/assets/gallery-new/new_28.jpg', alt: 'Jen Walcott Archuleta with a friend', width: 829, height: 1600 },
-  { src: '/assets/gallery-new/new_34.jpg', alt: 'Jen Walcott Archuleta with her husband', width: 1179, height: 1097 },
-  { src: '/assets/gallery-new/new_35.jpg', alt: 'Jen Walcott Archuleta on the beach', width: 1320, height: 1281 },
-  { src: '/assets/gallery-new/new_36.jpg', alt: 'A magazine page about Jen Walcott', width: 1320, height: 1607 },
-  { src: '/assets/gallery-new/new_37.jpg', alt: 'A magazine news column featuring Jen Walcott', width: 790, height: 2000 },
-  { src: '/assets/gallery-new/new_38.jpg', alt: 'A magazine photo of Jen Walcott with another Playmate', width: 1500, height: 2000 },
+  { src: '/assets/jen-headshot-bw.jpg', alt: 'Jen Archuleta in a black and white portrait', width: 1320, height: 1946 },
+  { src: '/assets/jen-glam.jpg', alt: 'Jen Archuleta, glamour portrait', width: 700, height: 835 },
+  { src: '/assets/gallery-new/new_04.jpg', alt: 'Jen Archuleta, glamour headshot', width: 1320, height: 1537 },
+  { src: '/assets/gallery-new/new_05.jpg', alt: 'Jen Archuleta with a friend', width: 1280, height: 1600 },
+  { src: '/assets/gallery-new/new_06.jpg', alt: 'Selfie with a friend, both in sunglasses and backward caps', caption: 'Selfie with a friend, both in sunglasses and backward caps', width: 1065, height: 1600 },
+  { src: '/assets/gallery-new/new_07.jpg', alt: 'Close-up with a friend making a face, outdoors', caption: 'Close-up with a friend making a face, outdoors', width: 1266, height: 1600 },
+  { src: '/assets/gallery-new/new_08.jpg', alt: 'Jen Archuleta with a black sports car', width: 869, height: 1232 },
+  { src: '/assets/gallery-new/new_09.jpg', alt: 'Jen Archuleta greeting friends at a party', width: 1320, height: 837 },
+  { src: '/assets/gallery-new/new_13.jpg', alt: 'Jen in an orange dress and a flowered hat, holding a camel lead', caption: 'Jen in an orange dress and a flowered hat, holding a camel lead', width: 599, height: 1137 },
+  { src: '/assets/gallery-new/new_14.jpg', alt: 'Jen Archuleta on the beach with a bodyboard', width: 1097, height: 1600 },
+  { src: '/assets/gallery-new/new_16.jpg', alt: 'Jen Archuleta celebrating her birthday', width: 1168, height: 1460 },
+  { src: '/assets/gallery-new/new_18.jpg', alt: 'Jen Archuleta with a birthday cake', width: 827, height: 1002 },
+  { src: '/assets/gallery-new/new_19.jpg', alt: 'Six friends lined up indoors, several in cowboy boots', caption: 'Six friends lined up indoors, several in cowboy boots', width: 1200, height: 1591 },
+  { src: '/assets/gallery-new/new_22.jpg', alt: 'Jen Archuleta with friends by a pool', width: 1224, height: 917 },
+  { src: '/assets/gallery-new/new_23.jpg', alt: 'Jen Archuleta with her team at a race', width: 828, height: 914 },
+  { src: '/assets/gallery-new/new_24.jpg', alt: 'Jen Archuleta with friends at Urban Axes', width: 828, height: 818 },
+  { src: '/assets/gallery-new/new_25.jpg', alt: 'Jen Archuleta at a group dinner', width: 1600, height: 1200 },
+  { src: '/assets/gallery-new/new_28.jpg', alt: 'Jen Archuleta with a friend', width: 829, height: 1600 },
+  { src: '/assets/gallery-new/new_34.jpg', alt: 'Jen Archuleta with her husband', width: 1179, height: 1097 },
+  { src: '/assets/gallery-new/new_35.jpg', alt: 'Jen Archuleta on the beach', width: 1320, height: 1281 },
+  { src: '/assets/gallery-new/new_36.jpg', alt: 'A magazine page about Jen Archuleta', width: 1320, height: 1607 },
+  { src: '/assets/gallery-new/new_37.jpg', alt: 'A magazine news column featuring Jen Archuleta', width: 790, height: 2000 },
+  { src: '/assets/gallery-new/new_38.jpg', alt: 'A magazine photo of Jen Archuleta with another Playmate', width: 1500, height: 2000 },
 ];
 
 // Added after the existing slides, in numeric order. 113 and 116 are
@@ -226,22 +244,22 @@ const GALLERY_NEW = [
 // slide 70 (132.jpg). Those files left the repo because nothing else
 // referenced them.
 const PICKS = [
-  { src: '/assets/gallery-picks/123.jpg', alt: 'Jen Walcott Archuleta with a friend', width: 1320, height: 1192 },
-  { src: '/assets/gallery-picks/spartan-course.jpg', alt: 'Jen Walcott Archuleta crawling under the wire at a Spartan race', width: 1320, height: 764 },
-  { src: '/assets/gallery-picks/141.jpg', alt: 'Jen Walcott Archuleta', width: 1066, height: 1332 },
-  { src: '/assets/gallery-picks/142.jpg', alt: 'Jen Walcott Archuleta', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/146.jpg', alt: 'Jen Walcott Archuleta', width: 664, height: 830 },
-  { src: '/assets/gallery-picks/151.jpg', alt: 'Jen Walcott Archuleta', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/154.jpg', alt: 'Jen Walcott Archuleta by the river', width: 640, height: 800 },
+  { src: '/assets/gallery-picks/123.jpg', alt: 'With a friend in a red dress, at night', caption: 'With a friend in a red dress, at night', width: 1320, height: 1192 },
+  { src: '/assets/gallery-picks/spartan-course.jpg', alt: 'Jen Archuleta crawling under the wire at a Spartan race', width: 1320, height: 764 },
+  { src: '/assets/gallery-picks/141.jpg', alt: 'Jen Archuleta in a yellow bikini by the ocean', width: 1066, height: 1332 },
+  { src: '/assets/gallery-picks/142.jpg', alt: 'Jen Archuleta in a black and white striped bikini, holding a whistle', width: 1200, height: 1500 },
+  { src: '/assets/gallery-picks/146.jpg', alt: 'A casino marquee for Playboy’s Hollywood Comedy Tour, listing the 2006 Calendar Playmate', width: 664, height: 830 },
+  { src: '/assets/gallery-picks/151.jpg', alt: 'Jen Archuleta with a man in sunglasses and a black jacket', width: 1200, height: 1500 },
+  { src: '/assets/gallery-picks/154.jpg', alt: 'Jen Archuleta by the river', width: 640, height: 800 },
   { src: '/assets/gallery-picks/155.jpg', alt: 'Jen in Bangkok', caption: 'Jen in Bangkok', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/157.jpg', alt: 'Jen Walcott Archuleta', width: 808, height: 1010 },
-  { src: '/assets/gallery-picks/158.jpg', alt: 'Jen Walcott Archuleta', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/159.jpg', alt: 'Childhelp', caption: 'Childhelp', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/160.jpg', alt: 'Jen Walcott Archuleta', width: 1200, height: 1500 },
+  { src: '/assets/gallery-picks/157.jpg', alt: 'Studio portrait in a white tank top', caption: 'Studio portrait in a white tank top', width: 808, height: 1010 },
+  { src: '/assets/gallery-picks/158.jpg', alt: 'In a red dress on a step-and-repeat, beside a man in a suit', caption: 'In a red dress on a step-and-repeat, beside a man in a suit', width: 1200, height: 1500 },
+  { src: '/assets/gallery-picks/159.jpg', alt: 'Indoors beside a man in a navy vest', caption: 'Indoors beside a man in a navy vest', width: 1200, height: 1500 },
+  { src: '/assets/gallery-picks/160.jpg', alt: 'Jen Archuleta with Adam at an outdoor bar', width: 1200, height: 1500 },
   { src: '/assets/gallery-picks/164.jpg', alt: 'Costa Rica', caption: 'Costa Rica', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/168.jpg', alt: 'Jen Walcott Archuleta', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/171.jpg', alt: 'Jen Walcott Archuleta', width: 1200, height: 1500 },
-  { src: '/assets/gallery-picks/175.jpg', alt: 'Jen Walcott Archuleta', width: 960, height: 884 },
+  { src: '/assets/gallery-picks/168.jpg', alt: 'Jen Archuleta and a friend in knitted turkey hats', width: 1200, height: 1500 },
+  { src: '/assets/gallery-picks/171.jpg', alt: 'Jen Archuleta with a group of friends in a restaurant', width: 1200, height: 1500 },
+  { src: '/assets/gallery-picks/175.jpg', alt: 'Three friends in knitted turkey hats', caption: 'Three friends in knitted turkey hats', width: 960, height: 884 },
 ];
 
 // October 26 batch, after the picks, in Jen's order. The five dogs under
@@ -250,16 +268,62 @@ const PICKS = [
 // Full frames, no upscaling.
 const OCT26 = [
   { src: '/assets/gallery-oct26/wedding.jpg', alt: 'A wedding at sunset', width: 1070, height: 1147 },
-  { src: '/assets/gallery-oct26/snow.jpg', alt: 'Jen Walcott Archuleta in the snow', width: 1320, height: 1266 },
+  { src: '/assets/gallery-oct26/snow.jpg', alt: 'Jen Archuleta in the snow', width: 1320, height: 1266 },
   { src: '/assets/gallery-oct26/jet-cabin.jpg', alt: 'Inside a private jet', width: 1029, height: 845 },
   { src: '/assets/gallery-oct26/jet-stairs.jpg', alt: 'On the stairs of a private jet', width: 1320, height: 1271 },
-  { src: '/assets/gallery-oct26/dog-tortoise.jpg', alt: 'A dog on a tortoise', width: 1320, height: 1320 },
+  { src: '/assets/gallery-oct26/dog-tortoise.jpg', alt: 'A rescue on a tortoise', width: 1320, height: 1320 },
   { src: '/assets/gallery-oct26/tortoise.jpg', alt: 'A tortoise with greens', width: 665, height: 940 },
+];
+
+// November 4 batch, after OCT26. No captions (Jen). Children's faces and
+// the names on the pajama shirts are blurred; screenshots cropped to the photo.
+const NOV4 = [
+  { src: '/assets/gallery-nov4/nov4-01-christmas-tree.jpg', alt: 'Christmas tree with a ladder', caption: '', width: 1320, height: 1216 },
+  { src: '/assets/gallery-nov4/nov4-02-ivy-fountain.jpg', alt: 'A little girl at an ivy-covered fountain', caption: '', width: 1320, height: 1274 },
+  { src: '/assets/gallery-nov4/nov4-03-christmas-pajamas.jpg', alt: 'Jen Archuleta and her family in matching Christmas pajamas', caption: '', width: 1320, height: 1164 },
+  { src: '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg', alt: 'Five rescues and two tortoises on the grass', caption: '', width: 1102, height: 863 },
+  { src: '/assets/gallery-nov4/nov4-05-ski-gondola.jpg', alt: 'Jen Archuleta with a toddler on a ski gondola', caption: '', width: 1289, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-06-beach-bodyboard.jpg', alt: 'A dad and kids walking to the beach with a yellow bodyboard', caption: '', width: 1320, height: 1165 },
+  { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1263 },
+  { src: '/assets/gallery-nov4/nov4-08-book-signing.jpg', alt: 'Jen Archuleta at her book signing', caption: '', width: 1155, height: 876 },
+  { src: '/assets/gallery-nov4/nov4-09-playboy-collage.jpg', alt: 'Collage of Jen Archuleta from Playboy', caption: '', width: 1320, height: 1202 },
+  { src: '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg', alt: 'Jen Archuleta in a white bikini, studio photo', caption: '', width: 400, height: 242 },
+  { src: '/assets/gallery-nov4/nov4-11-beach-bikini.jpg', alt: 'Jen Archuleta on the beach in a coral top and blue bikini', caption: '', width: 365, height: 547 },
+  { src: '/assets/gallery-nov4/nov4-12-bunny-costume.jpg', alt: 'Jen Archuleta in a bunny costume with her husband at a Playboy party', caption: '', width: 1259, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-13-family-ocean.jpg', alt: 'Jen Archuleta and her family in the ocean', caption: '', width: 1063, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-14-hawaii-beach.jpg', alt: 'Jen Archuleta with a friend on a Hawaii beach', caption: '', width: 1275, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-15-red-leather-seat.jpg', alt: 'Jen Archuleta in a red leather seat', caption: '', width: 1600, height: 1490 },
+  { src: '/assets/gallery-nov4/nov4-16-ballet-chair.jpg', alt: 'Jen Archuleta on a chair in ballet shoes', caption: '', width: 910, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-17-pink-aprons.jpg', alt: 'Jen Archuleta and a friend in pink aprons', caption: '', width: 1320, height: 1287 },
+  { src: '/assets/gallery-nov4/nov4-18-playboy-lite-red-carpet.jpg', alt: 'Jen Archuleta with Hugh Hefner and a group on the Playboy red carpet', caption: '', width: 612, height: 396 },
+  { src: '/assets/gallery-nov4/nov4-19-magazine-spread-1.jpg', alt: 'Magazine spread of Jen Archuleta and her husband', caption: '', width: 1104, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-20-magazine-spread-2.jpg', alt: 'Magazine spread of Jen Archuleta and her husband on a sofa', caption: '', width: 1200, height: 1600 },
 ];
 
 // Childhood portrait. The Hollywood set stays first, so this follows every earlier slide.
 const CHILDHOOD = [
   { src: '/assets/gallery-childhood/jen-childhood.jpg', alt: 'Jen as a girl', width: 552, height: 552 },
+];
+
+// November 4, second batch. No captions. Alt text names only Jen.
+const NOV4B = [
+  // Siren Song (old slide 108) is replaced by the green-top photo (old slide 115).
+  // The Timberlake and Nelly still (old slide 107) is out.
+  { src: '/assets/gallery-nov4b/nov4b-10-green-top-white-shorts.jpg', alt: 'Jen Archuleta in a green top and white shorts', caption: '', width: 1150, height: 1480 },
+  { src: '/assets/gallery-nov4b/nov4b-04-two-women-laughing.jpg', alt: 'Jen Archuleta laughing with a friend', caption: '', width: 1242, height: 1550 },
+  { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 1243 },
+  { src: '/assets/gallery-nov4b/nov4b-06-couch-fishburne.jpg', alt: 'Jen Archuleta seated on a couch', caption: '', width: 1242, height: 1188 },
+  { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1440 },
+  { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 861, height: 940 },
+  { src: '/assets/gallery-nov4b/nov4b-09-four-people-beads.jpg', alt: 'Jen Archuleta with friends', caption: '', width: 1040, height: 820 },
+  { src: '/assets/gallery-nov4b/nov4b-11-hefner-calendar-signing.jpg', alt: 'Jen Archuleta at a calendar signing', caption: '', width: 930, height: 700 },
+  { src: '/assets/gallery-nov4b/nov4b-12-sunglasses-party.jpg', alt: 'Jen Archuleta at a party in sunglasses', caption: '', width: 980, height: 820 },
+  { src: '/assets/gallery-nov4b/nov4b-13-award-podium.jpg', alt: 'Jen Archuleta at an awards podium', caption: '', width: 1040, height: 660 },
+  { src: '/assets/gallery-nov4b/nov4b-14-raising-stakes-poker-flyer.jpg', alt: 'Jen Archuleta on a poker flyer', caption: '', width: 1400, height: 1400 },
+  { src: '/assets/gallery-nov4b/nov4b-15-featured-girl-magazine.jpg', alt: 'Jen Archuleta on a magazine cover', caption: '', width: 1242, height: 1231 },
+  { src: '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg', alt: 'Jen Archuleta in a painted portrait', caption: '', width: 1157, height: 1600 },
+  { src: '/assets/gallery-nov4b/nov4b-17-bishop-photo.jpg', alt: 'Jen Archuleta in a portrait', caption: '', width: 1110, height: 900 },
+  { src: '/assets/gallery-nov4b/nov4b-18-thanksgiving-eve-tommy-lee.jpg', alt: 'Jen Archuleta at a gathering', caption: '', width: 1400, height: 1400 },
 ];
 
 // Oct 27: slides Jen took out, and duplicate pairs (one copy stays, the
@@ -284,40 +348,93 @@ const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/160.jpg',
 ]);
 
-// Every photo defined above, in the old order. The slideshow shows only
-// GALLERY_PICKS below; the rest stay in the repo so a swap is one line.
-const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...CHILDHOOD]
-  .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
-
-// November 3 (Jen): "Trim the gallery to the best 15 to 20 photos." These 19,
-// in this order. Also from her list that day: old #1 (hw_01, the Rock the
-// Rabbit stage photo) is out, old #42 (the old blurred bed photo) is out and its
-// file deleted, old #61 (new_04) moved to the About Me photo row, and old #51
-// (rappelling) and #66 (camel) are the photos Jen re-sent. To swap a photo,
-// replace its line with any src from the lists above.
-const GALLERY_PICKS = [
-  '/assets/gallery-hw/hw_04.jpg', // With Howard Stern
-  '/assets/gallery-hw/hw_03.jpg', // With Tommy Lee
-  '/assets/gallery-hw/hw_07.jpg', // Swimming with a dolphin
-  '/assets/jen-joy.jpg',
-  '/velvet-carousel/06.jpg', // A2Z Magazine cover
-  '/velvet-carousel/17.jpg', // the "perfect off-the-field match" story, with Adam
-  '/assets/gallery-nov3/03-wedding-beach.jpg',
-  '/velvet-carousel/21.jpg', // the red dress, dancing with Adam
-  '/assets/gallery-nov3/02-beach-kiss.jpg',
-  '/assets/gallery-nov3/10-houseboat-couple.jpg',
-  '/assets/gallery-nov3/08-volcano-railing.jpg',
-  '/assets/gallery-nov3/09-rafting.jpg',
-  '/assets/gallery-nov3/11-rappelling.jpg',
-  '/assets/gallery-new/new_13.jpg', // the camel
-  '/assets/gallery-nov3/14-grand-canyon.jpg',
-  '/assets/gallery-nov3/20-spartan-race.jpg',
-  '/assets/gallery-picks/159.jpg', // Childhelp
-  '/assets/gallery-oct26/dog-tortoise.jpg',
-  '/assets/gallery-childhood/jen-childhood.jpg',
+// Photos that were sitting alone on About Me. Whole files, at the end so the
+// earlier slides keep their order. The black coat stays on the page, not here.
+const FROM_ABOUT = [
+  { src: '/assets/jen-fun2.jpeg', alt: 'Jen Archuleta with a rescue puppy', caption: '', width: 510, height: 512 },
+  { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 1077, height: 887 },
+  { src: '/assets/brown-dress-portrait.jpg', alt: 'Jen Archuleta portrait', caption: '', width: 941, height: 883 },
+  { src: '/assets/covers/mag-musclemag.jpg', alt: 'Jen Archuleta on the MuscleMag swimsuit cover', caption: '', width: 1179, height: 1487 },
+  { src: '/assets/covers/mag-holistic-health.jpg', alt: 'Jen Archuleta on a Holistic Health magazine cover', caption: '', width: 1320, height: 1636 },
 ];
 
-const SLIDES = GALLERY_PICKS.map((src) => ALL_SLIDES.find((slide) => slide.src === src)).filter(Boolean);
+// Every photo defined above, in the November 3 order, minus slides Jen had
+// already taken out (HIDDEN_SLIDE_SRC) and the November 5 removals.
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B, ...FROM_ABOUT]
+  .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
+
+// November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).
+// #1 Playboy stage, and the bodyboard photo whose watermark cannot be cropped off.
+// The beach dress (velvet-carousel/10.jpg) is a slide again, not a photo on the page.
+// #42, the blurred kids-and-dogs bed photo, is not in NOV3. Its file is deleted.
+const OUT_OF_GALLERY = new Set([
+  '/assets/gallery-hw/hw_01.jpg',
+  '/assets/gallery-new/new_14.jpg',
+  // Floral repeats. The About hero (presskit-headshot-floral) is the one flower photo.
+  '/assets/gallery-nov3/07-dressing-room.jpg',
+  '/assets/gallery-new/new_09.jpg',
+  '/assets/gallery-new/new_22.jpg',
+  '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg',
+  // ImageCollect watermark is tiled across the painting. It cannot be cropped off without cutting her.
+  '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
+]);
+
+// Jen's captions (Nov 4), matched by file. Empty means no caption line.
+// Photos after the first 88, and any she marked blank or not yet confirmed, stay blank.
+const GALLERY_CAPTIONS = {
+  '/assets/gallery-hw/hw_02.jpg': 'SXSW on stage',
+  '/assets/gallery-hw/hw_03.jpg': 'With Tommy Lee',
+  '/assets/gallery-hw/hw_04.jpg': 'With Howard Stern',
+  '/assets/gallery-hw/hw_05.jpg': 'With Shaggy',
+  '/assets/gallery-hw/hw_06.jpg': 'My Name on the Palms Marquee in Las Vegas',
+  '/assets/gallery-hw/hw_07.jpg': 'Swimming with a Dolphin',
+  '/assets/gallery-hw/hw_09.jpg': 'My Bodyguard. Who’s Protecting Who?',
+  '/assets/jen-joy.jpg': 'Just call me Snow White, animals love me',
+  '/velvet-carousel/01.jpg': 'Charity event',
+  '/velvet-carousel/02.jpg': 'Modeling photo',
+  '/velvet-carousel/03.jpg': 'Photo by Alex Ardenti',
+  '/velvet-carousel/04.jpg': 'Modeling photo',
+  '/velvet-carousel/05.jpg': 'A to Z magazine cover',
+  '/velvet-carousel/06.jpg': 'A2Z Magazine cover',
+  '/velvet-carousel/10.jpg': 'Modeling photo',
+  '/velvet-carousel/11.jpg': 'Sponsored by PlayStation with Playmate friends / Playing video games all day',
+  '/velvet-carousel/12.jpg': 'Dolly slot machine ad',
+  '/velvet-carousel/13.jpg': 'HEF',
+  '/velvet-carousel/14.jpg': 'With Hef at the Suns game',
+  '/velvet-carousel/16.jpg': 'The night I met Hef and my life changed',
+  '/velvet-carousel/17.jpg': 'E! True Hollywood Story with Adam',
+  '/velvet-carousel/18.jpg': 'Pursuing my private pilot license',
+  '/velvet-carousel/19.jpg': 'Married the love of my life',
+  '/velvet-carousel/20.jpg': 'Celebrity fight night with Adam',
+  '/velvet-carousel/23.jpg': 'Costa Rica',
+  '/velvet-carousel/37.jpg': 'Childhelp Wings Fashion Show Luncheon',
+  '/velvet-carousel/41.jpg': 'Spa day for my friend Gwen',
+  '/velvet-carousel/42.jpg': 'Halloween',
+  '/assets/gallery-nov3/04-bride-friend.jpg': 'Married my best friend twice, in the same dress. The second time was in Las Vegas for our 10-year anniversary, with my childhood best friend and family there.',
+  '/assets/gallery-nov3/07-dressing-room.jpg': 'Getting ready with my co-chair for the Childhelp fashion show',
+  '/assets/gallery-nov3/08-volcano-railing.jpg': 'Costa Rica',
+  '/assets/gallery-nov3/09-rafting.jpg': 'My family loves adventure',
+  '/assets/gallery-nov3/10-houseboat-couple.jpg': 'Houseboat, Lake Powell',
+  '/assets/gallery-nov3/11-rappelling.jpg': 'Waterfall rappelling',
+  '/assets/gallery-nov3/12-boat.jpg': 'Mayakoba, Mexico',
+  '/assets/gallery-nov3/13-canoe.jpg': 'Ozarks',
+  '/assets/gallery-nov3/18-mansion-lawn.jpg': 'Playboy Mansion',
+  '/assets/gallery-nov3/19-private-jet.jpg': 'Jett setting',
+  '/assets/gallery-nov3/20-spartan-race.jpg': 'I Am Spartan',
+  '/assets/gallery-nov3/21-rv-family.jpg': 'Home is where you park it',
+  '/assets/gallery-new/new_23.jpg': 'The OGs',
+  '/assets/gallery-new/new_24.jpg': 'The OGs',
+  '/assets/gallery-new/new_18.jpg': 'A birthday cake worth remembering',
+  '/assets/gallery-picks/154.jpg': 'Bangkok, Thailand',
+  '/assets/gallery-picks/175.jpg': 'Turkey trot, thankful for friends',
+  '/assets/gallery-oct26/snow.jpg': 'Aspen',
+  '/assets/gallery-oct26/jet-cabin.jpg': 'Jet setting',
+  '/assets/gallery-oct26/jet-stairs.jpg': 'Jet setting',
+};
+
+const SLIDES = ALL_SLIDES
+  .filter((slide) => !OUT_OF_GALLERY.has(slide.src))
+  .map((slide) => ({ ...slide, caption: GALLERY_CAPTIONS[slide.src] || '' }));
 
 const INTERVAL_MS = 4000;
 // Never enlarge a file more than this, so small photos stay sharp.
@@ -446,7 +563,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
   return (
     <section id="gallery" className="gallery-band" aria-labelledby="gallery-heading">
       <div className="wrap">
-        <h2 id="gallery-heading" className={showTitle ? undefined : 'visually-hidden'}>Gallery</h2>
+        <h2 id="gallery-heading" className={showTitle ? undefined : 'visually-hidden'}>A few photos from my past</h2>
         <div
           ref={stageRef}
           className="gallery-stage"
@@ -479,7 +596,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
                 {nearby.map(({ offset, slide: item }) => (
                   <div
                     key={item.src}
-                    className={`gallery-slide${offset === 0 ? ' is-active' : ''}`}
+                    className={`gallery-slide${offset === 0 ? ' is-active' : ''}${item.src.endsWith('/42.jpg') || item.src.endsWith('nov4-13-family-ocean.jpg') ? ' is-large' : ''}`}
                     aria-hidden={offset === 0 ? undefined : true}
                     style={slideStyle(item)}
                   >

@@ -11,7 +11,7 @@ export const BOOKING_EMAIL = 'therealunfilteredpod@gmail.com';
 
 export const SOCIALS = {
   instagram: 'https://www.instagram.com/jenniferwalcott/',
-  x: 'https://x.com/Jenniferwalcott',
+  x: 'https://x.com/jenniferwalcott',
   facebook: 'https://facebook.com/therealjenniferwalcott',
   linkedin: 'https://www.linkedin.com/in/jennifer-archuleta-633805115',
   tiktok: 'https://www.tiktok.com/@jenarchuleta578',
@@ -23,7 +23,7 @@ export const OG_IMAGE = {
   url: 'https://jenarchuleta.com/assets/og-floral-1200x630.jpg',
   width: 1200,
   height: 630,
-  alt: 'Jen Walcott Archuleta',
+  alt: 'Jen Archuleta smiling in a floral top',
 };
 
 // Live Stripe Customer Portal login link. Capital I after wO3.
@@ -35,7 +35,7 @@ export const STRIPE_CUSTOMER_PORTAL_URL = 'https://billing.stripe.com/p/login/14
 // SIGNED BOOKS — live. Sold via a Stripe Payment Link (lowest fees, collects
 // shipping address + a "Who should Jen sign it to?" field).
 //
-// BOOKMARK — three states, checked in this order by app/shop/page.js:
+// BOOKMARK — three states, checked in this order by the shop (app/book/BookOffers.js):
 //   1. `bookmark` has a buy.stripe.com URL  → live "Buy" button.
 //      Only set this when a finished batch exists. Create the Payment Link in
 //      Stripe (Products → Signature Velvet Bookmark → Payment Link, enable
@@ -57,8 +57,9 @@ export const BOOK_BUY_URL = 'https://books.by/beyond-the-velvet-ropes';
 // choices are easy to follow. "Get the Paperback" (BOOK_BUY_URL) stays the main
 // button; the signed copy row comes from SHOP below. Shown by BuyOptions.js on
 // the homepage and the Book page.
-// Confirmed product pages only. Google Play, Audible, Bookshop, and an Apple
-// Books ebook do not have a confirmed page, so they stay off this list.
+// Confirmed product pages only. Google Play, Bookshop, and an Apple Books
+// ebook do not have a confirmed page, so they stay off this list.
+// Audible (checked November 5, 2026): the live audiobook page.
 export const BOOK_FORMATS = [
   {
     format: 'Paperback',
@@ -74,6 +75,7 @@ export const BOOK_FORMATS = [
   {
     format: 'Audiobook',
     links: [
+      { label: 'Audible', href: 'https://www.audible.com/pd/Beyond-the-Velvet-Ropes-My-Story-of-Perseverance-Hope-and-Love-Audiobook/B0HP8SPHGT' },
       { label: 'Apple Books', href: 'https://books.apple.com/us/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance/id6789345549?uo=4' },
       { label: 'Spotify', href: 'https://open.spotify.com/show/153EBrZVIkJY1xaY703km4' },
       { label: 'Kobo', href: 'https://www.kobo.com/us/en/audiobook/beyond-the-velvet-ropes' },
@@ -92,6 +94,8 @@ export const READER_REVIEWS = [];
 export const SHOP = {
   // Jen's corrected listing (Oct 28).
   etsyTee: 'https://www.etsy.com/listing/4321696666/be-the-bumblebee-unisex-classic-tee',
+  // The UnfilteredByJen shop. The site had only the Be the Bumblebee listing.
+  etsyShop: 'https://www.etsy.com/shop/UnfilteredByJen',
   foreverAngels: 'https://theforeverangels.com/',
 
   // SIGNED COPY. The Shop leads with the TOTAL (Adam, Nov 3): $35 book + $6.99
@@ -102,8 +106,8 @@ export const SHOP = {
   signedBookPrice: '$35',
   signedBookShipping: '$6.99',
   signedBookTotal: '$41.99',
-  // Adam's exact wording (Nov 3). The Stripe checkout shows the same line.
-  signedBookLeadTime: 'Personally signed and personalized. Please allow 2–3 weeks before your book ships.',
+  // Jen, Nov 5: no day or week count. Signed and shipped by regular mail.
+  signedBookLeadTime: 'Signed and shipped by regular mail.',
 
   // SOLD OUT SWITCH — flip to false to put signed copies back on sale.
   // NOTE: `signedBook` above is deliberately left populated. The printed
@@ -118,29 +122,27 @@ export const SHOP = {
   // Shipping is included in the $24.99 (Sept 4 decision); Stripe takes US
   // addresses only.
   bookmarkShipping: 'Free shipping, US only',
-  // What the customer gets (Adam, Nov 3: "Customers should know exactly what they
-  // are getting"). Each line shows on the Shop card only once it's filled in, so
-  // fill these with Jen's real answers and never a guess:
-  //   bookmarkSize       e.g. 'About 9 x 1 inches, plus the seal'
-  //   bookmarkPackaging  e.g. 'Wrapped in tissue, in a gift box'
-  //   bookmarkShips      a phrase that reads after "Ships", e.g. 'within 3 business days'
-  //                      (Shipping & Returns uses it too: "Bookmarks ship within ...")
+  // The Shop card and Shipping & Returns use Jen's exact bookmark paragraph
+  // (about 6 inches, gold key charm, wax-style seal, padded gift case, regular
+  // mail). Leave these blank. Do not add a day-count such as "1 to 2 business
+  // days", and do not describe a choker or say the bookmark folds.
   bookmarkSize: '',
   bookmarkPackaging: '',
   bookmarkShips: '',
 
-  // VELVET CIRCLE MEMBERSHIP. LIVE as of 2026-08-19. Recurring Stripe Payment
-  // Link, $9.99/mo. Self-service cancel uses STRIPE_CUSTOMER_PORTAL_URL.
-  // That portal is what keeps this FTC click-to-cancel / ROSCA compliant.
-  // Do not take the membership live through any checkout that lacks that portal.
+  // VELVET CIRCLE. One membership, this $9.99/month Payment Link.
+  // Do not create a second Stripe product or a second price.
+  // Self-service cancel uses STRIPE_CUSTOMER_PORTAL_URL.
   velvetCircleMembership: 'https://buy.stripe.com/6oU3cuemL2mB1UD73Ids406',
   velvetCircleMembershipPrice: '$9.99/month',
-  // Members email their questions here, up to three a month (Shop card, FAQ,
-  // Shipping & Returns, and the Stripe welcome message all say so).
-  velvetCircleQuestionsEmail: 'jen@jenarchuleta.com',
+  // Members email up to three questions a month here. Jen answers them promptly
+  // and in detail every month.
+  velvetCircleQuestionsEmail: 'therealunfilteredpod@gmail.com',
 
-  // The Backstage Bundle ($69 one-time) was removed November 3 (Jen: one
-  // book-club offer). It never had a Stripe link.
+  // The Bundle. $69, sold through the existing Kit product page (no Stripe link).
+  // Old #backstage-bundle anchors land on this card.
+  bundle: 'https://jennifer-archuleta.kit.com/products/founding-box-season-1',
+  bundlePrice: '$69',
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official
@@ -168,3 +170,15 @@ export const PODCAST = {
     youtube: 'https://www.youtube.com/@jenarchuletaunfiltered',
   },
 };
+
+// Social accounts, in Jen's order. YouTube is the podcast channel.
+// Buzzsprout sits beside it. The newsletter form is only on /thank-you#stay.
+export const CONNECT_LINKS = [
+  { label: 'LinkedIn', href: SOCIALS.linkedin },
+  { label: 'X', href: SOCIALS.x },
+  { label: 'TikTok', href: SOCIALS.tiktok },
+  { label: 'Instagram', href: SOCIALS.instagram },
+  { label: 'Facebook', href: SOCIALS.facebook },
+  { label: 'YouTube', href: PODCAST.youtube },
+  { label: 'Buzzsprout', href: PODCAST.buzzsproutSite },
+];

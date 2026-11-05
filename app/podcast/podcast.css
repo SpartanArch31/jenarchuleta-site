@@ -2,8 +2,10 @@
 
 .pod-hero { text-align:center; }
 .pod-hero h1 { font-size: var(--text-display-l); margin-bottom: 10px; }
-
-.subscribe-row { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:24px; }
+.pod-subscribe { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 22px; }
+.pod-credits { list-style: none; margin: 22px auto 0; padding: 0; max-width: 40rem; text-align: left; }
+.pod-credits li { margin: 0; padding: 12px 0; border-top: var(--hairline); }
+.pod-credits li:last-child { border-bottom: var(--hairline); }
 
 .pod-embed {
   margin-top: 8px;
@@ -17,6 +19,46 @@
 
 .guest { text-align:center; }
 .guest h2 { font-size: var(--text-display-l); }
+
+.pod-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+  text-align: left;
+}
+.pod-boxes a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 18px 16px;
+  background: var(--surface);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--text);
+}
+.pod-panel { background: var(--surface); }
+.pod-panel h2 { margin-top: 0; }
+.pod-name-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 22px;
+}
+.pod-name-list a { color: var(--accent-ink); }
+.pod-boxes a:hover { text-decoration: none; }
+@media (max-width: 700px) {
+  .pod-boxes { grid-template-columns: 1fr; }
+}
+.pod-players > .home-pod-cross { grid-column: 1 / -1; }
 
 .pod-count {
   font-family: var(--font-sans);

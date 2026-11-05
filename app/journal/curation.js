@@ -2,14 +2,15 @@
 // Nothing here deletes or edits a post in Sanity. Archived posts stay live at
 // their own URL and are listed under "Archive" on /journal.
 //
-// Jen's categories, in her order (October 27, 2026).
+// Jen's categories. Behind the Book leads the Journal (November 5, 2026).
+// Archive is added last on the page.
 export const CATEGORY_ORDER = [
+  'Behind the Book',
   'Faith',
   'Family',
   'Cooking',
   'Advocacy',
   'Health & Wellness',
-  'Behind the Book',
   'Podcast',
 ];
 
@@ -73,7 +74,19 @@ export const ARCHIVED_SLUGS = new Set([
 
 // Category fixes by slug, if any post needs one. (None right now: the only
 // uncategorized "Journal" posts are archived above.)
-export const CATEGORY_OVERRIDES = {};
+// Display only. The post stays as Jen published it in Sanity.
+export const CATEGORY_OVERRIDES = {
+  'beyond-the-velvet-ropes-the-documentary-is-coming': 'Behind the Book',
+};
+
+// Book launch, the documentary, and press, ahead of the rest of the feed.
+export const FEATURED_SLUGS = [
+  'beyond-the-velvet-ropes-the-documentary-is-coming',
+  'beyond-the-velvet-ropes-or-in-the-press',
+  'beyond-the-velvet-ropes-featured-in-the-akron-beacon-journal-s-book-talk',
+  'this-is-why-i-wrote-beyond-the-velvet-ropes',
+  'book-signing',
+];
 
 export function curatePosts(posts) {
   return (posts || []).map((p) => {

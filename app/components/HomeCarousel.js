@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './home-carousel.css';
 
-// Homepage featured photos (Jen, November 2026): family, the rescue dogs,
-// and the book. It sits below Story · Voice · Heart. The candid floral
+// Homepage featured photos (Jen, November 2026): family and the rescues.
+// The book cover stays on the Book page. The candid floral
 // portrait is the hero photo now (November 3), so it is not repeated here.
 // Every photo is shown whole at its own ratio, one height, with quiet arrows
 // and dots; no autoplay. Children: only Jen's own files with the kids' faces
@@ -15,11 +15,10 @@ import './home-carousel.css';
 export const HOME_SLIDES = [
   { src: '/assets/dogs.jpg', width: 1400, height: 786, alt: 'Jen’s five rescues together in the garden' },
   { src: '/assets/gallery-nov3/03-wedding-beach.jpg', width: 1308, height: 1319, alt: 'Jen and Adam on their wedding day, on the beach at sunset' },
-  { src: '/assets/gallery-oct26/dog-tortoise.jpg', width: 1320, height: 1320, alt: 'A dog on a tortoise' },
+  { src: '/assets/gallery-oct26/dog-tortoise.jpg', width: 1320, height: 1320, alt: 'A rescue on a tortoise' },
   { src: '/assets/gallery-nov3/02-beach-kiss.jpg', width: 951, height: 1761, alt: 'A kiss on the beach' },
   { src: '/assets/gallery-nov3/08-volcano-railing.jpg', width: 1316, height: 739, alt: 'The family looking out at the mountains' },
   { src: '/assets/quiet-mornings.jpg', width: 1248, height: 1400, alt: 'Jen resting with one of her rescues' },
-  { src: '/assets/book-cover.jpg', width: 1000, height: 1500, alt: 'Beyond the Velvet Ropes book cover', href: '/book' },
 ];
 
 export default function HomeCarousel() {
@@ -97,7 +96,6 @@ export default function HomeCarousel() {
               <li
                 key={slide.src}
                 className="hc-slide"
-                style={{ aspectRatio: `${slide.width} / ${slide.height}` }}
                 aria-roledescription="slide"
                 aria-label={`${i + 1} of ${count}`}
               >

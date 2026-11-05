@@ -23,15 +23,20 @@ section { padding-block: var(--section-y); }
        backdrop-filter: blur(8px); border-bottom: var(--hairline); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px;
              padding-block: 18px; max-width: var(--container); margin: 0 auto; padding-inline: var(--gutter); }
+.nav-end { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.nav-search { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+              color: var(--text-secondary); flex: 0 0 auto; }
+.nav-search svg { width: 18px; height: 18px; }
+.nav-search:hover { color: var(--accent-ink); text-decoration: none; }
+.nav-search[aria-current="page"] { color: var(--accent-ink); }
 .brand { font-family: var(--font-caps); text-transform: uppercase; letter-spacing: var(--track-caps);
          font-size: 1.05rem; color: var(--text); }
 .nav-links { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 10px 18px; }
+.nav-links a.nav-with-key { display: inline-flex; align-items: center; gap: 6px; }
+.nav-key { width: 14px; height: 14px; color: var(--accent); flex: 0 0 auto; }
 .nav-links a { font-family: var(--font-sans); font-size: var(--text-ui); letter-spacing: var(--track-ui);
                color: var(--text-secondary); text-transform: uppercase; font-size: .78rem; letter-spacing: .14em; }
 .nav-links a:hover { color: var(--accent-ink); text-decoration: none; }
-.nav-velvet { display: inline-flex; align-items: center; gap: 6px; }
-.nav-sub a.nav-velvet { display: flex; gap: 8px; }
-.nav-key { width: 14px; height: 14px; color: #BE9543; flex: 0 0 auto; }
 .nav-links a[aria-current="page"] { color: var(--accent-ink); box-shadow: inset 0 -1px 0 var(--accent); }
 .nav-toggle { display: none; }
 @media (max-width: 1023px){
@@ -74,6 +79,7 @@ section { padding-block: var(--section-y); }
 /* Small laptops and tablets held sideways: tighter spacing keeps the menu on one line. */
 @media (min-width: 1024px) and (max-width: 1199px){
   .nav-inner { gap: 16px; }
+  .nav-search { width: 36px; height: 36px; }
   .nav-links { gap: 10px 11px; }
   .nav-links > a, .nav-item > a { letter-spacing: .1em; }
   .nav-caret { width: 16px; }
@@ -181,6 +187,12 @@ section { padding-block: var(--section-y); }
   .buy-format { grid-template-columns: 1fr; gap: 6px; }
   .buy-format dt { padding-top: 0; }
 }
+.public-reviews { margin: 18px auto 8px; max-width: 40rem; display: grid; gap: 18px; text-align: left; }
+.public-reviews figure { margin: 0; }
+.public-reviews blockquote { margin: 0; }
+.public-reviews p { margin: 0 0 0.65em; font-size: 0.98rem; line-height: 1.5; }
+.public-reviews .public-review-title { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.3; }
+.public-reviews figcaption { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--text-muted); }
 .reader-reviews { margin-top: 26px; display: grid; gap: 14px; }
 .reader-reviews figure { margin: 0; }
 .reader-reviews blockquote { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--text); }
@@ -307,14 +319,18 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .foot-links a { font-family: var(--font-sans); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color: var(--text-secondary); }
 .foot-meta { font-family: var(--font-sans); font-size: var(--text-meta); color: var(--text-muted); }
 
+.velvet-ropes-key { width: 28px; height: 28px; color: var(--accent); display: block; margin: 18px 0 12px; }
+.velvet-unlock { display: inline-flex; align-items: center; gap: 10px; }
+.velvet-unlock .velvet-ropes-key { width: 18px; height: 18px; margin: 0; color: currentColor; }
+.home-jumps { padding-bottom: var(--space-9); }
+.home-jumps h2 { margin-bottom: 22px; }
 .center { text-align:center; }
 .threshold-rule { max-width: 220px; margin: 0 auto; }
 
-/* About gallery. Big, whole photos (Jen, October 27): each slide is shown at
-   its own ratio, as large as the stage allows, never stretched or cropped.
-   The white mat hugs the photo, so there is no empty frame around it.
-   --g-w (set per slide in PhotoGallery.js) = min(--g-max-w, --g-max-h x ratio,
-   1.6 x the file's width). */
+/* About gallery. Each slide keeps its own ratio (Jen, October 27, and
+   November 5): as large as the stage allows, never stretched, never cropped.
+   max-width and max-height scale the file down. A dark mat shows only if a
+   box is larger than the photo. */
 .gallery-band { background: var(--bg); text-align: center; }
 .gallery-band h2 { margin-bottom: clamp(36px, 5vw, 64px); }
 .gallery-band .wrap { container-type: inline-size; }
@@ -334,23 +350,24 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   column-gap: var(--g-gap);
   row-gap: 14px;
 }
-/* A fixed-height stage on larger screens, so the page below does not jump
-   as the slides change. The photo sits centered in it. */
+/* The stage grows with the photo. A fixed height was clipping tall slides. */
 .gallery-area {
   grid-area: area;
-  height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px);
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 0;
+  overflow: visible;
   touch-action: pan-y;
 }
 .gallery-frame {
   padding: var(--g-pad);
-  background: var(--paper);
+  background: var(--espresso);
   border: 1px solid var(--gold);
   box-shadow: var(--shadow-lg);
   line-height: 0;
+  max-width: 100%;
 }
 .gallery-viewport { position: relative; }
 .gallery-slide {
@@ -370,20 +387,21 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   z-index: 1;
   pointer-events: auto;
 }
-/* Neighbors fade inside the active photo's box, whole and uncropped. */
-.gallery-slide img {
+/* Whole file, real ratio. Contain plus the dark mat so a head is never cut. */
+.gallery-slide img,
+.gallery-slide.is-active img {
   display: block;
   width: auto;
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: var(--g-max-w);
+  max-height: var(--g-max-h);
   object-fit: contain;
+  object-position: center center;
 }
-.gallery-slide.is-active img {
-  width: var(--g-w);
-  height: auto;
-  max-width: none;
-  max-height: none;
+/* Slide 39, the Halloween party. The file is 1200px wide, so this stays inside the file. */
+.gallery-slide.is-large img {
+  max-width: min(1100px, calc(100cqw - 24px));
+  max-height: min(92vh, 1400px);
 }
 .gallery-meta { grid-area: meta; min-height: 2.6em; }
 .gallery-caption {
@@ -432,7 +450,7 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
     column-gap: 14px;
     row-gap: 12px;
   }
-  .gallery-area { height: auto; }
+  .gallery-area { height: auto; overflow: visible; }
 }
 @supports (height: 1svh) {
   @media (max-width: 759px) {
@@ -449,6 +467,7 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 @media (hover: hover) and (pointer: fine) {
   .photo-row img:hover { transform: translateY(-3px); }
 }
+.photo-row--two { grid-template-columns: 1fr 1fr; max-width: 720px; }
 @media (max-width:760px){ .photo-row{ grid-template-columns:1fr 1fr; } }
 
 /* pillars */
