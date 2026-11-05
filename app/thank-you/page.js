@@ -18,8 +18,12 @@ export default function ThankYouPage() {
       <section id="main-content" className="wrap hero">
         <div className="hero-copy">
           <h1>Thank you</h1>
+          {/* Jen's words, exactly (November 5, 2026). */}
           <p>
-            Thank you for supporting me and this book. So many of you have reached out to tell me you could relate, that it changed you, or that it inspired you. Thank you for letting my honesty matter.
+            Thank you for supporting Beyond the Velvet Ropes. So many of you have reached out to tell me that my story helped you feel less alone or gave you the courage to share your own. Thank you for trusting me with those stories.
+          </p>
+          <p>
+            I meant every word, even the ones that were hard to write. Sharing them was my way of turning pain into purpose, and your words made this book a bestseller in my heart.
           </p>
         </div>
         <div className="hero-media">
