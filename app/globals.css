@@ -570,3 +570,13 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .buy-world li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding-bottom: 8px; border-bottom: var(--hairline); }
 .buy-world-country { min-width: 8.5rem; font-weight: 600; }
 .buy-world a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Podcast reviews as quote cards (Nov 5), alternating dark and light like Jen's graphics. */
+.public-reviews--cards { max-width: 72rem; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 26px; align-items: stretch; }
+.public-reviews--cards figure { display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
+  padding: 30px 28px; border-radius: var(--radius-lg); background: #ebe5dc; color: #1c1917; box-shadow: var(--shadow); }
+.public-reviews--cards figure:nth-child(odd) { background: #1f1c1b; color: #f4efe8; }
+.public-reviews--cards p { font-family: var(--font-display); font-size: 1.2rem; line-height: 1.45; }
+.public-reviews--cards .public-review-title { font-size: 1.6rem; line-height: 1.2; margin-bottom: 12px; }
+.public-reviews--cards figcaption { color: inherit; opacity: .8; font-size: .82rem; }
+@media (max-width: 900px) { .public-reviews--cards { grid-template-columns: 1fr; max-width: 34rem; } }
