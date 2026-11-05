@@ -382,14 +382,14 @@ const OUT_OF_GALLERY = new Set([
 // Jen's captions (Nov 4), matched by file. Empty means no caption line.
 // Photos after the first 88, and any she marked blank or not yet confirmed, stay blank.
 const GALLERY_CAPTIONS = {
-  '/assets/gallery-hw/hw_02.jpg': 'South by Southwest on stage',
+  '/assets/gallery-hw/hw_02.jpg': 'SXSW on stage',
   '/assets/gallery-hw/hw_03.jpg': 'With Tommy Lee',
   '/assets/gallery-hw/hw_04.jpg': 'With Howard Stern',
   '/assets/gallery-hw/hw_05.jpg': 'With Shaggy',
   '/assets/gallery-hw/hw_06.jpg': 'My Name on the Palms Marquee in Las Vegas',
   '/assets/gallery-hw/hw_07.jpg': 'Swimming with a Dolphin',
   '/assets/gallery-hw/hw_09.jpg': 'My Bodyguard. Who’s Protecting Who?',
-  '/assets/jen-joy.jpg': 'Just Call Me Snow White',
+  '/assets/jen-joy.jpg': 'Just call me Snow White, animals love me',
   '/velvet-carousel/01.jpg': 'Charity event',
   '/velvet-carousel/02.jpg': 'Modeling photo',
   '/velvet-carousel/03.jpg': 'Photo by Alex Ardenti',
@@ -412,7 +412,15 @@ const GALLERY_CAPTIONS = {
   '/velvet-carousel/42.jpg': 'Halloween',
   '/assets/gallery-nov3/04-bride-friend.jpg': 'Married my best friend twice, in the same dress. The second time was in Las Vegas for our 10-year anniversary, with my childhood best friend and family there.',
   '/assets/gallery-nov3/07-dressing-room.jpg': 'Getting ready with my co-chair for the Childhelp fashion show',
+  '/assets/gallery-nov3/08-volcano-railing.jpg': 'Costa Rica',
   '/assets/gallery-nov3/09-rafting.jpg': 'My family loves adventure',
+  '/assets/gallery-nov3/10-houseboat-couple.jpg': 'Houseboat, Lake Powell',
+  '/assets/gallery-nov3/11-rappelling.jpg': 'Waterfall rappelling',
+  '/assets/gallery-nov3/12-boat.jpg': 'Mayakoba, Mexico',
+  '/assets/gallery-nov3/13-canoe.jpg': 'Ozarks',
+  '/assets/gallery-nov3/18-mansion-lawn.jpg': 'Playboy Mansion',
+  '/assets/gallery-nov3/19-private-jet.jpg': 'Jett setting',
+  '/assets/gallery-nov3/20-spartan-race.jpg': 'I Am Spartan',
   '/assets/gallery-new/new_18.jpg': 'A birthday cake worth remembering',
   '/assets/gallery-picks/154.jpg': 'Bangkok, Thailand',
   '/assets/gallery-picks/175.jpg': 'Turkey trot, thankful for friends',
@@ -585,7 +593,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
                 {nearby.map(({ offset, slide: item }) => (
                   <div
                     key={item.src}
-                    className={`gallery-slide${offset === 0 ? ' is-active' : ''}`}
+                    className={`gallery-slide${offset === 0 ? ' is-active' : ''}${item.src.endsWith('/42.jpg') ? ' is-large' : ''}`}
                     aria-hidden={offset === 0 ? undefined : true}
                     style={slideStyle(item)}
                   >
