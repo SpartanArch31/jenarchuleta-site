@@ -6,7 +6,7 @@ import SiteFooter from '../components/SiteFooter';
 export const metadata = {
   title: 'About the Author',
   description:
-    'Jen Walcott Archuleta, author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and host of the podcast Unfiltered with Jen Archuleta.',
+    'Jen Archuleta, author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and host of the podcast Unfiltered with Jen Archuleta.',
 };
 
 // About the Author (Jen, November 3, 2026): the formal page, kept apart from
@@ -25,7 +25,7 @@ export default function AboutTheAuthorPage() {
           <Image
             className="tim-portrait"
             src="/assets/jen-headshot-signature.jpg"
-            alt="Jen Walcott Archuleta"
+            alt="Jen Archuleta"
             width={1162}
             height={1597}
             sizes="(max-width: 860px) 88vw, 420px"

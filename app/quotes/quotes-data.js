@@ -1,5 +1,5 @@
-// One list. The homepage bands and /quotes both read from here,
-// so a line cannot drift or get reworded in one place only.
+// Book lines, word for word. The homepage uses QUOTE_STORY.
+// About Me uses the other book lines. /quotes redirects to /about.
 export const QUOTE_STORY = {
   text: 'Your story isn’t what happened to you. It’s what you do with it.',
 };
@@ -23,7 +23,7 @@ export const QUOTE_HAPPY = {
 
 export const QUOTE_WKBN = {
   text: 'It’s not who I am, it’s what I did. And the bunny ears here were just representing a piece of my life, not my whole life.',
-  source: 'Jen Walcott Archuleta, WKBN 27 First News, Aug 23, 2026',
+  source: 'Jen Archuleta, WKBN 27 First News, Aug 23, 2026',
 };
 
 export const QUOTES = [

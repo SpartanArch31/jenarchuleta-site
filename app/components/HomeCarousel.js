@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './home-carousel.css';
 
-// Homepage featured photos (Jen, November 2026): family, the rescue dogs,
+// Homepage featured photos (Jen, November 2026): family, the rescues,
 // and the book. It sits below Story · Voice · Heart. The candid floral
 // portrait is the hero photo now (November 3), so it is not repeated here.
 // Every photo is shown whole at its own ratio, one height, with quiet arrows

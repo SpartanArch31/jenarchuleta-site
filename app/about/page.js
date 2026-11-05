@@ -3,7 +3,8 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import { KIT_FREE_CHAPTER_URL, SOCIALS } from '../components/site-data';
+import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
+import { QUOTE_FORGIVE, QUOTE_LOST, QUOTE_RESCUE } from '../quotes/quotes-data';
 
 export const metadata = {
   title: 'About Me',
@@ -38,7 +39,7 @@ export default function AboutPage() {
           </p>
         </div>
         <div>
-          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Walcott Archuleta smiling in a floral top" width="1100" height="1370" />
+          <img className="tim-portrait" src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
           <p className="tim-cap">Caught mid-laugh, which is most of the time</p>
         </div>
       </section>
@@ -90,7 +91,7 @@ export default function AboutPage() {
         <div>
           {/* Jen's pick since July: the black-and-white photo in the long black trench
               coat. Do not swap in a headshot. */}
-          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Walcott Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
+          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         </div>
         <div>
           <p className="tim-lead">
@@ -98,6 +99,10 @@ export default function AboutPage() {
             dressed up. My twenties gave me some incredible experiences and some hard ones too.
             I’m grateful for all of it. But the life I love most is the regular one I wake up to now.
           </p>
+          <figure className="tim-quote">
+            <p>“{QUOTE_LOST.text}”</p>
+            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -106,15 +111,34 @@ export default function AboutPage() {
       <section className="tim-wrap tim-fun">
         <div className="photo-row">
           <img src="/assets/jen-glam.jpg" alt="Jen Archuleta, glamour portrait" width="941" height="1123" loading="lazy" />
-          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Walcott Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
+          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
           <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
           <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
         </div>
       </section>
       <PhotoGallery showTitle={false} />
 
-      {/* GIVING BACK. The one home on the site for The Forever Angels (the footer,
-          the homepage, and /forever-angels all land here). */}
+      <section className="tim-wrap tim-band-inner tim-from-book" aria-label="From the book">
+        <img
+          className="tim-quote-photo"
+          src="/assets/jen-beauty.jpg"
+          alt="Jen Archuleta"
+          width="900"
+          height="1520"
+        />
+        <div className="tim-quotes">
+          <figure className="tim-quote">
+            <p>“{QUOTE_RESCUE.text}”</p>
+            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
+          </figure>
+          <figure className="tim-quote">
+            <p>“{QUOTE_FORGIVE.text}”</p>
+            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* Giving back stays on About Me. The charity page is /forever-angels. */}
       <section id="forever-angels" className="tim-faith dark">
         <span id="faith" className="anchor" aria-hidden="true" />
         <div className="tim-faith-inner">
@@ -122,7 +146,7 @@ export default function AboutPage() {
             Giving back matters to me. If I have time, a story, or a hand to lend, I’d rather use
             it for someone else.
           </p>
-          <a href={SOCIALS.foreverAngels} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
+          <a href="/forever-angels" className="btn btn-primary">The Forever Angels</a>
         </div>
       </section>
 
@@ -130,8 +154,7 @@ export default function AboutPage() {
       <section className="tim-wrap tim-close">
         <span id="work" className="anchor" aria-hidden="true" />
         <p className="tim-lead">
-          Want to be part of something? <a href="/book">Buy my book</a> and check out{' '}
-          <a href="/velvet">the Velvet Letter</a> with your passcode. You can also{' '}
+          Want to be part of something? <a href="/book">Buy my book</a>. You can also{' '}
           <a href={KIT_FREE_CHAPTER_URL}>get the first chapter free</a>.
         </p>
         <p className="tim-lead">Thanks for being here.</p>

@@ -1,0 +1,3 @@
+.forever-page { padding-block: clamp(56px, 8vw, 96px); }
+.forever-page h1 { margin: 10px 0 0; }
+.forever-page p { margin: 1.15em 0 0; max-width: 62ch; }

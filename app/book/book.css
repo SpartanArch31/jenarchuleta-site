@@ -26,3 +26,24 @@
 .book-page .book-screen p { color: var(--text-secondary); }
 .book-page .book-more { padding-block: clamp(48px, 7vw, 80px); }
 .book-page .book-more .buy-row { margin-top: 18px; }
+
+/* The one full Velvet Letter line, beside the buy buttons. */
+.book-page .book-velvet {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 8px 0 18px;
+}
+.book-page .book-velvet-key {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  margin-top: 4px;
+  color: var(--accent);
+}
+.book-page .book-velvet p {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
