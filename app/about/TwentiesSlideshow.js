@@ -84,7 +84,14 @@ export default function TwentiesSlideshow() {
         aria-label={`Open my 20s slideshow, ${PHOTOS.length} photos`}
       >
         <Image src={PHOTOS[0].src} alt="" fill sizes="(max-width: 600px) 86vw, 420px" quality={85} />
-        <span className="twenties-cover-label">My 20s · {PHOTOS.length} photos</span>
+        {/* Adam, Nov 5: no "My 20s" label; a clear cue that the square opens. */}
+        <span className="twenties-cover-cue" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <rect x="7" y="3" width="14" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+            <path d="M4 7v12a2 2 0 0 0 2 2h12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+          Tap to see the photos
+        </span>
       </button>
       <p className="twenties-caption">A little glam, a lot of fun, and a life I love.</p>
 

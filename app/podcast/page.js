@@ -4,6 +4,8 @@ import SiteFooter from '../components/SiteFooter';
 import BuzzsproutPlayer from '../components/BuzzsproutPlayer';
 import { PODCAST } from '../components/site-data';
 import { EPISODE_CREDITS } from '../../lib/episode-credits';
+import { PUPS } from '../../lib/pups';
+import { pupPhotoUrls } from '../../lib/pup-photos';
 import { PODCAST_REVIEWS } from '../../lib/public-reviews';
 import PublicReviews from '../components/PublicReviews';
 
@@ -34,7 +36,14 @@ export const metadata = {
   },
 };
 
-export default function PodcastPage() {
+// Episode number from lib/pups.js ('Ep. 10, with Nick Lowery' -> 10).
+const pupEpisode = (pup) => Number((pup.episode || '').match(/Ep\. (\d+)/)?.[1] || 0);
+
+export default async function PodcastPage() {
+  // Adam, Nov 5: each pup with its photo and shelter ID, the same photos and
+  // IDs as /pups. Pups with no photo show the paw.
+  const pups = [...PUPS].sort((a, b) => pupEpisode(a) - pupEpisode(b));
+  const pupPhotos = await pupPhotoUrls([...new Set(pups.map((p) => p.imageSlug).filter(Boolean))], 500);
   const { name, buzzsproutSite, buzzsproutId } = PODCAST;
   const watchHref = PODCAST.youtubeEpisodes || PODCAST.youtube;
 
@@ -69,12 +78,30 @@ export default function PodcastPage() {
       <section id="pups" className="wrap pod-panel center">
         <div className="eyebrow">Pups of the Podcast</div>
         <h2>Meet the pups</h2>
-        <ol className="pod-credits">
-          {EPISODE_CREDITS.map((row) => (
-            <li key={row.episode}>
-              Ep. {row.episode}. Pup: {row.pup}{row.id ? ` (${row.id})` : ''}.
-            </li>
-          ))}
+        <ol className="pod-pups">
+          {pups.map((pup) => {
+            const photo = pup.src || (pup.imageSlug ? pupPhotos[pup.imageSlug] : null);
+            return (
+              <li key={pup.name} className="pod-pup">
+                <div className="pod-pup-media">
+                  {photo ? (
+                    <img src={photo} alt={pup.alt || `${pup.name}, a Pup of the Podcast`} loading="lazy" />
+                  ) : (
+                    <svg className="pod-pup-paw" viewBox="0 0 64 64" aria-hidden="true">
+                      <ellipse cx="32" cy="40" rx="12" ry="10" fill="currentColor" />
+                      <ellipse cx="16" cy="26" rx="6" ry="8" fill="currentColor" />
+                      <ellipse cx="26" cy="18" rx="6" ry="8" fill="currentColor" />
+                      <ellipse cx="38" cy="18" rx="6" ry="8" fill="currentColor" />
+                      <ellipse cx="48" cy="26" rx="6" ry="8" fill="currentColor" />
+                    </svg>
+                  )}
+                </div>
+                <div className="pod-pup-ep">Ep. {pupEpisode(pup)}</div>
+                <div className="pod-pup-name">{pup.name}{pup.adopted ? ' (Adopted)' : ''}</div>
+                <div className="pod-pup-id">{pup.animalId || 'ID not verified'}</div>
+              </li>
+            );
+          })}
         </ol>
         <p><a href="/pups" className="btn btn-primary">See the pups</a></p>
       </section>
