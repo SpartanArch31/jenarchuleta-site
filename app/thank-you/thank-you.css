@@ -1,0 +1,46 @@
+.thank-quotes {
+  padding-top: 0;
+  text-align: center;
+}
+
+.thank-quotes h2 {
+  font-size: var(--text-display-l);
+  margin-bottom: 8px;
+}
+
+.thank-quotes-list {
+  max-width: 40rem;
+  margin: 36px auto 0;
+  text-align: left;
+}
+
+.thank-quotes-list figure {
+  margin: 0;
+  padding: 28px 0;
+  border-top: var(--hairline);
+}
+
+.thank-quotes-list figure:last-child {
+  border-bottom: var(--hairline);
+}
+
+.thank-quotes-list blockquote {
+  margin: 0;
+}
+
+.thank-quotes-list p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  line-height: 1.35;
+}
+
+.thank-quotes-list figcaption {
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

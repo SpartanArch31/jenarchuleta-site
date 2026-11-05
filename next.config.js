@@ -35,7 +35,7 @@ const pageRedirects = [
   { source: '/forever-angels', destination: '/media#forever-angels', permanent: false },
   { source: '/about-the-author', destination: '/book#author', permanent: false },
   { source: '/newsletter', destination: '/media#social', permanent: false },
-  // Quotes now live on About Me.
+  // Quotes live on Thank You.
   { source: '/quotes', destination: '/thank-you', permanent: false },
   // /contact lands on the contact section of the combined Media page.
   { source: '/contact', destination: '/media#contact', permanent: false },

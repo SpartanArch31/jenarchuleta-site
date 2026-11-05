@@ -1,5 +1,5 @@
-// Book lines, word for word. The homepage uses QUOTE_STORY.
-// About Me uses the other book lines. /quotes redirects to /about.
+// Every quote the site has carried, word for word, from the quotes page
+// (live /quotes and origin/main). Thank You is their home. /quotes redirects there.
 export const QUOTE_STORY = {
   text: 'Your story isn’t what happened to you. It’s what you do with it.',
 };
@@ -23,7 +23,7 @@ export const QUOTE_HAPPY = {
 
 export const QUOTE_WKBN = {
   text: 'It’s not who I am, it’s what I did. And the bunny ears here were just representing a piece of my life, not my whole life.',
-  source: 'Jen Archuleta, WKBN 27 First News, Aug 23, 2026',
+  source: 'Jen Walcott Archuleta, WKBN 27 First News, Aug 23, 2026',
 };
 
 export const QUOTES = [

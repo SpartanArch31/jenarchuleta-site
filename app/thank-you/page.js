@@ -1,5 +1,7 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import { QUOTES } from '../quotes/quotes-data';
+import './thank-you.css';
 
 export const metadata = {
   title: 'Thank You',
@@ -17,12 +19,24 @@ export default function ThankYouPage() {
           <p>
             Thank you for supporting me and this book. So many of you have reached out to tell me you could relate, that it changed you, or that it inspired you. Thank you for letting my honesty matter.
           </p>
-          <p className="q" style={{ marginTop: '28px' }}>“Your story isn’t what happened to you. It’s what you do with it.”</p>
         </div>
         <div className="hero-media">
           <div className="portrait hero-frame">
             <img src="/assets/jen-joy.jpg" alt="Jen Archuleta smiling" width="841" height="1960" />
           </div>
+        </div>
+      </section>
+      <section className="wrap thank-quotes" aria-labelledby="thank-quotes-heading">
+        <h2 id="thank-quotes-heading">Quotes</h2>
+        <div className="thank-quotes-list">
+          {QUOTES.map((quote) => (
+            <figure key={quote.text}>
+              <blockquote>
+                <p>{quote.text}</p>
+              </blockquote>
+              {quote.source ? <figcaption>{quote.source}</figcaption> : null}
+            </figure>
+          ))}
         </div>
       </section>
       <SiteFooter />
