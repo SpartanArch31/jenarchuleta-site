@@ -84,24 +84,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* THE CAMERA, AND MY TWENTIES */}
+      {/* Coat above the 20s line. This file is not also a gallery slide. */}
       <section id="then" className="tim-wrap tim-then">
-        <div>
-          {/* Jen's pick since July: the black-and-white photo in the long black trench
-              coat. Do not swap in a headshot. */}
-          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
-        </div>
-        <div>
-          <p className="tim-lead">My 20s were amazing. I saw and did things most people dream about.</p>
-        </div>
+        <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
+        <p className="tim-lead">My 20s were amazing. I saw and did things most people dream about.</p>
+        {/* One modeling photo from the gallery, not used anywhere else on this page.
+            velvet-carousel/10.jpg is left out of the slideshow below. */}
+        <Image className="tim-model" src="/velvet-carousel/10.jpg" alt="Jen Archuleta in a dark green dress on the beach" width={1200} height={1500} sizes="(max-width: 860px) 92vw, 480px" quality={85} />
       </section>
 
-      {/* The red carpet photo row. Second photo: Jen's glamour headshot (gallery-new/new_04),
-          which replaced the black corset photo (jen-sultry) on November 3. */}
       <section className="tim-wrap tim-fun">
-        <div className="photo-row">
-          <img src="/assets/jen-glam.jpg" alt="Jen Archuleta, glamour portrait" width="941" height="1123" loading="lazy" />
-          <img src="/assets/gallery-new/new_04.jpg" alt="Jen Archuleta, glamour headshot" width="1320" height="1537" loading="lazy" />
+        <div className="photo-row photo-row--two">
           <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
           <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
         </div>

@@ -453,6 +453,7 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 @media (hover: hover) and (pointer: fine) {
   .photo-row img:hover { transform: translateY(-3px); }
 }
+.photo-row--two { grid-template-columns: 1fr 1fr; max-width: 720px; }
 @media (max-width:760px){ .photo-row{ grid-template-columns:1fr 1fr; } }
 
 /* pillars */

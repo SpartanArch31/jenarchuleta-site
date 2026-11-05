@@ -359,6 +359,8 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-hw/hw_01.jpg',
   '/assets/gallery-new/new_04.jpg',
   '/assets/gallery-new/new_14.jpg',
+  // Shown once under the 20s line on About Me, so it is not also a slide.
+  '/velvet-carousel/10.jpg',
 ]);
 
 // Jen's captions (Nov 4), matched by file. Empty means no caption line.
