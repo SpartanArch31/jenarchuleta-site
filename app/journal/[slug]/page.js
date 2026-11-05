@@ -8,6 +8,7 @@ import { urlFor } from '../../sanity/image';
 import { getPostBySlug, getAllSlugs } from '../../sanity/queries';
 import { POSTS as FALLBACK_POSTS, getPost as getFallbackPost } from '../_posts';
 import { isRetiredHref, prepareJournalBody } from '../repair-body.mjs';
+import { heroAlt } from '../hero-alt';
 
 // Render each post from the published Sanity document on the request.
 // These routes were static ISR. The first view after a publish still received
@@ -101,6 +102,7 @@ export default async function JournalPost({ params }) {
   const url = `https://jenarchuleta.com/journal/${post.slug}`;
   const shareText = encodeURIComponent(post.title);
   const hero = heroUrl(post.heroImage);
+  const heroDescription = heroAlt(post.heroImage, post.slug);
   const bodyIsStrings = Array.isArray(post.body) && typeof post.body[0] === 'string';
 
   return (
@@ -114,7 +116,7 @@ export default async function JournalPost({ params }) {
           <div className="meta">{formatDate(post.publishedAt)}</div>
         </div>
 
-        {hero && <img className="article-hero" src={hero} alt="" />}
+        {hero && <img className="article-hero" src={hero} alt={heroDescription} />}
 
         <div className="article-body">
           {bodyIsStrings

@@ -25,7 +25,7 @@ export default function AboutTheAuthorPage() {
           <Image
             className="tim-portrait"
             src="/assets/jen-headshot-signature.jpg"
-            alt="Jen Archuleta"
+            alt="Jen Archuleta smiling in a black top"
             width={1162}
             height={1597}
             sizes="(max-width: 860px) 88vw, 420px"

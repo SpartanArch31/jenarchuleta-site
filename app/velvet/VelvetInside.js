@@ -156,7 +156,7 @@ export default function VelvetInside({ letters = [] }) {
           <div className="wrap">
             <div className="center">
               <div className="eyebrow">From the book</div>
-              <h2>The photos, up close.</h2>
+              <h2>The gallery, up close.</h2>
               <p className="lead gallery-note">
                 Every photo from the book, bigger than the printed page could show
                 them. I&rsquo;m adding the story behind each one. Check back.

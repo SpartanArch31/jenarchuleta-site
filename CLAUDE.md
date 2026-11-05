@@ -24,7 +24,7 @@ _Last updated: 2026-11-03, night (Shop: every offer says what you get, the total
 - **About Me is Jen's own words**, one page, exactly as she wrote them (Nov 3). Don't add,
   trim, or reword. Say "rescues", not "rescue dogs". **About the Author** (`/about-the-author`)
   is the separate formal page.
-- **Gallery:** 19 photos, Jen's "best 15 to 20" (`GALLERY_PICKS` in `PhotoGallery.js`).
+- **Gallery:** the full November 3 set is back (`SLIDES` in `PhotoGallery.js`), not the 19-photo shortlist, plus Jen's November 4 batch of 20 (`NOV4`, after the October 26 slides, no captions). Out of the carousel: the Playboy SXSW stage photo, the blurred kids-and-dogs bed photo, and the long-hair glamour headshot (that one stays on the About Me red carpet row).
 - **Menu:** "Get the first chapter free" is in the Book drop-down and is a button at the bottom
   of the phone menu.
 - **Footer:** the book credit reads "Beyond the Velvet Ropes by Jennifer Walcott Archuleta."
@@ -50,6 +50,8 @@ the newer features she likes. Before changing structure, re-read this section.
   Media, the Journal's "Podcast" category is labeled "Podcast Posts" (the category name in
   Sanity is unchanged; see `CATEGORY_LABELS` in `app/journal/curation.js`), and the Shop's
   FAQ link says "Book Club FAQs". Each link appears once.
+  The About drop-down says Gallery, not Photos. Media says "Press kit and gallery", and the
+  press kit heading is "Gallery for press and speaking."
   Rename or remove a section → update its link in `SiteNav.js`.
   Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors, Contact, Free First Chapter, and
   The Forever Angels also live in the footer (`SiteFooter.js`). No page has its own nav or footer — the Book page and the private

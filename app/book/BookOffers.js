@@ -102,7 +102,7 @@ export default function BookOffers() {
                 width="1152"
                 height="864"
               />
-              <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="" width="436" height="436" />
+              <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="The Velvet Circle logo, a gold ring of lights" width="436" height="436" />
             </div>
             <div className="product-body">
               <div className="eyebrow">Monthly Book Club</div>

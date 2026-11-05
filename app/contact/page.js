@@ -25,7 +25,7 @@ export default function ContactPage() {
         <img
           className="contact-cover"
           src="/assets/jen-headshot-signature.jpg"
-          alt="Jen Archuleta"
+          alt="Jen Archuleta smiling in a black top"
           width="1162"
           height="1597"
         />

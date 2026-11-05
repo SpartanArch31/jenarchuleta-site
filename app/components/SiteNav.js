@@ -28,7 +28,7 @@ const MENU = [
     label: 'About Me',
     items: [
       { href: '/about', label: 'About me' },
-      { href: '/about#gallery', label: 'Photos' },
+      { href: '/about#gallery', label: 'Gallery' },
       { href: '/forever-angels', label: 'Giving back' },
     ],
   },
@@ -78,7 +78,7 @@ const MENU = [
       { href: '/media#press', label: 'Press coverage' },
       { href: '/media#interviews', label: 'Interviews and appearances' },
       { href: '/media#speaking', label: 'Speaking' },
-      { href: '/media#press-kit', label: 'Press kit and photos' },
+      { href: '/media#press-kit', label: 'Press kit and gallery' },
       { href: '/about-the-author', label: 'About the Author' },
       { href: '/contact', label: 'Contact' },
     ],
