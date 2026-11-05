@@ -34,8 +34,8 @@ export default function TermsPage() {
 
           <h2>2. About the content</h2>
           <p>
-            This Site shares the personal story, opinions, and experiences of Jennifer Walcott
-            Archuleta, including her memoir <em>Beyond the Velvet Ropes</em> and the Journal blog. This
+            This Site shares the personal story, opinions, and experiences of Jen Archuleta,
+            including her memoir <em>Beyond the Velvet Ropes</em> by Jennifer Walcott Archuleta and the Journal blog. This
             content reflects the author&rsquo;s personal recollections and perspective at the time of
             writing; names or identifying details of other people may be changed. Nothing on this Site
             is professional medical, legal, financial, or psychological advice. If you&rsquo;re
@@ -56,7 +56,7 @@ export default function TermsPage() {
           <h2>4. Intellectual property</h2>
           <p>
             All text, images, audio, and other content on this Site, including the book cover, photos,
-            podcast episodes, and Journal posts, is owned by Archuleta Entertainment / Jennifer Walcott
+            podcast episodes, and Journal posts, is owned by Archuleta Entertainment / Jen
             Archuleta or used with permission, unless stated otherwise, and may not be copied,
             republished, or used commercially without our written permission.
           </p>
@@ -97,9 +97,7 @@ export default function TermsPage() {
 
           <h2>10. Governing law</h2>
           <p>
-            These Terms are governed by the laws of the State of Arizona, without regard to
-            conflict-of-law principles. Any dispute will be resolved in the state or federal courts
-            located in Arizona, and you consent to that jurisdiction.
+            These Terms are governed by applicable law, without regard to conflict-of-law principles.
           </p>
 
           <h2>11. Changes to these terms</h2>

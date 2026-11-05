@@ -23,7 +23,7 @@ export const QUOTE_HAPPY = {
 
 export const QUOTE_WKBN = {
   text: 'It’s not who I am, it’s what I did. And the bunny ears here were just representing a piece of my life, not my whole life.',
-  source: 'Jen Walcott Archuleta, WKBN 27 First News, Aug 23, 2026',
+  source: 'Jen Archuleta, WKBN 27 First News, Aug 23, 2026',
 };
 
 export const QUOTES = [

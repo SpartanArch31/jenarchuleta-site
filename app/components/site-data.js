@@ -23,7 +23,7 @@ export const OG_IMAGE = {
   url: 'https://jenarchuleta.com/assets/og-floral-1200x630.jpg',
   width: 1200,
   height: 630,
-  alt: 'Jen Walcott Archuleta',
+  alt: 'Jen Archuleta',
 };
 
 // Live Stripe Customer Portal login link. Capital I after wO3.
@@ -129,18 +129,17 @@ export const SHOP = {
   bookmarkPackaging: '',
   bookmarkShips: '',
 
-  // VELVET CIRCLE MEMBERSHIP. LIVE as of 2026-08-19. Recurring Stripe Payment
-  // Link, $9.99/mo. Self-service cancel uses STRIPE_CUSTOMER_PORTAL_URL.
-  // That portal is what keeps this FTC click-to-cancel / ROSCA compliant.
-  // Do not take the membership live through any checkout that lacks that portal.
+  // VELVET CIRCLE. Both tiers are this same $9.99/month Payment Link (Jen, Nov 5).
+  // Do not create a second Stripe product or a second price.
+  // Self-service cancel uses STRIPE_CUSTOMER_PORTAL_URL.
   velvetCircleMembership: 'https://buy.stripe.com/6oU3cuemL2mB1UD73Ids406',
   velvetCircleMembershipPrice: '$9.99/month',
-  // Members email their questions here, up to three a month (Shop card, FAQ,
-  // Shipping & Returns, and the Stripe welcome message all say so).
+  // Members email up to three questions a month here. Jen answers them promptly
+  // and in detail every month.
   velvetCircleQuestionsEmail: 'jen@jenarchuleta.com',
 
-  // The Backstage Bundle ($69 one-time) was removed November 3 (Jen: one
-  // book-club offer). It never had a Stripe link.
+  // The Backstage Bundle is not a separate shop product. It never had a Stripe
+  // link. Old #backstage-bundle anchors land on the book club card.
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official

@@ -67,8 +67,7 @@ export default function SiteFooter({ stayClose = true, homeHref = '/' }) {
             <a href={`${home}/about#forever-angels`}>The Forever Angels</a>
           </nav>
           <p className="foot-meta">
-            © 2026 Jen Archuleta. Author of <em>Beyond the Velvet Ropes</em>.<br />
-            Jen Walcott Archuleta.
+            © 2026 Jen Archuleta. Author of <em>Beyond the Velvet Ropes</em> by Jennifer Walcott Archuleta.
           </p>
           <p className="foot-meta">
             <a href={`${home}/privacy`}>Privacy Policy</a> · <a href={`${home}/terms`}>Terms of Service</a> ·{' '}
