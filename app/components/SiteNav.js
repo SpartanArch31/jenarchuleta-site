@@ -14,7 +14,7 @@ import { KIT_FREE_CHAPTER_URL } from './site-data';
 // still opens /velvet, and the homepage has the passcode box. About the
 // Author sits with Media and the press kit, Film and documentary is only under
 // Media, and each link appears once.
-// Everything else (Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors,
+// Everything else (Gallery, Pups of the Podcast, Speaking, Sponsors,
 // Contact, Free First Chapter, The Forever Angels) is also in the footer, the
 // same on every page. See SiteFooter.js.
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.

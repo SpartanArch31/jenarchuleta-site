@@ -60,7 +60,6 @@ export default function SiteFooter({ stayClose = true, homeHref = '/' }) {
             <a href={`${home}/about#gallery`}>Gallery</a>
             <a href={`${home}/pups`}>Pups of the Podcast</a>
             <a href={`${home}/media#speaking`}>Speaking</a>
-            <a href={`${home}/quotes`}>Quotes</a>
             <a href={`${home}/sponsors`}>Sponsors</a>
             <a href={`${home}/contact`}>Contact</a>
             <a href={stayClose ? '#letter' : `${home}/#letter`}>Free First Chapter</a>

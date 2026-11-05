@@ -1,5 +1,5 @@
-// One list. The homepage bands and /quotes both read from here,
-// so a line cannot drift or get reworded in one place only.
+// Book lines, word for word. The homepage uses QUOTE_STORY.
+// About Me uses the other book lines. /quotes redirects to /about.
 export const QUOTE_STORY = {
   text: 'Your story isn’t what happened to you. It’s what you do with it.',
 };

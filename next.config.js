@@ -32,6 +32,8 @@ const pageRedirects = [
   // The Forever Angels page is /forever-angels. The older spelled-out path lands there.
   { source: '/the-forever-angels', destination: '/forever-angels', permanent: true },
   { source: '/newsletter', destination: '/#letter', permanent: true },
+  // Quotes now live on About Me.
+  { source: '/quotes', destination: '/about', permanent: true },
   // /contact and /media are real pages. /press stays a permanent alias.
   { source: '/press', destination: '/media', permanent: true },
   { source: '/events', destination: '/', permanent: true },

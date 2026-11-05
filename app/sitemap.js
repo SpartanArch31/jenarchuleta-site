@@ -18,7 +18,6 @@ export default async function sitemap() {
     { url: `${BASE}/forever-angels`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/about-the-author`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/book`, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/quotes`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/podcast`, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/sponsors`, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/pups`, changeFrequency: 'monthly', priority: 0.7 },

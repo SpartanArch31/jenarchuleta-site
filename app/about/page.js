@@ -4,6 +4,7 @@ import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
 import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
+import { QUOTE_FORGIVE, QUOTE_LOST, QUOTE_RESCUE } from '../quotes/quotes-data';
 
 export const metadata = {
   title: 'About Me',
@@ -98,6 +99,10 @@ export default function AboutPage() {
             dressed up. My twenties gave me some incredible experiences and some hard ones too.
             I’m grateful for all of it. But the life I love most is the regular one I wake up to now.
           </p>
+          <figure className="tim-quote">
+            <p>“{QUOTE_LOST.text}”</p>
+            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -112,6 +117,26 @@ export default function AboutPage() {
         </div>
       </section>
       <PhotoGallery showTitle={false} />
+
+      <section className="tim-wrap tim-band-inner tim-from-book" aria-label="From the book">
+        <img
+          className="tim-quote-photo"
+          src="/assets/jen-beauty.jpg"
+          alt="Jen Archuleta"
+          width="900"
+          height="1520"
+        />
+        <div className="tim-quotes">
+          <figure className="tim-quote">
+            <p>“{QUOTE_RESCUE.text}”</p>
+            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
+          </figure>
+          <figure className="tim-quote">
+            <p>“{QUOTE_FORGIVE.text}”</p>
+            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
+          </figure>
+        </div>
+      </section>
 
       {/* Giving back stays on About Me. The charity page is /forever-angels. */}
       <section id="forever-angels" className="tim-faith dark">
