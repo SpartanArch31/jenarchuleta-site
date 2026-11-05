@@ -2,12 +2,17 @@
    Scoped under .legal-page. Defines no new colors/type — composition only,
    built on the existing design-system tokens (see app/tokens/*). */
 
-.legal-page .legal-head { text-align: center; padding-block: 40px 6px; }
+/* LEGAL-04: more air below the header than between sections, so the title
+   reads as its own passage; the gold threshold rule marks the step down. */
+.legal-page .legal-head { text-align: center; padding-block: 40px var(--space-8); }
+.legal-page .legal-head .threshold-rule { max-width: 220px; margin: var(--space-6) auto 0; }
+/* LEGAL-18: one step up the scale and a stronger ink, so the date holds under the H1. */
 .legal-page .legal-updated {
   font-family: var(--font-sans);
-  font-size: var(--text-meta);
-  color: var(--text-muted);
-  margin-top: 8px;
+  font-size: var(--text-caption);
+  letter-spacing: var(--track-ui);
+  color: var(--text-secondary);
+  margin-top: var(--space-3);
 }
 
 .legal-page .legal-body { padding-bottom: 64px; }
@@ -17,6 +22,17 @@
 .legal-page .legal-body ul { margin: 0 0 1.2em 1.3em; padding: 0; }
 .legal-page .legal-body li { margin-bottom: .5em; font-size: var(--text-body); }
 .legal-page .legal-body a { text-decoration: underline; text-underline-offset: 2px; }
+/* LEGAL-16: keep the 2px offset on hover (base.css jumps to 3px) and give hover a visible change. */
+.legal-page .legal-body a:hover { text-underline-offset: 2px; text-decoration-color: var(--accent); }
+
+/* LEGAL-05: Privacy section 2 run-in subheads are real h3s now. */
+.legal-page .legal-body h3 { font-size: var(--text-h4); font-weight: var(--w-semibold); margin: 1.4em 0 .5em; }
+
+/* LEGAL-12: gold list markers instead of full-ink UA discs. */
+.legal-page .legal-body li::marker { color: var(--accent); }
+
+/* LEGAL-13: keep hyphenated terms (third-party, conflict-of-law, PCI-DSS-compliant) on one line. */
+.legal-page .nowrap { white-space: nowrap; }
 
 /* LEGAL-03: Cormorant's oldstyle 1 reads as "i" at heading size ("10." looked like "io.").
    Lining figures on the numbered section headings only; body text keeps oldstyle. */

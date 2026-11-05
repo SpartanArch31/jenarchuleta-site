@@ -242,7 +242,8 @@ export default function MediaPage() {
       <section id="speaking" className="wrap">
         <h2>Speaking</h2>
         <p>{SPEAKING_INTRO}</p>
-        <p><a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a></p>
+        {/* MEDIA-22: a quiet invite up top; the primary one waits after the talks. */}
+        <p><a className="btn btn-ghost" href="/thank-you#contact">Invite me to speak</a></p>
         {/* MEDIA-08: the talks read as a ruled list, not a card grid. */}
         <div className="speak-talks">
           {SPEAKING_TALKS.map((talk) => (
@@ -252,6 +253,9 @@ export default function MediaPage() {
             </div>
           ))}
         </div>
+        <p className="media-actions">
+          <a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a>
+        </p>
       </section>
 
       <section id="forever-angels" className="wrap">

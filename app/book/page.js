@@ -60,7 +60,7 @@ export default function BookPage() {
       </section>
 
       {/* THE HOOK */}
-      <section className="wrap text-wrap center">
+      <section className="wrap text-wrap center book-hook">
         <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 24px' }}><span className="diamond" /></div>
         <p className="lead" style={{ fontSize: 'var(--text-body-l)' }}>Before the spotlight, there was pain. Behind the image, there was fear. And beneath it all, there was a girl trying to hold on to who she was while everything around her tried to define her. <em>Beyond the Velvet Ropes</em> is the story of survival, resilience, and the quiet strength it takes to become who you were always meant to be.</p>
       </section>
@@ -69,7 +69,7 @@ export default function BookPage() {
       <section id="trailer" className="wrap trailer-feature book-trailer">
         <h2 className="book-trailer-title">Book Trailer</h2>
         <div className="tf-copy">
-          <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
+          <p className="tf-cap" id="book-trailer-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
         </div>
         <figure className="tf-video">
           <video
@@ -78,6 +78,8 @@ export default function BookPage() {
             controls
             playsInline
             preload="none"
+            aria-label="Beyond the Velvet Ropes book trailer"
+            aria-describedby="book-trailer-cap"
             className="book-trailer-video"
           />
         </figure>

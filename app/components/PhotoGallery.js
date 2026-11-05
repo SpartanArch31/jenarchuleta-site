@@ -509,6 +509,8 @@ export default function PhotoGallery({ showTitle = true } = {}) {
   // only pause for a moment; this one stays until they press Play.
   const [userPaused, setUserPaused] = useState(false);
   const [inView, setInView] = useState(false);
+  // ABOUT-M3: true once the gallery is within about 600px of the viewport.
+  const [near, setNear] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const stageRef = useRef(null);
   const touchRef = useRef(null);
@@ -540,10 +542,21 @@ export default function PhotoGallery({ showTitle = true } = {}) {
       { threshold: 0.45 },
     );
     if (stage) view.observe(stage);
+    const approach = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNear(true);
+          approach.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' },
+    );
+    if (stage) approach.observe(stage);
 
     return () => {
       motion.removeEventListener('change', applyMotion);
       view.disconnect();
+      approach.disconnect();
     };
   }, []);
 
@@ -652,7 +665,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
                       height={item.height}
                       sizes={slideSizes(item)}
                       quality={85}
-                      loading="eager"
+                      loading={near || index !== 0 ? 'eager' : 'lazy'}
                     />
                   </div>
                 ))}
@@ -660,9 +673,11 @@ export default function PhotoGallery({ showTitle = true } = {}) {
             </div>
           </div>
 
-          <div className="gallery-meta">
+          {/* ABOUT-M2: announce the new photo only while the visitor is in
+              control, never on every auto-advance. */}
+          <div className="gallery-meta" aria-live={userPaused || paused ? 'polite' : 'off'}>
             {slide.caption ? <p className="gallery-caption">{slide.caption}</p> : null}
-            <p className="gallery-count" aria-hidden="true">{index + 1} / {count}</p>
+            <p className="gallery-count"><span className="visually-hidden">Photo {index + 1} of {count}</span><span aria-hidden="true">{index + 1} / {count}</span></p>
             {reduceMotion ? null : (
               <button
                 type="button"

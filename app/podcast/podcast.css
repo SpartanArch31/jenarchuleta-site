@@ -125,9 +125,10 @@
 .pod-pup-media img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%;
   border-radius: var(--radius-sm, 4px); box-shadow: 0 0 0 1px rgba(34, 28, 24, .08); }
 .pod-pup-paw { width: 38%; color: var(--accent); opacity: .55; }
-.pod-pup-ep { margin-top: 10px; font-family: var(--font-sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink, var(--text-secondary)); }
-.pod-pup-name { margin-top: 2px; font-size: 18px; }
-.pod-pup-id { font-family: var(--font-sans); font-size: 13px; color: var(--text-secondary); }
+/* POD-20: type sizes from the tokens. */
+.pod-pup-ep { margin-top: 10px; font-family: var(--font-sans); font-size: var(--text-eyebrow); letter-spacing: var(--track-eyebrow); text-transform: uppercase; font-variant-numeric: lining-nums; color: var(--accent-ink, var(--text-secondary)); }
+.pod-pup-name { margin-top: 2px; font-size: var(--text-h4); line-height: 1.25; }
+.pod-pup-id { font-family: var(--font-sans); font-size: var(--text-caption); color: var(--text-secondary); }
 @media (max-width: 900px) { .pod-pups { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .pod-pups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; } }
 
@@ -170,4 +171,38 @@
   .pod-review-ctas { flex-direction: column; align-items: stretch; max-width: 20rem; margin-inline: auto; }
   .pod-subscribe .btn,
   .pod-review-ctas .btn { justify-content: center; text-align: center; }
+}
+
+/* POD-M4: the hero art gets the same frame as the pups, video and player. */
+.pod-hero-art {
+  display: block;
+  width: min(720px, 100%);
+  height: auto;
+  margin: 0 auto var(--space-6);
+  border-radius: var(--radius-lg);
+  border: var(--hairline);
+  box-shadow: var(--shadow);
+}
+
+/* POD-20: the count is a sentence, so it reads as an italic line, not tracked caps. */
+.pod-count {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-body-l);
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-secondary);
+}
+
+/* POD-19: sponsor rows label the episode like the pup cards (sans caps,
+   lining figures, text-safe gold) in a fixed column so the names line up. */
+.pod-credits li { display: flex; align-items: baseline; gap: 14px; }
+.pod-credit-ep {
+  flex: 0 0 6.5em;
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--accent-ink);
 }

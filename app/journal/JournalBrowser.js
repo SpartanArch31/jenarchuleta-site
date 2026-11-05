@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 // The Journal feed: a search box and 12 posts at a time with "Load more"
 // (Nov 2026). The server sends the posts for the current view (All, a
@@ -20,6 +20,10 @@ function fold(text) {
 export default function JournalBrowser({ posts = [], initialQuery = '', showAll = false, showAllHref = '/journal?show=all', collapsedUntilSearch = false }) {
   const [query, setQuery] = useState(initialQuery);
   const [shown, setShown] = useState(showAll ? Number.MAX_SAFE_INTEGER : PAGE_SIZE);
+  // J-M5: after "Load more", focus moves to the first new card so keyboard
+  // and screen reader users land on what just appeared.
+  const cardRefs = useRef([]);
+  const focusFrom = useRef(null);
 
   const index = useMemo(
     () => posts.map((p) => ({ post: p, haystack: fold(`${p.title} ${p.excerpt} ${p.category}`) })),
@@ -40,6 +44,13 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
     else url.searchParams.delete('q');
     window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
   }, [query]);
+
+  useEffect(() => {
+    if (focusFrom.current === null) return;
+    const card = cardRefs.current[focusFrom.current];
+    focusFrom.current = null;
+    if (card) card.focus();
+  }, [shown]);
 
   return (
     <>
@@ -69,8 +80,8 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
 
       {showResults && visible.length ? (
         <div className="feed">
-          {visible.map((p) => (
-            <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
+          {visible.map((p, i) => (
+            <a key={p.slug} ref={(el) => { cardRefs.current[i] = el; }} className="post-card" href={`/journal/${p.slug}`}>
               {/* J-06: a post with no photo gets a quiet plate the same shape,
                   so its card lines up with the photo cards beside it. */}
               {p.img ? (
@@ -91,8 +102,15 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
 
       {showResults && matches.length > visible.length ? (
         <div className="journal-more center">
-          <p className="foot-meta">Showing {visible.length} of {matches.length}</p>
-          <button type="button" className="btn btn-ghost" onClick={() => setShown((n) => n + PAGE_SIZE)}>
+          <p className="foot-meta" role="status" aria-live="polite">Showing {visible.length} of {matches.length}</p>
+          <button
+            type="button"
+            className="btn btn-ghost"
+            onClick={() => {
+              focusFrom.current = visible.length;
+              setShown((n) => n + PAGE_SIZE);
+            }}
+          >
             Load more
           </button>
           <noscript>

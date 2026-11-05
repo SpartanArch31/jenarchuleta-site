@@ -12,9 +12,14 @@ function escapeRegExp(value) {
 }
 
 function matchSnippet(text, query, limit = 160) {
-  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  // SR-M1: display typography only (same words): curly apostrophes and a real ellipsis.
+  const clean = String(text || '')
+    .replace(/\s+/g, ' ')
+    .replace(/(\w)'(\w)/g, '$1\u2019$2')
+    .replace(/\.\.\./g, '\u2026')
+    .trim();
   if (!clean) return null;
-  const words = query.toLowerCase().split(/\s+/).filter((word) => word.length > 1);
+  const words = query.toLowerCase().replace(/'/g, '\u2019').split(/\s+/).filter((word) => word.length > 1);
   const lower = clean.toLowerCase();
   let hit = -1;
   for (const word of words) {

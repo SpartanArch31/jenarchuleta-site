@@ -9,6 +9,7 @@ import { getPostBySlug, getAllSlugs } from '../../sanity/queries';
 import { POSTS as FALLBACK_POSTS, getPost as getFallbackPost } from '../_posts';
 import { isRetiredHref, prepareJournalBody } from '../repair-body.mjs';
 import { heroAlt } from '../hero-alt';
+import { curatePosts } from '../curation';
 
 // Render each post from the published Sanity document on the request.
 // These routes were static ISR. The first view after a publish still received
@@ -42,20 +43,52 @@ function descriptionFromBody(body) {
   return sentence.length > 160 ? `${sentence.slice(0, 157).trim()}…` : sentence;
 }
 
+// J-14: search snippets and share cards drop emoji from the excerpt
+// fallback and collapse spacing. The words themselves are unchanged. A
+// description Jen set in seoDescription is used exactly as written.
+function plainDescription(text) {
+  if (typeof text !== 'string') return text;
+  return text
+    .replace(/\p{Extended_Pictographic}\uFE0F?/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// J-14: the post's own photo on its share card, whole (no crop). Posts
+// without a photo keep the site card.
+function ogImage(img) {
+  if (!img) return OG_IMAGE;
+  if (typeof img === 'string') return img;
+  return urlFor(img).width(1200).fit('max').url();
+}
+
 export async function generateMetadata({ params }) {
   const post = await resolvePost(params.slug);
   if (!post) return {};
-  const description = post.seoDescription || post.excerpt || descriptionFromBody(post.body);
+  const description = post.seoDescription || plainDescription(post.excerpt || descriptionFromBody(post.body));
+  const url = `https://jenarchuleta.com/journal/${post.slug}`;
   return {
     title: post.seoTitle || post.title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title: post.seoTitle || post.title,
       description,
       type: 'article',
-      images: [OG_IMAGE],
+      url,
+      images: [ogImage(post.heroImage)],
     },
   };
+}
+
+// J-14: where the category kicker leads. Archived posts go to the Archive,
+// posts kept off the Journal go to their own page.
+function categoryHref(post) {
+  const [curated] = curatePosts([post]);
+  if (!curated?.category) return null;
+  if (curated.archived) return '/journal?view=archive';
+  if (curated.offJournal) return curated.category === 'Pup of the Podcast' ? '/pups' : null;
+  return `/journal?category=${encodeURIComponent(curated.category)}`;
 }
 
 function formatDate(iso) {
@@ -146,6 +179,7 @@ export default async function JournalPost({ params }) {
   const heroDescription = heroAlt(post.heroImage, post.slug);
   const bodyIsStrings = Array.isArray(post.body) && typeof post.body[0] === 'string';
   const numberedStrings = bodyIsStrings ? numberedRuns(post.body) : null;
+  const catHref = categoryHref(post);
 
   return (
     <>
@@ -155,7 +189,7 @@ export default async function JournalPost({ params }) {
       <main id="main-content">
       <article className="wrap text-wrap journal-article">
         <div className="article-head">
-          <div className="k">{post.category}</div>
+          <div className="k">{catHref ? <a href={catHref}>{post.category}</a> : post.category}</div>
           <h1>{post.title}</h1>
           <div className="meta">{formatDate(post.publishedAt)}</div>
         </div>
@@ -199,8 +233,10 @@ export default async function JournalPost({ params }) {
         {/* Share */}
         <div className="share-row">
           <span className="k">Share</span>
-          <a className="btn btn-ghost btn-sm" href={`https://x.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(url)}`}>X</a>
-          <a className="btn btn-ghost btn-sm" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}>Facebook</a>
+          {/* J-16: a lone "X" read as a close button; the share windows open
+              in a new tab so readers keep their place in the post. */}
+          <a className="btn btn-ghost btn-sm" href={`https://x.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on X (opens in a new tab)">X (Twitter)</a>
+          <a className="btn btn-ghost btn-sm" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook (opens in a new tab)">Facebook</a>
           <a className="btn btn-ghost btn-sm" href={`mailto:?subject=${shareText}&body=${encodeURIComponent(url)}`}>Email</a>
         </div>
 

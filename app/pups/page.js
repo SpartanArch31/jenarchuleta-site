@@ -44,12 +44,15 @@ function PupFacts({ pup }) {
   );
 }
 
-function PupCard({ pup, photo }) {
+function PupCard({ pup, photo, eager }) {
   return (
     <article className="pup-card">
       {/* PS-03: with a photo, the frame takes the photo's own ratio (no linen bars, no crop). */}
       <div className={photo ? 'pup-media pup-media--photo' : 'pup-media'}>
-        {photo ? <img src={photo} alt={pup.alt || pup.name} /> : <Paw />}
+        {/* PS-14: only the first row loads up front; the rest wait until scrolled near. */}
+        {photo ? (
+          <img src={photo} alt={pup.alt || pup.name} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+        ) : <Paw />}
         {pup.adopted ? <span className="pup-badge">Adopted</span> : null}
       </div>
       <div className="pup-body">
@@ -72,7 +75,8 @@ function PupCard({ pup, photo }) {
             {pup.watch ? (
               <a className="pup-more" href={pup.watch} target="_blank" rel="noopener noreferrer">Watch the episode<span className="visually-hidden"> (opens in new tab)</span></a>
             ) : null}
-            {pup.post ? <a className="pup-more" href={`/journal/${pup.post}`}>Read more</a> : null}
+            {/* PS-M3: a pup can carry its own postLabel when the post is not a pup post. */}
+            {pup.post ? <a className="pup-more" href={`/journal/${pup.post}`}>{pup.postLabel || 'Read more'}</a> : null}
           </div>
         ) : null}
       </div>
@@ -102,9 +106,9 @@ export default async function PupsPage() {
 
       <section className="wrap" style={{ paddingTop: 0 }}>
         <div className="pups-grid">
-          {pups.map((pup) => {
+          {pups.map((pup, i) => {
             const photo = pup.src || (pup.imageSlug ? photos[pup.imageSlug] : null);
-            return <PupCard key={pup.name} pup={pup} photo={photo} />;
+            return <PupCard key={pup.name} pup={pup} photo={photo} eager={i < 3} />;
           })}
         </div>
       </section>

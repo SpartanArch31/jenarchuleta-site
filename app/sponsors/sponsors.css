@@ -10,7 +10,7 @@
   text-align: left;
 }
 .sponsors-page .sponsor-list li {
-  padding: 20px 0;
+  padding: var(--space-5) 0; /* PS-17: a little more air per row */
   border-top: var(--hairline);
 }
 .sponsors-page .sponsor-list li:last-child { border-bottom: var(--hairline); }
@@ -18,11 +18,16 @@
   font-family: var(--font-display);
   font-size: var(--text-h3); /* PS-10: on the type scale, same as /pups card titles */
   font-weight: var(--w-semibold);
-  margin: 0 0 6px;
+  margin: 0 0 var(--space-2);
 }
+/* PS-17: the person reads as a credit line, not a second name. */
 .sponsors-page .sponsor-person {
-  margin: 0 0 8px;
-  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-2);
 }
 .sponsors-page .sponsor-note {
   margin: 0 0 8px;

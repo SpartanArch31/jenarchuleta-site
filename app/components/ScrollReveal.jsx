@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 /*
   ScrollReveal — drives the site's scroll-in reveals and the "threshold" draw.
@@ -60,6 +61,7 @@ const REVEAL_IMG = [
 const THRESHOLD = '.threshold-rule';
 
 export default function ScrollReveal() {
+  const pathname = usePathname(); // re-run reveals after client navigation (audit G-09)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     // Respect the user's OS setting — no motion, keep everything visible.
@@ -101,7 +103,7 @@ export default function ScrollReveal() {
       io.disconnect();
       root.classList.remove('reveal-ready');
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

@@ -40,7 +40,7 @@ export default function VelvetLocked() {
       </section>
       </main>
 
-      <SiteFooter stayClose={false} />
+      <SiteFooter />
     </div>
   );
 }

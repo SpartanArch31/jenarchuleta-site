@@ -126,7 +126,12 @@ export default async function JournalPage({ searchParams }) {
     title: p.title,
     excerpt: cardExcerpt(p.excerpt) || '',
     category: p.category || '',
-    kicker: `${p.category} · ${formatDate(p.publishedAt)}`,
+    // J-M3: inside one category every card would repeat its name, so the
+    // kicker is just the date there. The index search and the Archive keep
+    // "Category · date".
+    kicker: opened && !showArchive
+      ? formatDate(p.publishedAt)
+      : `${p.category} · ${formatDate(p.publishedAt)}`,
     img: heroUrl(p.heroImage),
     imgAlt: heroAlt(p.heroImage, p.slug),
     };

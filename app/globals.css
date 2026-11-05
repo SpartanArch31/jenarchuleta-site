@@ -30,12 +30,12 @@ section { padding-block: var(--section-y); }
 .nav-search:hover { color: var(--accent-ink); text-decoration: none; }
 .nav-search[aria-current="page"] { color: var(--accent-ink); }
 .brand { font-family: var(--font-caps); text-transform: uppercase; letter-spacing: var(--track-caps);
-         font-size: 1.05rem; color: var(--text); }
+         font-size: 1.05rem; font-weight: var(--w-medium); color: var(--text); } /* HOME-15: loaded Cinzel 500 */
 .nav-links { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 10px 18px; }
 .nav-links a.nav-with-key { display: inline-flex; align-items: center; gap: 6px; }
 .nav-key { width: 14px; height: 14px; color: var(--accent); flex: 0 0 auto; }
-.nav-links a { font-family: var(--font-sans); font-size: var(--text-ui); letter-spacing: var(--track-ui);
-               color: var(--text-secondary); text-transform: uppercase; font-size: .78rem; letter-spacing: .14em; }
+.nav-links a { font-family: var(--font-sans); font-size: .78rem; letter-spacing: .14em;
+               color: var(--text-secondary); text-transform: uppercase; }
 .nav-links a:hover { color: var(--accent-ink); text-decoration: none; }
 .nav-links a[aria-current="page"] { color: var(--accent-ink); box-shadow: inset 0 -1px 0 var(--accent); }
 .nav-toggle { display: none; }
@@ -51,7 +51,7 @@ section { padding-block: var(--section-y); }
   .nav--collapsible .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
                flex-direction: column; align-items: stretch; gap: 2px;
                background: var(--bg); border-bottom: var(--hairline);
-               box-shadow: 0 12px 24px rgba(0,0,0,.12);
+               box-shadow: 0 12px 24px rgba(34,28,24,.10); /* G-16: warm, ink-tinted */
                padding: 8px var(--gutter) 22px; }
   .nav--collapsible .nav-links.open { display: flex; }
   .nav--collapsible .nav-links a { padding: 12px 2px; }
@@ -60,7 +60,7 @@ section { padding-block: var(--section-y); }
 
 /* nav drop-downs: each main page's sections (Jen, November 2026) */
 .nav-item { position: relative; display: inline-flex; align-items: center; gap: 1px; }
-.nav-caret { display: inline-grid; place-items: center; width: 20px; height: 28px; padding: 0; margin: 0;
+.nav-caret { position: relative; display: inline-grid; place-items: center; width: 20px; height: 28px; padding: 0; margin: 0;
              border: 0; border-radius: 4px; background: none; color: var(--text-secondary); cursor: pointer; }
 .nav-caret svg { width: 11px; height: 11px; transition: transform var(--dur-fast) var(--ease); }
 .nav-item.is-open .nav-caret svg { transform: rotate(180deg); }
@@ -73,28 +73,31 @@ section { padding-block: var(--section-y); }
              text-transform: none; letter-spacing: .01em; font-size: .92rem; color: var(--text); }
 .nav-sub a:hover { color: var(--accent-ink); background: var(--surface); }
 @media (min-width: 1180px){
-  .nav-sub { position: absolute; top: calc(100% + 14px); left: -16px; z-index: 60; min-width: 230px;
-             background: var(--bg); border: var(--hairline); border-radius: var(--radius);
-             box-shadow: 0 14px 30px rgba(0,0,0,.14); }
+  /* G-M3: the panel hangs flush from the bar's hairline (28px item centred in the
+     44px row + 18px padding = 26px to the bar's bottom edge), square on top.
+     G-16: left -20px lines the row text up with the parent label; warm token shadow. */
+  .nav-sub { position: absolute; top: calc(100% + 26px); left: -20px; z-index: 60; min-width: 230px;
+             background: var(--bg); border: var(--hairline); border-radius: 0 0 var(--radius) var(--radius);
+             box-shadow: var(--shadow); }
   /* an invisible bridge so the menu stays open while the mouse moves down to it */
-  .nav-sub::before { content: ''; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+  .nav-sub::before { content: ''; position: absolute; left: 0; right: 0; top: -26px; height: 26px; }
   .nav-item--end .nav-sub { left: auto; right: -12px; }
   .brand { white-space: nowrap; }
 }
 /* Small laptops and tablets held sideways: tighter spacing keeps the menu on one line. */
 @media (min-width: 1180px) and (max-width: 1279px){
   .nav-inner { gap: 16px; }
-  .nav-search { width: 36px; height: 36px; }
+  /* Height stays 44px so the bar stays 81px (--nav-h) and the panels still meet the hairline. */
+  .nav-search { width: 36px; }
   .nav-links { gap: 10px 11px; }
   .nav-links > a, .nav-item > a { letter-spacing: .1em; }
+  /* G-17: 20px wide, plus a 4px hit area into the gap on the right = 24px target. */
   .nav-caret { width: 16px; }
 }
 @media (max-width: 1179px){
-  /* One column that scrolls from the top. (Wrapping pushed Shop and the
-     first-chapter button off the side of the phone when a drop-down was open,
-     and bottom alignment hid Home above the top edge.) */
-  .nav--collapsible .nav-links { max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px);
-                                 overflow-y: auto; overscroll-behavior: contain;
+  /* One column that scrolls from the top, so a long open drop-down never pushes
+     items off the side or hides Home above the top edge. */
+  .nav--collapsible .nav-links { overflow-y: auto; overscroll-behavior: contain;
                                  flex-wrap: nowrap; justify-content: flex-start; }
   .nav--collapsible .nav-links > * { flex-shrink: 0; }
   .nav--collapsible .nav-item { display: flex; flex-wrap: wrap; align-items: center; }
@@ -104,13 +107,6 @@ section { padding-block: var(--section-y); }
   .nav--collapsible .nav-sub { flex-basis: 100%; padding: 0 0 10px; margin-left: 4px; border-left: 1px solid var(--border); }
   .nav--collapsible .nav-sub a { padding: 10px 2px 10px 16px; }
 }
-/* The free first chapter: a button at the bottom of the phone menu only.
-   (.nav-links raises the weight so .btn's display can't show it on a laptop.) */
-.nav-links .nav-chapter { display: none; }
-@media (max-width: 1179px){
-  .nav--collapsible .nav-links a.nav-chapter { display: inline-flex; justify-content: center; margin-top: 14px;
-    padding: 13px 20px; color: var(--on-accent); letter-spacing: .12em; }
-}
 /* Section links land below the sticky menu, not under it. */
 :root { --nav-h: 81px; } /* 44px search target + 2 x 18px padding + 1px hairline */
 [id] { scroll-margin-top: 88px; }
@@ -119,7 +115,8 @@ section { padding-block: var(--section-y); }
   :root { --nav-h: 65px; }
   .nav--collapsible { background: color-mix(in srgb, var(--bg) 94%, transparent); }
   .nav--collapsible .nav-inner { padding-block: 10px; }
-  .nav--collapsible .nav-links { max-height: calc(100vh - var(--nav-h)); max-height: calc(100dvh - var(--nav-h)); }
+  .nav--collapsible .nav-links { max-height: calc(100vh - var(--nav-h)); max-height: calc(100dvh - var(--nav-h));
+                                 padding-bottom: calc(22px + env(safe-area-inset-bottom)); } /* G-M4 */
   [id] { scroll-margin-top: 76px; }
   /* G-11: in the stacked menu the current page gets the threshold diamond, not a full-width rule. */
   .nav--collapsible .nav-links a[aria-current="page"] { box-shadow: none; position: relative; }
@@ -334,9 +331,6 @@ main[tabindex="-1"]:focus { outline: none; }
 
 /* footer */
 footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px; text-align:center; }
-.foot-mono { font-family: var(--font-caps); letter-spacing: var(--track-caps); text-transform:uppercase; font-size: 1.4rem; }
-.foot-links { display:flex; flex-wrap:wrap; gap: 22px; justify-content:center; margin: 22px 0; }
-.foot-links a { font-family: var(--font-sans); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color: var(--text-secondary); }
 .foot-meta { font-family: var(--font-sans); font-size: var(--text-meta); color: var(--text-muted); }
 /* Legal links: quiet and readable in both registers (audit G-05). */
 footer .foot-meta a { color: var(--text-secondary); text-decoration: underline; text-decoration-color: var(--border-strong);
@@ -355,6 +349,9 @@ footer .foot-legal a { display: inline-flex; align-items: center; padding-inline
 @media (min-width: 1180px){ .nav-scrim { display: none; } }
 
 .velvet-ropes-key { width: 28px; height: 28px; color: var(--accent); display: block; margin: 18px 0 12px; }
+/* VL-11: the question reads as a quiet subhead under the title */
+.velvet-ropes-hero h2 { font-style: italic; font-weight: 400; font-size: var(--text-h4); color: var(--text-secondary); margin: 0 0 12px; }
+.velvet-ropes-hero .hero-copy > .velvet-ropes-key { margin: 4px 0 20px; }
 .velvet-unlock { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
 /* Velvet Ropes page: keep the cover a book-sized object beside the copy (audit VL-01). */
 .velvet-ropes-hero .hero-media { width: 100%; max-width: 400px; justify-self: center; }

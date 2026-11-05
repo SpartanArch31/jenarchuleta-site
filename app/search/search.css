@@ -1,4 +1,10 @@
 .search-page { padding-top: var(--section-y); padding-bottom: clamp(48px, 8vw, 96px); }
+/* SR-03: on a short results page, keep the footer near the bottom of the
+   screen instead of floating mid-screen. 170px / 260px is about the footer height. */
+.search-page { min-height: calc(100svh - var(--nav-h, 81px) - 170px); }
+@media (max-width: 600px) {
+  .search-page { min-height: calc(100svh - var(--nav-h, 65px) - 260px); }
+}
 .search-page h1 { font-size: var(--text-display-l); margin-bottom: 18px; }
 
 .search-form {

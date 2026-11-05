@@ -97,8 +97,9 @@
    durations there, so it simply appears instantly.
    ============================================================ */
 @media (hover: hover) and (pointer: fine) {
-  .nav-links a:not(.btn) { position: relative; }
-  .nav-links a:not(.btn)::after {
+  /* G-16: top-level links only; drop-down rows keep just their tint on hover. */
+  .nav-links > a:not(.btn), .nav-item > a { position: relative; }
+  .nav-links > a:not(.btn)::after, .nav-item > a::after {
     content: "";
     position: absolute;
     left: 0; right: 0; bottom: -3px;
@@ -108,5 +109,7 @@
     transform-origin: left;
     transition: transform var(--dur-fast) var(--ease-out);
   }
-  .nav-links a:not(.btn):hover::after { transform: scaleX(1); }
+  .nav-links > a:not(.btn):hover::after, .nav-item > a:hover::after { transform: scaleX(1); }
+  /* The current page already has its rule; don't stack a second one under it. */
+  .nav-links a[aria-current="page"]:hover::after { transform: scaleX(0); }
 }

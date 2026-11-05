@@ -9,7 +9,7 @@ colors:
   taupe: "#B7A98C"
   ink: "#221C18"
   ink-soft: "#4A4339"
-  ink-mute: "#7A6F5E"
+  ink-mute: "#6B6152"
   gold: "#BE9543"
   gold-deep: "#946F2B"
   gold-bright: "#D2A94F"
@@ -165,7 +165,7 @@ cinematic values in the dark register.
 - **Wheat / Taupe** (`#D8C7A8` / `#B7A98C`): Deeper warm neutrals for dividers over photography.
 - **Ink** (`#221C18`): Near-black, warm — body text and headlines (13.1:1, AAA).
 - **Ink-Soft** (`#4A4339`): Secondary text, leads (7.6:1, AAA).
-- **Ink-Mute** (`#7A6F5E`): Metadata and captions only — this is AA-large (3.5:1), never small body copy.
+- **Ink-Mute** (`#6B6152`): Metadata and captions (5.3:1, AA at small sizes). Keep long body copy in Ink or Ink-Soft.
 - **Borders** (`#E2D8C6` hairline / `#CBB99B` strong): Warm dividers, never cold gray.
 
 ### Neutral — dark register (cinematic grounds)
@@ -203,7 +203,7 @@ the rare handwritten grace note.
 - **Script** (Allura, 400, `clamp(2rem, 4vw, 3rem)`, line-height 1): The signature accent — hero flourish, rare grace notes, in oxblood.
 - **Caps / Brand** (Cinzel, 500, `1.05rem`, letter-spacing `0.16em`, uppercase): Monogram, wordmark, footer mono.
 - **Label / Eyebrow** (Hanken Grotesk, 600, `0.6875rem` / 11px, letter-spacing `0.28em`, uppercase): Section eyebrows and metadata kickers, in Gold-Deep.
-- **UI** (Hanken Grotesk, 600, `0.9375rem` / 15px, letter-spacing `0.02em`): Buttons and nav.
+- **UI** (Hanken Grotesk, 600, `0.9375rem` / 15px, letter-spacing `0.02em`): Buttons. Nav links use their own spec (see Navigation).
 
 ### Named Rules
 **The One-Voice-Per-Job Rule.** Cormorant reads and displays; Cinzel is caps-only architecture; Hanken Grotesk does all UI; Allura signs. Never set body copy in Cinzel, never set a button in Cormorant, never let the script carry more than a few words.
@@ -251,8 +251,9 @@ accent elements.
 - **Internal Padding:** `20px` body padding; the CTA/sponsor blocks step up to `24px`.
 
 ### Navigation
-- **Style:** Sticky top bar over a translucent, blurred body-tint (`color-mix(--bg 88%)` + `blur(8px)`) with a bottom hairline. Cinzel caps wordmark on the left; Hanken Grotesk uppercase links (`0.78rem`, `0.14em` tracking) on the right.
-- **States:** Links rest in secondary ink; hover shifts to Gold-Deep and grows a 1px gold underline from the left (scaleX, `--dur-fast`).
+- **Style:** Sticky top bar over a translucent, blurred body-tint (`color-mix(--bg 88%)` + `blur(8px)`) with a bottom hairline. Cinzel caps wordmark on the left; Hanken Grotesk uppercase links (400, `0.78rem`, `0.14em` tracking) on the right, then the search icon at the far right behind a hairline divider. Internal links use `next/link` (client navigation).
+- **States:** Links rest in secondary ink; hover shifts to `--accent-ink` and grows a 1px gold underline from the left (scaleX, `--dur-fast`). The current page keeps a static 1px gold rule and gets no second hover line.
+- **Drop-downs (desktop):** The panel hangs flush from the bar's hairline (square top corners), row text lines up with the parent label, and it uses the warm `--shadow`. Rows show only a `--surface` tint on hover, no underline. Caret buttons are at least 24px wide (20px plus a 4px hit area in the 1180 to 1279px band).
 - **Mobile:** Below 1180px the links collapse behind a 44px hamburger (it turns into an X) into a full-width panel with its own hairline and shadow, over a dimming scrim. The bar slims to 65px (`--nav-h`, 10px padding) at 94% opacity. In the panel the current page is marked by the 5px threshold diamond to the left of the gold label, not an underline.
 - **Landmarks:** Each page puts its skip link before the nav and its content in `<main id="main-content" tabIndex={-1}>`.
 
@@ -286,4 +287,4 @@ fades in first. Use exactly one per passage — never a cluster.
 - **Don't** reach for the tech-author defaults this brand rejects: no purple gradients, neon, glassmorphism, or big-number hero-metric templates.
 - **Don't** cluster the threshold motif or scatter it decoratively — one deliberate passage line, or none.
 - **Don't** shrink Cormorant to "normal" web sizes or set UI/buttons in it; Hanken Grotesk does all functional UI work.
-- **Don't** put Ink-Mute (`#7A6F5E`) on small body copy — it's AA-large, for metadata and captions only.
+- **Don't** set long body copy in Ink-Mute (`#6B6152`); it is for metadata and captions.

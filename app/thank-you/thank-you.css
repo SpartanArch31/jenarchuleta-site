@@ -100,8 +100,32 @@
 }
 
 .thank-contact p {
-  max-width: 42rem;
+  max-width: 34rem; /* TY-13 */
   margin-inline: auto;
+  text-wrap: balance; /* TY-13: no lone 'in mind.' on its own centered line */
+}
+
+/* TY-13: avoid one-word last lines in the letter and the quotes. */
+.thank-hero .hero-copy p,
+.thank-quotes-list p {
+  text-wrap: pretty;
+}
+
+/* TY-11: give the legacy #social and #letter anchors a positioned parent,
+   so they land on Stay in touch instead of the top of the page. */
+.thank-stay {
+  position: relative;
+}
+
+/* TY-M3: hold room for Kit's form before its script injects it, so the
+   section and Contact below do not jump on load. */
+.thank-signup .kit-inline {
+  min-height: 104px;
+}
+@media (max-width: 600px) {
+  .thank-signup .kit-inline {
+    min-height: 112px;
+  }
 }
 
 /* TY-01: size the cream mat and gold hairline to the photo's own ratio,

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import VelvetKey from './VelvetKey';
 // Home, About Me, Book, Press, Journal, Podcast, Velvet Letter, Thank You.
@@ -8,6 +9,8 @@ import VelvetKey from './VelvetKey';
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.
 // Narrow screens: the hamburger opens the menu, and each arrow opens that
 // page's sections underneath it.
+// G-09: internal links use next/link, so moving between pages is a client
+// navigation (no full reload, no cream flash between pages).
 const MENU = [
   { href: '/', label: 'Home', home: true },
   {
@@ -180,15 +183,15 @@ export default function SiteNav({ homeHref = '/' }) {
     <>
     <nav className="nav nav--collapsible" aria-label="Main" ref={navRef}>
       <div className="nav-inner">
-        <a href={homeHref} className="brand" onClick={close}>Jen Archuleta</a>
+        <Link href={homeHref} className="brand" onClick={close}>Jen Archuleta</Link>
 
         <div className="nav-end">
-        <a href="/search" className="nav-search" aria-label="Search" aria-current={pathname === '/search' ? 'page' : undefined}>
+        <Link href="/search" className="nav-search" aria-label="Search" aria-current={pathname === '/search' ? 'page' : undefined}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="6.25" fill="none" stroke="currentColor" strokeWidth="1.6" />
             <path d="M16 16.5 20 20.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
           </svg>
-        </a>
+        </Link>
         <button
           type="button"
           className="nav-toggle"
@@ -210,7 +213,7 @@ export default function SiteNav({ homeHref = '/' }) {
                 : undefined;
             if (!link.items) {
               return (
-                <a
+                <Link
                   key={link.href}
                   href={link.home ? homeHref : link.href}
                   className={link.key ? 'nav-with-key' : undefined}
@@ -219,7 +222,7 @@ export default function SiteNav({ homeHref = '/' }) {
                 >
                   {link.key ? <VelvetKey className="nav-key" /> : null}
                   {link.label}
-                </a>
+                </Link>
               );
             }
             const expanded = openId === link.id;
@@ -231,9 +234,9 @@ export default function SiteNav({ homeHref = '/' }) {
                 onPointerLeave={onLeave(link.id)}
                 onBlur={onBlur(link.id)}
               >
-                <a href={link.href} aria-current={current} onClick={close}>
+                <Link href={link.href} aria-current={current} onClick={close}>
                   {link.label}
-                </a>
+                </Link>
                 <button
                   type="button"
                   className="nav-caret"
@@ -247,9 +250,9 @@ export default function SiteNav({ homeHref = '/' }) {
                 <ul id={`nav-sub-${link.id}`} className="nav-sub" hidden={!expanded}>
                   {link.items.map((item) => (
                     <li key={item.href}>
-                      <a href={item.href} onClick={close}>
+                      <Link href={item.href} onClick={close}>
                         {item.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

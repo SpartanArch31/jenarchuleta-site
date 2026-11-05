@@ -34,8 +34,10 @@ export default function HomeCarousel() {
     const next = (index + slides.length) % slides.length;
     const el = slides[next];
     const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    // HOME-08: slides snap to the grid edge (the track's left padding).
+    const inset = parseFloat(getComputedStyle(track).paddingLeft) || 0;
     track.scrollTo({
-      left: el.offsetLeft - (track.clientWidth - el.clientWidth) / 2,
+      left: el.offsetLeft - inset,
       behavior: reduce ? 'auto' : 'smooth',
     });
   }, []);
@@ -47,12 +49,13 @@ export default function HomeCarousel() {
     const update = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const center = track.scrollLeft + track.clientWidth / 2;
+        // HOME-08: the active slide is the one nearest the grid edge.
+        const edge = track.scrollLeft + (parseFloat(getComputedStyle(track).paddingLeft) || 0);
         let best = 0;
         let bestDistance = Infinity;
         const slides = Array.from(track.children);
         slides.forEach((el, i) => {
-          const distance = Math.abs(el.offsetLeft + el.clientWidth / 2 - center);
+          const distance = Math.abs(el.offsetLeft - edge);
           if (distance < bestDistance) {
             bestDistance = distance;
             best = i;

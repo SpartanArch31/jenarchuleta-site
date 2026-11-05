@@ -1,4 +1,7 @@
+import Link from 'next/link';
+
 // Footer is only the legal pages. Signup and contact live on Thank You.
+// G-09: next/link for client navigation (an absolute homeHref still works as a plain link).
 export default function SiteFooter({ homeHref = '/' }) {
   const home = homeHref.replace(/\/$/, '');
   const link = (href) => `${home}${href}`;
@@ -11,9 +14,9 @@ export default function SiteFooter({ homeHref = '/' }) {
         </p>
         {/* G-07: a real list, so the links wrap and each one is a full tap target. */}
         <ul className="foot-meta foot-legal" aria-label="Legal">
-          <li><a href={link('/privacy')}>Privacy Policy</a></li>
-          <li><a href={link('/terms')}>Terms of Service</a></li>
-          <li><a href={link('/shipping-returns')}>Shipping &amp; Returns</a></li>
+          <li><Link href={link('/privacy')}>Privacy Policy</Link></li>
+          <li><Link href={link('/terms')}>Terms of Service</Link></li>
+          <li><Link href={link('/shipping-returns')}>Shipping &amp; Returns</Link></li>
         </ul>
       </div>
     </footer>

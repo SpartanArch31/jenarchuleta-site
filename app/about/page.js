@@ -20,9 +20,9 @@ export const metadata = {
 // coat, her two paragraphs, then one square photo that opens a 13-photo
 // slideshow (TwentiesSlideshow.js). The puppy and white sports top photos
 // moved to the Gallery.
-// Old links still land: #life and #me (the everyday), #then (the twenties
-// photo), #gallery, #forever-angels and #faith (giving back), #work (the
-// About the Author link at the end).
+// Anchors on this page: #me and #life (the everyday), #then (the twenties),
+// #gallery. ABOUT-17: #faith, #work and #forever-angels no longer exist here
+// (Forever Angels lives at /media#forever-angels).
 export default function AboutPage() {
   return (
     <>
@@ -42,7 +42,8 @@ export default function AboutPage() {
           </p>
         </div>
         <div>
-          <img className="tim-portrait" src="/assets/brown-dress-portrait.jpg" alt="Jen Archuleta in a brown top" width="941" height="883" />
+          {/* ABOUT-18: the LCP image, through next/image with priority. */}
+          <Image className="tim-portrait" src="/assets/brown-dress-portrait.jpg" alt="Jen Archuleta in a brown top" width={941} height={883} sizes="(max-width: 860px) 92vw, 470px" quality={85} priority />
         </div>
       </section>
 

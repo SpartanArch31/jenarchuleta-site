@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import HomeCarousel from './components/HomeCarousel';
@@ -21,7 +22,15 @@ export default function Home() {
           </div>
           <div className="hero-media">
             <div className="portrait hero-frame">
-              <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
+              {/* HOME-12: LCP image, so next/image with priority and a sized srcset */}
+              <Image
+                src="/assets/presskit-headshot-floral.jpg"
+                alt="Jen Archuleta smiling in a floral top"
+                width={1100}
+                height={1370}
+                priority
+                sizes="(max-width: 860px) min(90vw, 420px), 470px"
+              />
             </div>
           </div>
         </section>

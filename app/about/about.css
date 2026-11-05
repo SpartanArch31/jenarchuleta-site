@@ -141,8 +141,9 @@
 .tim-close { max-width: 46rem; margin: 0 auto; text-align: center; padding-block: clamp(64px, 8vw, 96px); }
 .tim-close .tim-lead { margin: 0 auto 18px; max-width: none; }
 .tim-close .tim-lead a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+/* ABOUT-16: the script signature is the oxblood whisper (DESIGN.md). */
 .tim-sign { font-family: var(--font-script); font-size: clamp(44px, 5vw, 60px); line-height: 1;
-            color: var(--accent-ink); margin: 6px 0 0; }
+            color: var(--accent-2); margin: 6px 0 0; }
 .tim-author-link { margin: 34px 0 0; font-family: var(--font-sans); font-size: 13px; letter-spacing: .14em;
                    text-transform: uppercase; }
 .tim-author-link a { color: var(--accent-ink); }
@@ -183,11 +184,14 @@
 .twenties-cover-cue {
   position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
-  padding: 9px 16px; border-radius: 999px; background: rgba(20, 16, 14, .72); color: #fff;
+  padding: 9px 16px; border-radius: 999px;
+  /* ABOUT-14: tokens and the warm ink shadow. Raw palette tokens on purpose:
+     the pill sits on a photo, so it must not flip with dark mode. */
+  background: color-mix(in srgb, var(--near-black) 72%, transparent); color: var(--cream);
   font-family: var(--font-sans); font-size: 13px; font-weight: 600; letter-spacing: .04em;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, .25); transition: background .2s ease;
+  box-shadow: 0 4px 14px rgba(34, 28, 24, .28); transition: background .2s ease;
 }
-.twenties-cover:hover .twenties-cover-cue { background: rgba(20, 16, 14, .86); }
+.twenties-cover:hover .twenties-cover-cue { background: color-mix(in srgb, var(--near-black) 86%, transparent); }
 .twenties-dialog {
   width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0;
   border: 0; background: rgba(12, 10, 9, .94); color: #fff;
@@ -239,4 +243,34 @@
   @media (max-width: 759px) {
     .gallery-band .gallery-stage { --g-max-h: min(76svh, 125cqw); }
   }
+}
+
+/* ABOUT-17: the #life span is .anchor (position: absolute), so its section
+   must be the containing block or /about#life lands at the top of the page. */
+.tim-everyday { position: relative; }
+
+/* ABOUT-16: the hero dek keeps the larger lead; body paragraphs step down to
+   the 22px body-lead token so there is a dek-to-body step. */
+.tim-everyday .tim-lead, .tim-then .tim-lead { font-size: var(--text-body-l); line-height: 1.6; }
+
+/* ABOUT-07: one caption voice for the everyday photos and the gallery. */
+.tim-slot-cap, .gallery-band .gallery-caption {
+  font-family: var(--font-display); font-style: italic; font-size: var(--text-body-s);
+  line-height: 1.4; color: var(--text-secondary);
+}
+
+/* ABOUT-15: a light mat that hugs each photo, standard shadow. Shadow LG is
+   kept for the two hero objects. */
+.gallery-band .gallery-frame {
+  background: var(--surface); border: 1px solid var(--border-strong); box-shadow: var(--shadow);
+}
+
+@media (max-width: 860px) {
+  /* ABOUT-09: the tall tortoise photo, still whole, at 72% width so it does
+     not fill a whole phone screen. */
+  .tim-grid2 > .tim-slot-wrap:nth-child(2) { width: 72%; margin-inline: auto; }
+}
+@media (max-width: 759px) {
+  /* ABOUT-19: the gallery starts on the same gutter as the rest of the page. */
+  .gallery-band .wrap { padding-inline: var(--gutter); }
 }
