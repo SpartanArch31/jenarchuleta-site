@@ -224,14 +224,13 @@ const GALLERY_NEW = [
   { src: '/assets/gallery-new/new_18.jpg', alt: 'Jen Archuleta with a birthday cake', width: 827, height: 1002 },
   { src: '/assets/gallery-new/new_19.jpg', alt: 'Six friends lined up indoors, several in cowboy boots', caption: 'Six friends lined up indoors, several in cowboy boots', width: 1200, height: 1591 },
   { src: '/assets/gallery-new/new_22.jpg', alt: 'Jen Archuleta with friends by a pool', width: 1224, height: 917 },
-  { src: '/assets/gallery-new/new_23.jpg', alt: 'Jen Archuleta with her team at a race', width: 828, height: 914 },
+  { src: '/assets/gallery-new/new_23.jpg', alt: 'Jen Archuleta with her team at a race', width: 828, height: 876 },
   { src: '/assets/gallery-new/new_24.jpg', alt: 'Jen Archuleta with friends at Urban Axes', width: 828, height: 818 },
   { src: '/assets/gallery-new/new_25.jpg', alt: 'Jen Archuleta at a group dinner', width: 1600, height: 1200 },
   { src: '/assets/gallery-new/new_28.jpg', alt: 'Jen Archuleta with a friend', width: 829, height: 1600 },
   { src: '/assets/gallery-new/new_34.jpg', alt: 'Jen Archuleta with her husband', width: 1179, height: 1097 },
   { src: '/assets/gallery-new/new_35.jpg', alt: 'Jen Archuleta on the beach', width: 1320, height: 1281 },
   { src: '/assets/gallery-new/new_36.jpg', alt: 'A magazine page about Jen Archuleta', width: 1320, height: 1607 },
-  { src: '/assets/gallery-new/new_37.jpg', alt: 'A magazine news column featuring Jen Archuleta', width: 790, height: 2000 },
   { src: '/assets/gallery-new/new_38.jpg', alt: 'A magazine photo of Jen Archuleta with another Playmate', width: 1500, height: 2000 },
 ];
 
@@ -348,11 +347,11 @@ const HIDDEN_SLIDE_SRC = new Set([
 ]);
 
 // Photos that were a row on About Me (Jen, Nov 5: Gallery only). Whole files,
-// at the end so the earlier slide numbers stay the same. The black top on the
-// couch and the blonde portrait (jen-glam, new_04) were already slides.
+// at the end of the slideshow. The black top on the couch and the blonde
+// portrait (jen-glam, new_04) were already slides. Edge bands cropped Nov 5.
 const FROM_ABOUT = [
-  { src: '/assets/jen-fun2.jpeg', alt: 'Jen Archuleta with a rescue puppy', caption: '', width: 510, height: 512 },
-  { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 1077, height: 887 },
+  { src: '/assets/jen-fun2.jpeg', alt: 'Jen Archuleta with a rescue puppy', caption: '', width: 501, height: 509 },
+  { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 904, height: 833 },
 ];
 
 // Every photo defined above, in the November 3 order, minus slides Jen had
@@ -360,6 +359,9 @@ const FROM_ABOUT = [
 const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B, ...FROM_ABOUT]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
+// November 5: gallery-new/new_37 (a news clipping) is removed, file and all.
+// Its inset showed Jen's newborn's face unblurred and printed the child's name.
+// Removals shift later ?photo=N numbers; ?slide=<src> links stay stable.
 // November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).
 // #1 Playboy stage, and the bodyboard photo whose watermark cannot be cropped off.
 // The beach dress (velvet-carousel/10.jpg) is not a stand-in on About Me.

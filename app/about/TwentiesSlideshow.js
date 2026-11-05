@@ -32,6 +32,8 @@ export default function TwentiesSlideshow() {
   const dialogRef = useRef(null);
   const openerRef = useRef(null);
   const touchRef = useRef(null);
+  const nextRef = useRef(null);
+  const wasOpenRef = useRef(false);
 
   const go = useCallback((step) => {
     setIndex((current) => (current + step + PHOTOS.length) % PHOTOS.length);
@@ -42,11 +44,19 @@ export default function TwentiesSlideshow() {
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
-    if (!open && dialog.open) {
-      dialog.close();
-      openerRef.current?.focus();
+    if (open && !dialog.open) {
+      dialog.showModal();
+      // The page behind stays put while the slideshow is open.
+      document.documentElement.classList.add('twenties-lock');
+      nextRef.current?.focus();
     }
+    if (!open) {
+      if (dialog.open) dialog.close();
+      document.documentElement.classList.remove('twenties-lock');
+      if (wasOpenRef.current) openerRef.current?.focus();
+    }
+    wasOpenRef.current = open;
+    return () => document.documentElement.classList.remove('twenties-lock');
   }, [open]);
 
   useEffect(() => {
@@ -80,17 +90,29 @@ export default function TwentiesSlideshow() {
         className="twenties-dialog"
         aria-label="My 20s slideshow"
         onClose={close}
-        onClick={(event) => { if (event.target === dialogRef.current) close(); }}
+        onClick={(event) => {
+          // A click on the dark area around the photo closes it.
+          const t = event.target;
+          if (t === event.currentTarget || t.classList?.contains('twenties-stage') || t.classList?.contains('twenties-figure')) close();
+        }}
       >
         {open ? (
           <div
             className="twenties-stage"
-            onTouchStart={(event) => { touchRef.current = event.touches[0].clientX; }}
+            onTouchStart={(event) => {
+              touchRef.current = event.touches.length === 1
+                ? { x: event.touches[0].clientX, y: event.touches[0].clientY }
+                : null;
+            }}
+            onTouchCancel={() => { touchRef.current = null; }}
             onTouchEnd={(event) => {
-              if (touchRef.current == null) return;
-              const dx = event.changedTouches[0].clientX - touchRef.current;
+              const start = touchRef.current;
               touchRef.current = null;
-              if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+              if (!start) return;
+              const dx = event.changedTouches[0].clientX - start.x;
+              const dy = event.changedTouches[0].clientY - start.y;
+              // Only a sideways swipe changes the photo.
+              if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
             }}
           >
             <figure className="twenties-figure">
@@ -110,7 +132,7 @@ export default function TwentiesSlideshow() {
             <div className="twenties-controls">
               <button type="button" onClick={() => go(-1)} aria-label="Previous photo">‹</button>
               <span aria-live="polite">{index + 1} / {PHOTOS.length}</span>
-              <button type="button" onClick={() => go(1)} aria-label="Next photo">›</button>
+              <button ref={nextRef} type="button" onClick={() => go(1)} aria-label="Next photo">›</button>
             </div>
             <button type="button" className="twenties-close" onClick={close} aria-label="Close slideshow">×</button>
           </div>
