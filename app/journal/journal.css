@@ -68,7 +68,7 @@
 
 .book-cta { display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:center;
             background:var(--surface); border:var(--hairline); border-radius:var(--radius-lg); padding:24px; margin:36px 0; }
-.book-cta img { width:96px; border-radius:var(--radius); box-shadow:var(--shadow); display:block; }
+.book-cta img { width:96px; height:auto; border-radius:var(--radius); box-shadow:var(--shadow); display:block; }
 @media (max-width:560px){ .book-cta{ grid-template-columns:1fr; text-align:center; justify-items:center; } }
 
 /* Category dropdown on phones; chips on larger screens. */

@@ -238,6 +238,54 @@
   }
 }
 
+.media-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.media-socials a {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.speak-topics-title {
+  font-size: var(--text-h4);
+  margin: 28px 0 12px;
+}
+
+.speak-topics {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+
+.speak-topics li {
+  margin: 0 0 0.45em;
+  break-inside: avoid;
+}
+
+.media-signup {
+  text-align: center;
+}
+
+.media-signup h2 {
+  margin-bottom: 18px;
+}
+
+@media (min-width: 860px) {
+  .speak-topics {
+    columns: 2;
+    column-gap: 40px;
+  }
+}
+
 @media (max-width: 760px) {
   .media-grid,
   .headshot-grid {

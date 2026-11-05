@@ -34,7 +34,7 @@ export default function TermsPage() {
 
           <h2>2. About the content</h2>
           <p>
-            This Site shares the personal story, opinions, and experiences of Jennifer Walcott
+            This Site shares the personal story, opinions, and experiences of Jen
             Archuleta, including her memoir <em>Beyond the Velvet Ropes</em> and the Journal blog. This
             content reflects the author&rsquo;s personal recollections and perspective at the time of
             writing; names or identifying details of other people may be changed. Nothing on this Site
@@ -56,7 +56,7 @@ export default function TermsPage() {
           <h2>4. Intellectual property</h2>
           <p>
             All text, images, audio, and other content on this Site, including the book cover, photos,
-            podcast episodes, and Journal posts, is owned by Archuleta Entertainment / Jennifer Walcott
+            podcast episodes, and Journal posts, is owned by Archuleta Entertainment / Jen
             Archuleta or used with permission, unless stated otherwise, and may not be copied,
             republished, or used commercially without our written permission.
           </p>

@@ -42,10 +42,9 @@ export default function ShippingReturnsPage() {
 
           <h2>The Signature Velvet Bookmark</h2>
           <p>
-            Each bookmark is handmade in small batches, and no two are exactly alike. The{' '}
+            About 6 inches long. Handmade from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Packaged in a padded gift case and shipped by regular mail. The{' '}
             {SHOP.bookmarkPrice} price includes shipping, and we ship to US addresses only.
-            {SHOP.bookmarkShips ? ` Bookmarks ship ${SHOP.bookmarkShips}.` : ''} If your bookmark
-            arrives damaged or defective, the same policy above applies. Because these are handmade,
+            If your bookmark arrives damaged or defective, the same policy above applies. Because these are handmade,
             one-of-a-kind pieces, all other sales are final.
           </p>
 

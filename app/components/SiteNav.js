@@ -10,11 +10,11 @@ import { KIT_FREE_CHAPTER_URL } from './site-data';
 // Each main page has a drop-down of its sections (Jen, November 3: "so people
 // can jump straight to the sections they want"). The section links point at
 // ids on those pages; if you rename or remove a section, update its link here.
-// Simplified (Nov 2026): The Velvet Letter lives in the Book drop-down (it comes
-// with the book; the QR code in the book goes straight to /velvet), About the
+// November 5, 2026: The Velvet Letter is not in the menu. The book QR code
+// still opens /velvet, and the homepage has the passcode box. About the
 // Author sits with Media and the press kit, Film and documentary is only under
 // Media, and each link appears once.
-// Everything else (Gallery, Pups of the Podcast, Speaking, Quotes, Sponsors,
+// Everything else (Gallery, Pups of the Podcast, Speaking, Sponsors,
 // Contact, Free First Chapter, The Forever Angels) is also in the footer, the
 // same on every page. See SiteFooter.js.
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.
@@ -29,14 +29,13 @@ const MENU = [
     items: [
       { href: '/about', label: 'About me' },
       { href: '/about#gallery', label: 'Photos' },
-      { href: '/about#forever-angels', label: 'Giving back' },
+      { href: '/forever-angels', label: 'Giving back' },
     ],
   },
   {
     id: 'book',
     href: '/book',
     label: 'Book',
-    also: ['/velvet'],
     items: [
       { href: '/book', label: 'Get the book' },
       // Jen, November 3: the free first chapter belongs in the main menu.
@@ -44,7 +43,6 @@ const MENU = [
       { href: '/book#trailer', label: 'Watch the trailer' },
       { href: '/book#who', label: 'Who this book is for' },
       { href: '/book#reviews', label: 'Leave a review' },
-      { href: '/velvet', label: 'The Velvet Letter', icon: 'key' },
     ],
   },
   {
@@ -111,16 +109,6 @@ function Caret() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
       <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-// The Velvet Letter's small gold key, kept on its menu link.
-function Key() {
-  return (
-    <svg className="nav-key" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="8.2" cy="8.2" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.7" />
-      <path d="M11.6 11.2 L20 19.2 M15.6 16.4 L18.4 19.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   );
 }
@@ -253,8 +241,7 @@ export default function SiteNav({ homeHref = '/' }) {
                 <ul id={`nav-sub-${link.id}`} className="nav-sub" hidden={!expanded}>
                   {link.items.map((item) => (
                     <li key={item.href}>
-                      <a href={item.href} onClick={close} className={item.icon === 'key' ? 'nav-velvet' : undefined}>
-                        {item.icon === 'key' ? <Key /> : null}
+                      <a href={item.href} onClick={close}>
                         {item.label}
                       </a>
                     </li>

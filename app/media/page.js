@@ -3,14 +3,16 @@ import path from 'path';
 import Image from 'next/image';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import KitInlineForm from '../components/KitInlineForm';
 import CopyTextButton from '../components/CopyTextButton';
+import { KIT_FORM_UID, SOCIALS } from '../components/site-data';
 import { APPEARANCES, AS_SEEN_IN, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Media, Jen Walcott Archuleta' },
+  title: { absolute: 'Media, Jen Archuleta' },
   description:
-    'Interviews, articles, and conversations with Jen Walcott Archuleta, plus a short bio and headshots for press.',
+    'Interviews, articles, and conversations with Jen Archuleta, plus a short bio and headshots for press.',
 };
 
 // FilmFreeway: Jen asked for her FilmFreeway link (November 3). It is in
@@ -26,7 +28,7 @@ export const metadata = {
 // web image (1000x1500), not a press-resolution file.
 // Outlet logos are names until files arrive in public/assets/logos/.
 
-const PRESS_BIO = 'Jennifer Walcott Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A feature film based on her memoir is in development with Leone Marucci and Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
+const PRESS_BIO = 'Jen Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. A feature film based on her memoir is in development with Leone Marucci and Steelyard Pictures, and a feature documentary is in development with Mark Andrew Hamer of Crash Cat Media Group. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
 
 
 
@@ -42,7 +44,7 @@ const HEADSHOTS = [
     download: '/assets/jen-headshot-bw.jpg',
     fileName: 'Jen-Walcott-Archuleta-Glamorous.jpg',
     label: 'Glamorous',
-    alt: 'Black-and-white portrait of Jen Walcott Archuleta',
+    alt: 'Black-and-white portrait of Jen Archuleta',
     width: 1320,
     height: 1946,
   },
@@ -52,7 +54,7 @@ const HEADSHOTS = [
     fileName: 'Jen-Walcott-Archuleta-Candid.jpg',
     label: 'Candid',
     note: 'Primary photo',
-    alt: 'Jen Walcott Archuleta smiling in a floral top',
+    alt: 'Jen Archuleta smiling in a floral top',
     width: 1100,
     height: 1370,
   },
@@ -61,12 +63,43 @@ const HEADSHOTS = [
     download: '/assets/jen-headshot-signature.jpg',
     fileName: 'Jen-Walcott-Archuleta-Signature.jpg',
     label: 'Signature',
-    alt: 'Jen Walcott Archuleta smiling in a black top',
+    alt: 'Jen Archuleta smiling in a black top',
     width: 1162,
     height: 1597,
   },
 ];
 const PRIMARY = HEADSHOTS.find((shot) => shot.label === 'Candid');
+
+const SPEAKING_TOPICS = [
+  '1) Small-town roots and big dreams',
+  '2) Work ethic and grit',
+  '3) Finding your voice after childhood fear',
+  '4) Healing from assault, trauma, and grief',
+  '5) Bullying, gossip, and self-worth',
+  '6) Drugs and the wake-up call',
+  '7) Body image and feeling ugly',
+  '8) Surviving domestic violence',
+  '9) Rebuilding alone after abuse',
+  '10) Faith, prayer, and second chances',
+  '11) Playboy and the power of sisterhood',
+  '12) Choosing real love and marriage',
+  '13) Pregnancy loss, natural childbirth, and motherhood',
+  '14) Moving from fame to purpose and peace',
+  '15) Giving back through advocacy and adoption',
+  '16) The hidden cost of fame',
+  '17) Finding light, grace, and gratitude',
+  '18) From humble beginnings to financially stable',
+  '19) Barely finishing school, still writing a book',
+  '20) Advocating for kids with CASA and Childhelp',
+  '21) Founding The Forever Angels',
+  '22) Helping animals and rescues',
+];
+
+const MEDIA_SOCIALS = [
+  { label: 'LinkedIn', href: SOCIALS.linkedin },
+  { label: 'X', href: 'https://x.com/jenniferwalcott' },
+  { label: 'TikTok', href: SOCIALS.tiktok },
+];
 
 
 function publicFileExists(rel) {
@@ -76,6 +109,8 @@ function publicFileExists(rel) {
 
 export default function MediaPage() {
   const hasPressKit = publicFileExists('press/jen-walcott-archuleta-press-kit.pdf');
+  const tv = APPEARANCES.filter((item) => item.kind === 'TV');
+  const otherAppearances = APPEARANCES.filter((item) => item.kind !== 'TV');
 
   return (
     <div className="media-page">
@@ -126,7 +161,7 @@ export default function MediaPage() {
       </section>
 
       <section id="press" className="wrap">
-        <h2>Press coverage</h2>
+        <h2>Press articles</h2>
         <div className="media-grid">
           {PRESS.map((item) => (
             <article className="media-card" key={item.href}>
@@ -139,10 +174,10 @@ export default function MediaPage() {
         </div>
       </section>
 
-      <section id="interviews" className="wrap">
-        <h2>Interviews and appearances</h2>
+      <section id="tv" className="wrap">
+        <h2>TV appearances</h2>
         <div className="media-grid">
-          {APPEARANCES.map((item) => (
+          {tv.map((item) => (
             <article className="media-card" key={item.href}>
               <p className="eyebrow">{item.outlet}</p>
               <h3>{item.headline}</h3>
@@ -153,11 +188,44 @@ export default function MediaPage() {
         </div>
       </section>
 
+      {otherAppearances.length ? (
+        <section id="interviews" className="wrap">
+          <h2>Interviews and appearances</h2>
+          <div className="media-grid">
+            {otherAppearances.map((item) => (
+              <article className="media-card" key={item.href}>
+                <p className="eyebrow">{item.outlet}</p>
+                <h3>{item.headline}</h3>
+                <p className="media-meta">{cardMeta(item)}</p>
+                <a className="text-link" href={item.href} target="_blank" rel="noopener noreferrer">{item.linkLabel}</a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section id="social" className="wrap">
+        <h2>Social</h2>
+        <ul className="media-socials">
+          {MEDIA_SOCIALS.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section id="speaking" className="wrap text-wrap">
         <h2>Speaking</h2>
         <p>
-          I speak about faith, resilience, and starting over. About surviving hard things and rebuilding.
+          I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
         </p>
+        <h3 className="speak-topics-title">Topics</h3>
+        <ol className="speak-topics">
+          {SPEAKING_TOPICS.map((topic) => (
+            <li key={topic}>{topic}</li>
+          ))}
+        </ol>
         <p>
           <a className="btn btn-primary" href="/contact">Invite me to speak</a>
         </p>
@@ -218,7 +286,12 @@ export default function MediaPage() {
         </p>
       </section>
 
-      <SiteFooter />
+      <section id="letter" className="wrap text-wrap media-signup">
+        <h2>Read the first chapter free.</h2>
+        <KitInlineForm uid={KIT_FORM_UID} />
+      </section>
+
+      <SiteFooter stayClose={false} />
     </div>
   );
 }

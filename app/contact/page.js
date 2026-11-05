@@ -4,9 +4,9 @@ import { BOOKING_EMAIL } from '../components/site-data';
 import './contact.css';
 
 export const metadata = {
-  title: { absolute: 'Contact, Jen Walcott Archuleta' },
+  title: { absolute: 'Contact, Jen Archuleta' },
   description:
-    'Press, interviews, speaking, and events. Email Jen Walcott Archuleta.',
+    'Press, interviews, speaking, and events. Email Jen Archuleta.',
 };
 
 // One clear contact destination for press, interviews, speaking, and events.
@@ -25,12 +25,12 @@ export default function ContactPage() {
         <img
           className="contact-cover"
           src="/assets/jen-headshot-signature.jpg"
-          alt="Jen Walcott Archuleta"
+          alt="Jen Archuleta"
           width="1162"
           height="1597"
         />
         <p className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>Let’s connect</p>
-        <h1>Jen Walcott Archuleta</h1>
+        <h1>Jen Archuleta</h1>
         <p className="contact-role">
           Author of Beyond the Velvet Ropes. Host of Unfiltered with Jen Archuleta.
         </p>

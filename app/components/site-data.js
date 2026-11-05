@@ -23,7 +23,7 @@ export const OG_IMAGE = {
   url: 'https://jenarchuleta.com/assets/og-floral-1200x630.jpg',
   width: 1200,
   height: 630,
-  alt: 'Jen Walcott Archuleta',
+  alt: 'Jen Archuleta',
 };
 
 // Live Stripe Customer Portal login link. Capital I after wO3.
@@ -118,13 +118,10 @@ export const SHOP = {
   // Shipping is included in the $24.99 (Sept 4 decision); Stripe takes US
   // addresses only.
   bookmarkShipping: 'Free shipping, US only',
-  // What the customer gets (Adam, Nov 3: "Customers should know exactly what they
-  // are getting"). Each line shows on the Shop card only once it's filled in, so
-  // fill these with Jen's real answers and never a guess:
-  //   bookmarkSize       e.g. 'About 9 x 1 inches, plus the seal'
-  //   bookmarkPackaging  e.g. 'Wrapped in tissue, in a gift box'
-  //   bookmarkShips      a phrase that reads after "Ships", e.g. 'within 3 business days'
-  //                      (Shipping & Returns uses it too: "Bookmarks ship within ...")
+  // The Shop card and Shipping & Returns use Jen's exact bookmark paragraph
+  // (about 6 inches, gold key charm, wax-style seal, padded gift case, regular
+  // mail). Leave these blank. Do not add a day-count such as "1 to 2 business
+  // days", and do not describe a choker or say the bookmark folds.
   bookmarkSize: '',
   bookmarkPackaging: '',
   bookmarkShips: '',
