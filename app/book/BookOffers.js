@@ -115,7 +115,7 @@ export default function BookOffers() {
                     <li>A sneak peek of the book club discussion guide (not the full guide)</li>
                     <li><GoldKey /> The Velvet Letter with the gold key</li>
                     <li>The velvet bookmark</li>
-                    <li>Three questions a month. Jen answers them promptly and in detail every month.</li>
+                    <li>Up to three questions a month. Jen answers them promptly and in detail every month.</li>
                     <li>Cancel anytime</li>
                   </ul>
                 </div>
@@ -130,7 +130,7 @@ export default function BookOffers() {
                 </div>
               </div>
               <p className="club-note">
-                Live monthly Zoom with Jen only happens when the group has 13 or more members. If the group is under 13, the membership is the three questions a month, plus the Tier 1 extras.
+                Once 13 paying members have joined, we’ll begin my monthly group Zoom. Until then, you get up to three questions a month, plus the Tier 1 extras.
               </p>
               <div className="product-cta">
                 {SHOP.velvetCircleMembership ? (
@@ -234,7 +234,7 @@ export default function BookOffers() {
         <details>
           <summary>Where do I send my questions?</summary>
           <p>
-            Email them to <QuestionsEmail />. Three a month. Jen answers them promptly and in detail every month.
+            Email them to <QuestionsEmail />. Up to three questions a month. Jen answers them promptly and in detail every month.
           </p>
         </details>
         <details>

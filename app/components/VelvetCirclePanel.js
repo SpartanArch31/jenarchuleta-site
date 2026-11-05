@@ -4,9 +4,9 @@ import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from './site-data';
 // Kept in step with the Shop card. Not mounted on a page right now.
 // Both tiers are the existing $9.99/month Payment Link (Jen, November 5).
 export const VELVET_CIRCLE_PERKS = [
-  'Tier 1, groups of 12 or fewer: a sneak peek of the discussion guide, The Velvet Letter with the gold key, the velvet bookmark, three questions a month answered promptly and in detail, cancel anytime',
+  'Tier 1, groups of 12 or fewer: a sneak peek of the discussion guide, The Velvet Letter with the gold key, the velvet bookmark, up to three questions a month. Jen answers them promptly and in detail every month. Cancel anytime',
   'Tier 2, groups of 13 or more: everything in Tier 1, a signed copy of the book, and a live monthly Zoom with Jen',
-  'Live monthly Zoom with Jen only happens when the group has 13 or more members. Under 13, membership is the three questions a month, plus the Tier 1 extras.',
+  'Once 13 paying members have joined, we’ll begin my monthly group Zoom. Until then, you get up to three questions a month, plus the Tier 1 extras.',
   `${SHOP.velvetCircleMembershipPrice}. Cancel anytime.`,
 ];
 

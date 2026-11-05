@@ -11,8 +11,9 @@ const SOCIAL_LINKS = [
   { label: 'X', href: SOCIALS.x },
   { label: 'Facebook', href: SOCIALS.facebook },
   { label: 'LinkedIn', href: SOCIALS.linkedin },
-  // The podcast's YouTube channel (Jen, November 3: the footer's YouTube link).
+  // The podcast's YouTube channel, with Buzzsprout beside it.
   { label: 'YouTube', href: PODCAST.youtube },
+  { label: 'Buzzsprout', href: PODCAST.buzzsproutSite },
 ];
 
 function StayClose() {

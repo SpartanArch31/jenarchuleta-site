@@ -101,11 +101,11 @@ the newer features she likes. Before changing structure, re-read this section.
   - **Velvet Circle = "Monthly Book Club"** (Jen, Nov 5, 2026): two tiers, both $9.99/month on
     the existing Stripe membership link. Do not create a second Stripe product or invent a price.
     Tier 1, groups of 12 or fewer: a sneak peek of the discussion guide (not the full guide),
-    The Velvet Letter with the gold key, the velvet bookmark, three questions a month answered
-    promptly and in detail every month, and cancel anytime. Tier 2, groups of 13 or more:
-    everything in Tier 1, a signed copy of the book, and a live monthly Zoom with Jen. The Zoom
-    only happens when the group has 13 or more members. Under 13, membership is the three
-    questions a month, plus the Tier 1 extras. The full guide is `lib/book-club-guide.js` for
+    The Velvet Letter with the gold key, the velvet bookmark, up to three questions a month.
+    Jen answers them promptly and in detail every month. Cancel anytime. Tier 2, groups of 13 or more:
+    everything in Tier 1, a signed copy of the book, and a live monthly Zoom with Jen.
+    Once 13 paying members have joined, the monthly group Zoom begins. Until then, members get
+    up to three questions a month, plus the Tier 1 extras. The full guide is `lib/book-club-guide.js` for
     emailing to new members. The shop shows only the title, the intro, and questions 1 and 2.
   - **One name:** "The Velvet Circle Book Club" everywhere (cards, FAQ, Shipping & Returns,
     buttons). The Backstage Bundle is not a separate shop product. Don't add the word
@@ -458,8 +458,8 @@ Website records (point to Vercel):
 - `CNAME cka._domainkey`, `cka2._domainkey`, `ckespa` (DKIM/SPF)
 - `TXT _dmarc`
 
-`jen@jenarchuleta.com` **is live and receives mail** (confirmed 2026-07-24) — it's used as
-the contact address on the site's legal pages (`/privacy`, `/terms`, `/shipping-returns`).
+The site uses one email, `therealunfilteredpod@gmail.com`, on the legal pages and for book
+club questions.
 
 ---
 

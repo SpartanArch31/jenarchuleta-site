@@ -136,7 +136,7 @@ export const SHOP = {
   velvetCircleMembershipPrice: '$9.99/month',
   // Members email up to three questions a month here. Jen answers them promptly
   // and in detail every month.
-  velvetCircleQuestionsEmail: 'jen@jenarchuleta.com',
+  velvetCircleQuestionsEmail: 'therealunfilteredpod@gmail.com',
 
   // The Backstage Bundle is not a separate shop product. It never had a Stripe
   // link. Old #backstage-bundle anchors land on the book club card.

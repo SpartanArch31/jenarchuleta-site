@@ -11,7 +11,7 @@ export const metadata = {
 const EFFECTIVE_DATE = 'July 23, 2026';
 // Shipping costs, ship times, and how members send questions spelled out (Nov 3).
 const UPDATED_DATE = 'November 5, 2026';
-const CONTACT_EMAIL = 'jen@jenarchuleta.com';
+const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';
 
 export default function ShippingReturnsPage() {
   return (
@@ -54,11 +54,11 @@ export default function ShippingReturnsPage() {
             The Velvet Circle Book Club is billed at {SHOP.velvetCircleMembershipPrice} until you
             cancel. Tier 1, for groups of 12 or fewer members, includes a sneak peek of the book
             club discussion guide, The Velvet Letter with the gold key, the velvet bookmark, and
-            three questions a month, which Jen answers promptly and in detail every month. Tier 2,
+            up to three questions a month, which Jen answers promptly and in detail every month. Tier 2,
             for groups of 13 or more members, includes everything in Tier 1, a signed copy of the
-            book, and a live monthly Zoom with Jen. The live monthly Zoom only happens when the
-            group has 13 or more members. If the group is under 13, the membership is the three
-            questions a month, plus the Tier 1 extras. Email questions to{' '}
+            book, and a live monthly Zoom with Jen. Once 13 paying members have joined, we&rsquo;ll
+            begin my monthly group Zoom. Until then, you get up to three questions a month, plus the
+            Tier 1 extras. Email questions to{' '}
             <a href={`mailto:${SHOP.velvetCircleQuestionsEmail}`}>{SHOP.velvetCircleQuestionsEmail}</a>.
             You can cancel anytime before your next billing date to avoid being charged for
             the following month; charges already processed for the current billing period are
