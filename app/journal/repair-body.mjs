@@ -287,6 +287,8 @@ function rewriteText(text) {
   next = next.replace(/(?:--\s*|\*+)(?=https?:\/\/(?:www\.)?(?:phpure|udoerasmus|cocoonnutrition)\.)/gi, '');
   for (const url of RETIRED_URLS) next = next.split(url).join('');
   next = next.replace(FOREVER_ANGELS_URL, FOREVER_ANGELS);
+  // Childhelp took down its 2023 WINGS event page (404, Nov 5, 2026).
+  next = next.replace(/https?:\/\/(?:www\.)?childhelp\.org\/events\/wings23\/?/gi, 'https://www.childhelp.org/');
   next = next.replace(/http:\/\//gi, 'https://');
   next = next.replace(BARE_PODCAST, (full, host, offset, str) => {
     const before = str.slice(0, offset);
@@ -307,6 +309,10 @@ function rewriteBlocks(blocks) {
     const markDefs = (block.markDefs || []).map((def) => {
       if (!def || def._type !== 'link') return def;
       if (isRetiredHref(def.href)) return { ...def, href: '' };
+      // Childhelp took down its 2023 WINGS event page (404, Nov 5, 2026).
+      if (/childhelp\.org\/events\/wings23/i.test(def.href || '')) {
+        return { ...def, href: 'https://www.childhelp.org/' };
+      }
       if (/^(?:https?:\/\/)?(?:www\.)?theforeverangels\.com(?:\/|$)/i.test(def.href || '')) {
         return { ...def, href: FOREVER_ANGELS };
       }

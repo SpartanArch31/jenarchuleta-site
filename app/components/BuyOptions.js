@@ -1,4 +1,4 @@
-import { BOOK_BUY_URL, BOOK_FORMATS, READER_REVIEWS, SHOP } from './site-data';
+import { BOOK_BUY_URL, BOOK_FORMATS, BOOK_WORLDWIDE, READER_REVIEWS, SHOP } from './site-data';
 
 // How to buy the book, in one place (homepage and Book page, Nov 2026):
 // "Get the Paperback" stays the main button, then every other store grouped by
@@ -39,6 +39,20 @@ export default function BuyOptions({ signedLink = true }) {
           </div>
         ) : null}
       </dl>
+      {/* Jen, Nov 5: show that the book is sold around the world. */}
+      <details className="buy-world">
+        <summary>Buy in your country</summary>
+        <ul>
+          {BOOK_WORLDWIDE.map((row) => (
+            <li key={row.country}>
+              <span className="buy-world-country">{row.country}</span>
+              {row.links.map(([label, href]) => (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+              ))}
+            </li>
+          ))}
+        </ul>
+      </details>
       {reviews.length ? (
         <div className="reader-reviews">
           <div className="eyebrow">What readers are saying</div>

@@ -57,8 +57,10 @@ export const BOOK_BUY_URL = 'https://books.by/beyond-the-velvet-ropes';
 // choices are easy to follow. "Get the Paperback" (BOOK_BUY_URL) stays the main
 // button; the signed copy row comes from SHOP below. Shown by BuyOptions.js on
 // the homepage and the Book page.
-// Confirmed product pages only. Google Play, Audible, Bookshop, and an Apple
-// Books ebook do not have a confirmed page, so they stay off this list.
+// Every store below was opened and confirmed to be this book (Nov 5, 2026).
+// Left off on purpose: the Google Play ebook (its public description still
+// shows setup instructions; fix that in Play Books Partner Center first) and
+// the older July Nook ebook edition.
 export const BOOK_FORMATS = [
   {
     format: 'Paperback',
@@ -69,18 +71,57 @@ export const BOOK_FORMATS = [
   },
   {
     format: 'Ebook',
-    links: [{ label: 'Kindle', href: 'https://www.amazon.com/dp/B0H6YK1KTL' }],
+    links: [
+      { label: 'Kindle', href: 'https://www.amazon.com/dp/B0H6YK1KTL' },
+      { label: 'Apple Books', href: 'https://books.apple.com/us/book/beyond-the-velvet-ropes/id6827586731' },
+      { label: 'Kobo', href: 'https://www.kobo.com/us/en/ebook/beyond-the-velvet-ropes-1' },
+      { label: 'Bookshop.org', href: 'https://bookshop.org/p/books/beyond-the-velvet-ropes-jennifer-walcott-archuleta/c2771ee0fe66b8c8?ean=9798237615234' },
+      { label: 'Everand', href: 'https://www.everand.com/book/1090960388/Beyond-the-Velvet-Ropes' },
+    ],
   },
   {
     format: 'Audiobook',
     links: [
-      { label: 'Apple Books', href: 'https://books.apple.com/us/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance/id6789345549?uo=4' },
+      { label: 'Audible', href: 'https://www.audible.com/pd/Beyond-the-Velvet-Ropes-My-Story-of-Perseverance-Hope-and-Love-Audiobook/B0HP8SPHGT' },
+      { label: 'Apple Books', href: 'https://books.apple.com/us/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance/id6789345549' },
       { label: 'Spotify', href: 'https://open.spotify.com/show/153EBrZVIkJY1xaY703km4' },
+      { label: 'Google Play', href: 'https://play.google.com/store/audiobooks/details?id=AQAAAEB6kybTTM' },
       { label: 'Kobo', href: 'https://www.kobo.com/us/en/audiobook/beyond-the-velvet-ropes' },
+      { label: 'Libro.fm', href: 'https://libro.fm/audiobooks/9780466913731-beyond-the-velvet-ropes' },
       { label: 'Audiobooks.com', href: 'https://www.audiobooks.com/audiobook/beyond-the-velvet-ropes-my-story-of-perseverance-hope-and-love/1088666' },
       { label: 'Chirp', href: 'https://www.chirpbooks.com/audiobooks/beyond-the-velvet-ropes-by-jennifer-walcott-archuleta' },
+      { label: 'Barnes & Noble', href: 'https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=2940201495183' },
+      { label: 'Everand', href: 'https://www.everand.com/audiobook/1060379158/Beyond-the-Velvet-Ropes-My-Story-of-Perseverance-Hope-and-Love' },
     ],
   },
+  {
+    format: 'Library',
+    links: [
+      { label: 'Hoopla', href: 'https://www.hoopladigital.com/audiobook/beyond-the-velvet-ropes-jennifer-walcott-archuleta/20045190' },
+    ],
+  },
+];
+
+// Buy in your country (each link opened and confirmed Nov 5, 2026).
+const AMZ = (tld) => `https://www.amazon.${tld}/dp/B0H6YZWDT3`;
+const KDL = (tld) => `https://www.amazon.${tld}/dp/B0H6YK1KTL`;
+const AUD = 'Beyond-the-Velvet-Ropes-My-Story-of-Perseverance-Hope-and-Love';
+export const BOOK_WORLDWIDE = [
+  { country: 'United Kingdom', links: [['Paperback', AMZ('co.uk')], ['Kindle', KDL('co.uk')], ['Audible', `https://www.audible.co.uk/pd/${AUD}-Audiobook/B0HP8K4FYJ`]] },
+  { country: 'Canada', links: [['Paperback', AMZ('ca')], ['Kindle', KDL('ca')], ['Audible', `https://www.audible.ca/pd/${AUD}-Audiobook/B0HP8P2T8H`]] },
+  { country: 'Australia', links: [['Paperback', AMZ('com.au')], ['Kindle', KDL('com.au')], ['Audible', `https://www.audible.com.au/pd/${AUD}-Audiobook/B0HP8TTKNK`], ['Booktopia audiobook', 'https://www.booktopia.com.au/beyond-the-velvet-ropes-jennifer-walcott-archuleta/audiobook/9780466913731.html']] },
+  { country: 'Germany', links: [['Paperback', AMZ('de')], ['Kindle', KDL('de')], ['Audible', `https://www.audible.de/pd/${AUD}-Hoerbuch/B0HP8RBKSS`]] },
+  { country: 'France', links: [['Paperback', AMZ('fr')], ['Kindle', KDL('fr')], ['Audible', `https://www.audible.fr/pd/${AUD}-Livre-Audio/B0HP8S4R23`]] },
+  { country: 'Spain', links: [['Paperback', AMZ('es')], ['Kindle', KDL('es')], ['Audible', `https://www.audible.es/pd/${AUD}-Audiolibro/B0HP8Q9YW3`]] },
+  { country: 'Italy', links: [['Paperback', AMZ('it')], ['Kindle', KDL('it')]] },
+  { country: 'Netherlands', links: [['Paperback', AMZ('nl')], ['Kindle', KDL('nl')]] },
+  { country: 'Japan', links: [['Paperback', AMZ('co.jp')], ['Kindle', KDL('co.jp')], ['Audible', 'https://www.audible.co.jp/pd/B0HP8Y4RDB']] },
+  { country: 'India', links: [['Kindle', KDL('in')], ['Audible', `https://www.audible.in/pd/${AUD}-Audiobook/B0HP8ZWV1Z`]] },
+  { country: 'Mexico', links: [['Paperback', AMZ('com.mx')], ['Kindle', KDL('com.mx')]] },
+  { country: 'Brazil', links: [['Paperback', AMZ('com.br')], ['Kindle', KDL('com.br')]] },
+  { country: 'Singapore', links: [['Paperback', AMZ('sg')], ['Storytel audiobook', 'https://www.storytel.com/sg/books/beyond-the-velvet-ropes-my-story-of-perseverance-hope-and-love-14763861']] },
+  { country: 'Sweden', links: [['Paperback', AMZ('se')], ['Nextory audiobook', 'https://nextory.com/se/book/beyond-the-velvet-ropes-my-story-of-perseverance-hope-and-love-6924607']] },
+  { country: 'Poland', links: [['Paperback', AMZ('pl')]] },
 ];
 
 // Reader reviews shown next to the buy buttons (homepage and Book page).

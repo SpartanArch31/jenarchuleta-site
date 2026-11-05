@@ -51,7 +51,7 @@ export default function BookPage() {
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
             <div id="buy">
               <BuyOptions signedLink={false} />
-              <p className="book-worldwide">Available around the world in paperback, ebook and audiobook.</p>
+              <p className="book-worldwide">Available around the world in paperback, ebook and audiobook: on Amazon in 15 countries, on Audible in 9, and in every major ebook and audiobook store.</p>
             </div>
           </div>
         </div>

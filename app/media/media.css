@@ -368,3 +368,10 @@
     margin-inline: auto;
   }
 }
+
+/* Speaking (Nov 5): five talks instead of 26 numbered topics. */
+.speak-talks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; margin-top: 22px; }
+.speak-talk { padding: 18px 20px; background: var(--surface); border: var(--hairline); border-radius: var(--radius-lg); }
+.speak-talk h4 { margin: 0 0 8px; }
+.speak-talk p { margin: 0; }
+@media (max-width: 760px) { .speak-talks { grid-template-columns: 1fr; } }

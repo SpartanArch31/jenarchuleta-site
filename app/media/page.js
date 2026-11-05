@@ -50,33 +50,31 @@ const HEADSHOTS = [
   },
 ];
 
-const SPEAKING_TOPICS = [
-  '1) Small-town roots and big dreams',
-  '2) Work ethic and grit',
-  '3) Finding your voice after childhood fear',
-  '4) Healing from assault, trauma, and grief',
-  '5) Bullying, gossip, and self-worth',
-  '6) Drugs and the wake-up call',
-  '7) Body image and feeling ugly',
-  '8) Surviving domestic violence',
-  '9) Rebuilding alone after abuse',
-  '10) Faith, prayer, and second chances',
-  '11) Playboy and the power of sisterhood',
-  '12) Choosing real love and marriage',
-  '13) Pregnancy loss, natural childbirth, and motherhood',
-  '14) Moving from fame to purpose and peace',
-  '15) Giving back through advocacy and adoption',
-  '16) The hidden cost of fame',
-  '17) Finding light, grace, and gratitude',
-  '18) From humble beginnings to financially stable',
-  '19) Barely finishing school, still writing a book',
-  '20) Advocating for kids with CASA and Childhelp',
-  '21) Founding The Forever Angels',
-  '22) Helping animals and rescues',
-  '23) Hospice work with my TDI therapy dog',
-  '24) Being the best mom you can: traditions, morals, values, and putting God in your kids’ hearts',
-  '25) Marriage, discipline, and losing weight',
-  '26) Forgiveness and letting go of the burdens you carry',
+// Speaking (Jen, Nov 5): her 26 topics, gathered into five talks so the section
+// flows for an event planner. Every one of the 26 is still covered.
+const SPEAKING_INTRO = "I’m a wife, a mom of three, and a woman of faith, with a house full of rescues. Giving back is a big part of my life. I co-founded The Forever Angels, I volunteer with Childhelp and in hospice with my TDI therapy dog, and I’ve been a CASA volunteer. Getting here took a lot. I came from humble beginnings, barely finished school, and thought I was ugly. I became a Playboy Playmate, came through some very hard years, and wrote a book about all of it. When I speak, I tell the hard parts honestly, and then I tell you about the good life that came after, so you know you can rise too. I’d be honored to share it with your group.";
+
+const SPEAKING_TALKS = [
+  {
+    title: "Real Love, Real Family",
+    text: "Choosing real love changed everything for me. This talk is about marriage, discipline, and losing weight. It’s about pregnancy loss, natural childbirth, and becoming a mom. And it’s about trying to be the best mom I can: traditions, morals, values, and putting God in my kids’ hearts.",
+  },
+  {
+    title: "Roots Through Concrete",
+    text: "I grew up in a small town with big dreams. I got bullied, people gossiped, and I thought I was ugly. I barely finished school. Hard work and plain grit carried me from humble beginnings to a financially stable life and a book with my name on it. This one is about knowing your worth, wherever you start.",
+  },
+  {
+    title: "What Fame Couldn’t Give Me",
+    text: "Playboy gave me a sisterhood I still treasure. It also showed me what fame really costs. This talk is about trading the spotlight for purpose and peace, and finding light, grace, and gratitude in ordinary days.",
+  },
+  {
+    title: "You Can Rewrite Your Life",
+    text: "This is the hardest part of my story, and I tell it gently. I was a scared kid who had to find her voice. I talk about assault and grief, about drugs and my wake-up call, and about surviving domestic violence and rebuilding on my own. Prayer and second chances got me through. Forgiveness let me finally set those burdens down.",
+  },
+  {
+    title: "Giving Back Is the Good Part",
+    text: "Some of my favorite days are spent helping someone else. I talk about advocating for kids with CASA and Childhelp, about advocacy and adoption, and about co-founding The Forever Angels. I talk about helping animals and rescues, and about hospice work with my TDI therapy dog. This is where my story lands, and it’s the best part.",
+  },
 ];
 
 function publicFileExists(rel) {
@@ -195,15 +193,16 @@ export default function MediaPage() {
 
         <div id="speaking" className="media-block">
           <h3>Speaking</h3>
-          <p>
-            I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, a hospice volunteer with my TDI therapy dog, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
-          </p>
+          <p>{SPEAKING_INTRO}</p>
           <p><a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a></p>
-          <ol className="speak-topics">
-            {SPEAKING_TOPICS.map((topic) => (
-              <li key={topic}>{topic}</li>
+          <div className="speak-talks">
+            {SPEAKING_TALKS.map((talk) => (
+              <div key={talk.title} className="speak-talk">
+                <h4>{talk.title}</h4>
+                <p>{talk.text}</p>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </section>
 

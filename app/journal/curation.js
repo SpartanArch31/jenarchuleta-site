@@ -70,6 +70,8 @@ export const ARCHIVED_SLUGS = new Set([
   'keep-in-touch',
   'forever-angels-charity-event-raffle-items',
   'the-forever-angels',
+  // Exact repost (Sep 2022) of '9 years old' (Sep 2021), same text word for word.
+  'this-is-an-incredible-story-this-little-man-is-so',
 ]);
 
 // Category fixes by slug, if any post needs one. (None right now: the only
