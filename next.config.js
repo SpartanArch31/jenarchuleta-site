@@ -29,9 +29,8 @@ const pageRedirects = [
   { source: '/signup', destination: '/#letter', permanent: false },
   { source: '/sign-up', destination: '/#letter', permanent: false },
   { source: '/mailing-list', destination: '/#letter', permanent: false },
-  // The Forever Angels has one home: its section on the About page.
-  { source: '/the-forever-angels', destination: '/about#forever-angels', permanent: true },
-  { source: '/forever-angels', destination: '/about#forever-angels', permanent: true },
+  // The Forever Angels page is /forever-angels. The older spelled-out path lands there.
+  { source: '/the-forever-angels', destination: '/forever-angels', permanent: true },
   { source: '/newsletter', destination: '/#letter', permanent: true },
   // /contact and /media are real pages. /press stays a permanent alias.
   { source: '/press', destination: '/media', permanent: true },

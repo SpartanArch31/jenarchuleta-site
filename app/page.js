@@ -89,7 +89,7 @@ export default async function Home() {
           <div className="eyebrow">Heart</div>
           <h3>The Advocate</h3>
           <p>Beyond the Ropes and The Forever Angels, choosing the overlooked, one act at a time.</p>
-          <p><a href="/about#forever-angels" className="btn btn-ghost btn-sm">The movement</a></p>
+          <p><a href="/forever-angels" className="btn btn-ghost btn-sm">The movement</a></p>
         </div>
       </section>
 

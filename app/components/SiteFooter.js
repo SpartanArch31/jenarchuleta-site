@@ -64,7 +64,7 @@ export default function SiteFooter({ stayClose = true, homeHref = '/' }) {
             <a href={`${home}/sponsors`}>Sponsors</a>
             <a href={`${home}/contact`}>Contact</a>
             <a href={stayClose ? '#letter' : `${home}/#letter`}>Free First Chapter</a>
-            <a href={`${home}/about#forever-angels`}>The Forever Angels</a>
+            <a href={`${home}/forever-angels`}>The Forever Angels</a>
           </nav>
           <p className="foot-meta">
             © 2026 Jen Archuleta. Author of <em>Beyond the Velvet Ropes</em>.<br />

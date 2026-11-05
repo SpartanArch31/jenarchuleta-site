@@ -29,7 +29,7 @@ const MENU = [
     items: [
       { href: '/about', label: 'About me' },
       { href: '/about#gallery', label: 'Photos' },
-      { href: '/about#forever-angels', label: 'Giving back' },
+      { href: '/forever-angels', label: 'Giving back' },
     ],
   },
   {

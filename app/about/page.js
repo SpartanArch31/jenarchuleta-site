@@ -3,7 +3,7 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import { KIT_FREE_CHAPTER_URL, SOCIALS } from '../components/site-data';
+import { KIT_FREE_CHAPTER_URL } from '../components/site-data';
 
 export const metadata = {
   title: 'About Me',
@@ -113,8 +113,7 @@ export default function AboutPage() {
       </section>
       <PhotoGallery showTitle={false} />
 
-      {/* GIVING BACK. The one home on the site for The Forever Angels (the footer,
-          the homepage, and /forever-angels all land here). */}
+      {/* Giving back stays on About Me. The charity page is /forever-angels. */}
       <section id="forever-angels" className="tim-faith dark">
         <span id="faith" className="anchor" aria-hidden="true" />
         <div className="tim-faith-inner">
@@ -122,7 +121,7 @@ export default function AboutPage() {
             Giving back matters to me. If I have time, a story, or a hand to lend, I’d rather use
             it for someone else.
           </p>
-          <a href={SOCIALS.foreverAngels} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit The Forever Angels</a>
+          <a href="/forever-angels" className="btn btn-primary">The Forever Angels</a>
         </div>
       </section>
 
