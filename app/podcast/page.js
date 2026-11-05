@@ -98,6 +98,15 @@ export default function PodcastPage() {
         </div>
       </section>
 
+      <section id="reviews" className="wrap center" style={{ paddingTop: 0 }}>
+        <h2>Love the show?</h2>
+        <p className="lead" style={{ maxWidth: '42ch', marginInline: 'auto' }}>A short review helps the next listener find it.</p>
+        <div className="hero-ctas" style={{ justifyContent: 'center' }}>
+          <a className="btn btn-ghost" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Review on Apple Podcasts</a>
+          <a className="btn btn-ghost" href={PODCAST.subscribe.spotify} target="_blank" rel="noopener noreferrer">Review on Spotify</a>
+        </div>
+      </section>
+
       <SiteFooter />
     </>
   );
