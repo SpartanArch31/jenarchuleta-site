@@ -57,6 +57,29 @@ No other TikTok logo turned up on the restored slides (edges and bottoms of the 
 
 Vague or wrong lines such as "Jen Walcott Archuleta", "on a red carpet" (that file is the stage seen from the crowd), "Childhelp", "With Adam", "With friends", and "Photo from Jen's personal collection" now say what is in the picture. Specific lines that were already clear (Tommy Lee, the magazine credits, the Playboy Mansion, Celebrity Fight Night, the Childhelp luncheon) were left as they were. No children's names, no school, no home city or state, no em dashes.
 
+## Loose About Me photos, into the carousel
+
+Three photos that were sitting on their own now show once, in the About Me carousel, whole, with no crop. The black coat (`jen-bw-coat2.jpg`) stays once, directly above "My 20s were amazing. I saw and did things most people dream about." It is not a slide.
+
+| Photo | File | Where it went |
+|---|---|---|
+| Dark green sequin dress on the beach | `velvet-carousel/10.jpg` | Back into the carousel, with the other velvet slides. It is not under the 20s line. |
+| Braids, sunglasses, kissing a puppy | `jen-fun2.jpeg` | Last slides in the carousel. Removed from the page row. |
+| White sports top, studio | `jen-fitness.jpg` | Last slides in the carousel. Removed from the page row. |
+
+## Brown portrait, fewer flower photos
+
+`brown-dress-portrait.jpg` is in the About Me carousel, whole, with the alt text "Jen Archuleta portrait". Nothing was cropped or retouched.
+
+The floral portrait on About Me (`presskit-headshot-floral.jpg`) stays. These left the carousel so the page is not flower-heavy. The files stay in the repo.
+
+| File | Why it left the carousel |
+|---|---|
+| `gallery-nov3/07-dressing-room.jpg` | A full floral gown |
+| `gallery-new/new_09.jpg` | A large floral dress |
+| `gallery-new/new_22.jpg` | A group in floral dresses |
+| `gallery-nov4/nov4-04-dogs-and-tortoises.jpg` | The same flower wall as the rescues photo already on the page |
+
 ## Soft blur on the children's faces
 
 Eight photos. Where a child's face had a hard square or a tight block, that block is now a soft oval: a Gaussian blur that feathers into the surrounding skin. The blur still hides who the child is. Adults are unchanged. Dogs, clothes, and the rest of each photo are unchanged. Git has no unblurred original of these files, so the oval replaces the block that was already in the file. Nothing was generated or painted.

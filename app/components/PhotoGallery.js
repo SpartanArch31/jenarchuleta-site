@@ -64,10 +64,11 @@ import sizes from '../velvet/slide-sizes.json';
 //   add a photo of the children unless Jen supplied that exact file.
 //
 // Out of this slideshow:
-// presskit-headshot-glam (the old home hero). jen-fitness and jen-fun2 stay
-// on the About photo row, above this slideshow. jen-fun (group of adults,
+// presskit-headshot-glam (the old home hero). jen-fun (group of adults,
 // not a dog photo). jen-bw-coat and velvet 07 (the coat is the photo above
-// the 20s line, as jen-bw-coat2). That coat is not a slide.
+// the 20s line, as jen-bw-coat2). That coat is not a slide. The puppy photo
+// (jen-fun2) and the white sports top (jen-fitness) are slides, not a row
+// on the page.
 // 08 and 44 are already out of captions.json. 09 is left out. 24, 25, 26,
 // and 35 (the children) were deleted on November 3. 27 and 45 are dog
 // photos on /pups. 43 is the same Urban Axes outing
@@ -347,19 +348,31 @@ const HIDDEN_SLIDE_SRC = new Set([
   '/assets/gallery-picks/160.jpg',
 ]);
 
+// Photos that were sitting alone on About Me. Whole files, at the end so the
+// earlier slides keep their order. The black coat stays on the page, not here.
+const FROM_ABOUT = [
+  { src: '/assets/jen-fun2.jpeg', alt: 'Jen Archuleta with a rescue puppy', caption: '', width: 510, height: 512 },
+  { src: '/assets/jen-fitness.jpg', alt: 'Jen Archuleta, fit at 50', caption: '', width: 1077, height: 887 },
+  { src: '/assets/brown-dress-portrait.jpg', alt: 'Jen Archuleta portrait', caption: '', width: 941, height: 883 },
+];
+
 // Every photo defined above, in the November 3 order, minus slides Jen had
 // already taken out (HIDDEN_SLIDE_SRC) and the November 5 removals.
-const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B]
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B, ...FROM_ABOUT]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).
 // #1 Playboy stage, and the bodyboard photo whose watermark cannot be cropped off.
-// The beach dress (velvet-carousel/10.jpg) is not a stand-in on About Me.
+// The beach dress (velvet-carousel/10.jpg) is a slide again, not a photo on the page.
 // #42, the blurred kids-and-dogs bed photo, is not in NOV3. Its file is deleted.
 const OUT_OF_GALLERY = new Set([
   '/assets/gallery-hw/hw_01.jpg',
   '/assets/gallery-new/new_14.jpg',
-  '/velvet-carousel/10.jpg',
+  // Floral repeats. The About hero (presskit-headshot-floral) is the one flower photo.
+  '/assets/gallery-nov3/07-dressing-room.jpg',
+  '/assets/gallery-new/new_09.jpg',
+  '/assets/gallery-new/new_22.jpg',
+  '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg',
 ]);
 
 // Jen's captions (Nov 4), matched by file. Empty means no caption line.

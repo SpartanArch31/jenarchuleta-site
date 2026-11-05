@@ -92,12 +92,6 @@ export default function AboutPage() {
         <div className="tim-slot tim-slot--waiting" role="img" aria-label="Photo coming">Photo coming</div>
       </section>
 
-      <section className="tim-wrap tim-fun">
-        <div className="photo-row photo-row--two">
-          <img src="/assets/jen-fun2.jpeg" alt="Jen Archuleta with a rescue puppy" width="510" height="512" loading="lazy" />
-          <img src="/assets/jen-fitness.jpg" alt="Jen Archuleta, fit at 50" width="1077" height="887" loading="lazy" />
-        </div>
-      </section>
       <PhotoGallery />
 
       <section className="tim-wrap tim-close">
