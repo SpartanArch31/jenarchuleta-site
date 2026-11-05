@@ -231,7 +231,7 @@ const GALLERY_NEW = [
   { src: '/assets/gallery-new/new_34.jpg', alt: 'Jen Archuleta with her husband', width: 1179, height: 1097 },
   { src: '/assets/gallery-new/new_35.jpg', alt: 'Jen Archuleta on the beach', width: 1320, height: 1281 },
   { src: '/assets/gallery-new/new_36.jpg', alt: 'A magazine page about Jen Archuleta', width: 1320, height: 1607 },
-  { src: '/assets/gallery-new/new_38.jpg', alt: 'A magazine photo of Jen Archuleta with another Playmate', width: 1500, height: 2000 },
+  { src: '/assets/gallery-new/new_38.jpg', alt: 'A magazine photo of Jen Archuleta with another Playmate', width: 1240, height: 1704 },
 ];
 
 // Added after the existing slides, in numeric order. 113 and 116 are
@@ -294,7 +294,7 @@ const NOV4 = [
   { src: '/assets/gallery-nov4/nov4-12-bunny-costume.jpg', alt: 'Jen Archuleta in a bunny costume with her husband at a Playboy party', caption: '', width: 1259, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-13-family-ocean.jpg', alt: 'Jen Archuleta and her family in the ocean', caption: '', width: 1063, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-14-hawaii-beach.jpg', alt: 'Jen Archuleta with a friend on a Hawaii beach', caption: '', width: 1275, height: 1600 },
-  { src: '/assets/gallery-nov4/nov4-15-red-leather-seat.jpg', alt: 'Jen Archuleta in a red leather seat', caption: '', width: 1600, height: 1600 },
+  { src: '/assets/gallery-nov4/nov4-15-red-leather-seat.jpg', alt: 'Jen Archuleta in a red leather seat', caption: '', width: 1360, height: 1450 },
   { src: '/assets/gallery-nov4/nov4-16-ballet-chair.jpg', alt: 'Jen Archuleta on a chair in ballet shoes', caption: '', width: 910, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-17-pink-aprons.jpg', alt: 'Jen Archuleta and a friend in pink aprons', caption: '', width: 1320, height: 1287 },
   { src: '/assets/gallery-nov4/nov4-18-playboy-lite-red-carpet.jpg', alt: 'Jen Archuleta with Hugh Hefner and a group on the Playboy red carpet', caption: '', width: 612, height: 396 },
@@ -312,7 +312,7 @@ const NOV4B = [
   { src: '/assets/gallery-nov4b/nov4b-02-timberlake-nelly-robes.jpg', alt: 'Jen Archuleta in a robe', caption: '', width: 793, height: 655 },
   { src: '/assets/gallery-nov4b/nov4b-03-siren-song-magazine.jpg', alt: 'Jen Archuleta on a magazine page', caption: '', width: 917, height: 1243 },
   { src: '/assets/gallery-nov4b/nov4b-04-two-women-laughing.jpg', alt: 'Jen Archuleta laughing with a friend', caption: '', width: 1242, height: 1550 },
-  { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 1243 },
+  { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 930 },
   { src: '/assets/gallery-nov4b/nov4b-06-couch-fishburne.jpg', alt: 'Jen Archuleta seated on a couch', caption: '', width: 1242, height: 1188 },
   { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1440 },
   { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 861, height: 940 },
@@ -379,6 +379,19 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-new/new_09.jpg',
   '/assets/gallery-new/new_22.jpg',
   '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg',
+  // Jen, Nov 5: out (preview slides 103, 104, 121). 39, 94 and 95 are too small
+  // to show bigger and no larger original exists ("take it out or make it bigger").
+  '/assets/gallery/pool-sombreros.jpg',
+  '/assets/gallery-nov4/nov4-10-white-bikini-studio.jpg',
+  '/assets/gallery-nov4/nov4-11-beach-bikini.jpg',
+  // 119: Jen asked to keep only her name, but her age, vitals and "Arizona" sit
+  // under it and no crop removes them without cutting her face. Out until she
+  // sends a version without that text (the family's home state is never shown).
+  '/assets/gallery-nov4b/nov4b-15-featured-girl-magazine.jpg',
+  // Jen, Nov 5: out (preview slides 103, 104, 121).
+  '/assets/gallery-nov4/nov4-19-magazine-spread-1.jpg',
+  '/assets/gallery-nov4/nov4-20-magazine-spread-2.jpg',
+  '/assets/gallery-nov4b/nov4b-18-thanksgiving-eve-tommy-lee.jpg',
   // ImageCollect watermark is tiled across the painting. It cannot be cropped off without cutting her.
   '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
 ]);
@@ -386,6 +399,9 @@ const OUT_OF_GALLERY = new Set([
 // Jen's captions (Nov 4; slides 1, 7, 8, and 9 reworded by her Nov 5), matched by file. Empty means no caption line.
 // Photos after the first 88, and any she marked blank or not yet confirmed, stay blank.
 const GALLERY_CAPTIONS = {
+  // Jen, Nov 5 (preview slide numbers 16 to 106): her captions below, spelled
+  // the way the names are spelled elsewhere (Childhelp, Rappelling, Mayakoba,
+  // Singapore Airlines). 55 is "Jet setting": Jett is one of the kids' names.
   '/assets/gallery-hw/hw_02.jpg': 'SXSW Austin, on stage',
   '/assets/gallery-hw/hw_03.jpg': 'With Tommy Lee',
   '/assets/gallery-hw/hw_04.jpg': 'With Howard Stern',
@@ -402,7 +418,7 @@ const GALLERY_CAPTIONS = {
   '/velvet-carousel/06.jpg': 'A2Z Magazine cover',
   '/velvet-carousel/10.jpg': 'Modeling photo',
   '/velvet-carousel/11.jpg': 'Sponsored by PlayStation with Playmate friends / Playing video games all day',
-  '/velvet-carousel/12.jpg': 'Dolly slot machine ad',
+  '/velvet-carousel/12.jpg': 'Bally slot machine',
   '/velvet-carousel/13.jpg': 'HEF',
   '/velvet-carousel/14.jpg': 'With Hef at the Suns game',
   '/velvet-carousel/16.jpg': 'The night I met Hef and my life changed',
@@ -423,7 +439,24 @@ const GALLERY_CAPTIONS = {
   '/assets/gallery-oct26/snow.jpg': 'Aspen',
   '/assets/gallery-oct26/jet-cabin.jpg': 'Jet setting',
   '/assets/gallery-oct26/jet-stairs.jpg': 'Jet setting',
-};
+
+  '/assets/gallery-nov3/05-fashion-show.jpg': 'Childhelp fashion show',
+  '/assets/gallery-nov3/10-houseboat-couple.jpg': 'Lake Powell houseboat',
+  '/assets/gallery-nov3/11-rappelling.jpg': 'Rappelling waterfalls',
+  '/assets/gallery-nov3/12-boat.jpg': 'Mayakoba, Mexico',
+  '/assets/gallery-nov3/13-canoe.jpg': 'Ozarks',
+  '/assets/gallery-nov3/14-grand-canyon.jpg': 'Rim to Rim in 14 hours, Grand Canyon',
+  '/assets/gallery-nov3/15-lake-jump.jpg': 'Houseboat',
+  '/assets/gallery-nov3/18-mansion-lawn.jpg': 'Playboy Mansion',
+  '/assets/gallery-nov3/19-private-jet.jpg': 'Jet setting',
+  '/assets/gallery-nov3/20-spartan-race.jpg': 'I am Spartan',
+  '/assets/gallery-nov3/21-rv-family.jpg': 'Your home is where you park it',
+  '/assets/gallery-new/new_19.jpg': 'The OG’s',
+  '/assets/gallery-picks/spartan-course.jpg': 'I am Spartan',
+  '/assets/gallery-nov4/nov4-15-red-leather-seat.jpg': 'Singapore Airlines',
+  '/assets/gallery-nov4/nov4-17-pink-aprons.jpg': 'Easter bakers',
+  '/assets/gallery-nov4/nov4-18-playboy-lite-red-carpet.jpg': 'Super Bowl with Hef',
+  '/assets/gallery-nov4b/nov4b-02-timberlake-nelly-robes.jpg': 'Justin Timberlake and Nelly music video',};
 
 const SLIDES = ALL_SLIDES
   .filter((slide) => !OUT_OF_GALLERY.has(slide.src))
