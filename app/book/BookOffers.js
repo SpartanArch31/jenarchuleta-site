@@ -137,36 +137,13 @@ export default function BookOffers() {
               <h3>Signed book, bookmark, and bunny ears</h3>
               <p className="price">{SHOP.bundlePrice}</p>
               <p className="product-desc">
-                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears, packaged together in a padded gift case. Shipped by regular mail.
+                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears. Shipped by regular mail.
               </p>
               <div className="product-cta">
                 <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
                   Buy the bundle
                 </a>
                 <TrustLine />
-              </div>
-            </div>
-          </article>
-
-          <article className="product-card" id="podcast-apparel">
-            <div className="product-media product-media--contain">
-              <img
-                src="/assets/og-podcast-1200x630.jpg"
-                alt="Unfiltered with Jen Archuleta"
-                width="1200"
-                height="630"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">The Podcast</div>
-              <h3>Podcast Apparel</h3>
-              <p className="product-desc">
-                Apparel for Unfiltered with Jen Archuleta, on Etsy.
-              </p>
-              <div className="product-cta">
-                <a href={SHOP.etsyShop} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Shop apparel
-                </a>
               </div>
             </div>
           </article>
@@ -213,6 +190,29 @@ export default function BookOffers() {
                 ) : (
                   <span className="btn btn-disabled">Coming soon</span>
                 )}
+              </div>
+            </div>
+          </article>
+
+          <article className="product-card" id="podcast-apparel">
+            <div className="product-media product-media--contain">
+              <img
+                src="/assets/og-podcast-1200x630.jpg"
+                alt="Unfiltered with Jen Archuleta"
+                width="1200"
+                height="630"
+              />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">The Podcast</div>
+              <h3>Podcast Apparel</h3>
+              <p className="product-desc">
+                Apparel for Unfiltered with Jen Archuleta, on Etsy.
+              </p>
+              <div className="product-cta">
+                <a href={SHOP.etsyShop} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Shop apparel
+                </a>
               </div>
             </div>
           </article>

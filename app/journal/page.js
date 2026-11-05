@@ -8,10 +8,11 @@ import { POSTS as FALLBACK_POSTS } from './_posts';
 import { CATEGORY_ORDER, FEATURED_SLUGS, categoryLabel, curatePosts } from './curation';
 import { heroAlt } from './hero-alt';
 
-// Categories show in Jen's order (curation.js). The page opens on album
-// tiles. A tile opens that category's posts. Promotional posts stay under
-// the Archive tile, still live at their own URLs. Pup of the Podcast posts
-// live on /pups. Nothing is deleted, and no post body is edited here.
+// Categories show in Jen's order (curation.js). Behind the Book is the first
+// album, and those posts lead the feed. The other posts follow. A tile opens
+// that category's posts. Promotional posts stay under the Archive tile, still
+// live at their own URLs. Pup of the Podcast posts live on /pups. Nothing is
+// deleted, and no post body is edited here.
 
 export const metadata = {
   title: 'Journal',
@@ -71,7 +72,12 @@ export default async function JournalPage({ searchParams }) {
   const posts = all.filter((p) => !p.archived);
   const archived = all.filter((p) => p.archived);
   const featuredRank = new Map(FEATURED_SLUGS.map((slug, index) => [slug, index]));
+  // Behind the Book first. Inside that group, the lead posts stay in their
+  // order, then the newer posts. Every other post follows.
   const orderedPosts = [...posts].sort((a, b) => {
+    const aBehind = a.category === 'Behind the Book' ? 0 : 1;
+    const bBehind = b.category === 'Behind the Book' ? 0 : 1;
+    if (aBehind !== bBehind) return aBehind - bBehind;
     const ar = featuredRank.has(a.slug) ? featuredRank.get(a.slug) : 1000;
     const br = featuredRank.has(b.slug) ? featuredRank.get(b.slug) : 1000;
     if (ar !== br) return ar - br;
@@ -81,13 +87,9 @@ export default async function JournalPage({ searchParams }) {
   const showArchive = searchParams?.view === 'archive';
   const active = showArchive ? 'Archive' : searchParams?.category || 'All';
   const opened = showArchive || active !== 'All';
-  const featuredPosts = FEATURED_SLUGS
-    .map((slug) => orderedPosts.find((p) => p.slug === slug))
-    .filter(Boolean);
-  const restPosts = orderedPosts.filter((p) => !featuredRank.has(p.slug));
   const visible = showArchive
     ? archived
-    : active === 'All' ? restPosts : posts.filter((p) => p.category === active);
+    : active === 'All' ? orderedPosts : orderedPosts.filter((p) => p.category === active);
 
   const counts = posts.reduce((m, p) => {
     if (p.category) m[p.category] = (m[p.category] || 0) + 1;
@@ -119,7 +121,6 @@ export default async function JournalPage({ searchParams }) {
     imgAlt: heroAlt(p.heroImage, p.slug),
     };
   }
-  const featuredCards = featuredPosts.map(toCard);
   const cards = visible.map(toCard);
   const showAllParams = new URLSearchParams();
   if (showArchive) showAllParams.set('view', 'archive');
@@ -139,21 +140,6 @@ export default async function JournalPage({ searchParams }) {
         <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
           Short, honest writing on faith, family, healing, and starting over.
         </p>
-
-        {!opened && featuredCards.length > 0 ? (
-          <div className="feed journal-featured">
-            {featuredCards.map((p) => (
-              <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
-                {p.img ? <img src={p.img} alt={p.imgAlt || ''} /> : null}
-                <div className="body">
-                  <div className="k">{p.kicker}</div>
-                  <h3>{p.title}</h3>
-                  <p>{p.excerpt}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        ) : null}
 
         {opened ? (
           <p className="journal-back">

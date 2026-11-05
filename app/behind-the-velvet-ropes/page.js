@@ -28,6 +28,8 @@ export default function VelvetRopesPage() {
           <p style={{ marginTop: '10px' }}>
             <a className="btn btn-ghost" href="/book#buy">Buy the book</a>
           </p>
+          {/* Jen, Nov 5: one line for audiobook buyers. Never put the companion's password on the site. */}
+          <p className="foot-meta" style={{ marginTop: '22px' }}>Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
         </div>
         <div className="hero-media">
           <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" />

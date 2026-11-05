@@ -72,6 +72,13 @@ export const SPONSORS = [
     ],
   },
   {
+    // Jen, Nov 5: Totali EZ Balloons, the Ep. 8 sponsor (lib/episode-credits.js).
+    name: 'Totali EZ Balloons',
+    links: [
+      { label: 'totaliezballoons.com', href: 'https://totaliezballoons.com/' },
+    ],
+  },
+  {
     name: "Lil' DUDE Wipes",
     links: [
       { label: 'dudewipes.com', href: 'https://dudewipes.com/' },
