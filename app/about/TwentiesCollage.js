@@ -6,7 +6,6 @@ const PHOTOS = [
   { src: '/assets/twenties/07-ferrari.jpg', width: 1320, height: 907, alt: 'Jen Archuleta with a red Ferrari', wide: true },
   { src: '/assets/twenties/02-mansion-group.jpg', width: 1277, height: 728, alt: 'A group in front of the mansion', wide: true },
   { src: '/assets/twenties/04-hef-party.jpg', width: 1320, height: 1264, alt: 'A party with Hugh Hefner' },
-  { src: '/assets/twenties/08-race-car.jpg', width: 1084, height: 858, alt: 'A Playboy race car', wide: true },
   { src: '/assets/twenties/06-mansion-crowd.jpg', width: 909, height: 605, alt: 'A crowd in front of the mansion', wide: true },
   { src: '/assets/twenties/03-sombreros.jpg', width: 1320, height: 1737, alt: 'Jen Archuleta on the beach in a sombrero' },
   { src: '/assets/twenties/10-fox-pool.jpg', width: 1320, height: 1334, alt: 'Jen Archuleta at a pool during a FOX interview' },

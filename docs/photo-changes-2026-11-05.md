@@ -67,6 +67,10 @@ Three photos that were sitting on their own now show once, in the About Me carou
 | Braids, sunglasses, kissing a puppy | `jen-fun2.jpeg` | Last slides in the carousel. Removed from the page row. |
 | White sports top, studio | `jen-fitness.jpg` | Last slides in the carousel. Removed from the page row. |
 
+## Photo audit, November 5
+
+The empty black above Tommy Lee was cropped off `hw_03.jpg`. The side bars were cropped off the bunny-ears party photo. The "Photo by Alex Ardenti" credit was cropped off the white bikini studio photo. Heads stayed in frame. The hard square on the child by the Christmas tree is now a soft oval. The ImageCollect painting and the race-car photo with a PLAYBOY banner across the middle were taken off the site. Those marks sit in the middle of the pictures, so they could not be cropped off.
+
 ## Childhelp WINGS photo
 
 The phone black bars and the home-indicator line were cropped off `childhelp-stage-full.png`. Heads and feet stay. Saved as `childhelp-wings.jpg`, 1200 pixels wide. It is the fourth photo under "Want to get involved with me?" No video was added.
