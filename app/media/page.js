@@ -3,22 +3,19 @@ import path from 'path';
 import Image from 'next/image';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
-import KitInlineForm from '../components/KitInlineForm';
 import CopyTextButton from '../components/CopyTextButton';
 import MediaCats from './MediaCats';
-import { BOOKING_EMAIL, CONNECT_LINKS, KIT_FORM_UID } from '../components/site-data';
 import { APPEARANCES, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
   title: { absolute: 'Press, Jen Archuleta' },
   description:
-    'Press, television, film, speaking, social links, the newsletter, and how to reach Jen Archuleta.',
+    'Press, television, film, and speaking.',
 };
 
 // FilmFreeway sits with Leone and Mark. Never publish a representative's
-// phone number or email. The newsletter form is the only signup on the site.
-// /contact redirects here (#contact).
+// phone number or email. Signup and contact live on Thank You.
 
 const PRESS_BIO = 'Jen Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
 
@@ -201,38 +198,13 @@ export default function MediaPage() {
           <p>
             I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, a hospice volunteer with my TDI therapy dog, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
           </p>
-          <p><a className="btn btn-primary" href="#contact">Invite me to speak</a></p>
+          <p><a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a></p>
           <ol className="speak-topics">
             {SPEAKING_TOPICS.map((topic) => (
               <li key={topic}>{topic}</li>
             ))}
           </ol>
         </div>
-      </section>
-
-      <section id="social" className="wrap">
-        <span id="letter" className="anchor" aria-hidden="true" />
-        <h2>Social media and sign up</h2>
-        <ul className="media-socials">
-          {CONNECT_LINKS.map((item) => (
-            <li key={item.label}>
-              <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
-            </li>
-          ))}
-        </ul>
-        <div className="media-signup">
-          <h3>Read the first chapter free.</h3>
-          <KitInlineForm uid={KIT_FORM_UID} />
-        </div>
-      </section>
-
-      <section id="contact" className="wrap text-wrap">
-        <h2>Contact me</h2>
-        <p>
-          For press, interviews, speaking, and events, email{' '}
-          <a href={`mailto:${BOOKING_EMAIL}`}>{BOOKING_EMAIL}</a>.
-        </p>
-        <p>Please include your name, your outlet or event, the date, and a little about what you have in mind.</p>
       </section>
 
       <section id="forever-angels" className="wrap">

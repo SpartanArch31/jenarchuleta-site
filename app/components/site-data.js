@@ -170,7 +170,7 @@ export const PODCAST = {
 };
 
 // Social accounts, in Jen's order. YouTube is the podcast channel.
-// Buzzsprout sits beside it. The newsletter form is only on /media#social.
+// Buzzsprout sits beside it. The newsletter form is only on /thank-you#stay.
 export const CONNECT_LINKS = [
   { label: 'LinkedIn', href: SOCIALS.linkedin },
   { label: 'X', href: SOCIALS.x },

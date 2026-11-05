@@ -1,4 +1,4 @@
-// Footer is only the legal pages. Socials, signup, and contact live on Press.
+// Footer is only the legal pages. Signup and contact live on Thank You.
 export default function SiteFooter({ homeHref = '/' }) {
   const home = homeHref.replace(/\/$/, '');
   const link = (href) => `${home}${href}`;

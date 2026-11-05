@@ -38,8 +38,6 @@ const MENU = [
       { href: '/media#press', label: 'Press' },
       { href: '/media#film', label: 'Film and documentary' },
       { href: '/media#speaking', label: 'Speaking' },
-      { href: '/media#social', label: 'Social and sign up' },
-      { href: '/media#contact', label: 'Contact' },
       { href: '/media#forever-angels', label: 'Get involved' },
     ],
   },
@@ -58,7 +56,17 @@ const MENU = [
     ],
   },
   { href: '/behind-the-velvet-ropes', label: 'Velvet Letters', key: true },
-  { href: '/thank-you', label: 'Thank You' },
+  {
+    id: 'thanks',
+    href: '/thank-you',
+    label: 'Thank You',
+    alignEnd: true,
+    items: [
+      { href: '/thank-you#quotes', label: 'Quotes' },
+      { href: '/thank-you#stay', label: 'Stay in touch' },
+      { href: '/thank-you#contact', label: 'Contact' },
+    ],
+  },
 ];
 
 const DESKTOP = '(min-width: 1024px)';

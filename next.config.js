@@ -26,19 +26,19 @@ const pageRedirects = [
   { source: '/shop', destination: '/book#shop', permanent: false },
   // Old newsletter / Mailchimp-era signup paths → the free-chapter signup.
   // Temporary (307) so a real page can take these paths later without cached redirects.
-  { source: '/subscribe', destination: '/media#social', permanent: false },
-  { source: '/signup', destination: '/media#social', permanent: false },
-  { source: '/sign-up', destination: '/media#social', permanent: false },
-  { source: '/mailing-list', destination: '/media#social', permanent: false },
+  { source: '/subscribe', destination: '/thank-you#stay', permanent: false },
+  { source: '/signup', destination: '/thank-you#stay', permanent: false },
+  { source: '/sign-up', destination: '/thank-you#stay', permanent: false },
+  { source: '/mailing-list', destination: '/thank-you#stay', permanent: false },
   // The Forever Angels page is /forever-angels. The older spelled-out path lands there.
   { source: '/the-forever-angels', destination: '/media#forever-angels', permanent: false },
   { source: '/forever-angels', destination: '/media#forever-angels', permanent: false },
   { source: '/about-the-author', destination: '/book#author', permanent: false },
-  { source: '/newsletter', destination: '/media#social', permanent: false },
+  { source: '/newsletter', destination: '/thank-you#stay', permanent: false },
   // Quotes live on Thank You.
   { source: '/quotes', destination: '/thank-you', permanent: false },
   // /contact lands on the contact section of the combined Media page.
-  { source: '/contact', destination: '/media#contact', permanent: false },
+  { source: '/contact', destination: '/thank-you#contact', permanent: false },
   { source: '/press', destination: '/media', permanent: true },
   { source: '/events', destination: '/', permanent: true },
   { source: '/home', destination: '/', permanent: true },

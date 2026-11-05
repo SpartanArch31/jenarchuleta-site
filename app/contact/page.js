@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-// /contact is not its own page. The contact section lives on /media.
+// /contact is not its own page. Contact lives on Thank You.
 export default function ContactPage() {
-  redirect('/media#contact');
+  redirect('/thank-you#contact');
 }

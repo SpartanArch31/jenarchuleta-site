@@ -1,5 +1,7 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import KitInlineForm from '../components/KitInlineForm';
+import { BOOKING_EMAIL, CONNECT_LINKS, KIT_FORM_UID } from '../components/site-data';
 import { QUOTES } from '../quotes/quotes-data';
 import './thank-you.css';
 
@@ -26,7 +28,7 @@ export default function ThankYouPage() {
           </div>
         </div>
       </section>
-      <section className="wrap thank-quotes" aria-labelledby="thank-quotes-heading">
+      <section id="quotes" className="wrap thank-quotes" aria-labelledby="thank-quotes-heading">
         <h2 id="thank-quotes-heading">Quotes</h2>
         <div className="thank-quotes-list">
           {QUOTES.map((quote) => (
@@ -38,6 +40,30 @@ export default function ThankYouPage() {
             </figure>
           ))}
         </div>
+      </section>
+      <section id="stay" className="wrap thank-stay">
+        <span id="social" className="anchor" aria-hidden="true" />
+        <span id="letter" className="anchor" aria-hidden="true" />
+        <h2>Stay in touch</h2>
+        <ul className="stay-socials">
+          {CONNECT_LINKS.map((item) => (
+            <li key={item.label}>
+              <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+        <div className="thank-signup">
+          <h3>Read the first chapter free.</h3>
+          <KitInlineForm uid={KIT_FORM_UID} />
+        </div>
+      </section>
+      <section id="contact" className="wrap text-wrap thank-contact">
+        <h2>Contact me</h2>
+        <p>
+          For press, interviews, speaking, and events, email{' '}
+          <a href={`mailto:${BOOKING_EMAIL}`}>{BOOKING_EMAIL}</a>.
+        </p>
+        <p>Please include your name, your outlet or event, the date, and a little about what you have in mind.</p>
       </section>
       <SiteFooter />
     </>

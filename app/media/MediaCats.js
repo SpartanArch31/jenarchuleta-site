@@ -6,8 +6,6 @@ const CATS = [
   { href: '#press', label: 'Press' },
   { href: '#film', label: 'Film' },
   { href: '#speaking', label: 'Speaking' },
-  { href: '#social', label: 'Social and sign up' },
-  { href: '#contact', label: 'Contact' },
   { href: '#forever-angels', label: 'Get involved' },
 ];
 

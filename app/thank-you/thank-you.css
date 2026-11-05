@@ -9,19 +9,21 @@
 }
 
 .thank-quotes-list {
-  max-width: 40rem;
-  margin: 36px auto 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  max-width: 56rem;
+  margin: 28px auto 0;
   text-align: left;
 }
 
 .thank-quotes-list figure {
   margin: 0;
-  padding: 28px 0;
-  border-top: var(--hairline);
-}
-
-.thank-quotes-list figure:last-child {
-  border-bottom: var(--hairline);
+  padding: 26px 28px 22px;
+  background: var(--surface);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 }
 
 .thank-quotes-list blockquote {
@@ -32,8 +34,8 @@
   margin: 0;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.45rem, 2.6vw, 2rem);
-  line-height: 1.35;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.4;
 }
 
 .thank-quotes-list figcaption {
@@ -43,4 +45,29 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+@media (min-width: 800px) {
+  .thank-quotes-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.thank-stay,
+.thank-contact {
+  text-align: center;
+}
+
+.thank-signup {
+  max-width: 36rem;
+  margin: 28px auto 0;
+}
+
+.thank-signup h3 {
+  margin-bottom: 18px;
+}
+
+.thank-contact p {
+  max-width: 42rem;
+  margin-inline: auto;
 }
