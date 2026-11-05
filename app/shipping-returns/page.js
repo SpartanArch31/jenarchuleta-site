@@ -50,16 +50,15 @@ export default function ShippingReturnsPage() {
 
           <h2>The Bundle</h2>
           <p>
-            The Bundle is not for sale yet. When it is, it is a signed copy, the Signature Velvet Bookmark,
-            and one free month of The Velvet Circle (three questions of your choice, and you can cancel after that).
-            The book and the bookmark are shipped by regular mail.
+            The Bundle is not for sale yet. When it is, it is a signed copy of the book, the Signature Velvet Bookmark,
+            and bunny ears, packaged together in a padded gift case and shipped by regular mail.
           </p>
 
           <h2>The Velvet Circle Book Club</h2>
           <p>
             The Velvet Circle Book Club is {SHOP.velvetCircleMembershipPrice} until you cancel.
-            Start your own book club. With 13 or more members, we Zoom once a month. If you can&rsquo;t
-            find 13, you get three months of three questions, from the one sheet or anything you want.
+            Members get the full discussion sheet, up to three questions a month answered by Jen,
+            and a monthly group Zoom once 13 members join.
             Email questions to{' '}
             <a href={`mailto:${SHOP.velvetCircleQuestionsEmail}`}>{SHOP.velvetCircleQuestionsEmail}</a>.
             You can cancel anytime before your next billing date to avoid being charged for

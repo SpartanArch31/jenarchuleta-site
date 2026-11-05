@@ -368,9 +368,21 @@
   vertical-align: -2px;
   margin-right: 6px;
 }
+.shop-page .club-gets {
+  margin: 10px 0 0;
+  padding-left: 1.3em;
+}
 .shop-page .book-club-peek {
   max-width: 68ch;
   margin: clamp(36px, 5vw, 56px) auto 0;
+}
+.shop-page .product-card .book-club-peek {
+  max-width: none;
+  margin: 16px 0 0;
+}
+.shop-page .product-card .book-club-peek h4 {
+  font-size: var(--text-h4);
+  margin: 0 0 8px;
 }
 .shop-page .book-club-peek h2 {
   font-size: var(--text-h3);

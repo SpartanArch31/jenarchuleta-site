@@ -55,9 +55,19 @@ export default function BookOffers() {
               <div className="eyebrow">Monthly Book Club</div>
               <h3>The Velvet Circle Book Club</h3>
               <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
-              <p className="product-desc">
-                Start your own book club. With 13 or more members, we Zoom once a month. Can’t find 13? You get three months of three questions, from my one sheet or anything you want.
-              </p>
+              <ol className="club-gets">
+                <li>The full discussion sheet</li>
+                <li>Up to three questions a month, answered by Jen</li>
+                <li>A monthly group Zoom once 13 members join</li>
+              </ol>
+              <div className="book-club-peek" id="book-club-guide">
+                <h4 id="book-club-guide-title">From the discussion sheet</h4>
+                <ol>
+                  {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
+                    <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
+                  ))}
+                </ol>
+              </div>
               <p className="club-note">
                 Cancel anytime.{' '}
                 <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel</a>.
@@ -88,9 +98,9 @@ export default function BookOffers() {
             </div>
             <div className="product-body">
               <div className="eyebrow">The Bundle</div>
-              <h3>Signed book, bookmark, and one month of the book club</h3>
+              <h3>Signed book, bookmark, and bunny ears</h3>
               <p className="product-desc">
-                A signed copy, the Signature Velvet Bookmark, and one free month of The Velvet Circle. That month is three questions of your choice. You can cancel after that. The book and the bookmark are shipped by regular mail.
+                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears, packaged together in a padded gift case. Shipped by regular mail.
               </p>
               <div className="product-cta">
                 <span className="btn btn-disabled">Coming soon</span>
@@ -184,16 +194,6 @@ export default function BookOffers() {
         <p className="center foot-meta" style={{ marginTop: '28px' }}>
           <a href={SHOP.etsyTee} target="_blank" rel="noopener noreferrer">The Be the Bumblebee shirt, on Etsy</a>
         </p>
-
-        <section id="book-club-guide" className="book-club-peek" aria-labelledby="book-club-guide-title">
-          <h2 id="book-club-guide-title">From the discussion sheet</h2>
-          <p>Two questions from the one-page sheet. The full sheet is for members.</p>
-          <ol>
-            {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
-              <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
-            ))}
-          </ol>
-        </section>
       </section>
     </div>
   );
