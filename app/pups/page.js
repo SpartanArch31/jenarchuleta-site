@@ -35,7 +35,7 @@ function PupFacts({ pup }) {
         <p className="pup-rescue">
           <span className="pup-k">Shelter </span>
           {pup.rescueHref ? (
-            <a href={pup.rescueHref} target="_blank" rel="noopener noreferrer">{pup.rescue}</a>
+            <a href={pup.rescueHref} target="_blank" rel="noopener noreferrer">{pup.rescue}<span className="visually-hidden"> (opens in new tab)</span></a>
           ) : pup.rescue}
         </p>
       ) : null}
@@ -62,13 +62,19 @@ function PupCard({ pup, photo }) {
         ) : (
           <PupFacts pup={pup} />
         )}
-        {pup.adoptHref ? (
-          <a className="pup-more" href={pup.adoptHref} target="_blank" rel="noopener noreferrer">{pup.adoptLabel || `Meet ${pup.name}`}</a>
+        {/* PS-06: links sit together in one footer row under a hairline, so the
+            spacing is the same on every card. The adoption link leads, as a pill. */}
+        {pup.adoptHref || pup.watch || pup.post ? (
+          <div className="pup-links">
+            {pup.adoptHref ? (
+              <a className="pup-more pup-adopt" href={pup.adoptHref} target="_blank" rel="noopener noreferrer">{pup.adoptLabel || `Meet ${pup.name}`}<span className="visually-hidden"> (opens in new tab)</span></a>
+            ) : null}
+            {pup.watch ? (
+              <a className="pup-more" href={pup.watch} target="_blank" rel="noopener noreferrer">Watch the episode<span className="visually-hidden"> (opens in new tab)</span></a>
+            ) : null}
+            {pup.post ? <a className="pup-more" href={`/journal/${pup.post}`}>Read more</a> : null}
+          </div>
         ) : null}
-        {pup.watch ? (
-          <a className="pup-more" href={pup.watch} target="_blank" rel="noopener noreferrer">Watch the episode</a>
-        ) : null}
-        {pup.post ? <a className="pup-more" href={`/journal/${pup.post}`}>Read more</a> : null}
       </div>
     </article>
   );
@@ -80,8 +86,11 @@ export default async function PupsPage() {
 
   return (
     <div className="pups-page">
+      {/* PS-15: skip link first, before the nav, pointing at <main>. */}
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <SiteNav />
 
+      <main id="main-content">
       <section className="wrap pups-head">
         <div className="eyebrow">Unfiltered with Jen Archuleta</div>
         <h1>Pups of the Podcast</h1>
@@ -99,6 +108,7 @@ export default async function PupsPage() {
           })}
         </div>
       </section>
+      </main>
 
       <SiteFooter />
     </div>

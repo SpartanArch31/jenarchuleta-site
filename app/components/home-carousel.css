@@ -1,7 +1,8 @@
 /* Homepage featured photos: one row, every photo whole at its own ratio, up to
    a shared max height. Quiet arrows on larger screens, swipe on phones, dots. */
 .home-carousel {
-  padding-block: clamp(28px, 5vw, 64px);
+  /* HOME-06: tighter top so the photos follow the hero instead of floating 215px below it */
+  padding-block: clamp(24px, 4vw, 48px) clamp(48px, 6vw, 80px);
   overflow: hidden;
 }
 .hc-stage { position: relative; }
@@ -10,7 +11,7 @@
   display: flex;
   gap: 14px;
   margin: 0;
-  padding: 6px var(--gutter);
+  padding: var(--space-2) var(--gutter);
   list-style: none;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -25,10 +26,12 @@
   flex: 0 0 auto;
   height: auto;
   scroll-snap-align: center;
-  border-radius: var(--radius-lg);
+  /* HOME-07 / HOME-M1: flat photo treatment. Small radius (photos are not cards)
+     and no drop shadow, which the scrolling track was clipping into a hard line. */
+  border-radius: var(--radius-sm);
   overflow: visible;
   background: transparent;
-  box-shadow: var(--shadow);
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +44,8 @@
   max-height: clamp(220px, 34vw, 380px);
   max-width: min(86vw, 680px);
   object-fit: initial;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 1px var(--border); /* HOME-07: hairline edge instead of a lifted tile */
 }
 .hc-arrow {
   position: absolute;
@@ -72,8 +76,9 @@
   margin-top: 12px;
 }
 .hc-dot {
-  width: 26px;
-  height: 26px;
+  /* HOME-09: 44px tap target; the visible dot stays 7px */
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -100,7 +105,18 @@
   font-family: var(--font-sans);
   font-size: var(--text-caption);
 }
-.hc-more a { color: var(--accent-ink); }
+.hc-more a { color: var(--accent-ink); display: inline-block; padding: var(--space-3) var(--space-2); } /* HOME-09 */
+
+/* Home hero, page-scoped (this file only loads on Home via HomeCarousel). */
+/* HOME-04: hero copy steps on the 8px scale: 16 / 12 / 24 */
+.hero.hero--home .hero-copy > .eyebrow:first-child { margin-bottom: var(--space-4); }
+.hero.hero--home .hero-script { margin-bottom: var(--space-3); }
+.hero.hero--home h1 { margin: 0 0 var(--space-5); }
+/* HOME-05: Hanken has no italic loaded, so no faux-slanted tracked caps */
+.hero.hero--home .eyebrow em { font-style: normal; }
+/* HOME-06: less dead space between the hero and the photo row */
+.hero.hero--home { padding-bottom: clamp(32px, 5vw, 64px); }
+
 @media (max-width: 760px) {
   .hc-arrow { display: none; }
 }

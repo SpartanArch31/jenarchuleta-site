@@ -55,7 +55,7 @@ const MENU = [
       { href: '/sponsors', label: 'All the sponsors' },
     ],
   },
-  { href: '/behind-the-velvet-ropes', label: 'Velvet Letters', key: true },
+  { href: '/behind-the-velvet-ropes', label: 'Velvet Letters', key: true, also: ['/velvet'] },
   {
     id: 'thanks',
     href: '/thank-you',

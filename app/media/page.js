@@ -77,6 +77,37 @@ const SPEAKING_TALKS = [
   },
 ];
 
+const GIVE_BACK = [
+  {
+    src: '/assets/forever-angels-tree.jpg',
+    alt: 'Jen and her Forever Angels co-founder at an angel tree event',
+    caption: 'The Forever Angels',
+    width: 1200,
+    height: 1852,
+  },
+  {
+    src: '/assets/casa-sworn-in.jpg',
+    alt: 'Jen Archuleta raising her hand while being sworn in as a CASA volunteer',
+    caption: 'Getting sworn in as a CASA volunteer',
+    width: 933,
+    height: 960,
+  },
+  {
+    src: '/assets/turbo-ronald-mcdonald.jpg',
+    alt: 'Jen with her therapy dog Turbo at a group visit',
+    caption: 'Turbo doing TDI therapy dog work for Ronald McDonald House',
+    width: 1158,
+    height: 1164,
+  },
+  {
+    src: '/assets/childhelp-wings-podium.jpg',
+    alt: 'Jen Archuleta speaking at the Childhelp WINGS podium',
+    caption: 'Speaking at Childhelp WINGS',
+    width: 1179,
+    height: 1343,
+  },
+];
+
 function publicFileExists(rel) {
   return fs.existsSync(path.join(process.cwd(), 'public', rel));
 }
@@ -107,15 +138,14 @@ function Cards({ items }) {
 
 export default function MediaPage() {
   const hasPressKit = publicFileExists('press/jen-walcott-archuleta-press-kit.pdf');
-  const tv = APPEARANCES.filter((item) => item.kind === 'TV');
-  const more = APPEARANCES.filter((item) => item.kind !== 'TV');
 
   return (
     <div className="media-page">
-      <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
-      <section id="main-content" className="wrap media-hero media-intro">
+      <main id="main-content">
+      <section className="wrap media-hero media-intro">
         <div>
           <h1>Press: Beyond the Velvet Ropes</h1>
           <p className="media-lead">Articles, TV and appearances for Beyond the Velvet Ropes</p>
@@ -124,24 +154,15 @@ export default function MediaPage() {
       </section>
 
       <section id="press" className="wrap">
+        {/* MEDIA-15: the H2 covers the articles, so no extra 'Articles' H3 stacked under it. */}
         <h2>Press</h2>
+        <Cards items={PRESS} />
 
-        <div>
-          <h3>Articles</h3>
-          <Cards items={PRESS} />
-        </div>
-
+        {/* MEDIA-08: TV and the other appearances in one block, so the grid fills whole rows. */}
         <div id="tv" className="media-block">
-          <h3>TV</h3>
-          <Cards items={tv} />
+          <h3>TV and appearances</h3>
+          <Cards items={APPEARANCES} />
         </div>
-
-        {more.length ? (
-          <div id="interviews" className="media-block">
-            <h3>More appearances</h3>
-            <Cards items={more} />
-          </div>
-        ) : null}
 
         <div id="press-kit" className="media-block">
           <div className="bio-block">
@@ -152,6 +173,8 @@ export default function MediaPage() {
             <p>{PRESS_BIO}</p>
           </div>
           <h3 className="headshot-title">Photos for press</h3>
+          {/* MEDIA-14: each figure is a 3-row subgrid (frame, name, button) so tops,
+              names and Download buttons all share one line. */}
           <div className="headshot-grid">
             {HEADSHOTS.map((shot) => (
               <figure key={shot.src}>
@@ -183,35 +206,51 @@ export default function MediaPage() {
             </p>
           ) : null}
         </div>
+      </section>
 
-        <div id="film" className="media-block">
-          <h3>Film and documentary</h3>
-          <p>{FILM.film}</p>
-          <p>{FILM.documentary}</p>
-          <p className="media-film-links">
-            {FILM.partners.map((partner) => (
-              <span key={partner.href}>
-                <a href={partner.href} target="_blank" rel="noopener noreferrer">{partner.label}</a>
-                {' · '}
-              </span>
-            ))}
-            FilmFreeway:{' '}
-            <a href={FILM.filmfreeway.href} target="_blank" rel="noopener noreferrer">{FILM.filmfreeway.label}</a>
-          </p>
-        </div>
+      {/* MEDIA-15: Film and Speaking are siblings of Press, in the outline too. */}
+      <section id="film" className="wrap">
+        <h2>Film and documentary</h2>
+        <p>{FILM.film}</p>
+        <p>{FILM.documentary}</p>
+        {/* MEDIA-20: partner links share the page's ghost-button style. */}
+        <p className="media-actions">
+          {FILM.partners.map((partner) => (
+            <a
+              key={partner.href}
+              className="btn btn-ghost btn-sm"
+              href={partner.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${partner.label} (opens in new tab)`}
+            >
+              {partner.label}<span aria-hidden="true"> ↗</span>
+            </a>
+          ))}
+          <a
+            className="btn btn-ghost btn-sm"
+            href={FILM.filmfreeway.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`FilmFreeway, ${FILM.filmfreeway.label} (opens in new tab)`}
+          >
+            FilmFreeway<span aria-hidden="true"> ↗</span>
+          </a>
+        </p>
+      </section>
 
-        <div id="speaking" className="media-block">
-          <h3>Speaking</h3>
-          <p>{SPEAKING_INTRO}</p>
-          <p><a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a></p>
-          <div className="speak-talks">
-            {SPEAKING_TALKS.map((talk) => (
-              <div key={talk.title} className="speak-talk">
-                <h4>{talk.title}</h4>
-                <p>{talk.text}</p>
-              </div>
-            ))}
-          </div>
+      <section id="speaking" className="wrap">
+        <h2>Speaking</h2>
+        <p>{SPEAKING_INTRO}</p>
+        <p><a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a></p>
+        {/* MEDIA-08: the talks read as a ruled list, not a card grid. */}
+        <div className="speak-talks">
+          {SPEAKING_TALKS.map((talk) => (
+            <div key={talk.title} className="speak-talk">
+              <h3>{talk.title}</h3>
+              <p>{talk.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -222,31 +261,42 @@ export default function MediaPage() {
             I co-founded The Forever Angels with Allison Kiefer. We help people through social workers and our trusted community partners. We help veterans, families in need, the elderly in hospice, and animals. Turbo has worked with Ronald McDonald Children’s Hospitals and veterans hospitals, and he has also worked in hospice.
           </p>
         </div>
+        {/* MEDIA-11 / MEDIA-13: whole photos in the same gold mat as the headshots,
+            bottoms and captions on one line, served through next/image (lazy, resized). */}
         <div className="give-back">
-          <figure>
-            <img src="/assets/forever-angels-tree.jpg" alt="Jen and her Forever Angels co-founder at an angel tree event" width="1200" height="1852" />
-            <figcaption>The Forever Angels</figcaption>
-          </figure>
-          <figure>
-            <img src="/assets/casa-sworn-in.jpg" alt="Jen Archuleta raising her hand while being sworn in as a CASA volunteer" width="933" height="960" />
-            <figcaption>Getting sworn in as a CASA volunteer</figcaption>
-          </figure>
-          <figure>
-            <img src="/assets/turbo-ronald-mcdonald.jpg" alt="Jen with her therapy dog Turbo at a group visit" width="1158" height="1164" />
-            <figcaption>Turbo doing TDI therapy dog work for Ronald McDonald House</figcaption>
-          </figure>
-          <figure>
-            <img src="/assets/childhelp-wings-podium.jpg" alt="Jen Archuleta speaking at the Childhelp WINGS podium" width="1179" height="1343" />
-            <figcaption>Speaking at Childhelp WINGS</figcaption>
-          </figure>
+          {GIVE_BACK.map((photo) => (
+            <figure key={photo.src}>
+              <div className="headshot-frame">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  sizes="(max-width: 1000px) 45vw, 260px"
+                  quality={82}
+                />
+              </div>
+              <figcaption>{photo.caption}</figcaption>
+            </figure>
+          ))}
         </div>
         <p>
           I have worked with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
         </p>
-        <p>
-          <a href="https://theforeverangels.com/our-founders/" target="_blank" rel="noopener noreferrer">The Forever Angels</a>
+        {/* MEDIA-20: same ghost-button style as the other outbound links. */}
+        <p className="media-actions">
+          <a
+            className="btn btn-ghost"
+            href="https://theforeverangels.com/our-founders/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="The Forever Angels (opens in new tab)"
+          >
+            The Forever Angels<span aria-hidden="true"> ↗</span>
+          </a>
         </p>
       </section>
+      </main>
 
       <SiteFooter />
     </div>

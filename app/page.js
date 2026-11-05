@@ -6,24 +6,28 @@ import HomeCarousel from './components/HomeCarousel';
 export default function Home() {
   return (
     <>
-      <SiteNav />
+      {/* Skip link comes first so it is the first Tab stop (audit skip-link). */}
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
-      <section id="main-content" className="wrap hero">
-        <div className="hero-copy">
-          <div className="eyebrow">Author · Speaker · Advocate</div>
-          <div className="hero-script">this isn’t the story<br />you think it is</div>
-          <h1>Faith, family, and a bunch of rescues.</h1>
-          <div className="eyebrow" style={{ marginTop: '16px' }}>Author of <em>Beyond the Velvet Ropes</em></div>
-        </div>
-        <div className="hero-media">
-          <div className="portrait hero-frame">
-            <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
+      <main id="main-content">
+        {/* hero--home: page-scoped spacing (audit HOME-04, HOME-06), see home-carousel.css */}
+        <section className="wrap hero hero--home">
+          <div className="hero-copy">
+            <div className="eyebrow">Author · Speaker · Advocate</div>
+            <div className="hero-script">this isn’t the story<br />you think it is</div>
+            <h1>Faith, family, and a bunch of rescues.</h1>
+            <div className="eyebrow">Author of <em>Beyond the Velvet Ropes</em></div>
           </div>
-        </div>
-      </section>
+          <div className="hero-media">
+            <div className="portrait hero-frame">
+              <img src="/assets/presskit-headshot-floral.jpg" alt="Jen Archuleta smiling in a floral top" width="1100" height="1370" />
+            </div>
+          </div>
+        </section>
 
-      <HomeCarousel />
+        <HomeCarousel />
+      </main>
 
       <SiteFooter />
     </>

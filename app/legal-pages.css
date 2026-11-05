@@ -17,3 +17,7 @@
 .legal-page .legal-body ul { margin: 0 0 1.2em 1.3em; padding: 0; }
 .legal-page .legal-body li { margin-bottom: .5em; font-size: var(--text-body); }
 .legal-page .legal-body a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* LEGAL-03: Cormorant's oldstyle 1 reads as "i" at heading size ("10." looked like "io.").
+   Lining figures on the numbered section headings only; body text keeps oldstyle. */
+.legal-page .legal-body h2 { font-variant-numeric: lining-nums; }

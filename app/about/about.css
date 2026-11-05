@@ -36,9 +36,10 @@
 .tim-joy .dot { width: 6px; height: 6px; transform: rotate(45deg); background: var(--accent); flex: none; }
 .tim-hint { font-family: var(--font-caps); font-size: 11px; letter-spacing: var(--track-eyebrow);
             text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px; }
-/* Tall tortoise beside a square mug. A slightly narrower first column
-   keeps that pair closer in height without cropping either file. */
-.tim-grid2 { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr); gap: 22px 16px; align-items: start; }
+/* Tall tortoise beside a square mug. ABOUT-08: the columns follow the two
+   files' ratios (787/1400 = 0.5621 against 1), so both render the same
+   height, whole, and their captions line up. */
+.tim-grid2 { display: grid; grid-template-columns: minmax(0, 0.5621fr) minmax(0, 1fr); gap: 22px 16px; align-items: start; }
 .tim-span { grid-column: 1 / -1; }
 .tim-slot-wrap { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 /* placeholder tile — swap each for <img className="tim-img …"> when real photos arrive */
@@ -123,7 +124,15 @@
   .tim-display { white-space: normal; }
   /* ABOUT-03: stack again on narrow screens. */
   .tim-then { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; max-width: 520px; }
+  /* ABOUT-10: spacing comes from the margins below, not gap plus margin. */
+  .tim-then { gap: 0; }
+  .tim-then .twenties-show { margin-top: 28px; }
 }
+/* ABOUT-10: one section rhythm for the everyday, the 20s and the close, and
+   one paragraph rhythm in the 20s (matches the everyday's 22px). */
+.tim-everyday, .tim-then, .tim-close { padding-block: clamp(64px, 8vw, 96px); }
+.tim-then .tim-lead { margin-top: 36px; }
+.tim-then .tim-lead + .tim-lead { margin-top: 22px; }
 
 /* November 2026: About Me in Jen's words, one page */
 .tim-display--wrap { white-space: normal; font-size: clamp(42px, 5vw, 70px); line-height: 1.1; }
@@ -205,13 +214,23 @@
 }
 .twenties-close { position: absolute; top: 10px; right: 12px; }
 .twenties-controls button:focus-visible, .twenties-close:focus-visible { outline: 2px solid #BE9543; outline-offset: 3px; }
-.twenties-caption { margin: 16px 4px 0; font-size: clamp(20px, 2.2vw, 24px); font-weight: 600; line-height: 1.35; color: var(--text-primary, #222); }
+/* ABOUT-06: on-system caption. --text (there is no --text-primary token),
+   regular italic display, flush with the photo edge, balanced lines. */
+.twenties-caption { margin: 14px 0 0; font-family: var(--font-display); font-style: italic; font-weight: 400;
+                    font-size: clamp(20px, 2vw, 22px); line-height: 1.4; color: var(--text);
+                    text-wrap: balance; max-width: 420px; }
 
 /* ABOUT-02: the gallery stage keeps one height for every slide, so the page
    below (and the phone arrows) no longer jump on each 4s advance. The frame
    still hugs each photo at its own ratio; the space around it is the page. */
 .gallery-band .gallery-area { height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px); align-items: center; }
-.gallery-band .gallery-meta { min-height: calc(2 * 1.45 * 0.95rem + 8px + 1.2em); }
+.gallery-band .gallery-meta { min-height: calc(2 * 1.45 * 0.95rem + 8px + 1.2em + 48px); }
+/* ABOUT-05: the visitor's pause / play control for the auto-advance. */
+.gallery-pause { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; padding: 0 14px;
+                 font-family: var(--font-sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+                 color: var(--accent-ink); background: none; border: 0; cursor: pointer; }
+.gallery-pause:hover { text-decoration: underline; text-underline-offset: 3px; }
+.gallery-pause:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 759px) {
   .gallery-band .gallery-stage { --g-max-h: min(76vh, 125cqw); }
   .gallery-band .gallery-area { height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px); }

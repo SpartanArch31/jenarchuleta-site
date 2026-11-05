@@ -13,11 +13,13 @@ const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';
 export default function PrivacyPage() {
   return (
     <div className="legal-page">
-      <SiteNav />
-
+      {/* LEGAL-07: skip link first in tab order, target is a real <main> landmark. */}
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      <article id="main-content" className="wrap text-wrap">
+      <SiteNav />
+
+      <main id="main-content" tabIndex={-1} className="wrap text-wrap">
+        <article>
         <div className="legal-head">
           <div className="eyebrow">Legal</div>
           <h1>Privacy Policy</h1>
@@ -121,7 +123,8 @@ export default function PrivacyPage() {
           <h2>10. Contact us</h2>
           <p>Questions about this policy? Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
         </div>
-      </article>
+        </article>
+      </main>
 
       <SiteFooter />
     </div>

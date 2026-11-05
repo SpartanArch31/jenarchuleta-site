@@ -49,10 +49,11 @@ export default async function PodcastPage() {
 
   return (
     <>
-      <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
-      <section id="main-content" className="wrap pod-hero">
+      <main id="main-content">
+      <section className="wrap pod-hero">
         <img
           src="/assets/og-podcast-1200x630.jpg"
           alt="Unfiltered with Jen Archuleta"
@@ -65,7 +66,8 @@ export default async function PodcastPage() {
         <p className="pod-count">Explore all 13 episodes of {name}.</p>
         <div className="pod-subscribe">
           <a className="btn btn-primary" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Subscribe on Apple Podcasts</a>
-          <a className="btn btn-primary" href={PODCAST.subscribe.spotify} target="_blank" rel="noopener noreferrer">Subscribe on Spotify</a>
+          {/* POD-12: one filled primary leads; Spotify sits beside it as a ghost. */}
+          <a className="btn btn-ghost" href={PODCAST.subscribe.spotify} target="_blank" rel="noopener noreferrer">Subscribe on Spotify</a>
           <a className="btn btn-ghost" href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Buzzsprout</a>
         </div>
         <nav className="pod-boxes" aria-label="Podcast">
@@ -75,7 +77,9 @@ export default async function PodcastPage() {
         </nav>
       </section>
 
-      <section id="pups" className="wrap pod-panel center">
+      {/* POD-16: the paper band runs full width; the content stays in .wrap. */}
+      <section id="pups" className="pod-panel center">
+        <div className="wrap">
         <div className="eyebrow">Pups of the Podcast</div>
         <h2>Meet the pups</h2>
         <ol className="pod-pups">
@@ -104,6 +108,7 @@ export default async function PodcastPage() {
           })}
         </ol>
         <p className="pod-cta"><a href="/pups" className="btn btn-primary">See the pups</a></p>
+        </div>
       </section>
 
       <section id="episodes" className="wrap pod-players" aria-label="All 13 episodes">
@@ -146,7 +151,8 @@ export default async function PodcastPage() {
         </div>
       </section>
 
-      <section id="sponsors" className="wrap pod-panel center">
+      <section id="sponsors" className="pod-panel center">
+        <div className="wrap">
         <div className="eyebrow">Sponsors</div>
         <h2>Thank you.</h2>
         <p className="lead" style={{ maxWidth: '46ch', marginInline: 'auto' }}>
@@ -163,6 +169,7 @@ export default async function PodcastPage() {
           ))}
         </ol>
         <p className="pod-cta"><a href="/sponsors" className="btn btn-ghost">See the sponsors</a></p>
+        </div>
       </section>
 
       <section id="reviews" className="wrap center">
@@ -170,12 +177,13 @@ export default async function PodcastPage() {
         <h2>Love the show?</h2>
         <p className="lead" style={{ maxWidth: '46ch', marginInline: 'auto' }}>Reviews listeners left on Apple Podcasts, typed out here in their own words.</p>
         <PublicReviews reviews={PODCAST_REVIEWS} variant="cards" />
-        <p className="lead" style={{ maxWidth: '42ch', marginInline: 'auto' }}>A short review helps the next listener find it.</p>
-        <div className="hero-ctas" style={{ justifyContent: 'center' }}>
+        <p className="lead pod-review-cta">A short review helps the next listener find it.</p>
+        <div className="hero-ctas pod-review-ctas">
           <a className="btn btn-ghost" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Review on Apple Podcasts</a>
           <a className="btn btn-ghost" href={PODCAST.subscribe.spotify} target="_blank" rel="noopener noreferrer">Review on Spotify</a>
         </div>
       </section>
+      </main>
 
       <SiteFooter />
     </>

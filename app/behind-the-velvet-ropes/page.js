@@ -10,9 +10,11 @@ export const metadata = {
 export default function VelvetRopesPage() {
   return (
     <>
-      <SiteNav />
+      {/* VL-M1: skip link first in tab order, target is the <main> landmark */}
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <section id="main-content" className="wrap hero velvet-ropes-hero">
+      <SiteNav />
+      <main id="main-content">
+      <section className="wrap hero velvet-ropes-hero">
         <div className="hero-copy">
           <h1>Velvet Ropes</h1>
           <VelvetKey className="velvet-ropes-key" />
@@ -35,6 +37,7 @@ export default function VelvetRopesPage() {
           </div>
         </div>
       </section>
+      </main>
       <SiteFooter />
     </>
   );

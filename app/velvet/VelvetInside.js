@@ -98,7 +98,9 @@ export default function VelvetInside({ letters = [] }) {
   return (
     <>
       <div className="dark velvet-page">
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <SiteNav homeHref="https://jenarchuleta.com/" />
+        <main id="main-content" tabIndex={-1}>
 
         <section className="wrap text-wrap letter">
           <VelvetLetterPhoto />
@@ -230,6 +232,7 @@ export default function VelvetInside({ letters = [] }) {
           </p>
         </section>
 
+        </main>
         <SiteFooter stayClose={false} homeHref="https://jenarchuleta.com/" />
       </div>
     </>

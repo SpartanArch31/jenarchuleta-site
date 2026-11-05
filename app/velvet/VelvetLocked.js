@@ -19,10 +19,12 @@ function KeyIcon() {
 export default function VelvetLocked() {
   return (
     <div className="dark vl-page">
-      <SiteNav />
+      {/* VL-M1: skip link first in tab order, target is the <main> landmark */}
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
-      <section id="main-content" className="vl-invite">
+      <main id="main-content">
+      <section className="vl-invite">
         <div className="vl-inner">
           <KeyIcon />
           <h1 className="vl-title">The Velvet Letters</h1>
@@ -36,6 +38,7 @@ export default function VelvetLocked() {
           </p>
         </div>
       </section>
+      </main>
 
       <SiteFooter stayClose={false} />
     </div>

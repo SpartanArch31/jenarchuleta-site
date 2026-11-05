@@ -505,6 +505,9 @@ function Chevron({ direction }) {
 export default function PhotoGallery({ showTitle = true } = {}) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  // ABOUT-05: a pause the visitor controls (WCAG 2.2.2). Hover, focus and touch
+  // only pause for a moment; this one stays until they press Play.
+  const [userPaused, setUserPaused] = useState(false);
   const [inView, setInView] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const stageRef = useRef(null);
@@ -545,10 +548,16 @@ export default function PhotoGallery({ showTitle = true } = {}) {
   }, []);
 
   useEffect(() => {
-    if (paused || reduceMotion || !inView) return undefined;
+    if (paused || userPaused || reduceMotion || !inView) return undefined;
     const id = window.setInterval(() => go(1), INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, [paused, reduceMotion, inView, index, go]);
+  }, [paused, userPaused, reduceMotion, inView, index, go]);
+
+  // ABOUT-05: stepping by hand (arrow, key or swipe) stops the auto-advance.
+  const step = useCallback((direction) => {
+    setUserPaused(true);
+    go(direction);
+  }, [go]);
 
   const onTouchStart = (event) => {
     if (event.touches.length !== 1) return;
@@ -567,7 +576,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
     const dx = touch.clientX - start.x;
     const dy = touch.clientY - start.y;
     if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-    go(dx > 0 ? -1 : 1);
+    step(dx > 0 ? -1 : 1);
   };
 
   const onTouchCancel = () => {
@@ -589,10 +598,10 @@ export default function PhotoGallery({ showTitle = true } = {}) {
   const onKeyDown = (event) => {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      go(-1);
+      step(-1);
     } else if (event.key === 'ArrowRight') {
       event.preventDefault();
-      go(1);
+      step(1);
     }
   };
 
@@ -613,7 +622,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
             type="button"
             className="gallery-arrow gallery-arrow--prev"
             aria-label="Previous photo"
-            onClick={() => go(-1)}
+            onClick={() => step(-1)}
           >
             <Chevron direction="prev" />
           </button>
@@ -654,13 +663,22 @@ export default function PhotoGallery({ showTitle = true } = {}) {
           <div className="gallery-meta">
             {slide.caption ? <p className="gallery-caption">{slide.caption}</p> : null}
             <p className="gallery-count" aria-hidden="true">{index + 1} / {count}</p>
+            {reduceMotion ? null : (
+              <button
+                type="button"
+                className="gallery-pause"
+                onClick={() => setUserPaused((value) => !value)}
+              >
+                {userPaused ? 'Play' : 'Pause'}
+              </button>
+            )}
           </div>
 
           <button
             type="button"
             className="gallery-arrow gallery-arrow--next"
             aria-label="Next photo"
-            onClick={() => go(1)}
+            onClick={() => step(1)}
           >
             <Chevron direction="next" />
           </button>

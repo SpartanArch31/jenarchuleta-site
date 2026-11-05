@@ -16,11 +16,13 @@ const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';
 export default function ShippingReturnsPage() {
   return (
     <div className="legal-page">
-      <SiteNav />
-
+      {/* LEGAL-07: skip link first in tab order, target is a real <main> landmark. */}
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      <article id="main-content" className="wrap text-wrap">
+      <SiteNav />
+
+      <main id="main-content" tabIndex={-1} className="wrap text-wrap">
+        <article>
         <div className="legal-head">
           <div className="eyebrow">Legal</div>
           <h1>Shipping &amp; Returns</h1>
@@ -83,7 +85,8 @@ export default function ShippingReturnsPage() {
             and we&rsquo;ll help sort it out.
           </p>
         </div>
-      </article>
+        </article>
+      </main>
 
       <SiteFooter />
     </div>

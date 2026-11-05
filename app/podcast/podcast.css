@@ -140,3 +140,34 @@
 .pod-panel { padding-block: min(var(--space-9), var(--section-y)); }
 .pod-panel + section,
 .pod-players { padding-block: min(var(--space-9), var(--section-y)); }
+
+/* POD-16: full-bleed paper band with a hairline top and bottom, so it reads
+   as a band on desktop as it already does on phones. */
+.pod-panel { border-block: var(--hairline); }
+
+/* POD-14: centered wrapping, so the 13th pup sits centered in the last row
+   instead of alone at the left. Widths match the old 4 / 3 / 2 columns. */
+.pod-pups { display: flex; flex-wrap: wrap; justify-content: center; }
+.pod-pup { flex: 0 0 calc((100% - 3 * 18px) / 4); }
+@media (max-width: 900px) { .pod-pup { flex-basis: calc((100% - 2 * 18px) / 3); } }
+@media (max-width: 560px) { .pod-pup { flex-basis: calc((100% - 14px) / 2); } }
+
+/* POD-17: 44px tap targets for the small text links. */
+.pod-player-head { align-items: center; }
+.pod-player-head a,
+.pod-players .home-pod-cross a { display: inline-flex; align-items: center; min-height: 44px; }
+/* The whole sponsor row is tappable, not just the name. */
+.pod-credits li { position: relative; }
+.pod-credits a::after { content: ''; position: absolute; inset: 0; }
+
+/* POD-M2: room between the review cards and the closing line. */
+.pod-review-cta { margin-top: var(--space-8); max-width: 42ch; margin-inline: auto; }
+.pod-review-ctas { justify-content: center; margin-top: var(--space-5); }
+
+/* POD-12: on phones the subscribe and review buttons stack at one width. */
+@media (max-width: 560px) {
+  .pod-subscribe,
+  .pod-review-ctas { flex-direction: column; align-items: stretch; max-width: 20rem; margin-inline: auto; }
+  .pod-subscribe .btn,
+  .pod-review-ctas .btn { justify-content: center; text-align: center; }
+}

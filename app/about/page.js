@@ -26,12 +26,13 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
-      <SiteNav />
-
       <a href="#main-content" className="skip-link">Skip to content</a>
 
+      <SiteNav />
+
+      <main id="main-content">
       {/* OPENING */}
-      <section id="main-content" className="tim-wrap tim-hero">
+      <section className="tim-wrap tim-hero">
         <div>
           <p className="eyebrow">About me</p>
           <h1 className="tim-display tim-display--wrap">Faith, family, and a bunch of rescues.</h1>
@@ -95,12 +96,18 @@ export default function AboutPage() {
         <p className="tim-lead">A lot of it looked like the dream from the outside. Inside it was survival. I learned who I was while everything around me tried to tell me who to be. I wouldn’t trade it. It made me. But it cost something, and I know that now.</p>
       </section>
 
+      {/* ABOUT-10: one more threshold, from Jen's story into the archive. */}
+      <div className="tim-wrap">
+        <div className="threshold-rule"><span className="diamond" /></div>
+      </div>
+
       <PhotoGallery />
 
       <section className="tim-wrap tim-close">
         <p className="tim-lead">Thanks for being here.</p>
         <p className="tim-sign">Jen</p>
       </section>
+      </main>
 
       <SiteFooter />
     </>

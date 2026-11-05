@@ -16,8 +16,8 @@
 .sponsors-page .sponsor-list li:last-child { border-bottom: var(--hairline); }
 .sponsors-page .sponsor-list h2 {
   font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 500;
+  font-size: var(--text-h3); /* PS-10: on the type scale, same as /pups card titles */
+  font-weight: var(--w-semibold);
   margin: 0 0 6px;
 }
 .sponsors-page .sponsor-person {
@@ -31,9 +31,28 @@
 .sponsors-page .sponsor-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 18px;
+  gap: 0 18px;
   margin: 0;
 }
+/* PS-11: 44px tap targets. PS-12: underlined so links read as links. */
+.sponsors-page .sponsor-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.sponsors-page .sponsor-links a:hover { text-decoration-color: currentColor; }
 .sponsors-page .sponsors-close {
   margin-top: 36px;
+}
+.sponsors-page .sponsors-close a {
+  display: inline-block;
+  padding-block: 10px; /* PS-11 */
+}
+/* PS-11: on phones every sponsor's links stack the same way. */
+@media (max-width: 620px) {
+  .sponsors-page .sponsor-links { flex-direction: column; align-items: flex-start; gap: 0; }
 }

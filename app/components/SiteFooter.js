@@ -9,13 +9,12 @@ export default function SiteFooter({ homeHref = '/' }) {
         <p className="foot-meta">
           © 2026 Jen Archuleta. Author of <em>Beyond the Velvet Ropes</em> by Jennifer Walcott Archuleta.
         </p>
-        <p className="foot-meta">
-          <a href={link('/privacy')}>Privacy Policy</a>
-          {' · '}
-          <a href={link('/terms')}>Terms of Service</a>
-          {' · '}
-          <a href={link('/shipping-returns')}>Shipping &amp; Returns</a>
-        </p>
+        {/* G-07: a real list, so the links wrap and each one is a full tap target. */}
+        <ul className="foot-meta foot-legal" aria-label="Legal">
+          <li><a href={link('/privacy')}>Privacy Policy</a></li>
+          <li><a href={link('/terms')}>Terms of Service</a></li>
+          <li><a href={link('/shipping-returns')}>Shipping &amp; Returns</a></li>
+        </ul>
       </div>
     </footer>
   );

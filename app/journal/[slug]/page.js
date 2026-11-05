@@ -78,8 +78,49 @@ function heroUrl(img) {
 const isExternal = (href) =>
   /^https?:\/\//i.test(href) && !/^https?:\/\/(www\.)?jenarchuleta\.com(\/|$)/i.test(href);
 
+// J-11: some posts are long hand-numbered lists, one paragraph per line
+// ("1. Love really does win."). A run of 3 or more such paragraphs gets the
+// 'numbered' style so it renders with a hanging indent. The words and the
+// typed numbers stay exactly as Jen wrote them.
+const NUMBERED_LINE = /^\s*\d{1,2}\.\s/;
+const MIN_NUMBERED_RUN = 3;
+
+function blockText(block) {
+  if (typeof block === 'string') return block;
+  if (!block || block._type !== 'block' || block.listItem || (block.style && block.style !== 'normal')) return null;
+  if (!Array.isArray(block.children)) return null;
+  return block.children.map((child) => child?.text || '').join('');
+}
+
+// Returns a Set of indexes that sit in a run of numbered lines.
+function numberedRuns(blocks) {
+  const marked = new Set();
+  let run = [];
+  const flush = () => {
+    if (run.length >= MIN_NUMBERED_RUN) run.forEach((i) => marked.add(i));
+    run = [];
+  };
+  blocks.forEach((block, i) => {
+    const text = blockText(block);
+    if (text !== null && NUMBERED_LINE.test(text)) run.push(i);
+    else flush();
+  });
+  flush();
+  return marked;
+}
+
+function markNumbered(blocks) {
+  if (!Array.isArray(blocks)) return blocks;
+  const marked = numberedRuns(blocks);
+  if (marked.size === 0) return blocks;
+  return blocks.map((block, i) => (marked.has(i) ? { ...block, style: 'numbered' } : block));
+}
+
 // Portable Text renderers for links + inline images.
 const ptComponents = {
+  block: {
+    numbered: ({ children }) => <p className="num-item">{children}</p>,
+  },
   types: {
     image: ({ value }) => (
       <img src={urlFor(value).width(1100).url()} alt={value?.alt || ''} style={{ width: '100%', borderRadius: 'var(--radius-lg)', margin: '20px 0' }} />
@@ -104,11 +145,14 @@ export default async function JournalPost({ params }) {
   const hero = heroUrl(post.heroImage);
   const heroDescription = heroAlt(post.heroImage, post.slug);
   const bodyIsStrings = Array.isArray(post.body) && typeof post.body[0] === 'string';
+  const numberedStrings = bodyIsStrings ? numberedRuns(post.body) : null;
 
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <SiteNav />
 
+      <main id="main-content">
       <article className="wrap text-wrap journal-article">
         <div className="article-head">
           <div className="k">{post.category}</div>
@@ -120,8 +164,8 @@ export default async function JournalPost({ params }) {
 
         <div className="article-body">
           {bodyIsStrings
-            ? post.body.map((para, i) => <p key={i}>{para}</p>)
-            : post.body && <PortableText value={prepareJournalBody(post.body, post.slug)} components={ptComponents} />}
+            ? post.body.map((para, i) => <p key={i} className={numberedStrings.has(i) ? 'num-item' : undefined}>{para}</p>)
+            : post.body && <PortableText value={markNumbered(prepareJournalBody(post.body, post.slug))} components={ptComponents} />}
         </div>
 
         {/* Sponsor block — renders only when a sponsor is set */}
@@ -161,6 +205,7 @@ export default async function JournalPost({ params }) {
         </div>
 
       </article>
+      </main>
 
       <SiteFooter />
     </>

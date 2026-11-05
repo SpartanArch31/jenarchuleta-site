@@ -3,9 +3,25 @@
   text-align: center;
 }
 
-.thank-quotes h2 {
-  font-size: var(--text-display-l);
-  margin-bottom: 8px;
+/* TY-06: the three section heads share one size, a step below the page H1. */
+.thank-quotes h2,
+.thank-stay h2,
+.thank-contact h2 {
+  font-size: var(--text-h1);
+  line-height: 1.1;
+  margin-bottom: var(--space-4);
+}
+
+/* TY-05: tighter passages between the short closing sections. */
+.thank-quotes {
+  padding-bottom: clamp(48px, 6vw, 88px);
+}
+.thank-stay,
+.thank-contact {
+  padding-block: clamp(48px, 6vw, 88px);
+}
+.thank-stay .thank-rule {
+  margin: 0 auto var(--space-6);
 }
 
 .thank-quotes-list {
@@ -64,7 +80,23 @@
 }
 
 .thank-signup h3 {
-  margin-bottom: 18px;
+  margin-bottom: var(--space-4); /* TY-09 */
+}
+
+/* TY-04: social links become 44px pill tap targets with a visible focus ring. */
+.thank-stay .stay-socials {
+  gap: 0 8px;
+}
+.thank-stay .stay-socials a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 10px;
+}
+.thank-stay .stay-socials a:focus-visible {
+  outline: 2px solid var(--focus-ring, var(--gold));
+  outline-offset: 2px;
+  border-radius: var(--radius-pill);
 }
 
 .thank-contact p {
@@ -114,6 +146,11 @@
 }
 .thank-signup .kit-inline .formkit-fields {
   gap: 10px !important;
+  margin: 0 !important; /* TY-09: no extra Kit spacing on small screens */
+}
+/* TY-09: KitInlineForm sets an inline 10px top margin on the privacy line. */
+.thank-signup .foot-meta {
+  margin-top: var(--space-3) !important;
 }
 .thank-signup .kit-inline .formkit-input {
   min-height: 48px !important;

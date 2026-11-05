@@ -37,11 +37,13 @@ export default function BookPage() {
     <>
     <div className="dark book-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }} />
-      <SiteNav />
+      {/* Skip link first so it is the first tab stop, ahead of the nav. */}
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
+      <main id="main-content">
       {/* HERO (dark register, echoes the cover) */}
-      <section id="main-content" className="hero-section dark" style={{ background: 'var(--bg)' }}>
+      <section className="hero-section dark" style={{ background: 'var(--bg)' }}>
         <div className="wrap hero">
           <div><img className="hero-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" /></div>
           <div>
@@ -102,11 +104,14 @@ export default function BookPage() {
         <h2>What readers are saying</h2>
         <p className="lead">These are reviews readers posted on Amazon, typed out here in their own words.</p>
         <PublicReviews reviews={BOOK_REVIEWS} />
-        <div className="eyebrow">Already read it?</div>
-        <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
-        <div className="buy-row" style={{ justifyContent: 'center' }}>
-          <a href="https://www.amazon.com/review/create-review?asin=B0H6YZWDT3" target="_blank" rel="noopener" className="btn btn-ghost">Review on Amazon</a>
-          <a href="https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885" target="_blank" rel="noopener" className="btn btn-ghost">Review on Barnes &amp; Noble</a>
+        {/* BOOK-11: its own block, set apart from the last review's attribution. */}
+        <div className="book-review-cta">
+          <div className="eyebrow">Already read it?</div>
+          <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
+          <div className="buy-row" style={{ justifyContent: 'center' }}>
+            <a href="https://www.amazon.com/review/create-review?asin=B0H6YZWDT3" target="_blank" rel="noopener" className="btn btn-ghost">Review on Amazon</a>
+            <a href="https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885" target="_blank" rel="noopener" className="btn btn-ghost">Review on Barnes &amp; Noble</a>
+          </div>
         </div>
       </section>
 
@@ -125,6 +130,7 @@ export default function BookPage() {
       {/* BOOK-V1: shop and footer stay inside .book-page so the sticky nav
           (whose containing block is this div) stays on screen to the end. */}
       <BookOffers />
+      </main>
       <SiteFooter />
     </div>
     </>

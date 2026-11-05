@@ -79,9 +79,9 @@ export default async function SearchPage({ searchParams }) {
 
   return (
     <>
-      <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <section id="main-content" className="wrap search-page">
+      <SiteNav />
+      <main id="main-content" className="wrap search-page">
         <h1>Search</h1>
         <form className="search-form" action="/search" method="get" role="search">
           <label className="visually-hidden" htmlFor="site-search">Search</label>
@@ -93,7 +93,9 @@ export default async function SearchPage({ searchParams }) {
             placeholder="Search"
             autoComplete="off"
             enterKeyHint="search"
-            autoFocus
+            /* SR-02: focus the field only on the empty page, so a results
+               page starts at the heading and the result count. */
+            autoFocus={!query}
           />
           <button className="btn btn-primary" type="submit">Search</button>
         </form>
@@ -126,7 +128,7 @@ export default async function SearchPage({ searchParams }) {
             })}
           </ul>
         ) : null}
-      </section>
+      </main>
       <SiteFooter />
     </>
   );

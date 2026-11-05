@@ -112,7 +112,22 @@ section { padding-block: var(--section-y); }
     padding: 13px 20px; color: var(--on-accent); letter-spacing: .12em; }
 }
 /* Section links land below the sticky menu, not under it. */
+:root { --nav-h: 81px; } /* 44px search target + 2 x 18px padding + 1px hairline */
 [id] { scroll-margin-top: 88px; }
+@media (max-width: 1179px){
+  /* G-12: a slimmer, more opaque bar on phones and tablets (65px instead of 81px). */
+  :root { --nav-h: 65px; }
+  .nav--collapsible { background: color-mix(in srgb, var(--bg) 94%, transparent); }
+  .nav--collapsible .nav-inner { padding-block: 10px; }
+  .nav--collapsible .nav-links { max-height: calc(100vh - var(--nav-h)); max-height: calc(100dvh - var(--nav-h)); }
+  [id] { scroll-margin-top: 76px; }
+  /* G-11: in the stacked menu the current page gets the threshold diamond, not a full-width rule. */
+  .nav--collapsible .nav-links a[aria-current="page"] { box-shadow: none; position: relative; }
+  .nav--collapsible .nav-links a[aria-current="page"]::before { content: ''; position: absolute; left: -14px; top: 50%;
+    width: 5px; height: 5px; background: var(--accent); transform: translateY(-50%) rotate(45deg); }
+}
+/* G-08: the <main> skip-link target takes focus without drawing a ring around the whole page. */
+main[tabindex="-1"]:focus { outline: none; }
 
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-sans);
@@ -326,7 +341,15 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 /* Legal links: quiet and readable in both registers (audit G-05). */
 footer .foot-meta a { color: var(--text-secondary); text-decoration: underline; text-decoration-color: var(--border-strong);
                       text-underline-offset: 3px; display: inline-block; padding-block: 6px; }
+/* Book title in the footer: real Cormorant italic, not a slanted Hanken (audit HOME-05). */
+footer .foot-meta em { font-family: var(--font-body); font-style: italic; font-size: 1.1em; }
 footer .foot-meta a:hover { color: var(--accent-ink); text-decoration-color: var(--accent); }
+/* G-07: footer text at caption size, and the legal links as a wrapping list with real tap targets. */
+footer .foot-meta { font-size: var(--text-caption); line-height: 1.6; }
+.foot-legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 20px; list-style: none; padding: 0; margin: 12px 0 0; }
+.foot-legal li { margin: 0; }
+footer .foot-legal a { display: inline-flex; align-items: center; padding-inline: 4px; }
+@media (pointer: coarse) { footer .foot-legal a { min-height: 44px; } }
 /* Dims the page behind the open phone menu; a tap on it closes the menu (audit G-03). */
 .nav-scrim { position: fixed; inset: 0; z-index: 49; background: rgba(34, 28, 24, .28); }
 @media (min-width: 1180px){ .nav-scrim { display: none; } }

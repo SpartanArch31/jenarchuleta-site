@@ -71,10 +71,17 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
         <div className="feed">
           {visible.map((p) => (
             <a key={p.slug} className="post-card" href={`/journal/${p.slug}`}>
-              {p.img ? <img src={p.img} alt={p.imgAlt || ''} loading="lazy" /> : null}
+              {/* J-06: a post with no photo gets a quiet plate the same shape,
+                  so its card lines up with the photo cards beside it. */}
+              {p.img ? (
+                <img src={p.img} alt={p.imgAlt || ''} loading="lazy" />
+              ) : (
+                <div className="post-card-plate" aria-hidden="true"><span>{p.category}</span></div>
+              )}
               <div className="body">
                 <div className="k">{p.kicker}</div>
-                <h3>{p.title}</h3>
+                {/* J-05: H2 under the page H1 (was H3, skipping a level). */}
+                <h2>{p.title}</h2>
                 <p>{p.excerpt}</p>
               </div>
             </a>

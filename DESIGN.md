@@ -253,7 +253,11 @@ accent elements.
 ### Navigation
 - **Style:** Sticky top bar over a translucent, blurred body-tint (`color-mix(--bg 88%)` + `blur(8px)`) with a bottom hairline. Cinzel caps wordmark on the left; Hanken Grotesk uppercase links (`0.78rem`, `0.14em` tracking) on the right.
 - **States:** Links rest in secondary ink; hover shifts to Gold-Deep and grows a 1px gold underline from the left (scaleX, `--dur-fast`).
-- **Mobile:** Below 760px the links collapse behind a hamburger into a full-width dropdown panel with its own hairline and shadow.
+- **Mobile:** Below 1180px the links collapse behind a 44px hamburger (it turns into an X) into a full-width panel with its own hairline and shadow, over a dimming scrim. The bar slims to 65px (`--nav-h`, 10px padding) at 94% opacity. In the panel the current page is marked by the 5px threshold diamond to the left of the gold label, not an underline.
+- **Landmarks:** Each page puts its skip link before the nav and its content in `<main id="main-content" tabIndex={-1}>`.
+
+### Footer
+- Caption-size (`--text-caption`, 13px) muted meta lines. The legal links are a wrapping `<ul class="foot-legal">` with 20px gaps, underlined in secondary ink, 44px tall on touch screens.
 
 ### The Threshold (signature component)
 The brand's one custom motif — a restrained "velvet-rope / doorway" line marking a

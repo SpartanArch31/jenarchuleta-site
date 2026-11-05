@@ -105,3 +105,13 @@
 /* BOOK-02: the unbuyable "Coming soon" bundle card no longer stretches to the
    Velvet Circle card's height. */
 .book-page .shop-page #bundle.product-card { align-self: start; }
+
+/* BOOK-11: the review CTA sits apart from the last review, behind a hairline. */
+.book-page .book-review-cta {
+  margin-top: clamp(48px, 7vw, 80px);
+  padding-top: clamp(32px, 5vw, 48px);
+  border-top: var(--hairline);
+}
+@media (max-width: 560px) {
+  .book-page .book-more .buy-row .btn { width: 100%; justify-content: center; }
+}
