@@ -79,7 +79,12 @@ export default function BookOffers() {
             <span id="backstage-bundle" />
             <span id="backstage-box" />
             <div className="product-media product-media--contain">
-              <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" />
+              <img
+                src="/assets/backstage-bundle.jpg"
+                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
+                width="1268"
+                height="1600"
+              />
             </div>
             <div className="product-body">
               <div className="eyebrow">The Bundle</div>
