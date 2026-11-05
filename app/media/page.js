@@ -76,6 +76,10 @@ const SPEAKING_TOPICS = [
   '20) Advocating for kids with CASA and Childhelp',
   '21) Founding The Forever Angels',
   '22) Helping animals and rescues',
+  '23) Hospice work with my TDI therapy dog',
+  '24) Being the best mom you can: traditions, morals, values, and putting God in your kids’ hearts',
+  '25) Marriage, discipline, and losing weight',
+  '26) Forgiveness and letting go of the burdens you carry',
 ];
 
 function publicFileExists(rel) {
@@ -195,7 +199,7 @@ export default function MediaPage() {
         <div id="speaking" className="media-block">
           <h3>Speaking</h3>
           <p>
-            I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
+            I speak about faith, resilience, and starting over, and about surviving hard things and rebuilding. I came from humble beginnings, barely finished school, and thought I was ugly, yet I became a Playboy Playmate, wrote a book, and built a stable life. Today I give back as a former CASA volunteer, a Childhelp volunteer, a hospice volunteer with my TDI therapy dog, founder of The Forever Angels, and a helper to animals and rescues, and I share my story to show people they can rise too.
           </p>
           <p><a className="btn btn-primary" href="#contact">Invite me to speak</a></p>
           <ol className="speak-topics">
