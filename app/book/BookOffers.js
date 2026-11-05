@@ -192,8 +192,8 @@ export default function BookOffers() {
           <h2 id="book-club-guide-title">{BOOK_CLUB_SNEAK_PEEK.title}</h2>
           <p>{BOOK_CLUB_SNEAK_PEEK.intro}</p>
           <ol>
-            {BOOK_CLUB_SNEAK_PEEK.questions.map((question) => (
-              <li key={question}>{question}</li>
+            {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
+              <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
             ))}
           </ol>
         </section>

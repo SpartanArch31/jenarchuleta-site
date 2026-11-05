@@ -103,7 +103,7 @@ the newer features she likes. Before changing structure, re-read this section.
     the gold key, the velvet bookmark, up to three questions a month answered promptly and in
     detail, and cancel anytime. Once 13 paying members have joined, the monthly group Zoom begins.
     The full guide is `lib/book-club-guide.js` for
-    emailing to new members. The shop shows only the title, the intro, and questions 1 and 2.
+    emailing to new members. The shop shows only the title, the intro, and questions 6 and 11.
   - **One name:** "The Velvet Circle Book Club" everywhere (cards, FAQ, Shipping & Returns,
     buttons). The Backstage Bundle is not a separate shop product. Don't add the word
     "backstage". Old `#backstage-bundle` / `#backstage-box` anchors land on the book club card.
