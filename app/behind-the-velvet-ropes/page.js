@@ -18,6 +18,7 @@ export default function VelvetRopesPage() {
           <VelvetKey className="velvet-ropes-key" />
           <h2>What are the Velvet Letters?</h2>
           <p>The story doesn’t end on the last page. Find the QR code in the back of the book to unlock the secret Velvet Letters.</p>
+          <p>Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
           <p style={{ marginTop: '22px' }}>
             <a className="btn btn-primary velvet-unlock" href="/velvet">
               <VelvetKey className="velvet-ropes-key" />
