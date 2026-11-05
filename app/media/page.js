@@ -11,9 +11,9 @@ import { APPEARANCES, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Media & Contact, Jen Archuleta' },
+  title: { absolute: 'Press, Jen Archuleta' },
   description:
-    'Press, television, the author bio, social links, the newsletter, and how to reach Jen Archuleta.',
+    'Press, television, film, speaking, social links, the newsletter, and how to reach Jen Archuleta.',
 };
 
 // FilmFreeway sits with Leone and Mark. Never publish a representative's
@@ -109,17 +109,17 @@ export default function MediaPage() {
 
       <section id="main-content" className="wrap media-hero media-intro">
         <div>
-          <h1>Media & Contact</h1>
-          <p className="media-lead">Press, socials, and how to reach me.</p>
+          <h1>Press</h1>
+          <p className="media-lead">Articles, television, film, speaking, and how to reach me.</p>
           <MediaCats />
         </div>
       </section>
 
-      <section id="media" className="wrap">
-        <h2>Media</h2>
+      <section id="press" className="wrap">
+        <h2>Press</h2>
 
-        <div id="press">
-          <h3>Press</h3>
+        <div>
+          <h3>Articles</h3>
           <Cards items={PRESS} />
         </div>
 
@@ -229,6 +229,33 @@ export default function MediaPage() {
           <a href={`mailto:${BOOKING_EMAIL}`}>{BOOKING_EMAIL}</a>.
         </p>
         <p>Please include your name, your outlet or event, the date, and a little about what you have in mind.</p>
+      </section>
+
+      <section id="forever-angels" className="wrap text-wrap">
+        <h2>Want to get involved with me?</h2>
+        <img
+          src="/assets/presskit-headshot-floral.jpg"
+          alt="Jen Archuleta smiling in a floral top"
+          width="1100"
+          height="1370"
+          style={{ width: 'min(280px, 70%)', height: 'auto', display: 'block', margin: '0 0 18px' }}
+        />
+        <p>
+          I co-founded The Forever Angels with Allison Kiefer. We help families through referrals and trusted community partners, with fairness and dignity. A family may receive support once a year.
+        </p>
+        <p>
+          I grew up in a close family that taught me compassion. At 18 I moved to the West Coast and built a career as a makeup artist, aesthetician, and model. The hard seasons made my purpose clearer. In 2008 I stepped away from modeling to focus on my family. My husband, former NFL safety Adam Archuleta, and I keep a lively house with our rescues and two tortoises. I love camping, snowboarding, rock climbing, and traveling with them. My faith keeps me steady.
+        </p>
+        <p>
+          I serve as a Court Appointed Special Advocate for children in foster care. My rescue, Turbo, is a certified therapy dog who brings comfort to people in hospitals and hospices.
+        </p>
+        <p>
+          I have worked with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
+        </p>
+        <p>What I want is simple. Bring happiness and kindness, one act at a time.</p>
+        <p>
+          <a href="https://theforeverangels.com/our-founders/" target="_blank" rel="noopener noreferrer">The Forever Angels</a>
+        </p>
       </section>
 
       <SiteFooter />

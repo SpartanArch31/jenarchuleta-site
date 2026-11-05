@@ -14,7 +14,7 @@ import { heroAlt } from './hero-alt';
 // live on /pups. Nothing is deleted, and no post body is edited here.
 
 export const metadata = {
-  title: 'My Journals',
+  title: 'Journal',
   description:
     'Short, honest writing on faith, family, healing, and starting over, from Jen Archuleta.',
 };
@@ -118,7 +118,7 @@ export default async function JournalPage({ searchParams }) {
       <a href="#main-content" className="skip-link">Skip to content</a>
 
       <section id="main-content" className="wrap journal-head">
-        <h1>My Journals</h1>
+        <h1>Journal</h1>
         <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
           Notes from the road back to myself.
         </p>
@@ -128,7 +128,7 @@ export default async function JournalPage({ searchParams }) {
 
         {opened ? (
           <p className="journal-back">
-            <a href="/journal">My Journals</a>
+            <a href="/journal">Journal</a>
             <span aria-hidden="true"> · </span>
             {showArchive ? 'Archive' : categoryLabel(active)}
           </p>

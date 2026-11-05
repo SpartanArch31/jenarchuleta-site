@@ -19,10 +19,11 @@ const pageRedirects = [
   { source: '/my-story', destination: '/about#then', permanent: true },
   { source: '/speaking', destination: '/media#speaking', permanent: true },
   // Old Squarespace store, product, and cart URLs → the shop.
-  { source: '/store/:path*', destination: '/shop', permanent: true },
-  { source: '/shop/p/:path*', destination: '/shop', permanent: true },
-  { source: '/cart', destination: '/shop', permanent: true },
-  { source: '/checkout', destination: '/shop', permanent: true },
+  { source: '/store/:path*', destination: '/book#shop', permanent: true },
+  { source: '/shop/p/:path*', destination: '/book#shop', permanent: true },
+  { source: '/cart', destination: '/book#shop', permanent: true },
+  { source: '/checkout', destination: '/book#shop', permanent: true },
+  { source: '/shop', destination: '/book#shop', permanent: false },
   // Old newsletter / Mailchimp-era signup paths → the free-chapter signup.
   // Temporary (307) so a real page can take these paths later without cached redirects.
   { source: '/subscribe', destination: '/media#social', permanent: false },
@@ -30,10 +31,12 @@ const pageRedirects = [
   { source: '/sign-up', destination: '/media#social', permanent: false },
   { source: '/mailing-list', destination: '/media#social', permanent: false },
   // The Forever Angels page is /forever-angels. The older spelled-out path lands there.
-  { source: '/the-forever-angels', destination: '/forever-angels', permanent: true },
+  { source: '/the-forever-angels', destination: '/media#forever-angels', permanent: false },
+  { source: '/forever-angels', destination: '/media#forever-angels', permanent: false },
+  { source: '/about-the-author', destination: '/book#author', permanent: false },
   { source: '/newsletter', destination: '/media#social', permanent: false },
   // Quotes now live on About Me.
-  { source: '/quotes', destination: '/about', permanent: true },
+  { source: '/quotes', destination: '/thank-you', permanent: false },
   // /contact lands on the contact section of the combined Media page.
   { source: '/contact', destination: '/media#contact', permanent: false },
   { source: '/press', destination: '/media', permanent: true },

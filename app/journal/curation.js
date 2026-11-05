@@ -73,7 +73,10 @@ export const ARCHIVED_SLUGS = new Set([
 
 // Category fixes by slug, if any post needs one. (None right now: the only
 // uncategorized "Journal" posts are archived above.)
-export const CATEGORY_OVERRIDES = {};
+// Display only. The post stays as Jen published it in Sanity.
+export const CATEGORY_OVERRIDES = {
+  'beyond-the-velvet-ropes-the-documentary-is-coming': 'Behind the Book',
+};
 
 export function curatePosts(posts) {
   return (posts || []).map((p) => {

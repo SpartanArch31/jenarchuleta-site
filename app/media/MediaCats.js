@@ -3,24 +3,26 @@
 import { useEffect, useState } from 'react';
 
 const CATS = [
-  { href: '#media', label: 'Media' },
-  { href: '#social', label: 'Social media and sign up' },
-  { href: '#contact', label: 'Contact me' },
+  { href: '#press', label: 'Press' },
+  { href: '#film', label: 'Film' },
+  { href: '#speaking', label: 'Speaking' },
+  { href: '#social', label: 'Social and sign up' },
+  { href: '#contact', label: 'Contact' },
+  { href: '#forever-angels', label: 'Get involved' },
 ];
 
-// Three buttons at the top of /media. Each one jumps to that part of the page.
 export default function MediaCats() {
-  const [hash, setHash] = useState('#media');
+  const [hash, setHash] = useState('#press');
 
   useEffect(() => {
-    const read = () => setHash(window.location.hash || '#media');
+    const read = () => setHash(window.location.hash || '#press');
     read();
     window.addEventListener('hashchange', read);
     return () => window.removeEventListener('hashchange', read);
   }, []);
 
   return (
-    <nav className="media-cats" aria-label="Media and contact">
+    <nav className="media-cats" aria-label="Press">
       {CATS.map((cat) => {
         const current = hash === cat.href;
         return (

@@ -26,6 +26,17 @@
 .book-page .book-screen h2 { font-size: var(--text-h1); margin: 6px 0 18px; }
 .book-page .book-screen p { color: var(--text-secondary); }
 .book-page .book-more { padding-block: clamp(48px, 7vw, 80px); }
+.book-author {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  padding-block: clamp(40px, 6vw, 72px);
+}
+.book-author img { width: 100%; height: auto; display: block; }
+@media (max-width: 700px) {
+  .book-author { grid-template-columns: 1fr; max-width: 420px; }
+}
 .book-page .book-more .buy-row { margin-top: 18px; }
 
 /* The one full Velvet Letter line, beside the buy buttons. */

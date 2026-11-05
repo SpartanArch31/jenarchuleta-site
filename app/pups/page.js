@@ -63,9 +63,6 @@ function PupCard({ pup, photo }) {
 export default async function PupsPage() {
   const pups = [...PUPS].sort((a, b) => a.date.localeCompare(b.date));
   const photos = await pupPhotoUrls([...new Set(pups.map((p) => p.imageSlug).filter(Boolean))]);
-  const featured = pups.find((p) => p.featured) || null;
-  const featuredPhoto = featured ? featured.src || (featured.imageSlug ? photos[featured.imageSlug] : null) : null;
-  const showFeatured = Boolean(featured && featuredPhoto);
 
   return (
     <div className="pups-page">
@@ -80,33 +77,9 @@ export default async function PupsPage() {
         </p>
       </section>
 
-      {showFeatured ? (
-        <section className="wrap pups-featured" aria-labelledby="featured-pup">
-          <div className="pups-featured-card">
-            <img src={featuredPhoto} alt={featured.alt || featured.name} />
-            <div>
-              <div className="eyebrow">Featured pup</div>
-              <h2 id="featured-pup">{featured.name}</h2>
-              {featured.breedAge ? <p className="pup-breed">{featured.breedAge}</p> : null}
-              {featured.rescue ? <p className="pup-rescue"><span className="pup-k">Rescue </span>{featured.rescue}</p> : null}
-              {featured.episode ? (
-                <p className="pup-guest"><span className="pup-k">Episode </span>{featured.episode}</p>
-              ) : featured.guest ? (
-                <p className="pup-guest"><span className="pup-k">With </span>{featured.guest}</p>
-              ) : null}
-              <p className="pups-featured-links">
-                {featured.watch ? <a className="btn btn-primary btn-sm" href={featured.watch} target="_blank" rel="noopener noreferrer">Watch the episode</a> : null}
-                {featured.post ? <a className="btn btn-ghost btn-sm" href={`/journal/${featured.post}`}>Read more</a> : null}
-              </p>
-            </div>
-          </div>
-        </section>
-      ) : null}
-
       <section className="wrap" style={{ paddingTop: 0 }}>
-        <div className="eyebrow center" style={{ marginBottom: '18px' }}>The full collection</div>
         <div className="pups-grid">
-          {pups.filter((pup) => !(showFeatured && pup.name === featured.name)).map((pup) => {
+          {pups.map((pup) => {
             const photo = pup.src || (pup.imageSlug ? photos[pup.imageSlug] : null);
             if (!photo) return null;
             return <PupCard key={pup.name} pup={pup} photo={photo} />;

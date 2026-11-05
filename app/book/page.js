@@ -2,7 +2,7 @@ import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuyOptions from '../components/BuyOptions';
-import VelvetKey from '../components/VelvetKey';
+import BookOffers from './BookOffers';
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
@@ -32,6 +32,7 @@ const bookJsonLd = {
 
 export default function BookPage() {
   return (
+    <>
     <div className="dark book-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }} />
       <SiteNav />
@@ -48,14 +49,6 @@ export default function BookPage() {
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
             <div id="buy">
               <BuyOptions signedLink={false} />
-              <div className="book-velvet">
-                <VelvetKey className="book-velvet-key" />
-                <p>Psst. The last page isn’t really the end. Tucked in the back of the book is a little QR code, and it holds the key to a secret Velvet Letter, written just for readers. No book, no key. Turn the last page, scan, and step behind one more velvet rope.</p>
-              </div>
-              <p className="book-to-shop">
-                Signed copies, the bookmark, and the book club.
-                <a className="btn btn-ghost btn-sm" href="/shop">Shop</a>
-              </p>
             </div>
           </div>
         </div>
@@ -71,8 +64,7 @@ export default function BookPage() {
       <section id="trailer" className="wrap trailer-feature book-trailer">
         <div className="tf-copy">
           <div className="eyebrow">Watch the Trailer</div>
-          <p className="tf-logline">“Everyone knew the headlines. No one knew the story.”</p>
-          <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
+            <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
         </div>
         <figure className="tf-video">
           <video
@@ -110,7 +102,21 @@ export default function BookPage() {
         </div>
       </section>
 
+      <section id="author" className="wrap book-author">
+        <img src="/assets/jen-headshot-signature.jpg" alt="Jen Archuleta smiling in a black top" width="1162" height="1597" />
+        <div>
+          <p className="eyebrow">About the author</p>
+          <h2>Author, host, speaker, advocate.</h2>
+          <p>
+            I’m the author of <em>Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love</em>,
+            and the host of the podcast <em>Unfiltered with Jen Archuleta</em>.
+          </p>
+        </div>
+      </section>
+      </div>
+
+      <BookOffers />
       <SiteFooter />
-    </div>
+    </>
   );
 }

@@ -3,7 +3,6 @@ import SiteNav from '../components/SiteNav';
 import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
-import { QUOTE_FORGIVE, QUOTE_LOST, QUOTE_RESCUE } from '../quotes/quotes-data';
 
 export const metadata = {
   title: 'About Me',
@@ -90,18 +89,10 @@ export default function AboutPage() {
         <div>
           {/* Jen's pick since July: the black-and-white photo in the long black trench
               coat. Do not swap in a headshot. */}
-          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat, in her twenties" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
+          <Image className="tim-gray" src="/assets/jen-bw-coat2.jpg" alt="Jen Archuleta in a long black trench coat" width={1026} height={1532} sizes="(max-width: 860px) 92vw, 460px" quality={85} />
         </div>
         <div>
-          <p className="tim-lead">
-            I’ll be honest, I’ve never minded the camera. Red carpets, magazine covers, getting
-            dressed up. My twenties gave me some incredible experiences and some hard ones too.
-            I’m grateful for all of it. But the life I love most is the regular one I wake up to now.
-          </p>
-          <figure className="tim-quote">
-            <p>“{QUOTE_LOST.text}”</p>
-            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
-          </figure>
+          <p className="tim-lead">My 20s were amazing. I saw and did things most people dream about.</p>
         </div>
       </section>
 
@@ -117,48 +108,9 @@ export default function AboutPage() {
       </section>
       <PhotoGallery />
 
-      <section className="tim-wrap tim-band-inner tim-from-book" aria-label="From the book">
-        <img
-          className="tim-quote-photo"
-          src="/assets/jen-beauty.jpg"
-          alt="Jen Archuleta"
-          width="900"
-          height="1520"
-        />
-        <div className="tim-quotes">
-          <figure className="tim-quote">
-            <p>“{QUOTE_RESCUE.text}”</p>
-            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
-          </figure>
-          <figure className="tim-quote">
-            <p>“{QUOTE_FORGIVE.text}”</p>
-            <figcaption className="by">Beyond the Velvet Ropes</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      {/* Giving back stays on About Me. The charity page is /forever-angels. */}
-      <section id="forever-angels" className="tim-faith dark">
-        <span id="faith" className="anchor" aria-hidden="true" />
-        <div className="tim-faith-inner">
-          <p className="tim-lead tim-lead--center">
-            Giving back matters to me. If I have time, a story, or a hand to lend, I’d rather use
-            it for someone else.
-          </p>
-          <a href="/forever-angels" className="btn btn-primary">The Forever Angels</a>
-        </div>
-      </section>
-
-      {/* CLOSING */}
       <section className="tim-wrap tim-close">
-        <span id="work" className="anchor" aria-hidden="true" />
-        <p className="tim-lead">
-          Want to be part of something? <a href="/book">Buy my book</a>. You can also{' '}
-          <a href="/media#social">get the first chapter free</a>.
-        </p>
         <p className="tim-lead">Thanks for being here.</p>
         <p className="tim-sign">Jen</p>
-        <p className="tim-author-link"><a href="/about-the-author">About the Author</a></p>
       </section>
 
       <SiteFooter />

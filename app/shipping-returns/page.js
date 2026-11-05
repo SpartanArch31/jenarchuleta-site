@@ -35,7 +35,7 @@ export default function ShippingReturnsPage() {
             Signed and shipped by regular mail. Orders currently ship within the
             United States only.
             Because each book is personalized to your order, we&rsquo;re unable to accept returns for a
-            change of mind, but if your book arrives damaged or defective, contact us within 14 days at{' '}
+            change of mind, but if your book arrives damaged or defective, contact us at{' '}
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> with a photo, and we&rsquo;ll make it
             right with a replacement or refund.
           </p>
@@ -48,13 +48,19 @@ export default function ShippingReturnsPage() {
             one-of-a-kind pieces, all other sales are final.
           </p>
 
+          <h2>The Bundle</h2>
+          <p>
+            The Bundle is not for sale yet. When it is, it is a signed copy, the Signature Velvet Bookmark,
+            and one free month of The Velvet Circle (three questions of your choice, and you can cancel after that).
+            The book and the bookmark are shipped by regular mail.
+          </p>
+
           <h2>The Velvet Circle Book Club</h2>
           <p>
             The Velvet Circle Book Club is {SHOP.velvetCircleMembershipPrice} until you cancel.
-            It includes a sneak peek of the book club discussion guide (not the full guide), The
-            Velvet Letter with the gold key, the velvet bookmark, and up to three questions a month,
-            answered promptly and in detail. Once 13 paying members have joined, we&rsquo;ll begin my
-            monthly group Zoom. Email questions to{' '}
+            Start your own book club. With 13 or more members, we Zoom once a month. If you can&rsquo;t
+            find 13, you get three months of three questions, from the one sheet or anything you want.
+            Email questions to{' '}
             <a href={`mailto:${SHOP.velvetCircleQuestionsEmail}`}>{SHOP.velvetCircleQuestionsEmail}</a>.
             You can cancel anytime before your next billing date to avoid being charged for
             the following month; charges already processed for the current billing period are

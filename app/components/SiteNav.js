@@ -2,10 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-// ONE navigation for the whole site, every page, light or dark.
-// Main: Home | About Me | Book | Podcast | My Journals | Media & Contact | Shop
-// The Velvet Letter is not in the menu. /velvet stays unlisted.
-// Media, social signup, and contact are one page (/media). /contact redirects there.
+// Home, About Me, Book, Press, Journal, Podcast, Velvet Ropes, Thank You.
+// /velvet stays unlisted. Press lives at /media.
 // Desktop: inline links; a drop-down opens on hover or with its arrow button.
 // Narrow screens: the hamburger opens the menu, and each arrow opens that
 // page's sections underneath it.
@@ -18,7 +16,6 @@ const MENU = [
     items: [
       { href: '/about', label: 'About me' },
       { href: '/about#gallery', label: 'Gallery' },
-      { href: '/forever-angels', label: 'Giving back' },
     ],
   },
   {
@@ -26,48 +23,39 @@ const MENU = [
     href: '/book',
     label: 'Book',
     items: [
-      { href: '/book', label: 'Get the book' },
-      { href: '/media#social', label: 'Get the first chapter free' },
-      { href: '/book#trailer', label: 'Watch the trailer' },
-      { href: '/book#who', label: 'Who this book is for' },
-      { href: '/book#reviews', label: 'Leave a review' },
+      { href: '/book#buy', label: 'Buy the book' },
+      { href: '/book#author', label: 'About the author' },
+      { href: '/book#shop', label: 'Signed copies and more' },
     ],
   },
+  {
+    id: 'press',
+    href: '/media',
+    label: 'Press',
+    also: ['/contact'],
+    items: [
+      { href: '/media#press', label: 'Press' },
+      { href: '/media#film', label: 'Film and documentary' },
+      { href: '/media#speaking', label: 'Speaking' },
+      { href: '/media#social', label: 'Social and sign up' },
+      { href: '/media#contact', label: 'Contact' },
+      { href: '/media#forever-angels', label: 'Get involved' },
+    ],
+  },
+  { href: '/journal', label: 'Journal' },
   {
     id: 'podcast',
     href: '/podcast',
     label: 'Podcast',
+    also: ['/pups', '/sponsors'],
     items: [
-      { href: '/podcast#episodes', label: 'All 13 episodes' },
-      { href: '/pups', label: 'Pups of the Podcast' },
+      { href: '/podcast#episodes', label: 'Buzzsprout episodes' },
+      { href: '/pups', label: 'Pups' },
       { href: '/sponsors', label: 'Sponsors' },
     ],
   },
-  { href: '/journal', label: 'My Journals' },
-  {
-    id: 'media',
-    href: '/media',
-    label: 'Media & Contact',
-    also: ['/contact'],
-    alignEnd: true,
-    items: [
-      { href: '/media#media', label: 'Media' },
-      { href: '/media#social', label: 'Social media and sign up' },
-      { href: '/media#contact', label: 'Contact me' },
-    ],
-  },
-  {
-    id: 'shop',
-    href: '/shop',
-    label: 'Shop',
-    alignEnd: true,
-    items: [
-      { href: '/shop#signed-copy', label: 'Signed copy' },
-      { href: '/shop#velvet-circle', label: 'The Velvet Circle Book Club' },
-      { href: '/shop#bookmark', label: 'The Signature Velvet Bookmark' },
-      { href: '/shop#velvet-circle-faq', label: 'Book Club FAQs' },
-    ],
-  },
+  { href: '/behind-the-velvet-ropes', label: 'Velvet Ropes' },
+  { href: '/thank-you', label: 'Thank You' },
 ];
 
 const DESKTOP = '(min-width: 1024px)';
@@ -223,11 +211,6 @@ export default function SiteNav({ homeHref = '/' }) {
               </div>
             );
           })}
-          {/* Phones: the free first chapter sits at the bottom of the menu as a
-              button. On a laptop it is in the Book drop-down. */}
-          <a href="/media#social" className="btn btn-primary nav-chapter" onClick={close}>
-            Get the first chapter free
-          </a>
         </div>
       </div>
     </nav>

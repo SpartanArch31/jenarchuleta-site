@@ -4,8 +4,6 @@ import SiteFooter from '../components/SiteFooter';
 import BuzzsproutPlayer from '../components/BuzzsproutPlayer';
 import { PODCAST } from '../components/site-data';
 
-// The sharing preview for this page (Jen, November 2026): its own card, not
-// the site-wide floral image, so a shared Podcast link looks like the show.
 const PODCAST_OG = {
   url: 'https://jenarchuleta.com/assets/og-podcast-1200x630.jpg',
   width: 1200,
@@ -14,7 +12,7 @@ const PODCAST_OG = {
 };
 
 const DESCRIPTION =
-  'Unfiltered with Jen Archuleta features 13 episodes of honest conversations on faith, family, resilience, and starting over. Listen on Buzzsprout or watch on YouTube.';
+  'Unfiltered with Jen Archuleta. 13 episodes. Listen on Buzzsprout or watch on YouTube.';
 
 export const metadata = {
   title: { absolute: 'Podcast, Unfiltered with Jen Archuleta' },
@@ -33,11 +31,6 @@ export const metadata = {
   },
 };
 
-// Jen's rules for this page (October 27–28, 2026, and November 2026): say
-// simply "Explore all 13 episodes of Unfiltered with Jen Archuleta."; Buzzsprout
-// and YouTube sit together (side by side on a laptop, stacked on a phone),
-// each with a plain link as a backup; never say the show is on hold or that
-// new episodes are coming out. Use guests' full names.
 export default function PodcastPage() {
   const { name, buzzsproutSite, buzzsproutId } = PODCAST;
   const watchHref = PODCAST.youtubeEpisodes || PODCAST.youtube;
@@ -47,26 +40,34 @@ export default function PodcastPage() {
       <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      {/* HERO */}
       <section id="main-content" className="wrap pod-hero">
+        <img
+          src="/assets/og-podcast-1200x630.jpg"
+          alt="Unfiltered with Jen Archuleta"
+          width="1200"
+          height="630"
+          style={{ width: 'min(720px, 100%)', height: 'auto', margin: '0 auto 22px', display: 'block' }}
+        />
         <div className="eyebrow">The Podcast</div>
-        <div className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>unfiltered…</div>
         <h1>{name}</h1>
         <p className="pod-count">Explore all 13 episodes of {name}.</p>
-        <p className="home-pod-cross">
+        <nav className="pod-boxes" aria-label="Podcast">
+          <a href="/pups">Pups</a>
+          <a href="#episodes">Buzzsprout</a>
+          <a href="/sponsors">Sponsors</a>
+        </nav>
+      </section>
+
+      <section id="episodes" className="wrap pod-players" aria-label="All 13 episodes">
+        <p className="home-pod-cross center">
           Listen on <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Buzzsprout</a>
           <span aria-hidden="true"> • </span>
           Watch on <a href={PODCAST.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
         </p>
-      </section>
-
-      {/* EPISODES — listen (Buzzsprout's player lists every episode) beside
-          watch (the YouTube "Full Episodes" playlist, Ep. 1 first). */}
-      <section id="episodes" className="wrap pod-players" style={{ paddingTop: 0 }} aria-label="All 13 episodes">
         <div className="pod-player">
           <div className="pod-player-head">
             <div className="eyebrow">Listen</div>
-            <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Open on Buzzsprout →</a>
+            <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Open on Buzzsprout</a>
           </div>
           {buzzsproutId ? (
             <BuzzsproutPlayer showId={buzzsproutId} />
@@ -79,7 +80,7 @@ export default function PodcastPage() {
         <div className="pod-player">
           <div className="pod-player-head">
             <div className="eyebrow">Watch</div>
-            <a href={watchHref} target="_blank" rel="noopener noreferrer">Open on YouTube →</a>
+            <a href={watchHref} target="_blank" rel="noopener noreferrer">Open on YouTube</a>
           </div>
           {PODCAST.youtubeEmbed ? (
             <div className="pod-video">
@@ -94,26 +95,6 @@ export default function PodcastPage() {
             </div>
           ) : null}
           <p className="pod-video-note">All 13 full episodes, starting with Episode 1.</p>
-        </div>
-      </section>
-
-      {/* PUPS OF THE PODCAST: the featured pup + a link to the full collection.
-          The "every episode features a rescue pup" line lives on /pups only
-          (Jen, November 3: nothing repeated). */}
-      <section id="pups" className="wrap center">
-        <div className="eyebrow">Pups of the Podcast</div>
-        <p><a href="/pups" className="btn btn-primary">See all the pups</a></p>
-      </section>
-
-      {/* SPONSORS */}
-      <section id="sponsors" className="wrap center">
-        <div className="eyebrow">Sponsors</div>
-        <h2>Thank you.</h2>
-        <p className="lead" style={{ maxWidth: '46ch', marginInline: 'auto' }}>
-          Thank you to the sponsors who have supported the show.
-        </p>
-        <div style={{ marginTop: '20px' }}>
-          <a href="/sponsors" className="btn btn-ghost">See the sponsors</a>
         </div>
       </section>
 

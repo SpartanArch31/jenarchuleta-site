@@ -44,11 +44,11 @@ export default function JournalBrowser({ posts = [], initialQuery = '', showAll 
   return (
     <>
       <form className="journal-search" role="search" onSubmit={(event) => event.preventDefault()}>
-        <label htmlFor="journal-search-input" className="visually-hidden">Search My Journals</label>
+        <label htmlFor="journal-search-input" className="visually-hidden">Search the Journal</label>
         <input
           id="journal-search-input"
           type="search"
-          placeholder="Search My Journals"
+          placeholder="Search the Journal"
           value={query}
           autoComplete="off"
           enterKeyHint="search"

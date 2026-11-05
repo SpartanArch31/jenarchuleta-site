@@ -269,7 +269,7 @@ const OCT26 = [
   { src: '/assets/gallery-oct26/snow.jpg', alt: 'Jen Archuleta in the snow', width: 1320, height: 1266 },
   { src: '/assets/gallery-oct26/jet-cabin.jpg', alt: 'Inside a private jet', width: 1029, height: 845 },
   { src: '/assets/gallery-oct26/jet-stairs.jpg', alt: 'On the stairs of a private jet', width: 1320, height: 1271 },
-  { src: '/assets/gallery-oct26/dog-tortoise.jpg', alt: 'A dog on a tortoise', width: 1320, height: 1320 },
+  { src: '/assets/gallery-oct26/dog-tortoise.jpg', alt: 'A rescue on a tortoise', width: 1320, height: 1320 },
   { src: '/assets/gallery-oct26/tortoise.jpg', alt: 'A tortoise with greens', width: 665, height: 940 },
 ];
 
@@ -279,7 +279,7 @@ const NOV4 = [
   { src: '/assets/gallery-nov4/nov4-01-christmas-tree.jpg', alt: 'Christmas tree with a ladder', caption: '', width: 1320, height: 1216 },
   { src: '/assets/gallery-nov4/nov4-02-ivy-fountain.jpg', alt: 'A little girl at an ivy-covered fountain', caption: '', width: 1320, height: 1274 },
   { src: '/assets/gallery-nov4/nov4-03-christmas-pajamas.jpg', alt: 'Jen Archuleta and her family in matching Christmas pajamas', caption: '', width: 1320, height: 1164 },
-  { src: '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg', alt: 'Five dogs and two tortoises on the grass', caption: '', width: 1102, height: 863 },
+  { src: '/assets/gallery-nov4/nov4-04-dogs-and-tortoises.jpg', alt: 'Five rescues and two tortoises on the grass', caption: '', width: 1102, height: 863 },
   { src: '/assets/gallery-nov4/nov4-05-ski-gondola.jpg', alt: 'Jen Archuleta with a toddler on a ski gondola', caption: '', width: 1289, height: 1600 },
   { src: '/assets/gallery-nov4/nov4-06-beach-bodyboard.jpg', alt: 'A dad and kids walking to the beach with a yellow bodyboard', caption: '', width: 1320, height: 1165 },
   { src: '/assets/gallery-nov4/nov4-07-private-jet.jpg', alt: 'Two kids inside a private jet', caption: '', width: 922, height: 1263 },
@@ -301,6 +301,27 @@ const NOV4 = [
 // Childhood portrait. The Hollywood set stays first, so this follows every earlier slide.
 const CHILDHOOD = [
   { src: '/assets/gallery-childhood/jen-childhood.jpg', alt: 'Jen as a girl', width: 552, height: 552 },
+];
+
+// November 4, second batch. No captions. Alt text names only Jen.
+const NOV4B = [
+  { src: '/assets/gallery-nov4b/nov4b-02-timberlake-nelly-robes.jpg', alt: 'Jen Archuleta in a robe', caption: '', width: 793, height: 655 },
+  { src: '/assets/gallery-nov4b/nov4b-03-siren-song-magazine.jpg', alt: 'Jen Archuleta on a magazine page', caption: '', width: 917, height: 1243 },
+  { src: '/assets/gallery-nov4b/nov4b-04-two-women-laughing.jpg', alt: 'Jen Archuleta laughing with a friend', caption: '', width: 1242, height: 1550 },
+  { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 1243 },
+  { src: '/assets/gallery-nov4b/nov4b-06-couch-fishburne.jpg', alt: 'Jen Archuleta seated on a couch', caption: '', width: 1242, height: 1188 },
+  { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1440 },
+  { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 920, height: 940 },
+  { src: '/assets/gallery-nov4b/nov4b-09-four-people-beads.jpg', alt: 'Jen Archuleta with friends', caption: '', width: 1040, height: 820 },
+  { src: '/assets/gallery-nov4b/nov4b-10-green-top-white-shorts.jpg', alt: 'Jen Archuleta in a green top and white shorts', caption: '', width: 1150, height: 1480 },
+  { src: '/assets/gallery-nov4b/nov4b-11-hefner-calendar-signing.jpg', alt: 'Jen Archuleta at a calendar signing', caption: '', width: 930, height: 700 },
+  { src: '/assets/gallery-nov4b/nov4b-12-sunglasses-party.jpg', alt: 'Jen Archuleta at a party in sunglasses', caption: '', width: 980, height: 820 },
+  { src: '/assets/gallery-nov4b/nov4b-13-award-podium.jpg', alt: 'Jen Archuleta at an awards podium', caption: '', width: 1040, height: 660 },
+  { src: '/assets/gallery-nov4b/nov4b-14-raising-stakes-poker-flyer.jpg', alt: 'Jen Archuleta on a poker flyer', caption: '', width: 1400, height: 1400 },
+  { src: '/assets/gallery-nov4b/nov4b-15-featured-girl-magazine.jpg', alt: 'Jen Archuleta on a magazine cover', caption: '', width: 1242, height: 1231 },
+  { src: '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg', alt: 'Jen Archuleta in a painted portrait', caption: '', width: 1157, height: 1600 },
+  { src: '/assets/gallery-nov4b/nov4b-17-bishop-photo.jpg', alt: 'Jen Archuleta in a portrait', caption: '', width: 1110, height: 900 },
+  { src: '/assets/gallery-nov4b/nov4b-18-thanksgiving-eve-tommy-lee.jpg', alt: 'Jen Archuleta at a gathering', caption: '', width: 1400, height: 1400 },
 ];
 
 // Oct 27: slides Jen took out, and duplicate pairs (one copy stays, the
@@ -327,7 +348,7 @@ const HIDDEN_SLIDE_SRC = new Set([
 
 // Every photo defined above, in the November 3 order, minus slides Jen had
 // already taken out (HIDDEN_SLIDE_SRC) and the November 5 removals.
-const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD]
+const ALL_SLIDES = [...HOLLYWOOD, ...PORTRAITS, ...FAMILY, ...FAMILY_OCT27, ...NOV3, ...GALLERY_NEW, ...PICKS, ...OCT26, ...NOV4, ...CHILDHOOD, ...NOV4B]
   .filter((slide) => !HIDDEN_SLIDE_SRC.has(slide.src));
 
 // November 5. Old numbers are the 92-slide gallery (1 / 92 on About Me).

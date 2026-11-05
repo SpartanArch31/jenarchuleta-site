@@ -172,6 +172,7 @@ export const CONNECT_LINKS = [
   { label: 'X', href: SOCIALS.x },
   { label: 'TikTok', href: SOCIALS.tiktok },
   { label: 'Instagram', href: SOCIALS.instagram },
+  { label: 'Facebook', href: SOCIALS.facebook },
   { label: 'YouTube', href: PODCAST.youtube },
   { label: 'Buzzsprout', href: PODCAST.buzzsproutSite },
 ];
