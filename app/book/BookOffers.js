@@ -140,10 +140,16 @@ export default function BookOffers() {
                 A signed copy of the book, the Signature Velvet Bookmark, and bunny ears, packaged together in a padded gift case. Shipped by regular mail.
               </p>
               <div className="product-cta">
-                <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
-                  Buy the bundle
-                </a>
-                <TrustLine />
+                {SHOP.bundle ? (
+                  <>
+                    <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
+                      Buy the bundle
+                    </a>
+                    <TrustLine />
+                  </>
+                ) : (
+                  <span className="btn btn-disabled">Coming soon</span>
+                )}
               </div>
             </div>
           </article>

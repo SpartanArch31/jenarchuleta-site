@@ -137,9 +137,11 @@ export const SHOP = {
   // and in detail every month.
   velvetCircleQuestionsEmail: 'therealunfilteredpod@gmail.com',
 
-  // The Bundle. $69, sold through the existing Kit product page (no Stripe link).
-  // Old #backstage-bundle anchors land on this card.
-  bundle: 'https://jennifer-archuleta.kit.com/products/founding-box-season-1',
+  // The Bundle, $69. Empty = the card shows "Coming soon" (Adam, Nov 5, 2026).
+  // It was pointing at a Kit checkout, which can't collect a shipping address.
+  // Paste a one-time $69 Stripe Payment Link here (shipping address ON).
+  // Never a Kit checkout URL. Old #backstage-bundle anchors land on this card.
+  bundle: '',
   bundlePrice: '$69',
 };
 
