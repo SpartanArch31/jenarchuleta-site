@@ -4,7 +4,7 @@ import { BOOKING_EMAIL } from '../components/site-data';
 import './contact.css';
 
 export const metadata = {
-  title: { absolute: 'Contact, Jen Archuleta' },
+  title: 'Contact',
   description:
     'Press, interviews, speaking, and events. Email Jen Archuleta.',
 };
@@ -32,7 +32,7 @@ export default function ContactPage() {
         <p className="hero-script" style={{ fontSize: 'var(--text-script-m)' }}>Let’s connect</p>
         <h1>Jen Archuleta</h1>
         <p className="contact-role">
-          Author of Beyond the Velvet Ropes. Host of Unfiltered with Jen Archuleta.
+          Author of Beyond the Velvet Ropes by Jennifer Walcott Archuleta. Host of Unfiltered with Jen Archuleta.
         </p>
       </section>
 

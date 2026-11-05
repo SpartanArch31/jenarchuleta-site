@@ -10,8 +10,8 @@ export const metadata = {
 
 const EFFECTIVE_DATE = 'July 23, 2026';
 // Shipping costs, ship times, and how members send questions spelled out (Nov 3).
-const UPDATED_DATE = 'November 3, 2026';
-const CONTACT_EMAIL = 'jen@jenarchuleta.com';
+const UPDATED_DATE = 'November 5, 2026';
+const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';
 
 export default function ShippingReturnsPage() {
   return (
@@ -32,7 +32,7 @@ export default function ShippingReturnsPage() {
           <p>
             Each signed copy is personalized and signed by hand by Jen, one at a time. A signed copy
             is {SHOP.signedBookPrice} plus {SHOP.signedBookShipping} shipping, {SHOP.signedBookTotal} total.
-            Please allow 2&ndash;3 weeks before your book ships. Orders currently ship within the
+            Signed and shipped by regular mail. Orders currently ship within the
             United States only.
             Because each book is personalized to your order, we&rsquo;re unable to accept returns for a
             change of mind, but if your book arrives damaged or defective, contact us within 14 days at{' '}
@@ -50,15 +50,13 @@ export default function ShippingReturnsPage() {
 
           <h2>The Velvet Circle Book Club</h2>
           <p>
-            The Velvet Circle Book Club is a recurring monthly subscription billed at $9.99/month until
-            you cancel. Members receive a one-page discussion guide for the book, emailed after they
-            join, and can email me their questions about the book and my experiences at{' '}
-            <a href={`mailto:${SHOP.velvetCircleQuestionsEmail}`}>{SHOP.velvetCircleQuestionsEmail}</a>,
-            up to 3 a month, and I&rsquo;ll answer every one personally in writing. Monthly group Zoom
-            conversations begin once 13 active paying
-            members have joined; until then, membership is the discussion guide and the written
-            answers. The membership does not include a signed book, the bookmark, bunny ears, or any
-            other physical item. You can cancel anytime before your next billing date to avoid being charged for
+            The Velvet Circle Book Club is {SHOP.velvetCircleMembershipPrice} until you cancel.
+            It includes a sneak peek of the book club discussion guide (not the full guide), The
+            Velvet Letter with the gold key, the velvet bookmark, and up to three questions a month,
+            answered promptly and in detail. Once 13 paying members have joined, we&rsquo;ll begin my
+            monthly group Zoom. Email questions to{' '}
+            <a href={`mailto:${SHOP.velvetCircleQuestionsEmail}`}>{SHOP.velvetCircleQuestionsEmail}</a>.
+            You can cancel anytime before your next billing date to avoid being charged for
             the following month; charges already processed for the current billing period are
             non-refundable. Your membership stays active through the end of the billing period
             you&rsquo;ve already paid for. We don&rsquo;t offer refunds for time already used, but

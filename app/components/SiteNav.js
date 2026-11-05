@@ -10,8 +10,8 @@ import { KIT_FREE_CHAPTER_URL } from './site-data';
 // Each main page has a drop-down of its sections (Jen, November 3: "so people
 // can jump straight to the sections they want"). The section links point at
 // ids on those pages; if you rename or remove a section, update its link here.
-// November 5, 2026: The Velvet Letter is not in the menu. The book QR code
-// still opens /velvet, and the homepage has the passcode box. About the
+// November 5, 2026: The Velvet Letter is not in the menu. /velvet stays
+// unlisted. About the
 // Author sits with Media and the press kit, Film and documentary is only under
 // Media, and each link appears once.
 // Everything else (Gallery, Pups of the Podcast, Speaking, Sponsors,

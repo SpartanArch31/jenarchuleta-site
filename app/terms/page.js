@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 const EFFECTIVE_DATE = 'July 23, 2026';
-const CONTACT_EMAIL = 'jen@jenarchuleta.com';
+const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';
 
 export default function TermsPage() {
   return (
@@ -34,8 +34,8 @@ export default function TermsPage() {
 
           <h2>2. About the content</h2>
           <p>
-            This Site shares the personal story, opinions, and experiences of Jen
-            Archuleta, including her memoir <em>Beyond the Velvet Ropes</em> and the Journal blog. This
+            This Site shares the personal story, opinions, and experiences of Jen Archuleta,
+            including her memoir <em>Beyond the Velvet Ropes</em> by Jennifer Walcott Archuleta and the Journal blog. This
             content reflects the author&rsquo;s personal recollections and perspective at the time of
             writing; names or identifying details of other people may be changed. Nothing on this Site
             is professional medical, legal, financial, or psychological advice. If you&rsquo;re
@@ -97,9 +97,7 @@ export default function TermsPage() {
 
           <h2>10. Governing law</h2>
           <p>
-            These Terms are governed by the laws of the State of Arizona, without regard to
-            conflict-of-law principles. Any dispute will be resolved in the state or federal courts
-            located in Arizona, and you consent to that jurisdiction.
+            These Terms are governed by applicable law, without regard to conflict-of-law principles.
           </p>
 
           <h2>11. Changes to these terms</h2>

@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 const EFFECTIVE_DATE = 'July 23, 2026';
-const CONTACT_EMAIL = 'jen@jenarchuleta.com';
+const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';
 
 export default function PrivacyPage() {
   return (

@@ -48,11 +48,15 @@ export default function BookPage() {
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
             <div id="buy">
+              <BuyOptions signedLink={false} />
               <div className="book-velvet">
                 <VelvetKey className="book-velvet-key" />
                 <p>Psst. The last page isn’t really the end. Tucked in the back of the book is a little QR code, and it holds the key to a secret Velvet Letter, written just for readers. No book, no key. Turn the last page, scan, and step behind one more velvet rope.</p>
               </div>
-              <BuyOptions />
+              <p className="book-to-shop">
+                Signed copies, the bookmark, and the book club.
+                <a className="btn btn-ghost btn-sm" href="/shop">Shop</a>
+              </p>
             </div>
             <p><a href={KIT_FREE_CHAPTER_URL} style={{ color: 'var(--accent)' }}>Or read the first chapter free →</a></p>
           </div>

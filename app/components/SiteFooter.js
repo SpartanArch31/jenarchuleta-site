@@ -11,8 +11,9 @@ const SOCIAL_LINKS = [
   { label: 'X', href: SOCIALS.x },
   { label: 'Facebook', href: SOCIALS.facebook },
   { label: 'LinkedIn', href: SOCIALS.linkedin },
-  // The podcast's YouTube channel (Jen, November 3: the footer's YouTube link).
+  // The podcast's YouTube channel, with Buzzsprout beside it.
   { label: 'YouTube', href: PODCAST.youtube },
+  { label: 'Buzzsprout', href: PODCAST.buzzsproutSite },
 ];
 
 function StayClose() {
@@ -62,12 +63,12 @@ export default function SiteFooter({ stayClose = true, homeHref = '/' }) {
             <a href={`${home}/media#speaking`}>Speaking</a>
             <a href={`${home}/sponsors`}>Sponsors</a>
             <a href={`${home}/contact`}>Contact</a>
+            <a href={`${home}/shop`}>Shop</a>
             <a href={stayClose ? '#letter' : `${home}/#letter`}>Free First Chapter</a>
             <a href={`${home}/forever-angels`}>The Forever Angels</a>
           </nav>
           <p className="foot-meta">
-            © 2026 Jen Archuleta. Author of <em>Beyond the Velvet Ropes</em>.<br />
-            Jen Walcott Archuleta.
+            © 2026 Jen Archuleta. Author of <em>Beyond the Velvet Ropes</em> by Jennifer Walcott Archuleta.
           </p>
           <p className="foot-meta">
             <a href={`${home}/privacy`}>Privacy Policy</a> · <a href={`${home}/terms`}>Terms of Service</a> ·{' '}

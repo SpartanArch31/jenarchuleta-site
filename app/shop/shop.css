@@ -347,8 +347,61 @@
 .vc-faq details[open] summary::after { content: '–'; }
 .vc-faq details p { margin: 12px 0 0; color: var(--text-secondary); }
 
-/* One extra item (the tee), centered under the four main products. */
+/* One extra item (the tee), centered under the products. */
 .shop-page .more-grid--one {
   grid-template-columns: minmax(0, 420px);
   justify-content: center;
+}
+
+.shop-page .club-nudge,
+.shop-page .club-note {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--text-body-s);
+  line-height: var(--leading-body);
+}
+.shop-page .gold-key {
+  width: 15px;
+  height: 15px;
+  color: #BE9543;
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+.shop-page .book-club-peek {
+  max-width: 68ch;
+  margin: clamp(36px, 5vw, 56px) auto 0;
+}
+.shop-page .book-club-peek h2 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  margin: 0 0 12px;
+}
+.shop-page .book-club-peek p { margin: 0; }
+.shop-page .book-club-peek ol {
+  margin: 14px 0 0;
+  padding-left: 1.3em;
+}
+.shop-page .book-club-peek li { margin: 0.55em 0; }
+
+/* The book page is dark. This block stays the light shop, in one place. */
+.book-page .shop-page {
+  --bg: var(--cream);
+  --surface: var(--paper);
+  --surface-alt: var(--linen);
+  --surface-invert: var(--near-black);
+  --border: #E2D8C6;
+  --border-strong: #CBB99B;
+  --text: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-mute);
+  --text-invert: #F0E8D8;
+  --accent: var(--gold);
+  --accent-ink: var(--gold-deep);
+  --accent-2: var(--clay);
+  --on-accent: #2A2008;
+  --focus-ring: #946F2B;
+  background: var(--cream);
+  color: var(--ink);
+  padding-block: clamp(48px, 7vw, 88px);
 }
