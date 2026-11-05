@@ -27,8 +27,11 @@ _Last updated: 2026-11-03, night (Shop: every offer says what you get, the total
 - **Gallery:** 19 photos, Jen's "best 15 to 20" (`GALLERY_PICKS` in `PhotoGallery.js`).
 - **Menu:** "Get the first chapter free" is in the Book drop-down and is a button at the bottom
   of the phone menu.
-- **Footer:** the book credit reads "Jen Walcott Archuleta." YouTube (the podcast channel) is
-  in the "Stay close" links.
+- **Footer:** the book credit reads "Beyond the Velvet Ropes by Jennifer Walcott Archuleta."
+  The person is "Jen Archuleta." YouTube (the podcast channel) is in the "Stay close" links.
+- **Book credit (Jen, Nov 5, 2026):** "Beyond the Velvet Ropes by Jennifer Walcott Archuleta"
+  wherever the book is credited, including the book page browser tab. Everywhere else the
+  person is "Jen Archuleta." Don't change Walcott inside URLs, handles, or press article titles.
 
 ---
 
@@ -41,8 +44,9 @@ the newer features she likes. Before changing structure, re-read this section.
   Home | About Me | Book | Podcast | Journal | Media | Shop.
   Each main page has a drop-down of its sections (Jen, Nov 3, 2026) so people can jump straight
   to them; the links point at section ids on those pages (`/about#then`, `/shop#bookmark`...).
-  Simplified (Nov 2026): The Velvet Letter is in the Book drop-down (with its key icon),
-  About the Author is under Media next to the press kit, Film and documentary is only under
+  The Book page is the book. Signed copies, the bookmark, and the book club live on `/shop`.
+  Simplified (Nov 2026): The Velvet Letter is not in the menu. /velvet is reached by the
+  book’s QR code. About the Author is under Media next to the press kit, Film and documentary is only under
   Media, the Journal's "Podcast" category is labeled "Podcast Posts" (the category name in
   Sanity is unchanged; see `CATEGORY_LABELS` in `app/journal/curation.js`), and the Shop's
   FAQ link says "Book Club FAQs". Each link appears once.
@@ -91,38 +95,33 @@ the newer features she likes. Before changing structure, re-read this section.
 - **Podcast:** "Explore all 13 episodes of Unfiltered with Jen Archuleta." (Season 1 is
   complete.) Buzzsprout and YouTube sit together. Never say the show is on hold or that new
   episodes are coming. Use guests' full names.
-- **Shop:** three products in this order (Jen, 2026-10-28; Nov 3) — Signed copy, The Velvet
-  Circle Book Club, Velvet Bookmark. The Velvet Circle is described once (its card), then the
-  FAQ; no second panel repeating it.
-  - **Velvet Circle = "Monthly Book Club"**, $9.99/mo: one-page discussion guide, up to three
-    questions a month that Jen answers personally in writing, and monthly Zooms once 13 active
-    PAYING members have joined. Never a signed book, bookmark, ears, or any physical item.
-  - **One book-club offer (Jen, Nov 3, 2026):** "The Velvet Circle Book Club and The Backstage
-    Bundle should be one offer." The Backstage Bundle ($69 one-time, never had a Stripe link)
-    is gone from the Shop, the homepage, the Book page, the FAQ, and Shipping & Returns. Its
-    old `#backstage-bundle` / `#backstage-box` anchors land on the book club card. Don't bring
-    the bundle or the word "backstage" back ("I'm not a rock star"). If Jen wants the signed
-    book, bookmark, or ears folded into the book club, that needs a new Stripe price first.
+- **Shop:** three products in this order (Jen, 2026-10-28; Nov 3): Signed copy, The Velvet
+  Circle Book Club, Velvet Bookmark. The Velvet Circle is one membership on its card.
+  - **Velvet Circle = "Monthly Book Club"** (Jen, Nov 5, 2026): one membership, $9.99/month on
+    the existing Stripe membership link. Do not create a second Stripe product or invent a price.
+    It includes a sneak peek of the discussion guide (not the full guide), The Velvet Letter with
+    the gold key, the velvet bookmark, up to three questions a month answered promptly and in
+    detail, and cancel anytime. Once 13 paying members have joined, the monthly group Zoom begins.
+    The full guide is `lib/book-club-guide.js` for
+    emailing to new members. The shop shows only the title, the intro, and questions 6 and 11.
   - **One name:** "The Velvet Circle Book Club" everywhere (cards, FAQ, Shipping & Returns,
-    buttons). The Velvet Circle never includes The Velvet Letter; Letter access comes with the
-    book (passcode in the back of the book, under the QR code).
-  The Velvet Circle is explained (with an FAQ) before anyone subscribes; never promise monthly
-  Zooms as an immediate benefit. The Be the Bumblebee T-shirt (Etsy, `SHOP.etsyTee`) sits in a
+    buttons). The Backstage Bundle is not a separate shop product. Don't add the word
+    "backstage". Old `#backstage-bundle` / `#backstage-box` anchors land on the book club card.
+    The passcode note still lives only on `/velvet`.
+  The Be the Bumblebee T-shirt (Etsy, `SHOP.etsyTee`) sits in a
   separate "And a little more" spot below the products, never among them.
   - **Every card says what you get, the real price, and when it ships or starts (Adam, Nov 3,
     2026).** The Shop, the Stripe checkouts, and Shipping & Returns say the same thing:
     - **Signed copy:** shown as the TOTAL, "$41.99 total" with "$35 book + $6.99 shipping, US
       only" under it (`signedBookTotal`, `signedBookPrice`, `signedBookShipping`). The line is
-      exactly "Personally signed and personalized. Please allow 2–3 weeks before your book
-      ships." (`signedBookLeadTime`; the Stripe checkout shows it too). The Book page's buy box
+      exactly "Signed and shipped by regular mail." (`signedBookLeadTime`). No day or week
+      count. The Book page's buy box
       says "Signed by Jen, $41.99 with shipping".
-    - **Book club:** "What you get now" (the one-page discussion guide, emailed after joining;
-      up to three questions a month answered in writing, emailed to
-      `SHOP.velvetCircleQuestionsEmail`, jen@jenarchuleta.com) and "Starting once 13 paying
-      members join" (monthly group Zooms). Never promise monthly live meetings or replays as
-      current, on the site or in Stripe, until they are actually running. When the Zooms
-      start, update the card, the FAQ, Shipping & Returns, AND the Stripe product description
-      and checkout text together.
+    - **Book club:** one membership at `velvetCircleMembershipPrice` ($9.99/month) on the existing
+      Payment Link. The card has the fun line, the five items, and the line that the monthly
+      group Zoom begins once 13 paying members have joined. Questions go to
+      `SHOP.velvetCircleQuestionsEmail`. Shipping & Returns says the same thing. Cancel anytime
+      via `STRIPE_CUSTOMER_PORTAL_URL`.
     - **Bookmark:** $24.99, free shipping, US only (`bookmarkShipping`). Size, packaging, and
       when it ships come from `bookmarkSize`, `bookmarkPackaging`, `bookmarkShips` in
       `site-data.js`; each line shows only once it's filled in. Use Jen's real answers, never a
@@ -389,11 +388,10 @@ Current products (verify against `VELVET-CIRCLE-COMMERCE-STATUS.md` before trust
 that file is updated more frequently than this one):
 - **Signed Copy** — $41.99 total ($35 + $6.99 shipping) — Stripe Payment Link, live.
 - **The Velvet Circle Book Club** (Stripe product renamed from "Velvet Circle Membership" on
-  Nov 3, 2026) — $9.99/month — Stripe Payment Link. Cancel link is
-  `STRIPE_CUSTOMER_PORTAL_URL` (capital I in the Stripe login id). It is on the shop
-  membership card, the Velvet gate, and Shipping & Returns.
-- **The Backstage Bundle** — removed Nov 3, 2026 (Jen: one book-club offer). It never had a
-  Stripe link.
+  Nov 3, 2026). One membership at $9.99/month on this Payment Link. No second
+  Stripe product. Cancel link is `STRIPE_CUSTOMER_PORTAL_URL` (capital I in the Stripe login
+  id). It is on the shop card and Shipping & Returns.
+- **The Backstage Bundle** is not a separate shop product. It never had a Stripe link.
 - **Signature Velvet Bookmark** — $24.99, shipping included, US only — Stripe Payment Link.
 
 The Stripe→Kit→Google Sheets automation (tagging buyers in Kit, logging orders to a Google
@@ -403,9 +401,9 @@ this repo — full detail in `VELVET-CIRCLE-COMMERCE-STATUS.md`.
 ### 5b. Legal pages
 
 `/privacy`, `/terms`, `/shipping-returns` were added 2026-07-23, drafted by an AI assistant
-(not a licensed attorney) using "Archuleta Entertainment" as the business name and Arizona as
-governing law — both inferred from the Stripe checkout display name and existing marketing
-copy, **not verified against an actual business registration.** Full original text and the
+(not a licensed attorney) using "Archuleta Entertainment" as the business name. On Nov 5, 2026
+the Terms governing-law and venue lines dropped Arizona. Do not name a state there. These
+pages are **not verified against an actual business registration.** Full original text and the
 attorney-review checklist: `~/Documents/Jennifer/07_Legal/Legal-Pages-Handoff-2026-07-23.md`.
 These pages have NOT been reviewed by counsel yet — don't represent them as final/binding.
 
@@ -458,8 +456,8 @@ Website records (point to Vercel):
 - `CNAME cka._domainkey`, `cka2._domainkey`, `ckespa` (DKIM/SPF)
 - `TXT _dmarc`
 
-`jen@jenarchuleta.com` **is live and receives mail** (confirmed 2026-07-24) — it's used as
-the contact address on the site's legal pages (`/privacy`, `/terms`, `/shipping-returns`).
+The site uses one email, `therealunfilteredpod@gmail.com`, on the legal pages and for book
+club questions.
 
 ---
 
@@ -510,9 +508,11 @@ the contact address on the site's legal pages (`/privacy`, `/terms`, `/shipping-
 - **The buy-row "Audiobook (Spotify)" link is the AUDIOBOOK, not the podcast.** Podcast
   subscribe buttons live in the homepage `#podcast` section and read from `PODCAST` in
   `site-data.js` (same as /podcast).
-- **Name:** visible brand stays "Jen Archuleta"; book listings say "Jennifer Walcott
-  Archuleta." JSON-LD in `app/layout.js` (Person, with alternateName) and `app/book/page.js`
-  (Book) tells search engines they're the same person. /book's title matches the listings.
+- **Name:** the book credit is "Beyond the Velvet Ropes by Jennifer Walcott Archuleta"
+  wherever the book is credited. Everywhere else the person is "Jen Archuleta." Don't change
+  Walcott inside URLs, handles, or press article titles. JSON-LD in `app/layout.js` (Person,
+  with alternateName) and `app/book/page.js` (Book) tells search engines they're the same
+  person. /book's title matches the listings.
 
 ---
 
