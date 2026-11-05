@@ -54,7 +54,13 @@ function PupCard({ pup, photo }) {
       <div className="pup-body">
         <h2>{pup.name}</h2>
         {pup.bio ? pup.bio.map((line) => <p key={line} className="pup-bio">{line}</p>) : null}
-        <PupFacts pup={pup} />
+        {/* A pup with Jen's own bio (Charlie) shows her words, then only the ID.
+            Her bio already gives the episode and adoption note. */}
+        {pup.bio ? (
+          <p className="pup-rescue">{pup.animalId || 'ID not verified'}</p>
+        ) : (
+          <PupFacts pup={pup} />
+        )}
         {pup.adoptHref ? (
           <a className="pup-more" href={pup.adoptHref} target="_blank" rel="noopener noreferrer">{pup.adoptLabel || `Meet ${pup.name}`}</a>
         ) : null}

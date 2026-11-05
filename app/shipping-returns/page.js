@@ -51,7 +51,7 @@ export default function ShippingReturnsPage() {
           <h2>The Bundle</h2>
           <p>
             The Bundle is {SHOP.bundlePrice}. It is a signed copy of the book, the Signature Velvet Bookmark,
-            and bunny ears, packaged together in a padded gift case and shipped by regular mail.
+            and bunny ears, shipped by regular mail.
           </p>
 
           <h2>The Velvet Circle Book Club</h2>
