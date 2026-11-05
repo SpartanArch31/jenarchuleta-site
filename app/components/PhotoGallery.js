@@ -386,7 +386,7 @@ const GALLERY_CAPTIONS = {
   '/velvet-carousel/13.jpg': 'HEF',
   '/velvet-carousel/14.jpg': 'With Hef at the Suns game',
   '/velvet-carousel/16.jpg': 'The night I met Hef and my life changed',
-  '/velvet-carousel/17.jpg': 'Pursuing my private pilot license',
+  '/velvet-carousel/17.jpg': 'E! True Hollywood Story with Adam',
   '/velvet-carousel/18.jpg': 'Pursuing my private pilot license',
   '/velvet-carousel/19.jpg': 'Married the love of my life',
   '/velvet-carousel/20.jpg': 'Celebrity fight night with Adam',

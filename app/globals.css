@@ -314,11 +314,10 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
 .center { text-align:center; }
 .threshold-rule { max-width: 220px; margin: 0 auto; }
 
-/* About gallery. Big, whole photos (Jen, October 27): each slide is shown at
-   its own ratio, as large as the stage allows, never stretched or cropped.
-   The white mat hugs the photo, so there is no empty frame around it.
-   --g-w (set per slide in PhotoGallery.js) = min(--g-max-w, --g-max-h x ratio,
-   1.6 x the file's width). */
+/* About gallery. Each slide keeps its own ratio (Jen, October 27, and
+   November 5): as large as the stage allows, never stretched, never cropped.
+   max-width and max-height scale the file down. A dark mat shows only if a
+   box is larger than the photo. */
 .gallery-band { background: var(--bg); text-align: center; }
 .gallery-band h2 { margin-bottom: clamp(36px, 5vw, 64px); }
 .gallery-band .wrap { container-type: inline-size; }
@@ -338,23 +337,24 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   column-gap: var(--g-gap);
   row-gap: 14px;
 }
-/* A fixed-height stage on larger screens, so the page below does not jump
-   as the slides change. The photo sits centered in it. */
+/* The stage grows with the photo. A fixed height was clipping tall slides. */
 .gallery-area {
   grid-area: area;
-  height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px);
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 0;
+  overflow: visible;
   touch-action: pan-y;
 }
 .gallery-frame {
   padding: var(--g-pad);
-  background: var(--paper);
+  background: var(--espresso);
   border: 1px solid var(--gold);
   box-shadow: var(--shadow-lg);
   line-height: 0;
+  max-width: 100%;
 }
 .gallery-viewport { position: relative; }
 .gallery-slide {
@@ -374,20 +374,16 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
   z-index: 1;
   pointer-events: auto;
 }
-/* Neighbors fade inside the active photo's box, whole and uncropped. */
-.gallery-slide img {
+/* Whole file, real ratio. Contain plus the dark mat so a head is never cut. */
+.gallery-slide img,
+.gallery-slide.is-active img {
   display: block;
   width: auto;
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: var(--g-max-w);
+  max-height: var(--g-max-h);
   object-fit: contain;
-}
-.gallery-slide.is-active img {
-  width: var(--g-w);
-  height: auto;
-  max-width: none;
-  max-height: none;
+  object-position: center center;
 }
 .gallery-meta { grid-area: meta; min-height: 2.6em; }
 .gallery-caption {
@@ -436,7 +432,7 @@ footer { background: var(--bg); border-top: var(--hairline); padding-block: 56px
     column-gap: 14px;
     row-gap: 12px;
   }
-  .gallery-area { height: auto; }
+  .gallery-area { height: auto; overflow: visible; }
 }
 @supports (height: 1svh) {
   @media (max-width: 759px) {

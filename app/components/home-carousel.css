@@ -20,19 +20,25 @@
 .hc-track::-webkit-scrollbar { display: none; }
 .hc-slide {
   flex: 0 0 auto;
-  height: clamp(250px, 32vw, 380px);
+  height: clamp(220px, 34vw, 380px);
   scroll-snap-align: center;
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--paper);
+  overflow: visible;
+  background: var(--espresso);
   box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hc-slide a { display: block; height: 100%; }
+.hc-slide a { display: flex; align-items: center; justify-content: center; height: 100%; }
 .hc-slide img {
   display: block;
-  width: 100%;
+  width: auto;
   height: 100%;
+  max-width: min(78vw, 520px);
   object-fit: contain;
+  object-position: center center;
+  border-radius: var(--radius-lg);
 }
 .hc-arrow {
   position: absolute;

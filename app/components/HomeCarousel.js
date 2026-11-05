@@ -96,7 +96,6 @@ export default function HomeCarousel() {
               <li
                 key={slide.src}
                 className="hc-slide"
-                style={{ aspectRatio: `${slide.width} / ${slide.height}` }}
                 aria-roledescription="slide"
                 aria-label={`${i + 1} of ${count}`}
               >
