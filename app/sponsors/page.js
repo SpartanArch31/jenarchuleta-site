@@ -12,6 +12,8 @@ export const metadata = {
 // sunsetsandbonfires.com now redirects to the Etsy shop, so that shop is the link.
 // Etsy answers a script with 403; the shop URL is the one she confirmed.
 // Full names. A link is included only when that page itself loads.
+// Nov 5: every sponsor's links looked up and confirmed (official site or shop,
+// plus Instagram where the business has one); brands spelled their own way.
 export const SPONSORS = [
   {
     name: 'Sunsets & Bonfires',
@@ -23,6 +25,9 @@ export const SPONSORS = [
   {
     name: 'Thrive Media',
     note: 'Also produced the podcast.',
+    links: [
+      { label: 'thrivemedia.social', href: 'https://thrivemedia.social' },
+    ],
   },
   {
     name: 'KJ Classic Creations',
@@ -44,6 +49,7 @@ export const SPONSORS = [
     note: 'Holistic nutrition.',
     links: [
       { label: 'askeloise.com', href: 'https://www.askeloise.com/' },
+      { label: 'Instagram @ask.eloise', href: 'https://www.instagram.com/ask.eloise/' },
     ],
   },
   {
@@ -53,7 +59,7 @@ export const SPONSORS = [
     ],
   },
   {
-    name: 'Shred Mill Speed',
+    name: 'SHREDmill',
     links: [
       { label: 'shredmill.com', href: 'https://www.shredmill.com/' },
       { label: 'Instagram @shredmillspeed', href: 'https://www.instagram.com/shredmillspeed/' },
@@ -63,12 +69,15 @@ export const SPONSORS = [
     name: 'Coursen Security Group',
     links: [
       { label: 'coursensecuritygroup.com', href: 'https://www.coursensecuritygroup.com/' },
+      { label: 'Instagram @coursensecurity', href: 'https://www.instagram.com/coursensecurity' },
     ],
   },
   {
-    name: 'Optimize Scottsdale',
+    // The sponsor is Optimyze (with a y). optimizescottsdale.com is a different business.
+    name: 'Optimyze Scottsdale',
     links: [
-      { label: 'optimizescottsdale.com', href: 'https://optimizescottsdale.com/' },
+      { label: 'optimyze.me', href: 'https://optimyze.me/scottsdale-cold-plunge/' },
+      { label: 'Instagram @optimyze.scottsdale', href: 'https://www.instagram.com/optimyze.scottsdale/' },
     ],
   },
   {
@@ -76,12 +85,21 @@ export const SPONSORS = [
     name: 'Totali EZ Balloons',
     links: [
       { label: 'totaliezballoons.com', href: 'https://totaliezballoons.com/' },
+      { label: 'Instagram @totaliezballoons', href: 'https://www.instagram.com/totaliezballoons/' },
     ],
   },
   {
-    name: "Lil' DUDE Wipes",
+    name: "LiL' DUDE Wipes",
     links: [
-      { label: 'dudewipes.com', href: 'https://dudewipes.com/' },
+      { label: 'dudewipes.com', href: 'https://dudewipes.com/products/lil-dude-wipes' },
+      { label: 'Instagram @dudewipes', href: 'https://www.instagram.com/dudewipes/' },
+    ],
+  },
+  {
+    name: 'The Classroom Elite Wellness Collective',
+    links: [
+      { label: 'theclassroomelitewellnesscollective.com', href: 'https://theclassroomelitewellnesscollective.com/' },
+      { label: 'Instagram @classroom.elite', href: 'https://www.instagram.com/classroom.elite/' },
     ],
   },
 ];
