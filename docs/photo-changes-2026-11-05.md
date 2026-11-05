@@ -67,6 +67,16 @@ Three photos that were sitting on their own now show once, in the About Me carou
 | Braids, sunglasses, kissing a puppy | `jen-fun2.jpeg` | Last slides in the carousel. Removed from the page row. |
 | White sports top, studio | `jen-fitness.jpg` | Last slides in the carousel. Removed from the page row. |
 
+## Childhelp WINGS photo
+
+The phone black bars and the home-indicator line were cropped off `childhelp-stage-full.png`. Heads and feet stay. Saved as `childhelp-wings.jpg`, 1200 pixels wide. It is the fourth photo under "Want to get involved with me?" No video was added.
+
+## My 20s carousel
+
+Twelve photos sit in a large carousel under "My 20s were amazing. I saw and did things most people dream about." The black coat stays once, above that line, and is not a slide. The phone Crop button was cropped off the black turtleneck. The empty black area was cropped off the bottom of the Playboy race car. Heads were not cropped. No other photo was changed. The archive had no 08 or 10.
+
+The MuscleMag swimsuit cover and the Holistic Health cover are in the main gallery, full and uncropped.
+
 ## Brown portrait, fewer flower photos
 
 `brown-dress-portrait.jpg` is in the About Me carousel, whole, with the alt text "Jen Archuleta portrait". Nothing was cropped or retouched.

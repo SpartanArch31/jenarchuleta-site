@@ -227,6 +227,10 @@ export default function MediaPage() {
             <img src="/assets/turbo-ronald-mcdonald.jpg" alt="Jen with her therapy dog Turbo at a group visit" width="1158" height="1164" />
             <figcaption>Turbo doing TDI therapy dog work for Ronald McDonald House</figcaption>
           </figure>
+          <figure>
+            <img src="/assets/childhelp-wings.jpg" alt="Jen and Adam Archuleta on stage at Childhelp WINGS" width="1200" height="1563" />
+            <figcaption>Childhelp WINGS</figcaption>
+          </figure>
         </div>
         <p className="text-wrap">
           I have worked with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
