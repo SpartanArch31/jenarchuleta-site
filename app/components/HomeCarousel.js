@@ -91,7 +91,7 @@ export default function HomeCarousel() {
                 alt={slide.alt}
                 width={slide.width}
                 height={slide.height}
-                sizes="(max-width: 760px) 86vw, 680px"
+                sizes="(max-width: 760px) 88vw, 900px"
                 quality={82}
               />
             );

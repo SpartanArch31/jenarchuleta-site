@@ -47,8 +47,9 @@
   display: block;
   width: auto;
   height: auto;
-  max-height: clamp(220px, 34vw, 380px);
-  max-width: min(86vw, 680px);
+  /* Jen, Nov 6: bigger photos. Was 220 to 380px tall. */
+  max-height: clamp(300px, 44vw, 560px);
+  max-width: min(86vw, 900px);
   object-fit: initial;
   border-radius: var(--radius-sm);
   box-shadow: 0 0 0 1px var(--border); /* HOME-07: hairline edge instead of a lifted tile */
@@ -138,6 +139,17 @@
 
 @media (max-width: 760px) {
   .hc-arrow { display: none; }
+  /* Jen, Nov 6: on a phone a wide photo runs nearly the screen width and a tall
+     one up to a square, whole and uncropped. The square cap keeps
+     the row from leaving a big empty band around the wide photos. A sliver of
+     the next photo still shows, so it reads as swipeable. */
+  .hc-slide img { max-width: 88vw; max-height: min(88vw, 52vh); }
+  .home-carousel { padding-top: 0; }
+}
+@supports (height: 1svh) {
+  @media (max-width: 760px) {
+    .hc-slide img { max-height: min(88vw, 52svh); }
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hc-track { scroll-behavior: auto; }

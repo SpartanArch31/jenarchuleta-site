@@ -61,8 +61,10 @@ export default function AboutPage() {
             how I like it.
           </p>
           <p className="tim-lead">
-            My favorite part of the day is coffee before anyone else is up. Sundays, I keep a little
-            quiet for my faith. It keeps me steady and it keeps me humble.
+            {/* Jen, Nov 6: her own words for the favorite part of the day. */}
+            My favorite part of the day are car rides because that is when most of the talking
+            happens. Sundays, I keep a little quiet for my faith. It keeps me steady and it keeps me
+            humble.
           </p>
         </div>
         <div>
