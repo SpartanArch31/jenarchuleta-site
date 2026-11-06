@@ -29,9 +29,10 @@ const MENU = [
     items: [
       { href: '/book#buy', label: 'Buy the book' },
       { href: '/book#author', label: 'About the author' },
-      { href: '/book#shop', label: 'Signed copies and more' },
+      { href: '/shop', label: 'Signed copies and more' },
     ],
   },
+  { href: '/shop', label: 'Shop' },
   {
     id: 'press',
     href: '/media',

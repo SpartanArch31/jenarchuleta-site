@@ -25,7 +25,7 @@ function QuestionsEmail() {
   return <a href={`mailto:${email}?subject=Velvet%20Circle%20question`}>{email}</a>;
 }
 
-// The shop lives on the book page, under #shop.
+// The products for sale. Rendered on /shop (its own page since Nov 2026).
 export default function BookOffers() {
   const bookmarkFacts = [
     ['Size', SHOP.bookmarkSize],
@@ -33,11 +33,8 @@ export default function BookOffers() {
   ].filter(([, value]) => value);
 
   return (
-    <div className="shop-page" id="shop">
+    <div className="shop-products">
       <section className="wrap">
-        <div className="center">
-          <h2>Buy the book here, and find a few other things you might love.</h2>
-        </div>
         <div className="product-grid">
           <article className="product-card" id="signed-copy">
             <div className="product-media product-media--contain">
@@ -77,7 +74,6 @@ export default function BookOffers() {
               </div>
             </div>
           </article>
-
           <article className="product-card" id="bookmark">
             <div className="product-media product-media--contain">
               <img
@@ -120,7 +116,81 @@ export default function BookOffers() {
               </div>
             </div>
           </article>
-
+          <article className="product-card" id="velvet-circle">
+            <span id="velvet-circle-faq" />
+            <span id="velvet-circle-details" />
+            <div className="product-media">
+              <img
+                src="/assets/velvet-circle-group.jpg"
+                alt="The Velvet Circle book club, readers in bunny ears with the book"
+                width="1152"
+                height="864"
+              />
+              <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="The Velvet Circle logo, a gold ring of lights" width="436" height="436" />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">Monthly Book Club</div>
+              <h3>The Velvet Circle Book Club</h3>
+              <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
+              {/* BOOK-10: perks are a set, not steps, so bullets instead of numbers. */}
+              <ul className="club-gets">
+                <li>The full discussion sheet</li>
+                <li>Up to three questions a month, answered by Jen</li>
+                <li>A monthly group Zoom once 13 members join</li>
+              </ul>
+              {/* Jen, Nov 5: a fun nudge toward the 13. */}
+              <p className="club-note club-nudge">
+                Already in a book club? Bring the whole group. Once there are 13 of us, the monthly Zoom starts, so the more friends you bring, the sooner we get to talk.
+              </p>
+              <div className="product-cta">
+                {SHOP.velvetCircleMembership ? (
+                  <a href={SHOP.velvetCircleMembership} target="_blank" rel="noopener" className="btn btn-primary">
+                    Join the Velvet Circle Book Club
+                  </a>
+                ) : (
+                  <span className="btn btn-disabled">Coming soon</span>
+                )}
+              </div>
+              <p className="club-note">
+                Cancel anytime.{' '}
+                <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel</a>.
+                {' '}Email questions to <QuestionsEmail />.
+              </p>
+              <div className="book-club-peek" id="book-club-guide">
+                <h4 id="book-club-guide-title">From the discussion sheet</h4>
+                <ol>
+                  {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
+                    <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </article>
+          <article className="product-card" id="podcast-apparel">
+            <div className="product-media product-media--contain">
+              <img
+                src="/assets/og-podcast-1200x630.jpg"
+                alt="Unfiltered with Jen Archuleta"
+                width="1200"
+                height="630"
+              />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">The Podcast</div>
+              <h3>Podcast Apparel</h3>
+              <p className="product-desc">
+                Apparel for Unfiltered with Jen Archuleta, on Etsy.
+              </p>
+              <div className="product-cta">
+                <a href={SHOP.etsyShop} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Shop apparel
+                </a>
+                <p className="apparel-more">
+                  <a href={SHOP.etsyTee} target="_blank" rel="noopener noreferrer">The Be the Bumblebee shirt, on Etsy</a>
+                </p>
+              </div>
+            </div>
+          </article>
           <article className="product-card" id="bundle">
             <span id="backstage-bundle" />
             <span id="backstage-box" />
@@ -153,85 +223,8 @@ export default function BookOffers() {
               </div>
             </div>
           </article>
-
-          <article className="product-card" id="velvet-circle">
-            <span id="velvet-circle-faq" />
-            <span id="velvet-circle-details" />
-            <div className="product-media">
-              <img
-                src="/assets/velvet-circle-group.jpg"
-                alt="The Velvet Circle book club, readers in bunny ears with the book"
-                width="1152"
-                height="864"
-              />
-              <img className="vc-card-mark" src="/assets/velvet-circle-mark.png" alt="The Velvet Circle logo, a gold ring of lights" width="436" height="436" />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">Monthly Book Club</div>
-              <h3>The Velvet Circle Book Club</h3>
-              <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
-              {/* BOOK-10: perks are a set, not steps, so bullets instead of numbers. */}
-              <ul className="club-gets">
-                <li>The full discussion sheet</li>
-                <li>Up to three questions a month, answered by Jen</li>
-                <li>A monthly group Zoom once 13 members join</li>
-              </ul>
-              {/* Jen, Nov 5: a fun nudge toward the 13. */}
-              <p className="club-note club-nudge">
-                Already in a book club? Bring the whole group. Once there are 13 of us, the monthly Zoom starts, so the more friends you bring, the sooner we get to talk.
-              </p>
-              <div className="book-club-peek" id="book-club-guide">
-                <h4 id="book-club-guide-title">From the discussion sheet</h4>
-                <ol>
-                  {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
-                    <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
-                  ))}
-                </ol>
-              </div>
-              <p className="club-note">
-                Cancel anytime.{' '}
-                <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel</a>.
-                {' '}Email questions to <QuestionsEmail />.
-              </p>
-              <div className="product-cta">
-                {SHOP.velvetCircleMembership ? (
-                  <a href={SHOP.velvetCircleMembership} target="_blank" rel="noopener" className="btn btn-primary">
-                    Join the Velvet Circle Book Club
-                  </a>
-                ) : (
-                  <span className="btn btn-disabled">Coming soon</span>
-                )}
-              </div>
-            </div>
-          </article>
-
-          <article className="product-card" id="podcast-apparel">
-            <div className="product-media product-media--contain">
-              <img
-                src="/assets/og-podcast-1200x630.jpg"
-                alt="Unfiltered with Jen Archuleta"
-                width="1200"
-                height="630"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">The Podcast</div>
-              <h3>Podcast Apparel</h3>
-              <p className="product-desc">
-                Apparel for Unfiltered with Jen Archuleta, on Etsy.
-              </p>
-              <div className="product-cta">
-                <a href={SHOP.etsyShop} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Shop apparel
-                </a>
-              </div>
-            </div>
-          </article>
         </div>
 
-        <p className="center foot-meta" style={{ marginTop: '28px' }}>
-          <a href={SHOP.etsyTee} target="_blank" rel="noopener noreferrer">The Be the Bumblebee shirt, on Etsy</a>
-        </p>
       </section>
     </div>
   );

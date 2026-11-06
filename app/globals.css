@@ -85,7 +85,7 @@ section { padding-block: var(--section-y); }
   .brand { white-space: nowrap; }
 }
 /* Small laptops and tablets held sideways: tighter spacing keeps the menu on one line. */
-@media (min-width: 1180px) and (max-width: 1279px){
+@media (min-width: 1180px){ /* tight spacing at every desktop width: 9 menu items incl. Shop */
   .nav-inner { gap: 16px; }
   /* Height stays 44px so the bar stays 81px (--nav-h) and the panels still meet the hairline. */
   .nav-search { width: 36px; }
@@ -603,7 +603,13 @@ footer .foot-legal a { display: inline-flex; align-items: center; padding-inline
 .home-pod-cross a { color: var(--accent-ink); }
 
 /* Buy in your country (Nov 5): a compact, closed-by-default list. */
-.buy-world { margin-top: 16px; }
+.buy-world, .buy-more { margin-top: 16px; }
+.buy-more summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; font-family: var(--font-sans); font-size: var(--text-meta); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.buy-more > .buy-formats { margin-top: 8px; }
+.buy-more summary { list-style: none; gap: 8px; }
+.buy-more summary::-webkit-details-marker { display: none; }
+.buy-more summary::after { content: '+'; font-size: 1.05rem; letter-spacing: 0; }
+.buy-more[open] summary::after { content: '\2212'; }
 .buy-world summary { cursor: pointer; font-family: var(--font-sans); font-size: var(--text-meta); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
 .buy-world ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; }
 .buy-world li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding-bottom: 8px; border-bottom: var(--hairline); }
@@ -619,3 +625,30 @@ footer .foot-legal a { display: inline-flex; align-items: center; padding-inline
 .public-reviews--cards .public-review-title { font-size: 1.6rem; line-height: 1.2; margin-bottom: 12px; }
 .public-reviews--cards figcaption { color: inherit; opacity: .8; font-size: .82rem; }
 @media (max-width: 900px) { .public-reviews--cards { grid-template-columns: 1fr; max-width: 34rem; } }
+
+/* Light band: the light register inside a dark page (Book page reading sections,
+   Adam Nov 5 2026). Same values as :root light. */
+.light-band {
+  --bg: var(--cream);
+  --surface: var(--paper);
+  --surface-alt: var(--linen);
+  --surface-invert: var(--near-black);
+  --border: #E2D8C6;
+  --border-strong: #CBB99B;
+  --hairline: 1px solid var(--border);
+  --hairline-strong: 1px solid var(--border-strong);
+  --text: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-mute);
+  --text-invert: #F0E8D8;
+  --accent: var(--gold);
+  --accent-ink: var(--gold-ink);
+  --accent-2: var(--clay);
+  --on-accent: #2A2008;
+  --focus-ring: #946F2B;
+  --shadow-sm: 0 1px 2px rgba(34, 28, 24, .05);
+  --shadow:    0 2px 6px rgba(34, 28, 24, .05), 0 14px 36px rgba(34, 28, 24, .08);
+  --shadow-lg: 0 4px 10px rgba(34, 28, 24, .06), 0 36px 80px rgba(34, 28, 24, .14);
+  background: var(--bg);
+  color: var(--text);
+}

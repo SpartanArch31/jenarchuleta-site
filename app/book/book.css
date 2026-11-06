@@ -116,7 +116,6 @@
 
 /* BOOK-02: the unbuyable "Coming soon" bundle card no longer stretches to the
    Velvet Circle card's height. */
-.book-page .shop-page #bundle.product-card { align-self: start; }
 
 /* BOOK-11: the review CTA sits apart from the last review, behind a hairline. */
 .book-page .book-review-cta {
@@ -127,3 +126,116 @@
 @media (max-width: 560px) {
   .book-page .book-more .buy-row .btn { width: 100%; justify-content: center; }
 }
+
+/* ============================================================
+   Book page rework (Adam, Nov 5, 2026): easier to read.
+   Dark cover + trailer on top; reading sections on .light-band.
+   ============================================================ */
+.book-page .book-light { padding-bottom: clamp(40px, 5vw, 72px); position: relative; z-index: 1; }
+/* The trailer's glow finishes inside the dark area, never on the cream. */
+.book-page .book-trailer { padding-bottom: clamp(64px, 8vw, 104px); }
+.book-page .book-light .who { border-block: var(--hairline); }
+.book-page .book-reviews { padding-bottom: clamp(32px, 4vw, 56px); }
+.book-page .book-light .lead,
+.book-page .book-light .who li,
+.book-page .book-light .book-author p:not(.eyebrow) { font-size: var(--text-body-l); line-height: 1.6; }
+.book-page .book-light .book-author { max-width: 960px; margin-inline: auto; padding-block: clamp(32px, 4vw, 56px); }
+.book-page .book-light .book-author .btn { margin-top: 8px; }
+.book-page .book-light .who li { color: var(--text); }
+.book-page .book-light .book-hook { padding-top: clamp(56px, 8vw, 104px); }
+.book-page .book-light h2 { font-size: var(--text-h1); }
+.book-page .book-light .eyebrow { margin-bottom: 10px; }
+
+/* Reviews: three short quote cards; "Read the full review" opens the rest. */
+.book-page .book-reviews { max-width: var(--container); }
+.book-page .book-reviews > .lead { max-width: 40rem; margin-inline: auto; }
+.review-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2.5vw, 32px);
+  margin: clamp(32px, 4vw, 48px) 0 0;
+  text-align: left;
+  align-items: stretch;
+}
+.review-card {
+  position: relative;
+  margin: 0;
+  padding: clamp(28px, 3vw, 40px) clamp(24px, 2.6vw, 36px) 28px;
+  background: var(--surface);
+  border: var(--hairline);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.review-card-mark {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: .6;
+  height: 28px;
+  color: var(--accent);
+}
+.review-card-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: var(--text-h4);
+  line-height: 1.3;
+  margin: 0;
+  color: var(--text);
+}
+.review-card-body { margin: 0; position: relative; font-size: 1.125rem; line-height: 1.65; }
+.review-card-body p {
+  font-size: 1em;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 .8em;
+  text-wrap: pretty;
+}
+/* Same opening height on every card; the full text is always in the page. */
+.review-card-body:not(.is-open) { max-height: calc(1.65em * 9); overflow: hidden; }
+.review-card-body.is-long:not(.is-open) {
+  -webkit-mask-image: linear-gradient(#000 calc(100% - 4.5em), transparent);
+  mask-image: linear-gradient(#000 calc(100% - 4.5em), transparent);
+}
+@media (min-width: 961px) { .review-card-title { min-height: calc(2 * 1.3em); } }
+.review-card-toggle {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  margin: 0; padding: 0; border: 0; background: none; cursor: pointer;
+  font-family: var(--font-sans); font-size: var(--text-ui); font-weight: var(--w-semibold);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink);
+}
+.review-card-toggle::after { content: '+'; font-size: 1.1rem; letter-spacing: 0; }
+.review-card-toggle[aria-expanded="true"]::after { content: '\2212'; }
+.review-card-toggle:hover { color: var(--text); }
+.review-card-by {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-sans);
+}
+.review-card-name { font-weight: var(--w-semibold); color: var(--text); font-size: .95rem; }
+.review-card-source { font-size: .85rem; color: var(--text-muted); }
+.review-card-source a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding-block: 12px; margin-block: -12px; }
+@media (max-width: 960px) {
+  .review-cards { grid-template-columns: 1fr; max-width: 40rem; margin-inline: auto; }
+}
+
+/* The Shop strip at the end of the Book page. */
+.book-page .book-shop-teaser { padding-top: clamp(16px, 2vw, 32px); padding-bottom: 0; }
+.book-shop-head { text-align: center; margin-bottom: clamp(20px, 3vw, 32px); }
+.book-shop-head h2 { margin: 0; }
+.book-shop-items { list-style: none; margin: 0 0 clamp(24px, 3vw, 36px); padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); }
+.book-shop-items a { display: flex; flex-direction: column; gap: 6px; color: var(--text); text-decoration: none; }
+.book-shop-img { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius); background: var(--surface-alt); box-shadow: var(--shadow-sm); }
+.book-shop-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dur) var(--ease-out); }
+.book-shop-items a:hover .book-shop-img img { transform: scale(1.03); }
+.book-shop-label { font-family: var(--font-sans); font-size: var(--text-ui); font-weight: var(--w-semibold); letter-spacing: .1em; text-transform: uppercase; margin-top: 6px; }
+.book-shop-price { font-size: 1.0625rem; color: var(--text-secondary); font-variant-numeric: lining-nums; }
+@media (max-width: 640px) { .book-shop-items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
