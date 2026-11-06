@@ -404,6 +404,8 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-nov4b/nov4b-18-thanksgiving-eve-tommy-lee.jpg',
   // ImageCollect watermark is tiled across the painting. It cannot be cropped off without cutting her.
   '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
+  // Jen, Nov 6: featured on its own on About Me, not hidden in the gallery.
+  '/assets/gallery-nov4b/nov4b-13-award-podium.jpg',
 ]);
 
 // Jen's captions (Nov 4; slides 1, 7, 8, and 9 reworded by her Nov 5), matched by file. Empty means no caption line.
@@ -483,6 +485,7 @@ function slideStyle(item) {
   const ratio = item.width / item.height;
   return {
     '--g-w': `min(var(--g-max-w), calc(var(--g-max-h) * ${ratio.toFixed(4)}), ${Math.round(item.width * MAX_UPSCALE)}px)`,
+    '--g-ratio': ratio.toFixed(4),
   };
 }
 

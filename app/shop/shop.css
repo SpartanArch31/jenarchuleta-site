@@ -432,8 +432,6 @@
 .shop-page .product-card .book-club-peek li { font-size: 1rem; margin: .35em 0; }
 .shop-page .product-cta .foot-meta { font-size: var(--text-caption); line-height: 1.6; }
 .shop-page .product-cta .foot-meta a { display: inline-block; padding-block: 10px; text-decoration: underline; text-underline-offset: 3px; }
-.shop-page .apparel-more { margin: 10px 0 0; font-size: var(--text-caption); font-family: var(--font-sans); }
-.shop-page .apparel-more a { display: inline-block; padding-block: 10px; text-decoration: underline; text-underline-offset: 3px; }
 .shop-chip:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 .shop-page .product-card:target { box-shadow: 0 0 0 2px var(--accent), var(--shadow); }
 @media (max-width: 600px) {

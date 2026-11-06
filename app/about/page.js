@@ -8,7 +8,7 @@ import TwentiesSlideshow from './TwentiesSlideshow';
 export const metadata = {
   title: 'About Me',
   description:
-    'Faith, family, and a bunch of rescues. I love fiercely and I protect my peace. I love my husband, my kids and my family with everything I have.',
+    'Faith, family, and a bunch of rescues. God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.',
 };
 
 // About Me, in Jen's own words (November 3, 2026), plus the two 20s paragraphs
@@ -36,9 +36,9 @@ export default function AboutPage() {
         <div>
           <p className="eyebrow">About me</p>
           <h1 className="tim-display tim-display--wrap">Faith, family, and a bunch of rescues.</h1>
+          {/* Jen, Nov 6: her new opening. */}
           <p className="tim-lead">
-            I love fiercely and I protect my peace. I love my husband, my kids and my family with
-            everything I have.
+            God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.
           </p>
         </div>
         <div>
@@ -95,6 +95,14 @@ export default function AboutPage() {
         <TwentiesSlideshow />
         <p className="tim-lead">My 20s were loud. I got into rooms most people never see, stood next to people you only know from a screen, and went places I didn’t grow up thinking I’d ever go. Some of it was exactly as fun as it looked. Some of it wasn’t.</p>
         <p className="tim-lead">A lot of it looked like the dream from the outside. Inside it was survival. I learned who I was while everything around me tried to tell me who to be. I wouldn’t trade it. It made me. But it cost something, and I know that now.</p>
+      </section>
+
+      {/* Jen, Nov 6: the Key to the City is featured here, not inside the gallery. */}
+      <section className="tim-wrap tim-feature" aria-label="Receiving the Key to the City">
+        <figure className="tim-feature-fig">
+          <Image className="tim-img" src="/assets/gallery-nov4b/nov4b-13-award-podium.jpg" alt="Jen Archuleta receiving the Key to the City" width={1040} height={660} sizes="(max-width: 860px) 92vw, 760px" quality={88} />
+          <figcaption className="tim-slot-cap">Receiving the Key to the City.</figcaption>
+        </figure>
       </section>
 
       {/* ABOUT-10: one more threshold, from Jen's story into the archive. */}

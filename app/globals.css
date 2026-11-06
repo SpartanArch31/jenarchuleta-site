@@ -19,8 +19,8 @@
 section { padding-block: var(--section-y); }
 
 /* nav */
-.nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent);
-       backdrop-filter: blur(8px); border-bottom: var(--hairline); }
+/* Jen, Nov 6: the bar is solid, so text scrolling under it never shows through. */
+.nav { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: var(--hairline); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px;
              padding-block: 18px; max-width: var(--container); margin: 0 auto; padding-inline: var(--gutter); }
 .nav-end { display: flex; align-items: center; gap: 8px; min-width: 0; }
@@ -110,10 +110,11 @@ section { padding-block: var(--section-y); }
 /* Section links land below the sticky menu, not under it. */
 :root { --nav-h: 81px; } /* 44px search target + 2 x 18px padding + 1px hairline */
 [id] { scroll-margin-top: 88px; }
+/* Any jump (menu link, back button, find-in-page) stops below the sticky bar. */
+html { scroll-padding-top: calc(var(--nav-h) + 12px); }
 @media (max-width: 1179px){
   /* G-12: a slimmer, more opaque bar on phones and tablets (65px instead of 81px). */
   :root { --nav-h: 65px; }
-  .nav--collapsible { background: color-mix(in srgb, var(--bg) 94%, transparent); }
   .nav--collapsible .nav-inner { padding-block: 10px; }
   .nav--collapsible .nav-links { max-height: calc(100vh - var(--nav-h)); max-height: calc(100dvh - var(--nav-h));
                                  padding-bottom: calc(22px + env(safe-area-inset-bottom)); } /* G-M4 */

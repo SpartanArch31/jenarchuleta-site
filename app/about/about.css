@@ -274,3 +274,32 @@
   /* ABOUT-19: the gallery starts on the same gutter as the rest of the page. */
   .gallery-band .wrap { padding-inline: var(--gutter); }
 }
+
+/* Jen, Nov 6: the Key to the City, featured on its own between the 20s and
+   the gallery. Whole photo, centered, with her caption under it. */
+.tim-feature { padding-block: 0 clamp(48px, 6vw, 80px); }
+.tim-feature-fig { max-width: 760px; margin: 0 auto; text-align: center; }
+.tim-feature-fig .tim-img { width: 100%; height: auto; }
+.tim-feature-fig figcaption { display: block; margin-top: 12px; font-size: var(--text-body); }
+
+/* Jen, Nov 6: on a phone every gallery photo uses most of the screen. The
+   photo runs nearly edge to edge (or as tall as 78% of the screen for a tall
+   one), always whole and uncropped, and the stage hugs it, so there is no
+   empty band above and below a wide photo. */
+@media (max-width: 759px) {
+  .gallery-band .wrap { padding-inline: 10px; }
+  .gallery-band .gallery-stage { --g-max-h: 78vh; }
+  .gallery-band .gallery-area { height: auto; }
+  .gallery-band .gallery-slide img,
+  .gallery-band .gallery-slide.is-active img {
+    width: min(var(--g-max-w), calc(var(--g-max-h) * var(--g-ratio, 1)));
+    height: auto;
+    max-height: none;
+  }
+  .gallery-band .gallery-meta { min-height: 0; }
+}
+@supports (height: 1svh) {
+  @media (max-width: 759px) {
+    .gallery-band .gallery-stage { --g-max-h: 78svh; }
+  }
+}

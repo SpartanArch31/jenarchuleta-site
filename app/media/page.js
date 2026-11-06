@@ -9,9 +9,9 @@ import { APPEARANCES, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Press: Beyond the Velvet Ropes, Jen Archuleta' },
+  title: { absolute: 'Beyond the Velvet Ropes: Media & Press, Jen Archuleta' },
   description:
-    'Articles, TV and appearances for Beyond the Velvet Ropes.',
+    'Media and press for Beyond the Velvet Ropes: the book, the feature film, and the documentary.',
 };
 
 // FilmFreeway sits with Leone and Mark. Never publish a representative's
@@ -50,7 +50,7 @@ const HEADSHOTS = [
   },
 ];
 
-// Speaking (Jen, Nov 5): her 26 topics, gathered into five talks so the section
+// Speaking (Jen, Nov 5; four talk descriptions rewritten by Jen Nov 6 so none repeat): her 26 topics, gathered into five talks so the section
 // flows for an event planner. Every one of the 26 is still covered.
 const SPEAKING_INTRO = "I’m a wife, a mom of three, and a woman of faith, with a house full of rescues. Giving back is a big part of my life. I co-founded The Forever Angels, I volunteer with Childhelp and in hospice with my TDI therapy dog, and I’ve been a CASA volunteer. Getting here took a lot. I came from humble beginnings, barely finished school, and thought I was ugly. I became a Playboy Playmate, came through some very hard years, and wrote a book about all of it. When I speak, I tell the hard parts honestly, and then I tell you about the good life that came after, so you know you can rise too. I’d be honored to share it with your group.";
 
@@ -61,19 +61,19 @@ const SPEAKING_TALKS = [
   },
   {
     title: "Roots Through Concrete",
-    text: "I grew up in a small town with big dreams. I got bullied, people gossiped, and I thought I was ugly. I barely finished school. Hard work and plain grit carried me from humble beginnings to a financially stable life and a book with my name on it. This one is about knowing your worth, wherever you start.",
+    text: "I grew up in a small town with big dreams. I was bullied, surrounded by gossip, and convinced I wasn’t enough. I barely finished school, but hard work and grit carried me farther than I ever imagined. This talk is about knowing your worth, no matter where you begin.",
   },
   {
     title: "What Fame Couldn’t Give Me",
-    text: "Playboy gave me a sisterhood I still treasure. It also showed me what fame really costs. This talk is about trading the spotlight for purpose and peace, and finding light, grace, and gratitude in ordinary days.",
+    text: "Playboy gave me lifelong friendships and opened the door to a world I never expected to enter. It also taught me that attention and success cannot give you peace. This talk is about what remains after the spotlight fades: faith, family, purpose, and gratitude.",
   },
   {
     title: "You Can Rewrite Your Life",
-    text: "This is the hardest part of my story, and I tell it gently. I was a scared kid who had to find her voice. I talk about assault and grief, about drugs and my wake-up call, and about surviving domestic violence and rebuilding on my own. Prayer and second chances got me through. Forgiveness let me finally set those burdens down.",
+    text: "I gently share the hardest parts of my story, including childhood assault, grief, drugs, my wake-up call, and surviving domestic violence. Faith, second chances, and forgiveness helped me rebuild. This talk is about reclaiming your voice and creating a life your past does not control.",
   },
   {
     title: "Giving Back Is the Good Part",
-    text: "Some of my favorite days are spent helping someone else. I talk about advocating for kids with CASA and Childhelp, about advocacy and adoption, and about co-founding The Forever Angels. I talk about helping animals and rescues, and about hospice work with my TDI therapy dog. This is where my story lands, and it’s the best part.",
+    text: "Giving back is where my story finds purpose. I share how service helped me turn difficult experiences into action through CASA, Childhelp, hospice work, animal rescue, and co-founding The Forever Angels. This talk is about using what you have lived through to help someone else.",
   },
 ];
 
@@ -147,8 +147,8 @@ export default function MediaPage() {
       <main id="main-content">
       <section className="wrap media-hero media-intro">
         <div>
-          <h1>Press: Beyond the Velvet Ropes</h1>
-          <p className="media-lead">Articles, TV and appearances for Beyond the Velvet Ropes</p>
+          <h1>Beyond the Velvet Ropes: Media &amp; Press</h1>
+          <p className="media-lead">This page features media and press specifically related to Beyond the Velvet Ropes, including the book, feature film, and documentary. It is not a complete archive of media from my earlier career.</p>
           <MediaCats />
         </div>
       </section>
@@ -212,7 +212,35 @@ export default function MediaPage() {
       <section id="film" className="wrap">
         <h2>Film and documentary</h2>
         <p>{FILM.film}</p>
-        <p>{FILM.documentary}</p>
+        <div className="doc-feature">
+          <figure className="doc-poster">
+            <Image
+              src={FILM.documentaryPoster.src}
+              alt={FILM.documentaryPoster.alt}
+              width={FILM.documentaryPoster.width}
+              height={FILM.documentaryPoster.height}
+              sizes="(max-width: 760px) calc(100vw - 40px), 760px"
+              quality={88}
+            />
+            <figcaption>{FILM.documentaryPoster.note}</figcaption>
+          </figure>
+          <div className="doc-copy">
+            <p className="doc-status">In Development</p>
+            <h3>Beyond the Velvet Ropes: The Documentary</h3>
+            <p>{FILM.documentary}</p>
+            <p>
+              <a
+                className="btn btn-primary"
+                href={FILM.documentarySite}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow the documentary (opens in new tab)"
+              >
+                Follow the documentary
+              </a>
+            </p>
+          </div>
+        </div>
         {/* MEDIA-20: partner links share the page's ghost-button style. */}
         <p className="media-actions">
           {FILM.partners.map((partner) => (
@@ -260,10 +288,11 @@ export default function MediaPage() {
 
       <section id="forever-angels" className="wrap">
         <div>
-          <h2>Want to get involved with me?</h2>
+          <h2>Want to Get Involved?</h2>
           <p>
-            I co-founded The Forever Angels with Allison Kiefer. We help people through social workers and our trusted community partners. We help veterans, families in need, the elderly in hospice, and animals. Turbo has worked with Ronald McDonald Children’s Hospitals and veterans hospitals, and he has also worked in hospice.
+            I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, older adults, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
           </p>
+          <p>Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
         </div>
         {/* MEDIA-11 / MEDIA-13: whole photos in the same gold mat as the headshots,
             bottoms and captions on one line, served through next/image (lazy, resized). */}

@@ -11,9 +11,11 @@ import Image from 'next/image';
 // 03 (race car) is the clean copy from earlier on November 5. Later Nov 5
 // (Jen): the Air Bali helicopter photo is out; 10 and 11 are her closer
 // crops of the FOX interview and turtleneck photos; 14 (bunnies) is new.
+// Nov 6 (Jen): the crowd-diving photo moves up to second, right after the Ferrari.
 // Under the square: her caption, "A little glam, a lot of fun, and a life I love."
 const PHOTOS = [
   { src: '/assets/twenties/12.jpg', width: 1320, height: 907, alt: 'Jen Archuleta with a red Ferrari' },
+  { src: '/assets/twenties/13.jpg', width: 1320, height: 1309, alt: 'Jen Archuleta crowd surfing' },
   { src: '/assets/twenties/01.jpg', width: 909, height: 605, alt: 'A crowd in front of the Playboy Mansion' },
   { src: '/assets/twenties/02.jpg', width: 1277, height: 728, alt: 'A group in front of the Playboy Mansion' },
   { src: '/assets/twenties/03.jpg', width: 1084, height: 858, alt: 'Jen Archuleta and friends with the Playboy race car' },
@@ -24,7 +26,6 @@ const PHOTOS = [
   { src: '/assets/twenties/09.jpg', width: 1025, height: 1459, alt: 'Jen Archuleta in a makeup chair' },
   { src: '/assets/twenties/10.jpg', width: 867, height: 1334, alt: 'Jen Archuleta giving an interview by a pool' },
   { src: '/assets/twenties/11.jpg', width: 944, height: 1274, alt: 'Jen Archuleta in a black turtleneck, close up' },
-  { src: '/assets/twenties/13.jpg', width: 1320, height: 1309, alt: 'Jen Archuleta crowd surfing' },
   { src: '/assets/twenties/14.jpg', width: 604, height: 453, alt: 'A group of Playboy bunnies in white at a party' },
 ];
 

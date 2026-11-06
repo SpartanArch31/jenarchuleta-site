@@ -166,6 +166,39 @@ export default function BookOffers() {
               </div>
             </div>
           </article>
+          <article className="product-card" id="bundle">
+            <span id="backstage-bundle" />
+            <span id="backstage-box" />
+            <div className="product-media product-media--contain">
+              <img
+                src="/assets/backstage-bundle.jpg"
+                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
+                width="1268"
+                height="1586"
+              />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">The Bundle</div>
+              <h3>Signed book, bookmark, and bunny ears</h3>
+              <p className="price">{SHOP.bundlePrice}</p>
+              <p className="product-desc">
+                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears.
+              </p>
+              <div className="product-cta">
+                {SHOP.bundle ? (
+                  <>
+                    <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
+                      Buy the bundle
+                    </a>
+                    <TrustLine />
+                  </>
+                ) : (
+                  <span className="btn btn-disabled">Coming soon</span>
+                )}
+              </div>
+            </div>
+          </article>
+          {/* Jen, Nov 6: apparel is an extra, so it sits last, after the book products. */}
           <article className="product-card" id="podcast-apparel">
             <div className="product-media product-media--contain">
               <img
@@ -185,41 +218,6 @@ export default function BookOffers() {
                 <a href={SHOP.etsyShop} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Shop apparel
                 </a>
-                <p className="apparel-more">
-                  <a href={SHOP.etsyTee} target="_blank" rel="noopener noreferrer">The Be the Bumblebee shirt, on Etsy</a>
-                </p>
-              </div>
-            </div>
-          </article>
-          <article className="product-card" id="bundle">
-            <span id="backstage-bundle" />
-            <span id="backstage-box" />
-            <div className="product-media product-media--contain">
-              <img
-                src="/assets/backstage-bundle.jpg"
-                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
-                width="1268"
-                height="1586"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">The Bundle</div>
-              <h3>Signed book, bookmark, and bunny ears</h3>
-              <p className="price">{SHOP.bundlePrice}</p>
-              <p className="product-desc">
-                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears. Shipped by regular mail.
-              </p>
-              <div className="product-cta">
-                {SHOP.bundle ? (
-                  <>
-                    <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
-                      Buy the bundle
-                    </a>
-                    <TrustLine />
-                  </>
-                ) : (
-                  <span className="btn btn-disabled">Coming soon</span>
-                )}
               </div>
             </div>
           </article>
