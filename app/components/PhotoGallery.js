@@ -314,7 +314,7 @@ const NOV4B = [
   { src: '/assets/gallery-nov4b/nov4b-04-two-women-laughing.jpg', alt: 'Jen Archuleta laughing with a friend', caption: '', width: 1242, height: 1550 },
   { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 930 },
   { src: '/assets/gallery-nov4b/nov4b-06-couch-fishburne.jpg', alt: 'Jen Archuleta seated on a couch', caption: '', width: 1242, height: 1188 },
-  { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1440 },
+  { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1135 },
   { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 861, height: 940 },
   { src: '/assets/gallery-nov4b/nov4b-09-four-people-beads.jpg', alt: 'Jen Archuleta with friends', caption: '', width: 1040, height: 820 },
   { src: '/assets/gallery-nov4b/nov4b-10-green-top-white-shorts.jpg', alt: 'Jen Archuleta in a green top and white shorts', caption: '', width: 1150, height: 1480 },
@@ -406,6 +406,8 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
   // Jen, Nov 6: featured on its own on About Me, not hidden in the gallery.
   '/assets/gallery-nov4b/nov4b-13-award-podium.jpg',
+  // Jen, Nov 9: slide 98 (the pink aprons, "Easter bakers") is out.
+  '/assets/gallery-nov4/nov4-17-pink-aprons.jpg',
 ]);
 
 // Jen's captions (Nov 4; slides 1, 7, 8, and 9 reworded by her Nov 5), matched by file. Empty means no caption line.

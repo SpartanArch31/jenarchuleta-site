@@ -9,7 +9,7 @@ import { APPEARANCES, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
 
 export const metadata = {
-  title: { absolute: 'Beyond the Velvet Ropes: Media & Press, Jen Archuleta' },
+  title: { absolute: 'Book Press & Interviews, Jen Archuleta' },
   description:
     'Media and press for Beyond the Velvet Ropes: the book, the feature film, and the documentary.',
 };
@@ -17,7 +17,14 @@ export const metadata = {
 // FilmFreeway sits with Leone and Mark. Never publish a representative's
 // phone number or email. Signup and contact live on Thank You.
 
-const PRESS_BIO = 'Jen Archuleta is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love, and the host of the podcast Unfiltered with Jen Archuleta. She grew up in a small town, worked as a makeup artist, and became Playboy’s Miss August 2001. She lives on the West Coast with her husband, former NFL safety Adam Archuleta, their three children, and a houseful of rescue animals.';
+// Jen, Nov 6 email: her new press-kit bio, word for word, in her four paragraphs.
+const PRESS_BIO_PARAGRAPHS = [
+  'Jen Archuleta, formerly known as Jennifer Walcott, is the author of Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love and host of Unfiltered with Jen Archuleta.',
+  'Originally from a small town in Ohio, she moved to Los Angeles to pursue her dreams, working as a makeup artist in Hollywood before becoming Playboy’s Miss August 2001.',
+  'Throughout her life, Jen has dedicated much of her time to volunteering and helping others. She co-founded The Forever Angels, a nonprofit focused on supporting children and families, and has been actively involved with organizations including Childhelp.',
+  'Today, she is a wife, mother of three, animal rescue advocate, author, and storyteller. She shares her life with her husband, former NFL player Adam Archuleta, their children, and a houseful of rescue animals.',
+];
+const PRESS_BIO = PRESS_BIO_PARAGRAPHS.join('\n\n');
 
 const HEADSHOTS = [
   {
@@ -86,13 +93,6 @@ const GIVE_BACK = [
     height: 1852,
   },
   {
-    src: '/assets/casa-sworn-in.jpg',
-    alt: 'Jen Archuleta raising her hand while being sworn in as a CASA volunteer',
-    caption: 'Getting sworn in as a CASA volunteer',
-    width: 933,
-    height: 960,
-  },
-  {
     src: '/assets/turbo-ronald-mcdonald.jpg',
     alt: 'Jen with her therapy dog Turbo at a group visit',
     caption: 'Turbo doing TDI therapy dog work for Ronald McDonald House',
@@ -147,7 +147,7 @@ export default function MediaPage() {
       <main id="main-content">
       <section className="wrap media-hero media-intro">
         <div>
-          <h1>Beyond the Velvet Ropes: Media &amp; Press</h1>
+          <h1>Book Press &amp; Interviews</h1>
           <p className="media-lead">This page features media and press specifically related to Beyond the Velvet Ropes, including the book, feature film, and documentary. It is not a complete archive of media from my earlier career.</p>
           <MediaCats />
         </div>
@@ -170,7 +170,7 @@ export default function MediaPage() {
               <h3>Author bio</h3>
               <CopyTextButton text={PRESS_BIO} label="Copy" />
             </div>
-            <p>{PRESS_BIO}</p>
+            {PRESS_BIO_PARAGRAPHS.map((para) => <p key={para.slice(0, 24)}>{para}</p>)}
           </div>
           <h3 className="headshot-title">Photos for press</h3>
           {/* MEDIA-14: each figure is a 3-row subgrid (frame, name, button) so tops,
@@ -225,9 +225,15 @@ export default function MediaPage() {
             <figcaption>{FILM.documentaryPoster.note}</figcaption>
           </figure>
           <div className="doc-copy">
-            <p className="doc-status">In Development</p>
-            <h3>Beyond the Velvet Ropes: The Documentary</h3>
-            <p>{FILM.documentary}</p>
+            <p className="doc-status">{FILM.documentaryStatus}</p>
+            <h3>{FILM.documentaryTitle}</h3>
+            <p>
+              {FILM.documentary}{' '}
+              <a href={FILM.documentaryPartner.href} target="_blank" rel="noopener noreferrer">
+                {FILM.documentaryPartner.label}
+              </a>
+              .
+            </p>
             <p>
               <a
                 className="btn btn-primary"
@@ -289,10 +295,22 @@ export default function MediaPage() {
       <section id="forever-angels" className="wrap">
         <div>
           <h2>Want to Get Involved?</h2>
+          {/* Jen, Nov 9: The Forever Angels is her own nonprofit, kept separate from Childhelp. */}
+          <h3>The Forever Angels, my nonprofit</h3>
           <p>
             I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, older adults, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
           </p>
-          <p>Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
+          <p className="media-actions">
+            <a
+              className="btn btn-ghost"
+              href="https://theforeverangels.com/our-founders/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="The Forever Angels (opens in new tab)"
+            >
+              The Forever Angels<span aria-hidden="true"> ↗</span>
+            </a>
+          </p>
         </div>
         {/* MEDIA-11 / MEDIA-13: whole photos in the same gold mat as the headshots,
             bottoms and captions on one line, served through next/image (lazy, resized). */}
@@ -305,7 +323,7 @@ export default function MediaPage() {
                   alt={photo.alt}
                   width={photo.width}
                   height={photo.height}
-                  sizes="(max-width: 1000px) 45vw, 260px"
+                  sizes="(max-width: 1000px) 45vw, 340px"
                   quality={82}
                 />
               </div>
@@ -313,21 +331,11 @@ export default function MediaPage() {
             </figure>
           ))}
         </div>
+        <h3>Childhelp</h3>
         <p>
-          I have worked with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
+          I have volunteered with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
         </p>
-        {/* MEDIA-20: same ghost-button style as the other outbound links. */}
-        <p className="media-actions">
-          <a
-            className="btn btn-ghost"
-            href="https://theforeverangels.com/our-founders/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="The Forever Angels (opens in new tab)"
-          >
-            The Forever Angels<span aria-hidden="true"> ↗</span>
-          </a>
-        </p>
+        <p>Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
       </section>
       </main>
 

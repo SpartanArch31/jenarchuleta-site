@@ -166,6 +166,9 @@ export default function BookOffers() {
               </div>
             </div>
           </article>
+          {/* Jen, Nov 9: the shop only shows what can be bought today. The bundle
+              card comes back on its own once SHOP.bundle holds a Stripe link. */}
+          {SHOP.bundle ? (
           <article className="product-card" id="bundle">
             <span id="backstage-bundle" />
             <span id="backstage-box" />
@@ -192,12 +195,11 @@ export default function BookOffers() {
                     </a>
                     <TrustLine />
                   </>
-                ) : (
-                  <span className="btn btn-disabled">Coming soon</span>
-                )}
+                ) : null}
               </div>
             </div>
           </article>
+          ) : null}
           {/* Jen, Nov 6: apparel is an extra, so it sits last, after the book products. */}
           <article className="product-card" id="podcast-apparel">
             <div className="product-media product-media--contain">

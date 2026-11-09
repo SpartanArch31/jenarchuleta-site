@@ -61,10 +61,10 @@ export default function AboutPage() {
             how I like it.
           </p>
           <p className="tim-lead">
-            {/* Jen, Nov 6: her own words for the favorite part of the day ("is" per Adam). */}
-            My favorite part of the day is car rides because that is when most of the talking
-            happens. Sundays, I keep a little quiet for my faith. It keeps me steady and it keeps me
-            humble.
+            {/* Jen, Nov 9: her words, word for word. Replaces the coffee paragraph. */}
+            My favorite part of the day is the car rides with my kids. That’s when some of our best
+            conversations happen. I love a full house, good conversation, laughter, and a little
+            gambling now and then.
           </p>
         </div>
         <div>
@@ -80,8 +80,7 @@ export default function AboutPage() {
               <span className="tim-slot-cap">Whoever else wandered in</span>
             </div>
             <div className="tim-slot-wrap">
-              <Image className="tim-img" src="/assets/coffee.jpg" alt="A quiet morning coffee before the house wakes up" width={1400} height={1400} sizes="(max-width: 860px) 92vw, 360px" quality={85} />
-              <span className="tim-slot-cap">Before the house wakes up</span>
+              <Image className="tim-img" src="/assets/coffee.jpg" alt="A cup of coffee" width={1400} height={1400} sizes="(max-width: 860px) 92vw, 360px" quality={85} />
             </div>
             <div className="tim-slot-wrap tim-span">
               <Image className="tim-img" src="/assets/full-house-kids-dogs.jpg" alt="The kids asleep in a big bed with two of the rescues" width={1320} height={943} sizes="(max-width: 860px) 92vw, 640px" quality={85} />

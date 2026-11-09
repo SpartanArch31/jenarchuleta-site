@@ -100,3 +100,12 @@ AGENTS.md; do not re-blur them without asking Adam and Jen.
 | `gallery-nov5/nov5-05-spartan-team.jpg` | New. Whole photo, resized to 1320 wide. |
 
 All saved fresh as JPEG with no metadata. Checked against every image on the site: none is a duplicate.
+
+## November 9 (Jen's Nov 9 email)
+
+| Where | Change |
+|---|---|
+| About gallery, slide 98 | `gallery-nov4/nov4-17-pink-aprons.jpg` ("Easter bakers") is out of the gallery (`OUT_OF_GALLERY`). The file stays in the repo. |
+| About gallery, slide 106 | `gallery-nov4b/nov4b-07-purple-dress-magazine.jpg` cropped at the bottom (900x1440 to 900x1135) to remove a flat painted patch with specks on the floor. Simple crop, nothing painted. The original is in git history (commit 24da2ca). |
+| Media, Get involved | The CASA swearing-in photo (`casa-sworn-in.jpg`) and its caption are off the page. The file stays in the repo. |
+| About, everyday photos | The coffee cup photo stays; its "Before the house wakes up" caption is gone and the alt text is now "A cup of coffee" (Jen: the quiet-coffee line is not her). |

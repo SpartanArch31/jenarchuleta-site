@@ -287,8 +287,8 @@
    one), always whole and uncropped, and the stage hugs it, so there is no
    empty band above and below a wide photo. */
 @media (max-width: 759px) {
-  .gallery-band .wrap { padding-inline: 10px; }
-  .gallery-band .gallery-stage { --g-max-h: 78vh; }
+  .gallery-band .wrap { padding-inline: 6px; }
+  .gallery-band .gallery-stage { --g-max-h: 86vh; --g-pad: 3px; }
   .gallery-band .gallery-area { height: auto; }
   .gallery-band .gallery-slide img,
   .gallery-band .gallery-slide.is-active img {
@@ -300,6 +300,15 @@
 }
 @supports (height: 1svh) {
   @media (max-width: 759px) {
-    .gallery-band .gallery-stage { --g-max-h: 78svh; }
+    .gallery-band .gallery-stage { --g-max-h: 86svh; }
+  }
+}
+
+/* Jen, Nov 9: bigger gallery photos on a laptop too. Up to 1100px wide and
+   86% of the screen tall, still whole and never upscaled past 1.6x. */
+@media (min-width: 760px) {
+  .gallery-band .gallery-stage {
+    --g-max-w: min(1100px, calc(100cqw - 2 * var(--g-arrow) - 2 * var(--g-gap) - 2 * var(--g-pad) - 2px));
+    --g-max-h: min(86vh, 1000px);
   }
 }
