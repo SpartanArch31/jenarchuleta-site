@@ -332,7 +332,7 @@
 @media (min-width: 900px) {
   .doc-feature { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: var(--space-7); }
 }
-.doc-poster { margin: 0; }
+.doc-poster { margin: 0; max-width: 640px; } /* the artwork file is 640px wide; never upscale it */
 .doc-poster img {
   display: block;
   width: 100%;

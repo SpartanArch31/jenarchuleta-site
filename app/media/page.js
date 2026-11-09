@@ -219,7 +219,7 @@ export default function MediaPage() {
               alt={FILM.documentaryPoster.alt}
               width={FILM.documentaryPoster.width}
               height={FILM.documentaryPoster.height}
-              sizes="(max-width: 760px) calc(100vw - 40px), 760px"
+              sizes="(max-width: 760px) calc(100vw - 40px), 640px"
               quality={88}
             />
             <figcaption>{FILM.documentaryPoster.note}</figcaption>
