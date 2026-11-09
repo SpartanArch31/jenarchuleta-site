@@ -9,6 +9,7 @@ import { getPostBySlug, getAllSlugs } from '../../sanity/queries';
 import { POSTS as FALLBACK_POSTS, getPost as getFallbackPost } from '../_posts';
 import { isRetiredHref, prepareJournalBody } from '../repair-body.mjs';
 import { heroAlt } from '../hero-alt';
+import { documentTitle, hasOpeningByline, socialTitle, withAuthor } from '../author-meta.mjs';
 
 // Render each post from the published Sanity document on the request.
 // These routes were static ISR. The first view after a publish still received
@@ -45,15 +46,24 @@ function descriptionFromBody(body) {
 export async function generateMetadata({ params }) {
   const post = await resolvePost(params.slug);
   if (!post) return {};
-  const description = post.seoDescription || post.excerpt || descriptionFromBody(post.body);
+  const rawTitle = post.seoTitle || post.title;
+  const description = withAuthor(post.seoDescription || post.excerpt || descriptionFromBody(post.body));
+  const sharedTitle = socialTitle(rawTitle);
   return {
-    title: post.seoTitle || post.title,
+    title: documentTitle(rawTitle),
     description,
+    authors: [{ name: 'Jen Archuleta' }],
     openGraph: {
-      title: post.seoTitle || post.title,
+      title: sharedTitle,
       description,
       type: 'article',
       images: [OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: sharedTitle,
+      description,
+      images: [OG_IMAGE.url],
     },
   };
 }
@@ -104,15 +114,39 @@ export default async function JournalPost({ params }) {
   const hero = heroUrl(post.heroImage);
   const heroDescription = heroAlt(post.heroImage, post.slug);
   const bodyIsStrings = Array.isArray(post.body) && typeof post.body[0] === 'string';
+  const description = withAuthor(post.seoDescription || post.excerpt || descriptionFromBody(post.body));
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description,
+    author: {
+      '@type': 'Person',
+      name: 'Jen Archuleta',
+      alternateName: ['Jennifer Walcott', 'Jennifer Walcott Archuleta'],
+      url: 'https://jenarchuleta.com/about',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Jen Archuleta',
+      url: 'https://jenarchuleta.com',
+    },
+    mainEntityOfPage: url,
+    url,
+  };
+  if (post.publishedAt) articleJsonLd.datePublished = post.publishedAt;
+  if (hero) articleJsonLd.image = hero.startsWith('http') ? hero : `https://jenarchuleta.com${hero}`;
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, '\\u003c') }} />
       <SiteNav />
 
       <article className="wrap text-wrap">
         <div className="article-head">
           <div className="k">{post.category}</div>
           <h1>{post.title}</h1>
+          {hasOpeningByline(post.body) ? null : <div className="meta byline">By Jen Archuleta</div>}
           <div className="meta">{formatDate(post.publishedAt)}</div>
         </div>
 

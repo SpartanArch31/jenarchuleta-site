@@ -1,6 +1,7 @@
 import './journal.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import { OG_IMAGE } from '../components/site-data';
 import JournalBrowser from './JournalBrowser';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
@@ -14,10 +15,25 @@ import { heroAlt } from './hero-alt';
 // live at their own URLs. Pup of the Podcast posts live on /pups. Nothing is
 // deleted, and no post body is edited here.
 
+const journalDescription =
+  'Short, honest writing on faith, family, healing, and starting over, from Jen Archuleta.';
+
 export const metadata = {
   title: 'Journal',
-  description:
-    'Short, honest writing on faith, family, healing, and starting over, from Jen Archuleta.',
+  description: journalDescription,
+  authors: [{ name: 'Jen Archuleta' }],
+  openGraph: {
+    title: 'Journal, Jen Archuleta',
+    description: journalDescription,
+    type: 'website',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Journal, Jen Archuleta',
+    description: journalDescription,
+    images: [OG_IMAGE.url],
+  },
 };
 
 // Podcast cards often open with the show name as a stamp. Drop that
