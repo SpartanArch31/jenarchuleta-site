@@ -68,6 +68,10 @@
   color: var(--text-muted);
   margin-top: 14px;
 }
+.pod-status {
+  max-width: 42rem;
+  margin: 14px auto 0;
+}
 .pod-pup-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
 
 /* Listen beside Watch (Jen, November 2026): Buzzsprout's player on the left,

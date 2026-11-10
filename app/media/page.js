@@ -333,7 +333,7 @@ export default function MediaPage() {
         </div>
         <h3>Childhelp</h3>
         <p>
-          I have volunteered with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
+          I have volunteered with Childhelp for almost a decade. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
         </p>
         <p>Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
       </section>

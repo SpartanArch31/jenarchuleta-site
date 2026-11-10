@@ -88,12 +88,15 @@ test('bio wording, CASA, and Dr. Eloise years', () => {
     'including the 2022 record-breaking fashion show',
   );
   assert.equal(
-    fixPublishedCopy('seventeen years in marriage', 'bio'),
-    'seventeen years in marriage',
+    fixPublishedCopy(
+      'Their love has thrived for over two decades, with seventeen years in marriage, built on mutual support and shared values.',
+      'bio',
+    ),
+    'Their love has thrived for over 20 years together, built on mutual support and shared values.',
   );
   assert.equal(
-    fixPublishedCopy('Childhelp spans eight years', 'bio'),
-    'Childhelp spans eight years',
+    fixPublishedCopy('her involvement with Childhelp spans eight years, transforming it', 'bio'),
+    'she has spent almost a decade with Childhelp, transforming it',
   );
   assert.equal(
     fixPublishedCopy('With over 45 years of experience', 'dr-eloise-nelson'),

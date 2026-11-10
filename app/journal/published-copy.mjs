@@ -27,6 +27,14 @@ export function fixPublishedCopy(text, slug) {
       'including a recent record-breaking',
       'including the 2022 record-breaking',
     );
+    next = next.replace(
+      'over two decades, with seventeen years in marriage',
+      'over 20 years together',
+    );
+    next = next.replace(
+      'her involvement with Childhelp spans eight years',
+      'she has spent almost a decade with Childhelp',
+    );
   }
   if (slug === 'my-memoir') {
     // The book is out. Drop only the "coming soon" opener.

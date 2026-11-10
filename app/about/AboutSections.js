@@ -113,7 +113,7 @@ export function GivingSection() {
     <section id="giving" className="wrap">
       <h2>CASA and Childhelp</h2>
       <p>
-        I have been a CASA volunteer, and I have volunteered with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
+        I have been a CASA volunteer, and I have volunteered with Childhelp for almost a decade. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
       </p>
       <h3>The Forever Angels, my nonprofit</h3>
       <p>

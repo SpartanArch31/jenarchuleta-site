@@ -23,7 +23,7 @@ const PODCAST_OG = {
 };
 
 const DESCRIPTION =
-  `Unfiltered with Jen Archuleta. Season 1 is complete. ${EPISODE_COUNT} episodes. Listen on Buzzsprout or watch on YouTube.`;
+  `Unfiltered with Jen Archuleta. Season 1 is complete, ${EPISODE_COUNT} episodes. The show is on a break right now.`;
 
 export const metadata = {
   title: { absolute: 'Podcast, Unfiltered with Jen Archuleta' },
@@ -64,7 +64,7 @@ export default async function PodcastPage() {
         />
         <div className="eyebrow">The Podcast</div>
         <h1>{name}</h1>
-        <p className="pod-count">Season 1 is complete. {EPISODE_COUNT} episodes.</p>
+        <p className="pod-status">Season 1 is complete, {EPISODE_COUNT} episodes. The show is on a break right now. Jen is focusing on her movie and documentary.</p>
         <div className="pod-subscribe">
           <a className="btn btn-primary" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Subscribe on Apple Podcasts</a>
           {/* POD-12: one filled primary leads; Spotify sits beside it as a ghost. */}
@@ -111,7 +111,7 @@ export default async function PodcastPage() {
             <div className="eyebrow">Watch</div>
             <a href={watchHref} target="_blank" rel="noopener noreferrer">Open on YouTube</a>
           </div>
-          <p className="pod-video-note">Season 1 is complete. All {EPISODE_COUNT} episodes are on the channel, starting with Ep. 1.</p>
+          <p className="pod-video-note">All {EPISODE_COUNT} episodes are on the channel, starting with Ep. 1. The show is on a break right now.</p>
           <ol className="pod-episode-list">
             {SEARCH_EPISODES.map((episode) => (
               <li key={episode.href}>
