@@ -74,6 +74,35 @@ test('my-memoir says the book is available now, and the July title drops Coming'
   );
 });
 
+test('bio wording, CASA, and Dr. Eloise years', () => {
+  assert.equal(
+    fixPublishedCopy('a successful makeup artist and Aesthetician', 'bio'),
+    'a successful makeup artist and aesthetician',
+  );
+  assert.equal(
+    fixPublishedCopy('Court Appointed Special Advocate (C.A.S.A), she', 'bio'),
+    'Court Appointed Special Advocate (CASA), she',
+  );
+  assert.equal(
+    fixPublishedCopy('including a recent record-breaking fashion show', 'bio'),
+    'including the 2022 record-breaking fashion show',
+  );
+  assert.equal(
+    fixPublishedCopy('seventeen years in marriage', 'bio'),
+    'seventeen years in marriage',
+  );
+  assert.equal(
+    fixPublishedCopy('Childhelp spans eight years', 'bio'),
+    'Childhelp spans eight years',
+  );
+  assert.equal(
+    fixPublishedCopy('With over 45 years of experience', 'dr-eloise-nelson'),
+    'With more than 40 years of experience',
+  );
+  assert.equal(fixPublishedCopy('Why I became a C.A.S.A', 'why-i-became-a-c-a-s-a'), 'Why I became a CASA');
+  assert.equal(fixPublishedCopy('C.A.S.A. She', 'bio'), 'CASA. She');
+});
+
 test('older name and spelling repairs still apply', () => {
   assert.equal(fixPublishedCopy('Felling the Love', 'live'), 'Feeling the Love');
   assert.equal(fixPublishedCopy('Shawn Patrick Flanery', 'live'), 'Sean Patrick Flanery');

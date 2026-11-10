@@ -152,6 +152,18 @@ main[tabindex="-1"]:focus { outline: none; }
 .hero h1 { font-size: var(--text-display-l); font-weight: var(--w-semibold); line-height: 1.04; margin: 0 0 22px; }
 .hero .lead { margin-bottom: 30px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+.home-book, .home-speak { padding-block: 28px 8px; }
+.home-book {
+  display: grid;
+  grid-template-columns: minmax(140px, 240px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.home-book img { width: 100%; height: auto; }
+.home-speak { max-width: 40rem; }
+@media (max-width: 760px) {
+  .home-book { grid-template-columns: minmax(0, 200px); }
+}
 .portrait { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: block; }
 /* Cream mat and gold hairlines, matching the framed press headshots. The photo file itself is not altered. */
 .hero-frame {

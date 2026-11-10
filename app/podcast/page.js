@@ -4,10 +4,11 @@ import SiteFooter from '../components/SiteFooter';
 import BuzzsproutPlayer from '../components/BuzzsproutPlayer';
 import { PODCAST } from '../components/site-data';
 import { EPISODE_CREDITS } from '../../lib/episode-credits';
-import { PUPS } from '../../lib/pups';
-import { pupPhotoUrls } from '../../lib/pup-photos';
 import { PODCAST_REVIEWS } from '../../lib/public-reviews';
 import PublicReviews from '../components/PublicReviews';
+import PupsList from '../pups/PupsList';
+import '../pups/pups.css';
+import { SEARCH_EPISODES } from '../../lib/site-search';
 
 // POD-22: one episode count for the whole page. Reads PODCAST.episodeCount
 // once site-data.js carries it; 13 until then. The hero JPG has '13 EPISODES'
@@ -22,7 +23,7 @@ const PODCAST_OG = {
 };
 
 const DESCRIPTION =
-  `Unfiltered with Jen Archuleta. ${EPISODE_COUNT} episodes. Listen on Buzzsprout or watch on YouTube.`;
+  `Unfiltered with Jen Archuleta. Season 1 is complete. ${EPISODE_COUNT} episodes. Listen on Buzzsprout or watch on YouTube.`;
 
 export const metadata = {
   title: { absolute: 'Podcast, Unfiltered with Jen Archuleta' },
@@ -41,16 +42,9 @@ export const metadata = {
   },
 };
 
-// Episode number from lib/pups.js ('Ep. 10, with Nick Lowery' -> 10).
-const pupEpisode = (pup) => Number((pup.episode || '').match(/Ep\. (\d+)/)?.[1] || 0);
-
 export default async function PodcastPage() {
-  // Adam, Nov 5: each pup with its photo and shelter ID, the same photos and
-  // IDs as /pups. Pups with no photo show the paw.
-  const pups = [...PUPS].sort((a, b) => pupEpisode(a) - pupEpisode(b));
-  const pupPhotos = await pupPhotoUrls([...new Set(pups.map((p) => p.imageSlug).filter(Boolean))], 500);
   const { name, buzzsproutSite, buzzsproutId } = PODCAST;
-  const watchHref = PODCAST.youtubeEpisodes || PODCAST.youtube;
+  const watchHref = PODCAST.youtube;
 
   return (
     <>
@@ -70,7 +64,7 @@ export default async function PodcastPage() {
         />
         <div className="eyebrow">The Podcast</div>
         <h1>{name}</h1>
-        <p className="pod-count">Explore all {EPISODE_COUNT} episodes of {name}.</p>
+        <p className="pod-count">Season 1 is complete. {EPISODE_COUNT} episodes.</p>
         <div className="pod-subscribe">
           <a className="btn btn-primary" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Subscribe on Apple Podcasts</a>
           {/* POD-12: one filled primary leads; Spotify sits beside it as a ghost. */}
@@ -89,40 +83,15 @@ export default async function PodcastPage() {
         <div className="wrap">
         <div className="eyebrow">Pups of the Podcast</div>
         <h2>Meet the pups</h2>
-        <ol className="pod-pups">
-          {pups.map((pup) => {
-            const photo = pup.src || (pup.imageSlug ? pupPhotos[pup.imageSlug] : null);
-            return (
-              <li key={pup.name} className="pod-pup">
-                <div className="pod-pup-media">
-                  {photo ? (
-                    <img src={photo} alt={pup.alt || `${pup.name}, a Pup of the Podcast`} loading="lazy" />
-                  ) : (
-                    <svg className="pod-pup-paw" viewBox="0 0 64 64" aria-hidden="true">
-                      <ellipse cx="32" cy="40" rx="12" ry="10" fill="currentColor" />
-                      <ellipse cx="16" cy="26" rx="6" ry="8" fill="currentColor" />
-                      <ellipse cx="26" cy="18" rx="6" ry="8" fill="currentColor" />
-                      <ellipse cx="38" cy="18" rx="6" ry="8" fill="currentColor" />
-                      <ellipse cx="48" cy="26" rx="6" ry="8" fill="currentColor" />
-                    </svg>
-                  )}
-                </div>
-                <div className="pod-pup-ep">Ep. {pupEpisode(pup)}</div>
-                <div className="pod-pup-name">{pup.name}{pup.adopted ? ' (Adopted)' : ''}</div>
-                <div className="pod-pup-id">{pup.animalId || 'ID not verified'}</div>
-              </li>
-            );
-          })}
-        </ol>
-        <p className="pod-cta"><a href="/pups" className="btn btn-primary">See the pups</a></p>
+        <PupsList />
         </div>
       </section>
 
       <section id="episodes" className="wrap pod-players" aria-label={`All ${EPISODE_COUNT} episodes`}>
         <p className="home-pod-cross center">
-          Listen on <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Buzzsprout</a>
-          <span aria-hidden="true"> • </span>
-          Watch on <a href={PODCAST.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href={PODCAST.buzzsprout} target="_blank" rel="noopener noreferrer">Listen on Buzzsprout</a>
+          <span className="pod-listen-gap"> </span>
+          <a href={watchHref} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
         </p>
         <div className="pod-player">
           <div className="pod-player-head">
@@ -142,19 +111,14 @@ export default async function PodcastPage() {
             <div className="eyebrow">Watch</div>
             <a href={watchHref} target="_blank" rel="noopener noreferrer">Open on YouTube</a>
           </div>
-          {PODCAST.youtubeEmbed ? (
-            <div className="pod-video">
-              <iframe
-                src={PODCAST.youtubeEmbed}
-                title={`${name}, full episodes on YouTube`}
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allow="encrypted-media; picture-in-picture; fullscreen"
-                allowFullScreen
-              />
-            </div>
-          ) : null}
-          <p className="pod-video-note">All {EPISODE_COUNT} full episodes, starting with Episode 1.</p>
+          <p className="pod-video-note">Season 1 is complete. All {EPISODE_COUNT} episodes are on the channel, starting with Ep. 1.</p>
+          <ol className="pod-episode-list">
+            {SEARCH_EPISODES.map((episode) => (
+              <li key={episode.href}>
+                <a href={episode.href} target="_blank" rel="noopener noreferrer">{episode.title}</a>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

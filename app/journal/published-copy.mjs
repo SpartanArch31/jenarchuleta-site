@@ -13,10 +13,20 @@ export function fixPublishedCopy(text, slug) {
     // The book title. A quoted headline that only says "Velvet Rope"
     // (the newspaper's own title, or a reader's review) is left alone.
     .replace(/\bBeyond the Velvet Rope\b/g, 'Beyond the Velvet Ropes')
-    .replace(OLD_PODCAST_EMAIL, CURRENT_EMAIL);
+    .replace(OLD_PODCAST_EMAIL, CURRENT_EMAIL)
+    .replace(/\bAesthetician\b/g, 'aesthetician')
+    .replace(/C\.A\.S\.A/g, 'CASA')
+    .replace(/\bover 45 years\b/g, 'more than 40 years');
 
   if (slug === 'bio') {
     next = next.replace(/\bfive dogs\b/g, 'five rescues');
+    next = next.replace(/\ba rescue dog\b/g, 'a rescue');
+    // The fashion show is the 2022 event. The post does not give a start
+    // year for the marriage or for the Childhelp count, so those stay.
+    next = next.replace(
+      'including a recent record-breaking',
+      'including the 2022 record-breaking',
+    );
   }
   if (slug === 'my-memoir') {
     // The book is out. Drop only the "coming soon" opener.

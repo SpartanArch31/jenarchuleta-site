@@ -135,7 +135,7 @@ export default function SponsorsPage() {
           ))}
         </ul>
         <p className="sponsors-close">
-          Want to sponsor an episode? <a href="/thank-you#contact">Contact me</a>.
+          Want to sponsor an episode? <a href="/contact">Contact me</a>.
         </p>
       </section>
       </main>

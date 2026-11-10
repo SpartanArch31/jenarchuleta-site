@@ -277,7 +277,7 @@ export default function MediaPage() {
         <h2>Speaking</h2>
         <p>{SPEAKING_INTRO}</p>
         {/* MEDIA-22: a quiet invite up top; the primary one waits after the talks. */}
-        <p><a className="btn btn-ghost" href="/thank-you#contact">Invite me to speak</a></p>
+        <p><a className="btn btn-ghost" href="/contact">Invite me to speak</a></p>
         {/* MEDIA-08: the talks read as a ruled list, not a card grid. */}
         <div className="speak-talks">
           {SPEAKING_TALKS.map((talk) => (
@@ -288,7 +288,7 @@ export default function MediaPage() {
           ))}
         </div>
         <p className="media-actions">
-          <a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a>
+          <a className="btn btn-primary" href="/contact">Invite me to speak</a>
         </p>
       </section>
 

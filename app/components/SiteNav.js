@@ -3,74 +3,45 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import VelvetKey from './VelvetKey';
-// Home, About Me, Book, Press, Journal, Podcast, Velvet Letter, Thank You.
-// The Velvet Letter item opens /behind-the-velvet-ropes. /velvet stays unlisted.
-// Desktop: inline links; a drop-down opens on hover or with its arrow button.
-// Narrow screens: the hamburger opens the menu, and each arrow opens that
-// page's sections underneath it.
+// Five pages: Home, Book, Podcast, About, Contact.
+// Journal stays in the footer. Shop and Pups redirect. /velvet stays unlisted.
+// Desktop: inline links. A drop-down opens only when a page still has sections.
 // G-09: internal links use next/link, so moving between pages is a client
 // navigation (no full reload, no cream flash between pages).
 const MENU = [
   { href: '/', label: 'Home', home: true },
-  {
-    id: 'about',
-    href: '/about',
-    label: 'About Me',
-    items: [
-      { href: '/about', label: 'About me' },
-      { href: '/about#gallery', label: 'Gallery' },
-    ],
-  },
   {
     id: 'book',
     href: '/book',
     label: 'Book',
     items: [
       { href: '/book#buy', label: 'Buy the book' },
-      { href: '/book#author', label: 'About the author' },
-      { href: '/shop', label: 'Signed copies and more' },
+      { href: '/book#reviews', label: 'Reviews' },
+      { href: '/book#signed-copy', label: 'Signed copy' },
     ],
   },
-  { href: '/shop', label: 'Shop' },
-  {
-    id: 'press',
-    href: '/media',
-    label: 'Press',
-    also: ['/contact'],
-    items: [
-      { href: '/media#press', label: 'Press' },
-      { href: '/media#film', label: 'Film and documentary' },
-      { href: '/media#speaking', label: 'Speaking' },
-      { href: '/media#forever-angels', label: 'Get involved' },
-    ],
-  },
-  { href: '/journal', label: 'Journal' },
   {
     id: 'podcast',
     href: '/podcast',
     label: 'Podcast',
-    also: ['/pups', '/sponsors'],
+    also: ['/sponsors'],
     items: [
-      { href: '/podcast#episodes', label: 'Buzzsprout episodes' },
+      { href: '/podcast#episodes', label: 'Episodes' },
       { href: '/podcast#pups', label: 'Pups of the Podcast' },
-      { href: '/pups', label: 'All the pups' },
-      { href: '/podcast#sponsors', label: 'Sponsors' },
-      { href: '/sponsors', label: 'All the sponsors' },
     ],
   },
-  { href: '/behind-the-velvet-ropes', label: 'Velvet Letters', key: true, also: ['/velvet'] },
   {
-    id: 'thanks',
-    href: '/thank-you',
-    label: 'Thank You',
-    alignEnd: true,
+    id: 'about',
+    href: '/about',
+    label: 'About',
+    also: ['/media'],
     items: [
-      { href: '/thank-you#quotes', label: 'Quotes' },
-      { href: '/thank-you#stay', label: 'Stay in touch' },
-      { href: '/thank-you#contact', label: 'Contact' },
+      { href: '/about#speaking', label: 'Speaking' },
+      { href: '/about#press', label: 'Press' },
+      { href: '/about#giving', label: 'CASA and Childhelp' },
     ],
   },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const DESKTOP = '(min-width: 1180px)';
@@ -221,7 +192,6 @@ export default function SiteNav({ homeHref = '/' }) {
                   aria-current={current}
                   onClick={close}
                 >
-                  {link.key ? <VelvetKey className="nav-key" /> : null}
                   {link.label}
                 </Link>
               );

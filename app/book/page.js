@@ -2,17 +2,9 @@ import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuyOptions from '../components/BuyOptions';
+import BookOffers from './BookOffers';
 import PublicReviews from '../components/PublicReviews';
 import { BOOK_REVIEWS } from '../../lib/public-reviews';
-import { SHOP } from '../components/site-data';
-
-// The Shop strip at the end of the page: pictures and prices from SHOP, links into /shop.
-const SHOP_STRIP = [
-  { href: '/shop#signed-copy', label: 'Signed copy', img: '/assets/book-cover.jpg', price: SHOP.signedBookTotal },
-  { href: '/shop#bookmark', label: 'Velvet bookmark', img: '/assets/bookmark.jpg', price: SHOP.bookmarkPrice },
-  { href: '/shop#velvet-circle', label: 'Book club', img: '/assets/velvet-circle-group.jpg', price: SHOP.velvetCircleMembershipPrice },
-  { href: '/shop#podcast-apparel', label: 'Apparel', img: '/assets/og-podcast-1200x630.jpg', price: null },
-];
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
@@ -140,25 +132,13 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* The things for sale live on their own page now (Adam, Nov 5, 2026).
-          #shop stays here so old links land on this panel. */}
-      <section id="shop" className="wrap book-shop-teaser">
-        <div className="book-shop-head">
-          <div className="eyebrow">The Shop</div>
-          <h2>Signed copies and more</h2>
+      <section id="shop" className="shop-page">
+        <div className="wrap shop-head">
+          <div className="eyebrow">Available now</div>
+          <h2>Signed copy, bookmark, and book club</h2>
+          <p>The signed copy, the Signature Velvet Bookmark, and the Velvet Circle Book Club are for sale here. Checkout is the same Stripe link as before.</p>
         </div>
-        <ul className="book-shop-items">
-          {SHOP_STRIP.map((item) => (
-            <li key={item.href}>
-              <a href={item.href}>
-                <span className="book-shop-img"><img src={item.img} alt="" loading="lazy" /></span>
-                <span className="book-shop-label">{item.label}</span>
-                {item.price ? <span className="book-shop-price">{item.price}</span> : null}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <p className="center"><a href="/shop" className="btn btn-primary">Visit the shop</a></p>
+        <BookOffers />
       </section>
       </div>
       </main>

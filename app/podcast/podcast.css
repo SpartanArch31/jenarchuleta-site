@@ -156,7 +156,12 @@
 /* POD-17: 44px tap targets for the small text links. */
 .pod-player-head { align-items: center; }
 .pod-player-head a,
+.pod-players .home-pod-cross { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; }
 .pod-players .home-pod-cross a { display: inline-flex; align-items: center; min-height: 44px; }
+.pod-listen-gap { display: none; }
+.pod-episode-list { list-style: none; margin: 18px 0 0; padding: 0; text-align: left; }
+.pod-episode-list li { margin: 0; padding: 10px 0; border-top: var(--hairline); }
+.pod-episode-list li:last-child { border-bottom: var(--hairline); }
 /* The whole sponsor row is tappable, not just the name. */
 .pod-credits li { position: relative; }
 .pod-credits a::after { content: ''; position: absolute; inset: 0; }

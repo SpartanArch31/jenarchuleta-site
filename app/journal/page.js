@@ -222,7 +222,7 @@ export default async function JournalPage({ searchParams }) {
       <section className="wrap journal-feed">
         {visible.length === 0 ? (
           active === 'Pup of the Podcast' ? (
-            <p className="center lead"><a href="/pups">Meet the Pups of the Podcast</a></p>
+            <p className="center lead"><a href="/podcast#pups">Meet the Pups of the Podcast</a></p>
           ) : (
             <p className="center lead">No posts in “{categoryLabel(active)}” yet. Check back soon.</p>
           )
