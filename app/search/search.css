@@ -1,14 +1,21 @@
-.search-page { padding-bottom: clamp(48px, 8vw, 96px); }
+.search-page { padding-top: var(--section-y); padding-bottom: clamp(48px, 8vw, 96px); }
+/* SR-03: on a short results page, keep the footer near the bottom of the
+   screen instead of floating mid-screen. 170px / 260px is about the footer height. */
+.search-page { min-height: calc(100svh - var(--nav-h, 81px) - 170px); }
+@media (max-width: 600px) {
+  .search-page { min-height: calc(100svh - var(--nav-h, 65px) - 260px); }
+}
 .search-page h1 { font-size: var(--text-display-l); margin-bottom: 18px; }
 
 .search-form {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* SR-01: input and button stay on one row */
   gap: 10px;
   max-width: 40rem;
 }
 .search-form input {
-  flex: 1 1 16rem;
+  flex: 1 1 auto;
+  min-width: 0;
   min-height: 48px;
   padding: 10px 16px;
   border: var(--hairline);
@@ -18,9 +25,19 @@
   font-family: var(--font-sans);
   font-size: 1rem;
 }
+/* SR-02: one soft gold ring instead of an outline stacked on the hairline. */
 .search-form input:focus-visible {
-  outline: 2px solid var(--focus-ring, var(--gold));
-  outline-offset: 2px;
+  outline: 2px solid transparent; /* stays visible in forced-colors mode */
+  border-color: var(--gold-deep);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+/* SR-02: hide WebKit's system-blue clear button. */
+.search-form input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+@media (max-width: 480px) {
+  .search-form .btn { padding: 14px 18px; } /* SR-01 */
 }
 
 .search-count {
@@ -66,4 +83,11 @@
   color: var(--text-secondary);
   font-size: var(--text-body-s);
   line-height: 1.45;
+}
+/* SR-04: matched words in result snippets. */
+.search-excerpt mark {
+  background: color-mix(in srgb, var(--gold) 22%, transparent);
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
 }

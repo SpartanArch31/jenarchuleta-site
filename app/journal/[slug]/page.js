@@ -9,6 +9,7 @@ import { getPostBySlug, getAllSlugs } from '../../sanity/queries';
 import { POSTS as FALLBACK_POSTS, getPost as getFallbackPost } from '../_posts';
 import { isRetiredHref, prepareJournalBody } from '../repair-body.mjs';
 import { heroAlt } from '../hero-alt';
+import { curatePosts } from '../curation';
 import { documentTitle, hasOpeningByline, socialTitle, withAuthor } from '../author-meta.mjs';
 
 // Render each post from the published Sanity document on the request.
@@ -43,29 +44,71 @@ function descriptionFromBody(body) {
   return sentence.length > 160 ? `${sentence.slice(0, 157).trim()}…` : sentence;
 }
 
+// J-14: search snippets and share cards drop emoji from the excerpt
+// fallback and collapse spacing. The words themselves are unchanged.
+// A description Jen set in seoDescription is kept. Her name is added only
+// when that text does not already include it.
+function plainDescription(text) {
+  if (typeof text !== 'string') return text;
+  return text
+    .replace(/\p{Extended_Pictographic}\uFE0F?/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// J-14: the post's own photo on its share card, whole (no crop). Posts
+// without a photo keep the site card.
+function ogImage(img) {
+  if (!img) return OG_IMAGE;
+  if (typeof img === 'string') return img;
+  return urlFor(img).width(1200).fit('max').url();
+}
+
+function shareImageUrl(image) {
+  if (!image) return OG_IMAGE.url;
+  if (typeof image === 'string') {
+    return image.startsWith('http') ? image : `https://jenarchuleta.com${image.startsWith('/') ? image : `/${image}`}`;
+  }
+  return image.url || OG_IMAGE.url;
+}
+
 export async function generateMetadata({ params }) {
   const post = await resolvePost(params.slug);
   if (!post) return {};
   const rawTitle = post.seoTitle || post.title;
-  const description = withAuthor(post.seoDescription || post.excerpt || descriptionFromBody(post.body));
+  const description = withAuthor(post.seoDescription || plainDescription(post.excerpt || descriptionFromBody(post.body)));
   const sharedTitle = socialTitle(rawTitle);
+  const url = `https://jenarchuleta.com/journal/${post.slug}`;
+  const image = ogImage(post.heroImage);
   return {
     title: documentTitle(rawTitle),
     description,
     authors: [{ name: 'Jen Archuleta' }],
+    alternates: { canonical: url },
     openGraph: {
       title: sharedTitle,
       description,
       type: 'article',
-      images: [OG_IMAGE],
+      url,
+      images: [image],
     },
     twitter: {
       card: 'summary_large_image',
       title: sharedTitle,
       description,
-      images: [OG_IMAGE.url],
+      images: [shareImageUrl(image)],
     },
   };
+}
+
+// J-14: where the category kicker leads. Archived posts go to the Archive,
+// posts kept off the Journal go to their own page.
+function categoryHref(post) {
+  const [curated] = curatePosts([post]);
+  if (!curated?.category) return null;
+  if (curated.archived) return '/journal?view=archive';
+  if (curated.offJournal) return curated.category === 'Pup of the Podcast' ? '/pups' : null;
+  return `/journal?category=${encodeURIComponent(curated.category)}`;
 }
 
 function formatDate(iso) {
@@ -88,8 +131,49 @@ function heroUrl(img) {
 const isExternal = (href) =>
   /^https?:\/\//i.test(href) && !/^https?:\/\/(www\.)?jenarchuleta\.com(\/|$)/i.test(href);
 
+// J-11: some posts are long hand-numbered lists, one paragraph per line
+// ("1. Love really does win."). A run of 3 or more such paragraphs gets the
+// 'numbered' style so it renders with a hanging indent. The words and the
+// typed numbers stay exactly as Jen wrote them.
+const NUMBERED_LINE = /^\s*\d{1,2}\.\s/;
+const MIN_NUMBERED_RUN = 3;
+
+function blockText(block) {
+  if (typeof block === 'string') return block;
+  if (!block || block._type !== 'block' || block.listItem || (block.style && block.style !== 'normal')) return null;
+  if (!Array.isArray(block.children)) return null;
+  return block.children.map((child) => child?.text || '').join('');
+}
+
+// Returns a Set of indexes that sit in a run of numbered lines.
+function numberedRuns(blocks) {
+  const marked = new Set();
+  let run = [];
+  const flush = () => {
+    if (run.length >= MIN_NUMBERED_RUN) run.forEach((i) => marked.add(i));
+    run = [];
+  };
+  blocks.forEach((block, i) => {
+    const text = blockText(block);
+    if (text !== null && NUMBERED_LINE.test(text)) run.push(i);
+    else flush();
+  });
+  flush();
+  return marked;
+}
+
+function markNumbered(blocks) {
+  if (!Array.isArray(blocks)) return blocks;
+  const marked = numberedRuns(blocks);
+  if (marked.size === 0) return blocks;
+  return blocks.map((block, i) => (marked.has(i) ? { ...block, style: 'numbered' } : block));
+}
+
 // Portable Text renderers for links + inline images.
 const ptComponents = {
+  block: {
+    numbered: ({ children }) => <p className="num-item">{children}</p>,
+  },
   types: {
     image: ({ value }) => (
       <img src={urlFor(value).width(1100).url()} alt={value?.alt || ''} style={{ width: '100%', borderRadius: 'var(--radius-lg)', margin: '20px 0' }} />
@@ -114,7 +198,9 @@ export default async function JournalPost({ params }) {
   const hero = heroUrl(post.heroImage);
   const heroDescription = heroAlt(post.heroImage, post.slug);
   const bodyIsStrings = Array.isArray(post.body) && typeof post.body[0] === 'string';
-  const description = withAuthor(post.seoDescription || post.excerpt || descriptionFromBody(post.body));
+  const numberedStrings = bodyIsStrings ? numberedRuns(post.body) : null;
+  const catHref = categoryHref(post);
+  const description = withAuthor(post.seoDescription || plainDescription(post.excerpt || descriptionFromBody(post.body)));
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -140,11 +226,13 @@ export default async function JournalPost({ params }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, '\\u003c') }} />
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <SiteNav />
 
-      <article className="wrap text-wrap">
+      <main id="main-content">
+      <article className="wrap text-wrap journal-article">
         <div className="article-head">
-          <div className="k">{post.category}</div>
+          <div className="k">{catHref ? <a href={catHref}>{post.category}</a> : post.category}</div>
           <h1>{post.title}</h1>
           {hasOpeningByline(post.body) ? null : <div className="meta byline">By Jen Archuleta</div>}
           <div className="meta">{formatDate(post.publishedAt)}</div>
@@ -154,8 +242,8 @@ export default async function JournalPost({ params }) {
 
         <div className="article-body">
           {bodyIsStrings
-            ? post.body.map((para, i) => <p key={i}>{para}</p>)
-            : post.body && <PortableText value={prepareJournalBody(post.body, post.slug)} components={ptComponents} />}
+            ? post.body.map((para, i) => <p key={i} className={numberedStrings.has(i) ? 'num-item' : undefined}>{para}</p>)
+            : post.body && <PortableText value={markNumbered(prepareJournalBody(post.body, post.slug))} components={ptComponents} />}
         </div>
 
         {/* Sponsor block — renders only when a sponsor is set */}
@@ -189,12 +277,15 @@ export default async function JournalPost({ params }) {
         {/* Share */}
         <div className="share-row">
           <span className="k">Share</span>
-          <a className="btn btn-ghost btn-sm" href={`https://x.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(url)}`}>X</a>
-          <a className="btn btn-ghost btn-sm" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}>Facebook</a>
+          {/* J-16: a lone "X" read as a close button; the share windows open
+              in a new tab so readers keep their place in the post. */}
+          <a className="btn btn-ghost btn-sm" href={`https://x.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on X (opens in a new tab)">X (Twitter)</a>
+          <a className="btn btn-ghost btn-sm" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook (opens in a new tab)">Facebook</a>
           <a className="btn btn-ghost btn-sm" href={`mailto:?subject=${shareText}&body=${encodeURIComponent(url)}`}>Email</a>
         </div>
 
       </article>
+      </main>
 
       <SiteFooter />
     </>

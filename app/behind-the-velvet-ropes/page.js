@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetKey from '../components/VelvetKey';
@@ -10,29 +11,36 @@ export const metadata = {
 export default function VelvetRopesPage() {
   return (
     <>
-      <SiteNav />
+      {/* VL-M1: skip link first in tab order, target is the <main> landmark */}
       <a href="#main-content" className="skip-link">Skip to content</a>
-      <section id="main-content" className="wrap hero">
+      <SiteNav />
+      <main id="main-content">
+      <section className="wrap hero velvet-ropes-hero">
         <div className="hero-copy">
           <h1>Velvet Ropes</h1>
           <VelvetKey className="velvet-ropes-key" />
           <h2>What are the Velvet Letters?</h2>
-          <p>The story doesn’t end on the last page. Find the QR code in the back of the book to unlock the secret Velvet Letters.</p>
-          <p style={{ marginTop: '22px' }}>
+          {/* VL-11 / VL-M4: the answer is the lead; the CTA sits in .hero-ctas like the home hero, no inline spacing */}
+          <p className="lead">The story doesn’t end on the last page. Find the QR code in the back of the book to unlock the secret Velvet Letters.</p>
+          <div className="hero-ctas">
             <a className="btn btn-primary velvet-unlock" href="/velvet">
               <VelvetKey className="velvet-ropes-key" />
               Unlock the secret Velvet Letters
             </a>
-          </p>
-          <p className="foot-meta" style={{ marginTop: '16px' }}>No passcode yet? Buy the book to find it.</p>
+          </div>
+          <p className="velvet-ropes-note">No passcode yet? Buy the book to find it.</p>
           {/* Adam, Nov 5: no Buy the book button here. */}
           {/* Jen, Nov 5: one line for audiobook buyers. Never put the companion's password on the site. */}
-          <p className="foot-meta" style={{ marginTop: '22px' }}>Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
+          <p className="velvet-ropes-note">Audiobook listeners will find the way into the Velvet Letters in the photo companion that comes with the audiobook.</p>
         </div>
         <div className="hero-media">
-          <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" />
+          <div className="hero-frame">
+            {/* VL-12: the page's largest image, served responsive and with priority */}
+            <Image src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width={1000} height={1500} sizes="(max-width: 860px) 240px, 400px" priority />
+          </div>
         </div>
       </section>
+      </main>
       <SiteFooter />
     </>
   );

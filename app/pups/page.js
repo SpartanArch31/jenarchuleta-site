@@ -35,7 +35,7 @@ function PupFacts({ pup }) {
         <p className="pup-rescue">
           <span className="pup-k">Shelter </span>
           {pup.rescueHref ? (
-            <a href={pup.rescueHref} target="_blank" rel="noopener noreferrer">{pup.rescue}</a>
+            <a href={pup.rescueHref} target="_blank" rel="noopener noreferrer">{pup.rescue}<span className="visually-hidden"> (opens in new tab)</span></a>
           ) : pup.rescue}
         </p>
       ) : null}
@@ -44,11 +44,15 @@ function PupFacts({ pup }) {
   );
 }
 
-function PupCard({ pup, photo }) {
+function PupCard({ pup, photo, eager }) {
   return (
     <article className="pup-card">
-      <div className="pup-media">
-        {photo ? <img src={photo} alt={pup.alt || pup.name} /> : <Paw />}
+      {/* PS-03: with a photo, the frame takes the photo's own ratio (no linen bars, no crop). */}
+      <div className={photo ? 'pup-media pup-media--photo' : 'pup-media'}>
+        {/* PS-14: only the first row loads up front; the rest wait until scrolled near. */}
+        {photo ? (
+          <img src={photo} alt={pup.alt || pup.name} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+        ) : <Paw />}
         {pup.adopted ? <span className="pup-badge">Adopted</span> : null}
       </div>
       <div className="pup-body">
@@ -61,13 +65,20 @@ function PupCard({ pup, photo }) {
         ) : (
           <PupFacts pup={pup} />
         )}
-        {pup.adoptHref ? (
-          <a className="pup-more" href={pup.adoptHref} target="_blank" rel="noopener noreferrer">{pup.adoptLabel || `Meet ${pup.name}`}</a>
+        {/* PS-06: links sit together in one footer row under a hairline, so the
+            spacing is the same on every card. The adoption link leads, as a pill. */}
+        {pup.adoptHref || pup.watch || pup.post ? (
+          <div className="pup-links">
+            {pup.adoptHref ? (
+              <a className="pup-more pup-adopt" href={pup.adoptHref} target="_blank" rel="noopener noreferrer">{pup.adoptLabel || `Meet ${pup.name}`}<span className="visually-hidden"> (opens in new tab)</span></a>
+            ) : null}
+            {pup.watch ? (
+              <a className="pup-more" href={pup.watch} target="_blank" rel="noopener noreferrer">Watch the episode<span className="visually-hidden"> (opens in new tab)</span></a>
+            ) : null}
+            {/* PS-M3: a pup can carry its own postLabel when the post is not a pup post. */}
+            {pup.post ? <a className="pup-more" href={`/journal/${pup.post}`}>{pup.postLabel || 'Read more'}</a> : null}
+          </div>
         ) : null}
-        {pup.watch ? (
-          <a className="pup-more" href={pup.watch} target="_blank" rel="noopener noreferrer">Watch the episode</a>
-        ) : null}
-        {pup.post ? <a className="pup-more" href={`/journal/${pup.post}`}>Read more</a> : null}
       </div>
     </article>
   );
@@ -79,8 +90,11 @@ export default async function PupsPage() {
 
   return (
     <div className="pups-page">
+      {/* PS-15: skip link first, before the nav, pointing at <main>. */}
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <SiteNav />
 
+      <main id="main-content">
       <section className="wrap pups-head">
         <div className="eyebrow">Unfiltered with Jen Archuleta</div>
         <h1>Pups of the Podcast</h1>
@@ -92,12 +106,13 @@ export default async function PupsPage() {
 
       <section className="wrap" style={{ paddingTop: 0 }}>
         <div className="pups-grid">
-          {pups.map((pup) => {
+          {pups.map((pup, i) => {
             const photo = pup.src || (pup.imageSlug ? photos[pup.imageSlug] : null);
-            return <PupCard key={pup.name} pup={pup} photo={photo} />;
+            return <PupCard key={pup.name} pup={pup} photo={photo} eager={i < 3} />;
           })}
         </div>
       </section>
+      </main>
 
       <SiteFooter />
     </div>

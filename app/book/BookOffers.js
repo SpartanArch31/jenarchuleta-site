@@ -25,7 +25,7 @@ function QuestionsEmail() {
   return <a href={`mailto:${email}?subject=Velvet%20Circle%20question`}>{email}</a>;
 }
 
-// The shop lives on the book page, under #shop.
+// The products for sale. Rendered on /shop (its own page since Nov 2026).
 export default function BookOffers() {
   const bookmarkFacts = [
     ['Size', SHOP.bookmarkSize],
@@ -33,11 +33,8 @@ export default function BookOffers() {
   ].filter(([, value]) => value);
 
   return (
-    <div className="shop-page" id="shop">
+    <div className="shop-products">
       <section className="wrap">
-        <div className="center">
-          <h2>Buy the book here, and find a few other things you might love.</h2>
-        </div>
         <div className="product-grid">
           <article className="product-card" id="signed-copy">
             <div className="product-media product-media--contain">
@@ -77,7 +74,6 @@ export default function BookOffers() {
               </div>
             </div>
           </article>
-
           <article className="product-card" id="bookmark">
             <div className="product-media product-media--contain">
               <img
@@ -120,40 +116,6 @@ export default function BookOffers() {
               </div>
             </div>
           </article>
-
-          <article className="product-card" id="bundle">
-            <span id="backstage-bundle" />
-            <span id="backstage-box" />
-            <div className="product-media product-media--contain">
-              <img
-                src="/assets/backstage-bundle.jpg"
-                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
-                width="1268"
-                height="1600"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">The Bundle</div>
-              <h3>Signed book, bookmark, and bunny ears</h3>
-              <p className="price">{SHOP.bundlePrice}</p>
-              <p className="product-desc">
-                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears. Shipped by regular mail.
-              </p>
-              <div className="product-cta">
-                {SHOP.bundle ? (
-                  <>
-                    <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
-                      Buy the bundle
-                    </a>
-                    <TrustLine />
-                  </>
-                ) : (
-                  <span className="btn btn-disabled">Coming soon</span>
-                )}
-              </div>
-            </div>
-          </article>
-
           <article className="product-card" id="velvet-circle">
             <span id="velvet-circle-faq" />
             <span id="velvet-circle-details" />
@@ -170,27 +132,15 @@ export default function BookOffers() {
               <div className="eyebrow">Monthly Book Club</div>
               <h3>The Velvet Circle Book Club</h3>
               <p className="price">{SHOP.velvetCircleMembershipPrice}</p>
-              <ol className="club-gets">
+              {/* BOOK-10: perks are a set, not steps, so bullets instead of numbers. */}
+              <ul className="club-gets">
                 <li>The full discussion sheet</li>
                 <li>Up to three questions a month, answered by Jen</li>
                 <li>A monthly group Zoom once 13 members join</li>
-              </ol>
+              </ul>
               {/* Jen, Nov 5: a fun nudge toward the 13. */}
               <p className="club-note club-nudge">
                 Already in a book club? Bring the whole group. Once there are 13 of us, the monthly Zoom starts, so the more friends you bring, the sooner we get to talk.
-              </p>
-              <div className="book-club-peek" id="book-club-guide">
-                <h4 id="book-club-guide-title">From the discussion sheet</h4>
-                <ol>
-                  {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
-                    <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
-                  ))}
-                </ol>
-              </div>
-              <p className="club-note">
-                Cancel anytime.{' '}
-                <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel</a>.
-                {' '}Email questions to <QuestionsEmail />.
               </p>
               <div className="product-cta">
                 {SHOP.velvetCircleMembership ? (
@@ -201,9 +151,56 @@ export default function BookOffers() {
                   <span className="btn btn-disabled">Coming soon</span>
                 )}
               </div>
+              <p className="club-note">
+                Cancel anytime.{' '}
+                <a href={STRIPE_CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">Manage or cancel</a>.
+                {' '}Email questions to <QuestionsEmail />.
+              </p>
+              <div className="book-club-peek" id="book-club-guide">
+                <h4 id="book-club-guide-title">From the discussion sheet</h4>
+                <ol>
+                  {BOOK_CLUB_SNEAK_PEEK.questions.map((question, index) => (
+                    <li key={question} value={index === 0 ? 6 : 11}>{question}</li>
+                  ))}
+                </ol>
+              </div>
             </div>
           </article>
-
+          {/* Jen, Nov 9: the shop only shows what can be bought today. The bundle
+              card comes back on its own once SHOP.bundle holds a Stripe link. */}
+          {SHOP.bundle ? (
+          <article className="product-card" id="bundle">
+            <span id="backstage-bundle" />
+            <span id="backstage-box" />
+            <div className="product-media product-media--contain">
+              <img
+                src="/assets/backstage-bundle.jpg"
+                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
+                width="1268"
+                height="1586"
+              />
+            </div>
+            <div className="product-body">
+              <div className="eyebrow">The Bundle</div>
+              <h3>Signed book, bookmark, and bunny ears</h3>
+              <p className="price">{SHOP.bundlePrice}</p>
+              <p className="product-desc">
+                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears.
+              </p>
+              <div className="product-cta">
+                {SHOP.bundle ? (
+                  <>
+                    <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
+                      Buy the bundle
+                    </a>
+                    <TrustLine />
+                  </>
+                ) : null}
+              </div>
+            </div>
+          </article>
+          ) : null}
+          {/* Jen, Nov 6: apparel is an extra, so it sits last, after the book products. */}
           <article className="product-card" id="podcast-apparel">
             <div className="product-media product-media--contain">
               <img
@@ -228,9 +225,6 @@ export default function BookOffers() {
           </article>
         </div>
 
-        <p className="center foot-meta" style={{ marginTop: '28px' }}>
-          <a href={SHOP.etsyTee} target="_blank" rel="noopener noreferrer">The Be the Bumblebee shirt, on Etsy</a>
-        </p>
       </section>
     </div>
   );

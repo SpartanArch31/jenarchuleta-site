@@ -20,16 +20,10 @@
     margin-inline: auto;
   }
 }
-/* An odd last card (three products, November 2026) sits centered on its own row. */
-@media (min-width: 861px) {
-  .shop-page .product-grid > .product-card:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: calc(50% - clamp(24px, 3.5vw, 44px) / 2);
-  }
-}
+/* Five cards: Velvet Circle spans the row on desktop, so the others pair up. */
 
 .shop-page .product-card {
+  position: relative;
   background: var(--surface);
   border: var(--hairline);
   border-radius: var(--radius-lg);
@@ -67,7 +61,7 @@
 /* book covers shouldn't be cropped — contain them on the linen ground */
 .shop-page .product-media--contain img {
   object-fit: contain;
-  padding: 7%;
+  padding: 4%;
 }
 /* Tall portraits keep their own shape. A 4/3 cover frame would cut the face. */
 .shop-page .product-media--portrait {
@@ -148,7 +142,9 @@
 
 .shop-page .price {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1;
   font-weight: var(--w-semibold);
   color: var(--text);
   margin: 0;
@@ -324,7 +320,6 @@
 }
 
 /* Velvet Circle details + FAQ (October 2026) */
-#velvet-circle-details { margin-top: clamp(24px, 4vw, 48px); }
 .vc-faq { padding-block: clamp(48px, 7vw, 88px); }
 .vc-faq h2 { margin: 6px 0 26px; }
 .vc-faq details {
@@ -395,25 +390,56 @@
   padding-left: 1.3em;
 }
 .shop-page .book-club-peek li { margin: 0.55em 0; }
+/* BOOK-10: Cormorant's old-style figures set "11." as a spaced "1 1."; lining figures on the marker. */
+.shop-page .book-club-peek li::marker {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum' 1, 'tnum' 1;
+}
 
-/* The book page is dark. This block stays the light shop, in one place. */
-.book-page .shop-page {
-  --bg: var(--cream);
-  --surface: var(--paper);
-  --surface-alt: var(--linen);
-  --surface-invert: var(--near-black);
-  --border: #E2D8C6;
-  --border-strong: #CBB99B;
-  --text: var(--ink);
-  --text-secondary: var(--ink-soft);
-  --text-muted: var(--ink-mute);
-  --text-invert: #F0E8D8;
-  --accent: var(--gold);
-  --accent-ink: var(--gold-deep);
-  --accent-2: var(--clay);
-  --on-accent: #2A2008;
-  --focus-ring: #946F2B;
-  background: var(--cream);
-  color: var(--ink);
-  padding-block: clamp(48px, 7vw, 88px);
+
+/* ============================================================
+   /shop as its own page (Adam, Nov 5, 2026)
+   ============================================================ */
+.shop-page--standalone { background: var(--bg); padding-bottom: clamp(32px, 4vw, 56px); }
+.shop-head { padding-top: clamp(28px, 4vw, 64px); text-align: center; }
+.shop-head h1 {
+  font-size: var(--text-h1);
+  max-width: 22ch;
+  margin: 8px auto 0;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.shop-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-6); }
+.shop-chip {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border: var(--hairline-strong); border-radius: var(--radius-pill);
+  font-family: var(--font-sans); font-size: var(--text-ui); font-weight: var(--w-semibold);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--text-secondary);
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.shop-chip:hover { text-decoration: none; border-color: var(--accent); color: var(--text); }
+.shop-page--standalone .shop-products > section { padding-top: var(--space-5); }
+.shop-page--standalone .product-grid { margin-top: var(--space-5); }
+.shop-head-note { margin: var(--space-5) auto 0; color: var(--text-secondary); font-size: var(--text-body); }
+/* The 'Coming soon' bundle card doesn't stretch to its neighbour's height. */
+/* Legacy anchor spans inside cards never take layout space. */
+.shop-page .product-card > span[id] { position: absolute; width: 0; height: 0; margin: 0; }
+/* Easier-to-read card copy: serif for the story, sans for the facts. */
+.shop-page .product-desc { font-size: var(--text-body); color: var(--text); }
+.shop-page .club-note, .shop-page .club-nudge { font-size: var(--text-body); }
+.shop-page .product-card .book-club-peek { border-top: var(--hairline); padding-top: var(--space-4); }
+.shop-page .product-card .book-club-peek li { font-size: 1rem; margin: .35em 0; }
+.shop-page .product-cta .foot-meta { font-size: var(--text-caption); line-height: 1.6; }
+.shop-page .product-cta .foot-meta a { display: inline-block; padding-block: 10px; text-decoration: underline; text-underline-offset: 3px; }
+.shop-chip:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+.shop-page .product-card:target { box-shadow: 0 0 0 2px var(--accent), var(--shadow); }
+@media (max-width: 600px) {
+  .shop-head h1 { font-size: 1.875rem; }
+}
+/* Desktop: the Velvet Circle is a wide feature card (photo left, details right),
+   so the shorter cards pair up evenly around it. */
+@media (min-width: 861px) {
+  .shop-page #velvet-circle { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .shop-page #velvet-circle .product-media { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: var(--hairline); }
 }

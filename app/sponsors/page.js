@@ -107,10 +107,12 @@ export const SPONSORS = [
 export default function SponsorsPage() {
   return (
     <div className="sponsors-page">
-      <SiteNav />
+      {/* PS-15: skip link first, before the nav, pointing at <main>. */}
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
-      <section id="main-content" className="wrap sponsors-head">
+      <main id="main-content">
+      <section className="wrap sponsors-head">
         <div className="eyebrow">The Podcast</div>
         <h1>Sponsors and partners</h1>
         <p className="lead">
@@ -125,7 +127,7 @@ export default function SponsorsPage() {
               {sponsor.links ? (
                 <p className="sponsor-links">
                   {sponsor.links.map((link) => (
-                    <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                    <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}<span className="visually-hidden"> (opens in new tab)</span></a>
                   ))}
                 </p>
               ) : null}
@@ -136,6 +138,7 @@ export default function SponsorsPage() {
           Want to sponsor an episode? <a href="/thank-you#contact">Contact me</a>.
         </p>
       </section>
+      </main>
 
       <SiteFooter />
     </div>

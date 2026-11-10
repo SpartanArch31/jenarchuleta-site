@@ -97,6 +97,7 @@ the newer features she likes. Before changing structure, re-read this section.
 - **Podcast:** "Explore all 13 episodes of Unfiltered with Jen Archuleta." (Season 1 is
   complete.) Buzzsprout and YouTube sit together. Never say the show is on hold or that new
   episodes are coming. Use guests' full names.
+- **Shop is its own page, /shop (Adam, Nov 5, 2026):** the product cards (`app/book/BookOffers.js`) render on `/shop`, which is a top-level menu item. The Book page ends with a "Signed copies and more" strip linking into `/shop#...`, and `/book#shop` lands on that strip.
 - **Shop:** three products in this order (Jen, 2026-10-28; Nov 3): Signed copy, The Velvet
   Circle Book Club, Velvet Bookmark. The Velvet Circle is one membership on its card.
   - **Velvet Circle = "Monthly Book Club"** (Jen, Nov 5, 2026): one membership, $9.99/month on

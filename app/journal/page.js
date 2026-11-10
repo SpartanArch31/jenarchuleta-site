@@ -3,6 +3,7 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import { OG_IMAGE } from '../components/site-data';
 import JournalBrowser from './JournalBrowser';
+import { socialTitle } from './author-meta.mjs';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
@@ -15,26 +16,39 @@ import { heroAlt } from './hero-alt';
 // live at their own URLs. Pup of the Podcast posts live on /pups. Nothing is
 // deleted, and no post body is edited here.
 
-const journalDescription =
+const JOURNAL_DESCRIPTION =
   'Short, honest writing on faith, family, healing, and starting over, from Jen Archuleta.';
 
-export const metadata = {
-  title: 'Journal',
-  description: journalDescription,
-  authors: [{ name: 'Jen Archuleta' }],
-  openGraph: {
-    title: 'Journal, Jen Archuleta',
-    description: journalDescription,
-    type: 'website',
-    images: [OG_IMAGE],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Journal, Jen Archuleta',
-    description: journalDescription,
-    images: [OG_IMAGE.url],
-  },
-};
+// J-05: a category view gets its own title ("Faith, Journal, Jen Archuleta"),
+// not the same "Journal" title on every category. The site template adds
+// ", Jen Archuleta" to the browser title. Social cards do not, so they get it here.
+function journalMeta(title) {
+  const sharedTitle = socialTitle(title);
+  return {
+    title,
+    description: JOURNAL_DESCRIPTION,
+    authors: [{ name: 'Jen Archuleta' }],
+    openGraph: {
+      title: sharedTitle,
+      description: JOURNAL_DESCRIPTION,
+      type: 'website',
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: sharedTitle,
+      description: JOURNAL_DESCRIPTION,
+      images: [OG_IMAGE.url],
+    },
+  };
+}
+
+export function generateMetadata({ searchParams }) {
+  if (searchParams?.view === 'archive') return journalMeta('Archive, Journal');
+  const category = typeof searchParams?.category === 'string' ? searchParams.category : '';
+  if (category && category !== 'All') return journalMeta(`${categoryLabel(category)}, Journal`);
+  return journalMeta('Journal');
+}
 
 // Podcast cards often open with the show name as a stamp. Drop that
 // leading label on the card. A sentence that actually says the name stays.
@@ -132,7 +146,12 @@ export default async function JournalPage({ searchParams }) {
     title: p.title,
     excerpt: cardExcerpt(p.excerpt) || '',
     category: p.category || '',
-    kicker: `${p.category} · ${formatDate(p.publishedAt)}`,
+    // J-M3: inside one category every card would repeat its name, so the
+    // kicker is just the date there. The index search and the Archive keep
+    // "Category · date".
+    kicker: opened && !showArchive
+      ? formatDate(p.publishedAt)
+      : `${p.category} · ${formatDate(p.publishedAt)}`,
     img: heroUrl(p.heroImage),
     imgAlt: heroAlt(p.heroImage, p.slug),
     };
@@ -145,14 +164,41 @@ export default async function JournalPage({ searchParams }) {
 
   return (
     <>
-      <SiteNav />
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
-      <section id="main-content" className="wrap journal-head">
-        <h1>Journal</h1>
-        {/* Adam, Nov 5: search at the very top. On the main Journal page the
-            posts live in their category albums; a search shows its results here. */}
-        {!opened ? (
+      <main id="main-content">
+      {opened ? (
+        /* J-05 / J-M2: in a category the category name is the H1, "Journal"
+           is a tappable eyebrow back to the index, and a row of category
+           links moves between categories without the round trip. The two
+           index lead lines are left out here so the posts come up sooner. */
+        <section className="wrap journal-head journal-head--opened">
+          <p className="journal-eyebrow"><a href="/journal">Journal</a></p>
+          <h1>{showArchive ? 'Archive' : categoryLabel(active)}</h1>
+          <nav className="journal-cats" aria-label="Journal categories">
+            {albums.map((album) => (
+              <a key={album.key} href={album.href} aria-current={album.key === active ? 'page' : undefined}>
+                {album.label}
+              </a>
+            ))}
+          </nav>
+          {showArchive && (
+            <p className="center lead journal-archive-note">
+              Earlier announcements and promotions, kept here for the record.
+            </p>
+          )}
+        </section>
+      ) : (
+        <section className="wrap journal-head">
+          <h1>Journal</h1>
+          {/* J-09: the dek and standfirst stay with the H1, then the search
+              (Adam, Nov 5: search near the top). On the main Journal page the
+              posts live in their category albums; a search shows its results here. */}
+          <p className="journal-dek">Notes from the road back to myself.</p>
+          <p className="journal-standfirst">
+            Short, honest writing on faith, family, healing, and starting over.
+          </p>
           <JournalBrowser
             key="all"
             posts={cards}
@@ -161,21 +207,6 @@ export default async function JournalPage({ searchParams }) {
             showAllHref={`/journal?${showAllParams.toString()}`}
             collapsedUntilSearch
           />
-        ) : null}
-        <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
-          Notes from the road back to myself.
-        </p>
-        <p className="lead" style={{ maxWidth: '56ch', marginInline: 'auto' }}>
-          Short, honest writing on faith, family, healing, and starting over.
-        </p>
-
-        {opened ? (
-          <p className="journal-back">
-            <a href="/journal">Journal</a>
-            <span aria-hidden="true"> · </span>
-            {showArchive ? 'Archive' : categoryLabel(active)}
-          </p>
-        ) : (
           <nav className="journal-albums" aria-label="Journal categories">
             {albums.map((album) => (
               <a key={album.key} className="journal-album" href={album.href}>
@@ -184,16 +215,11 @@ export default async function JournalPage({ searchParams }) {
               </a>
             ))}
           </nav>
-        )}
-        {showArchive && (
-          <p className="center lead" style={{ marginTop: '18px' }}>
-            Earlier announcements and promotions, kept here for the record.
-          </p>
-        )}
-      </section>
+        </section>
+      )}
 
       {opened ? (
-      <section className="wrap journal-feed" style={{ paddingTop: 0 }}>
+      <section className="wrap journal-feed">
         {visible.length === 0 ? (
           active === 'Pup of the Podcast' ? (
             <p className="center lead"><a href="/pups">Meet the Pups of the Podcast</a></p>
@@ -212,6 +238,7 @@ export default async function JournalPage({ searchParams }) {
         )}
       </section>
       ) : null}
+      </main>
 
       <SiteFooter />
     </>

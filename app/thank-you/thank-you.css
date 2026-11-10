@@ -3,9 +3,25 @@
   text-align: center;
 }
 
-.thank-quotes h2 {
-  font-size: var(--text-display-l);
-  margin-bottom: 8px;
+/* TY-06: the three section heads share one size, a step below the page H1. */
+.thank-quotes h2,
+.thank-stay h2,
+.thank-contact h2 {
+  font-size: var(--text-h1);
+  line-height: 1.1;
+  margin-bottom: var(--space-4);
+}
+
+/* TY-05: tighter passages between the short closing sections. */
+.thank-quotes {
+  padding-bottom: clamp(48px, 6vw, 88px);
+}
+.thank-stay,
+.thank-contact {
+  padding-block: clamp(48px, 6vw, 88px);
+}
+.thank-stay .thank-rule {
+  margin: 0 auto var(--space-6);
 }
 
 .thank-quotes-list {
@@ -64,10 +80,133 @@
 }
 
 .thank-signup h3 {
-  margin-bottom: 18px;
+  margin-bottom: var(--space-4); /* TY-09 */
+}
+
+/* TY-04: social links become 44px pill tap targets with a visible focus ring. */
+.thank-stay .stay-socials {
+  gap: 0 8px;
+}
+.thank-stay .stay-socials a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 10px;
+}
+.thank-stay .stay-socials a:focus-visible {
+  outline: 2px solid var(--focus-ring, var(--gold));
+  outline-offset: 2px;
+  border-radius: var(--radius-pill);
 }
 
 .thank-contact p {
-  max-width: 42rem;
+  max-width: 34rem; /* TY-13 */
   margin-inline: auto;
+  text-wrap: balance; /* TY-13: no lone 'in mind.' on its own centered line */
+}
+
+/* TY-13: avoid one-word last lines in the letter and the quotes. */
+.thank-hero .hero-copy p,
+.thank-quotes-list p {
+  text-wrap: pretty;
+}
+
+/* TY-11: give the legacy #social and #letter anchors a positioned parent,
+   so they land on Stay in touch instead of the top of the page. */
+.thank-stay {
+  position: relative;
+}
+
+/* TY-M3: hold room for Kit's form before its script injects it, so the
+   section and Contact below do not jump on load. */
+.thank-signup .kit-inline {
+  min-height: 104px;
+}
+@media (max-width: 600px) {
+  .thank-signup .kit-inline {
+    min-height: 112px;
+  }
+}
+
+/* TY-01: size the cream mat and gold hairline to the photo's own ratio,
+   so there are no empty side bars inside the frame. The full photo stays visible. */
+.thank-hero .hero-media {
+  display: flex;
+  justify-content: center;
+}
+.thank-hero .hero-frame {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+}
+.thank-hero .hero-frame img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(640px, 72svh);
+  object-fit: initial;
+}
+
+/* TY-02: on mobile the heading and letter come first, the photo follows. */
+@media (max-width: 860px) {
+  .thank-hero .hero-media {
+    order: 0;
+    max-width: none;
+    margin-top: var(--space-6);
+  }
+  .thank-hero .hero-frame img {
+    max-height: 60svh;
+  }
+}
+
+/* TY-03: bring Kit's injected form onto the design system (Hanken, pill
+   button with dark text on gold, Paper field). Kit ships inline styles,
+   so these need !important. */
+.thank-signup .kit-inline .formkit-form {
+  padding: 0 !important;
+  max-width: none !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+.thank-signup .kit-inline .formkit-fields {
+  gap: 10px !important;
+  margin: 0 !important; /* TY-09: no extra Kit spacing on small screens */
+}
+/* TY-09: KitInlineForm sets an inline 10px top margin on the privacy line. */
+.thank-signup .foot-meta {
+  margin-top: var(--space-3) !important;
+}
+.thank-signup .kit-inline .formkit-input {
+  min-height: 48px !important;
+  padding: 10px 18px !important;
+  border: var(--hairline) !important;
+  border-radius: var(--radius-pill) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 1rem !important;
+}
+.thank-signup .kit-inline .formkit-input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+.thank-signup .kit-inline .formkit-input:focus-visible {
+  outline: 2px solid var(--focus-ring, var(--gold)) !important;
+  outline-offset: 2px !important;
+}
+.thank-signup .kit-inline .formkit-submit {
+  min-height: 48px !important;
+  border-radius: var(--radius-pill) !important;
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+.thank-signup .kit-inline .formkit-submit > span {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
 }

@@ -1,44 +1,58 @@
-/* Homepage featured photos: one row, every photo whole at its own ratio and
-   the same height. Quiet arrows on larger screens, swipe on phones, dots. */
+/* Homepage featured photos: one row, every photo whole at its own ratio, up to
+   a shared max height. Quiet arrows on larger screens, swipe on phones, dots. */
 .home-carousel {
-  padding-block: clamp(28px, 5vw, 64px);
+  /* HOME-06: tighter top so the photos follow the hero instead of floating 215px below it */
+  padding-block: clamp(24px, 4vw, 48px) clamp(48px, 6vw, 80px);
   overflow: hidden;
 }
-.hc-stage { position: relative; }
+.hc-stage {
+  position: relative;
+  /* HOME-08: the first photo lines up with the page grid (the 1200px container's
+     text edge), and the row still runs to the viewport edge on the right. */
+  --hc-inset: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+}
 .hc-track {
   position: relative;
   display: flex;
   gap: 14px;
   margin: 0;
-  padding: 6px var(--gutter);
+  padding: var(--space-2) var(--hc-inset); /* HOME-08 */
+  scroll-padding-inline: var(--hc-inset);
   list-style: none;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  align-items: center; /* HOME-02: shorter landscapes sit centered */
 }
 .hc-track::-webkit-scrollbar { display: none; }
 .hc-slide {
+  /* HOME-02: the slide wraps the photo exactly, so no espresso letterbox bars.
+     Every photo stays whole at its own ratio, capped to a shared max height. */
   flex: 0 0 auto;
-  height: clamp(220px, 34vw, 380px);
-  scroll-snap-align: center;
-  border-radius: var(--radius-lg);
+  height: auto;
+  scroll-snap-align: start; /* HOME-08: snap to the grid edge, not the center */
+  /* HOME-07 / HOME-M1: flat photo treatment. Small radius (photos are not cards)
+     and no drop shadow, which the scrolling track was clipping into a hard line. */
+  border-radius: var(--radius-sm);
   overflow: visible;
-  background: var(--espresso);
-  box-shadow: var(--shadow);
+  background: transparent;
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.hc-slide a { display: flex; align-items: center; justify-content: center; height: 100%; }
+.hc-slide a { display: flex; align-items: center; justify-content: center; }
 .hc-slide img {
   display: block;
   width: auto;
-  height: 100%;
-  max-width: min(78vw, 520px);
-  object-fit: contain;
-  object-position: center center;
-  border-radius: var(--radius-lg);
+  height: auto;
+  /* Jen, Nov 6: bigger photos. Was 220 to 380px tall. */
+  max-height: clamp(300px, 44vw, 560px);
+  max-width: min(86vw, 900px);
+  object-fit: initial;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 1px var(--border); /* HOME-07: hairline edge instead of a lifted tile */
 }
 .hc-arrow {
   position: absolute;
@@ -61,16 +75,18 @@
 .hc-arrow svg { width: 20px; height: 20px; }
 .hc-arrow:hover { background: var(--paper); }
 .hc-arrow:focus-visible { outline: 2px solid var(--focus-ring, var(--gold)); outline-offset: 2px; }
-.hc-prev { left: 12px; }
-.hc-next { right: 12px; }
+/* HOME-08: arrows sit in the gutter beside the grid edge, not over a photo */
+.hc-prev { left: max(12px, calc(var(--hc-inset) - 56px)); }
+.hc-next { right: max(12px, calc(var(--hc-inset) - 56px)); }
 .hc-dots {
   display: flex;
   justify-content: center;
   margin-top: 12px;
 }
 .hc-dot {
-  width: 26px;
-  height: 26px;
+  /* HOME-09: 44px tap target; the visible dot stays 7px */
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -82,13 +98,16 @@
   content: '';
   width: 7px;
   height: 7px;
-  border-radius: 50%;
-  background: var(--wheat);
-  transition: background 0.2s ease, transform 0.2s ease;
+  border-radius: 4px;
+  /* HOME-M2: inactive dots reach 3:1 on cream (wheat was about 1.4:1) */
+  background: color-mix(in srgb, var(--text-muted) 75%, transparent);
+  transition: background 0.2s ease, width 0.2s ease;
 }
 .hc-dot.is-active::before {
-  background: var(--gold);
-  transform: scale(1.3);
+  /* HOME-M2: the current photo shows as a longer text-safe gold pill, so the
+     state reads by shape as well as color */
+  background: var(--accent-ink);
+  width: 18px;
 }
 .hc-dot:focus-visible { outline: 2px solid var(--focus-ring, var(--gold)); outline-offset: 1px; border-radius: 50%; }
 .hc-more {
@@ -97,9 +116,40 @@
   font-family: var(--font-sans);
   font-size: var(--text-caption);
 }
-.hc-more a { color: var(--accent-ink); }
+.hc-more a { color: var(--accent-ink); display: inline-block; padding: var(--space-3) var(--space-2); } /* HOME-09 */
+
+/* Home hero, page-scoped (this file only loads on Home via HomeCarousel). */
+/* HOME-04: hero copy steps on the 8px scale: 16 / 12 / 24 */
+.hero.hero--home .hero-copy > .eyebrow:first-child { margin-bottom: var(--space-4); }
+.hero.hero--home .hero-script { margin-bottom: var(--space-3); }
+.hero.hero--home h1 { margin: 0 0 var(--space-5); }
+/* HOME-05: Hanken has no italic loaded, so no faux-slanted tracked caps */
+.hero.hero--home .eyebrow em { font-style: normal; }
+/* HOME-06: less dead space between the hero and the photo row */
+.hero.hero--home { padding-bottom: clamp(32px, 5vw, 64px); }
+/* HOME-M4: the standard shadow; the 80px blur of --shadow-lg smeared under the
+   translucent sticky nav. The double gold hairline frame does the lifting. */
+.hero.hero--home .hero-frame { box-shadow: var(--shadow); }
+/* HOME-12: the hero photo is the LCP element, so it no longer fades in from
+   opacity 0. It keeps the gentle settle (scale only). */
+@keyframes jen-hero-img-scale { from { transform: scale(1.04); } to { transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero.hero--home .portrait { animation-name: jen-hero-img-scale; }
+}
+
 @media (max-width: 760px) {
   .hc-arrow { display: none; }
+  /* Jen, Nov 6: on a phone a wide photo runs nearly the screen width and a tall
+     one up to a square, whole and uncropped. The square cap keeps
+     the row from leaving a big empty band around the wide photos. A sliver of
+     the next photo still shows, so it reads as swipeable. */
+  .hc-slide img { max-width: 88vw; max-height: min(88vw, 52vh); }
+  .home-carousel { padding-top: 0; }
+}
+@supports (height: 1svh) {
+  @media (max-width: 760px) {
+    .hc-slide img { max-height: min(88vw, 52svh); }
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hc-track { scroll-behavior: auto; }

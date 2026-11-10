@@ -16,19 +16,23 @@ const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';
 export default function ShippingReturnsPage() {
   return (
     <div className="legal-page">
-      <SiteNav />
-
+      {/* LEGAL-07: skip link first in tab order, target is a real <main> landmark. */}
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      <article id="main-content" className="wrap text-wrap">
+      <SiteNav />
+
+      <main id="main-content" tabIndex={-1} className="wrap text-wrap">
+        <article>
         <div className="legal-head">
           <div className="eyebrow">Legal</div>
           <h1>Shipping &amp; Returns</h1>
           <p className="legal-updated">Effective {EFFECTIVE_DATE}. Updated {UPDATED_DATE}.</p>
+          {/* LEGAL-04: gold threshold rule marks the passage from header to body. */}
+          <div className="threshold-rule" aria-hidden="true"><span className="diamond" /></div>
         </div>
 
         <div className="legal-body">
-          <h2>Signed copies of the book</h2>
+          <h2 id="signed-copies">Signed copies of the book</h2>
           <p>
             Each signed copy is personalized and signed by hand by Jen, one at a time. A signed copy
             is {SHOP.signedBookPrice} plus {SHOP.signedBookShipping} shipping, {SHOP.signedBookTotal} total.
@@ -40,7 +44,7 @@ export default function ShippingReturnsPage() {
             right with a replacement or refund.
           </p>
 
-          <h2>The Signature Velvet Bookmark</h2>
+          <h2 id="bookmark">The Signature Velvet Bookmark</h2>
           <p>
             About 6 inches long. Handmade from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Packaged in a padded gift case and shipped by regular mail. The{' '}
             {SHOP.bookmarkPrice} price includes shipping, and we ship to US addresses only.
@@ -48,13 +52,13 @@ export default function ShippingReturnsPage() {
             one-of-a-kind pieces, all other sales are final.
           </p>
 
-          <h2>The Bundle</h2>
+          <h2 id="bundle">The Bundle</h2>
           <p>
             The Bundle is {SHOP.bundlePrice}. It is a signed copy of the book, the Signature Velvet Bookmark,
             and bunny ears, shipped by regular mail.
           </p>
 
-          <h2>The Velvet Circle Book Club</h2>
+          <h2 id="velvet-circle">The Velvet Circle Book Club</h2>
           <p>
             The Velvet Circle Book Club is {SHOP.velvetCircleMembershipPrice} until you cancel.
             Members get the full discussion sheet, up to three questions a month answered by Jen,
@@ -77,13 +81,14 @@ export default function ShippingReturnsPage() {
             )}
           </p>
 
-          <h2>Questions about your order</h2>
+          <h2 id="questions">Questions about your order</h2>
           <p>
             Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> with your order confirmation
             and we&rsquo;ll help sort it out.
           </p>
         </div>
-      </article>
+        </article>
+      </main>
 
       <SiteFooter />
     </div>

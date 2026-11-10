@@ -36,9 +36,10 @@
 .tim-joy .dot { width: 6px; height: 6px; transform: rotate(45deg); background: var(--accent); flex: none; }
 .tim-hint { font-family: var(--font-caps); font-size: 11px; letter-spacing: var(--track-eyebrow);
             text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px; }
-/* Tall tortoise beside a square mug. A slightly narrower first column
-   keeps that pair closer in height without cropping either file. */
-.tim-grid2 { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr); gap: 22px 16px; align-items: start; }
+/* Tall tortoise beside a square mug. ABOUT-08: the columns follow the two
+   files' ratios (787/1400 = 0.5621 against 1), so both render the same
+   height, whole, and their captions line up. */
+.tim-grid2 { display: grid; grid-template-columns: minmax(0, 0.5621fr) minmax(0, 1fr); gap: 22px 16px; align-items: start; }
 .tim-span { grid-column: 1 / -1; }
 .tim-slot-wrap { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 /* placeholder tile — swap each for <img className="tim-img …"> when real photos arrive */
@@ -83,8 +84,13 @@
 .tim-quotes { display: flex; flex-direction: column; gap: 22px; }
 
 /* ---- then & now ---- */
-.tim-then { display: flex; flex-direction: column; align-items: flex-start; gap: 28px;
-            padding-block: clamp(64px, 8vw, 92px); max-width: 520px; }
+/* ABOUT-03: a two-column spread on the same 1200px grid as the hero, so the
+   20s text keeps a readable measure (about 60ch) instead of a 392px column. */
+.tim-then { display: grid; grid-template-columns: 0.8fr 1.2fr; grid-template-rows: auto auto 1fr;
+            column-gap: clamp(32px, 5vw, 64px); row-gap: 0; align-items: start;
+            padding-block: clamp(64px, 8vw, 92px); max-width: 1200px; }
+.tim-then > .tim-gray { grid-column: 1; grid-row: 1 / span 3; }
+.tim-then > .twenties-show, .tim-then > .tim-lead { grid-column: 2; max-width: 600px; }
 .tim-model { width: 100%; height: auto; object-fit: contain; display: block; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
 .tim-slot--waiting {
   width: min(100%, 360px);
@@ -116,7 +122,17 @@
   .tim-grid2 { grid-template-columns: 1fr; }
   .tim-sticky { position: static; }
   .tim-display { white-space: normal; }
+  /* ABOUT-03: stack again on narrow screens. */
+  .tim-then { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; max-width: 520px; }
+  /* ABOUT-10: spacing comes from the margins below, not gap plus margin. */
+  .tim-then { gap: 0; }
+  .tim-then .twenties-show { margin-top: 28px; }
 }
+/* ABOUT-10: one section rhythm for the everyday, the 20s and the close, and
+   one paragraph rhythm in the 20s (matches the everyday's 22px). */
+.tim-everyday, .tim-then, .tim-close { padding-block: clamp(64px, 8vw, 96px); }
+.tim-then .tim-lead { margin-top: 36px; }
+.tim-then .tim-lead + .tim-lead { margin-top: 22px; }
 
 /* November 2026: About Me in Jen's words, one page */
 .tim-display--wrap { white-space: normal; font-size: clamp(42px, 5vw, 70px); line-height: 1.1; }
@@ -125,8 +141,9 @@
 .tim-close { max-width: 46rem; margin: 0 auto; text-align: center; padding-block: clamp(64px, 8vw, 96px); }
 .tim-close .tim-lead { margin: 0 auto 18px; max-width: none; }
 .tim-close .tim-lead a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+/* ABOUT-16: the script signature is the oxblood whisper (DESIGN.md). */
 .tim-sign { font-family: var(--font-script); font-size: clamp(44px, 5vw, 60px); line-height: 1;
-            color: var(--accent-ink); margin: 6px 0 0; }
+            color: var(--accent-2); margin: 6px 0 0; }
 .tim-author-link { margin: 34px 0 0; font-family: var(--font-sans); font-size: 13px; letter-spacing: .14em;
                    text-transform: uppercase; }
 .tim-author-link a { color: var(--accent-ink); }
@@ -167,11 +184,14 @@
 .twenties-cover-cue {
   position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
-  padding: 9px 16px; border-radius: 999px; background: rgba(20, 16, 14, .72); color: #fff;
+  padding: 9px 16px; border-radius: 999px;
+  /* ABOUT-14: tokens and the warm ink shadow. Raw palette tokens on purpose:
+     the pill sits on a photo, so it must not flip with dark mode. */
+  background: color-mix(in srgb, var(--near-black) 72%, transparent); color: var(--cream);
   font-family: var(--font-sans); font-size: 13px; font-weight: 600; letter-spacing: .04em;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, .25); transition: background .2s ease;
+  box-shadow: 0 4px 14px rgba(34, 28, 24, .28); transition: background .2s ease;
 }
-.twenties-cover:hover .twenties-cover-cue { background: rgba(20, 16, 14, .86); }
+.twenties-cover:hover .twenties-cover-cue { background: color-mix(in srgb, var(--near-black) 86%, transparent); }
 .twenties-dialog {
   width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0;
   border: 0; background: rgba(12, 10, 9, .94); color: #fff;
@@ -198,4 +218,97 @@
 }
 .twenties-close { position: absolute; top: 10px; right: 12px; }
 .twenties-controls button:focus-visible, .twenties-close:focus-visible { outline: 2px solid #BE9543; outline-offset: 3px; }
-.twenties-caption { margin: 16px 4px 0; font-size: clamp(20px, 2.2vw, 24px); font-weight: 600; line-height: 1.35; color: var(--text-primary, #222); }
+/* ABOUT-06: on-system caption. --text (there is no --text-primary token),
+   regular italic display, flush with the photo edge, balanced lines. */
+.twenties-caption { margin: 14px 0 0; font-family: var(--font-display); font-style: italic; font-weight: 400;
+                    font-size: clamp(20px, 2vw, 22px); line-height: 1.4; color: var(--text);
+                    text-wrap: balance; max-width: 420px; }
+
+/* ABOUT-02: the gallery stage keeps one height for every slide, so the page
+   below (and the phone arrows) no longer jump on each 4s advance. The frame
+   still hugs each photo at its own ratio; the space around it is the page. */
+.gallery-band .gallery-area { height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px); align-items: center; }
+.gallery-band .gallery-meta { min-height: calc(2 * 1.45 * 0.95rem + 8px + 1.2em + 48px); }
+/* ABOUT-05: the visitor's pause / play control for the auto-advance. */
+.gallery-pause { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; padding: 0 14px;
+                 font-family: var(--font-sans); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+                 color: var(--accent-ink); background: none; border: 0; cursor: pointer; }
+.gallery-pause:hover { text-decoration: underline; text-underline-offset: 3px; }
+.gallery-pause:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 759px) {
+  .gallery-band .gallery-stage { --g-max-h: min(76vh, 125cqw); }
+  .gallery-band .gallery-area { height: calc(var(--g-max-h) + 2 * var(--g-pad) + 2px); }
+}
+@supports (height: 1svh) {
+  @media (max-width: 759px) {
+    .gallery-band .gallery-stage { --g-max-h: min(76svh, 125cqw); }
+  }
+}
+
+/* ABOUT-17: the #life span is .anchor (position: absolute), so its section
+   must be the containing block or /about#life lands at the top of the page. */
+.tim-everyday { position: relative; }
+
+/* ABOUT-16: the hero dek keeps the larger lead; body paragraphs step down to
+   the 22px body-lead token so there is a dek-to-body step. */
+.tim-everyday .tim-lead, .tim-then .tim-lead { font-size: var(--text-body-l); line-height: 1.6; }
+
+/* ABOUT-07: one caption voice for the everyday photos and the gallery. */
+.tim-slot-cap, .gallery-band .gallery-caption {
+  font-family: var(--font-display); font-style: italic; font-size: var(--text-body-s);
+  line-height: 1.4; color: var(--text-secondary);
+}
+
+/* ABOUT-15: a light mat that hugs each photo, standard shadow. Shadow LG is
+   kept for the two hero objects. */
+.gallery-band .gallery-frame {
+  background: var(--surface); border: 1px solid var(--border-strong); box-shadow: var(--shadow);
+}
+
+@media (max-width: 860px) {
+  /* ABOUT-09: the tall tortoise photo, still whole, at 72% width so it does
+     not fill a whole phone screen. */
+  .tim-grid2 > .tim-slot-wrap:nth-child(2) { width: 72%; margin-inline: auto; }
+}
+@media (max-width: 759px) {
+  /* ABOUT-19: the gallery starts on the same gutter as the rest of the page. */
+  .gallery-band .wrap { padding-inline: var(--gutter); }
+}
+
+/* Jen, Nov 6: the Key to the City, featured on its own between the 20s and
+   the gallery. Whole photo, centered, with her caption under it. */
+.tim-feature { padding-block: 0 clamp(48px, 6vw, 80px); }
+.tim-feature-fig { max-width: 760px; margin: 0 auto; text-align: center; }
+.tim-feature-fig .tim-img { width: 100%; height: auto; }
+.tim-feature-fig figcaption { display: block; margin-top: 12px; font-size: var(--text-body); }
+
+/* Jen, Nov 6: on a phone every gallery photo uses most of the screen. The
+   photo runs nearly edge to edge (or as tall as 78% of the screen for a tall
+   one), always whole and uncropped, and the stage hugs it, so there is no
+   empty band above and below a wide photo. */
+@media (max-width: 759px) {
+  .gallery-band .wrap { padding-inline: 6px; }
+  .gallery-band .gallery-stage { --g-max-h: 86vh; --g-pad: 3px; }
+  .gallery-band .gallery-area { height: auto; }
+  .gallery-band .gallery-slide img,
+  .gallery-band .gallery-slide.is-active img {
+    width: min(var(--g-max-w), calc(var(--g-max-h) * var(--g-ratio, 1)));
+    height: auto;
+    max-height: none;
+  }
+  .gallery-band .gallery-meta { min-height: 0; }
+}
+@supports (height: 1svh) {
+  @media (max-width: 759px) {
+    .gallery-band .gallery-stage { --g-max-h: 86svh; }
+  }
+}
+
+/* Jen, Nov 9: bigger gallery photos on a laptop too. Up to 1100px wide and
+   86% of the screen tall, still whole and never upscaled past 1.6x. */
+@media (min-width: 760px) {
+  .gallery-band .gallery-stage {
+    --g-max-w: min(1100px, calc(100cqw - 2 * var(--g-arrow) - 2 * var(--g-gap) - 2 * var(--g-pad) - 2px));
+    --g-max-h: min(86vh, 1000px);
+  }
+}

@@ -19,11 +19,10 @@ const pageRedirects = [
   { source: '/my-story', destination: '/about#then', permanent: true },
   { source: '/speaking', destination: '/media#speaking', permanent: true },
   // Old Squarespace store, product, and cart URLs → the shop.
-  { source: '/store/:path*', destination: '/book#shop', permanent: true },
-  { source: '/shop/p/:path*', destination: '/book#shop', permanent: true },
-  { source: '/cart', destination: '/book#shop', permanent: true },
-  { source: '/checkout', destination: '/book#shop', permanent: true },
-  { source: '/shop', destination: '/book#shop', permanent: false },
+  { source: '/store/:path*', destination: '/shop', permanent: true },
+  { source: '/shop/p/:path*', destination: '/shop', permanent: true },
+  { source: '/cart', destination: '/shop', permanent: true },
+  { source: '/checkout', destination: '/shop', permanent: true },
   // Old newsletter / Mailchimp-era signup paths → the free-chapter signup.
   // Temporary (307) so a real page can take these paths later without cached redirects.
   { source: '/subscribe', destination: '/thank-you#stay', permanent: false },

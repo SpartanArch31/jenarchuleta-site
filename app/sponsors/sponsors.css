@@ -10,19 +10,24 @@
   text-align: left;
 }
 .sponsors-page .sponsor-list li {
-  padding: 20px 0;
+  padding: var(--space-5) 0; /* PS-17: a little more air per row */
   border-top: var(--hairline);
 }
 .sponsors-page .sponsor-list li:last-child { border-bottom: var(--hairline); }
 .sponsors-page .sponsor-list h2 {
   font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 500;
-  margin: 0 0 6px;
+  font-size: var(--text-h3); /* PS-10: on the type scale, same as /pups card titles */
+  font-weight: var(--w-semibold);
+  margin: 0 0 var(--space-2);
 }
+/* PS-17: the person reads as a credit line, not a second name. */
 .sponsors-page .sponsor-person {
-  margin: 0 0 8px;
-  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-2);
 }
 .sponsors-page .sponsor-note {
   margin: 0 0 8px;
@@ -31,9 +36,28 @@
 .sponsors-page .sponsor-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 18px;
+  gap: 0 18px;
   margin: 0;
 }
+/* PS-11: 44px tap targets. PS-12: underlined so links read as links. */
+.sponsors-page .sponsor-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.sponsors-page .sponsor-links a:hover { text-decoration-color: currentColor; }
 .sponsors-page .sponsors-close {
   margin-top: 36px;
+}
+.sponsors-page .sponsors-close a {
+  display: inline-block;
+  padding-block: 10px; /* PS-11 */
+}
+/* PS-11: on phones every sponsor's links stack the same way. */
+@media (max-width: 620px) {
+  .sponsors-page .sponsor-links { flex-direction: column; align-items: flex-start; gap: 0; }
 }

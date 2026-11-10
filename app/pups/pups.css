@@ -3,12 +3,14 @@
 .pups-page .pups-head { text-align: center; }
 .pups-page .pups-head h1 { font-size: var(--text-display-l); }
 .pups-page .pups-head .lead { max-width: 58ch; margin-inline: auto; }
+/* PS-09: the header leads straight into the grid instead of a full section gap. */
+.pups-page .pups-head { padding-bottom: var(--space-7); }
 
 .pups-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 36px;
+  margin-top: 0; /* PS-09 */
   align-items: stretch;
 }
 
@@ -30,10 +32,17 @@
   align-items: center;
   justify-content: center;
 }
+/* PS-03: a fixed 4:5 box letterboxed most photos with big linen bars.
+   With a photo, the frame now sizes to the photo's own ratio, so the whole
+   photo shows edge to edge with nothing cropped. The 4:5 box stays only for
+   the paw fallback. */
+.pup-media--photo {
+  aspect-ratio: auto;
+  display: block;
+}
 .pup-media img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
 }
 .pup-paw {
@@ -64,8 +73,10 @@
   gap: 8px;
   flex: 1;
 }
+/* PS-10: card titles on the type scale (title = h3). */
 .pup-body h2 {
-  font-size: var(--text-h4);
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
   margin: 0;
 }
 .pup-breed {
@@ -89,17 +100,51 @@
 .pup-k {
   font-family: var(--font-sans);
   font-size: var(--text-meta);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em; /* PS-10: matches the nav label tracking */
   text-transform: uppercase;
   color: var(--text-muted);
 }
-.pup-more {
+/* PS-12: shelter links read as links (underlined), not only by color. */
+.pup-rescue a {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.pup-rescue a:hover { text-decoration-color: currentColor; }
+
+/* PS-06: one footer row for the card's links, pinned to the bottom, so the
+   gap between links is the same on every card. */
+.pup-links {
   margin-top: auto;
-  padding-top: 8px;
+  padding-top: var(--space-4);
+  border-top: var(--hairline);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+}
+.pup-more {
+  margin: 0;
+  padding: 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: var(--text-caption); /* PS-10 */
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+/* The adoption page is the one real action, so it gets the pill. */
+.pup-adopt {
+  border: var(--hairline-strong);
+  border-radius: var(--radius-pill);
+  padding: 0 20px;
+  color: var(--accent-ink);
+}
+.pup-adopt:hover {
+  border-color: var(--accent);
+  text-decoration: none;
 }
 
 @media (max-width: 900px) {

@@ -8,7 +8,7 @@ import TwentiesSlideshow from './TwentiesSlideshow';
 export const metadata = {
   title: 'About Me',
   description:
-    'Faith, family, and a bunch of rescues. I love fiercely and I protect my peace. I love my husband, my kids and my family with everything I have.',
+    'Faith, family, and a bunch of rescues. God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.',
 };
 
 // About Me, in Jen's own words (November 3, 2026), plus the two 20s paragraphs
@@ -20,28 +20,30 @@ export const metadata = {
 // coat, her two paragraphs, then one square photo that opens a 13-photo
 // slideshow (TwentiesSlideshow.js). The puppy and white sports top photos
 // moved to the Gallery.
-// Old links still land: #life and #me (the everyday), #then (the twenties
-// photo), #gallery, #forever-angels and #faith (giving back), #work (the
-// About the Author link at the end).
+// Anchors on this page: #me and #life (the everyday), #then (the twenties),
+// #gallery. ABOUT-17: #faith, #work and #forever-angels no longer exist here
+// (Forever Angels lives at /media#forever-angels).
 export default function AboutPage() {
   return (
     <>
-      <SiteNav />
-
       <a href="#main-content" className="skip-link">Skip to content</a>
 
+      <SiteNav />
+
+      <main id="main-content">
       {/* OPENING */}
-      <section id="main-content" className="tim-wrap tim-hero">
+      <section className="tim-wrap tim-hero">
         <div>
           <p className="eyebrow">About me</p>
           <h1 className="tim-display tim-display--wrap">Faith, family, and a bunch of rescues.</h1>
+          {/* Jen, Nov 6: her new opening. */}
           <p className="tim-lead">
-            I love fiercely and I protect my peace. I love my husband, my kids and my family with
-            everything I have.
+            God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.
           </p>
         </div>
         <div>
-          <img className="tim-portrait" src="/assets/brown-dress-portrait.jpg" alt="Jen Archuleta in a brown top" width="941" height="883" />
+          {/* ABOUT-18: the LCP image, through next/image with priority. */}
+          <Image className="tim-portrait" src="/assets/brown-dress-portrait.jpg" alt="Jen Archuleta in a brown top" width={941} height={883} sizes="(max-width: 860px) 92vw, 470px" quality={85} priority />
         </div>
       </section>
 
@@ -59,8 +61,10 @@ export default function AboutPage() {
             how I like it.
           </p>
           <p className="tim-lead">
-            My favorite part of the day is coffee before anyone else is up. Sundays, I keep a little
-            quiet for my faith. It keeps me steady and it keeps me humble.
+            {/* Jen, Nov 9: her words, word for word. Replaces the coffee paragraph. */}
+            My favorite part of the day is the car rides with my kids. That’s when some of our best
+            conversations happen. I love a full house, good conversation, laughter, and a little
+            gambling now and then.
           </p>
         </div>
         <div>
@@ -76,8 +80,7 @@ export default function AboutPage() {
               <span className="tim-slot-cap">Whoever else wandered in</span>
             </div>
             <div className="tim-slot-wrap">
-              <Image className="tim-img" src="/assets/coffee.jpg" alt="A quiet morning coffee before the house wakes up" width={1400} height={1400} sizes="(max-width: 860px) 92vw, 360px" quality={85} />
-              <span className="tim-slot-cap">Before the house wakes up</span>
+              <Image className="tim-img" src="/assets/coffee.jpg" alt="A cup of coffee" width={1400} height={1400} sizes="(max-width: 860px) 92vw, 360px" quality={85} />
             </div>
             <div className="tim-slot-wrap tim-span">
               <Image className="tim-img" src="/assets/full-house-kids-dogs.jpg" alt="The kids asleep in a big bed with two of the rescues" width={1320} height={943} sizes="(max-width: 860px) 92vw, 640px" quality={85} />
@@ -95,12 +98,26 @@ export default function AboutPage() {
         <p className="tim-lead">A lot of it looked like the dream from the outside. Inside it was survival. I learned who I was while everything around me tried to tell me who to be. I wouldn’t trade it. It made me. But it cost something, and I know that now.</p>
       </section>
 
+      {/* Jen, Nov 6: the Key to the City is featured here, not inside the gallery. */}
+      <section className="tim-wrap tim-feature" aria-label="Receiving the Key to the City">
+        <figure className="tim-feature-fig">
+          <Image className="tim-img" src="/assets/gallery-nov4b/nov4b-13-award-podium.jpg" alt="Jen Archuleta receiving the Key to the City" width={1040} height={660} sizes="(max-width: 860px) 92vw, 760px" quality={88} />
+          <figcaption className="tim-slot-cap">Receiving the Key to the City.</figcaption>
+        </figure>
+      </section>
+
+      {/* ABOUT-10: one more threshold, from Jen's story into the archive. */}
+      <div className="tim-wrap">
+        <div className="threshold-rule"><span className="diamond" /></div>
+      </div>
+
       <PhotoGallery />
 
       <section className="tim-wrap tim-close">
         <p className="tim-lead">Thanks for being here.</p>
         <p className="tim-sign">Jen</p>
       </section>
+      </main>
 
       <SiteFooter />
     </>

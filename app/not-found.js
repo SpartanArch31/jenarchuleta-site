@@ -8,7 +8,10 @@ export const metadata = { title: 'Page not found' };
 export default function NotFound() {
   return (
     <>
+      {/* G-08: skip link before the nav, landing on the <main> landmark. */}
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <SiteNav />
+      <main id="main-content" tabIndex={-1}>
       <section className="wrap text-wrap center" style={{ paddingBlock: 'var(--space-10)' }}>
         <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 24px' }}>
           <span className="diamond" />
@@ -26,6 +29,7 @@ export default function NotFound() {
           <a href="/podcast" className="btn btn-ghost">Podcast</a>
         </div>
       </section>
+      </main>
       <SiteFooter />
     </>
   );

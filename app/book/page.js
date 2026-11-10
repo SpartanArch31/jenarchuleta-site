@@ -2,9 +2,17 @@ import './book.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuyOptions from '../components/BuyOptions';
-import BookOffers from './BookOffers';
 import PublicReviews from '../components/PublicReviews';
 import { BOOK_REVIEWS } from '../../lib/public-reviews';
+import { SHOP } from '../components/site-data';
+
+// The Shop strip at the end of the page: pictures and prices from SHOP, links into /shop.
+const SHOP_STRIP = [
+  { href: '/shop#signed-copy', label: 'Signed copy', img: '/assets/book-cover.jpg', price: SHOP.signedBookTotal },
+  { href: '/shop#bookmark', label: 'Velvet bookmark', img: '/assets/bookmark.jpg', price: SHOP.bookmarkPrice },
+  { href: '/shop#velvet-circle', label: 'Book club', img: '/assets/velvet-circle-group.jpg', price: SHOP.velvetCircleMembershipPrice },
+  { href: '/shop#podcast-apparel', label: 'Apparel', img: '/assets/og-podcast-1200x630.jpg', price: null },
+];
 
 export const metadata = {
   // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
@@ -37,11 +45,13 @@ export default function BookPage() {
     <>
     <div className="dark book-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }} />
-      <SiteNav />
+      {/* Skip link first so it is the first tab stop, ahead of the nav. */}
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <SiteNav />
 
+      <main id="main-content">
       {/* HERO (dark register, echoes the cover) */}
-      <section id="main-content" className="hero-section dark" style={{ background: 'var(--bg)' }}>
+      <section className="hero-section dark" style={{ background: 'var(--bg)' }}>
         <div className="wrap hero">
           <div><img className="hero-cover" src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" /></div>
           <div>
@@ -50,24 +60,18 @@ export default function BookPage() {
             <p className="sub">My Story of Perseverance, Hope, and Love</p>
             <p style={{ color: 'var(--text)' }}>This isn’t the story you think it is. From the outside it looked like everything most people dream of. Fame, beauty, a life behind the velvet ropes. But the real story lives in the moments no one saw. Raw. Honest. Real.</p>
             <div id="buy">
-              <BuyOptions signedLink={false} />
+              <BuyOptions compact />
               <p className="book-worldwide">Available around the world in paperback, ebook and audiobook: on Amazon in 15 countries, on Audible in 9, and in every major ebook and audiobook store.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* THE HOOK */}
-      <section className="wrap text-wrap center">
-        <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 24px' }}><span className="diamond" /></div>
-        <p className="lead" style={{ fontSize: 'var(--text-body-l)' }}>Before the spotlight, there was pain. Behind the image, there was fear. And beneath it all, there was a girl trying to hold on to who she was while everything around her tried to define her. <em>Beyond the Velvet Ropes</em> is the story of survival, resilience, and the quiet strength it takes to become who you were always meant to be.</p>
-      </section>
-
       {/* TRAILER */}
       <section id="trailer" className="wrap trailer-feature book-trailer">
         <h2 className="book-trailer-title">Book Trailer</h2>
         <div className="tf-copy">
-          <p className="tf-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
+          <p className="tf-cap" id="book-trailer-cap">The official trailer for <em>Beyond the Velvet Ropes</em>, about ninety seconds.</p>
         </div>
         <figure className="tf-video">
           <video
@@ -76,9 +80,19 @@ export default function BookPage() {
             controls
             playsInline
             preload="none"
+            aria-label="Beyond the Velvet Ropes book trailer"
+            aria-describedby="book-trailer-cap"
             className="book-trailer-video"
           />
         </figure>
+      </section>
+
+      {/* Reading sections on the light register so long text is easy to read (Adam, Nov 5, 2026). */}
+      <div className="light-band book-light">
+      {/* THE HOOK */}
+      <section className="wrap text-wrap center book-hook">
+        <div className="threshold-rule" style={{ maxWidth: '220px', margin: '0 auto 24px' }}><span className="diamond" /></div>
+        <p className="lead" style={{ fontSize: 'var(--text-body-l)' }}>Before the spotlight, there was pain. Behind the image, there was fear. And beneath it all, there was a girl trying to hold on to who she was while everything around her tried to define her. <em>Beyond the Velvet Ropes</em> is the story of survival, resilience, and the quiet strength it takes to become who you were always meant to be.</p>
       </section>
 
       {/* WHO IT'S FOR */}
@@ -96,35 +110,60 @@ export default function BookPage() {
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" className="wrap text-wrap center book-more">
+      <section id="reviews" className="wrap center book-more book-reviews">
         {/* Jen, Nov 5: say what these are. */}
         <div className="eyebrow">Reader reviews</div>
         <h2>What readers are saying</h2>
         <p className="lead">These are reviews readers posted on Amazon, typed out here in their own words.</p>
-        <PublicReviews reviews={BOOK_REVIEWS} />
-        <div className="eyebrow">Already read it?</div>
-        <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
-        <div className="buy-row" style={{ justifyContent: 'center' }}>
-          <a href="https://www.amazon.com/review/create-review?asin=B0H6YZWDT3" target="_blank" rel="noopener" className="btn btn-ghost">Review on Amazon</a>
-          <a href="https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885" target="_blank" rel="noopener" className="btn btn-ghost">Review on Barnes &amp; Noble</a>
+        <PublicReviews reviews={BOOK_REVIEWS} variant="excerpt" />
+        {/* BOOK-11: its own block, set apart from the last review's attribution. */}
+        <div className="book-review-cta">
+          <div className="eyebrow">Already read it?</div>
+          <p className="lead">A short review helps this book find the next reader who needs it. I’d be honored.</p>
+          <div className="buy-row" style={{ justifyContent: 'center' }}>
+            <a href="https://www.amazon.com/review/create-review?asin=B0H6YZWDT3" target="_blank" rel="noopener" className="btn btn-ghost">Review on Amazon</a>
+            <a href="https://www.barnesandnoble.com/w/beyond-the-velvet-ropes-jennifer-walcott-archuleta/1150495088?ean=9798182506885" target="_blank" rel="noopener" className="btn btn-ghost">Review on Barnes &amp; Noble</a>
+          </div>
         </div>
       </section>
 
       <section id="author" className="wrap book-author">
-        <img src="/assets/jen-headshot-signature.jpg" alt="Jen Archuleta smiling in a black top" width="1162" height="1597" />
+        <img src="/assets/jen-headshot-signature.jpg" alt="Jen Archuleta smiling in a black top" width="1151" height="1597" />
         <div>
-          <p className="eyebrow">About the author</p>
+          <div className="eyebrow">About the author</div>
           <h2>Author, host, speaker, advocate.</h2>
           <p>
             I’m the author of <em>Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love</em>,
             and the host of the podcast <em>Unfiltered with Jen Archuleta</em>.
           </p>
+          <a href="/about" className="btn btn-ghost">About Jen</a>
         </div>
       </section>
-      </div>
 
-      <BookOffers />
+      {/* The things for sale live on their own page now (Adam, Nov 5, 2026).
+          #shop stays here so old links land on this panel. */}
+      <section id="shop" className="wrap book-shop-teaser">
+        <div className="book-shop-head">
+          <div className="eyebrow">The Shop</div>
+          <h2>Signed copies and more</h2>
+        </div>
+        <ul className="book-shop-items">
+          {SHOP_STRIP.map((item) => (
+            <li key={item.href}>
+              <a href={item.href}>
+                <span className="book-shop-img"><img src={item.img} alt="" loading="lazy" /></span>
+                <span className="book-shop-label">{item.label}</span>
+                {item.price ? <span className="book-shop-price">{item.price}</span> : null}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="center"><a href="/shop" className="btn btn-primary">Visit the shop</a></p>
+      </section>
+      </div>
+      </main>
       <SiteFooter />
+    </div>
     </>
   );
 }

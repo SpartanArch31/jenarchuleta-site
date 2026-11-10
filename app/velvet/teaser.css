@@ -1,6 +1,10 @@
 /* The Velvet Letter: public invitation (locked state).
    Dark register, centered, quiet. One key, one line, the book, the passcode. */
 .vl-page {
+  /* VL-03: re-resolve hairlines here so they pick up the dark --border
+     values (the :root versions are frozen to the light cream colors). */
+  --hairline:        1px solid var(--border);
+  --hairline-strong: 1px solid var(--border-strong);
   background: var(--bg);
   color: var(--text);
   overflow-x: clip;
@@ -8,7 +12,10 @@
 
 .vl-invite {
   position: relative;
-  min-height: calc(100vh - 72px);
+  /* VL-M3: real nav height and the small viewport, so iOS Safari doesn't
+     push the stack below the fold. 100vh stays as the fallback. */
+  min-height: calc(100vh - var(--nav-h, 81px));
+  min-height: calc(100svh - var(--nav-h, 81px));
   display: grid;
   place-items: center;
   padding: clamp(72px, 12vh, 140px) var(--gutter);
@@ -27,7 +34,7 @@
   width: 34px;
   height: 34px;
   color: var(--accent);
-  margin: 0 auto 26px;
+  margin: 0 auto var(--space-5); /* VL-09 */
   display: block;
 }
 
@@ -38,7 +45,7 @@
   letter-spacing: var(--track-caps);
   text-transform: uppercase;
   color: var(--accent-ink);
-  margin: 0 0 22px;
+  margin: 0 0 14px; /* VL-09: title and hook read as one unit */
   line-height: 1.15;
 }
 
@@ -48,7 +55,7 @@
   font-size: clamp(1.6rem, 3.4vw, 2.3rem);
   line-height: 1.25;
   color: var(--text);
-  margin: 0 0 22px;
+  margin: 0 0 var(--space-6); /* VL-09: room before the CTA */
 }
 
 .vl-buttons {
@@ -56,7 +63,15 @@
   flex-wrap: wrap;
   gap: 14px;
   justify-content: center;
-  margin: 0 0 34px;
+  margin: 0 0 40px; /* VL-09 */
+}
+
+/* VL-08: Get the Book, Enter and the input share one 50px height. */
+.vl-inner .btn {
+  min-height: 50px;
+  padding-block: 0;
+  line-height: 1;
+  justify-content: center;
 }
 
 /* The passcode field is always visible: one label, one field, one button. */
@@ -65,15 +80,15 @@
   max-width: 26rem;
   margin: 0 auto;
   display: grid;
-  gap: 10px;
+  gap: var(--space-3); /* VL-09 */
 }
 
 .vl-label {
   font-family: var(--font-sans);
-  font-size: var(--text-eyebrow);
-  letter-spacing: var(--track-eyebrow);
+  font-size: var(--text-meta); /* VL-13: 12px floor for the form's one instruction */
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .vl-field {
@@ -84,7 +99,7 @@
 .vl-field input {
   flex: 1 1 auto;
   min-width: 0;
-  min-height: 48px;
+  min-height: 50px; /* VL-08 */
   padding: 0 16px;
   border-radius: var(--radius-pill);
   border: var(--hairline-strong);
@@ -98,6 +113,7 @@
 .vl-field input:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
+  border-color: var(--accent); /* VL-03 */
 }
 
 .vl-error {
@@ -108,7 +124,7 @@
 }
 
 .vl-small {
-  margin: 18px auto 0;
+  margin: 20px auto 0; /* VL-09 */
   max-width: 30rem;
   font-family: var(--font-sans);
   font-size: var(--text-caption);
@@ -117,6 +133,11 @@
 }
 
 @media (max-width: 520px) {
+  /* VL-M3: start the stack near the top so the passcode field sits above the keyboard */
+  .vl-invite {
+    place-items: start center;
+    padding-top: var(--space-8);
+  }
   .vl-buttons .btn {
     width: 100%;
     justify-content: center;

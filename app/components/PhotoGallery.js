@@ -314,7 +314,7 @@ const NOV4B = [
   { src: '/assets/gallery-nov4b/nov4b-04-two-women-laughing.jpg', alt: 'Jen Archuleta laughing with a friend', caption: '', width: 1242, height: 1550 },
   { src: '/assets/gallery-nov4b/nov4b-05-beach-bikini-lookback.jpg', alt: 'Jen Archuleta on the beach', caption: '', width: 1242, height: 930 },
   { src: '/assets/gallery-nov4b/nov4b-06-couch-fishburne.jpg', alt: 'Jen Archuleta seated on a couch', caption: '', width: 1242, height: 1188 },
-  { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1440 },
+  { src: '/assets/gallery-nov4b/nov4b-07-purple-dress-magazine.jpg', alt: 'Jen Archuleta in a purple dress on a magazine page', caption: '', width: 900, height: 1135 },
   { src: '/assets/gallery-nov4b/nov4b-08-bunny-ears-party.jpg', alt: 'Jen Archuleta at a party in bunny ears', caption: '', width: 861, height: 940 },
   { src: '/assets/gallery-nov4b/nov4b-09-four-people-beads.jpg', alt: 'Jen Archuleta with friends', caption: '', width: 1040, height: 820 },
   { src: '/assets/gallery-nov4b/nov4b-10-green-top-white-shorts.jpg', alt: 'Jen Archuleta in a green top and white shorts', caption: '', width: 1150, height: 1480 },
@@ -404,6 +404,10 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-nov4b/nov4b-18-thanksgiving-eve-tommy-lee.jpg',
   // ImageCollect watermark is tiled across the painting. It cannot be cropped off without cutting her.
   '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
+  // Jen, Nov 6: featured on its own on About Me, not hidden in the gallery.
+  '/assets/gallery-nov4b/nov4b-13-award-podium.jpg',
+  // Jen, Nov 9: slide 98 (the pink aprons, "Easter bakers") is out.
+  '/assets/gallery-nov4/nov4-17-pink-aprons.jpg',
 ]);
 
 // Jen's captions (Nov 4; slides 1, 7, 8, and 9 reworded by her Nov 5), matched by file. Empty means no caption line.
@@ -483,6 +487,7 @@ function slideStyle(item) {
   const ratio = item.width / item.height;
   return {
     '--g-w': `min(var(--g-max-w), calc(var(--g-max-h) * ${ratio.toFixed(4)}), ${Math.round(item.width * MAX_UPSCALE)}px)`,
+    '--g-ratio': ratio.toFixed(4),
   };
 }
 
@@ -505,7 +510,12 @@ function Chevron({ direction }) {
 export default function PhotoGallery({ showTitle = true } = {}) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  // ABOUT-05: a pause the visitor controls (WCAG 2.2.2). Hover, focus and touch
+  // only pause for a moment; this one stays until they press Play.
+  const [userPaused, setUserPaused] = useState(false);
   const [inView, setInView] = useState(false);
+  // ABOUT-M3: true once the gallery is within about 600px of the viewport.
+  const [near, setNear] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const stageRef = useRef(null);
   const touchRef = useRef(null);
@@ -537,18 +547,35 @@ export default function PhotoGallery({ showTitle = true } = {}) {
       { threshold: 0.45 },
     );
     if (stage) view.observe(stage);
+    const approach = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNear(true);
+          approach.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' },
+    );
+    if (stage) approach.observe(stage);
 
     return () => {
       motion.removeEventListener('change', applyMotion);
       view.disconnect();
+      approach.disconnect();
     };
   }, []);
 
   useEffect(() => {
-    if (paused || reduceMotion || !inView) return undefined;
+    if (paused || userPaused || reduceMotion || !inView) return undefined;
     const id = window.setInterval(() => go(1), INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, [paused, reduceMotion, inView, index, go]);
+  }, [paused, userPaused, reduceMotion, inView, index, go]);
+
+  // ABOUT-05: stepping by hand (arrow, key or swipe) stops the auto-advance.
+  const step = useCallback((direction) => {
+    setUserPaused(true);
+    go(direction);
+  }, [go]);
 
   const onTouchStart = (event) => {
     if (event.touches.length !== 1) return;
@@ -567,7 +594,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
     const dx = touch.clientX - start.x;
     const dy = touch.clientY - start.y;
     if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-    go(dx > 0 ? -1 : 1);
+    step(dx > 0 ? -1 : 1);
   };
 
   const onTouchCancel = () => {
@@ -589,10 +616,10 @@ export default function PhotoGallery({ showTitle = true } = {}) {
   const onKeyDown = (event) => {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      go(-1);
+      step(-1);
     } else if (event.key === 'ArrowRight') {
       event.preventDefault();
-      go(1);
+      step(1);
     }
   };
 
@@ -613,7 +640,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
             type="button"
             className="gallery-arrow gallery-arrow--prev"
             aria-label="Previous photo"
-            onClick={() => go(-1)}
+            onClick={() => step(-1)}
           >
             <Chevron direction="prev" />
           </button>
@@ -643,7 +670,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
                       height={item.height}
                       sizes={slideSizes(item)}
                       quality={85}
-                      loading="eager"
+                      loading={near || index !== 0 ? 'eager' : 'lazy'}
                     />
                   </div>
                 ))}
@@ -651,16 +678,27 @@ export default function PhotoGallery({ showTitle = true } = {}) {
             </div>
           </div>
 
-          <div className="gallery-meta">
+          {/* ABOUT-M2: announce the new photo only while the visitor is in
+              control, never on every auto-advance. */}
+          <div className="gallery-meta" aria-live={userPaused || paused ? 'polite' : 'off'}>
             {slide.caption ? <p className="gallery-caption">{slide.caption}</p> : null}
-            <p className="gallery-count" aria-hidden="true">{index + 1} / {count}</p>
+            <p className="gallery-count"><span className="visually-hidden">Photo {index + 1} of {count}</span><span aria-hidden="true">{index + 1} / {count}</span></p>
+            {reduceMotion ? null : (
+              <button
+                type="button"
+                className="gallery-pause"
+                onClick={() => setUserPaused((value) => !value)}
+              >
+                {userPaused ? 'Play' : 'Pause'}
+              </button>
+            )}
           </div>
 
           <button
             type="button"
             className="gallery-arrow gallery-arrow--next"
             aria-label="Next photo"
-            onClick={() => go(1)}
+            onClick={() => step(1)}
           >
             <Chevron direction="next" />
           </button>
