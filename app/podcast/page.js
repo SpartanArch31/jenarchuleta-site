@@ -79,10 +79,14 @@ export default async function PodcastPage() {
       </section>
 
       {/* POD-16: the paper band runs full width; the content stays in .wrap. */}
-      <section id="pups" className="pod-panel center">
-        <div className="wrap">
+      <section id="pups" className="pod-panel">
+        <div className="wrap pups-on-podcast">
         <div className="eyebrow">Pups of the Podcast</div>
         <h2>Meet the pups</h2>
+        <p className="lead">
+          Every episode of Unfiltered with Jen Archuleta features a rescue pup looking for a home.
+          The Archuleta family donates toward each pup’s adoption fees.
+        </p>
         <PupsList />
         </div>
       </section>

@@ -72,6 +72,12 @@
   max-width: 42rem;
   margin: 14px auto 0;
 }
+/* The old /pups cards: heading centered, each card's words and links left aligned. */
+.pups-on-podcast > .eyebrow,
+.pups-on-podcast > h2,
+.pups-on-podcast > .lead { text-align: center; }
+.pups-on-podcast > .lead { max-width: 58ch; margin-inline: auto; }
+.pups-on-podcast .pup-card { text-align: left; }
 .pod-pup-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
 
 /* Listen beside Watch (Jen, November 2026): Buzzsprout's player on the left,
