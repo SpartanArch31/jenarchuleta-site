@@ -1,7 +1,9 @@
 import './journal.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import { OG_IMAGE } from '../components/site-data';
 import JournalBrowser from './JournalBrowser';
+import { socialTitle } from './author-meta.mjs';
 import { urlFor } from '../sanity/image';
 import { getAllPosts } from '../sanity/queries';
 import { POSTS as FALLBACK_POSTS } from './_posts';
@@ -18,16 +20,34 @@ const JOURNAL_DESCRIPTION =
   'Short, honest writing on faith, family, healing, and starting over, from Jen Archuleta.';
 
 // J-05: a category view gets its own title ("Faith, Journal, Jen Archuleta"),
-// not the same "Journal" title on every category.
+// not the same "Journal" title on every category. The site template adds
+// ", Jen Archuleta" to the browser title. Social cards do not, so they get it here.
+function journalMeta(title) {
+  const sharedTitle = socialTitle(title);
+  return {
+    title,
+    description: JOURNAL_DESCRIPTION,
+    authors: [{ name: 'Jen Archuleta' }],
+    openGraph: {
+      title: sharedTitle,
+      description: JOURNAL_DESCRIPTION,
+      type: 'website',
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: sharedTitle,
+      description: JOURNAL_DESCRIPTION,
+      images: [OG_IMAGE.url],
+    },
+  };
+}
+
 export function generateMetadata({ searchParams }) {
-  if (searchParams?.view === 'archive') {
-    return { title: 'Archive, Journal', description: JOURNAL_DESCRIPTION };
-  }
+  if (searchParams?.view === 'archive') return journalMeta('Archive, Journal');
   const category = typeof searchParams?.category === 'string' ? searchParams.category : '';
-  if (category && category !== 'All') {
-    return { title: `${categoryLabel(category)}, Journal`, description: JOURNAL_DESCRIPTION };
-  }
-  return { title: 'Journal', description: JOURNAL_DESCRIPTION };
+  if (category && category !== 'All') return journalMeta(`${categoryLabel(category)}, Journal`);
+  return journalMeta('Journal');
 }
 
 // Podcast cards often open with the show name as a stamp. Drop that

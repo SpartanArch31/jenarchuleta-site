@@ -137,6 +137,7 @@
 .journal-article .article-head { padding-top: clamp(48px, 7vw, 96px); padding-bottom: var(--space-6); }
 .journal-article .article-head .k { margin-bottom: var(--space-3); font-weight: 600; letter-spacing: .28em; font-size: .6875rem; }
 .journal-article .article-head .meta { margin-top: var(--space-3); }
+.journal-article .article-head .byline + .meta { margin-top: 0.2em; }
 /* J-14: the category kicker links back to that category. */
 .journal-article .article-head .k a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; color: inherit; }
 .journal-article .article-head .k a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
