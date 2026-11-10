@@ -1,5 +1,6 @@
 // Render-time journal fixes. Sanity has no write token, so posts stay as
 // published and these repairs run when a post is drawn.
+import { fixPublishedCopy } from './published-copy.mjs';
 
 const FOREVER_ANGELS = 'https://theforeverangels.com/';
 const WESTON_FORMULA = 'https://www.westonaprice.org/health-topics/formula-homemade-baby-formula/';
@@ -281,7 +282,7 @@ function cleanUrl(raw) {
   return url;
 }
 
-function rewriteText(text) {
+function rewriteText(text, slug) {
   if (typeof text !== 'string' || !text) return text;
   let next = text;
   next = next.replace(/(?:--\s*|\*+)(?=https?:\/\/(?:www\.)?(?:phpure|udoerasmus|cocoonnutrition)\.)/gi, '');
@@ -295,15 +296,14 @@ function rewriteText(text) {
     if (/https?:\/\/(?:www\.)?$/i.test(before) || /[\w.]$/.test(before)) return full;
     return `https://${host}`;
   });
-  next = next.replace(/\bFelling the Love\b/g, 'Feeling the Love');
-  next = next.replace(/\bShawn Patrick Flanery\b/g, 'Sean Patrick Flanery');
+  next = fixPublishedCopy(next, slug);
   // No em dashes on the site (Jen, November 3): a dash before a signature
   // goes, and any other becomes a comma.
   next = next.replace(/^\s*—\s*/, '').replace(/\s*—\s*/g, ', ');
   return next;
 }
 
-function rewriteBlocks(blocks) {
+function rewriteBlocks(blocks, slug) {
   return blocks.map((block) => {
     if (!block || block._type !== 'block' || !Array.isArray(block.children)) return block;
     const markDefs = (block.markDefs || []).map((def) => {
@@ -322,7 +322,7 @@ function rewriteBlocks(blocks) {
       return def;
     });
     const children = block.children.map((span) => (
-      span && typeof span.text === 'string' ? { ...span, text: rewriteText(span.text) } : span
+      span && typeof span.text === 'string' ? { ...span, text: rewriteText(span.text, slug) } : span
     ));
     return { ...block, markDefs, children };
   });
@@ -497,7 +497,7 @@ export function prepareJournalBody(blocks, slug) {
   if (!Array.isArray(blocks)) return blocks;
   // FilmFreeway links and Jen's "View Jennifer's press coverage... on FilmFreeway"
   // lines show as she wrote them (she asked for her FilmFreeway link, November 3).
-  let next = linkifyBody(correctEpisodeLinks(rewriteBlocks(blocks), slug));
+  let next = linkifyBody(correctEpisodeLinks(rewriteBlocks(blocks, slug), slug));
   if (slug === 'homemade-formula') {
     next = linkPhrase(next, 'THE HOMEMADE FORMULA RECIPES', WESTON_FORMULA);
     next = linkPhrase(next, 'Weston A. Price Foundation', WESTON_FORMULA);
