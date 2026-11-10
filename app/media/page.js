@@ -277,7 +277,7 @@ export default function MediaPage() {
         <h2>Speaking</h2>
         <p>{SPEAKING_INTRO}</p>
         {/* MEDIA-22: a quiet invite up top; the primary one waits after the talks. */}
-        <p><a className="btn btn-ghost" href="/thank-you#contact">Invite me to speak</a></p>
+        <p><a className="btn btn-ghost" href="/contact">Invite me to speak</a></p>
         {/* MEDIA-08: the talks read as a ruled list, not a card grid. */}
         <div className="speak-talks">
           {SPEAKING_TALKS.map((talk) => (
@@ -288,7 +288,7 @@ export default function MediaPage() {
           ))}
         </div>
         <p className="media-actions">
-          <a className="btn btn-primary" href="/thank-you#contact">Invite me to speak</a>
+          <a className="btn btn-primary" href="/contact">Invite me to speak</a>
         </p>
       </section>
 
@@ -333,7 +333,7 @@ export default function MediaPage() {
         </div>
         <h3>Childhelp</h3>
         <p>
-          I have volunteered with Childhelp for more than eight years. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
+          I have volunteered with Childhelp for almost a decade. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
         </p>
         <p>Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
       </section>

@@ -39,7 +39,7 @@ export default function BuyOptions({ signedLink = true, compact = false }) {
             <dt>Signed copy</dt>
             <dd>
               {signed ? (
-                <a className="buy-pill" href="/shop#signed-copy">Signed by Jen, {SHOP.signedBookTotal} with shipping</a>
+                <a className="buy-pill" href="/book#signed-copy">Signed by Jen, {SHOP.signedBookTotal} with shipping</a>
               ) : (
                 <span className="buy-note">Sold out for now</span>
               )}

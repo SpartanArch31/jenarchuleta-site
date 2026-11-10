@@ -2,27 +2,28 @@ import Image from 'next/image';
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import HomeCarousel from './components/HomeCarousel';
+import { SHOP } from './components/site-data';
 
-// Home is a short welcome and photos. The other pages are in the header.
+// Home sells the book first, then points to speaking. One next step: buy the book.
 export default function Home() {
   return (
     <>
-      {/* Skip link comes first so it is the first Tab stop (audit skip-link). */}
       <a href="#main-content" className="skip-link">Skip to content</a>
       <SiteNav />
 
       <main id="main-content">
-        {/* hero--home: page-scoped spacing (audit HOME-04, HOME-06), see home-carousel.css */}
         <section className="wrap hero hero--home">
           <div className="hero-copy">
-            <div className="eyebrow">Author · Speaker · Advocate</div>
+            <div className="eyebrow">Author and speaker</div>
             <div className="hero-script">this isn’t the story<br />you think it is</div>
             <h1>Faith, family, and a bunch of rescues.</h1>
-            <div className="eyebrow">Author of <em>Beyond the Velvet Ropes</em></div>
+            <div className="eyebrow">Jen Archuleta, author of <em>Beyond the Velvet Ropes</em></div>
+            <div className="hero-ctas">
+              <a className="btn btn-primary" href="/book#buy">Buy the book</a>
+            </div>
           </div>
           <div className="hero-media">
             <div className="portrait hero-frame">
-              {/* HOME-12: LCP image, so next/image with priority and a sized srcset */}
               <Image
                 src="/assets/presskit-headshot-floral.jpg"
                 alt="Jen Archuleta smiling in a floral top"
@@ -33,6 +34,29 @@ export default function Home() {
               />
             </div>
           </div>
+        </section>
+
+        <section className="wrap home-book" id="book">
+          <img src="/assets/book-cover.jpg" alt="Beyond the Velvet Ropes book cover" width="1000" height="1500" />
+          <div>
+            <p className="eyebrow">The book, out now</p>
+            <h2>Beyond the Velvet Ropes by Jennifer Walcott Archuleta</h2>
+            <p>
+              The signed copy is available now. {SHOP.signedBookTotal} total ({SHOP.signedBookPrice} + {SHOP.signedBookShipping} shipping, US only).
+            </p>
+            <div className="hero-ctas">
+              <a className="btn btn-primary" href="/book#buy">Buy the book</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="wrap home-speak" id="speaking">
+          <p className="eyebrow">Speaking</p>
+          <h2>Invite Jen to speak</h2>
+          <p>
+            When I speak, I tell the hard parts honestly, and then I tell you about the good life that came after, so you know you can rise too.
+          </p>
+          <p><a href="/about#speaking">See the talks</a></p>
         </section>
 
         <HomeCarousel />

@@ -4,9 +4,10 @@ import Image from 'next/image';
 import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
 import TwentiesSlideshow from './TwentiesSlideshow';
+import { GivingSection, PressSection, SpeakingSection } from './AboutSections';
 
 export const metadata = {
-  title: 'About Me',
+  title: 'About',
   description:
     'Faith, family, and a bunch of rescues. God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.',
 };
@@ -40,12 +41,23 @@ export default function AboutPage() {
           <p className="tim-lead">
             God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.
           </p>
+          <p className="tim-lead">
+            <a href="#speaking">Speaking</a>
+            {' · '}
+            <a href="#press">Press</a>
+            {' · '}
+            <a href="#giving">CASA and Childhelp</a>
+          </p>
         </div>
         <div>
           {/* ABOUT-18: the LCP image, through next/image with priority. */}
           <Image className="tim-portrait" src="/assets/brown-dress-portrait.jpg" alt="Jen Archuleta in a brown top" width={941} height={883} sizes="(max-width: 860px) 92vw, 470px" quality={85} priority />
         </div>
       </section>
+
+      <div className="media-page">
+        <SpeakingSection />
+      </div>
 
       <div className="tim-wrap">
         <div className="threshold-rule"><span className="diamond" /></div>
@@ -109,6 +121,11 @@ export default function AboutPage() {
       {/* ABOUT-10: one more threshold, from Jen's story into the archive. */}
       <div className="tim-wrap">
         <div className="threshold-rule"><span className="diamond" /></div>
+      </div>
+
+      <div className="media-page">
+        <PressSection />
+        <GivingSection />
       </div>
 
       <PhotoGallery />

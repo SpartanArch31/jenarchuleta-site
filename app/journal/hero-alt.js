@@ -17,7 +17,14 @@ const BY_FILE = {
   '/assets/jen-headshot-bw.jpg': 'Black and white portrait of Jen Archuleta in a black top',
 };
 
+// Sanity still describes the bookmark photo as a Coming Soon graphic.
+// The bookmarks are for sale, so the site supplies this description instead.
+const OVERRIDE_BY_SLUG = {
+  'book-marks': 'Beyond the Velvet Ropes bookmarks',
+};
+
 export function heroAlt(img, slug) {
+  if (slug && OVERRIDE_BY_SLUG[slug]) return OVERRIDE_BY_SLUG[slug];
   if (img && typeof img === 'object') {
     const alt = typeof img.alt === 'string' ? img.alt.trim() : '';
     if (alt) return alt;

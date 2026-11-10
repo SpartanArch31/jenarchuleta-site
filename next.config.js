@@ -10,6 +10,9 @@ const pageRedirects = [
   { source: '/velvetropes', destination: '/velvet', permanent: true },
   { source: '/velvet-letter', destination: '/velvet', permanent: true },
   { source: '/velvet-letter/:path*', destination: '/velvet', permanent: true },
+  // Older links used /the-velvet-letter. The live page is /velvet.
+  { source: '/the-velvet-letter', destination: '/velvet', permanent: true },
+  { source: '/the-velvet-letter/:path*', destination: '/velvet', permanent: true },
   // NOTE: /about is a real page (app/about) — do not redirect it.
   { source: '/about-me', destination: '/about', permanent: true },
   { source: '/about-1', destination: '/about', permanent: true },
@@ -17,12 +20,18 @@ const pageRedirects = [
   { source: '/story', destination: '/about#then', permanent: true },
   { source: '/gallery', destination: '/about#gallery', permanent: true },
   { source: '/my-story', destination: '/about#then', permanent: true },
-  { source: '/speaking', destination: '/media#speaking', permanent: true },
+  { source: '/speaking', destination: '/about#speaking', permanent: false },
   // Old Squarespace store, product, and cart URLs → the shop.
   { source: '/store/:path*', destination: '/shop', permanent: true },
   { source: '/shop/p/:path*', destination: '/shop', permanent: true },
-  { source: '/cart', destination: '/shop', permanent: true },
-  { source: '/checkout', destination: '/shop', permanent: true },
+  { source: '/cart', destination: '/book#signed-copy', permanent: false },
+  { source: '/checkout', destination: '/book#signed-copy', permanent: false },
+  // The shop is part of the book page. Old product URLs still land there.
+  { source: '/shop', destination: '/book#signed-copy', permanent: false },
+  { source: '/shop/:path*', destination: '/book#signed-copy', permanent: false },
+  // Pups of the Podcast live on the podcast page.
+  { source: '/pups', destination: '/podcast#pups', permanent: false },
+  { source: '/pups/:path*', destination: '/podcast#pups', permanent: false },
   // Old newsletter / Mailchimp-era signup paths → the free-chapter signup.
   // Temporary (307) so a real page can take these paths later without cached redirects.
   { source: '/subscribe', destination: '/thank-you#stay', permanent: false },
@@ -36,9 +45,8 @@ const pageRedirects = [
   { source: '/newsletter', destination: '/thank-you#stay', permanent: false },
   // Quotes live on Thank You.
   { source: '/quotes', destination: '/thank-you', permanent: false },
-  // /contact lands on the contact section of the combined Media page.
-  { source: '/contact', destination: '/thank-you#contact', permanent: false },
-  { source: '/press', destination: '/media', permanent: true },
+  // /contact is its own page. Do not redirect it.
+  { source: '/press', destination: '/about#press', permanent: false },
   { source: '/events', destination: '/', permanent: true },
   { source: '/home', destination: '/', permanent: true },
   { source: '/work-with-me', destination: '/', permanent: true },

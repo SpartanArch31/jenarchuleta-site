@@ -1,5 +1,6 @@
 import { groq } from 'next-sanity';
 import { client } from './client';
+import { fixPublishedCopy } from '../journal/published-copy.mjs';
 
 // Shared projection so feed + post return the same shape.
 const POST_FIELDS = groq`
@@ -34,13 +35,8 @@ const CATEGORY_BY_SLUG = {
 };
 
 // Published Sanity text still has these. There is no write token in this
-// project, so the public site corrects them when it reads.
-function fixPublishedCopy(text) {
-  if (typeof text !== 'string') return text;
-  return text
-    .replace(/\bFelling the Love\b/g, 'Feeling the Love')
-    .replace(/\bShawn Patrick Flanery\b/g, 'Sean Patrick Flanery');
-}
+// project, so the public site corrects them when it reads. The replacements
+// live in published-copy.mjs.
 
 function fixTree(value) {
   if (typeof value === 'string') return fixPublishedCopy(value);
@@ -56,13 +52,15 @@ function fixTree(value) {
 function withFixes(post) {
   if (!post || typeof post !== 'object') return post;
   const category = CATEGORY_BY_SLUG[post.slug] || post.category;
+  const fix = (value) => fixPublishedCopy(value, post.slug);
   return {
     ...post,
     category,
-    title: fixPublishedCopy(post.title),
-    excerpt: fixPublishedCopy(post.excerpt),
-    seoTitle: fixPublishedCopy(post.seoTitle),
-    seoDescription: fixPublishedCopy(post.seoDescription),
+    title: fix(post.title),
+    excerpt: fix(post.excerpt),
+    seoTitle: fix(post.seoTitle),
+    seoDescription: fix(post.seoDescription),
+    text: fix(post.text),
   };
 }
 

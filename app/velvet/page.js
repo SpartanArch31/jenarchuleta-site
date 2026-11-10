@@ -3,8 +3,8 @@ import { isUnlocked } from './passcode';
 import VelvetLocked from './VelvetLocked';
 
 // One entrance, one private journal. The QR code in the back of the book
-// lands here through /velvetropes (next.config.js). /velvet-letter redirects
-// here too.
+// lands here through /velvetropes (next.config.js). /velvet-letter and
+// /the-velvet-letter redirect here too.
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 

@@ -68,6 +68,16 @@
   color: var(--text-muted);
   margin-top: 14px;
 }
+.pod-status {
+  max-width: 42rem;
+  margin: 14px auto 0;
+}
+/* The old /pups cards: heading centered, each card's words and links left aligned. */
+.pups-on-podcast > .eyebrow,
+.pups-on-podcast > h2,
+.pups-on-podcast > .lead { text-align: center; }
+.pups-on-podcast > .lead { max-width: 58ch; margin-inline: auto; }
+.pups-on-podcast .pup-card { text-align: left; }
 .pod-pup-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
 
 /* Listen beside Watch (Jen, November 2026): Buzzsprout's player on the left,
@@ -156,7 +166,12 @@
 /* POD-17: 44px tap targets for the small text links. */
 .pod-player-head { align-items: center; }
 .pod-player-head a,
+.pod-players .home-pod-cross { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; }
 .pod-players .home-pod-cross a { display: inline-flex; align-items: center; min-height: 44px; }
+.pod-listen-gap { display: none; }
+.pod-episode-list { list-style: none; margin: 18px 0 0; padding: 0; text-align: left; }
+.pod-episode-list li { margin: 0; padding: 10px 0; border-top: var(--hairline); }
+.pod-episode-list li:last-child { border-bottom: var(--hairline); }
 /* The whole sponsor row is tappable, not just the name. */
 .pod-credits li { position: relative; }
 .pod-credits a::after { content: ''; position: absolute; inset: 0; }

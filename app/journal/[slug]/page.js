@@ -107,7 +107,7 @@ function categoryHref(post) {
   const [curated] = curatePosts([post]);
   if (!curated?.category) return null;
   if (curated.archived) return '/journal?view=archive';
-  if (curated.offJournal) return curated.category === 'Pup of the Podcast' ? '/pups' : null;
+  if (curated.offJournal) return curated.category === 'Pup of the Podcast' ? '/podcast#pups' : null;
   return `/journal?category=${encodeURIComponent(curated.category)}`;
 }
 
