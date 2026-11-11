@@ -26,7 +26,7 @@ export default function HomeCarousel() {
   const [active, setActive] = useState(0);
   const count = HOME_SLIDES.length;
 
-  const goTo = useCallback((index) => {
+  const goTo = useCallback((index, instant = false) => {
     const track = trackRef.current;
     if (!track) return;
     const slides = Array.from(track.children);
@@ -34,11 +34,10 @@ export default function HomeCarousel() {
     const next = (index + slides.length) % slides.length;
     const el = slides[next];
     const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    // HOME-08: slides snap to the grid edge (the track's left padding).
-    const inset = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    // Centered row (Adam, Nov 10): put the chosen photo in the middle.
     track.scrollTo({
-      left: el.offsetLeft - inset,
-      behavior: reduce ? 'auto' : 'smooth',
+      left: el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2,
+      behavior: reduce || instant ? 'auto' : 'smooth',
     });
   }, []);
 
@@ -49,33 +48,37 @@ export default function HomeCarousel() {
     const update = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        // HOME-08: the active slide is the one nearest the grid edge.
-        const edge = track.scrollLeft + (parseFloat(getComputedStyle(track).paddingLeft) || 0);
+        // The active slide is the one nearest the middle of the row.
+        const middle = track.scrollLeft + track.clientWidth / 2;
         let best = 0;
         let bestDistance = Infinity;
         const slides = Array.from(track.children);
         slides.forEach((el, i) => {
-          const distance = Math.abs(el.offsetLeft - edge);
+          const distance = Math.abs(el.offsetLeft + el.offsetWidth / 2 - middle);
           if (distance < bestDistance) {
             bestDistance = distance;
             best = i;
           }
         });
-        // At either end of the row, the first or last dot is the active one.
-        if (track.scrollLeft < 4) best = 0;
-        else if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
         setActive(best);
       });
     };
     track.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
+    // Start with the first photo centered (the track's 50% padding would
+    // otherwise leave it starting at the middle of the page).
+    goTo(0, true);
+    // Photos load after first paint and change the slide widths; re-center.
+    const imgs = Array.from(track.querySelectorAll('img'));
+    const recenter = () => { if (track.scrollLeft < track.clientWidth / 2) goTo(0, true); };
+    imgs.forEach((img) => { if (!img.complete) img.addEventListener('load', recenter, { once: true }); });
     update();
     return () => {
       track.removeEventListener('scroll', update);
       window.removeEventListener('resize', update);
       cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [goTo]);
 
   return (
     <section className="home-carousel" aria-roledescription="carousel" aria-label="Featured photos">

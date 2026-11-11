@@ -160,7 +160,7 @@ main[tabindex="-1"]:focus { outline: none; }
   align-items: center;
 }
 .home-book img { width: 100%; height: auto; }
-.home-speak { max-width: 40rem; }
+.home-speak { max-width: 40rem; text-align: center; } /* Adam, Nov 10: centered, not a stray left-aligned column */
 @media (max-width: 760px) {
   .home-book { grid-template-columns: minmax(0, 200px); }
 }

@@ -7,17 +7,17 @@
 }
 .hc-stage {
   position: relative;
-  /* HOME-08: the first photo lines up with the page grid (the 1200px container's
-     text edge), and the row still runs to the viewport edge on the right. */
-  --hc-inset: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+  /* Adam, Nov 10: the current photo sits in the middle of the page, with the
+     neighbours peeking in on both sides. (Was HOME-08: left-aligned to the
+     text edge, running off the right side, which read as off-center.) */
+  --hc-inset: 50%;
 }
 .hc-track {
   position: relative;
   display: flex;
   gap: 14px;
   margin: 0;
-  padding: var(--space-2) var(--hc-inset); /* HOME-08 */
-  scroll-padding-inline: var(--hc-inset);
+  padding: var(--space-2) var(--hc-inset);
   list-style: none;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -31,7 +31,7 @@
      Every photo stays whole at its own ratio, capped to a shared max height. */
   flex: 0 0 auto;
   height: auto;
-  scroll-snap-align: start; /* HOME-08: snap to the grid edge, not the center */
+  scroll-snap-align: center;
   /* HOME-07 / HOME-M1: flat photo treatment. Small radius (photos are not cards)
      and no drop shadow, which the scrolling track was clipping into a hard line. */
   border-radius: var(--radius-sm);
@@ -76,8 +76,8 @@
 .hc-arrow:hover { background: var(--paper); }
 .hc-arrow:focus-visible { outline: 2px solid var(--focus-ring, var(--gold)); outline-offset: 2px; }
 /* HOME-08: arrows sit in the gutter beside the grid edge, not over a photo */
-.hc-prev { left: max(12px, calc(var(--hc-inset) - 56px)); }
-.hc-next { right: max(12px, calc(var(--hc-inset) - 56px)); }
+.hc-prev { left: max(12px, calc((100% - var(--container)) / 2)); }
+.hc-next { right: max(12px, calc((100% - var(--container)) / 2)); }
 .hc-dots {
   display: flex;
   justify-content: center;
