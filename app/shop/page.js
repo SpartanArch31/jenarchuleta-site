@@ -8,14 +8,14 @@ import './shop.css';
 export const metadata = {
   title: 'Shop',
   description:
-    'Signed copies of Beyond the Velvet Ropes, the Signature Velvet Bookmark, the Velvet Circle Book Club and podcast apparel.',
+    'Signed copies of Beyond the Velvet Ropes, the Signature Velvet Bookmark, the Velvet Circle Book Club, and Beyond the Velvet Ropes apparel.',
 };
 
 const JUMP = [
   { href: '#signed-copy', label: 'Signed copy' },
   { href: '#bookmark', label: 'Bookmark' },
   { href: '#velvet-circle', label: 'Book club' },
-  { href: '#podcast-apparel', label: 'Apparel' },
+  { href: '#apparel', label: 'Apparel' },
 ];
 
 export default function ShopPage() {

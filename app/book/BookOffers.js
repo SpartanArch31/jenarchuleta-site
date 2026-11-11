@@ -225,11 +225,38 @@ export default function BookOffers() {
           </article>
         </div>
 
-        {/* Jen, Nov 10: merchandise is announced only. No prices, sizes, photos,
-            or checkout until it is ready. */}
-        <div className="shop-coming" id="merchandise">
-          <h3>Beyond the Velvet Ropes Merchandise</h3>
-          <p>Coming soon! Unisex T-shirts, sweatshirts, and more. Available signed or unsigned.</p>
+        {/* Jen, Nov 10: her apparel line. Each item has an Etsy link and a
+            signed option she ships herself (Stripe Payment Link). Replaces the
+            "Coming soon" merchandise note. */}
+        <div className="shop-apparel" id="apparel">
+          <span id="merchandise" />
+          <h2>Unfiltered, featuring <em>Beyond the Velvet Ropes</em> Apparel</h2>
+          <p className="shop-apparel-note">
+            Every piece comes two ways: on Etsy, or signed and shipped by me, with shipping included (US only). Signed pieces come with a Velvet Letters gift card.
+          </p>
+          <div className="apparel-grid">
+            {SHOP.apparel.map((item) => (
+              <article className="apparel-card" id={item.id} key={item.id}>
+                <img src={item.image} alt={`Beyond the Velvet Ropes ${item.name.toLowerCase()}`} width="900" height="900" loading="lazy" />
+                <div className="apparel-body">
+                  <h3>{item.name}</h3>
+                  <p className="apparel-detail">{item.detail}</p>
+                  <p className="apparel-price">
+                    Signed {item.signedPrice} <span>shipping included</span>
+                  </p>
+                  <div className="apparel-cta">
+                    <a href={item.signed} target="_blank" rel="noopener" className="btn btn-primary">
+                      Buy signed
+                    </a>
+                    <a href={item.etsy} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+                      Shop on Etsy
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <TrustLine />
         </div>
 
         {/* Jen, Nov 10: one small text link, her exact words. */}
@@ -237,6 +264,11 @@ export default function BookOffers() {
           <a href={SHOP.ebayWardrobe} target="_blank" rel="noopener noreferrer">
             Shop My Playmate promotions some one of a kind Wardrobe
           </a>
+        </p>
+        <p className="shop-ebay shop-more-links">
+          <a href={SHOP.ltk} target="_blank" rel="noopener noreferrer">Shop my LTK</a>
+          <span aria-hidden="true"> · </span>
+          <a href={SHOP.amazonStorefront} target="_blank" rel="noopener noreferrer">My Amazon storefront</a>
         </p>
       </section>
     </div>

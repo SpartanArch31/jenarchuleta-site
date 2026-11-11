@@ -188,6 +188,65 @@ export const SHOP = {
   // Jen's eBay store (jenniferwalcottarchive). One small text link at the
   // bottom of the shop, nothing more (Jen, Nov 10, 2026).
   ebayWardrobe: 'https://ebay.io/m/FSMA6i',
+
+  // Jen's LTK and Amazon storefronts, two small text links beside eBay
+  // (Adam, Nov 10, 2026). The Amazon link is the clean storefront address:
+  // the shared a.co link carried someone else's affiliate tag (jphhomes-20).
+  ltk: 'https://www.shopltk.com/explore/jenwalcottarchuleta',
+  amazonStorefront: 'https://www.amazon.com/shop/jenniferwalcott',
+
+  // "Unfiltered, featuring Beyond the Velvet Ropes Apparel" (Jen, Nov 10, 2026).
+  // Each item: an Etsy listing (UnfilteredByJen) and a signed option that Jen
+  // ships herself, shipping included, US only, with a Velvet Letters gift card.
+  // signed = live Stripe Payment Link (Velvet Ropes account, created Nov 10).
+  // A price change needs the Stripe price changed too, and Make.com routes.
+  apparel: [
+    {
+      id: 'apparel-sweatshirt',
+      name: 'Sweatshirt',
+      detail: 'Black crewneck with the signature book cover. Sizes S to 3X.',
+      image: '/assets/apparel/btvr-sweatshirt.jpg',
+      etsy: 'https://www.etsy.com/listing/4614470762',
+      signed: 'https://buy.stripe.com/4gM3cu6Uj3qFczh2Nsds408',
+      signedPrice: '$89.95',
+    },
+    {
+      id: 'apparel-unisex-tee',
+      name: 'Unisex tee',
+      detail: 'Black tee with the signature book cover. Sizes S to 3X.',
+      image: '/assets/apparel/btvr-unisex-tee.jpg',
+      etsy: 'https://www.etsy.com/listing/4614457539',
+      signed: 'https://buy.stripe.com/7sY3cuguTbXb2YH1Jods409',
+      signedPrice: '$64.95',
+    },
+    {
+      id: 'apparel-womens-tee',
+      name: 'Women’s tee',
+      detail: 'Black relaxed tee with the signature book cover. Women’s sizes S to 3X.',
+      image: '/assets/apparel/btvr-womens-tee.jpg',
+      etsy: 'https://www.etsy.com/listing/4614457935',
+      signed: 'https://buy.stripe.com/00w5kCemL4uJ8j1gEids40a',
+      signedPrice: '$67.95',
+    },
+    {
+      id: 'apparel-hat',
+      name: 'Hat',
+      detail: 'Black dad hat, embroidered in gold. One size.',
+      image: '/assets/apparel/btvr-dad-hat.jpg',
+      etsy: 'https://www.etsy.com/listing/4614514983',
+      signed: 'https://buy.stripe.com/00w14m6Uj5yN7eX0Fkds40b',
+      signedPrice: '$59.95',
+    },
+    {
+      id: 'apparel-trucker-hat',
+      name: 'Trucker hat',
+      detail: 'Black snapback trucker hat, embroidered in gold. One size.',
+      image: '/assets/apparel/btvr-trucker-hat.jpg',
+      etsy: 'https://www.etsy.com/listing/4614576882',
+      signed: 'https://buy.stripe.com/4gMeVcbaz9P30Qz9bQds40c',
+      signedPrice: '$57.95',
+    },
+  ],
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official
