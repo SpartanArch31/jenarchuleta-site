@@ -501,3 +501,13 @@
 }
 
 .shop-page .shop-more-links { margin-top: 0; }
+
+/* Jen, Nov 11: podcast collections (Be the Bumblebee, Flawed & Fierce). */
+.shop-page .shop-collection { padding-top: var(--space-6, 48px); border-top: var(--hairline); }
+.shop-page .collection-episode { margin: 0 0 16px; color: var(--text-secondary); font-size: var(--text-body-s, .95rem); }
+.shop-page .collection-episode a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.shop-page .collection-story {
+  max-width: 660px; margin: 0 auto; font-family: var(--font-display); font-style: italic;
+  font-size: var(--text-body-l, 1.15rem); line-height: 1.65; color: var(--text);
+}
+.shop-page .collection-signed-note { font-size: var(--text-body-s, .95rem); }

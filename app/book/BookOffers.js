@@ -200,29 +200,6 @@ export default function BookOffers() {
             </div>
           </article>
           ) : null}
-          {/* Jen, Nov 6: apparel is an extra, so it sits last, after the book products. */}
-          <article className="product-card" id="podcast-apparel">
-            <div className="product-media product-media--contain">
-              <img
-                src="/assets/og-podcast-1200x630.jpg"
-                alt="Unfiltered with Jen Archuleta"
-                width="1200"
-                height="630"
-              />
-            </div>
-            <div className="product-body">
-              <div className="eyebrow">The Podcast</div>
-              <h3>Podcast Apparel</h3>
-              <p className="product-desc">
-                Apparel for Unfiltered with Jen Archuleta, on Etsy.
-              </p>
-              <div className="product-cta">
-                <a href={SHOP.etsyShop} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Shop apparel
-                </a>
-              </div>
-            </div>
-          </article>
         </div>
 
         {/* Jen, Nov 10: her apparel line. Each item has an Etsy link and a
@@ -258,6 +235,50 @@ export default function BookOffers() {
           </div>
           <TrustLine />
         </div>
+
+        {/* Jen, Nov 11: podcast collections, each with her words about the
+            episode it comes from. Replaces the old "Podcast Apparel" card. */}
+        {SHOP.collections.map((col) => (
+          <div className="shop-apparel shop-collection" id={col.id} key={col.id}>
+            <h2>{col.title}</h2>
+            <p className="collection-episode">
+              Inspired by{' '}
+              <a href={col.episodeUrl} target="_blank" rel="noopener noreferrer">{col.episode}</a>
+            </p>
+            <p className="collection-story">{col.story}</p>
+            <div className="apparel-grid">
+              {col.items.map((item) => (
+                <article className="apparel-card" id={item.id} key={item.id}>
+                  <img src={item.image} alt={`${col.title} ${item.name.toLowerCase()}`} width="900" height="900" loading="lazy" />
+                  <div className="apparel-body">
+                    <h3>{item.name}</h3>
+                    {item.detail ? <p className="apparel-detail">{item.detail}</p> : null}
+                    {item.signed ? (
+                      <p className="apparel-price">
+                        Signed {item.signedPrice} <span>shipping included</span>
+                      </p>
+                    ) : null}
+                    <div className="apparel-cta">
+                      {item.signed ? (
+                        <a href={item.signed} target="_blank" rel="noopener" className="btn btn-primary">
+                          Buy signed
+                        </a>
+                      ) : null}
+                      <a href={item.etsy} target="_blank" rel="noopener noreferrer" className={item.signed ? 'btn btn-ghost' : 'btn btn-primary'}>
+                        Shop on Etsy
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            {col.items.some((item) => item.signed) ? (
+              <p className="shop-apparel-note collection-signed-note">
+                Signed pieces are shipped by me, with shipping included (US only), and come with a Velvet Letters gift card.
+              </p>
+            ) : null}
+          </div>
+        ))}
 
         {/* Jen, Nov 10: one small text link, her exact words. */}
         <p className="shop-ebay">

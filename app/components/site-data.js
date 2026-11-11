@@ -195,6 +195,55 @@ export const SHOP = {
   ltk: 'https://www.shopltk.com/explore/jenwalcottarchuleta',
   amazonStorefront: 'https://www.amazon.com/shop/jenniferwalcott',
 
+  // Podcast collections (Jen, Nov 11, 2026): each tied to an episode, with
+  // Jen's own words, word for word. Items link to Etsy (UnfilteredByJen);
+  // an item with `signed` also gets a signed option Jen ships herself
+  // (Stripe Payment Link, shipping included, US only, Velvet Letters gift
+  // card). Bumblebee has no signed prices yet, so Etsy only.
+  collections: [
+    {
+      id: 'bumblebee',
+      title: 'Be the Bumblebee',
+      episode: 'Episode 10 with Nick Lowery',
+      episodeUrl: 'https://www.youtube.com/watch?v=ZgfIKWnmnhA',
+      story: 'They say a bumblebee’s wings are too small for its body, and by the numbers it should never fly. Nobody told the bee. Nick Lowery got cut 11 times. Eleven times someone looked at him and decided he wasn’t enough. He kept showing up anyway, and he became the Kansas City Chiefs’ all-time leading scorer. I chose Nick for this collection because he is the bumblebee. The world ran the numbers on him, and he flew anyway.',
+      items: [
+        { id: 'bee-unisex-tee', name: 'Unisex tee', image: '/assets/apparel/bee-unisex-tee.jpg', etsy: 'https://www.etsy.com/listing/4321696666' },
+        { id: 'bee-womens-tee', name: 'Women’s tee', image: '/assets/apparel/bee-womens-tee.jpg', etsy: 'https://www.etsy.com/listing/4321690469' },
+        { id: 'bee-hoodie', name: 'Hoodie', image: '/assets/apparel/bee-hoodie.jpg', etsy: 'https://www.etsy.com/listing/4320793739' },
+        { id: 'bee-fly-away-hoodie', name: 'Fly Away hoodie', image: '/assets/apparel/bee-fly-away-hoodie.jpg', etsy: 'https://www.etsy.com/listing/4320791333' },
+        { id: 'bee-hat', name: 'Hat', image: '/assets/apparel/bee-hat.jpg', etsy: 'https://www.etsy.com/listing/4320791993' },
+      ],
+    },
+    {
+      id: 'flawed-and-fierce',
+      title: 'Flawed & Fierce',
+      episode: 'Episode 5 with Amy Palmiero-Winters',
+      episodeUrl: 'https://www.youtube.com/watch?v=xpVgDQpPUjU',
+      story: 'Amy lost her leg in a motorcycle accident. Most people would have called that the end of the story. Amy called it the start. On a prosthetic, she set 11 world records and was the first to finish some of the hardest races on earth. She isn’t fierce in spite of what broke. She’s fierce because of what she rebuilt. I chose Amy for this collection because she is living proof of what this heart means: you’re not broken, you’re rebuilt.',
+      items: [
+        {
+          id: 'ff-hoodie',
+          name: 'Navy hoodie',
+          detail: '“You’re not broken. You’re becoming.” on the back. Sizes S to 3X.',
+          image: '/assets/apparel/ff-hoodie.jpg',
+          etsy: 'https://www.etsy.com/listing/4614607497',
+          signed: 'https://buy.stripe.com/8x24gy92r6CR56P4VAds40d',
+          signedPrice: '$89.95',
+        },
+        {
+          id: 'ff-hat',
+          name: 'Navy dad hat',
+          detail: 'Embroidered heart. One size.',
+          image: '/assets/apparel/ff-hat.jpg',
+          etsy: 'https://www.etsy.com/listing/4614638186',
+          signed: 'https://buy.stripe.com/dRm7sKdiHf9n2YHfAeds40e',
+          signedPrice: '$59.95',
+        },
+      ],
+    },
+  ],
+
   // "Unfiltered, featuring Beyond the Velvet Ropes Apparel" (Jen, Nov 10, 2026).
   // Each item: an Etsy listing (UnfilteredByJen) and a signed option that Jen
   // ships herself, shipping included, US only, with a Velvet Letters gift card.

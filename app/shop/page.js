@@ -16,6 +16,8 @@ const JUMP = [
   { href: '#bookmark', label: 'Bookmark' },
   { href: '#velvet-circle', label: 'Book club' },
   { href: '#apparel', label: 'Apparel' },
+  { href: '#bumblebee', label: 'Be the Bumblebee' },
+  { href: '#flawed-and-fierce', label: 'Flawed & Fierce' },
 ];
 
 export default function ShopPage() {
