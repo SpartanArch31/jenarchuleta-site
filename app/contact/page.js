@@ -26,6 +26,7 @@ export default function ContactPage() {
         </section>
         <section id="form" className="wrap thank-stay">
           <h2>Read the first chapter free.</h2>
+          <img className="first-chapter-art" src="/assets/first-chapter-then-now.jpg" alt="Jen Archuleta as a little girl and today, in black and white" width="1168" height="368" />
           <div className="thank-signup">
             <KitInlineForm uid={KIT_FORM_UID} />
           </div>

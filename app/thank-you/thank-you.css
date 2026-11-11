@@ -210,3 +210,22 @@
   letter-spacing: inherit !important;
   color: inherit !important;
 }
+
+/* Nov 10 (Jen): the then-and-now photo sits under "Read the first chapter
+   free." and above the form. Never stretched. On phones the gold bokeh on the
+   right is trimmed so both faces stay a usable size. */
+.first-chapter-art {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto var(--space-5, 1.5rem);
+  border-radius: 4px;
+}
+@media (max-width: 640px) {
+  .first-chapter-art {
+    aspect-ratio: 760 / 368;
+    object-fit: cover;
+    object-position: left center;
+  }
+}

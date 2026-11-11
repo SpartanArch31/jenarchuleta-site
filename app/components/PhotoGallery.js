@@ -231,7 +231,8 @@ const GALLERY_NEW = [
   { src: '/assets/gallery-new/new_34.jpg', alt: 'Jen Archuleta with her husband', width: 1179, height: 1097 },
   { src: '/assets/gallery-new/new_35.jpg', alt: 'Jen Archuleta on the beach', width: 1320, height: 1281 },
   { src: '/assets/gallery-new/new_36.jpg', alt: 'A magazine page about Jen Archuleta', width: 1320, height: 1607 },
-  { src: '/assets/gallery-new/new_38.jpg', alt: 'A magazine photo of Jen Archuleta with another Playmate', width: 1240, height: 1704 },
+  // Nov 10 (Jen): the Calgary Sun clipping replaces the scrapbook page (new_38).
+  { src: '/assets/gallery-nov10/calgary-sun-playmates.jpg', alt: 'Calgary Sun photo of Jen Archuleta with another Playmate', credit: 'Robin Kuniski, Calgary Sun', width: 1070, height: 986 },
 ];
 
 // Added after the existing slides, in numeric order. 113 and 116 are
@@ -491,7 +492,8 @@ const GALLERY_CAPTIONS = {
   '/assets/gallery-nov10/nov10-03-bali-evening.jpg': 'An evening in Bali.',
   '/assets/gallery-nov10/nov10-04-bali-musicians.jpg': 'With Balinese musicians and their traditional kendang drums.',
   '/assets/gallery-nov10/nov10-05-bali-airport.jpg': 'At the airport in Bali.',
-  '/assets/gallery-nov10/nov10-06-singapore-airlines.jpg': 'Headed to Singapore on Singapore Airlines.',
+  '/assets/gallery-nov10/nov10-06-singapore-airlines.jpg': 'Singapore Airlines',
+  '/assets/gallery-nov10/calgary-sun-playmates.jpg': 'Playmates the toast of The Drink',
   '/assets/gallery-nov10/nov10-07-st-barts.jpg': 'St. Barts.',
   '/assets/gallery-nov10/nov10-08-the-archuletas.jpg': 'The Archuletas.',
 };
@@ -706,6 +708,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
               control, never on every auto-advance. */}
           <div className="gallery-meta" aria-live={userPaused || paused ? 'polite' : 'off'}>
             {slide.caption ? <p className="gallery-caption">{slide.caption}</p> : null}
+            {slide.credit ? <p className="gallery-caption gallery-credit">{slide.credit}</p> : null}
             <p className="gallery-count"><span className="visually-hidden">Photo {index + 1} of {count}</span><span aria-hidden="true">{index + 1} / {count}</span></p>
             {reduceMotion ? null : (
               <button

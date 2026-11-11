@@ -61,6 +61,7 @@ export default function ThankYouPage() {
           </ul>
           <div className="thank-signup">
             <h3>Read the first chapter free.</h3>
+            <img className="first-chapter-art" src="/assets/first-chapter-then-now.jpg" alt="Jen Archuleta as a little girl and today, in black and white" width="1168" height="368" />
             <KitInlineForm uid={KIT_FORM_UID} />
           </div>
         </section>

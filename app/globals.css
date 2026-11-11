@@ -665,3 +665,6 @@ footer .foot-legal a { display: inline-flex; align-items: center; padding-inline
   background: var(--bg);
   color: var(--text);
 }
+
+/* Nov 10: plain-text photo credit under a gallery caption (Calgary Sun). */
+.gallery-caption.gallery-credit, .gallery-band .gallery-caption.gallery-credit { font-size: 0.8rem; font-style: normal; letter-spacing: 0.02em; }
