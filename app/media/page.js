@@ -59,7 +59,7 @@ const HEADSHOTS = [
 
 // Speaking (Jen, Nov 5; four talk descriptions rewritten by Jen Nov 6 so none repeat): her 26 topics, gathered into five talks so the section
 // flows for an event planner. Every one of the 26 is still covered.
-const SPEAKING_INTRO = "I’m a wife, a mom of three, and a woman of faith, with a house full of rescues. Giving back is a big part of my life. I co-founded The Forever Angels, I volunteer with Childhelp and in hospice with my TDI therapy dog, and I’ve been a CASA volunteer. Getting here took a lot. I came from humble beginnings, barely finished school, and thought I was ugly. I became a Playboy Playmate, came through some very hard years, and wrote a book about all of it. When I speak, I tell the hard parts honestly, and then I tell you about the good life that came after, so you know you can rise too. I’d be honored to share it with your group.";
+const SPEAKING_INTRO = "I’m a wife, a mom of three, and a woman of faith, with a house full of rescues. Giving back is a big part of my life. I co-founded The Forever Angels, I volunteer with Childhelp and in hospice with my TDI therapy dog, and I’ve been a CASA volunteer. Getting here took a lot. I came from humble beginnings and thought I was ugly. I became a Playboy Playmate, came through some very hard years, and wrote a book about all of it. When I speak, I tell the hard parts honestly, and then I tell you about the good life that came after, so you know you can rise too. I’d be honored to share it with your group.";
 
 const SPEAKING_TALKS = [
   {
@@ -219,32 +219,14 @@ export default function MediaPage() {
               alt={FILM.documentaryPoster.alt}
               width={FILM.documentaryPoster.width}
               height={FILM.documentaryPoster.height}
-              sizes="(max-width: 760px) calc(100vw - 40px), 640px"
+              sizes="(max-width: 760px) calc(100vw - 40px), 900px"
               quality={88}
             />
             <figcaption>{FILM.documentaryPoster.note}</figcaption>
           </figure>
           <div className="doc-copy">
-            <p className="doc-status">{FILM.documentaryStatus}</p>
-            <h3>{FILM.documentaryTitle}</h3>
-            <p>
-              {FILM.documentary}{' '}
-              <a href={FILM.documentaryPartner.href} target="_blank" rel="noopener noreferrer">
-                {FILM.documentaryPartner.label}
-              </a>
-              .
-            </p>
-            <p>
-              <a
-                className="btn btn-primary"
-                href={FILM.documentarySite}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow the documentary (opens in new tab)"
-              >
-                Follow the documentary
-              </a>
-            </p>
+            {/* Jen, Nov 10: her exact heading. The partner links sit below, once each. */}
+            <h3>{FILM.documentaryTitle} | {FILM.documentaryStatus}</h3>
           </div>
         </div>
         {/* MEDIA-20: partner links share the page's ghost-button style. */}
@@ -266,9 +248,9 @@ export default function MediaPage() {
             href={FILM.filmfreeway.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`FilmFreeway, ${FILM.filmfreeway.label} (opens in new tab)`}
+            aria-label={`${FILM.filmfreeway.label} (opens in new tab)`}
           >
-            FilmFreeway<span aria-hidden="true"> ↗</span>
+            {FILM.filmfreeway.label}<span aria-hidden="true"> ↗</span>
           </a>
         </p>
       </section>
@@ -298,7 +280,7 @@ export default function MediaPage() {
           {/* Jen, Nov 9: The Forever Angels is her own nonprofit, kept separate from Childhelp. */}
           <h3>The Forever Angels, my nonprofit</h3>
           <p>
-            I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, older adults, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
+            I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, the elderly, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
           </p>
           <p className="media-actions">
             <a
@@ -335,7 +317,7 @@ export default function MediaPage() {
         <p>
           I have volunteered with Childhelp for almost a decade. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
         </p>
-        <p>Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
+        <p>I also volunteer with Turbo, my TDI therapy dog. Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
       </section>
       </main>
 

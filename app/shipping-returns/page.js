@@ -36,7 +36,7 @@ export default function ShippingReturnsPage() {
           <p>
             Each signed copy is personalized and signed by hand by Jen, one at a time. A signed copy
             is {SHOP.signedBookPrice} plus {SHOP.signedBookShipping} shipping, {SHOP.signedBookTotal} total.
-            Signed and shipped by regular mail. Orders currently ship within the
+            Shipped via USPS. Orders currently ship within the
             United States only.
             Because each book is personalized to your order, we&rsquo;re unable to accept returns for a
             change of mind, but if your book arrives damaged or defective, contact us at{' '}
@@ -46,7 +46,7 @@ export default function ShippingReturnsPage() {
 
           <h2 id="bookmark">The Signature Velvet Bookmark</h2>
           <p>
-            About 6 inches long. Handmade from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Packaged in a padded gift case and shipped by regular mail. The{' '}
+            About 6 inches long. I make each one by hand from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Shipped via USPS. The{' '}
             {SHOP.bookmarkPrice} price includes shipping, and we ship to US addresses only.
             If your bookmark arrives damaged or defective, the same policy above applies. Because these are handmade,
             one-of-a-kind pieces, all other sales are final.
@@ -55,7 +55,7 @@ export default function ShippingReturnsPage() {
           <h2 id="bundle">The Bundle</h2>
           <p>
             The Bundle is {SHOP.bundlePrice}. It is a signed copy of the book, the Signature Velvet Bookmark,
-            and bunny ears, shipped by regular mail.
+            and bunny ears. Shipped via USPS.
           </p>
 
           <h2 id="velvet-circle">The Velvet Circle Book Club</h2>

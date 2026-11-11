@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { APPEARANCES, PRESS, cardMeta } from '../../lib/press';
 import '../media/media.css';
 
-const SPEAKING_INTRO = "I’m a wife, a mom of three, and a woman of faith, with a house full of rescues. Giving back is a big part of my life. I co-founded The Forever Angels, I volunteer with Childhelp and in hospice with my TDI therapy dog, and I’ve been a CASA volunteer. Getting here took a lot. I came from humble beginnings, barely finished school, and thought I was ugly. I became a Playboy Playmate, came through some very hard years, and wrote a book about all of it. When I speak, I tell the hard parts honestly, and then I tell you about the good life that came after, so you know you can rise too. I’d be honored to share it with your group.";
+const SPEAKING_INTRO = "I’m a wife, a mom of three, and a woman of faith, with a house full of rescues. Giving back is a big part of my life. I co-founded The Forever Angels, I volunteer with Childhelp and in hospice with my TDI therapy dog, and I’ve been a CASA volunteer. Getting here took a lot. I came from humble beginnings and thought I was ugly. I became a Playboy Playmate, came through some very hard years, and wrote a book about all of it. When I speak, I tell the hard parts honestly, and then I tell you about the good life that came after, so you know you can rise too. I’d be honored to share it with your group.";
 
 const SPEAKING_TALKS = [
   {
@@ -115,9 +115,10 @@ export function GivingSection() {
       <p>
         I have been a CASA volunteer, and I have volunteered with Childhelp for almost a decade. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
       </p>
+      <p>I also volunteer with Turbo, my TDI therapy dog. Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
       <h3>The Forever Angels, my nonprofit</h3>
       <p>
-        I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, older adults, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
+        I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, the elderly, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
       </p>
       <p className="media-actions">
         <a className="btn btn-ghost" href="https://theforeverangels.com/our-founders/" target="_blank" rel="noopener noreferrer">
@@ -134,7 +135,6 @@ export function GivingSection() {
           </figure>
         ))}
       </div>
-      <p>Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
     </section>
   );
 }

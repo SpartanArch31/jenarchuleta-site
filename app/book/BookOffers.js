@@ -90,7 +90,7 @@ export default function BookOffers() {
                 <p className="price-note">{SHOP.bookmarkShipping}</p>
               </div>
               <p className="product-desc">
-                About 6 inches long. Handmade from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Packaged in a padded gift case and shipped by regular mail.
+                About 6 inches long. I make each one by hand from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Shipped via USPS.
               </p>
               {bookmarkFacts.length > 0 && (
                 <dl className="offer-facts">
@@ -225,6 +225,19 @@ export default function BookOffers() {
           </article>
         </div>
 
+        {/* Jen, Nov 10: merchandise is announced only. No prices, sizes, photos,
+            or checkout until it is ready. */}
+        <div className="shop-coming" id="merchandise">
+          <h3>Beyond the Velvet Ropes Merchandise</h3>
+          <p>Coming soon! Unisex T-shirts, sweatshirts, and more. Available signed or unsigned.</p>
+        </div>
+
+        {/* Jen, Nov 10: one small text link, her exact words. */}
+        <p className="shop-ebay">
+          <a href={SHOP.ebayWardrobe} target="_blank" rel="noopener noreferrer">
+            Shop My Playmate promotions some one of a kind Wardrobe
+          </a>
+        </p>
       </section>
     </div>
   );

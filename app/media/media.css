@@ -332,7 +332,7 @@
 @media (min-width: 900px) {
   .doc-feature { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: var(--space-7); }
 }
-.doc-poster { margin: 0; max-width: 640px; } /* the artwork file is 640px wide; never upscale it */
+.doc-poster { margin: 0; max-width: 900px; } /* Jen's Nov 10 file is 1536px wide */
 .doc-poster img {
   display: block;
   width: 100%;
@@ -375,3 +375,9 @@
     width: calc(50% - var(--space-3) / 2);
   }
 }
+
+/* Jen, Nov 10: the heading ("Beyond the Velvet Ropes Documentary | In
+   Production") sits above the artwork, which uses the full column. */
+.doc-feature { display: flex; flex-direction: column; gap: var(--space-4, 20px); }
+.doc-feature .doc-copy { order: -1; }
+.doc-feature .doc-copy h3 { margin: 0; }

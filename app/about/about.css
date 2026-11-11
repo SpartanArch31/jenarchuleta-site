@@ -312,3 +312,17 @@
     --g-max-h: min(86vh, 1000px);
   }
 }
+
+/* Jen, Nov 10: the 20s photos are bigger, especially on phones. The cover
+   square grows, and on phones it and the slideshow photos use the full width.
+   Photos stay whole (contain), never cropped or stretched. */
+.twenties-cover { width: min(100%, 560px); }
+.twenties-caption { max-width: 560px; }
+.twenties-figure img { max-width: min(96vw, 1100px); max-height: calc(100dvh - 120px); }
+@media (max-width: 860px) {
+  .tim-then { max-width: 640px; }
+  .twenties-cover { width: 100%; }
+  .twenties-caption { max-width: none; }
+  .twenties-stage { padding: 52px 0 16px; gap: 10px; }
+  .twenties-figure img { max-width: 100vw; max-height: calc(100dvh - 116px); border-radius: 0; }
+}

@@ -73,10 +73,13 @@ export default function AboutPage() {
             how I like it.
           </p>
           <p className="tim-lead">
-            {/* Jen, Nov 9: her words, word for word. Replaces the coffee paragraph. */}
-            My favorite part of the day is the car rides with my kids. That’s when some of our best
-            conversations happen. I love a full house, good conversation, laughter, and a little
-            gambling now and then.
+            {/* Jen, Nov 10: her final words, word for word. */}
+            I love car rides with my kids. That’s when some of our best conversations happen, when
+            we have time to really talk and, more importantly, listen. I still love adventure, and
+            I’ll always enjoy the excitement of a red carpet, but I’m just as happy in sweats
+            watching a movie with my family. I love being a wife and a mom, and I treasure those
+            simple moments when we’re all together. If I could bottle up one sound and keep it
+            forever, it would be my family laughing and talking around the dinner table.
           </p>
         </div>
         <div>
@@ -108,14 +111,6 @@ export default function AboutPage() {
         <TwentiesSlideshow />
         <p className="tim-lead">My 20s were loud. I got into rooms most people never see, stood next to people you only know from a screen, and went places I didn’t grow up thinking I’d ever go. Some of it was exactly as fun as it looked. Some of it wasn’t.</p>
         <p className="tim-lead">A lot of it looked like the dream from the outside. Inside it was survival. I learned who I was while everything around me tried to tell me who to be. I wouldn’t trade it. It made me. But it cost something, and I know that now.</p>
-      </section>
-
-      {/* Jen, Nov 6: the Key to the City is featured here, not inside the gallery. */}
-      <section className="tim-wrap tim-feature" aria-label="Receiving the Key to the City">
-        <figure className="tim-feature-fig">
-          <Image className="tim-img" src="/assets/gallery-nov4b/nov4b-13-award-podium.jpg" alt="Jen Archuleta receiving the Key to the City" width={1040} height={660} sizes="(max-width: 860px) 92vw, 760px" quality={88} />
-          <figcaption className="tim-slot-cap">Receiving the Key to the City.</figcaption>
-        </figure>
       </section>
 
       {/* ABOUT-10: one more threshold, from Jen's story into the archive. */}

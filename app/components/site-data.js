@@ -145,8 +145,8 @@ export const SHOP = {
   signedBookPrice: '$35',
   signedBookShipping: '$6.99',
   signedBookTotal: '$41.99',
-  // Jen, Nov 5: no day or week count. Signed and shipped by regular mail.
-  signedBookLeadTime: 'Signed and shipped by regular mail.',
+  // Jen, Nov 10: exactly "Shipped via USPS." No day or week count, no packaging.
+  signedBookLeadTime: 'Shipped via USPS.',
 
   // SOLD OUT SWITCH — flip to false to put signed copies back on sale.
   // NOTE: `signedBook` above is deliberately left populated. The printed
@@ -162,8 +162,8 @@ export const SHOP = {
   // addresses only.
   bookmarkShipping: 'Free shipping, US only',
   // The Shop card and Shipping & Returns use Jen's exact bookmark paragraph
-  // (about 6 inches, gold key charm, wax-style seal, padded gift case, regular
-  // mail). Leave these blank. Do not add a day-count such as "1 to 2 business
+  // (about 6 inches, made by hand by Jen, gold key charm, wax-style seal,
+  // "Shipped via USPS.", Jen, Nov 10; no packaging materials). Leave these blank. Do not add a day-count such as "1 to 2 business
   // days", and do not describe a choker or say the bookmark folds.
   bookmarkSize: '',
   bookmarkPackaging: '',
@@ -184,6 +184,10 @@ export const SHOP = {
   // Never a Kit checkout URL. Old #backstage-bundle anchors land on this card.
   bundle: '',
   bundlePrice: '$69',
+
+  // Jen's eBay store (jenniferwalcottarchive). One small text link at the
+  // bottom of the shop, nothing more (Jen, Nov 10, 2026).
+  ebayWardrobe: 'https://ebay.io/m/FSMA6i',
 };
 
 // Podcast (Buzzsprout). The numeric podcast ID powers the official

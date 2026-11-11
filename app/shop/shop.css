@@ -443,3 +443,24 @@
   .shop-page #velvet-circle { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
   .shop-page #velvet-circle .product-media { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: var(--hairline); }
 }
+
+/* Jen, Nov 10: merchandise announcement (text only) and the small eBay link. */
+.shop-page .shop-coming {
+  max-width: 640px;
+  margin: var(--space-6, 48px) auto 0;
+  text-align: center;
+}
+.shop-page .shop-coming h3 { margin: 0 0 8px; font-size: var(--text-h3); }
+.shop-page .shop-coming p { margin: 0; color: var(--text-secondary); font-size: var(--text-body); line-height: 1.6; }
+.shop-page .shop-ebay {
+  margin: var(--space-5, 32px) auto 0;
+  text-align: center;
+  font-size: var(--text-caption);
+}
+.shop-page .shop-ebay a {
+  display: inline-block;
+  padding-block: 10px;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

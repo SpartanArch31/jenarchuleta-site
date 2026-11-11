@@ -321,6 +321,15 @@ const NOV4B = [
   { src: '/assets/gallery-nov4b/nov4b-11-hefner-calendar-signing.jpg', alt: 'Jen Archuleta at a calendar signing', caption: '', width: 930, height: 700 },
   { src: '/assets/gallery-nov4b/nov4b-12-sunglasses-party.jpg', alt: 'Jen Archuleta at a party in sunglasses', caption: '', width: 980, height: 820 },
   { src: '/assets/gallery-nov4b/nov4b-13-award-podium.jpg', alt: 'Jen Archuleta at an awards podium', caption: '', width: 1040, height: 660 },
+  // Jen, Nov 10: her eight new photos, right after the Key to the City, in her order.
+  { src: '/assets/gallery-nov10/nov10-01-bali-helicopter.jpg', alt: 'Jen Archuleta walking from a helicopter in Bali', caption: '', width: 1122, height: 1062 },
+  { src: '/assets/gallery-nov10/nov10-02-roberto-cavalli-milan.jpg', alt: 'Jen Archuleta with Roberto Cavalli and Playboy bunnies in Milan', caption: '', width: 1320, height: 1003 },
+  { src: '/assets/gallery-nov10/nov10-03-bali-evening.jpg', alt: 'Jen Archuleta at sunset between Balinese shrines and gold umbrellas', caption: '', width: 1320, height: 956 },
+  { src: '/assets/gallery-nov10/nov10-04-bali-musicians.jpg', alt: 'Jen Archuleta with Balinese musicians and their kendang drums', caption: '', width: 1236, height: 748 },
+  { src: '/assets/gallery-nov10/nov10-05-bali-airport.jpg', alt: 'Jen Archuleta at the Bali airport at sunset, a plane behind her', caption: '', width: 1124, height: 820 },
+  { src: '/assets/gallery-nov10/nov10-06-singapore-airlines.jpg', alt: 'Jen Archuleta in her seat on a Singapore Airlines flight', caption: '', width: 1320, height: 1090 },
+  { src: '/assets/gallery-nov10/nov10-07-st-barts.jpg', alt: 'Jen Archuleta above the ocean in St. Barts', caption: '', width: 620, height: 622 },
+  { src: '/assets/gallery-nov10/nov10-08-the-archuletas.jpg', alt: 'Jen Archuleta with Adam and family', caption: '', width: 834, height: 1050 },
   { src: '/assets/gallery-nov4b/nov4b-14-raising-stakes-poker-flyer.jpg', alt: 'Jen Archuleta on a poker flyer', caption: '', width: 1400, height: 1400 },
   { src: '/assets/gallery-nov4b/nov4b-15-featured-girl-magazine.jpg', alt: 'Jen Archuleta on a magazine cover', caption: '', width: 1242, height: 1231 },
   { src: '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg', alt: 'Jen Archuleta in a painted portrait', caption: '', width: 1157, height: 1600 },
@@ -404,8 +413,8 @@ const OUT_OF_GALLERY = new Set([
   '/assets/gallery-nov4b/nov4b-18-thanksgiving-eve-tommy-lee.jpg',
   // ImageCollect watermark is tiled across the painting. It cannot be cropped off without cutting her.
   '/assets/gallery-nov4b/nov4b-16-playboy-painting-imagecollect.jpg',
-  // Jen, Nov 6: featured on its own on About Me, not hidden in the gallery.
-  '/assets/gallery-nov4b/nov4b-13-award-podium.jpg',
+  // Jen, Nov 10: the Key to the City is back in the carousel (it was featured
+  // on its own on About Me from Nov 6 to Nov 10).
   // Jen, Nov 9: slide 98 (the pink aprons, "Easter bakers") is out.
   '/assets/gallery-nov4/nov4-17-pink-aprons.jpg',
 ]);
@@ -470,7 +479,22 @@ const GALLERY_CAPTIONS = {
   '/assets/gallery-nov4/nov4-15-red-leather-seat.jpg': 'Singapore Airlines',
   '/assets/gallery-nov4/nov4-17-pink-aprons.jpg': 'Easter bakers',
   '/assets/gallery-nov4/nov4-18-playboy-lite-red-carpet.jpg': 'Super Bowl with Hef',
-  '/assets/gallery-nov4b/nov4b-02-timberlake-nelly-robes.jpg': 'Justin Timberlake and Nelly music video',};
+  '/assets/gallery-nov4b/nov4b-02-timberlake-nelly-robes.jpg': 'Justin Timberlake and Nelly music video',
+  // Jen, Nov 10 (slide numbers 92, 95, 117 at the time), her exact words.
+  '/assets/gallery-nov4/nov4-09-playboy-collage.jpg': 'Me trying to get out of something.',
+  '/assets/gallery-nov4/nov4-14-hawaii-beach.jpg': 'In Hawaii with my mother-in-law.',
+  '/assets/gallery-nov5/nov5-03-night-out.jpg': 'The OG’s.',
+  '/assets/gallery-nov4b/nov4b-13-award-podium.jpg': 'Receiving the Key to the City.',
+  // Jen, Nov 10: her captions for the eight new photos, word for word.
+  '/assets/gallery-nov10/nov10-01-bali-helicopter.jpg': 'Arriving in Bali, I chose a helicopter transfer rather than traveling by road.',
+  '/assets/gallery-nov10/nov10-02-roberto-cavalli-milan.jpg': 'At the Roberto Cavalli fashion show in Milan, Italy.',
+  '/assets/gallery-nov10/nov10-03-bali-evening.jpg': 'An evening in Bali.',
+  '/assets/gallery-nov10/nov10-04-bali-musicians.jpg': 'With Balinese musicians and their traditional kendang drums.',
+  '/assets/gallery-nov10/nov10-05-bali-airport.jpg': 'At the airport in Bali.',
+  '/assets/gallery-nov10/nov10-06-singapore-airlines.jpg': 'Headed to Singapore on Singapore Airlines.',
+  '/assets/gallery-nov10/nov10-07-st-barts.jpg': 'St. Barts.',
+  '/assets/gallery-nov10/nov10-08-the-archuletas.jpg': 'The Archuletas.',
+};
 
 const SLIDES = ALL_SLIDES
   .filter((slide) => !OUT_OF_GALLERY.has(slide.src))
