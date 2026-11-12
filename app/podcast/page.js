@@ -64,6 +64,17 @@ export default async function PodcastPage() {
         />
         <div className="eyebrow">The Podcast</div>
         <h1>{name}</h1>
+        {/* Jen, Nov 11: a large YouTube player right under the title, so people
+            can watch on a phone or computer. Plays the Full Episodes playlist. */}
+        <div className="pod-youtube">
+          <iframe
+            src={PODCAST.youtubeEmbed}
+            title={`${name}, full episodes on YouTube`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
         <p className="pod-status">Season 1 is complete, {EPISODE_COUNT} episodes. The show is on a break right now. Jen is focusing on her movie and documentary.</p>
         <div className="pod-subscribe">
           <a className="btn btn-primary" href={PODCAST.subscribe.apple} target="_blank" rel="noopener noreferrer">Subscribe on Apple Podcasts</a>

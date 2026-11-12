@@ -182,8 +182,16 @@ export const SHOP = {
   // It was pointing at a Kit checkout, which can't collect a shipping address.
   // Paste a one-time $69 Stripe Payment Link here (shipping address ON).
   // Never a Kit checkout URL. Old #backstage-bundle anchors land on this card.
-  bundle: '',
+  // Jen, Nov 11: "Book & Bunny Ears Bundle", one $69 purchase plus $6.99
+  // US shipping (Adam), separate from the monthly Velvet Circle. Stripe
+  // product prod_Vc2rcBQjtSW8LU, link plink_1Uaom1AnUyGSiQJ49J3NYBm5, asks who
+  // to sign the book to.
+  bundle: 'https://buy.stripe.com/28EbJ05QfaT7bvdfAeds40f',
+  bundleName: 'Book & Bunny Ears Bundle',
   bundlePrice: '$69',
+  bundleShipping: '$6.99',
+  bundleTotal: '$75.99',
+  bundleIncludes: 'Includes a signed book, black bunny ears, a velvet bookmark, and one month to ask me up to three questions.',
 
   // Jen's eBay store (jenniferwalcottarchive). One small text link at the
   // bottom of the shop, nothing more (Jen, Nov 10, 2026).

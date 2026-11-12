@@ -90,8 +90,10 @@ export default function BookOffers() {
                 <p className="price-note">{SHOP.bookmarkShipping}</p>
               </div>
               <p className="product-desc">
-                About 6 inches long. I make each one by hand from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack. Shipped via USPS.
+                About 6 inches long. I make each one by hand from black velvet with a gold key charm and a durable, flexible wax-style seal that won’t crack.
               </p>
+              {/* Jen, Nov 11: same font and size as the signed copy's line. */}
+              <p className="fulfill fulfill--key">{SHOP.signedBookLeadTime}</p>
               {bookmarkFacts.length > 0 && (
                 <dl className="offer-facts">
                   {bookmarkFacts.map(([label, value]) => (
@@ -172,30 +174,35 @@ export default function BookOffers() {
           <article className="product-card" id="bundle">
             <span id="backstage-bundle" />
             <span id="backstage-box" />
-            <div className="product-media product-media--contain">
+            {/* Jen, Nov 11: a small photo of the signed book and black bunny
+                ears, with her line directly under it. */}
+            <div className="product-media product-media--contain product-media--small">
               <img
-                src="/assets/backstage-bundle.jpg"
-                alt="A gift box with a black ribbon, bunny ears, the book, and the velvet bookmark"
-                width="1268"
-                height="1586"
+                src="/assets/book-bunny-ears-bundle.jpg"
+                alt="The signed book with black velvet bunny ears and the velvet bookmark"
+                width="800"
+                height="1049"
+                loading="lazy"
               />
             </div>
             <div className="product-body">
-              <div className="eyebrow">The Bundle</div>
-              <h3>Signed book, bookmark, and bunny ears</h3>
-              <p className="price">{SHOP.bundlePrice}</p>
-              <p className="product-desc">
-                A signed copy of the book, the Signature Velvet Bookmark, and bunny ears.
-              </p>
+              <p className="product-desc bundle-includes">{SHOP.bundleIncludes}</p>
+              <div className="eyebrow">One-time purchase</div>
+              <h3>{SHOP.bundleName}</h3>
+              <div className="price-block">
+                <p className="price">
+                  {SHOP.bundleTotal} <span className="price-unit">total</span>
+                </p>
+                <p className="price-note">
+                  {SHOP.bundlePrice} bundle + {SHOP.bundleShipping} shipping, US only
+                </p>
+              </div>
+              <p className="fulfill fulfill--key">{SHOP.signedBookLeadTime}</p>
               <div className="product-cta">
-                {SHOP.bundle ? (
-                  <>
-                    <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
-                      Buy the bundle
-                    </a>
-                    <TrustLine />
-                  </>
-                ) : null}
+                <a href={SHOP.bundle} target="_blank" rel="noopener" className="btn btn-primary">
+                  Buy the bundle
+                </a>
+                <TrustLine />
               </div>
             </div>
           </article>

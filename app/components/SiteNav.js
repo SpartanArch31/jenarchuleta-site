@@ -38,7 +38,7 @@ const MENU = [
     items: [
       { href: '/about#speaking', label: 'Speaking' },
       { href: '/about#press', label: 'Press' },
-      { href: '/about#giving', label: 'CASA and Childhelp' },
+      { href: '/about#giving', label: 'CASA, Childhelp & My Therapy Dog, Turbo.' },
     ],
   },
   { href: '/contact', label: 'Contact' },

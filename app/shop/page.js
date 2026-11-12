@@ -15,6 +15,7 @@ const JUMP = [
   { href: '#signed-copy', label: 'Signed copy' },
   { href: '#bookmark', label: 'Bookmark' },
   { href: '#velvet-circle', label: 'Book club' },
+  { href: '#bundle', label: 'Bundle' },
   { href: '#apparel', label: 'Apparel' },
   { href: '#bumblebee', label: 'Be the Bumblebee' },
   { href: '#flawed-and-fierce', label: 'Flawed & Fierce' },

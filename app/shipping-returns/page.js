@@ -52,10 +52,11 @@ export default function ShippingReturnsPage() {
             one-of-a-kind pieces, all other sales are final.
           </p>
 
-          <h2 id="bundle">The Bundle</h2>
+          <h2 id="bundle">{SHOP.bundleName}</h2>
           <p>
-            The Bundle is {SHOP.bundlePrice}. It is a signed copy of the book, the Signature Velvet Bookmark,
-            and bunny ears. Shipped via USPS.
+            The {SHOP.bundleName} is {SHOP.bundlePrice} plus {SHOP.bundleShipping} shipping, US only, one time.
+            It includes a signed book, black bunny ears, a velvet bookmark, and one month to ask Jen up to three
+            questions. It is separate from the monthly Velvet Circle Book Club. Shipped via USPS.
           </p>
 
           <h2 id="velvet-circle">The Velvet Circle Book Club</h2>

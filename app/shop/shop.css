@@ -511,3 +511,7 @@
   font-size: var(--text-body-l, 1.15rem); line-height: 1.65; color: var(--text);
 }
 .shop-page .collection-signed-note { font-size: var(--text-body-s, .95rem); }
+
+/* Jen, Nov 11: the bundle uses a small photo, her line right under it. */
+.shop-page .product-media--small img { max-height: 300px; width: auto; margin-inline: auto; }
+.shop-page .bundle-includes { margin: 0 0 8px; font-style: italic; }

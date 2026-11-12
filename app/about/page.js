@@ -46,7 +46,7 @@ export default function AboutPage() {
             {' · '}
             <a href="#press">Press</a>
             {' · '}
-            <a href="#giving">CASA and Childhelp</a>
+            <a href="#giving">CASA, Childhelp &amp; My Therapy Dog, Turbo.</a>
           </p>
         </div>
         <div>

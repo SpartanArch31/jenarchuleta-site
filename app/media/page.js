@@ -211,7 +211,9 @@ export default function MediaPage() {
       {/* MEDIA-15: Film and Speaking are siblings of Press, in the outline too. */}
       <section id="film" className="wrap">
         <h2>Film and documentary</h2>
-        <p>{FILM.film}</p>
+        {/* Jen, Nov 11: heading, then the artwork with the disclaimer right
+            under it, and her text beside it (stacked on a phone). */}
+        <h3 className="doc-heading">{FILM.documentaryTitle} | {FILM.documentaryStatus}</h3>
         <div className="doc-feature">
           <figure className="doc-poster">
             <Image
@@ -225,8 +227,7 @@ export default function MediaPage() {
             <figcaption>{FILM.documentaryPoster.note}</figcaption>
           </figure>
           <div className="doc-copy">
-            {/* Jen, Nov 10: her exact heading. The partner links sit below, once each. */}
-            <h3>{FILM.documentaryTitle} | {FILM.documentaryStatus}</h3>
+            <p>{FILM.documentaryText}</p>
           </div>
         </div>
         {/* MEDIA-20: partner links share the page's ghost-button style. */}
@@ -280,7 +281,7 @@ export default function MediaPage() {
           {/* Jen, Nov 9: The Forever Angels is her own nonprofit, kept separate from Childhelp. */}
           <h3>The Forever Angels, my nonprofit</h3>
           <p>
-            I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, the elderly, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
+            I co-founded The Forever Angels with Allison Kiefer. Families in need come first. We also help veterans, older adults, people in hospice care, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
           </p>
           <p className="media-actions">
             <a

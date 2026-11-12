@@ -111,14 +111,14 @@ export function PressSection() {
 export function GivingSection() {
   return (
     <section id="giving" className="wrap">
-      <h2>CASA and Childhelp</h2>
+      <h2>CASA, Childhelp &amp; My Therapy Dog, Turbo.</h2>
       <p>
         I have been a CASA volunteer, and I have volunteered with Childhelp for almost a decade. I have chaired the annual fashion show fundraiser three times, including the 2022 A Day in Wonderland event, which raised nearly $325,000 for Childhelp’s programs.
       </p>
       <p>I also volunteer with Turbo, my TDI therapy dog. Turbo has worked with Ronald McDonald House Charities, VA hospitals, and hospice.</p>
       <h3>The Forever Angels, my nonprofit</h3>
       <p>
-        I co-founded The Forever Angels with Allison Kiefer. Families in need come first, and we also help veterans, the elderly, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
+        I co-founded The Forever Angels with Allison Kiefer. Families in need come first. We also help veterans, older adults, people in hospice care, and animals. We receive referrals from social workers and case managers, then work with trusted community partners to verify each need and make sure support reaches the people who truly need it.
       </p>
       <p className="media-actions">
         <a className="btn btn-ghost" href="https://theforeverangels.com/our-founders/" target="_blank" rel="noopener noreferrer">

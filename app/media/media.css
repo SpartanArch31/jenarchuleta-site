@@ -376,8 +376,8 @@
   }
 }
 
-/* Jen, Nov 10: the heading ("Beyond the Velvet Ropes Documentary | In
-   Production") sits above the artwork, which uses the full column. */
-.doc-feature { display: flex; flex-direction: column; gap: var(--space-4, 20px); }
-.doc-feature .doc-copy { order: -1; }
-.doc-feature .doc-copy h3 { margin: 0; }
+/* Jen, Nov 11: heading above; the artwork (with the disclaimer directly
+   under it) and her text side by side on wide screens, stacked on phones. */
+.doc-heading { margin: var(--space-5, 32px) 0 0; font-size: var(--text-h3); }
+.doc-feature { margin-top: var(--space-4, 20px); }
+.doc-copy p { margin: 0; font-size: var(--text-body-l, 1.15rem); line-height: 1.6; }
