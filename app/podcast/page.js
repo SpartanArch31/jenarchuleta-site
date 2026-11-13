@@ -9,6 +9,7 @@ import PublicReviews from '../components/PublicReviews';
 import PupsList from '../pups/PupsList';
 import '../pups/pups.css';
 import { SEARCH_EPISODES } from '../../lib/site-search';
+import { pageMeta } from '../../lib/page-meta';
 
 // POD-22: one episode count for the whole page. Reads PODCAST.episodeCount
 // once site-data.js carries it; 13 until then. The hero JPG has '13 EPISODES'
@@ -25,22 +26,13 @@ const PODCAST_OG = {
 const DESCRIPTION =
   `Unfiltered with Jen Archuleta. Season 1 is complete, ${EPISODE_COUNT} episodes. The show is on a break right now.`;
 
-export const metadata = {
-  title: { absolute: 'Podcast, Unfiltered with Jen Archuleta' },
+export const metadata = pageMeta({
+  path: '/podcast',
+  title: 'Podcast, Unfiltered with Jen Archuleta',
+  absolute: true,
   description: DESCRIPTION,
-  openGraph: {
-    title: 'Unfiltered with Jen Archuleta',
-    description: DESCRIPTION,
-    url: 'https://jenarchuleta.com/podcast',
-    images: [PODCAST_OG],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Unfiltered with Jen Archuleta',
-    description: DESCRIPTION,
-    images: [PODCAST_OG.url],
-  },
-};
+  image: PODCAST_OG,
+});
 
 export default async function PodcastPage() {
   const { name, buzzsproutSite, buzzsproutId } = PODCAST;

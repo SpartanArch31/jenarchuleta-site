@@ -1,6 +1,7 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetGate from './Gate';
+import { SHOP } from '../components/site-data';
 import './teaser.css';
 
 function KeyIcon() {
@@ -36,6 +37,18 @@ export default function VelvetLocked() {
           <p className="vl-small" id="velvet-passcode-note">
             Access comes with the book. Your passcode is in the back of the book, under the QR code.
           </p>
+          {/* Jen, Nov 13: a short line and the book club button. The passcode
+              itself is never shown on this page. */}
+          <div className="vl-circle">
+            <p className="vl-small">
+              Want to talk about the book with me? The Velvet Circle is my monthly book club, {SHOP.velvetCircleMembershipPrice}, cancel anytime.
+            </p>
+            <div className="vl-buttons">
+              <a className="btn btn-ghost" href={SHOP.velvetCircleMembership} target="_blank" rel="noopener">
+                Join the Velvet Circle Book Club
+              </a>
+            </div>
+          </div>
         </div>
       </section>
       </main>

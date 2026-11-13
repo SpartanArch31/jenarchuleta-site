@@ -3,11 +3,13 @@ import SiteFooter from '../components/SiteFooter';
 import KitInlineForm from '../components/KitInlineForm';
 import { BOOKING_EMAIL, CONNECT_LINKS, KIT_FORM_UID } from '../components/site-data';
 import '../thank-you/thank-you.css';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/contact',
   title: 'Contact',
   description: 'Email Jen Archuleta about the book, speaking, and press. One address, one form.',
-};
+});
 
 export default function ContactPage() {
   return (

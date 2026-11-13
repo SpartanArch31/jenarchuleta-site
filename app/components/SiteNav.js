@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 // Five pages: Home, Book, Podcast, About, Contact.
-// Journal stays in the footer. Shop and Pups redirect. /velvet stays unlisted.
+// Journal is in the menu (Jen, Nov 13). Shop and Pups redirect. /velvet stays unlisted.
 // Desktop: inline links. A drop-down opens only when a page still has sections.
 // G-09: internal links use next/link, so moving between pages is a client
 // navigation (no full reload, no cream flash between pages).
@@ -30,6 +30,8 @@ const MENU = [
       { href: '/podcast#pups', label: 'Pups of the Podcast' },
     ],
   },
+  // Jen, Nov 13: Journal is in the main menu on every page.
+  { href: '/journal', label: 'Journal' },
   {
     id: 'about',
     href: '/about',

@@ -2,11 +2,13 @@ import '../legal-pages.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import { SHOP, STRIPE_CUSTOMER_PORTAL_URL } from '../components/site-data';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/shipping-returns',
   title: 'Shipping & Returns',
   description: 'Shipping timelines, returns, and membership cancellation terms for jenarchuleta.com orders.',
-};
+});
 
 const EFFECTIVE_DATE = 'July 23, 2026';
 // Shipping costs, ship times, and how members send questions spelled out (Nov 3).

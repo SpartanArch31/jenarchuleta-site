@@ -23,6 +23,10 @@ export default async function sitemap() {
     { url: `${BASE}/contact`, changeFrequency: 'yearly', priority: 0.5 },
     { url: `${BASE}/journal`, changeFrequency: 'daily', priority: 0.8 },
     { url: `${BASE}/media`, changeFrequency: 'monthly', priority: 0.7 },
+    // Jen, Nov 13: the legal pages.
+    { url: `${BASE}/terms`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE}/shipping-returns`, changeFrequency: 'yearly', priority: 0.3 },
   ];
   return [...pages, ...posts];
 }

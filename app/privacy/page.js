@@ -1,11 +1,13 @@
 import '../legal-pages.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/privacy',
   title: 'Privacy Policy',
   description: 'How jenarchuleta.com collects, uses, and protects your personal information.',
-};
+});
 
 const EFFECTIVE_DATE = 'July 23, 2026';
 const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';

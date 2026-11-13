@@ -149,3 +149,7 @@
     justify-content: center;
   }
 }
+
+/* Jen, Nov 13: book club line under the passcode note. */
+.vl-circle { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(190, 149, 67, 0.35); }
+.vl-circle .vl-buttons { margin-top: 12px; }

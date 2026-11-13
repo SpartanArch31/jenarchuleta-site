@@ -7,12 +7,13 @@ import CopyTextButton from '../components/CopyTextButton';
 import MediaCats from './MediaCats';
 import { APPEARANCES, FILM, PRESS, cardMeta } from '../../lib/press';
 import './media.css';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
-  title: { absolute: 'Book Press & Interviews, Jen Archuleta' },
-  description:
-    'Media and press for Beyond the Velvet Ropes: the book, the feature film, and the documentary.',
-};
+export const metadata = pageMeta({
+  path: '/media',
+  title: 'Book Press & Interviews, Jen Archuleta', absolute: true,
+  description: 'Media and press for Beyond the Velvet Ropes: the book, the feature film, and the documentary.',
+});
 
 // FilmFreeway sits with Leone and Mark. Never publish a representative's
 // phone number or email. Signup and contact live on Thank You.
@@ -30,8 +31,9 @@ const HEADSHOTS = [
   {
     src: '/assets/jen-headshot-bw.jpg',
     download: '/assets/jen-headshot-bw.jpg',
-    fileName: 'Jen-Archuleta-Glamorous.jpg',
-    label: 'Glamorous',
+    fileName: 'Jen-Archuleta-Black-and-White-Portrait.jpg',
+    // Jen, Nov 13: her new label names.
+    label: 'Black and White Portrait',
     alt: 'Black-and-white portrait of Jen Archuleta',
     width: 1320,
     height: 1946,
@@ -39,8 +41,8 @@ const HEADSHOTS = [
   {
     src: '/assets/presskit-headshot-floral.jpg',
     download: '/assets/presskit-headshot-floral.jpg',
-    fileName: 'Jen-Archuleta-Candid.jpg',
-    label: 'Candid',
+    fileName: 'Jen-Archuleta-Floral-Portrait.jpg',
+    label: 'Floral Portrait',
     note: 'Primary photo',
     alt: 'Jen Archuleta smiling in a floral top',
     width: 1100,

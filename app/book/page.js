@@ -3,15 +3,16 @@ import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import BuyOptions from '../components/BuyOptions';
 import BookOffers from './BookOffers';
+import FirstChapterSignup from '../components/FirstChapterSignup';
 import PublicReviews from '../components/PublicReviews';
 import { BOOK_REVIEWS } from '../../lib/public-reviews';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
-  // Matches the retail listings exactly (Amazon / B&N / Spotify use the full name).
-  title: { absolute: 'Beyond the Velvet Ropes by Jennifer Walcott Archuleta' },
-  description:
-    'Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love by Jennifer Walcott Archuleta. Out now.',
-};
+export const metadata = pageMeta({
+  path: '/book',
+  title: 'Beyond the Velvet Ropes by Jennifer Walcott Archuleta', absolute: true,
+  description: 'Beyond the Velvet Ropes: My Story of Perseverance, Hope, and Love by Jennifer Walcott Archuleta. Out now.',
+});
 
 const bookJsonLd = {
   '@context': 'https://schema.org',
@@ -100,6 +101,9 @@ export default function BookPage() {
           </ul>
         </div>
       </section>
+
+      {/* Jen, Nov 13: the free first chapter signup. */}
+      <FirstChapterSignup />
 
       {/* REVIEWS */}
       <section id="reviews" className="wrap center book-more book-reviews">

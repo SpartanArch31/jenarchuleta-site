@@ -193,9 +193,11 @@ export const SHOP = {
   bundleTotal: '$75.99',
   bundleIncludes: 'Includes a signed book, black bunny ears, a velvet bookmark, and one month to ask me up to three questions.',
 
-  // Jen's eBay store (jenniferwalcottarchive). One small text link at the
-  // bottom of the shop, nothing more (Jen, Nov 10, 2026).
-  ebayWardrobe: 'https://ebay.io/m/FSMA6i',
+  // Jen's eBay store. One small text link at the bottom of the shop (Jen,
+  // Nov 10, 2026). Jen, Nov 13: the old ebay.io/m/FSMA6i link went to an eBay
+  // error page, so the line is hidden until she sends a working link. Paste it
+  // here and the line "Shop my one-of-a-kind Playmate wardrobe on eBay." shows.
+  ebayWardrobe: '',
 
   // Jen's LTK and Amazon storefronts, two small text links beside eBay
   // (Adam, Nov 10, 2026). The Amazon link is the clean storefront address:
@@ -220,7 +222,10 @@ export const SHOP = {
         { id: 'bee-womens-tee', name: 'Women’s tee', image: '/assets/apparel/bee-womens-tee.jpg', etsy: 'https://www.etsy.com/listing/4321690469' },
         { id: 'bee-hoodie', name: 'Hoodie', image: '/assets/apparel/bee-hoodie.jpg', etsy: 'https://www.etsy.com/listing/4320793739' },
         { id: 'bee-fly-away-hoodie', name: 'Fly Away hoodie', image: '/assets/apparel/bee-fly-away-hoodie.jpg', etsy: 'https://www.etsy.com/listing/4320791333' },
-        { id: 'bee-hat', name: 'Hat', image: '/assets/apparel/bee-hat.jpg', etsy: 'https://www.etsy.com/listing/4320791993' },
+        // Jen, Nov 13: new design. The old hat listing (4320791993) is off.
+        { id: 'bee-hat', name: 'Dad hat', image: '/assets/apparel/bee-hat.jpg', etsy: 'https://www.etsy.com/listing/4616561330' },
+        { id: 'bee-trucker-hat', name: 'Trucker hat', image: '/assets/apparel/bee-trucker-hat.jpg', etsy: 'https://www.etsy.com/listing/4616562198' },
+        { id: 'bee-tote', name: 'Tote', image: '/assets/apparel/bee-tote.jpg', etsy: 'https://www.etsy.com/listing/4616555155' },
       ],
     },
     {
@@ -228,7 +233,7 @@ export const SHOP = {
       title: 'Flawed & Fierce',
       episode: 'Episode 5 with Amy Palmiero-Winters',
       episodeUrl: 'https://www.youtube.com/watch?v=xpVgDQpPUjU',
-      story: 'Amy lost her leg in a motorcycle accident. Most people would have called that the end of the story. Amy called it the start. On a prosthetic, she set 11 world records and was the first to finish some of the hardest races on earth. She isn’t fierce in spite of what broke. She’s fierce because of what she rebuilt. I chose Amy for this collection because she is living proof of what this heart means: you’re not broken, you’re rebuilt.',
+      story: 'Amy lost her leg in a motorcycle accident. Most people would have called that the end of the story. Amy called it the start. On a prosthetic, she set 11 world records and was the first to finish some of the hardest races on earth. She isn’t fierce in spite of what broke. She’s fierce because of what she rebuilt. I chose Amy for this collection because she is living proof of what this heart means. You’re not broken. You’re becoming.',
       items: [
         {
           id: 'ff-hoodie',
@@ -247,6 +252,14 @@ export const SHOP = {
           etsy: 'https://www.etsy.com/listing/4614638186',
           signed: 'https://buy.stripe.com/dRm7sKdiHf9n2YHfAeds40e',
           signedPrice: '$59.95',
+        },
+        {
+          // Jen, Nov 13: Etsy only for now (no signed option).
+          id: 'ff-trucker-hat',
+          name: 'Navy trucker hat',
+          detail: 'Embroidered heart, mesh back. One size.',
+          image: '/assets/apparel/ff-trucker-hat.jpg',
+          etsy: 'https://www.etsy.com/listing/4616553991',
         },
       ],
     },

@@ -5,12 +5,13 @@ import SiteFooter from '../components/SiteFooter';
 import PhotoGallery from '../components/PhotoGallery';
 import TwentiesSlideshow from './TwentiesSlideshow';
 import { GivingSection, PressSection, SpeakingSection } from './AboutSections';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/about',
   title: 'About',
-  description:
-    'Faith, family, and a bunch of rescues. God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.',
-};
+  description: 'Faith, family, and a bunch of rescues. God comes first. I love my husband, my children, and my family with everything I have. I love fiercely, protect my peace, and try to lead my life with faith, gratitude, and purpose.',
+});
 
 // About Me, in Jen's own words (November 3, 2026), plus the two 20s paragraphs
 // she sent November 5. Don't add, trim, or reword her sentences, and never use

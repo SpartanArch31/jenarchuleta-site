@@ -2,11 +2,13 @@ import '../legal-pages.css';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import { SOCIALS } from '../components/site-data';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/terms',
   title: 'Terms of Service',
   description: 'The terms that govern your use of jenarchuleta.com.',
-};
+});
 
 const EFFECTIVE_DATE = 'July 23, 2026';
 const CONTACT_EMAIL = 'therealunfilteredpod@gmail.com';

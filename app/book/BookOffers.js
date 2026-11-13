@@ -287,12 +287,14 @@ export default function BookOffers() {
           </div>
         ))}
 
-        {/* Jen, Nov 10: one small text link, her exact words. */}
-        <p className="shop-ebay">
-          <a href={SHOP.ebayWardrobe} target="_blank" rel="noopener noreferrer">
-            Shop My Playmate promotions some one of a kind Wardrobe
-          </a>
-        </p>
+        {/* Jen, Nov 13: her new wording. Hidden until SHOP.ebayWardrobe has a working link. */}
+        {SHOP.ebayWardrobe ? (
+          <p className="shop-ebay">
+            <a href={SHOP.ebayWardrobe} target="_blank" rel="noopener noreferrer">
+              Shop my one-of-a-kind Playmate wardrobe on eBay.
+            </a>
+          </p>
+        ) : null}
         <p className="shop-ebay shop-more-links">
           <a href={SHOP.ltk} target="_blank" rel="noopener noreferrer">Shop my LTK</a>
           <span aria-hidden="true"> · </span>

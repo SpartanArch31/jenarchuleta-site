@@ -84,7 +84,7 @@ export default function TwentiesSlideshow() {
         onClick={() => { setIndex(0); setOpen(true); }}
         aria-label={`Open my 20s slideshow, ${PHOTOS.length} photos`}
       >
-        <Image src={PHOTOS[0].src} alt="" fill sizes="(max-width: 600px) 86vw, 420px" quality={85} />
+        <Image src={PHOTOS[0].src} alt={PHOTOS[0].alt} fill sizes="(max-width: 600px) 86vw, 420px" quality={85} />
         {/* Adam, Nov 5: no "My 20s" label; a clear cue that the square opens. */}
         <span className="twenties-cover-cue" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="18" height="18">
@@ -139,7 +139,7 @@ export default function TwentiesSlideshow() {
               />
             </figure>
             {/* Load the next photo early so the tap feels instant. */}
-            <Image className="twenties-preload" src={next.src} alt="" width={next.width} height={next.height} sizes="(max-width: 760px) 94vw, 900px" quality={85} aria-hidden="true" />
+            <Image className="twenties-preload" src={next.src} alt={next.alt} width={next.width} height={next.height} sizes="(max-width: 760px) 94vw, 900px" quality={85} aria-hidden="true" />
             <div className="twenties-controls">
               <button type="button" onClick={() => go(-1)} aria-label="Previous photo">‹</button>
               <span aria-live="polite">{index + 1} / {PHOTOS.length}</span>

@@ -4,11 +4,13 @@ import KitInlineForm from '../components/KitInlineForm';
 import { BOOKING_EMAIL, CONNECT_LINKS, KIT_FORM_UID } from '../components/site-data';
 import { QUOTES } from '../quotes/quotes-data';
 import './thank-you.css';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/thank-you',
   title: 'Thank You',
   description: 'Thank you for supporting Jen Archuleta and Beyond the Velvet Ropes.',
-};
+});
 
 export default function ThankYouPage() {
   return (

@@ -12,6 +12,9 @@ const pageRedirects = [
   { source: '/velvet-letter/:path*', destination: '/velvet', permanent: true },
   // Older links used /the-velvet-letter. The live page is /velvet.
   { source: '/the-velvet-letter', destination: '/velvet', permanent: true },
+  // Jen, Nov 13: /velvet-letters was a 404.
+  { source: '/velvet-letters', destination: '/velvet', permanent: true },
+  { source: '/velvet-letters/:path*', destination: '/velvet', permanent: true },
   { source: '/the-velvet-letter/:path*', destination: '/velvet', permanent: true },
   // NOTE: /about is a real page (app/about) — do not redirect it.
   { source: '/about-me', destination: '/about', permanent: true },
@@ -27,8 +30,9 @@ const pageRedirects = [
   { source: '/cart', destination: '/book#signed-copy', permanent: false },
   { source: '/checkout', destination: '/book#signed-copy', permanent: false },
   // The shop is part of the book page. Old product URLs still land there.
-  { source: '/shop', destination: '/book#signed-copy', permanent: false },
-  { source: '/shop/:path*', destination: '/book#signed-copy', permanent: false },
+  // Jen, Nov 13: /shop lands on the whole shop, not just the signed copy.
+  { source: '/shop', destination: '/book#shop', permanent: false },
+  { source: '/shop/:path*', destination: '/book#shop', permanent: false },
   // Pups of the Podcast live on the podcast page.
   { source: '/pups', destination: '/podcast#pups', permanent: false },
   { source: '/pups/:path*', destination: '/podcast#pups', permanent: false },
@@ -48,6 +52,9 @@ const pageRedirects = [
   // /contact is its own page. Do not redirect it.
   { source: '/press', destination: '/about#press', permanent: false },
   { source: '/events', destination: '/', permanent: true },
+  // Jen, Nov 13: /film and /documentary were 404s. Film news lives on Media.
+  { source: '/film', destination: '/media#film', permanent: false },
+  { source: '/documentary', destination: '/media#film', permanent: false },
   { source: '/home', destination: '/', permanent: true },
   { source: '/work-with-me', destination: '/', permanent: true },
 ];

@@ -40,6 +40,19 @@ export function fixPublishedCopy(text, slug) {
     // The book is out. Drop only the "coming soon" opener.
     next = next.replace(/Coming\s*🔜\uFE0F?/g, 'Available now.');
   }
+  if (slug === 'wkbn-interview') {
+    // Jen, Nov 13: no state named in public copy.
+    next = next.replace('Los Angeles, Arizona, and Las Vegas', 'Los Angeles and Las Vegas');
+  }
+  if (slug === 'coming-soon-my-very-own-podcast') {
+    // The stray opener also feeds the post's description and Journal card.
+    next = next.replace(/^\s*Coming\s*🔜\uFE0F?\s*/u, '');
+    // Jen, Nov 13: the memoir is out now (linked to /book in repair-body.mjs).
+    next = next.replace(
+      /I’m also working on my book, Beyond the Velvet Ropes?, where I share my own raw and unfiltered journey\./,
+      'My memoir, Beyond the Velvet Ropes, is out now. In it I share my own raw and unfiltered journey.',
+    );
+  }
   if (slug === 'coming-this-july-on-the-podcast') {
     next = next.replace(/^Coming in July:\s*/, '');
   }

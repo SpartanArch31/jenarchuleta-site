@@ -691,7 +691,7 @@ export default function PhotoGallery({ showTitle = true } = {}) {
                   >
                     <Image
                       src={item.src}
-                      alt={offset === 0 ? item.alt : ''}
+                      alt={item.alt}
                       width={item.width}
                       height={item.height}
                       sizes={slideSizes(item)}

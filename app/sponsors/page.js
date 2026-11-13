@@ -1,12 +1,13 @@
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import './sponsors.css';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/sponsors',
   title: 'Sponsors and partners',
-  description:
-    'Sponsors and partners of Unfiltered with Jen Archuleta.',
-};
+  description: 'Sponsors and partners of Unfiltered with Jen Archuleta.',
+});
 
 // Jen's list, this order. A link is included only when the page loads.
 // sunsetsandbonfires.com now redirects to the Etsy shop, so that shop is the link.

@@ -2,7 +2,17 @@ import Image from 'next/image';
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import HomeCarousel from './components/HomeCarousel';
-import { SHOP } from './components/site-data';
+import FirstChapterSignup from './components/FirstChapterSignup';
+import { KIT_FREE_CHAPTER_URL, SHOP } from './components/site-data';
+import { pageMeta } from '../lib/page-meta';
+
+export const metadata = pageMeta({
+  path: '/',
+  title: 'Jen Archuleta',
+  absolute: true,
+  description:
+    'Jen Archuleta, author, speaker, and advocate. Beyond the Velvet Ropes by Jennifer Walcott Archuleta. Read the first chapter free.',
+});
 
 // Home sells the book first, then points to speaking. One next step: buy the book.
 export default function Home() {
@@ -18,8 +28,12 @@ export default function Home() {
             <div className="hero-script">this isn’t the story<br />you think it is</div>
             <h1>Faith, family, and a bunch of rescues.</h1>
             <div className="eyebrow">Jen Archuleta, author of <em>Beyond the Velvet Ropes</em></div>
-            <div className="hero-ctas">
+            {/* Jen, Nov 13: four clear buttons. */}
+            <div className="hero-ctas hero-ctas--four">
               <a className="btn btn-primary" href="/book#buy">Buy the book</a>
+              <a className="btn btn-ghost" href={KIT_FREE_CHAPTER_URL} target="_blank" rel="noopener">Read the first chapter free</a>
+              <a className="btn btn-ghost" href="/podcast">Listen to Unfiltered with Jen Archuleta</a>
+              <a className="btn btn-ghost" href="/book#shop">Shop</a>
             </div>
           </div>
           <div className="hero-media">
@@ -60,6 +74,8 @@ export default function Home() {
         </section>
 
         <HomeCarousel />
+
+        <FirstChapterSignup />
       </main>
 
       <SiteFooter />

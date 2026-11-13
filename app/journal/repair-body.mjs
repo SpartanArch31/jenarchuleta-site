@@ -4,6 +4,7 @@ import { fixPublishedCopy } from './published-copy.mjs';
 
 const FOREVER_ANGELS = 'https://theforeverangels.com/';
 const WESTON_FORMULA = 'https://www.westonaprice.org/health-topics/formula-homemade-baby-formula/';
+const ETSY_SHOP = 'https://www.etsy.com/shop/UnfilteredByJen';
 const FLORA_TODDLER_PROBIOTIC = 'https://www.florahealth.com/products/toddlers-probiotic';
 
 const RETIRED_URLS = [
@@ -493,8 +494,17 @@ function repairLabels(blocks, slug) {
   });
 }
 
+// Leftover lines Jen asked to drop from a post (the post's URL stays).
+const DROP_LINES = {
+  // Jen, Nov 13: the stray "Coming 🔜" line at the top.
+  'coming-soon-my-very-own-podcast': [/^Coming\s*🔜\uFE0F?$/u],
+};
+
 export function prepareJournalBody(blocks, slug) {
   if (!Array.isArray(blocks)) return blocks;
+  if (DROP_LINES[slug]) {
+    blocks = blocks.filter((block) => !DROP_LINES[slug].some((re) => re.test(blockText(block).trim())));
+  }
   // FilmFreeway links and Jen's "View Jennifer's press coverage... on FilmFreeway"
   // lines show as she wrote them (she asked for her FilmFreeway link, November 3).
   let next = linkifyBody(correctEpisodeLinks(rewriteBlocks(blocks, slug), slug));
@@ -506,5 +516,16 @@ export function prepareJournalBody(blocks, slug) {
   if (slug === 'baby-formula-shortage') {
     next = linkPhrase(next, 'formula homemade', WESTON_FORMULA);
   }
-  return repairLabels(next, slug);
+  next = repairLabels(next, slug);
+  // Jen, Nov 13: the "I Did It!" post links the book, the Etsy shop and the podcast.
+  if (slug === 'i-did-it') {
+    next = linkPhrase(next, 'jenarchuleta.com/book', '/book');
+    next = linkPhrase(next, 'self-published Beyond the Velvet Ropes', '/book');
+    next = linkPhrase(next, 'Etsy, UnfilteredByJen', ETSY_SHOP);
+    next = linkPhrase(next, 'Podcast: Unfiltered with Jen Archuleta', '/podcast');
+  }
+  if (slug === 'coming-soon-my-very-own-podcast') {
+    next = linkPhrase(next, 'My memoir, Beyond the Velvet Ropes, is out now.', '/book');
+  }
+  return next;
 }

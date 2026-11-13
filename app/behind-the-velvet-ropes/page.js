@@ -2,11 +2,13 @@ import Image from 'next/image';
 import SiteNav from '../components/SiteNav';
 import SiteFooter from '../components/SiteFooter';
 import VelvetKey from '../components/VelvetKey';
+import { pageMeta } from '../../lib/page-meta';
 
-export const metadata = {
+export const metadata = pageMeta({
+  path: '/behind-the-velvet-ropes',
   title: 'Velvet Ropes',
   description: 'The story doesn’t end on the last page. Find the QR code in the back of the book to unlock the secret Velvet Letters.',
-};
+});
 
 export default function VelvetRopesPage() {
   return (

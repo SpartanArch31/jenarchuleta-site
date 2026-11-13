@@ -22,15 +22,18 @@ const JOURNAL_DESCRIPTION =
 // J-05: a category view gets its own title ("Faith, Journal, Jen Archuleta"),
 // not the same "Journal" title on every category. The site template adds
 // ", Jen Archuleta" to the browser title. Social cards do not, so they get it here.
-function journalMeta(title) {
+function journalMeta(title, path = '/journal') {
   const sharedTitle = socialTitle(title);
   return {
     title,
     description: JOURNAL_DESCRIPTION,
+    // Jen, Nov 13: each view points at its own address.
+    alternates: { canonical: path },
     authors: [{ name: 'Jen Archuleta' }],
     openGraph: {
       title: sharedTitle,
       description: JOURNAL_DESCRIPTION,
+      url: path,
       type: 'website',
       images: [OG_IMAGE],
     },
@@ -44,9 +47,9 @@ function journalMeta(title) {
 }
 
 export function generateMetadata({ searchParams }) {
-  if (searchParams?.view === 'archive') return journalMeta('Archive, Journal');
+  if (searchParams?.view === 'archive') return journalMeta('Archive, Journal', '/journal?view=archive');
   const category = typeof searchParams?.category === 'string' ? searchParams.category : '';
-  if (category && category !== 'All') return journalMeta(`${categoryLabel(category)}, Journal`);
+  if (category && category !== 'All') return journalMeta(`${categoryLabel(category)}, Journal`, `/journal?category=${encodeURIComponent(category)}`);
   return journalMeta('Journal');
 }
 
@@ -90,10 +93,19 @@ function byNewest(a, b) {
   return String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''));
 }
 
+function newestPostWithCover(list) {
+  return [...list].sort(byNewest).find((p) => p.heroImage) || null;
+}
+
 function newestCover(list) {
-  const sorted = [...list].sort(byNewest);
-  const withImage = sorted.find((p) => p.heroImage);
-  return withImage ? coverUrl(withImage.heroImage) : null;
+  const post = newestPostWithCover(list);
+  return post ? coverUrl(post.heroImage) : null;
+}
+
+// Jen, Nov 13: each album photo is described with its post's title.
+function newestCoverAlt(list) {
+  const post = newestPostWithCover(list);
+  return post ? post.title || '' : '';
 }
 
 export default async function JournalPage({ searchParams }) {
@@ -130,6 +142,7 @@ export default async function JournalPage({ searchParams }) {
     label: categoryLabel(category),
     href: `/journal?category=${encodeURIComponent(category)}`,
     img: newestCover(posts.filter((p) => p.category === category)),
+    imgAlt: newestCoverAlt(posts.filter((p) => p.category === category)),
   }));
   if (archived.length > 0) {
     albums.push({
@@ -137,6 +150,7 @@ export default async function JournalPage({ searchParams }) {
       label: 'Archive',
       href: '/journal?view=archive',
       img: newestCover(archived),
+      imgAlt: newestCoverAlt(archived),
     });
   }
 
@@ -153,7 +167,8 @@ export default async function JournalPage({ searchParams }) {
       ? formatDate(p.publishedAt)
       : `${p.category} · ${formatDate(p.publishedAt)}`,
     img: heroUrl(p.heroImage),
-    imgAlt: heroAlt(p.heroImage, p.slug),
+    // Jen, Nov 13: a card photo with no description uses the post's title.
+    imgAlt: heroAlt(p.heroImage, p.slug) || p.title,
     };
   }
   const cards = visible.map(toCard);
@@ -210,7 +225,7 @@ export default async function JournalPage({ searchParams }) {
           <nav className="journal-albums" aria-label="Journal categories">
             {albums.map((album) => (
               <a key={album.key} className="journal-album" href={album.href}>
-                {album.img ? <img src={album.img} alt="" /> : <span className="journal-album-blank" aria-hidden="true" />}
+                {album.img ? <img src={album.img} alt={album.imgAlt || ''} /> : <span className="journal-album-blank" aria-hidden="true" />}
                 <span className="journal-album-name">{album.label}</span>
               </a>
             ))}
